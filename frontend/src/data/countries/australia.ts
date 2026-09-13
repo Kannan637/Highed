@@ -1,0 +1,83 @@
+import { Country } from "@/types/country";
+
+export const australia: Country = {
+  slug: "australia",
+  name: "Australia",
+  code: "AU",
+  title: "Study in Australia — World-Class Education in a Stunning Natural Environment",
+  tagline:
+    "7 of the world's top 100 universities, a 2-4 year post-study work visa, and one of the highest standards of living globally.",
+  description:
+    "Australia is the third most popular destination for international students, welcoming over 750,000 students annually. Home to world-renowned universities like the University of Melbourne, ANU, and University of Sydney, Australia offers globally recognized qualifications, a relaxed yet professional lifestyle, and generous post-study work rights through the Temporary Graduate Visa (subclass 485). With strong immigration pathways, a booming economy, and stunning natural landscapes, Australia provides an unmatched study-life balance.",
+  heroImage: "/images/countries/study-in-australia.webp",
+  flag: "🇦🇺",
+  currency: "AUD (Australian Dollar)",
+  capital: "Canberra",
+  language: ["English"],
+  intakes: [
+    { season: "Semester 1", months: "February - March", deadline: "October - November", type: "Major" },
+    { season: "Semester 2", months: "July - August", deadline: "April - May", type: "Major" },
+    { season: "Trimester 3 (Select Universities)", months: "November", deadline: "August - September", type: "Minor" },
+  ],
+  whyStudy: [
+    { title: "Group of Eight — World-Leading Research Universities", description: "Australia's Go8 universities consistently rank in the global top 100, including Melbourne, ANU, Sydney, UNSW, Queensland, Monash, Western Australia, and Adelaide.", icon: "building" },
+    { title: "2-4 Year Post-Study Work Visa", description: "The Temporary Graduate Visa (subclass 485) allows 2-4 years of full-time work rights after graduation — among the most generous in the world.", icon: "visa" },
+    { title: "High Quality of Life", description: "5 Australian cities rank in the world's top 40 most liveable (Melbourne, Sydney, Adelaide, Brisbane, Perth), with excellent healthcare, safety, and public transport.", icon: "shield" },
+    { title: "Work While You Study", description: "International students can work up to 48 hours per fortnight during semester and unlimited hours during breaks — significantly higher than most countries.", icon: "tax" },
+    { title: "Strong Migration Pathways", description: "The skilled migration program (subclass 189/190/491) offers clear PR pathways for graduates in demand occupations including IT, engineering, healthcare, and accounting.", icon: "star" },
+    { title: "Research & Innovation Hub", description: "Australia's research output is world-class in biotechnology, marine science, renewable energy, and AI — with ARC-funded grants and industry partnerships.", icon: "growth" },
+  ],
+  universitiesList: [
+    { name: "University of Melbourne", location: "Melbourne, Victoria", ranking: "#14 QS World Rankings", tuitionRange: "AUD 35,000 - 50,000 / year", popularPrograms: ["Engineering", "Law", "Biomedicine", "Commerce"] },
+    { name: "Australian National University (ANU)", location: "Canberra, ACT", ranking: "#30 QS World Rankings", tuitionRange: "AUD 38,000 - 48,000 / year", popularPrograms: ["International Relations", "Astronomy", "Public Policy", "Computer Science"] },
+    { name: "University of Sydney", location: "Sydney, NSW", ranking: "#18 QS World Rankings", tuitionRange: "AUD 40,000 - 55,000 / year", popularPrograms: ["Architecture", "Data Science", "Veterinary Science", "Liberal Arts"] },
+    { name: "UNSW Sydney", location: "Sydney, NSW", ranking: "#19 QS World Rankings", tuitionRange: "AUD 38,000 - 50,000 / year", popularPrograms: ["Quantum Engineering", "Renewable Energy", "Business Analytics", "Mining Engineering"] },
+    { name: "Monash University", location: "Melbourne, Victoria", ranking: "#37 QS World Rankings", tuitionRange: "AUD 35,000 - 48,000 / year", popularPrograms: ["Pharmacy", "Education", "Chemical Engineering", "IT"] },
+    { name: "University of Queensland (UQ)", location: "Brisbane, Queensland", ranking: "#40 QS World Rankings", tuitionRange: "AUD 33,000 - 45,000 / year", popularPrograms: ["Marine Biology", "Journalism", "Biotechnology", "Psychology"] },
+  ],
+  coursesList: [
+    { name: "Information Technology & Cybersecurity", level: "Postgraduate", duration: "1.5 - 2 Years", averageFee: "AUD 35,000 - 48,000 / year", careerProspects: ["Cybersecurity Analyst", "Cloud Engineer", "IT Manager", "Security Architect"] },
+    { name: "Engineering (Civil, Mechanical, Electrical)", level: "Undergraduate", duration: "4 Years (Honours)", averageFee: "AUD 38,000 - 50,000 / year", careerProspects: ["Structural Engineer", "Project Manager", "Energy Consultant", "Design Engineer"] },
+    { name: "Accounting & Finance", level: "Postgraduate", duration: "1.5 - 2 Years", averageFee: "AUD 30,000 - 42,000 / year", careerProspects: ["Chartered Accountant", "Financial Analyst", "Auditor", "Tax Consultant"] },
+    { name: "Nursing & Health Sciences", level: "Undergraduate", duration: "3 Years", averageFee: "AUD 28,000 - 38,000 / year", careerProspects: ["Registered Nurse", "Clinical Coordinator", "Midwife", "Aged Care Manager"] },
+    { name: "Environmental Science & Sustainability", level: "Postgraduate", duration: "1.5 - 2 Years", averageFee: "AUD 30,000 - 40,000 / year", careerProspects: ["Environmental Scientist", "Sustainability Consultant", "Conservation Manager", "Climate Analyst"] },
+    { name: "Media, Communications & Journalism", level: "Undergraduate", duration: "3 Years", averageFee: "AUD 28,000 - 35,000 / year", careerProspects: ["Broadcast Journalist", "Digital Producer", "PR Strategist", "Content Director"] },
+  ],
+  costDetails: { tuitionMin: "AUD 25,000", tuitionMax: "AUD 55,000", livingCostMonthly: "AUD 1,800 - 2,800", accommodationMonthly: "AUD 800 - 1,600", foodAndTransportMonthly: "AUD 500 - 800" },
+  scholarshipsList: [
+    { name: "Australia Awards Scholarships", amount: "Full Funding (Tuition + Living + Travel + OSHC)", eligibility: "Students from participating countries with development-focused study plans", coverage: "Fully funded undergraduate and postgraduate programs at any Australian university" },
+    { name: "Research Training Program (RTP)", amount: "Full Tuition + AUD 28,854 Stipend / year", eligibility: "Domestic and international research (Master's/PhD) candidates", coverage: "Tuition offset + living stipend for research degree students at Go8 universities" },
+    { name: "Destination Australia Scholarships", amount: "Up to AUD 15,000 / year", eligibility: "Students studying at regional Australian campuses", coverage: "Cost-of-living support for students in regional areas (Armidale, Cairns, Geelong, etc.)" },
+    { name: "University Merit & International Scholarships", amount: "AUD 5,000 - 30,000 / year", eligibility: "High academic achievers (GPA 3.5+ or equivalent)", coverage: "Tuition fee reduction across Australian universities — automatic or application-based" },
+  ],
+  visaDetails: {
+    visaType: "Student Visa (Subclass 500)",
+    processingTime: "4 to 8 Weeks",
+    fundsRequired: "Proof of tuition fees + AUD 24,505 / year for living costs + OSHC (Overseas Student Health Cover)",
+    workPermitHours: "Up to 48 hours/fortnight during term; Unlimited during scheduled breaks",
+    postStudyWorkVisa: "Temporary Graduate Visa (Subclass 485) — 2 to 4 years depending on qualification and location",
+    steps: [
+      { stepNumber: 1, title: "Receive CoE from University", description: "After accepting your offer and paying the initial tuition deposit, the university issues a Confirmation of Enrolment (CoE)." },
+      { stepNumber: 2, title: "Purchase OSHC", description: "Obtain Overseas Student Health Cover (OSHC) for the duration of your visa — mandatory for all international students in Australia." },
+      { stepNumber: 3, title: "Apply Online via ImmiAccount", description: "Create an ImmiAccount on the Department of Home Affairs website, complete the student visa application (Subclass 500), upload documents, and pay the AUD 710 visa fee." },
+      { stepNumber: 4, title: "Health Examination & Biometrics", description: "Complete a medical examination with a Bupa-approved physician and biometrics collection (if required for your nationality)." },
+      { stepNumber: 5, title: "Receive Visa Grant & Travel to Australia", description: "Visa is granted electronically (no sticker). Print the visa grant notification and present your passport at the border — your visa is linked digitally." },
+    ],
+  },
+  faqs: [
+    { question: "How long can I work in Australia after graduating?", answer: "The Temporary Graduate Visa (subclass 485) allows 2 years of full-time work after a Bachelor's, 3 years after a Master's (by coursework), and 4 years after a Master's (by research) or PhD. Students graduating from regional campuses may receive an additional 1-2 years." },
+    { question: "Can I work while studying in Australia?", answer: "Yes. Student visa holders can work up to 48 hours per fortnight (approximately 24 hours/week) during academic sessions and unlimited hours during scheduled breaks." },
+    { question: "What is OSHC and do I need it?", answer: "Overseas Student Health Cover (OSHC) is mandatory health insurance for all international students in Australia. It covers doctor visits, hospital treatment, ambulance services, and some pharmaceuticals. Costs are approximately AUD 500-700 per year." },
+    { question: "Is Australia expensive for international students?", answer: "Tuition ranges from AUD 25,000 to AUD 55,000 per year. Living costs are approximately AUD 21,000 - 30,000 per year depending on the city. Many students work part-time to supplement their expenses." },
+    { question: "Can I apply for permanent residency after studying in Australia?", answer: "Yes. Australian work experience and qualifications earned during and after study contribute to points-based skilled migration (subclass 189/190/491). Many graduates achieve PR within 2-3 years of graduation." },
+    { question: "How does HighEd help with Australian university applications?", answer: "HighEd offers free counseling for Australia-bound students: university selection, scholarship applications, CoE processing, OSHC arrangement, Subclass 500 visa preparation, and pre-departure orientation." },
+  ],
+  testimonial: {
+    studentName: "Ananya Iyer",
+    university: "University of Melbourne",
+    course: "Master of Management",
+    country: "Australia",
+    rating: 5,
+    quote: "From CoE to OSHC insurance and Subclass 500 visa grant, HighEd took care of everything. I received a 25% international fee scholarship thanks to their profile positioning.",
+  },
+};

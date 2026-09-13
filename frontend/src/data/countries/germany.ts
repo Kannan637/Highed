@@ -1,0 +1,82 @@
+import { Country } from "@/types/country";
+
+export const germany: Country = {
+  slug: "germany",
+  name: "Germany",
+  code: "DE",
+  title: "Study in Germany — Tuition-Free Education at Europe's Innovation Powerhouse",
+  tagline:
+    "Public universities with zero or near-zero tuition, an 18-month post-study job seeker visa, and Europe's strongest economy.",
+  description:
+    "Germany is the most popular non-English-speaking study destination for international students, with over 400,000 international students enrolled. German public universities charge little to no tuition (typically €250-350 per semester as administrative fees), making it one of the most affordable quality education destinations worldwide. Home to technical powerhouses like TU Munich, RWTH Aachen, and LMU Munich, Germany excels in engineering, automotive technology, AI, and industrial research. The 18-month post-study job seeker visa and Europe's lowest unemployment rate make Germany an excellent long-term career destination.",
+  heroImage: "/images/countries/study-in-germany.webp",
+  flag: "🇩🇪",
+  currency: "EUR (Euro)",
+  capital: "Berlin",
+  language: ["German", "English (for international programs)"],
+  intakes: [
+    { season: "Winter Semester", months: "October", deadline: "May - July (via uni-assist)", type: "Major" },
+    { season: "Summer Semester", months: "April", deadline: "November - January", type: "Major" },
+  ],
+  whyStudy: [
+    { title: "Tuition-Free Public Universities", description: "Most German public universities charge zero tuition — only a semester contribution of €150-350 covering public transport, student services, and library access.", icon: "tax" },
+    { title: "Engineering & STEM Excellence", description: "Germany is home to global leaders in mechanical engineering, automotive technology (BMW, Mercedes, Volkswagen), chemical engineering, and applied AI research.", icon: "building" },
+    { title: "18-Month Post-Study Job Seeker Visa", description: "International graduates can stay for 18 months to find a job in their field of study — one of the most generous in Europe.", icon: "visa" },
+    { title: "Europe's Strongest Economy", description: "Germany has the largest GDP in Europe with 3.5% unemployment rate, hosting headquarters of Siemens, SAP, Bosch, Bayer, BASF, and Deutsche Bank.", icon: "growth" },
+    { title: "Growing English-Taught Programs", description: "Over 1,800 Master's programs and 200+ Bachelor's programs are fully taught in English at German universities, with no German language requirement.", icon: "star" },
+    { title: "EU Blue Card for Skilled Workers", description: "After graduation, the EU Blue Card provides a fast-track work and residence permit for skilled professionals, with a pathway to permanent settlement after 21-33 months.", icon: "shield" },
+  ],
+  universitiesList: [
+    { name: "Technical University of Munich (TUM)", location: "Munich, Bavaria", ranking: "#37 QS World Rankings", tuitionRange: "€0 tuition (€144 semester fee)", popularPrograms: ["Computer Science", "Mechanical Engineering", "Data Engineering", "Management & Technology"] },
+    { name: "Ludwig Maximilian University (LMU Munich)", location: "Munich, Bavaria", ranking: "#54 QS World Rankings", tuitionRange: "€0 tuition (€138 semester fee)", popularPrograms: ["Physics", "Medicine", "Economics", "Law"] },
+    { name: "Heidelberg University", location: "Heidelberg, Baden-Württemberg", ranking: "#47 QS World Rankings", tuitionRange: "€1,500 / semester (Baden-Württemberg fee for non-EU)", popularPrograms: ["Molecular Biology", "Physics", "Philosophy", "International Health"] },
+    { name: "RWTH Aachen University", location: "Aachen, North Rhine-Westphalia", ranking: "#106 QS World Rankings", tuitionRange: "€0 tuition (€296 semester fee)", popularPrograms: ["Electrical Engineering", "Production Engineering", "Computer Science", "Automotive Engineering"] },
+    { name: "Humboldt University of Berlin", location: "Berlin", ranking: "#120 QS World Rankings", tuitionRange: "€0 tuition (€315 semester fee)", popularPrograms: ["Social Sciences", "Art History", "Mathematics", "Cultural Studies"] },
+    { name: "Free University of Berlin", location: "Berlin", ranking: "#98 QS World Rankings", tuitionRange: "€0 tuition (€313 semester fee)", popularPrograms: ["Political Science", "Earth Sciences", "Computer Science", "Pharmacy"] },
+  ],
+  coursesList: [
+    { name: "Computer Science & Artificial Intelligence", level: "Postgraduate", duration: "2 Years", averageFee: "€0 - €1,500 / semester (varies by state)", careerProspects: ["Software Engineer", "AI Researcher", "Data Engineer", "Systems Architect"] },
+    { name: "Mechanical & Automotive Engineering", level: "Postgraduate", duration: "2 Years", averageFee: "€0 - €1,500 / semester", careerProspects: ["Automotive Engineer", "R&D Lead", "Manufacturing Manager", "Robotics Engineer"] },
+    { name: "Business Administration & Management (MBA)", level: "Postgraduate", duration: "1.5 - 2 Years", averageFee: "€5,000 - €30,000 / program (private universities)", careerProspects: ["Management Consultant", "Strategy Analyst", "Operations Director", "Entrepreneur"] },
+    { name: "Renewable Energy & Sustainability", level: "Postgraduate", duration: "2 Years", averageFee: "€0 - €1,500 / semester", careerProspects: ["Energy Consultant", "Sustainability Manager", "Environmental Engineer", "Climate Policy Analyst"] },
+    { name: "Biomedical Engineering", level: "Postgraduate", duration: "2 Years", averageFee: "€0 - €1,500 / semester", careerProspects: ["Medical Device Engineer", "Clinical Research Associate", "Prosthetics Designer", "Regulatory Affairs Specialist"] },
+    { name: "Economics & Public Policy", level: "Postgraduate", duration: "2 Years", averageFee: "€0 - €1,500 / semester", careerProspects: ["Economist", "Policy Advisor", "UN/EU Specialist", "Research Fellow"] },
+  ],
+  costDetails: { tuitionMin: "€0 (most public universities)", tuitionMax: "€1,500 / semester (Baden-Württemberg)", livingCostMonthly: "€850 - €1,200", accommodationMonthly: "€350 - €700", foodAndTransportMonthly: "€250 - €400" },
+  scholarshipsList: [
+    { name: "DAAD Scholarships", amount: "€861 - €1,200 / month + Travel + Insurance", eligibility: "International students and researchers with excellent academic records", coverage: "Full living stipend, travel allowance, and health insurance for Master's and PhD students" },
+    { name: "Deutschland Stipendium", amount: "€300 / month (non-taxable)", eligibility: "Top-performing students at participating universities — nationality-independent", coverage: "Monthly merit grant co-funded by the federal government and private sponsors" },
+    { name: "Erasmus+ Scholarships", amount: "€800 - €1,100 / month", eligibility: "Students enrolled in Erasmus Mundus joint Master's programs", coverage: "Living costs, travel, and tuition for European joint degree programs" },
+    { name: "Heinrich Böll Foundation Scholarships", amount: "€861 / month + €300 book allowance", eligibility: "International students committed to sustainability, democracy, and human rights", coverage: "Full stipend for Master's and PhD students at German universities" },
+  ],
+  visaDetails: {
+    visaType: "German National Visa for Study Purposes (§16b AufenthG)",
+    processingTime: "4 to 12 Weeks",
+    fundsRequired: "Blocked account (Sperrkonto) with €11,904 / year (€992/month) as proof of financial means",
+    workPermitHours: "120 full days or 240 half-days per year",
+    postStudyWorkVisa: "18-month Job Seeker Visa (§20 AufenthG) → EU Blue Card or Residence Permit for Employment",
+    steps: [
+      { stepNumber: 1, title: "Receive Admission Letter (Zulassungsbescheid)", description: "Obtain a formal admission letter from a German university. For restricted programs, apply through uni-assist or directly to the university." },
+      { stepNumber: 2, title: "Open a Blocked Account (Sperrkonto)", description: "Deposit €11,904 into a blocked bank account (e.g., Expatrio, Fintiba) — you can withdraw €992/month after arriving in Germany." },
+      { stepNumber: 3, title: "Purchase Health Insurance", description: "Obtain German-recognized health insurance — public statutory insurance (TK, AOK) for under-30s or private insurance for older students." },
+      { stepNumber: 4, title: "Apply for National Visa at German Embassy", description: "Submit your visa application with admission letter, blocked account confirmation, health insurance, passport photos, and financial proof at the nearest German Embassy." },
+      { stepNumber: 5, title: "Receive Visa & Register in Germany", description: "Upon arrival, register your address at the local Bürgeramt (Citizens' Office) and convert your visa to a residence permit at the Ausländerbehörde (Foreigners' Registration Office)." },
+    ],
+  },
+  faqs: [
+    { question: "Is university really free in Germany?", answer: "Yes — most public universities in Germany charge zero tuition for all students regardless of nationality. You only pay a semester contribution of €150-350 covering student services, a public transport pass (Semesterticket), and library access. The exception is Baden-Württemberg, which charges non-EU students €1,500/semester." },
+    { question: "Do I need to speak German to study in Germany?", answer: "Not necessarily. Over 1,800 Master's programs and 200+ Bachelor's programs are fully taught in English. However, learning basic German (A2-B1 level) significantly improves your daily life, job prospects, and social integration. Many universities offer free German language courses." },
+    { question: "What is a blocked account (Sperrkonto)?", answer: "A blocked account is a mandatory financial proof for a German student visa. You deposit €11,904 (for 12 months) into a special bank account before arriving. After arrival, you can withdraw up to €992/month for living expenses. Providers include Expatrio, Fintiba, and Deutsche Bank." },
+    { question: "Can I work while studying in Germany?", answer: "Yes. International students can work 120 full days or 240 half-days per year without a work permit. Student jobs (Werkstudent positions) in German companies pay €12-18/hour and often lead to full-time offers after graduation." },
+    { question: "Can I stay in Germany after completing my degree?", answer: "Yes. Germany offers an 18-month post-study job seeker visa to find employment related to your field of study. Once employed, you can switch to an EU Blue Card (for salaries above €45,300) or a regular work residence permit, with permanent residency possible after 21-33 months." },
+    { question: "How does HighEd help with German university applications?", answer: "HighEd offers free guidance for Germany-bound students: university and program shortlisting, uni-assist application support, blocked account setup, health insurance guidance, national visa preparation, and pre-departure briefing." },
+  ],
+  testimonial: {
+    studentName: "Karthik Nair",
+    university: "Technical University of Munich",
+    course: "MSc Automotive Engineering",
+    country: "Germany",
+    rating: 5,
+    quote: "Studying tuition-free at TUM was my dream. HighEd guided me step-by-step through uni-assist, the APS certificate, and blocked account setup with complete clarity.",
+  },
+};
