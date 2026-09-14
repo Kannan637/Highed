@@ -106,11 +106,11 @@ export default function ScholarshipsPage() {
           subtitle="Explore 100+ scholarships across 6 top destinations. Our counsellors will match your academic profile to the best funding opportunities — completely free."
         />
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {scholarshipsByCountry.map((dest) => (
             <div
               key={dest.country}
-              className="group flex flex-col rounded-3xl border border-gray-100 bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg overflow-hidden"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col rounded-3xl border border-gray-100 bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg overflow-hidden"
             >
               {/* Header */}
               <div className="flex items-center gap-3.5 p-6 pb-4" style={{ backgroundColor: dest.color }}>

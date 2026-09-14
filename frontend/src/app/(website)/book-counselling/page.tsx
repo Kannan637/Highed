@@ -20,9 +20,9 @@ export default function BookCounsellingPage() {
       <AutoOpenLeadPopup />
 
       <Container size="lg">
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+        <div className="grid grid-cols-4 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Information & Trust */}
-          <div className="lg:col-span-6">
+          <div className="col-span-4 lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF1FA] px-4 py-1.5 font-dmsans text-xs font-semibold text-[#253A7B]">
               <ShieldCheck size={16} />
               <span>Official University Representative</span>
@@ -82,7 +82,7 @@ export default function BookCounsellingPage() {
           </div>
 
           {/* Right Column: LeadPopup Trigger Card */}
-          <div className="lg:col-span-6">
+          <div className="col-span-4 lg:col-span-6">
             <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
                 <PhoneCall size={28} />

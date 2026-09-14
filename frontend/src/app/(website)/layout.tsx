@@ -4,8 +4,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import SkipToContent from "@/components/ui/SkipToContent";
 import LeadPopupProvider from "@/components/forms/LeadPopupProvider";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
 
 export default function WebsiteLayout({
   children,
@@ -15,7 +15,6 @@ export default function WebsiteLayout({
   return (
     <LeadPopupProvider>
       <div className="flex min-h-screen flex-col font-dmsans">
-        <SkipToContent />
         <TopBar />
         <Navbar />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-hidden">
@@ -24,6 +23,7 @@ export default function WebsiteLayout({
         <Footer />
         <ScrollToTop />
         <WhatsAppButton />
+        <MobileBottomNav />
       </div>
     </LeadPopupProvider>
   );

@@ -254,20 +254,21 @@ export default function StudyDestinations() {
 
     return (
         <section
-            className={`
-        w-full
-        overflow-hidden
-        bg-white
-        px-5
-        py-16
-        text-[#121314]
-        sm:px-8
-        sm:py-20
-        lg:px-0
-        lg:py-[88px]
-      `}
+            className="
+                w-full
+                overflow-hidden
+                bg-white
+                px-6
+                py-16
+                text-[#121314]
+                sm:px-8
+                sm:py-20
+                lg:px-8
+                2xl:px-12
+                lg:py-[88px]
+            "
         >
-            <div className="mx-auto max-w-[1440px]">
+            <div className="mx-auto max-w-7xl 2xl:max-w-[1440px]">
                 {/* =====================================================
             HEADER
         ====================================================== */}

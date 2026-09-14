@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 
 interface StudyAbroadCard {
@@ -43,55 +44,35 @@ export const StudyAbroadCards = () => {
   const { openLeadPopup } = useLeadPopup();
 
   return (
-    <section className="relative z-30 w-full">
-      <div
-        className="
-          mx-auto
-          -translate-y-8
-          -mb-8
-          grid
-          w-[calc(100%-32px)]
-          grid-cols-1
-          gap-3
-          rounded-[20px]
-          border-[7px]
-          border-white
-          bg-white
-
-          sm:w-[calc(100%-48px)]
-          sm:-translate-y-10
-          sm:-mb-10
-
-          md:h-[200px]
-          md:w-[calc(100%-64px)]
-          md:max-w-[1000px]
-          md:grid-cols-12
-          md:gap-3
-          md:-translate-y-1/2
-          md:-mb-[100px]
-        "
-      >
-        {cards.map((card) => (
-          <button
-            key={card.title}
-            type="button"
-            onClick={() => openLeadPopup({ source: `card_${card.title.toLowerCase().replace(/ /g, "_")}` })}
-            className="
-              group
-              flex
-              min-h-[76px]
-              w-full
-              overflow-hidden
-              rounded-[13px]
-              bg-[#FAFAFA]
-              no-underline
-
-              md:col-span-3
-              md:h-[186px]
-              md:min-h-0
-              md:flex-col
-            "
-          >
+    <section className="relative z-30 w-full -translate-y-8 -mb-8 sm:-translate-y-10 sm:-mb-10 md:-translate-y-1/2 md:-mb-[90px]">
+      <Container size="lg">
+        <div className="grid grid-cols-4 gap-3 rounded-[24px] border-[6px] sm:border-[8px] border-white bg-white p-1.5 shadow-xl lg:grid-cols-12 lg:gap-4">
+          {cards.map((card) => (
+            <button
+              key={card.title}
+              type="button"
+              onClick={() => openLeadPopup({ source: `card_${card.title.toLowerCase().replace(/ /g, "_")}` })}
+              className="
+                group
+                col-span-4
+                sm:col-span-2
+                lg:col-span-3
+                flex
+                min-h-[76px]
+                w-full
+                overflow-hidden
+                rounded-[14px]
+                bg-[#FAFAFA]
+                no-underline
+                transition-all
+                duration-200
+                hover:shadow-md
+                hover:-translate-y-0.5
+                md:h-[186px]
+                md:min-h-0
+                md:flex-col
+              "
+            >
             {/* Image */}
             <div
               className="
@@ -166,7 +147,8 @@ export const StudyAbroadCards = () => {
             </div>
           </button>
         ))}
-      </div>
+        </div>
+      </Container>
     </section>
   );
 };

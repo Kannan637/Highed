@@ -45,9 +45,9 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
         </div>
 
         {/* 2-Column Hero Grid */}
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-4 items-center gap-8 lg:grid-cols-12 lg:gap-8">
           {/* Left Column: Content */}
-          <div className="text-left lg:col-span-7">
+          <div className="col-span-4 text-left lg:col-span-7">
             {/* Country Pill */}
             <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
               <span className="text-xl" role="img" aria-label={country.name}>
@@ -89,7 +89,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
           </div>
 
           {/* Right Column: Country SVG Illustration */}
-          <div className="flex items-center justify-center lg:col-span-5">
+          <div className="col-span-4 flex items-center justify-center lg:col-span-5">
             <div className="relative w-full max-w-[440px] drop-shadow-2xl">
               <CountryIllustration
                 countrySlug={country.slug}
@@ -100,8 +100,8 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
         </div>
 
         {/* Dynamic Highlights Bar */}
-        <div className="mt-14 grid grid-cols-2 gap-3 md:gap-4 rounded-2xl border border-white/15 bg-white/10 p-4 md:p-6 backdrop-blur-md sm:grid-cols-4 shadow-2xl">
-          <div className="flex items-center gap-3">
+        <div className="mt-14 grid grid-cols-4 gap-3 md:gap-4 rounded-2xl border border-white/15 bg-white/10 p-4 md:p-6 backdrop-blur-md lg:grid-cols-12 shadow-2xl">
+          <div className="col-span-2 sm:col-span-2 lg:col-span-3 flex items-center gap-3">
             <div className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white">
               <Calendar size={20} />
             </div>
@@ -113,7 +113,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="col-span-2 sm:col-span-2 lg:col-span-3 flex items-center gap-3">
             <div className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white">
               <CreditCard size={20} />
             </div>
@@ -125,7 +125,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="col-span-2 sm:col-span-2 lg:col-span-3 flex items-center gap-3">
             <div className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white">
               <ShieldCheck size={20} />
             </div>
@@ -137,7 +137,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="col-span-2 sm:col-span-2 lg:col-span-3 flex items-center gap-3">
             <div className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white">
               <Compass size={20} />
             </div>

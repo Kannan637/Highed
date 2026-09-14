@@ -244,9 +244,9 @@ function ExploreContentInner({ country }: ExploreContentProps) {
   return (
     <section className="bg-neutral-50/50 py-12">
       <Container size="lg">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-8 items-start">
           {/* Sidebar Filters (Desktop) */}
-          <aside className="lg:col-span-4 xl:col-span-3 hidden lg:block">
+          <aside className="hidden lg:block lg:col-span-4 xl:col-span-3">
             <div className="sticky top-28 rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
               <ExploreFilters
                 filters={filters}
@@ -259,7 +259,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
           </aside>
 
           {/* Main Results Column */}
-          <main className="lg:col-span-8 xl:col-span-9">
+          <main className="col-span-4 lg:col-span-8 xl:col-span-9">
             <ActiveFilters
               filters={filters}
               onRemove={handleRemoveFilter}

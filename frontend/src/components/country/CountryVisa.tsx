@@ -21,8 +21,8 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
         />
 
         {/* Visa Highlights */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 mb-12">
-          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
+        <div className="grid grid-cols-4 gap-5 lg:grid-cols-12 lg:gap-6 mb-12">
+          <div className="col-span-4 sm:col-span-2 lg:col-span-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EEF1FA] text-[#253A7B]">
                 <Clock size={20} />
@@ -36,7 +36,7 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
+          <div className="col-span-4 sm:col-span-2 lg:col-span-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF5EE] text-[#1E7B47]">
                 <Briefcase size={20} />
@@ -50,7 +50,7 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
+          <div className="col-span-4 sm:col-span-4 lg:col-span-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FDF0F3] text-[#E93F61]">
                 <FileText size={20} />

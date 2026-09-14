@@ -21,13 +21,13 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
 
         {/* Timeline Grid */}
         <div className="relative mt-12">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
             {country.intakes.map((intake, idx) => {
               const isMajor = intake.type === "Major";
               return (
                 <div
                   key={intake.season + idx}
-                  className={`relative flex flex-col justify-between rounded-2xl border p-7 transition-all duration-300 ${
+                  className={`col-span-4 sm:col-span-2 lg:col-span-4 relative flex flex-col justify-between rounded-2xl border p-7 transition-all duration-300 ${
                     isMajor
                       ? "border-[#253A7B] bg-gradient-to-b from-[#253A7B]/[0.04] to-white shadow-lg ring-1 ring-[#253A7B]/10"
                       : "border-neutral-200/90 bg-neutral-50/50 hover:bg-white hover:shadow-md"

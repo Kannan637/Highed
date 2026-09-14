@@ -112,9 +112,9 @@ export default function SuccessStoriesPage() {
         />
 
         {/* Stats Bar */}
-        <div className="mb-14 grid grid-cols-2 gap-4 rounded-2xl border border-[#253A7B]/15 bg-[#253A7B] p-6 text-white sm:grid-cols-4">
+        <div className="mb-14 grid grid-cols-4 gap-4 rounded-2xl border border-[#253A7B]/15 bg-[#253A7B] p-6 text-white lg:grid-cols-12">
           {stats.map((s) => (
-            <div key={s.label} className="text-center">
+            <div key={s.label} className="col-span-2 lg:col-span-3 text-center">
               <div className="font-hedvig text-3xl font-bold text-white sm:text-4xl">{s.value}</div>
               <div className="mt-1 font-dmsans text-xs font-medium text-white/70">{s.label}</div>
             </div>
@@ -122,11 +122,11 @@ export default function SuccessStoriesPage() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="flex flex-col rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 flex flex-col rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg"
             >
               {/* Star Rating */}
               <div className="flex items-center gap-0.5 mb-4">

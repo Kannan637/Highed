@@ -8,9 +8,9 @@ export const Footer: React.FC = () => {
   return (
     <footer className="border-t border-white/10 bg-[linear-gradient(180deg,#253A7B,#12204C)] text-white">
       <Container size="lg" className="py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-4 gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-8">
           {/* Brand Info */}
-          <div className="lg:col-span-2">
+          <div className="col-span-4 lg:col-span-4">
             <Link href="/" className="inline-block">
               <Image
                 src="/logo.png"
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Study Abroad Countries */}
-          <div>
+          <div className="col-span-4 sm:col-span-2 lg:col-span-3">
             <h4 className="font-dmsans text-sm font-bold uppercase tracking-wider text-white">
               Study Abroad
             </h4>
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Student Services */}
-          <div>
+          <div className="col-span-4 sm:col-span-2 lg:col-span-2">
             <h4 className="font-dmsans text-sm font-bold uppercase tracking-wider text-white">
               Services
             </h4>
@@ -114,7 +114,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="col-span-4 sm:col-span-2 lg:col-span-3">
             <h4 className="font-dmsans text-sm font-bold uppercase tracking-wider text-white">
               Quick Links
             </h4>

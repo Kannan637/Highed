@@ -368,16 +368,18 @@ function Hero() {
                         flex
                         w-full
                         max-w-7xl
+                        2xl:max-w-[1440px]
                         flex-col
                         items-center
-                        px-4
+                        px-6
                         pt-16
                         pb-16
                         text-center
-                        sm:px-6
+                        sm:px-8
                         sm:pt-18
                         sm:pb-24
                         md:pb-32
+                        2xl:px-12
                     "
                 >
                     {/* =================================================
@@ -733,8 +735,8 @@ function Hero() {
 
 
                         {/* Information Row */}
-                        <div className="mt-3.5 sm:mt-4 md:mt-5 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-4 md:gap-x-0 md:divide-x md:divide-white/20">
-                            <div className="flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
+                        <div className="mt-3.5 sm:mt-4 md:mt-5 grid grid-cols-4 gap-y-4 gap-x-3 md:gap-x-0 lg:grid-cols-12 md:divide-x md:divide-white/20">
+                            <div className="col-span-2 lg:col-span-3 flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
                                 <GraduationCap
                                     className="h-5 w-5 sm:h-[22px] sm:w-[22px] md:h-6 md:w-6 text-white/90 shrink-0"
                                     strokeWidth={1.9}
@@ -744,7 +746,7 @@ function Hero() {
                                     1000+ Students Placed
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
+                            <div className="col-span-2 lg:col-span-3 flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
                                 <Building2
                                     className="h-5 w-5 sm:h-[22px] sm:w-[22px] md:h-6 md:w-6 text-white/90 shrink-0"
                                     strokeWidth={1.9}
@@ -754,7 +756,7 @@ function Hero() {
                                     500+ Global Universities
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
+                            <div className="col-span-2 lg:col-span-3 flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
                                 <ShieldCheck
                                     className="h-5 w-5 sm:h-[22px] sm:w-[22px] md:h-6 md:w-6 text-white/90 shrink-0"
                                     strokeWidth={1.9}
@@ -764,7 +766,7 @@ function Hero() {
                                     95%+ Visa Success Rate
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
+                            <div className="col-span-2 lg:col-span-3 flex flex-col items-center justify-center text-center px-2 sm:px-3 md:px-4 gap-1.5 sm:gap-2">
                                 <Globe
                                     className="h-5 w-5 sm:h-[22px] sm:w-[22px] md:h-6 md:w-6 text-white/90 shrink-0"
                                     strokeWidth={1.9}

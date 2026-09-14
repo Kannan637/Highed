@@ -7,7 +7,6 @@ import CountryService from "@/components/home/CountryService";
 import AboutUs from "@/components/home/AboutUs";
 import ScholarShip from "@/components/home/Scholarship";
 import FAQSection from "@/components/home/FAQ";
-import { MobileStickyCTA } from "@/components/layout/MobileStickyCTA";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <Courses />
       <ScholarShip />
       <FAQSection />
-      <MobileStickyCTA />
     </>
   );
 }

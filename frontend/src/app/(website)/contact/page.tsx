@@ -24,9 +24,9 @@ export default function ContactPage() {
           subtitle="Our expert counsellors are available to assist with university shortlisting, document reviews, and visa applications."
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="mt-12 grid grid-cols-4 gap-8 lg:grid-cols-12">
           {/* Contact Information */}
-          <div className="space-y-6 lg:col-span-6">
+          <div className="col-span-4 space-y-6 lg:col-span-6">
             <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
               <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
@@ -85,7 +85,7 @@ export default function ContactPage() {
           </div>
 
           {/* Quick Consultation Request Card */}
-          <div className="lg:col-span-6">
+          <div className="col-span-4 lg:col-span-6">
             <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-md sm:p-10">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EEF1FA] px-3.5 py-1 text-xs font-semibold text-[#253A7B]">
                 <ShieldCheck size={14} />

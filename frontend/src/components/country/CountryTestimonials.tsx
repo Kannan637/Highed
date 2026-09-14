@@ -29,9 +29,9 @@ export const CountryTestimonials: React.FC<CountryTestimonialsProps> = ({ countr
           subtitle={`Real journeys, verified admits, and genuine experiences from students who took flight with HighEd.`}
         />
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="mt-12 grid grid-cols-4 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Experience Highlight Card */}
-          <div className="lg:col-span-5 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200 bg-[#16234B] text-white p-7 shadow-lg min-h-[360px]">
+          <div className="col-span-4 lg:col-span-5 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200 bg-[#16234B] text-white p-7 shadow-lg min-h-[360px]">
             {/* Ambient glows */}
             <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-[#E93F61]/20 blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
@@ -74,7 +74,7 @@ export const CountryTestimonials: React.FC<CountryTestimonialsProps> = ({ countr
           </div>
 
           {/* Right Column: Student Testimonial Card */}
-          <div className="lg:col-span-7 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-white p-8 md:p-10 shadow-sm">
+          <div className="col-span-4 lg:col-span-7 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-white p-8 md:p-10 shadow-sm">
             <div>
               {/* Header with stars and quote icon */}
               <div className="flex items-center justify-between mb-6">

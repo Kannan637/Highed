@@ -73,13 +73,13 @@ export const CountryWhyHighEd: React.FC<CountryWhyHighEdProps> = ({ country }) =
           subtitle={`From your first exploratory search to your first day on campus, we eliminate complexity at every single stage.`}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <div className="grid grid-cols-4 gap-6 mt-12 lg:grid-cols-12 lg:gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={idx}
-                className="group relative flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-neutral-50/40 p-7 transition-all duration-300 hover:border-[#253A7B]/40 hover:bg-white hover:shadow-lg"
+                className="col-span-4 sm:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-neutral-50/40 p-7 transition-all duration-300 hover:border-[#253A7B]/40 hover:bg-white hover:shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">

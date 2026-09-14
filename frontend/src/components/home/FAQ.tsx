@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
+import Container from "@/components/ui/Container";
 
 const faqs = [
     {
@@ -42,19 +43,18 @@ export default function FAQSection() {
 
     return (
         <section
-            className={`
+            className="
         w-full
         bg-white
-        px-5
         py-16
         text-[#121314]
-        sm:px-8
         sm:py-20
-        lg:px-12
         lg:py-[80px]
-      `}
+      "
         >
-            <div className="mx-auto max-w-[720px]">
+            <Container size="lg">
+                <div className="grid grid-cols-4 lg:grid-cols-12 gap-8">
+                    <div className="col-span-4 lg:col-span-8 lg:col-start-3">
                 {/* =====================================================
             HEADER
         ====================================================== */}
@@ -237,7 +237,9 @@ export default function FAQSection() {
                         />
                     </button>
                 </div>
-            </div>
+                    </div>
+                </div>
+            </Container>
         </section>
     );
 }

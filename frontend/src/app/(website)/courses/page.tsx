@@ -124,11 +124,11 @@ export default function CoursesPage() {
           subtitle="Browse popular disciplines and discover the best universities for each program. Our counsellors will match your GPA, budget, and career goals to the right course."
         />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {courseCategories.map((cat) => (
             <div
               key={cat.title}
-              className="group flex flex-col rounded-3xl border border-gray-100 bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg overflow-hidden"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col rounded-3xl border border-gray-100 bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg overflow-hidden"
             >
               {/* Header */}
               <div className="p-6 pb-4" style={{ backgroundColor: cat.color }}>

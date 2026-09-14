@@ -8,6 +8,7 @@ import {
     BadgeCheck,
     Plane,
 } from "lucide-react";
+import Container from "@/components/ui/Container";
 
 const services = [
     {
@@ -51,91 +52,70 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section
-            className={`
-        w-full
-        bg-white
-        px-5
-        py-16
-        text-[#121314]
-        sm:px-8
-        sm:py-20
-        lg:px-12
-        lg:py-[82px]
-      `}
-        >
-            <div className="mx-auto max-w-[1180px]">
-                {/* =========================
-            HEADER
-        ========================== */}
-                <div className="text-center">
-                    {/* Eyebrow */}
-                    <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+        <section className="w-full bg-white py-16 sm:py-20 lg:py-[82px] text-[#121314]">
+            <Container size="lg">
+                <div className="grid grid-cols-4 lg:grid-cols-12 gap-6">
+                    {/* =========================
+                        HEADER
+                    ========================== */}
+                    <div className="col-span-4 lg:col-span-8 lg:col-start-3 text-center">
+                        {/* Eyebrow */}
+                        <div className="mb-7 flex items-center justify-center gap-2">
+                            <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
 
-                        <span
+                            <span
+                                className="
+                    text-[14px]
+                    font-medium
+                    tracking-[-0.1px]
+                    text-[#253A7B]
+                    sm:text-[15px]
+                  "
+                            >
+                                Our Services
+                            </span>
+                        </div>
+
+                        {/* Heading */}
+                        <h2
                             className="
-                text-[14px]
-                font-medium
-                tracking-[-0.1px]
-                text-[#253A7B]
-                sm:text-[15px]
-              "
+                  mx-auto
+                  max-w-[700px]
+                  text-[40px]
+                  font-normal
+                  leading-[1.02]
+                  tracking-[-1.8px]
+                  text-[#121314]
+                  sm:text-[46px]
+                  lg:text-[48px]
+                "
                         >
-                            Our Services
-                        </span>
+                            Complete Study Abroad
+                            <br />
+                            Advisory Services
+                        </h2>
                     </div>
 
-                    {/* Heading */}
-                    <h2
-                        className="
-              mx-auto
-              max-w-[700px]
-              text-[40px]
-              font-normal
-              leading-[1.02]
-              tracking-[-1.8px]
-              text-[#121314]
-              sm:text-[46px]
-              lg:text-[48px]
-            "
-                    >
-                        Complete Study Abroad
-                        <br />
-                        Advisory Services
-                    </h2>
-                </div>
+                    {/* =========================
+                        SERVICES GRID
+                    ========================== */}
+                    <div className="col-span-4 lg:col-span-12 mt-10 sm:mt-12 lg:mt-14 grid grid-cols-4 gap-x-6 gap-y-12 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-16">
+                        {services.map((service) => {
+                            const Icon = service.icon;
 
-                {/* =========================
-            SERVICES GRID
-        ========================== */}
-                <div
-                    className="
-            mt-16
-            grid
-            grid-cols-1
-            gap-x-10
-            gap-y-14
-            sm:grid-cols-2
-            lg:mt-[76px]
-            lg:grid-cols-3
-            lg:gap-x-[55px]
-            lg:gap-y-[60px]
-          "
-                >
-                    {services.map((service) => {
-                        const Icon = service.icon;
-
-                        return (
-                            <div
-                                key={service.title}
-                                className="
-                  flex
-                  flex-col
-                  items-center
-                  text-center
-                "
-                            >
+                            return (
+                                <div
+                                    key={service.title}
+                                    className="
+                      col-span-4
+                      sm:col-span-2
+                      lg:col-span-4
+                      flex
+                      flex-col
+                      items-center
+                      text-center
+                    "
+                                >
                                 {/* =========================
                     ICON PLACEHOLDER
                 ========================== */}
@@ -220,8 +200,9 @@ export default function ServicesSection() {
                             </div>
                         );
                     })}
+                    </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }

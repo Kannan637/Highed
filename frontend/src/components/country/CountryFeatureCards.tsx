@@ -45,14 +45,14 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({ countr
   return (
     <section className="relative -mt-8 z-10">
       <Container size="lg">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-4 gap-5 lg:grid-cols-12 lg:gap-6">
           {cards.map((card, idx) => {
             const Icon = card.icon;
             return (
               <Link
                 key={idx}
                 href={card.href}
-                className="group relative flex flex-col justify-between rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-lg shadow-neutral-200/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#253A7B]/40 hover:shadow-xl"
+                className="col-span-4 sm:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-lg shadow-neutral-200/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#253A7B]/40 hover:shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

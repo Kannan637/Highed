@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Menu, X } from "lucide-react";
+import Container from "@/components/ui/Container";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { MobileNavigation } from "./MobileNavigation";
 
@@ -21,7 +22,7 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="relative z-[9999] w-full border-b border-gray-100 bg-white font-dmsans">
       {/* MAIN HEADER */}
-      <div className="mx-auto flex h-[72px] w-full max-w-[1200px] items-center justify-between px-5 sm:px-6">
+      <Container size="lg" className="flex h-[72px] items-center justify-between">
         {/* LOGO */}
         <div className="shrink-0">
           <Link href="/" className="block">
@@ -65,7 +66,7 @@ export const Navbar: React.FC = () => {
             )}
           </button>
         </div>
-      </div>
+      </Container>
 
       {/* MOBILE MENU DRAWER */}
       <MobileNavigation isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />

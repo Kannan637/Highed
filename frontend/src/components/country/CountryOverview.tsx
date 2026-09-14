@@ -18,9 +18,9 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
           subtitle={`Discover why over 70,000 international students choose ${country.name} every year for recognized global qualifications.`}
         />
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+        <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:items-center">
           {/* Main Description */}
-          <div className="lg:col-span-7">
+          <div className="col-span-4 lg:col-span-7">
             <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs sm:p-10">
               <h3 className="font-hedvig text-2xl font-bold text-[#121314] sm:text-3xl">
                 An International Education Hub Built for the Future
@@ -48,7 +48,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
           </div>
 
           {/* Highlights Checklist */}
-          <div className="space-y-4 lg:col-span-5">
+          <div className="col-span-4 space-y-4 lg:col-span-5">
             <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
               <div className="flex items-center gap-4">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EBF5EE] text-[#1E7B47]">

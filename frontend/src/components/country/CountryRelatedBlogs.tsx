@@ -39,12 +39,12 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({ countr
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {displayArticles.map((article) => (
             <Link
               key={article.slug}
               href={`/blog`}
-              className="group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-neutral-50/40 p-6 transition-all duration-300 hover:border-[#253A7B]/40 hover:bg-white hover:shadow-xl"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-neutral-50/40 p-6 transition-all duration-300 hover:border-[#253A7B]/40 hover:bg-white hover:shadow-xl"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

@@ -62,9 +62,9 @@ export default function EventsPage() {
             return (
               <div
                 key={evt.title}
-                className="group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:border-[#253A7B]/20 hover:shadow-md md:flex-row md:items-center"
+                className="group grid grid-cols-4 items-center gap-6 rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:border-[#253A7B]/20 hover:shadow-md lg:grid-cols-12"
               >
-                <div className="max-w-2xl">
+                <div className="col-span-4 lg:col-span-9">
                   <div className="flex flex-wrap items-center gap-3 text-xs font-semibold">
                     <span className="rounded-full bg-[#EEF1FA] px-3.5 py-1 text-[#253A7B]">
                       {evt.type}
@@ -93,10 +93,10 @@ export default function EventsPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 shrink-0 md:mt-0 md:pl-6">
+                <div className="col-span-4 flex justify-start lg:col-span-3 lg:justify-end">
                   <LeadCTAButton
                     source={`event_${evt.title.toLowerCase().replace(/\s+/g, '_')}`}
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E93F61] px-7 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#D93657] active:scale-[0.98] cursor-pointer md:w-auto"
+                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E93F61] px-7 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#D93657] active:scale-[0.98] cursor-pointer sm:w-auto"
                   >
                     <span>Register Free</span>
                     <ArrowRight size={16} />

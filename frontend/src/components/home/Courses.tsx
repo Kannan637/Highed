@@ -10,6 +10,7 @@ import {
     Plane,
     BookOpen,
 } from "lucide-react";
+import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 
 type Course = {
@@ -213,6 +214,9 @@ function CourseCard({ course }: { course: Course }) {
         <article
             className="
         group
+        col-span-4
+        sm:col-span-2
+        lg:col-span-4
         flex
         min-w-0
         flex-col
@@ -345,14 +349,8 @@ export default function TopCoursesSection() {
     };
 
     return (
-        <section
-            className={`
-        w-full
-        bg-white
-        text-[#121314]
-      `}
-        >
-            <div className="mx-auto max-w-[1386px] px-5 py-8 sm:px-8 lg:px-[50px] lg:py-7">
+        <section className="w-full bg-white text-[#121314]">
+            <Container size="lg" className="py-12 sm:py-16">
                 {/* =========================
             SECTION HEADER
         ========================== */}
@@ -502,7 +500,7 @@ export default function TopCoursesSection() {
                 {/* =========================
             COURSE CARDS
         ========================== */}
-                <div className="mt-11 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-11 grid grid-cols-4 gap-5 lg:grid-cols-12 lg:gap-6">
                     {activeCourses.map((course, index) => (
                         <CourseCard key={`${activeCategory}-${index}`} course={course} />
                     ))}
@@ -646,7 +644,7 @@ export default function TopCoursesSection() {
                         </span>
                     </button>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }

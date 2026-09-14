@@ -107,14 +107,14 @@ export default function ServicesPage() {
           subtitle="From profile evaluation to pre-departure, our certified counsellors handle every step of your international education journey — completely free of charge."
         />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {services.map((svc) => {
             const Icon = svc.icon;
             return (
               <div
                 key={svc.title}
                 id={svc.id}
-                className="group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg scroll-mt-28"
+                className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg scroll-mt-28"
               >
                 <div>
                   <div

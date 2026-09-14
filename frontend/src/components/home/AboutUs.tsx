@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 
 import Image from "next/image";
+import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 
 /* =========================================================
@@ -238,41 +239,31 @@ export default function AboutSection() {
           MAIN WRAPPER
       ====================================================== */}
 
-            <div
-                className="
-          relative
-          z-10
-          mx-auto
-          grid
-          max-w-[1440px]
-          grid-cols-1
-          lg:min-h-[800px]
-          lg:grid-cols-[52%_48%]
-        "
-            >
-                {/* ===================================================
-            LEFT — STUDENT VISUAL
-        ==================================================== */}
+            <Container size="lg" className="relative z-10">
+                <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 items-center lg:min-h-[800px]">
+                    {/* ===================================================
+                        LEFT — STUDENT VISUAL
+                    ==================================================== */}
 
-                <div
-                    className="
-            relative
-            flex
-            min-h-[480px]
-            items-end
-            justify-center
-            overflow-visible
-            px-5
-            pt-10
-            sm:min-h-[620px]
-            lg:min-h-[800px]
-            lg:justify-start
-            lg:px-0
-            lg:pt-0
-            order-2
-            lg:order-1
-          "
-                >
+                    <div
+                        className="
+                            col-span-4
+                            lg:col-span-6
+                            relative
+                            flex
+                            min-h-[480px]
+                            items-end
+                            justify-center
+                            overflow-visible
+                            px-0
+                            pt-10
+                            sm:min-h-[620px]
+                            lg:min-h-[800px]
+                            lg:justify-start
+                            order-2
+                            lg:order-1
+                        "
+                    >
                     {/* =================================================
               STUDENT IMAGE PLACEHOLDER
           ================================================== */}
@@ -371,24 +362,24 @@ export default function AboutSection() {
                 </div>
 
                 {/* ===================================================
-            RIGHT — CONTENT
-        ==================================================== */}
+                    RIGHT — CONTENT
+                ==================================================== */}
 
                 <div
                     className="
-            relative
-            z-20
-            px-6
-            pb-10
-            pt-16
-            text-center
-            sm:px-10
-            lg:px-[45px]
-            lg:py-[78px]
-            lg:text-left
-            order-1
-            lg:order-2
-          "
+                        col-span-4
+                        lg:col-span-6
+                        relative
+                        z-20
+                        px-0
+                        pb-10
+                        pt-16
+                        text-center
+                        lg:py-[78px]
+                        lg:text-left
+                        order-1
+                        lg:order-2
+                    "
                 >
                     {/* =================================================
               EYEBROW
@@ -596,6 +587,7 @@ export default function AboutSection() {
                     </button>
                 </div>
             </div>
+            </Container>
         </section>
     );
 }

@@ -15,13 +15,17 @@ export const Container: React.FC<ContainerProps> = ({
   const sizeStyles = {
     sm: "max-w-4xl",
     md: "max-w-5xl",
-    lg: "max-w-7xl",
+    lg: "max-w-7xl 2xl:max-w-[1440px]",
     full: "max-w-full",
   };
 
   return (
     <div
-      className={cn("mx-auto w-full px-5 sm:px-6 lg:px-8", sizeStyles[size], className)}
+      className={cn(
+        "mx-auto w-full px-6 sm:px-8 lg:px-8 2xl:px-12",
+        sizeStyles[size],
+        className
+      )}
       {...props}
     >
       {children}

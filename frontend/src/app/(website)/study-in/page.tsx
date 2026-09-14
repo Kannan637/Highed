@@ -24,12 +24,12 @@ export default function StudyInPage() {
           subtitle="Select your preferred destination to explore accredited universities, living costs, post-study work visas, and scholarships."
         />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {allCountries.map((country) => (
             <Link
               key={country.slug}
               href={`/study-in/${country.slug}`}
-              className="group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:border-[#253A7B]/20 hover:shadow-xl hover:-translate-y-1"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:border-[#253A7B]/20 hover:shadow-xl hover:-translate-y-1"
             >
               <div>
                 <div className="flex items-center justify-between">

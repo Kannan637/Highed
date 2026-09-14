@@ -51,20 +51,20 @@ export default function AboutPage() {
         </div>
 
         {/* Stats Grid */}
-        <div className="mt-20 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-6">
-          <div className="rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
+        <div className="mt-20 grid grid-cols-4 gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-6">
+          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
             <div className="font-hedvig text-4xl font-bold text-[#253A7B]">500+</div>
             <div className="mt-2 text-sm text-gray-500">Partner Universities</div>
           </div>
-          <div className="rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
+          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
             <div className="font-hedvig text-4xl font-bold text-[#E93F61]">10,000+</div>
             <div className="mt-2 text-sm text-gray-500">Students Counselled</div>
           </div>
-          <div className="rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
+          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
             <div className="font-hedvig text-4xl font-bold text-[#1E7B47]">98.6%</div>
             <div className="mt-2 text-sm text-gray-500">Visa Success Rate</div>
           </div>
-          <div className="rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
+          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
             <div className="font-hedvig text-4xl font-bold text-[#253A7B]">100%</div>
             <div className="mt-2 text-sm text-gray-500">Free Counselling</div>
           </div>
@@ -78,8 +78,8 @@ export default function AboutPage() {
             subtitle="We prioritize your academic and career aspirations above all else."
           />
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
+          <div className="mt-12 grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
+            <div className="col-span-4 lg:col-span-4 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
                 <Building2 size={24} />
               </div>
@@ -89,7 +89,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
+            <div className="col-span-4 lg:col-span-4 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDF0F3] text-[#E93F61]">
                 <Award size={24} />
               </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
+            <div className="col-span-4 lg:col-span-4 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EBF5EE] text-[#1E7B47]">
                 <Globe2 size={24} />
               </div>

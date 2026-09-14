@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
+import Container from "@/components/ui/Container";
 
 const scholarshipItems = {
     left: [
@@ -25,20 +26,17 @@ export default function ScholarshipsLoansSection() {
     
     return (
         <section
-            className={`
+            className="
         w-full
         overflow-hidden
         bg-white
-        px-5
         py-16
         text-[#121314]
-        sm:px-8
         sm:py-20
-        lg:px-12
         lg:py-[72px]
-      `}
+      "
         >
-            <div className="mx-auto max-w-[1100px]">
+            <Container size="lg">
                 {/* =====================================================
             HEADER
         ====================================================== */}
@@ -77,42 +75,14 @@ export default function ScholarshipsLoansSection() {
             SCHOLARSHIP VISUAL
         ====================================================== */}
 
-                <div
-                    className="
-            relative
-            mx-auto
-            mt-14
-            max-w-[1000px]
-            lg:mt-[66px]
-          "
-                >
+                <div className="mt-14 lg:mt-[66px]">
                     {/* ===================================================
-              DESKTOP LAYOUT
+              DESKTOP LAYOUT (12-Column Grid: 4 + 4 + 4)
           ==================================================== */}
 
-                    <div
-                        className="
-              hidden
-              items-center
-              justify-center
-              lg:flex
-            "
-                    >
-                        {/* LEFT ITEMS */}
-
-                        <div
-                            className="
-                absolute
-                left-0
-                top-0
-                flex
-                h-full
-                w-[310px]
-                flex-col
-                justify-around
-                py-[48px]
-              "
-                        >
+                    <div className="hidden lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                        {/* LEFT ITEMS (4 Cols) */}
+                        <div className="col-span-4 flex flex-col justify-around h-[460px] py-6">
                             {scholarshipItems.left.map((item) => (
                                 <ScholarshipLabel
                                     key={item}
@@ -122,44 +92,32 @@ export default function ScholarshipsLoansSection() {
                             ))}
                         </div>
 
-                        {/* =================================================
-                CENTER IMAGE PLACEHOLDER
-            ================================================== */}
-
-                        <div
-                            className="
-                relative
-                z-10
-                h-[460px]
-                w-[345px]
-                overflow-hidden
-                rounded-[28px]
-                bg-[#eef1f5]
-              "
-                        >
-                            <Image
-                                src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
-                                alt="Student studying abroad"
-                                fill
-                                className="object-cover"
-                            />
+                        {/* CENTER IMAGE (4 Cols) */}
+                        <div className="col-span-4 flex justify-center">
+                            <div
+                                className="
+                    relative
+                    z-10
+                    h-[460px]
+                    w-full
+                    max-w-[345px]
+                    overflow-hidden
+                    rounded-[28px]
+                    bg-[#eef1f5]
+                    shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+                  "
+                            >
+                                <Image
+                                    src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
+                                    alt="Student studying abroad"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
                         </div>
 
-                        {/* RIGHT ITEMS */}
-
-                        <div
-                            className="
-                absolute
-                right-0
-                top-0
-                flex
-                h-full
-                w-[310px]
-                flex-col
-                justify-around
-                py-[48px]
-              "
-                        >
+                        {/* RIGHT ITEMS (4 Cols) */}
+                        <div className="col-span-4 flex flex-col justify-around h-[460px] py-6">
                             {scholarshipItems.right.map((item) => (
                                 <ScholarshipLabel
                                     key={item}
@@ -171,43 +129,34 @@ export default function ScholarshipsLoansSection() {
                     </div>
 
                     {/* ===================================================
-              MOBILE LAYOUT
+              MOBILE LAYOUT (4-Column Grid)
           ==================================================== */}
 
-                    <div className="lg:hidden">
+                    <div className="grid grid-cols-4 gap-4 lg:hidden">
                         {/* Image */}
-
-                        <div
-                            className="
-                relative
-                mx-auto
-                h-[430px]
-                w-full
-                max-w-[345px]
-                overflow-hidden
-                rounded-[26px]
-                bg-[#eef1f5]
-              "
-                        >
-                            <Image
-                                src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
-                                alt="Student studying abroad"
-                                fill
-                                className="object-cover"
-                            />
+                        <div className="col-span-4 flex justify-center">
+                            <div
+                                className="
+                    relative
+                    h-[430px]
+                    w-full
+                    max-w-[345px]
+                    overflow-hidden
+                    rounded-[26px]
+                    bg-[#eef1f5]
+                  "
+                            >
+                                <Image
+                                    src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
+                                    alt="Student studying abroad"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
                         </div>
 
                         {/* Mobile labels */}
-
-                        <div
-                            className="
-                mt-8
-                grid
-                grid-cols-1
-                gap-3
-                sm:grid-cols-2
-              "
-                        >
+                        <div className="col-span-4 mt-4 grid grid-cols-4 gap-3">
                             {[
                                 ...scholarshipItems.left,
                                 ...scholarshipItems.right,
@@ -215,6 +164,8 @@ export default function ScholarshipsLoansSection() {
                                 <div
                                     key={item}
                                     className="
+                    col-span-4
+                    sm:col-span-2
                     flex
                     min-h-[48px]
                     items-center
@@ -343,7 +294,7 @@ export default function ScholarshipsLoansSection() {
                         />
                     </button>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
@@ -369,7 +320,6 @@ function ScholarshipLabel({
       `}
         >
             {/* Connecting line */}
-
             {side === "left" ? (
                 <span
                     aria-hidden="true"
@@ -377,7 +327,8 @@ function ScholarshipLabel({
             absolute
             right-0
             h-px
-            w-[82px]
+            w-[48px]
+            xl:w-[72px]
             bg-[#d4d4d4]
           "
                 />
@@ -388,14 +339,14 @@ function ScholarshipLabel({
             absolute
             left-0
             h-px
-            w-[82px]
+            w-[48px]
+            xl:w-[72px]
             bg-[#d4d4d4]
           "
                 />
             )}
 
             {/* Label */}
-
             <div
                 className={`
           relative
@@ -410,9 +361,11 @@ function ScholarshipLabel({
           font-medium
           text-[#121314]
           shadow-[0_2px_8px_rgba(18,19,20,0.02)]
+          border
+          border-[#f0f0f0]
           ${side === "left"
-                        ? "mr-[62px]"
-                        : "ml-[62px]"
+                        ? "mr-[40px] xl:mr-[60px]"
+                        : "ml-[40px] xl:ml-[60px]"
                     }
         `}
             >

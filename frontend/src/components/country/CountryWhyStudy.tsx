@@ -35,11 +35,11 @@ export const CountryWhyStudy: React.FC<CountryWhyStudyProps> = ({ country }) => 
           subtitle={`Engineered for ambition, global recognition, and high-impact career outcomes.`}
         />
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {country.whyStudy.map((point, index) => (
             <div
               key={point.title}
-              className="group relative flex flex-col justify-between rounded-2xl border border-neutral-200/80 bg-white p-7 transition-all duration-300 hover:border-[#253A7B]/30 hover:shadow-xl hover:-translate-y-1"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl border border-neutral-200/80 bg-white p-7 transition-all duration-300 hover:border-[#253A7B]/30 hover:shadow-xl hover:-translate-y-1"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">

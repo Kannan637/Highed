@@ -21,9 +21,9 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
           subtitle={`Transparent, verified estimates to help you budget your international journey with zero surprises.`}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-4 lg:grid-cols-12 gap-8">
           {/* Left Block: Academic Investment (Tuition) */}
-          <div className="lg:col-span-6 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-gradient-to-b from-[#253A7B]/[0.03] to-white p-7 md:p-9 shadow-sm">
+          <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-gradient-to-b from-[#253A7B]/[0.03] to-white p-7 md:p-9 shadow-sm">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
@@ -80,7 +80,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
           </div>
 
           {/* Right Block: Cost of Living Breakdown */}
-          <div className="lg:col-span-6 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-gradient-to-b from-rose-50/30 to-white p-7 md:p-9 shadow-sm">
+          <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-gradient-to-b from-rose-50/30 to-white p-7 md:p-9 shadow-sm">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDF0F3] text-[#E93F61]">

@@ -1,6 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
+import Container from "@/components/ui/Container";
 
 const otherConsultants = [
     {
@@ -40,147 +41,144 @@ const ourApproach = [
 
 export default function WhyChooseUs() {
     return (
-        <section
-            className={`
-        w-full
-        bg-white
-        px-5
-        py-20
-        text-[#121314]
-        sm:px-8
-        lg:px-12
-        lg:py-[90px]
-      `}
-        >
-            <div className="mx-auto max-w-[906px]">
-                {/* =========================
-            HEADER
-        ========================== */}
-                <div className="text-center">
-                    <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+        <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-[#121314]">
+            <Container size="lg">
+                <div className="grid grid-cols-4 lg:grid-cols-12 gap-6">
+                    {/* =========================
+                        HEADER
+                    ========================== */}
+                    <div className="col-span-4 lg:col-span-8 lg:col-start-3 text-center">
+                        <div className="mb-7 flex items-center justify-center gap-2">
+                            <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+                            <span className="text-[14px] font-medium text-[#253A7B]">
+                                Why Choose Us
+                            </span>
+                        </div>
 
-                        <span className="text-[14px] font-medium text-[#253A7B]">
-                            Why Choose Us
-                        </span>
+                        <h2
+                            className="
+                                mx-auto
+                                max-w-[700px]
+                                text-[40px]
+                                font-normal
+                                leading-[1.02]
+                                tracking-[-1.8px]
+                                text-[#121314]
+                                sm:text-[44px]
+                                lg:text-[46px]
+                            "
+                        >
+                            Your Success Starts With the
+                            <br className="hidden sm:block" />
+                            Right Guidance
+                        </h2>
                     </div>
 
-                    <h2
+                    {/* =========================
+                        COMPARISON CONTAINER
+                    ========================== */}
+                    <div
                         className="
-              mx-auto
-              max-w-[700px]
-              text-[40px]
-              font-normal
-              leading-[1.02]
-              tracking-[-1.8px]
-              text-[#121314]
-              sm:text-[44px]
-              lg:text-[46px]
-            "
+                            col-span-4
+                            lg:col-span-10
+                            lg:col-start-2
+                            mt-4
+                            sm:mt-8
+                            overflow-hidden
+                            rounded-[36px]
+                            border
+                            border-[#e3e5ea]
+                            bg-gradient-to-r
+                            from-white
+                            via-[#eef2ff]
+                            to-[#dfe7ff]
+                            p-1
+                        "
                     >
-                        Your Success Starts With the
-                        <br className="hidden sm:block" />
-                        Right Guidance
-                    </h2>
-                </div>
-
-                {/* =========================
-            COMPARISON CONTAINER
-        ========================== */}
-                <div
-                    className="
-            mt-14
-            overflow-hidden
-            rounded-[36px]
-            border
-            border-[#e3e5ea]
-            bg-gradient-to-r
-            from-white
-            via-[#eef2ff]
-            to-[#dfe7ff]
-            p-1
-            sm:mt-[52px]
-          "
-                >
-                    <div className="grid grid-cols-1 lg:grid-cols-2">
-                        {/* =========================
-                OTHER CONSULTANTS
-            ========================== */}
-                        <div
-                            className="
-                px-8
-                py-9
-                sm:px-10
-                sm:py-10
-                lg:px-9
-                lg:py-10
-              "
-                        >
-                            <h3
+                        <div className="grid grid-cols-4 lg:grid-cols-12">
+                            {/* =========================
+                                OTHER CONSULTANTS
+                            ========================== */}
+                            <div
                                 className="
-                  text-[23px]
-                  font-medium
-                  leading-tight
-                  tracking-[-0.6px]
-                  text-[#121314]
-                "
+                                    col-span-4
+                                    lg:col-span-6
+                                    px-8
+                                    py-9
+                                    sm:px-10
+                                    sm:py-10
+                                    lg:px-9
+                                    lg:py-10
+                                "
                             >
-                                Other Consultants
-                            </h3>
+                                <h3
+                                    className="
+                                        text-[23px]
+                                        font-medium
+                                        leading-tight
+                                        tracking-[-0.6px]
+                                        text-[#121314]
+                                    "
+                                >
+                                    Other Consultants
+                                </h3>
 
-                            <div className="mt-12 space-y-7">
-                                {otherConsultants.map((item) => (
-                                    <ComparisonItem
-                                        key={item.title}
-                                        title={item.title}
-                                        description={item.description}
-                                        variant="other"
-                                    />
-                                ))}
+                                <div className="mt-12 space-y-7">
+                                    {otherConsultants.map((item) => (
+                                        <ComparisonItem
+                                            key={item.title}
+                                            title={item.title}
+                                            description={item.description}
+                                            variant="other"
+                                        />
+                                    ))}
+                                </div>
                             </div>
-                        </div>
 
-                        {/* =========================
-                OUR APPROACH
-            ========================== */}
-                        <div
-                            className="
-                rounded-[30px]
-                bg-[#253A7B]
-                px-8
-                py-9
-                text-white
-                sm:px-10
-                sm:py-10
-                lg:px-9
-                lg:py-10
-              "
-                        >
-                            <h3
+                            {/* =========================
+                                OUR APPROACH
+                            ========================== */}
+                            <div
                                 className="
-                  text-[23px]
-                  font-medium
-                  leading-tight
-                  tracking-[-0.6px]
-                "
+                                    col-span-4
+                                    lg:col-span-6
+                                    rounded-[30px]
+                                    bg-[#253A7B]
+                                    px-8
+                                    py-9
+                                    text-white
+                                    sm:px-10
+                                    sm:py-10
+                                    lg:px-9
+                                    lg:py-10
+                                "
                             >
-                                Our Approach
-                            </h3>
+                                <h3
+                                    className="
+                                        text-[23px]
+                                        font-medium
+                                        leading-tight
+                                        tracking-[-0.6px]
+                                    "
+                                >
+                                    Our Approach
+                                </h3>
 
-                            <div className="mt-12 space-y-7">
-                                {ourApproach.map((item) => (
-                                    <ComparisonItem
-                                        key={item.title}
-                                        title={item.title}
-                                        description={item.description}
-                                        variant="approach"
-                                    />
-                                ))}
+                                <div className="mt-12 space-y-7">
+                                    {ourApproach.map((item) => (
+                                        <ComparisonItem
+                                            key={item.title}
+                                            title={item.title}
+                                            description={item.description}
+                                            variant="approach"
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
