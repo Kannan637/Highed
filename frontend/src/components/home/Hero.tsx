@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, GraduationCap, Building2, ShieldCheck, Globe } from "lucide-react";
 import gsap from "gsap";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
@@ -1035,7 +1036,7 @@ function Hero() {
                     overflow-hidden
                 "
             >
-                <div
+                {/* <div
                     className=" 
                         absolute
                         bottom-0
@@ -1058,9 +1059,40 @@ function Hero() {
                     aria-hidden="true"
                 >
                     HIGHED
+                </div> */}
+                <div
+                    className="
+    absolute
+    bottom-0
+    left-0
+    w-full
+    h-full
+    pointer-events-none
+    overflow-hidden
+    opacity-10
+  "
+                    aria-hidden="true"
+                >
+                    <Image
+                        src="/images/hero/ChatGPT Image Sep 14, 2026, 09_45_43 AM.webp"
+                        alt=""
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="
+      object-cover
+      object-center
+      translate-y-[20%]
+      sm:translate-y-[25%]
+      md:translate-y-[30%]
+      lg:translate-y-[35%]
+      xl:translate-y-[35%]
+      opacity-50
+    "
+                    />
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 

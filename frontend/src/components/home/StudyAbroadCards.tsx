@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useLeadPopup } from "@/hooks/useLeadPopup";
 
 interface StudyAbroadCard {
   title: string;
@@ -38,6 +40,8 @@ const cards: StudyAbroadCard[] = [
 ];
 
 export const StudyAbroadCards = () => {
+  const { openLeadPopup } = useLeadPopup();
+
   return (
     <section className="relative z-30 w-full">
       <div
@@ -68,9 +72,10 @@ export const StudyAbroadCards = () => {
         "
       >
         {cards.map((card) => (
-          <Link
+          <button
             key={card.title}
-            href={card.href}
+            type="button"
+            onClick={() => openLeadPopup({ source: `card_${card.title.toLowerCase().replace(/ /g, "_")}` })}
             className="
               group
               flex
@@ -137,7 +142,6 @@ export const StudyAbroadCards = () => {
             >
               <span
                 className="
-                  font-['DM_Sans']
                   text-[16px]
                   font-medium
                   leading-[20px]
@@ -160,7 +164,7 @@ export const StudyAbroadCards = () => {
                 "
               />
             </div>
-          </Link>
+          </button>
         ))}
       </div>
     </section>
