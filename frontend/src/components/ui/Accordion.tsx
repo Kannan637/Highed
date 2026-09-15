@@ -43,7 +43,7 @@ export const Accordion: React.FC<AccordionProps> = ({
               type="button"
               onClick={() => toggleItem(item.id)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between px-6 py-5 text-left font-dmsans text-[16px] font-semibold text-[#121314] transition-colors hover:text-[#253A7B]"
+              className="flex w-full items-center justify-between px-6 py-5 text-left font-body text-[16px] font-semibold text-[#121314] transition-colors hover:text-[#253A7B]"
             >
               <span className="pr-4">{item.title}</span>
               <ChevronDown
@@ -61,7 +61,7 @@ export const Accordion: React.FC<AccordionProps> = ({
               )}
             >
               <div className="min-h-0 overflow-hidden">
-                <div className="px-6 pb-6 pt-1 font-dmsans text-[15px] leading-relaxed text-gray-600">
+                <div className="px-6 pb-6 pt-1 font-body text-[15px] leading-relaxed text-gray-600">
                   {item.content}
                 </div>
               </div>

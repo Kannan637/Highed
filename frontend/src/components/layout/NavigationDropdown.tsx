@@ -31,7 +31,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
       <div className="mx-auto w-full max-w-[1200px] px-6 py-8">
         {eventsData ? (
           <div>
-            <h3 className="mb-4 font-dmsans text-[17px] font-semibold leading-[24px] text-[#253A7B]">
+            <h3 className="mb-4 font-body text-[17px] font-semibold leading-[24px] text-[#253A7B]">
               Our Events
             </h3>
             <div className="grid grid-cols-4 gap-3">
@@ -40,7 +40,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                   href={event.href || "/events"}
                   key={event.label}
                   onClick={onClose}
-                  className="group/item flex items-center gap-3 rounded-xl px-3.5 py-3 font-dmsans text-[15px] font-medium leading-[22px] tracking-[-0.03em] text-[#121314] transition-all duration-200 ease-out hover:bg-[#F5F6FA] hover:text-[#253A7B] hover:translate-x-1"
+                  className="group/item flex items-center gap-3 rounded-xl px-3.5 py-3 font-body text-[15px] font-medium leading-[22px] tracking-[-0.03em] text-[#121314] transition-all duration-200 ease-out hover:bg-[#F5F6FA] hover:text-[#253A7B] hover:translate-x-1"
                 >
                   <MenuIcon type={event.icon} />
                   <span className="flex-1">{event.label}</span>
@@ -56,10 +56,10 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
         ) : dropdownData && "countries" in dropdownData ? (
           <div>
             <div className="mb-5 border-b border-gray-100 pb-3">
-              <h3 className="font-dmsans text-[20px] font-semibold tracking-[-0.02em] text-[#253A7B]">
+              <h3 className="font-body text-[20px] font-semibold tracking-[-0.02em] text-[#253A7B]">
                 Top Countries We&apos;re Serving
               </h3>
-              <p className="mt-1 font-dmsans text-[14px] text-gray-500">
+              <p className="mt-1 font-body text-[14px] text-gray-500">
                 Discover global study destinations with world-class universities and top career prospects.
               </p>
             </div>
@@ -85,11 +85,11 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                     />
                   </span>
 
-                  <span className="font-dmsans text-[15px] font-semibold leading-[22px] tracking-[-0.03em] text-[#121314] transition-colors duration-200 group-hover/item:text-[#253A7B]">
+                  <span className="font-body text-[15px] font-semibold leading-[22px] tracking-[-0.03em] text-[#121314] transition-colors duration-200 group-hover/item:text-[#253A7B]">
                     {country.name}
                   </span>
 
-                  <span className="flex items-center gap-1 font-dmsans text-[12px] text-gray-500 transition-colors duration-200 group-hover/item:text-[#253A7B]">
+                  <span className="flex items-center gap-1 font-body text-[12px] text-gray-500 transition-colors duration-200 group-hover/item:text-[#253A7B]">
                     Explore
                     <ArrowRight
                       size={12}
@@ -101,7 +101,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
             </div>
 
             <div className="mt-6 flex items-center justify-between rounded-xl border border-gray-100 bg-[#F8F9FE] px-5 py-3">
-              <div className="flex items-center gap-2.5 font-dmsans text-[13px] text-[#121314]">
+              <div className="flex items-center gap-2.5 font-body text-[13px] text-[#121314]">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EBF5EE] text-[#1E7B47]">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polyline points="20 6 9 17 4 12" />
@@ -112,7 +112,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                   <strong className="font-semibold text-[#121314]">500+ global universities</strong>
                 </span>
               </div>
-              <span className="font-dmsans text-[13px] font-medium text-gray-500">
+              <span className="font-body text-[13px] font-medium text-gray-500">
                 Official University Representative
               </span>
             </div>
@@ -121,7 +121,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
           <div className="grid grid-cols-3 gap-x-12">
             {dropdownData.columns.map((column) => (
               <div key={column.title}>
-                <h3 className="mb-3 font-dmsans text-[15px] font-semibold leading-[22px] tracking-[-0.02em] text-[#253A7B]">
+                <h3 className="mb-3 font-body text-[15px] font-semibold leading-[22px] tracking-[-0.02em] text-[#253A7B]">
                   {column.title}
                 </h3>
                 <div className="space-y-0.5">
@@ -130,7 +130,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                       href={item.href || "#"}
                       key={item.label}
                       onClick={onClose}
-                      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 font-dmsans text-[14.5px] font-medium leading-[22px] tracking-[-0.03em] text-[#121314] transition-all duration-200 ease-out hover:bg-[#F5F6FA] hover:text-[#253A7B] hover:translate-x-1"
+                      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 font-body text-[14.5px] font-medium leading-[22px] tracking-[-0.03em] text-[#121314] transition-all duration-200 ease-out hover:bg-[#F5F6FA] hover:text-[#253A7B] hover:translate-x-1"
                     >
                       <MenuIcon type={item.icon} />
                       <span className="flex-1">{item.label}</span>

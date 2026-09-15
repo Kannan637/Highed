@@ -46,16 +46,16 @@ export const CountryWhyStudy: React.FC<CountryWhyStudyProps> = ({ country }) => 
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-100/90 shadow-xs transition-transform duration-300 group-hover:scale-110">
                     {getIcon(point.icon)}
                   </div>
-                  <span className="font-hedvig text-2xl font-bold text-neutral-200 group-hover:text-[#253A7B]/20 transition-colors">
+                  <span className="font-heading text-2xl font-bold text-neutral-200 group-hover:text-[#253A7B]/20 transition-colors">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <h3 className="font-hedvig text-xl font-bold tracking-tight text-neutral-900 transition-colors group-hover:text-[#253A7B]">
+                <h3 className="font-body text-[17px] sm:text-[18px] font-medium leading-snug text-[#111111] transition-colors group-hover:text-[#253A7B]">
                   {point.title}
                 </h3>
 
-                <p className="mt-3 font-dmsans text-sm leading-relaxed text-neutral-600">
+                <p className="mt-3 font-body text-[14px] leading-relaxed text-[#555555]">
                   {point.description}
                 </p>
               </div>

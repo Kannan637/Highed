@@ -52,7 +52,7 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({ countr
                   <span>{scholarship.amount}</span>
                 </div>
 
-                <h3 className="font-hedvig text-xl font-bold text-neutral-900 leading-snug">
+                <h3 className="font-heading text-xl font-bold text-neutral-900 leading-snug">
                   {scholarship.name}
                 </h3>
 

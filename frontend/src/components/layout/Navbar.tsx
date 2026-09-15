@@ -20,14 +20,14 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="relative z-[9999] w-full border-b border-gray-100 bg-white font-dmsans">
+    <nav className="relative z-[9999] w-full border-b border-gray-100 bg-white font-body">
       {/* MAIN HEADER */}
       <Container size="lg" className="flex h-[72px] items-center justify-between">
         {/* LOGO */}
         <div className="shrink-0">
           <Link href="/" className="block">
             <Image
-              src="/logo.png"
+              src="/logos/Highed Logo/Highed.png"
               alt="HighEd Logo"
               width={140}
               height={40}

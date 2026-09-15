@@ -28,8 +28,8 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
                 <Clock size={20} />
               </div>
               <div>
-                <div className="font-dmsans text-xs text-gray-500">Processing Time</div>
-                <div className="font-dmsans text-base font-bold text-[#121314]">
+                <div className="font-body text-xs text-gray-500">Processing Time</div>
+                <div className="font-body text-base font-bold text-[#121314]">
                   {visaDetails.processingTime}
                 </div>
               </div>
@@ -42,8 +42,8 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
                 <Briefcase size={20} />
               </div>
               <div>
-                <div className="font-dmsans text-xs text-gray-500">Part-Time Work</div>
-                <div className="font-dmsans text-base font-bold text-[#121314]">
+                <div className="font-body text-xs text-gray-500">Part-Time Work</div>
+                <div className="font-body text-base font-bold text-[#121314]">
                   {visaDetails.workPermitHours.split(";")[0]}
                 </div>
               </div>
@@ -56,8 +56,8 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
                 <FileText size={20} />
               </div>
               <div>
-                <div className="font-dmsans text-xs text-gray-500">Post-Study Visa</div>
-                <div className="font-dmsans text-base font-bold text-[#121314]">
+                <div className="font-body text-xs text-gray-500">Post-Study Visa</div>
+                <div className="font-body text-base font-bold text-[#121314]">
                   Green Visa / Job Seeker
                 </div>
               </div>
@@ -67,21 +67,21 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
 
         {/* Steps */}
         <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs sm:p-10">
-          <h3 className="font-dmsans text-xl font-bold text-[#121314] mb-8">
+          <h3 className="font-body text-xl font-bold text-[#121314] mb-8">
             5 Simple Steps to Secure Your {country.name} Student Visa
           </h3>
 
           <div className="space-y-6">
             {visaDetails.steps.map((step) => (
               <div key={step.stepNumber} className="flex gap-4 sm:gap-6">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#253A7B] font-dmsans text-sm font-bold text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#253A7B] font-body text-sm font-bold text-white">
                   {step.stepNumber}
                 </div>
                 <div className="pt-1">
-                  <h4 className="font-dmsans text-lg font-bold text-[#121314]">
+                  <h4 className="font-body text-lg font-bold text-[#121314]">
                     {step.title}
                   </h4>
-                  <p className="mt-1 font-dmsans text-sm leading-relaxed text-gray-600">
+                  <p className="mt-1 font-body text-sm leading-relaxed text-gray-600">
                     {step.description}
                   </p>
                 </div>

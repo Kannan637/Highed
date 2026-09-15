@@ -91,11 +91,11 @@ export const CountryWhyHighEd: React.FC<CountryWhyHighEdProps> = ({ country }) =
                     </span>
                   </div>
 
-                  <h3 className="font-hedvig text-xl font-bold text-neutral-900 group-hover:text-[#253A7B] transition-colors">
+                  <h3 className="font-heading text-xl font-bold text-neutral-900 group-hover:text-[#253A7B] transition-colors">
                     {pillar.title}
                   </h3>
 
-                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-dmsans">
+                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-body">
                     {pillar.description}
                   </p>
                 </div>

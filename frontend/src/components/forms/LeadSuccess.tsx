@@ -10,19 +10,19 @@ export const LeadSuccess: React.FC = () => {
         <CheckCircle2 size={32} className="text-[#1E7B47]" />
       </div>
 
-      <h3 className="font-hedvig text-2xl font-bold text-[#121314]">
+      <h3 className="font-heading text-2xl font-bold text-[#121314]">
         Thank you!
       </h3>
 
-      <p className="mt-2 max-w-xs font-dmsans text-sm leading-relaxed text-gray-500">
+      <p className="mt-2 max-w-xs font-body text-sm leading-relaxed text-gray-500">
         Our counsellor will contact you shortly. We typically respond within 2 hours during business hours.
       </p>
 
       <div className="mt-6 flex items-center gap-2 rounded-xl bg-[#EEF1FA] px-4 py-2.5">
-        <span className="font-dmsans text-xs text-gray-500">You can also reach us at</span>
+        <span className="font-body text-xs text-gray-500">You can also reach us at</span>
         <a
           href="tel:+919050180501"
-          className="font-dmsans text-sm font-semibold text-[#253A7B] hover:underline"
+          className="font-body text-sm font-semibold text-[#253A7B] hover:underline"
         >
           +91 90501 80501
         </a>

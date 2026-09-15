@@ -45,7 +45,7 @@ export const CountryTestimonials: React.FC<CountryTestimonialsProps> = ({ countr
 
             {/* Center Content Highlight */}
             <div className="relative z-10 my-auto flex flex-col justify-center py-8">
-              <h4 className="text-2xl font-hedvig font-bold text-white mb-4 leading-tight">
+              <h4 className="text-2xl font-heading font-bold text-white mb-4 leading-tight">
                 Life as an International Student in {country.name}
               </h4>
               <ul className="space-y-3">
@@ -87,7 +87,7 @@ export const CountryTestimonials: React.FC<CountryTestimonialsProps> = ({ countr
               </div>
 
               {/* Quote text */}
-              <blockquote className="font-dmsans text-base md:text-lg text-neutral-700 leading-relaxed italic">
+              <blockquote className="font-body text-base md:text-lg text-neutral-700 leading-relaxed italic">
                 &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
             </div>
@@ -100,7 +100,7 @@ export const CountryTestimonials: React.FC<CountryTestimonialsProps> = ({ countr
                   {testimonial.studentName.charAt(0)}
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 font-hedvig text-base md:text-lg font-bold text-neutral-900">
+                  <div className="flex items-center gap-1.5 font-heading text-base md:text-lg font-bold text-neutral-900">
                     <span>{testimonial.studentName}</span>
                     <CheckCircle size={15} className="text-emerald-600 shrink-0" />
                   </div>

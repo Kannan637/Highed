@@ -98,7 +98,7 @@ const typeColors: Record<string, string> = {
 
 export default function ScholarshipsPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Scholarship Finder"
@@ -122,8 +122,8 @@ export default function ScholarshipsPage() {
                   />
                 </span>
                 <div>
-                  <h3 className="font-hedvig text-lg font-bold text-[#121314]">Study in {dest.country}</h3>
-                  <p className="font-dmsans text-xs text-gray-500">{dest.scholarships.length} scholarships available</p>
+                  <h3 className="font-heading text-lg font-bold text-[#121314]">Study in {dest.country}</h3>
+                  <p className="font-body text-xs text-gray-500">{dest.scholarships.length} scholarships available</p>
                 </div>
               </div>
 
@@ -132,11 +132,11 @@ export default function ScholarshipsPage() {
                 {dest.scholarships.map((s) => (
                   <div key={s.name} className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="font-dmsans text-sm font-semibold text-[#121314]">{s.name}</p>
-                      <p className="mt-0.5 font-dmsans text-xs text-gray-500">{s.coverage}</p>
+                      <p className="font-body text-sm font-semibold text-[#121314]">{s.name}</p>
+                      <p className="mt-0.5 font-body text-xs text-gray-500">{s.coverage}</p>
                     </div>
                     <span
-                      className={`mt-0.5 shrink-0 rounded-full px-2.5 py-0.5 font-dmsans text-[11px] font-semibold ${typeColors[s.type] || "bg-gray-100 text-gray-600"}`}
+                      className={`mt-0.5 shrink-0 rounded-full px-2.5 py-0.5 font-body text-[11px] font-semibold ${typeColors[s.type] || "bg-gray-100 text-gray-600"}`}
                     >
                       {s.type}
                     </span>
@@ -148,7 +148,7 @@ export default function ScholarshipsPage() {
               <div className="border-t border-gray-100 px-5 py-4">
                 <Link
                   href={`/study-in/${dest.slug}#scholarships`}
-                  className="inline-flex items-center gap-1.5 font-dmsans text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
+                  className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
                 >
                   View All {dest.country} Scholarships
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
@@ -160,21 +160,21 @@ export default function ScholarshipsPage() {
 
         {/* Bottom CTA */}
         <div className="mt-16 flex flex-col items-center gap-5 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] px-8 py-14 text-center text-white sm:px-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-dmsans text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
             <Award size={14} className="text-[#E93F61]" />
             Free Scholarship Profile Matching
           </span>
-          <h2 className="font-hedvig text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             Find Your Best Scholarship Match
           </h2>
-          <p className="max-w-xl font-dmsans text-base text-white/85">
+          <p className="max-w-xl font-body text-base text-white/85">
             Share your profile with our counsellors and we&apos;ll identify every scholarship opportunity you qualify for across all 6 destinations.
           </p>
           <LeadCTAButton
             source="scholarships_page_cta"
             contextTitle="Check My Scholarship Eligibility"
             contextCTA="Check Eligibility — Free"
-            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-dmsans text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
+            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-body text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
           >
             <span>Check My Scholarship Eligibility</span>
             <ShieldCheck size={17} />

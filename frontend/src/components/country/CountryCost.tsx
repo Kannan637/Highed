@@ -30,7 +30,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                   <GraduationCap size={24} />
                 </div>
                 <div>
-                  <h3 className="font-hedvig text-xl font-bold text-neutral-900">
+                  <h3 className="font-heading text-xl font-bold text-neutral-900">
                     Annual Tuition Fees
                   </h3>
                   <p className="text-xs text-neutral-500">Degree & program ranges</p>
@@ -42,7 +42,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                 <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
                   Estimated Range
                 </div>
-                <div className="mt-2 font-hedvig text-3xl md:text-4xl font-bold text-[#253A7B]">
+                <div className="mt-2 font-heading text-3xl md:text-4xl font-bold text-[#253A7B]">
                   {costDetails.tuitionMin}
                   <span className="text-lg md:text-xl font-normal text-neutral-500">
                     {" "}to {costDetails.tuitionMax}
@@ -87,7 +87,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                   <Wallet size={24} />
                 </div>
                 <div>
-                  <h3 className="font-hedvig text-xl font-bold text-neutral-900">
+                  <h3 className="font-heading text-xl font-bold text-neutral-900">
                     Living & Lifestyle Costs
                   </h3>
                   <p className="text-xs text-neutral-500">Estimated monthly expenses</p>
@@ -99,7 +99,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                 <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
                   Total Monthly Average
                 </div>
-                <div className="mt-2 font-hedvig text-3xl md:text-4xl font-bold text-neutral-900">
+                <div className="mt-2 font-heading text-3xl md:text-4xl font-bold text-neutral-900">
                   {costDetails.livingCostMonthly}
                   <span className="text-sm md:text-base font-normal text-neutral-500"> / month</span>
                 </div>
@@ -115,7 +115,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                     <Home className="w-4 h-4 text-indigo-600" />
                     <span>Accommodation</span>
                   </div>
-                  <div className="font-hedvig text-lg font-bold text-neutral-900">
+                  <div className="font-heading text-lg font-bold text-neutral-900">
                     {costDetails.accommodationMonthly}
                   </div>
                   <div className="text-[11px] text-neutral-400">Dorms or shared flat</div>
@@ -126,7 +126,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                     <Utensils className="w-4 h-4 text-amber-600" />
                     <span>Food & Commute</span>
                   </div>
-                  <div className="font-hedvig text-lg font-bold text-neutral-900">
+                  <div className="font-heading text-lg font-bold text-neutral-900">
                     {costDetails.foodAndTransportMonthly}
                   </div>
                   <div className="text-[11px] text-neutral-400">Groceries & student passes</div>

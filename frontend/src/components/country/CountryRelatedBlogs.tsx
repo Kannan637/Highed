@@ -58,11 +58,11 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({ countr
                   </span>
                 </div>
 
-                <h3 className="font-hedvig text-lg font-bold text-neutral-900 group-hover:text-[#253A7B] transition-colors line-clamp-2">
+                <h3 className="font-heading text-lg font-bold text-neutral-900 group-hover:text-[#253A7B] transition-colors line-clamp-2">
                   {article.title}
                 </h3>
 
-                <p className="mt-2.5 text-xs sm:text-sm text-neutral-600 leading-relaxed line-clamp-3 font-dmsans">
+                <p className="mt-2.5 text-xs sm:text-sm text-neutral-600 leading-relaxed line-clamp-3 font-body">
                   {article.summary}
                 </p>
               </div>

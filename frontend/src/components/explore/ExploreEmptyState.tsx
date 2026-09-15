@@ -19,11 +19,11 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
         <SearchX size={32} />
       </div>
 
-      <h3 className="font-hedvig text-2xl font-bold text-neutral-900">
+      <h3 className="font-heading text-2xl font-bold text-neutral-900">
         No Matching Results Found
       </h3>
 
-      <p className="mt-3 max-w-md text-sm text-neutral-500 leading-relaxed font-dmsans">
+      <p className="mt-3 max-w-md text-sm text-neutral-500 leading-relaxed font-body">
         {query
           ? `We couldn't find any listings matching "${query}".`
           : "We couldn't find any listings matching your active filter criteria."}

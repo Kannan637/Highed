@@ -19,9 +19,14 @@ export const navDropdowns: Record<string, NavDropdownData> = {
         ],
       },
       {
-        title: "Get in Touch",
+        title: "Areas We Serve",
         items: [
           { label: "Contact Us", href: "/contact", icon: "contact" },
+          { label: "Chennai (Main Office)", href: "/best-study-consultant-in/chennai", icon: "location" },
+          { label: "Coimbatore", href: "/best-study-consultant-in/coimbatore", icon: "location" },
+          { label: "Tirupathi", href: "/best-study-consultant-in/tirupathi", icon: "location" },
+          { label: "Vellore", href: "/best-study-consultant-in/vellore", icon: "location" },
+          { label: "Thiruvallur", href: "/best-study-consultant-in/thiruvallur", icon: "location" },
         ],
       },
     ],

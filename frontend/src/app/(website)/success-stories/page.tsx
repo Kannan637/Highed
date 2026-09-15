@@ -103,7 +103,7 @@ const stats = [
 
 export default function SuccessStoriesPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Student Reviews"
@@ -115,8 +115,8 @@ export default function SuccessStoriesPage() {
         <div className="mb-14 grid grid-cols-4 gap-4 rounded-2xl border border-[#253A7B]/15 bg-[#253A7B] p-6 text-white lg:grid-cols-12">
           {stats.map((s) => (
             <div key={s.label} className="col-span-2 lg:col-span-3 text-center">
-              <div className="font-hedvig text-3xl font-bold text-white sm:text-4xl">{s.value}</div>
-              <div className="mt-1 font-dmsans text-xs font-medium text-white/70">{s.label}</div>
+              <div className="font-heading text-3xl font-bold text-white sm:text-4xl">{s.value}</div>
+              <div className="mt-1 font-body text-xs font-medium text-white/70">{s.label}</div>
             </div>
           ))}
         </div>
@@ -138,7 +138,7 @@ export default function SuccessStoriesPage() {
               {/* Quote */}
               <div className="relative flex-1">
                 <Quote size={20} className="mb-2 text-[#E93F61]/30" />
-                <p className="font-dmsans text-sm leading-relaxed text-gray-700">{t.text}</p>
+                <p className="font-body text-sm leading-relaxed text-gray-700">{t.text}</p>
               </div>
 
               {/* Divider */}
@@ -147,24 +147,24 @@ export default function SuccessStoriesPage() {
               {/* Student Info */}
               <div className="flex items-start gap-3.5">
                 <div
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-dmsans text-sm font-bold text-white"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-body text-sm font-bold text-white"
                   style={{ backgroundColor: t.code === "US" ? "#253A7B" : t.code === "GB" ? "#E93F61" : t.code === "CA" ? "#1E7B47" : t.code === "AU" ? "#B38728" : t.code === "DE" ? "#253A7B" : "#6B3FA0" }}
                 >
                   {t.avatar}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="font-dmsans text-sm font-bold text-[#121314]">{t.name}</p>
+                    <p className="font-body text-sm font-bold text-[#121314]">{t.name}</p>
                     <ReactCountryFlag
                       countryCode={t.code}
                       svg
                       style={{ width: "16px", height: "16px", borderRadius: "50%", objectFit: "cover" }}
                     />
                   </div>
-                  <p className="font-dmsans text-xs text-gray-500 truncate">{t.program}</p>
-                  <p className="font-dmsans text-xs font-semibold text-[#253A7B] truncate">{t.university}</p>
+                  <p className="font-body text-xs text-gray-500 truncate">{t.program}</p>
+                  <p className="font-body text-xs font-semibold text-[#253A7B] truncate">{t.university}</p>
                   {t.scholarship && (
-                    <span className="mt-1.5 inline-block rounded-full bg-[#EBF5EE] px-2.5 py-0.5 font-dmsans text-[11px] font-semibold text-[#1E7B47]">
+                    <span className="mt-1.5 inline-block rounded-full bg-[#EBF5EE] px-2.5 py-0.5 font-body text-[11px] font-semibold text-[#1E7B47]">
                       {t.scholarship}
                     </span>
                   )}
@@ -176,19 +176,19 @@ export default function SuccessStoriesPage() {
 
         {/* Bottom CTA */}
         <div className="mt-16 flex flex-col items-center gap-5 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] px-8 py-14 text-center text-white sm:px-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-dmsans text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
             <ShieldCheck size={14} className="text-[#E93F61]" />
             Join 10,000+ Successful Students
           </span>
-          <h2 className="font-hedvig text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             Your Success Story Starts Here
           </h2>
-          <p className="max-w-xl font-dmsans text-base text-white/85">
+          <p className="max-w-xl font-body text-base text-white/85">
             Book a free counselling session and let our advisors craft the same winning strategy for your study-abroad journey.
           </p>
           <LeadCTAButton
             source="success_stories_cta"
-            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-dmsans text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
+            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-body text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
           >
             <span>Book Free Counselling</span>
             <ArrowRight size={18} />

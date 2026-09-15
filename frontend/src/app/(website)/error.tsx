@@ -16,12 +16,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center font-dmsans">
+    <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center font-body">
       <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#FDF0F3]">
         <span className="text-3xl">⚠️</span>
       </div>
 
-      <h2 className="font-hedvig text-3xl font-bold text-[#121314] sm:text-4xl">
+      <h2 className="font-heading text-3xl font-bold text-[#121314] sm:text-4xl">
         Something Went Wrong
       </h2>
 

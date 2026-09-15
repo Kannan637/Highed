@@ -14,7 +14,7 @@ export default function WebsiteLayout({
 }) {
   return (
     <LeadPopupProvider>
-      <div className="flex min-h-screen flex-col font-dmsans">
+      <div className="flex min-h-screen flex-col font-body">
         <TopBar />
         <Navbar />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-hidden">

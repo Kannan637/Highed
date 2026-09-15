@@ -23,16 +23,16 @@ export default function BookCounsellingPage() {
         <div className="grid grid-cols-4 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Information & Trust */}
           <div className="col-span-4 lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF1FA] px-4 py-1.5 font-dmsans text-xs font-semibold text-[#253A7B]">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF1FA] px-4 py-1.5 font-body text-xs font-semibold text-[#253A7B]">
               <ShieldCheck size={16} />
               <span>Official University Representative</span>
             </div>
 
-            <h1 className="mt-4 font-hedvig text-4xl font-bold tracking-tight text-[#121314] sm:text-5xl">
+            <h1 className="mt-4 font-heading text-4xl font-bold tracking-tight text-[#121314] sm:text-5xl">
               Take the First Step Towards Your Global Degree
             </h1>
 
-            <p className="mt-4 font-dmsans text-base leading-relaxed text-gray-600 sm:text-lg">
+            <p className="mt-4 font-body text-base leading-relaxed text-gray-600 sm:text-lg">
               Our experienced counselors provide step-by-step guidance on program selection, university admissions, scholarship filings, and visa documentation. Completely free of charge.
             </p>
 
@@ -42,10 +42,10 @@ export default function BookCounsellingPage() {
                   <Users size={22} />
                 </div>
                 <div>
-                  <h3 className="font-dmsans text-base font-bold text-[#121314]">
+                  <h3 className="font-body text-base font-bold text-[#121314]">
                     1-on-1 Dedicated Advisor
                   </h3>
-                  <p className="font-dmsans text-sm text-gray-500">
+                  <p className="font-body text-sm text-gray-500">
                     Get an advisor dedicated to your application from profile evaluation to pre-departure.
                   </p>
                 </div>
@@ -56,10 +56,10 @@ export default function BookCounsellingPage() {
                   <Award size={22} />
                 </div>
                 <div>
-                  <h3 className="font-dmsans text-base font-bold text-[#121314]">
+                  <h3 className="font-body text-base font-bold text-[#121314]">
                     Maximum Scholarship Opportunities
                   </h3>
-                  <p className="font-dmsans text-sm text-gray-500">
+                  <p className="font-body text-sm text-gray-500">
                     We match your profile with university and government scholarships up to 100% tuition.
                   </p>
                 </div>
@@ -70,10 +70,10 @@ export default function BookCounsellingPage() {
                   <Clock size={22} />
                 </div>
                 <div>
-                  <h3 className="font-dmsans text-base font-bold text-[#121314]">
+                  <h3 className="font-body text-base font-bold text-[#121314]">
                     Fast-Track Offers & Visa Support
                   </h3>
-                  <p className="font-dmsans text-sm text-gray-500">
+                  <p className="font-body text-sm text-gray-500">
                     Direct university portal access for priority processing and 98%+ visa success.
                   </p>
                 </div>
@@ -88,18 +88,18 @@ export default function BookCounsellingPage() {
                 <PhoneCall size={28} />
               </div>
 
-              <h2 className="mt-6 font-hedvig text-2xl font-bold text-[#121314] sm:text-3xl">
+              <h2 className="mt-6 font-heading text-2xl font-bold text-[#121314] sm:text-3xl">
                 Ready to speak with an admissions expert?
               </h2>
 
-              <p className="mt-3 font-dmsans text-base leading-relaxed text-gray-600">
+              <p className="mt-3 font-body text-base leading-relaxed text-gray-600">
                 Click below to request an instant callback. Enter your phone number and our certified counsellors will evaluate your profile.
               </p>
 
               <div className="mt-8">
                 <LeadCTAButton
                   source="book_counselling_page"
-                  className="flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#E93F61] font-dmsans text-base font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
+                  className="flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#E93F61] font-body text-base font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
                 >
                   <span>Book Free Counselling</span>
                   <ArrowRight size={18} />
@@ -107,7 +107,7 @@ export default function BookCounsellingPage() {
               </div>
 
               <div className="mt-6 border-t border-gray-100 pt-6 text-center">
-                <p className="font-dmsans text-sm text-gray-500">
+                <p className="font-body text-sm text-gray-500">
                   Prefer calling directly?{" "}
                   <a
                     href="tel:+919050180501"

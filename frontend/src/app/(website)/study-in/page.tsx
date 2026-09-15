@@ -45,20 +45,20 @@ export default function StudyInPage() {
                       }}
                     />
                   </span>
-                  <span className="rounded-full bg-[#EBF5EE] px-3 py-1 font-dmsans text-xs font-bold text-[#1E7B47]">
+                  <span className="rounded-full bg-[#EBF5EE] px-3 py-1 font-body text-xs font-bold text-[#1E7B47]">
                     Popular
                   </span>
                 </div>
 
-                <h3 className="mt-6 font-hedvig text-2xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
+                <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
                   Study in {country.name}
                 </h3>
 
-                <p className="mt-3 font-dmsans text-sm leading-relaxed text-gray-600 line-clamp-3">
+                <p className="mt-3 font-body text-sm leading-relaxed text-gray-600 line-clamp-3">
                   {country.tagline}
                 </p>
 
-                <div className="mt-6 space-y-2 border-t border-gray-100 pt-4 font-dmsans text-xs text-gray-500">
+                <div className="mt-6 space-y-2 border-t border-gray-100 pt-4 font-body text-xs text-gray-500">
                   <div>
                     <span className="font-semibold text-gray-700">Currency:</span>{" "}
                     {country.currency.split("(")[0]}
@@ -70,7 +70,7 @@ export default function StudyInPage() {
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-between font-dmsans text-sm font-semibold text-[#253A7B] transition-colors group-hover:text-[#E93F61]">
+              <div className="mt-6 flex items-center justify-between font-body text-sm font-semibold text-[#253A7B] transition-colors group-hover:text-[#E93F61]">
                 <span>Explore {country.name} Guide</span>
                 <ArrowRight
                   size={16}

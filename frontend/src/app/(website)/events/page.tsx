@@ -48,7 +48,7 @@ const upcomingEvents = [
 
 export default function EventsPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Global Events"
@@ -79,7 +79,7 @@ export default function EventsPage() {
                     </div>
                   </div>
 
-                  <h3 className="mt-3 font-hedvig text-2xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
+                  <h3 className="mt-3 font-heading text-2xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
                     {evt.title}
                   </h3>
 

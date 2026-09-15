@@ -24,7 +24,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, countryName }) =
         </div>
 
         {/* Title */}
-        <h3 className="font-hedvig text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
+        <h3 className="font-heading text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
           {course.name}
         </h3>
 

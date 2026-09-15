@@ -108,6 +108,7 @@ function CompanyLogo({
                 src={company.image}
                 alt={company.name}
                 fill
+                sizes="48px"
                 className="
           object-contain
           p-2.5
@@ -289,6 +290,7 @@ export default function AboutSection() {
                             src="/images/about/ChatGPT Image Sep 14, 2026, 12_10_06 PM.webp"
                             alt="Student"
                             fill
+                            sizes="(max-width: 640px) 340px, (max-width: 1024px) 540px, 680px"
                             priority
                             className="object-contain object-bottom"
                         />

@@ -4,7 +4,7 @@ import { LeadSubmission, LeadPopupData } from '@/types/lead';
 // In production, replace `saveToLocalJson` with a real CRM integration like Salesforce, HubSpot, or a dedicated database.
 
 export class CRMService {
-  private static async saveToLocalJson(data: any): Promise<boolean> {
+  private static async saveToLocalJson(data: Record<string, unknown>): Promise<boolean> {
     try {
       // In development, you would normally use 'fs' to write to a local file.
       // However, to ensure compatibility with Cloudflare Pages (Edge runtime),

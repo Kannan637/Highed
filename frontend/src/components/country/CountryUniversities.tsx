@@ -62,7 +62,7 @@ export const CountryUniversities: React.FC<CountryUniversitiesProps> = ({ countr
                   </span>
                 </div>
 
-                <h3 className="font-hedvig text-lg sm:text-xl font-bold leading-snug text-neutral-900 mt-2 line-clamp-2">
+                <h3 className="font-heading text-lg sm:text-xl font-bold leading-snug text-neutral-900 mt-2 line-clamp-2">
                   {uni.name}
                 </h3>
 

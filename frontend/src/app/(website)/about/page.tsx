@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         {/* Hero Section */}
         <div className="text-center">
@@ -25,7 +25,7 @@ export default function AboutPage() {
             <span>Official University Representative</span>
           </span>
 
-          <h1 className="mt-4 font-hedvig text-4xl font-bold tracking-tight text-[#121314] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 font-heading text-4xl font-bold tracking-tight text-[#121314] sm:text-5xl lg:text-6xl">
             Empowering Ambitious Minds to Study Globally
           </h1>
 
@@ -53,19 +53,19 @@ export default function AboutPage() {
         {/* Stats Grid */}
         <div className="mt-20 grid grid-cols-4 gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-6">
           <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-hedvig text-4xl font-bold text-[#253A7B]">500+</div>
+            <div className="font-heading text-4xl font-bold text-[#253A7B]">500+</div>
             <div className="mt-2 text-sm text-gray-500">Partner Universities</div>
           </div>
           <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-hedvig text-4xl font-bold text-[#E93F61]">10,000+</div>
+            <div className="font-heading text-4xl font-bold text-[#E93F61]">10,000+</div>
             <div className="mt-2 text-sm text-gray-500">Students Counselled</div>
           </div>
           <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-hedvig text-4xl font-bold text-[#1E7B47]">98.6%</div>
+            <div className="font-heading text-4xl font-bold text-[#1E7B47]">98.6%</div>
             <div className="mt-2 text-sm text-gray-500">Visa Success Rate</div>
           </div>
           <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-hedvig text-4xl font-bold text-[#253A7B]">100%</div>
+            <div className="font-heading text-4xl font-bold text-[#253A7B]">100%</div>
             <div className="mt-2 text-sm text-gray-500">Free Counselling</div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
                 <Building2 size={24} />
               </div>
-              <h3 className="mt-6 font-hedvig text-2xl font-bold text-[#121314]">Direct University Portals</h3>
+              <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314]">Direct University Portals</h3>
               <p className="mt-3 text-base text-gray-600">
                 Official representation means your application is processed directly through verified university agent channels for faster offer turnaround.
               </p>
@@ -93,7 +93,7 @@ export default function AboutPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDF0F3] text-[#E93F61]">
                 <Award size={24} />
               </div>
-              <h3 className="mt-6 font-hedvig text-2xl font-bold text-[#121314]">Maximum Scholarships</h3>
+              <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314]">Maximum Scholarships</h3>
               <p className="mt-3 text-base text-gray-600">
                 Our advisors cross-reference hundreds of merit, athletic, and governmental scholarships to maximize fee waivers for eligible students.
               </p>
@@ -103,7 +103,7 @@ export default function AboutPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EBF5EE] text-[#1E7B47]">
                 <Globe2 size={24} />
               </div>
-              <h3 className="mt-6 font-hedvig text-2xl font-bold text-[#121314]">Global Visas & Housing</h3>
+              <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314]">Global Visas & Housing</h3>
               <p className="mt-3 text-base text-gray-600">
                 Complete mock visa interview preparation, financial documentation verification, and pre-departure accommodation support.
               </p>
@@ -113,7 +113,7 @@ export default function AboutPage() {
 
         {/* CTA Banner */}
         <div className="mt-24 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] p-10 text-center text-white sm:p-14">
-          <h2 className="font-hedvig text-3xl font-bold sm:text-4xl">Ready to Start Your Study Abroad Journey?</h2>
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Start Your Study Abroad Journey?</h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-white/85 sm:text-lg">
             Connect with a certified counsellor today. Zero consultation fees, 100% personalized advisory.
           </p>

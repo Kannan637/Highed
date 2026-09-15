@@ -249,7 +249,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
             <>
               {/* Logo */}
               <Image
-                src="/logo.png"
+                src="/logos/Highed Logo/Highed.png"
                 alt="HighEd Logo"
                 width={120}
                 height={36}
@@ -257,14 +257,14 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               />
 
               {/* Heading */}
-              <h2 className="font-hedvig text-[22px] font-bold leading-tight text-[#121314] sm:text-[26px]">
+              <h2 className="font-heading text-[22px] font-bold leading-tight text-[#121314] sm:text-[26px]">
                 {contextTitle || "Let's turn your study-abroad dreams into your success story."}
               </h2>
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
                 {submitError && (
-                  <div className="rounded-xl bg-[#FDF0F3] px-4 py-3 font-dmsans text-xs text-[#E93F61]" role="alert">
+                  <div className="rounded-xl bg-[#FDF0F3] px-4 py-3 font-body text-xs text-[#E93F61]" role="alert">
                     {submitError}
                   </div>
                 )}
@@ -281,7 +281,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E93F61] font-dmsans text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#d93657] active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E93F61] font-body text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#d93657] active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
                 >
                   {loading ? (
                     <>
@@ -295,7 +295,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               </form>
 
               {/* Contact */}
-              <p className="mt-5 text-center font-dmsans text-xs text-gray-400">
+              <p className="mt-5 text-center font-body text-xs text-gray-400">
                 You can always reach us on{" "}
                 <a
                   href="tel:+919050180501"
@@ -306,7 +306,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               </p>
 
               {/* Terms */}
-              <p className="mt-3 text-center font-dmsans text-[11px] text-gray-400">
+              <p className="mt-3 text-center font-body text-[11px] text-gray-400">
                 By Continuing, You agree to our{" "}
                 <Link href="/terms" className="text-[#253A7B] underline hover:no-underline">
                   terms

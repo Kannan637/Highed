@@ -99,7 +99,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Our Services"
@@ -124,11 +124,11 @@ export default function ServicesPage() {
                     <Icon size={22} style={{ color: svc.iconColor }} />
                   </div>
 
-                  <h3 className="mt-5 font-hedvig text-xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
+                  <h3 className="mt-5 font-heading text-xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
                     {svc.title}
                   </h3>
 
-                  <p className="mt-2.5 font-dmsans text-sm leading-relaxed text-gray-600">
+                  <p className="mt-2.5 font-body text-sm leading-relaxed text-gray-600">
                     {svc.description}
                   </p>
                 </div>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                 <div className="mt-6">
                   <Link
                     href={svc.href}
-                    className="inline-flex items-center gap-1.5 font-dmsans text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
+                    className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
                   >
                     Learn More
                     <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
@@ -149,19 +149,19 @@ export default function ServicesPage() {
 
         {/* Bottom CTA */}
         <div className="mt-16 flex flex-col items-center gap-5 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] px-8 py-14 text-center text-white sm:px-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-dmsans text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
             <ShieldCheck size={14} className="text-[#E93F61]" />
             Official University Representative — 500+ Global Partners
           </span>
-          <h2 className="font-hedvig text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             Not Sure Where to Start?
           </h2>
-          <p className="max-w-xl font-dmsans text-base text-white/85">
+          <p className="max-w-xl font-body text-base text-white/85">
             Book a free 30-minute strategy session with a certified HighEd counsellor. We&apos;ll evaluate your profile and recommend the best pathway for your goals.
           </p>
           <LeadCTAButton
             source="services_page_cta"
-            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-dmsans text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
+            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-body text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
           >
             <span>Book Free Counselling</span>
             <ArrowRight size={18} />

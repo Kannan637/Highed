@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
 
 export default function ContactPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Get in Touch"
@@ -33,7 +33,7 @@ export default function ContactPage() {
                   <Phone size={22} />
                 </div>
                 <div>
-                  <h3 className="font-hedvig text-xl font-bold text-[#121314]">Direct Phone Support</h3>
+                  <h3 className="font-heading text-xl font-bold text-[#121314]">Direct Phone Support</h3>
                   <p className="mt-1 text-sm text-gray-500">Call or WhatsApp our admissions desk directly:</p>
                   <p className="mt-2">
                     <a href="tel:+919050180501" className="text-lg font-bold text-[#253A7B] hover:underline">
@@ -56,7 +56,7 @@ export default function ContactPage() {
                   <Mail size={22} />
                 </div>
                 <div>
-                  <h3 className="font-hedvig text-xl font-bold text-[#121314]">Email Enquiries</h3>
+                  <h3 className="font-heading text-xl font-bold text-[#121314]">Email Enquiries</h3>
                   <p className="mt-1 text-sm text-gray-500">Send application documents or general questions:</p>
                   <p className="mt-2">
                     <a href={`mailto:${siteConfig.contact.email}`} className="text-base font-bold text-[#253A7B] hover:underline">
@@ -73,8 +73,12 @@ export default function ContactPage() {
                   <MapPin size={22} />
                 </div>
                 <div>
-                  <h3 className="font-hedvig text-xl font-bold text-[#121314]">Admissions Office</h3>
+                  <h3 className="font-heading text-xl font-bold text-[#121314]">Our Admissions Office</h3>
+                  <p className="mt-1 text-sm font-semibold text-gray-700">Chennai</p>
                   <p className="mt-1 text-sm text-gray-600">{siteConfig.contact.address}</p>
+                  <p className="mt-2 text-xs text-[#E93F61] font-semibold leading-relaxed">
+                    Serving students across Tamil Nadu and beyond through online counselling and remote application support.
+                  </p>
                   <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-gray-500">
                     <Clock size={14} />
                     <span>Monday – Saturday: 9:30 AM – 6:30 PM</span>
@@ -92,7 +96,7 @@ export default function ContactPage() {
                 100% Free Service
               </span>
 
-              <h2 className="mt-5 font-hedvig text-3xl font-bold text-[#121314]">
+              <h2 className="mt-5 font-heading text-3xl font-bold text-[#121314]">
                 Book Instant Counselling
               </h2>
 

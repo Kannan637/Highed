@@ -52,7 +52,7 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
                       </div>
                     </div>
 
-                    <h3 className="font-hedvig text-2xl font-bold text-neutral-900 mt-2">
+                    <h3 className="font-heading text-2xl font-bold text-neutral-900 mt-2">
                       {intake.season}
                     </h3>
 

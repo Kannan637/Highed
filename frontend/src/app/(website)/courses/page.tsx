@@ -116,7 +116,7 @@ const courseCategories = [
 
 export default function CoursesPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Course Explorer"
@@ -135,12 +135,12 @@ export default function CoursesPage() {
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-xs mb-4">
                   <BookOpen size={20} style={{ color: cat.iconColor }} />
                 </div>
-                <h3 className="font-hedvig text-xl font-bold text-[#121314]">{cat.title}</h3>
+                <h3 className="font-heading text-xl font-bold text-[#121314]">{cat.title}</h3>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {cat.popularIn.map((country) => (
                     <span
                       key={country}
-                      className="rounded-full bg-white/70 px-2.5 py-0.5 font-dmsans text-[11px] font-semibold text-gray-600"
+                      className="rounded-full bg-white/70 px-2.5 py-0.5 font-body text-[11px] font-semibold text-gray-600"
                     >
                       {country}
                     </span>
@@ -152,7 +152,7 @@ export default function CoursesPage() {
               <div className="flex flex-1 flex-col p-5">
                 <ul className="space-y-2">
                   {cat.courses.map((course) => (
-                    <li key={course} className="flex items-center gap-2 font-dmsans text-sm text-gray-700">
+                    <li key={course} className="flex items-center gap-2 font-body text-sm text-gray-700">
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#E93F61]" />
                       {course}
                     </li>
@@ -164,7 +164,7 @@ export default function CoursesPage() {
               <div className="border-t border-gray-100 px-5 py-4">
                 <Link
                   href={`/study-in/${cat.slug}#courses`}
-                  className="inline-flex items-center gap-1.5 font-dmsans text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
+                  className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
                 >
                   Explore Universities
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
@@ -176,21 +176,21 @@ export default function CoursesPage() {
 
         {/* Bottom CTA */}
         <div className="mt-16 flex flex-col items-center gap-5 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] px-8 py-14 text-center text-white sm:px-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-dmsans text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
             <ShieldCheck size={14} className="text-[#E93F61]" />
             Personalised Course Matching — 100% Free
           </span>
-          <h2 className="font-hedvig text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             Not Sure Which Course to Pick?
           </h2>
-          <p className="max-w-xl font-dmsans text-base text-white/85">
+          <p className="max-w-xl font-body text-base text-white/85">
             Tell us your interests, GPA, and career goals. Our counsellors will recommend the best course-country-university combination within 24 hours.
           </p>
           <LeadCTAButton
             source="courses_page_cta"
             contextTitle="Get My Course Recommendation"
             contextCTA="Get My Recommendation"
-            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-dmsans text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
+            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-body text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
           >
             <span>Get My Course Recommendation</span>
             <ArrowRight size={18} />

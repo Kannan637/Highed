@@ -5,13 +5,13 @@ import { siteConfig } from "@/config/site.config";
 import "./globals.css";
 
 const dmSans = DM_Sans({
-  variable: "--font-dmsans",
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
 const hedvig = Hedvig_Letters_Serif({
-  variable: "--font-hedvig",
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
   preload: false,
@@ -40,7 +40,7 @@ const organizationSchema = {
   "@type": "EducationalOrganization",
   name: siteConfig.name,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/logo.png`,
+  logo: `${siteConfig.url}/logos/Highed Logo/Highed.png`,
   description: siteConfig.description,
   contactPoint: {
     "@type": "ContactPoint",
@@ -86,7 +86,7 @@ export default function RootLayout({
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>
-      <body className="min-h-full flex flex-col font-dmsans">{children}</body>
+      <body className="min-h-full flex flex-col font-body">{children}</body>
     </html>
   );
 }

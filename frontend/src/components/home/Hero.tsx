@@ -545,7 +545,7 @@ function Hero() {
                     <h1
                         className="
                             max-w-[800px]
-                            font-dmsans
+                            font-body
                             text-[44px]
                             font-medium
                             leading-[1.04]
@@ -705,7 +705,7 @@ function Hero() {
                                 bg-transparent
                                 px-6
                                 sm:px-7
-                                font-dmsans
+                                font-body
                                 text-[16px]
                                 font-medium
                                 text-white
@@ -742,7 +742,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-dmsans text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
                                     1000+ Students Placed
                                 </span>
                             </div>
@@ -752,7 +752,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-dmsans text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
                                     500+ Global Universities
                                 </span>
                             </div>
@@ -762,7 +762,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-dmsans text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
                                     95%+ Visa Success Rate
                                 </span>
                             </div>
@@ -772,7 +772,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-dmsans text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
                                     50+ Countries Covered
                                 </span>
                             </div>
@@ -1046,7 +1046,7 @@ function Hero() {
                         -translate-x-1/2
                         translate-y-1/4
                         whitespace-nowrap
-                        font-dmsans
+                        font-body
                         text-[106px]
                         min-[390px]:text-[124px]
                         sm:text-[180px]

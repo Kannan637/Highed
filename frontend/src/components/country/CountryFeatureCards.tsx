@@ -43,39 +43,39 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({ countr
   ];
 
   return (
-    <section className="relative -mt-8 z-10">
+    <section className="relative z-30 w-full -translate-y-8 -mb-8 sm:-translate-y-10 sm:-mb-10 lg:-translate-y-1/2 lg:-mb-[110px]">
       <Container size="lg">
-        <div className="grid grid-cols-4 gap-5 lg:grid-cols-12 lg:gap-6">
+        <div className="grid grid-cols-1 gap-3 rounded-[24px] border-[6px] sm:border-[8px] border-white bg-white p-1.5 shadow-xl md:grid-cols-3 lg:gap-4">
           {cards.map((card, idx) => {
             const Icon = card.icon;
             return (
               <Link
                 key={idx}
                 href={card.href}
-                className="col-span-4 sm:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-lg shadow-neutral-200/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#253A7B]/40 hover:shadow-xl"
+                className="group flex flex-col justify-between overflow-hidden rounded-[14px] bg-[#FAFAFA] p-5 sm:p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${card.accent} text-white shadow-md transition-transform duration-300 group-hover:scale-105`}>
-                      <Icon className="w-6 h-6" />
+                  <div className="flex items-center justify-between mb-4 sm:mb-5">
+                    <div className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-br ${card.accent} text-white shadow-md transition-transform duration-300 group-hover:scale-105`}>
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${card.pillBg}`}>
+                    <span className={`inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-[12px] font-semibold border ${card.pillBg}`}>
                       {card.count}
                     </span>
                   </div>
 
-                  <h3 className="font-hedvig text-xl font-bold text-neutral-900 group-hover:text-[#253A7B] transition-colors">
+                  <h3 className="text-[17px] sm:text-[19px] font-medium leading-snug text-[#111111]">
                     {card.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-neutral-600 leading-relaxed">
+                  <p className="mt-2 text-[13px] sm:text-[14px] text-neutral-500 leading-relaxed">
                     {card.description}
                   </p>
                 </div>
 
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[#253A7B] group-hover:text-[#E93F61] transition-colors">
-                  <span>{card.cta}</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <div className="mt-5 sm:mt-6 flex items-center justify-between text-[13.5px] sm:text-[14.5px] font-medium text-[#111111]">
+                  <span className="transition-colors duration-200 group-hover:text-[#E93F61]">{card.cta}</span>
+                  <ArrowRight className="w-4 h-4 sm:w-[18px] sm:h-[18px] transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:text-[#E93F61]" />
                 </div>
               </Link>
             );

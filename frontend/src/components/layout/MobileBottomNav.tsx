@@ -31,7 +31,7 @@ export function MobileBottomNav() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-all duration-300 ease-out font-dmsans ${isVisible
+      className={`fixed bottom-0 left-0 right-0 z-50 md:hidden transition-all duration-300 ease-out font-body ${isVisible
         ? "translate-y-0 opacity-100"
         : "translate-y-full opacity-0 pointer-events-none"
         }`}

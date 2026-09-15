@@ -30,6 +30,7 @@ import {
   Briefcase,
   Newspaper,
   Home,
+  MapPin,
   type LucideIcon,
 } from "lucide-react";
 
@@ -70,6 +71,7 @@ const iconMap: Record<string, LucideIcon> = {
   blog: Newspaper,
   home: Home,
   accommodation: Home,
+  location: MapPin,
 };
 
 export const MenuIcon: React.FC<MenuIconProps> = ({ type, className }) => {

@@ -78,7 +78,7 @@ export const CountryCourses: React.FC<CountryCoursesProps> = ({ country }) => {
                   </span>
                 </div>
 
-                <h3 className="font-hedvig text-lg font-bold text-neutral-900 line-clamp-2 mt-2">
+                <h3 className="font-heading text-lg font-bold text-neutral-900 line-clamp-2 mt-2">
                   {course.name}
                 </h3>
 

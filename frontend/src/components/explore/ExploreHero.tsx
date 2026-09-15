@@ -52,13 +52,13 @@ export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
             )}
           </div>
 
-          <h1 className="font-hedvig text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
             {country
               ? `Explore Study Opportunities in ${country.name}`
               : "Explore Universities, Courses & Scholarships Worldwide"}
           </h1>
 
-          <p className="mt-3 text-sm md:text-base text-white/80 leading-relaxed font-dmsans">
+          <p className="mt-3 text-sm md:text-base text-white/80 leading-relaxed font-body">
             {country
               ? `Browse verified academic programs, QS-ranked partner universities, tuition ranges, and available international scholarship grants in ${country.name}.`
               : "Search top-tier partner universities, degree programs, tuition ranges, and scholarship awards across USA, UK, Canada, Australia, Dubai, and Germany."}

@@ -111,6 +111,7 @@ export default function ScholarshipsLoansSection() {
                                     src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
                                     alt="Student studying abroad"
                                     fill
+                                    sizes="(max-width: 1024px) 100vw, 345px"
                                     className="object-cover"
                                 />
                             </div>
@@ -150,6 +151,7 @@ export default function ScholarshipsLoansSection() {
                                     src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
                                     alt="Student studying abroad"
                                     fill
+                                    sizes="(max-width: 1024px) 345px, 100vw"
                                     className="object-cover"
                                 />
                             </div>

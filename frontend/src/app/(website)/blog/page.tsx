@@ -79,7 +79,7 @@ const articles = [
 
 export default function BlogPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-dmsans">
+    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Insights & Advice"
@@ -104,7 +104,7 @@ export default function BlogPage() {
                   </div>
                 </div>
 
-                <h3 className="mt-5 font-hedvig text-xl font-bold leading-snug text-[#121314] transition-colors group-hover:text-[#253A7B]">
+                <h3 className="mt-5 font-heading text-xl font-bold leading-snug text-[#121314] transition-colors group-hover:text-[#253A7B]">
                   {article.title}
                 </h3>
 
@@ -128,7 +128,7 @@ export default function BlogPage() {
 
         {/* Lead Generation Callout */}
         <div className="mt-16 rounded-3xl bg-[#EEF1FA] p-8 text-center sm:p-12">
-          <h3 className="font-hedvig text-2xl font-bold text-[#253A7B] sm:text-3xl">
+          <h3 className="font-heading text-2xl font-bold text-[#253A7B] sm:text-3xl">
             Have Questions About Admission Deadlines or Visas?
           </h3>
           <p className="mx-auto mt-3 max-w-xl text-sm text-gray-600 sm:text-base">

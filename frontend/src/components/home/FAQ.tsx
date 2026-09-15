@@ -229,7 +229,7 @@ export default function FAQSection() {
               hover:bg-[#d93657]
             "
                     >
-                        <span>Still have questions? Let's talk</span>
+                        <span>Still have questions? Let&apos;s talk</span>
                         <ArrowRight
                             size={18}
                             strokeWidth={2.2}

@@ -1,10 +1,19 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site.config";
 import { getAllCountrySlugs } from "@/data/countries";
+import { getAllCitySlugs } from "@/data/cities";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const countrySlugs = getAllCountrySlugs();
+  const citySlugs = getAllCitySlugs();
+
+  const cityUrls = citySlugs.map((slug) => ({
+    url: `${baseUrl}/best-study-consultant-in/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
 
   const countryUrls = countrySlugs.map((slug) => ({
     url: `${baseUrl}/study-in/${slug}`,
@@ -41,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...countryUrls,
     ...exploreUrls,
+    ...cityUrls,
     {
       url: `${baseUrl}/services`,
       lastModified: new Date(),

@@ -83,7 +83,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                 <button
                   type="button"
                   onClick={() => toggleMobileDropdown(label)}
-                  className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left font-dmsans text-[17px] font-medium text-[#121314]"
+                  className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left font-body text-[17px] font-medium text-[#121314]"
                 >
                   <span>{label}</span>
                   <ChevronDown
@@ -112,7 +112,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                     <div className="pb-5">
                       {"countries" in dropdown ? (
                         <div>
-                          <h4 className="mb-3 font-dmsans text-[15px] font-semibold text-[#253A7B]">
+                          <h4 className="mb-3 font-body text-[15px] font-semibold text-[#253A7B]">
                             Top Countries We&apos;re Serving
                           </h4>
 
@@ -122,7 +122,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                                 key={country.name}
                                 href={country.href || `/study-in/${country.name.toLowerCase()}`}
                                 onClick={onClose}
-                                className="flex items-center gap-2.5 rounded-xl bg-[#F8F9FE] p-3 font-dmsans text-[14px] font-medium text-[#121314] transition-colors duration-300 active:bg-[#EEF1FA]"
+                                className="flex items-center gap-2.5 rounded-xl bg-[#F8F9FE] p-3 font-body text-[14px] font-medium text-[#121314] transition-colors duration-300 active:bg-[#EEF1FA]"
                               >
                                 <span className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
                                   <ReactCountryFlag
@@ -140,7 +140,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                             ))}
                           </div>
 
-                          <div className="mt-4 flex items-center gap-2.5 rounded-xl border border-gray-100 bg-[#F8F9FE] p-3.5 font-dmsans text-[12px] font-medium text-gray-700">
+                          <div className="mt-4 flex items-center gap-2.5 rounded-xl border border-gray-100 bg-[#F8F9FE] p-3.5 font-body text-[12px] font-medium text-gray-700">
                             <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#EBF5EE] text-[10px] font-bold text-[#1E7B47]">
                               ✓
                             </span>
@@ -154,7 +154,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                         <div className="space-y-5">
                           {dropdown.columns.map((column) => (
                             <div key={column.title}>
-                              <h5 className="mb-2.5 font-dmsans text-[14px] font-semibold text-[#253A7B]">
+                              <h5 className="mb-2.5 font-body text-[14px] font-semibold text-[#253A7B]">
                                 {column.title}
                               </h5>
                               <div className="space-y-1">
@@ -163,7 +163,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                                     key={item.label}
                                     href={item.href || "#"}
                                     onClick={onClose}
-                                    className="group/item flex items-center gap-3 rounded-xl px-2 py-2.5 font-dmsans text-[14px] text-gray-700 transition-all duration-300 active:bg-[#F5F6FA]"
+                                    className="group/item flex items-center gap-3 rounded-xl px-2 py-2.5 font-body text-[14px] text-gray-700 transition-all duration-300 active:bg-[#F5F6FA]"
                                   >
                                     <MenuIcon type={item.icon} />
                                     <span>{item.label}</span>
@@ -186,10 +186,10 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
             <Link
               href="/blog"
               onClick={onClose}
-              className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left font-dmsans text-[17px] font-medium text-[#121314] transition-colors duration-200 hover:text-[#253A7B]"
+              className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left font-body text-[17px] font-medium text-[#121314] transition-colors duration-200 hover:text-[#253A7B]"
             >
               <span>Blog</span>
-              <span className="rounded-full bg-[#EEF1FA] px-2.5 py-0.5 font-dmsans text-[12px] font-semibold text-[#253A7B]">
+              <span className="rounded-full bg-[#EEF1FA] px-2.5 py-0.5 font-body text-[12px] font-semibold text-[#253A7B]">
                 Articles
               </span>
             </Link>
@@ -200,10 +200,10 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
             <Link
               href="/events"
               onClick={onClose}
-              className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left font-dmsans text-[17px] font-medium text-[#121314] transition-colors duration-200 hover:text-[#253A7B]"
+              className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left font-body text-[17px] font-medium text-[#121314] transition-colors duration-200 hover:text-[#253A7B]"
             >
               <span>Events</span>
-              <span className="rounded-full bg-[#EEF1FA] px-2.5 py-0.5 font-dmsans text-[12px] font-semibold text-[#253A7B]">
+              <span className="rounded-full bg-[#EEF1FA] px-2.5 py-0.5 font-body text-[12px] font-semibold text-[#253A7B]">
                 Upcoming
               </span>
             </Link>
@@ -217,7 +217,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                 onClose();
                 openLeadPopup({ source: "mobile_navbar" });
               }}
-              className="flex h-[52px] w-full items-center justify-center gap-3 rounded-full bg-[#E93F61] px-6 font-dmsans text-[16px] font-semibold text-white shadow-md transition-all duration-300 active:scale-[0.98] cursor-pointer"
+              className="flex h-[52px] w-full items-center justify-center gap-3 rounded-full bg-[#E93F61] px-6 font-body text-[16px] font-semibold text-white shadow-md transition-all duration-300 active:scale-[0.98] cursor-pointer"
             >
               <span>Book Free Counselling</span>
               <span className="flex h-[34px] w-[34px] items-center justify-center rounded-full bg-white">

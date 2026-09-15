@@ -43,7 +43,7 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
       <div className="relative z-10 max-h-[85vh] w-full overflow-hidden rounded-t-3xl bg-white shadow-2xl flex flex-col animate-in slide-in-from-bottom duration-300">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4">
-          <h3 className="font-hedvig text-lg font-bold text-neutral-900">
+          <h3 className="font-heading text-lg font-bold text-neutral-900">
             Filter Listings
           </h3>
           <button

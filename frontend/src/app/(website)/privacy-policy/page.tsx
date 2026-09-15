@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-dmsans text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
+            className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home
@@ -37,19 +37,19 @@ export default function PrivacyPolicyPage() {
               <Shield className="h-6 w-6" aria-hidden="true" />
             </span>
             <div>
-              <span className="font-dmsans text-xs font-bold uppercase tracking-wider text-[#253A7B]">
+              <span className="font-body text-xs font-bold uppercase tracking-wider text-[#253A7B]">
                 Legal Documentation
               </span>
-              <h1 className="font-hedvig text-3xl font-bold text-[#121314] sm:text-4xl">
+              <h1 className="font-heading text-3xl font-bold text-[#121314] sm:text-4xl">
                 Privacy Policy
               </h1>
             </div>
           </div>
-          <p className="mt-4 font-dmsans text-sm text-gray-500">
+          <p className="mt-4 font-body text-sm text-gray-500">
             Last Updated: {lastUpdated}
           </p>
 
-          <div className="prose prose-slate mt-8 max-w-none font-dmsans text-base leading-relaxed text-gray-700">
+          <div className="prose prose-slate mt-8 max-w-none font-body text-base leading-relaxed text-gray-700">
             <p>
               At <strong>{siteConfig.name}</strong> (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), accessible via{" "}
               <a href={siteConfig.url} className="text-[#253A7B] underline">

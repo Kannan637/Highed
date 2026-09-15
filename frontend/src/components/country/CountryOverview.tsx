@@ -10,7 +10,7 @@ interface CountryOverviewProps {
 
 export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => {
   return (
-    <section className="bg-[#FAFAFC] py-20">
+    <section className="bg-white py-16 sm:py-20 md:py-24">
       <Container size="lg">
         <SectionHeading
           badge="Destination Profile"
@@ -18,26 +18,26 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
           subtitle={`Discover why over 70,000 international students choose ${country.name} every year for recognized global qualifications.`}
         />
 
-        <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:items-center">
+        <div className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
           {/* Main Description */}
-          <div className="col-span-4 lg:col-span-7">
-            <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs sm:p-10">
-              <h3 className="font-hedvig text-2xl font-bold text-[#121314] sm:text-3xl">
+          <div className="col-span-1 lg:col-span-7">
+            <div className="rounded-[24px] border border-neutral-100 bg-[#FAFAFA] p-8 shadow-sm sm:p-10 md:p-12 transition-shadow hover:shadow-md">
+              <h3 className="font-body text-[24px] sm:text-[28px] md:text-[32px] font-medium leading-tight tracking-tight text-[#111111]">
                 An International Education Hub Built for the Future
               </h3>
-              <p className="mt-4 font-dmsans text-base leading-relaxed text-gray-600 sm:text-lg">
+              <p className="mt-5 font-body text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-[#555555]">
                 {country.description}
               </p>
 
-              <div className="mt-8 border-t border-gray-100 pt-6">
-                <h4 className="font-dmsans text-sm font-semibold uppercase tracking-wider text-[#253A7B]">
+              <div className="mt-10 border-t border-neutral-200/80 pt-8">
+                <h4 className="font-body text-[13px] font-bold uppercase tracking-widest text-[#111111]/60">
                   Medium of Instruction & Daily Life
                 </h4>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2.5">
                   {country.language.map((lang) => (
                     <span
                       key={lang}
-                      className="rounded-xl bg-[#EEF1FA] px-3.5 py-1.5 font-dmsans text-sm font-medium text-[#253A7B]"
+                      className="inline-flex items-center rounded-full bg-white px-4 py-1.5 font-body text-[14px] font-medium text-[#111111] shadow-sm ring-1 ring-inset ring-neutral-200"
                     >
                       {lang}
                     </span>
@@ -48,49 +48,49 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
           </div>
 
           {/* Highlights Checklist */}
-          <div className="col-span-4 space-y-4 lg:col-span-5">
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
-              <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EBF5EE] text-[#1E7B47]">
-                  <Check className="h-6 w-6" strokeWidth={2.5} aria-hidden="true" />
+          <div className="col-span-1 space-y-4 lg:col-span-5">
+            <div className="group rounded-[20px] border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start gap-4 sm:gap-5">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F0FDF4] text-[#16A34A] shadow-sm">
+                  <Check className="h-[22px] w-[22px]" strokeWidth={2.5} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-dmsans text-lg font-bold text-[#121314]">
+                  <h4 className="font-body text-[17px] sm:text-[18px] font-medium text-[#111111]">
                     Official Degrees
                   </h4>
-                  <p className="font-dmsans text-sm text-gray-500">
+                  <p className="mt-1.5 font-body text-[14px] leading-relaxed text-[#555555]">
                     Dual accredited degrees recognized in UK, US, Australia & globally.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
-              <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
-                  <Sparkles className="h-6 w-6" aria-hidden="true" />
+            <div className="group rounded-[20px] border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start gap-4 sm:gap-5">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EFF6FF] text-[#3B82F6] shadow-sm">
+                  <Sparkles className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-dmsans text-lg font-bold text-[#121314]">
+                  <h4 className="font-body text-[17px] sm:text-[18px] font-medium text-[#111111]">
                     Affordable Tuition
                   </h4>
-                  <p className="font-dmsans text-sm text-gray-500">
+                  <p className="mt-1.5 font-body text-[14px] leading-relaxed text-[#555555]">
                     Save up to 40% compared to Western home campus tuition fees.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs">
-              <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#FDF0F3] text-[#E93F61]">
-                  <Briefcase className="h-6 w-6" aria-hidden="true" />
+            <div className="group rounded-[20px] border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+              <div className="flex items-start gap-4 sm:gap-5">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#FEF2F2] text-[#EF4444] shadow-sm">
+                  <Briefcase className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-dmsans text-lg font-bold text-[#121314]">
+                  <h4 className="font-body text-[17px] sm:text-[18px] font-medium text-[#111111]">
                     High Employability
                   </h4>
-                  <p className="font-dmsans text-sm text-gray-500">
+                  <p className="mt-1.5 font-body text-[14px] leading-relaxed text-[#555555]">
                     Access regional HQs of Fortune 500 tech, finance & logistics giants.
                   </p>
                 </div>

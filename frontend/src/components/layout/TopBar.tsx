@@ -31,14 +31,14 @@ export const TopBar = () => {
       <div className="w-full bg-gradient-to-r from-[#A67C00] via-[#FCF6BA] to-[#B38728] shadow-[inset_0_-4px_10px_rgba(255,255,255,0.7)]">
         <div className="relative mx-auto flex min-h-9 w-full items-center justify-center px-8 py-1 sm:py-0 sm:px-12">
           {/* Announcement Banner Content */}
-          <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 text-center font-dmsans text-[13px] leading-[20px] sm:text-[14.5px] sm:leading-[22px] md:text-[16px] md:leading-[24px] tracking-[-0.03em] md:tracking-[-0.04em]">
+          <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 text-center font-body text-[13px] leading-[20px] sm:text-[14.5px] sm:leading-[22px] md:text-[16px] md:leading-[24px] tracking-[-0.03em] md:tracking-[-0.04em]">
             <span aria-hidden="true" className="shrink-0 text-sm md:text-base">🎓</span>
-            <AnimatedShinyText className="font-dmsans font-medium cursor-pointer">
+            <AnimatedShinyText className="font-body font-medium cursor-pointer">
               Upcoming: Study Abroad Fair 2026 —
             </AnimatedShinyText>
             <a
               href="/events"
-              className="font-dmsans font-semibold text-[#E93F61] cursor-pointer hover:underline hover:decoration-[#E93F61] shrink-0"
+              className="font-body font-semibold text-[#E93F61] cursor-pointer hover:underline hover:decoration-[#E93F61] shrink-0"
             >
               Register Now →
             </a>

@@ -12,7 +12,6 @@ import CountryFeatureCards from "@/components/country/CountryFeatureCards";
 import CountryWhyStudy from "@/components/country/CountryWhyStudy";
 import CountryUniversities from "@/components/country/CountryUniversities";
 import CountryCourses from "@/components/country/CountryCourses";
-import CountryCost from "@/components/country/CountryCost";
 import CountryScholarships from "@/components/country/CountryScholarships";
 import CountryIntakes from "@/components/country/CountryIntakes";
 import CountryVisa from "@/components/country/CountryVisa";
@@ -96,7 +95,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <CountryWhyStudy country={country} />
       <CountryUniversities country={country} />
       <CountryCourses country={country} />
-      <CountryCost country={country} />
       <CountryScholarships country={country} />
       <CountryIntakes country={country} />
       <CountryVisa country={country} />

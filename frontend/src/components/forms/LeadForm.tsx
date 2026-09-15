@@ -113,8 +113,8 @@ export const LeadForm: React.FC<LeadFormProps> = ({
 
   return (
     <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-lg sm:p-10">
-      <h3 className="font-hedvig text-2xl font-bold text-[#121314]">{title}</h3>
-      <p className="mt-2 font-dmsans text-sm text-gray-500">{subtitle}</p>
+      <h3 className="font-heading text-2xl font-bold text-[#121314]">{title}</h3>
+      <p className="mt-2 font-body text-sm text-gray-500">{subtitle}</p>
 
       {status.type === "success" ? (
         <div className="mt-6 flex items-start gap-3 rounded-2xl bg-[#EBF5EE] p-5 text-sm text-[#1E7B47]">
@@ -135,7 +135,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
 
           {/* Full Name (ISS-014 & ISS-015) */}
           <div>
-            <label htmlFor="lead-fullName" className="mb-1 block font-dmsans text-xs font-semibold text-gray-700">
+            <label htmlFor="lead-fullName" className="mb-1 block font-body text-xs font-semibold text-gray-700">
               Full Name *
             </label>
             <input
@@ -148,14 +148,14 @@ export const LeadForm: React.FC<LeadFormProps> = ({
               onChange={handleChange}
               aria-invalid={!!fieldErrors.fullName}
               aria-describedby={fieldErrors.fullName ? "lead-fullName-error" : undefined}
-              className={`h-11 w-full rounded-xl border px-4 font-dmsans text-sm outline-none transition-colors ${
+              className={`h-11 w-full rounded-xl border px-4 font-body text-sm outline-none transition-colors ${
                 fieldErrors.fullName
                   ? "border-[#E93F61] focus:border-[#E93F61]"
                   : "border-gray-200 focus:border-[#253A7B]"
               }`}
             />
             {fieldErrors.fullName && (
-              <p id="lead-fullName-error" className="mt-1 font-dmsans text-xs text-[#E93F61]" role="alert">
+              <p id="lead-fullName-error" className="mt-1 font-body text-xs text-[#E93F61]" role="alert">
                 {fieldErrors.fullName}
               </p>
             )}
@@ -164,7 +164,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Email Address */}
             <div>
-              <label htmlFor="lead-email" className="mb-1 block font-dmsans text-xs font-semibold text-gray-700">
+              <label htmlFor="lead-email" className="mb-1 block font-body text-xs font-semibold text-gray-700">
                 Email Address *
               </label>
               <input
@@ -177,14 +177,14 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 onChange={handleChange}
                 aria-invalid={!!fieldErrors.email}
                 aria-describedby={fieldErrors.email ? "lead-email-error" : undefined}
-                className={`h-11 w-full rounded-xl border px-4 font-dmsans text-sm outline-none transition-colors ${
+                className={`h-11 w-full rounded-xl border px-4 font-body text-sm outline-none transition-colors ${
                   fieldErrors.email
                     ? "border-[#E93F61] focus:border-[#E93F61]"
                     : "border-gray-200 focus:border-[#253A7B]"
                 }`}
               />
               {fieldErrors.email && (
-                <p id="lead-email-error" className="mt-1 font-dmsans text-xs text-[#E93F61]" role="alert">
+                <p id="lead-email-error" className="mt-1 font-body text-xs text-[#E93F61]" role="alert">
                   {fieldErrors.email}
                 </p>
               )}
@@ -216,7 +216,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Target Country */}
             <div>
-              <label htmlFor="lead-destinationCountry" className="mb-1 block font-dmsans text-xs font-semibold text-gray-700">
+              <label htmlFor="lead-destinationCountry" className="mb-1 block font-body text-xs font-semibold text-gray-700">
                 Target Country
               </label>
               <select
@@ -224,7 +224,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 name="destinationCountry"
                 value={formData.destinationCountry}
                 onChange={handleChange}
-                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-dmsans text-sm outline-none transition-colors focus:border-[#253A7B]"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-[#253A7B]"
               >
                 <option value="Dubai">Dubai (UAE)</option>
                 <option value="USA">United States (USA)</option>
@@ -237,7 +237,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
 
             {/* Study Level */}
             <div>
-              <label htmlFor="lead-studyLevel" className="mb-1 block font-dmsans text-xs font-semibold text-gray-700">
+              <label htmlFor="lead-studyLevel" className="mb-1 block font-body text-xs font-semibold text-gray-700">
                 Study Level
               </label>
               <select
@@ -245,7 +245,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 name="studyLevel"
                 value={formData.studyLevel}
                 onChange={handleChange}
-                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-dmsans text-sm outline-none transition-colors focus:border-[#253A7B]"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-[#253A7B]"
               >
                 <option value="Undergraduate">Bachelor&apos;s Degree</option>
                 <option value="Master's Degree">Master&apos;s / Postgraduate</option>
@@ -276,7 +276,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
             )}
           </Button>
 
-          <p className="text-center font-dmsans text-[11px] text-gray-400">
+          <p className="text-center font-body text-[11px] text-gray-400">
             🔒 Your details are 100% confidential. No spam, ever.
           </p>
         </form>

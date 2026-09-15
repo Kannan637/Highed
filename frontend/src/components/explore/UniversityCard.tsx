@@ -34,7 +34,7 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
         </div>
 
         {/* Title */}
-        <h3 className="font-hedvig text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
+        <h3 className="font-heading text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
           {university.name}
         </h3>
 
