@@ -4,7 +4,7 @@ export const australia: Country = {
   slug: "australia",
   name: "Australia",
   code: "AU",
-  title: "Study in Australia — World-Class Education in a Stunning Natural Environment",
+  title: "Study in Australia from India | Universities & Visa",
   tagline:
     "7 of the world's top 100 universities, a 2-4 year post-study work visa, and one of the highest standards of living globally.",
   description:

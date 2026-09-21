@@ -39,6 +39,7 @@ export function constructMetadata({
       description,
       url,
       siteName: siteConfig.name,
+      locale: "en_IN",
       images: [
         {
           url: image,
@@ -58,6 +59,13 @@ export function constructMetadata({
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
   };
 }

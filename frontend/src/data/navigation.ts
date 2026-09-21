@@ -6,9 +6,9 @@ export const navDropdowns: Record<string, NavDropdownData> = {
       {
         title: "About HighEd",
         items: [
-          { label: "Our Story", href: "/about", icon: "building" },
+          { label: "Our Story", href: "/our-story", icon: "building" },
           { label: "Why Choose HighEd", href: "/about#why-choose-us", icon: "star" },
-          { label: "Our Team", href: "/about#team", icon: "users" },
+          { label: "Our Team", href: "/our-team", icon: "users" },
         ],
       },
       {
@@ -38,6 +38,7 @@ export const navDropdowns: Record<string, NavDropdownData> = {
       { name: "UK", code: "GB", href: "/study-in/uk" },
       { name: "Canada", code: "CA", href: "/study-in/canada" },
       { name: "Australia", code: "AU", href: "/study-in/australia" },
+      { name: "Ireland", code: "IE", href: "/study-in/ireland" },
       { name: "Dubai", code: "AE", href: "/study-in/dubai" },
       { name: "Germany", code: "DE", href: "/study-in/germany" },
     ],
@@ -78,7 +79,7 @@ export const navDropdowns: Record<string, NavDropdownData> = {
         items: [
           { label: "Study Abroad Guide", href: "/blog", icon: "guide" },
           { label: "Country Guides", href: "/study-in", icon: "country" },
-          { label: "University Guides", href: "/study-in", icon: "university" },
+          { label: "University Directory", href: "/explore", icon: "university" },
           { label: "Exam & Test Prep Guides", href: "/blog", icon: "exam" },
           { label: "Frequently Asked Questions", href: "/about#faq", icon: "faq" },
         ],
@@ -98,7 +99,7 @@ export const navDropdowns: Record<string, NavDropdownData> = {
         items: [
           { label: "Accommodation", href: "/services#accommodation", icon: "home" },
           { label: "Pre-Departure Support", href: "/services#pre-departure-support", icon: "support" },
-          { label: "Cost of Living Guides", href: "/study-in", icon: "cost" },
+          { label: "Cost of Living Guides", href: "/blog", icon: "cost" },
         ],
       },
     ],

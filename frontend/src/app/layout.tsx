@@ -14,44 +14,95 @@ const hedvig = Hedvig_Letters_Serif({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
-  preload: false,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "HighEd | Official Study Abroad Consultants & University Representative",
+    default: "Study Abroad Consultants in Tamil Nadu | HighEd",
     template: "%s | HighEd",
   },
-  description: siteConfig.description,
+  description:
+    "HighEd helps students in Tamil Nadu with study abroad counselling, university applications, scholarships, education loans and student visa guidance.",
   keywords: [
+    "study abroad consultants chennai",
+    "overseas education consultants tamil nadu",
     "study abroad",
     "overseas education",
-    "study in dubai",
     "study abroad consultants",
     "foreign universities",
-    "education loan",
     "student visa",
   ],
+  applicationName: "HighEd",
+  alternates: {
+    canonical: "./",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteConfig.url,
+    siteName: "HighEd",
+    title: "Study Abroad Consultants in Tamil Nadu | HighEd",
+    description:
+      "Study abroad counselling, university admissions, scholarships and student visa guidance for students in Tamil Nadu.",
+    images: [
+      {
+        url: `${siteConfig.url}/images/brand/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "HighEd Study Abroad Consultants",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Study Abroad Consultants in Tamil Nadu | HighEd",
+    description:
+      "Study abroad counselling, university admissions, scholarships and visa guidance.",
+    images: [`${siteConfig.url}/images/brand/og-image.jpg`],
+  },
+  icons: {
+    icon: "/icons/Favicon.png",
+    apple: "/icons/Favicon.png",
+  },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
+  "@id": `${siteConfig.url}/#organization`,
   name: siteConfig.name,
   url: siteConfig.url,
   logo: `${siteConfig.url}/logos/Highed Logo/Highed.png`,
-  description: siteConfig.description,
+  email: siteConfig.contact.email,
+  telephone: siteConfig.contact.phone,
+  description:
+    "Study abroad consultancy providing university admissions, scholarships, education loan and student visa guidance.",
+  areaServed: ["Chennai", "Coimbatore", "Tamil Nadu", "India"],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,
     contactType: "admissions",
-    availableLanguage: ["English", "Hindi"],
+    areaServed: "IN",
+    availableLanguage: ["English", "Tamil"],
   },
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.contact.address,
+    addressLocality: "Chennai",
+    addressCountry: "IN",
   },
   sameAs: [
     siteConfig.links.twitter,
@@ -79,14 +130,14 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${dmSans.variable} ${hedvig.variable} h-full antialiased`}
     >
       <head>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>
-      <body className="min-h-full flex flex-col font-body">{children}</body>
+      <body className="min-h-full flex flex-col font-body font-medium">{children}</body>
     </html>
   );
 }

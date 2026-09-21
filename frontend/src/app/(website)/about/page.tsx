@@ -3,11 +3,14 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Award, Globe2, Building2 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Card from "@/components/ui/Card";
+import IconBox from "@/components/ui/IconBox";
+import CTASection from "@/components/ui/CTASection";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { constructMetadata } from "@/seo/metadata";
 
 export const metadata = constructMetadata({
-  title: "About Us — Official Global University Representative",
+  title: "About HighEd — Study Abroad Consultants",
   description:
     "Learn about HighEd, our mission, certified counsellors, and partnerships with 500+ global universities across USA, UK, Canada, Australia, Germany, and Dubai.",
   path: "/about",
@@ -16,34 +19,35 @@ export const metadata = constructMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
+    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
       <Container size="lg">
         {/* Hero Section */}
         <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#EEF1FA] px-4 py-1.5 text-xs font-semibold text-[#253A7B]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-icon-bg-primary px-4 py-1.5 text-caption font-medium text-brand-primary border border-brand-primary/20">
             <ShieldCheck size={16} />
             <span>Official University Representative</span>
           </span>
 
-          <h1 className="mt-4 font-heading text-4xl font-bold tracking-tight text-[#121314] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 text-h1 text-content-primary">
             Empowering Ambitious Minds to Study Globally
           </h1>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600 sm:text-xl">
+          <p className="mx-auto mt-6 max-w-3xl text-body-large text-content-secondary">
             HighEd is an international education advisory firm representing over 500 accredited universities. We provide transparent, end-to-end guidance from profile evaluation to post-study work visas.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <LeadCTAButton
               source="about_hero"
-              className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 text-base font-semibold text-white shadow-md transition-all duration-200 hover:bg-[#D93657] active:scale-[0.98] cursor-pointer"
+              variant="accent"
+              size="lg"
             >
               <span>Book Free Consultation</span>
               <ArrowRight size={18} />
             </LeadCTAButton>
             <Link
               href="/study-in"
-              className="inline-flex h-12 items-center gap-2 rounded-full border border-gray-200 bg-white px-7 text-base font-semibold text-[#121314] shadow-xs transition-all duration-200 hover:border-gray-300 hover:bg-gray-50"
+              className="inline-flex h-13 items-center gap-2 rounded-[var(--radius-btn)] border-2 border-brand-primary bg-surface-default px-7 text-btn font-medium text-brand-primary transition-all duration-300 hover:bg-brand-primary hover:text-content-inverse"
             >
               Explore Destinations
             </Link>
@@ -52,22 +56,17 @@ export default function AboutPage() {
 
         {/* Stats Grid */}
         <div className="mt-20 grid grid-cols-4 gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-6">
-          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-heading text-4xl font-bold text-[#253A7B]">500+</div>
-            <div className="mt-2 text-sm text-gray-500">Partner Universities</div>
-          </div>
-          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-heading text-4xl font-bold text-[#E93F61]">10,000+</div>
-            <div className="mt-2 text-sm text-gray-500">Students Counselled</div>
-          </div>
-          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-heading text-4xl font-bold text-[#1E7B47]">98.6%</div>
-            <div className="mt-2 text-sm text-gray-500">Visa Success Rate</div>
-          </div>
-          <div className="col-span-2 lg:col-span-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-xs">
-            <div className="font-heading text-4xl font-bold text-[#253A7B]">100%</div>
-            <div className="mt-2 text-sm text-gray-500">Free Counselling</div>
-          </div>
+          {[
+            { value: "500+", label: "Partner Universities", color: "text-brand-primary" },
+            { value: "10,000+", label: "Students Counselled", color: "text-brand-accent" },
+            { value: "98.6%", label: "Visa Success Rate", color: "text-feedback-success" },
+            { value: "100%", label: "Free Counselling", color: "text-brand-primary" },
+          ].map((stat) => (
+            <Card key={stat.label} hover={false} className="col-span-2 lg:col-span-3 text-center">
+              <div className={`font-heading text-h3 ${stat.color}`}>{stat.value}</div>
+              <div className="mt-2 text-body-small text-content-secondary">{stat.label}</div>
+            </Card>
+          ))}
         </div>
 
         {/* Why Choose HighEd */}
@@ -79,53 +78,40 @@ export default function AboutPage() {
           />
 
           <div className="mt-12 grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
-            <div className="col-span-4 lg:col-span-4 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
-                <Building2 size={24} />
-              </div>
-              <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314]">Direct University Portals</h3>
-              <p className="mt-3 text-base text-gray-600">
+            <Card className="col-span-4 lg:col-span-4 p-8">
+              <IconBox icon={Building2} variant="primary" />
+              <h3 className="mt-6 text-h4 text-content-primary">Direct University Portals</h3>
+              <p className="mt-3 text-body text-content-secondary">
                 Official representation means your application is processed directly through verified university agent channels for faster offer turnaround.
               </p>
-            </div>
+            </Card>
 
-            <div className="col-span-4 lg:col-span-4 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDF0F3] text-[#E93F61]">
-                <Award size={24} />
-              </div>
-              <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314]">Maximum Scholarships</h3>
-              <p className="mt-3 text-base text-gray-600">
+            <Card className="col-span-4 lg:col-span-4 p-8">
+              <IconBox icon={Award} variant="accent" />
+              <h3 className="mt-6 text-h4 text-content-primary">Maximum Scholarships</h3>
+              <p className="mt-3 text-body text-content-secondary">
                 Our advisors cross-reference hundreds of merit, athletic, and governmental scholarships to maximize fee waivers for eligible students.
               </p>
-            </div>
+            </Card>
 
-            <div className="col-span-4 lg:col-span-4 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EBF5EE] text-[#1E7B47]">
-                <Globe2 size={24} />
-              </div>
-              <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314]">Global Visas & Housing</h3>
-              <p className="mt-3 text-base text-gray-600">
+            <Card className="col-span-4 lg:col-span-4 p-8">
+              <IconBox icon={Globe2} variant="success" />
+              <h3 className="mt-6 text-h4 text-content-primary">Global Visas &amp; Housing</h3>
+              <p className="mt-3 text-body text-content-secondary">
                 Complete mock visa interview preparation, financial documentation verification, and pre-departure accommodation support.
               </p>
-            </div>
+            </Card>
           </div>
         </div>
 
         {/* CTA Banner */}
-        <div className="mt-24 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] p-10 text-center text-white sm:p-14">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Start Your Study Abroad Journey?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-white/85 sm:text-lg">
-            Connect with a certified counsellor today. Zero consultation fees, 100% personalized advisory.
-          </p>
-          <div className="mt-8">
-            <LeadCTAButton
-              source="about_bottom"
-              className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#D93657] active:scale-[0.98] cursor-pointer"
-            >
-              <span>Schedule Free Strategy Session</span>
-              <ArrowRight size={18} />
-            </LeadCTAButton>
-          </div>
+        <div className="mt-24">
+          <CTASection
+            title="Ready to Start Your Study Abroad Journey?"
+            subtitle="Connect with a certified counsellor today. Zero consultation fees, 100% personalized advisory."
+            ctaLabel="Schedule Free Strategy Session"
+            ctaSource="about_bottom"
+          />
         </div>
       </Container>
     </div>

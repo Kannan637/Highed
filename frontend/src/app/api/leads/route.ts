@@ -73,6 +73,8 @@ export async function POST(req: NextRequest) {
     // 2. Origin validation (ISS-002)
     const origin = req.headers.get("origin") || req.headers.get("referer") || "";
     const allowedOrigins = [
+      "https://highed.in",
+      "https://www.highed.in",
       "https://highed.org",
       "https://www.highed.org",
       "http://localhost:3000",

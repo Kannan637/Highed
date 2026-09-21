@@ -4,7 +4,7 @@ export const germany: Country = {
   slug: "germany",
   name: "Germany",
   code: "DE",
-  title: "Study in Germany — Tuition-Free Education at Europe's Innovation Powerhouse",
+  title: "Study in Germany from India | Universities & Visa",
   tagline:
     "Public universities with zero or near-zero tuition, an 18-month post-study job seeker visa, and Europe's strongest economy.",
   description:

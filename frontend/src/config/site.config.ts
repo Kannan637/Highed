@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "HighEd",
   description:
     "Official representative for 500+ global universities. Expert counseling for overseas education in Dubai, USA, UK, Canada, Australia, and Germany.",
-  url: "https://highed.org",
-  ogImage: "https://highed.org/images/brand/og-image.jpg",
+  url: "https://highed.in",
+  ogImage: "https://highed.in/images/brand/og-image.jpg",
   links: {
     twitter: "https://twitter.com/highed",
     instagram: "https://instagram.com/highed",
@@ -15,3 +15,4 @@ export const siteConfig = {
     address: "Global Education Towers, Level 4, Academic City",
   },
 };
+

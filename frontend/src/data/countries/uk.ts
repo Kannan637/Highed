@@ -4,7 +4,7 @@ export const uk: Country = {
   slug: "uk",
   name: "UK",
   code: "GB",
-  title: "Study in UK — Centuries of Academic Excellence & Global Recognition",
+  title: "Study in UK from India | Universities & Visa Help",
   tagline:
     "Study at world-renowned universities like Oxford, Cambridge, and Imperial — with 1-year Master's programs and a 2-year Graduate Route visa.",
   description:

@@ -6,6 +6,7 @@ import { generateBreadcrumbSchema } from "@/seo/breadcrumb";
 import { generateFAQSchema } from "@/seo/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
+import { generateLocalBusinessSchema } from "@/seo/localBusiness";
 
 import CityHero from "@/components/city/CityHero";
 import CityTrust from "@/components/city/CityTrust";
@@ -72,10 +73,18 @@ export default async function CityPage({ params }: CityPageProps) {
     }))
   );
 
+  const localBusinessSchema = generateLocalBusinessSchema({
+    cityName: city.name,
+    slug: city.slug,
+    streetAddress:
+      city.slug === "chennai" ? siteConfig.contact.address : undefined,
+  });
+
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={localBusinessSchema} />
       <CityHero city={city} />
       <CityTrust city={city} />
       <CityWhyHighEd city={city} />

@@ -1,14 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Award, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
+import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
 export const metadata = constructMetadata({
-  title: "Study Abroad Scholarships — Merit, Government & University Awards",
+  title: "Study Abroad Scholarships | University & Government Aid",
   description:
     "Discover scholarships for Indian students studying in USA, UK, Canada, Australia, Germany, and Dubai. HighEd matches your profile to 100+ funding opportunities including full tuition waivers.",
   path: "/scholarships",
@@ -20,7 +22,7 @@ const scholarshipsByCountry = [
     country: "USA",
     code: "US",
     slug: "usa",
-    color: "#EEF1FA",
+    variant: "primary" as const,
     scholarships: [
       { name: "Fulbright Program", type: "Government", coverage: "Full Tuition + Living" },
       { name: "Hubert H. Humphrey Fellowship", type: "Government", coverage: "Full Funding" },
@@ -32,7 +34,7 @@ const scholarshipsByCountry = [
     country: "UK",
     code: "GB",
     slug: "uk",
-    color: "#FDF0F3",
+    variant: "accent" as const,
     scholarships: [
       { name: "Chevening Scholarship", type: "Government", coverage: "Full Tuition + Living" },
       { name: "Commonwealth Scholarship", type: "Government", coverage: "Full Funding" },
@@ -44,7 +46,7 @@ const scholarshipsByCountry = [
     country: "Canada",
     code: "CA",
     slug: "canada",
-    color: "#EBF5EE",
+    variant: "success" as const,
     scholarships: [
       { name: "Vanier CGS", type: "Government", coverage: "CA$50,000 / year" },
       { name: "Ontario Trillium Scholarship", type: "Government", coverage: "Full Tuition" },
@@ -56,7 +58,7 @@ const scholarshipsByCountry = [
     country: "Australia",
     code: "AU",
     slug: "australia",
-    color: "#FEF9EC",
+    variant: "gold" as const,
     scholarships: [
       { name: "Australia Awards", type: "Government", coverage: "Full Tuition + Living" },
       { name: "Endeavour Scholarship", type: "Government", coverage: "AU$25,000+" },
@@ -68,7 +70,7 @@ const scholarshipsByCountry = [
     country: "Germany",
     code: "DE",
     slug: "germany",
-    color: "#EEF1FA",
+    variant: "primary" as const,
     scholarships: [
       { name: "DAAD Scholarship", type: "Government", coverage: "€934/month + Fees" },
       { name: "Erasmus+ Programme", type: "Government", coverage: "Full Funding" },
@@ -80,7 +82,7 @@ const scholarshipsByCountry = [
     country: "Dubai",
     code: "AE",
     slug: "dubai",
-    color: "#FDF0F3",
+    variant: "accent" as const,
     scholarships: [
       { name: "KHDA Merit Scholarship", type: "Government", coverage: "Up to 50% Tuition" },
       { name: "University Partner Scholarships", type: "University", coverage: "Up to 30% Tuition" },
@@ -90,15 +92,22 @@ const scholarshipsByCountry = [
   },
 ];
 
-const typeColors: Record<string, string> = {
-  Government: "bg-[#EEF1FA] text-[#253A7B]",
-  University: "bg-[#EBF5EE] text-[#1E7B47]",
-  Foundation: "bg-[#FEF9EC] text-[#B38728]",
+const typeVariantMap: Record<string, "primary" | "success" | "gold" | "gray"> = {
+  Government: "primary",
+  University: "success",
+  Foundation: "gold",
+};
+
+const variantBgMap = {
+  primary: "bg-icon-bg-primary",
+  accent: "bg-icon-bg-accent",
+  success: "bg-icon-bg-success",
+  gold: "bg-icon-bg-gold",
 };
 
 export default function ScholarshipsPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
+    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Scholarship Finder"
@@ -108,13 +117,13 @@ export default function ScholarshipsPage() {
 
         <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {scholarshipsByCountry.map((dest) => (
-            <div
+            <Card
               key={dest.country}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col rounded-3xl border border-gray-100 bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg overflow-hidden"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col overflow-hidden p-0"
             >
               {/* Header */}
-              <div className="flex items-center gap-3.5 p-6 pb-4" style={{ backgroundColor: dest.color }}>
-                <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white shadow-xs">
+              <div className={`flex items-center gap-3.5 p-6 pb-4 ${variantBgMap[dest.variant]}`}>
+                <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-surface-default shadow-card-resting">
                   <ReactCountryFlag
                     countryCode={dest.code}
                     svg
@@ -122,8 +131,8 @@ export default function ScholarshipsPage() {
                   />
                 </span>
                 <div>
-                  <h3 className="font-heading text-lg font-bold text-[#121314]">Study in {dest.country}</h3>
-                  <p className="font-body text-xs text-gray-500">{dest.scholarships.length} scholarships available</p>
+                  <h3 className="text-h6 text-content-primary">Study in {dest.country}</h3>
+                  <p className="text-caption text-content-secondary">{dest.scholarships.length} scholarships available</p>
                 </div>
               </div>
 
@@ -132,53 +141,39 @@ export default function ScholarshipsPage() {
                 {dest.scholarships.map((s) => (
                   <div key={s.name} className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="font-body text-sm font-semibold text-[#121314]">{s.name}</p>
-                      <p className="mt-0.5 font-body text-xs text-gray-500">{s.coverage}</p>
+                      <p className="text-body-small font-medium text-content-primary">{s.name}</p>
+                      <p className="mt-0.5 text-caption text-content-secondary">{s.coverage}</p>
                     </div>
-                    <span
-                      className={`mt-0.5 shrink-0 rounded-full px-2.5 py-0.5 font-body text-[11px] font-semibold ${typeColors[s.type] || "bg-gray-100 text-gray-600"}`}
-                    >
+                    <Badge variant={typeVariantMap[s.type] || "gray"} className="mt-0.5 shrink-0 text-[11px]">
                       {s.type}
-                    </span>
+                    </Badge>
                   </div>
                 ))}
               </div>
 
               {/* Footer */}
-              <div className="border-t border-gray-100 px-5 py-4">
+              <div className="border-t border-border-default px-5 py-4">
                 <Link
                   href={`/study-in/${dest.slug}#scholarships`}
-                  className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
+                  className="inline-flex items-center gap-1.5 text-body-small font-medium text-brand-primary transition-colors hover:text-brand-accent"
                 >
                   View All {dest.country} Scholarships
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 flex flex-col items-center gap-5 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] px-8 py-14 text-center text-white sm:px-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
-            <Award size={14} className="text-[#E93F61]" />
-            Free Scholarship Profile Matching
-          </span>
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            Find Your Best Scholarship Match
-          </h2>
-          <p className="max-w-xl font-body text-base text-white/85">
-            Share your profile with our counsellors and we&apos;ll identify every scholarship opportunity you qualify for across all 6 destinations.
-          </p>
-          <LeadCTAButton
-            source="scholarships_page_cta"
-            contextTitle="Check My Scholarship Eligibility"
-            contextCTA="Check Eligibility — Free"
-            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-body text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
-          >
-            <span>Check My Scholarship Eligibility</span>
-            <ShieldCheck size={17} />
-          </LeadCTAButton>
+        <div className="mt-16">
+          <CTASection
+            badge="Free Scholarship Profile Matching"
+            title="Find Your Best Scholarship Match"
+            subtitle="Share your profile with our counsellors and we'll identify every scholarship opportunity you qualify for across all 6 destinations."
+            ctaLabel="Check My Scholarship Eligibility"
+            ctaSource="scholarships_page_cta"
+          />
         </div>
       </Container>
     </div>

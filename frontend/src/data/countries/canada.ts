@@ -4,7 +4,7 @@ export const canada: Country = {
   slug: "canada",
   name: "Canada",
   code: "CA",
-  title: "Study in Canada — Quality Education with a Clear Path to Permanent Residency",
+  title: "Study in Canada from India | Universities & Visa",
   tagline:
     "Affordable tuition, multicultural campuses, 3-year PGWP, and one of the world's most immigrant-friendly PR pathways.",
   description:

@@ -4,11 +4,11 @@ export const dubai: Country = {
   slug: "dubai",
   name: "Dubai",
   code: "AE",
-  title: "Study in Dubai — Global Hub for Innovation & World-Class Education",
+  title: "Study in Dubai from India | Universities & Visa",
   tagline: "Tax-free earnings, global branch campuses, and swift visa processes in the city of the future.",
   description:
     "Dubai is rapidly becoming one of the most popular global study destinations for international students. Home to prestigious branch campuses of leading UK, Australian, and US universities, Dubai offers internationally accredited degrees, safe and cosmopolitan lifestyle, and booming post-study employment avenues in tech, finance, and hospitality.",
-  heroImage: "/images/countries/study-in-dubai.webp",
+  heroImage: "/images/countries/Dubai Bg.webp",
   flag: "🇦🇪",
   currency: "AED (United Arab Emirates Dirham)",
   capital: "Abu Dhabi (UAE)",

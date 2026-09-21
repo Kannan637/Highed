@@ -4,7 +4,7 @@ export const usa: Country = {
   slug: "usa",
   name: "USA",
   code: "US",
-  title: "Study in USA — World's #1 Destination for Higher Education",
+  title: "Study in USA from India | Admissions & Visa Help",
   tagline:
     "Home to Ivy League universities, cutting-edge research, and unmatched career opportunities across every industry.",
   description:
