@@ -101,12 +101,12 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
 
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block font-body text-xs font-semibold text-gray-600">
+      <label htmlFor={id} className="mb-1.5 block font-body text-xs font-semibold text-content-secondary">
         Mobile Number *
       </label>
       <div
         className={`flex h-12 items-center overflow-hidden rounded-xl border bg-white transition-colors ${
-          error ? "border-[#E93F61]" : "border-gray-200 focus-within:border-[#253A7B]"
+          error ? "border-[#E93F61]" : "border-gray-200 focus-within:border-brand-primary"
         }`}
       >
         {/* Country Code Selector (ISS-017 & ISS-010) */}
@@ -117,7 +117,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
             onClick={() => !disabled && setIsOpen(!isOpen)}
             onKeyDown={handleTriggerKeyDown}
             disabled={disabled}
-            className="flex h-full min-h-[44px] items-center gap-1 border-r border-gray-200 px-3 font-body text-sm font-medium text-[#121314] transition-colors hover:bg-gray-50 disabled:opacity-50"
+            className="flex h-full min-h-[44px] items-center gap-1 border-r border-gray-200 px-3 font-body text-sm font-medium text-content-primary transition-colors hover:bg-gray-50 disabled:opacity-50"
             aria-label="Select country code"
             aria-haspopup="listbox"
             aria-expanded={isOpen}
@@ -134,7 +134,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
               id={`${id}-country-listbox`}
               role="listbox"
               aria-label="Country calling codes"
-              className="absolute left-0 top-full z-50 mt-1 w-32 overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xl"
+              className="absolute left-0 top-full z-50 mt-1 w-32 overflow-hidden rounded-lg border border-border-default bg-white shadow-xl"
             >
               {countryCodes.map((cc, idx) => (
                 <button
@@ -148,10 +148,10 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
                   tabIndex={focusedIndex === idx ? 0 : -1}
                   onClick={() => selectCountryCode(cc.code)}
                   onKeyDown={(e) => handleOptionKeyDown(e, idx)}
-                  className={`flex min-h-[44px] w-full items-center px-3.5 py-2.5 text-left font-body text-sm transition-colors hover:bg-[#EEF1FA] ${
+                  className={`flex min-h-[44px] w-full items-center px-3.5 py-2.5 text-left font-body text-sm transition-colors hover:bg-icon-bg-primary ${
                     countryCode === cc.code
-                      ? "bg-[#EEF1FA] font-semibold text-[#253A7B]"
-                      : "text-[#121314]"
+                      ? "bg-icon-bg-primary font-semibold text-brand-primary"
+                      : "text-content-primary"
                   }`}
                 >
                   {cc.label}
@@ -174,12 +174,12 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
           aria-label="Mobile phone number"
           aria-invalid={!!error}
           aria-describedby={error ? errorId : undefined}
-          className="h-full flex-1 bg-transparent px-3 font-body text-sm text-[#121314] outline-none placeholder:text-gray-400 disabled:opacity-50"
+          className="h-full flex-1 bg-transparent px-3 font-body text-sm text-content-primary outline-none placeholder:text-gray-400 disabled:opacity-50"
         />
       </div>
 
       {error && (
-        <p id={errorId} className="mt-1.5 font-body text-xs text-[#E93F61]" role="alert">
+        <p id={errorId} className="mt-1.5 font-body text-xs text-brand-accent" role="alert">
           {error}
         </p>
       )}

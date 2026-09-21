@@ -11,20 +11,20 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", fullWidth = false, children, ...props }, ref) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-body font-semibold rounded-full transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+      "inline-flex items-center justify-center font-body font-medium text-btn rounded-[var(--radius-btn)] transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2";
 
     const variantStyles = {
-      primary: "bg-[#253A7B] text-white hover:bg-[#1b2b5d] shadow-sm",
-      accent: "bg-[#E93F61] text-white hover:bg-[#d93657] shadow-sm",
-      outline: "border-2 border-[#253A7B] text-[#253A7B] hover:bg-[#253A7B] hover:text-white",
-      secondary: "bg-[#F3F5FA] text-[#253A7B] hover:bg-[#e4e8f5]",
-      ghost: "text-[#121314] hover:bg-gray-100 hover:text-[#253A7B]",
+      primary: "bg-brand-primary text-content-inverse hover:bg-brand-primary-hover shadow-sm",
+      accent: "bg-brand-accent text-content-inverse hover:bg-brand-accent-hover shadow-sm",
+      outline: "border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-content-inverse",
+      secondary: "bg-surface-subtle text-brand-primary hover:bg-gray-200",
+      ghost: "text-foreground hover:bg-gray-100 hover:text-brand-primary",
     };
 
     const sizeStyles = {
-      sm: "h-9 px-4 text-[13px] gap-1.5",
-      md: "h-11 px-6 text-[15px] gap-2",
-      lg: "h-13 px-8 text-[16px] gap-2.5",
+      sm: "h-9 px-4 text-body-small gap-1.5",
+      md: "h-11 px-6 text-btn gap-2",
+      lg: "h-13 px-8 text-btn gap-2.5",
     };
 
     return (

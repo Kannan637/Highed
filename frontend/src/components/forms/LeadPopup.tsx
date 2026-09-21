@@ -213,8 +213,6 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
             fill
             className="object-cover object-top"
             sizes="(max-width: 768px) 100vw, 320px"
-            priority
-            unoptimized
           />
         </div>
 
@@ -226,19 +224,17 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
             fill
             className="object-cover"
             sizes="320px"
-            priority
-            unoptimized
           />
         </div>
 
         {/* Right Form Section */}
         <div className="relative flex flex-1 flex-col px-7 py-8 sm:px-10 sm:py-10">
-          {/* Close Button */}
+          {/* Close Button — 44x44px accessible touch target */}
           <button
             type="button"
             onClick={animateClose}
             aria-label="Close"
-            className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
+            className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
           >
             <X size={18} />
           </button>
@@ -257,14 +253,14 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               />
 
               {/* Heading */}
-              <h2 className="font-heading text-[22px] font-bold leading-tight text-[#121314] sm:text-[26px]">
+              <h2 className="font-heading text-[22px] font-normal leading-tight text-content-primary sm:text-[26px]">
                 {contextTitle || "Let's turn your study-abroad dreams into your success story."}
               </h2>
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
                 {submitError && (
-                  <div className="rounded-xl bg-[#FDF0F3] px-4 py-3 font-body text-xs text-[#E93F61]" role="alert">
+                  <div className="rounded-xl bg-icon-bg-accent px-4 py-3 font-body text-xs text-brand-accent" role="alert">
                     {submitError}
                   </div>
                 )}
@@ -281,7 +277,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E93F61] font-body text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#d93657] active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-accent font-body text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-accent/90 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
                 >
                   {loading ? (
                     <>
@@ -299,7 +295,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
                 You can always reach us on{" "}
                 <a
                   href="tel:+919050180501"
-                  className="font-semibold text-[#253A7B] hover:underline"
+                  className="font-semibold text-brand-primary hover:underline"
                 >
                   +91 90501 80501
                 </a>
@@ -308,11 +304,11 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               {/* Terms */}
               <p className="mt-3 text-center font-body text-[11px] text-gray-400">
                 By Continuing, You agree to our{" "}
-                <Link href="/terms" className="text-[#253A7B] underline hover:no-underline">
+                <Link href="/terms" className="text-brand-primary underline hover:no-underline">
                   terms
                 </Link>{" "}
                 and{" "}
-                <Link href="/privacy-policy" className="text-[#253A7B] underline hover:no-underline">
+                <Link href="/privacy-policy" className="text-brand-primary underline hover:no-underline">
                   privacy policy
                 </Link>
                 .

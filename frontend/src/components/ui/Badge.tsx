@@ -13,17 +13,17 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const variantStyles = {
-    primary: "bg-[#EEF1FA] text-[#253A7B] border-[#253A7B]/20",
-    accent: "bg-[#FDF0F3] text-[#E93F61] border-[#E93F61]/20",
-    success: "bg-[#EBF5EE] text-[#1E7B47] border-[#1E7B47]/20",
-    gold: "bg-[#FFF9E6] text-[#A67C00] border-[#A67C00]/20",
-    gray: "bg-[#F5F6FA] text-[#6B7280] border-gray-200",
+    primary: "bg-icon-bg-primary text-brand-primary border-brand-primary/20",
+    accent: "bg-icon-bg-accent text-brand-accent border-brand-accent/20",
+    success: "bg-icon-bg-success text-[#1E7B47] border-[#1E7B47]/20",
+    gold: "bg-icon-bg-gold text-[#A67C00] border-[#A67C00]/20",
+    gray: "bg-surface-subtle text-content-secondary border-border-default",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-semibold tracking-[-0.02em] border",
+        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-body text-caption font-medium tracking-[-0.02em] border",
         variantStyles[variant],
         className
       )}

@@ -40,7 +40,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
               ) : item.href ? (
                 <Link
                   href={item.href}
-                  className="inline-flex items-center gap-1 text-neutral-500 hover:text-[#253A7B] transition-colors"
+                  className="inline-flex items-center gap-1 text-neutral-500 hover:text-brand-primary transition-colors"
                 >
                   {index === 0 && showHomeIcon && (
                     <Home className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />

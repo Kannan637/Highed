@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import Badge from "@/components/ui/Badge";
 
 export interface SectionHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
   badge?: string;
@@ -27,16 +28,14 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     >
       {badge && (
         <div className="mb-3 inline-block">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#253A7B]/20 bg-[#EEF1FA] px-3.5 py-1 font-body text-[13px] font-semibold tracking-[-0.02em] text-[#253A7B]">
-            {badge}
-          </span>
+          <Badge variant="primary">{badge}</Badge>
         </div>
       )}
-      <h2 className="font-heading text-3xl font-bold tracking-tight text-[#121314] sm:text-4xl">
+      <h2 className="text-h2 text-content-primary">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3.5 font-body text-base text-gray-600 sm:text-lg">
+        <p className="mt-3.5 text-body-large text-content-secondary">
           {subtitle}
         </p>
       )}
@@ -45,3 +44,4 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 };
 
 export default SectionHeading;
+

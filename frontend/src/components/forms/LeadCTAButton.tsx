@@ -2,8 +2,9 @@
 
 import React from "react";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
+import { Button, ButtonProps } from "@/components/ui/Button";
 
-interface LeadCTAButtonProps {
+interface LeadCTAButtonProps extends Omit<ButtonProps, "onClick"> {
   source?: string;
   contextTitle?: string;
   contextCTA?: string;
@@ -17,8 +18,11 @@ export const LeadCTAButton: React.FC<LeadCTAButtonProps> = ({
   contextTitle,
   contextCTA,
   className = "",
+  variant = "primary",
+  size = "md",
   children,
   onClick,
+  ...props
 }) => {
   const { openLeadPopup } = useLeadPopup();
 
@@ -29,13 +33,16 @@ export const LeadCTAButton: React.FC<LeadCTAButtonProps> = ({
   };
 
   return (
-    <button
+    <Button
       type="button"
       onClick={handleClick}
+      variant={variant}
+      size={size}
       className={className}
+      {...props}
     >
       {children}
-    </button>
+    </Button>
   );
 };
 

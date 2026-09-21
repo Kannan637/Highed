@@ -112,12 +112,12 @@ export const LeadForm: React.FC<LeadFormProps> = ({
   };
 
   return (
-    <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-lg sm:p-10">
-      <h3 className="font-heading text-2xl font-bold text-[#121314]">{title}</h3>
-      <p className="mt-2 font-body text-sm text-gray-500">{subtitle}</p>
+    <div className="rounded-3xl border border-border-default bg-white p-8 shadow-lg sm:p-10">
+      <h3 className="font-heading text-2xl font-bold text-content-primary">{title}</h3>
+      <p className="mt-2 font-body text-sm text-content-secondary">{subtitle}</p>
 
       {status.type === "success" ? (
-        <div className="mt-6 flex items-start gap-3 rounded-2xl bg-[#EBF5EE] p-5 text-sm text-[#1E7B47]">
+        <div className="mt-6 flex items-start gap-3 rounded-2xl bg-icon-bg-success p-5 text-sm text-[#1E7B47]">
           <CheckCircle2 size={20} className="mt-0.5 shrink-0" />
           <div>
             <div className="font-bold">Request Submitted!</div>
@@ -127,7 +127,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
       ) : (
         <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
           {status.type === "error" && (
-            <div className="flex items-center gap-2 rounded-xl bg-[#FDF0F3] p-3 text-sm text-[#E93F61]" role="alert">
+            <div className="flex items-center gap-2 rounded-xl bg-icon-bg-accent p-3 text-sm text-brand-accent" role="alert">
               <AlertCircle size={16} className="shrink-0" />
               <span>{status.message}</span>
             </div>
@@ -151,11 +151,11 @@ export const LeadForm: React.FC<LeadFormProps> = ({
               className={`h-11 w-full rounded-xl border px-4 font-body text-sm outline-none transition-colors ${
                 fieldErrors.fullName
                   ? "border-[#E93F61] focus:border-[#E93F61]"
-                  : "border-gray-200 focus:border-[#253A7B]"
+                  : "border-gray-200 focus:border-brand-primary"
               }`}
             />
             {fieldErrors.fullName && (
-              <p id="lead-fullName-error" className="mt-1 font-body text-xs text-[#E93F61]" role="alert">
+              <p id="lead-fullName-error" className="mt-1 font-body text-xs text-brand-accent" role="alert">
                 {fieldErrors.fullName}
               </p>
             )}
@@ -180,11 +180,11 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 className={`h-11 w-full rounded-xl border px-4 font-body text-sm outline-none transition-colors ${
                   fieldErrors.email
                     ? "border-[#E93F61] focus:border-[#E93F61]"
-                    : "border-gray-200 focus:border-[#253A7B]"
+                    : "border-gray-200 focus:border-brand-primary"
                 }`}
               />
               {fieldErrors.email && (
-                <p id="lead-email-error" className="mt-1 font-body text-xs text-[#E93F61]" role="alert">
+                <p id="lead-email-error" className="mt-1 font-body text-xs text-brand-accent" role="alert">
                   {fieldErrors.email}
                 </p>
               )}
@@ -224,7 +224,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 name="destinationCountry"
                 value={formData.destinationCountry}
                 onChange={handleChange}
-                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-[#253A7B]"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-brand-primary"
               >
                 <option value="Dubai">Dubai (UAE)</option>
                 <option value="USA">United States (USA)</option>
@@ -245,7 +245,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 name="studyLevel"
                 value={formData.studyLevel}
                 onChange={handleChange}
-                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-[#253A7B]"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-brand-primary"
               >
                 <option value="Undergraduate">Bachelor&apos;s Degree</option>
                 <option value="Master's Degree">Master&apos;s / Postgraduate</option>

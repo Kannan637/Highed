@@ -81,7 +81,7 @@ export const Carousel: React.FC<CarouselProps> = ({
         className={cn(
           "w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-200 cursor-pointer",
           canScrollPrev
-            ? "border-neutral-300 bg-white text-neutral-800 hover:border-[#253A7B] hover:text-[#253A7B] shadow-sm hover:shadow active:scale-95"
+            ? "border-neutral-300 bg-white text-neutral-800 hover:border-brand-primary hover:text-brand-primary shadow-sm hover:shadow active:scale-95"
             : "border-neutral-200 bg-neutral-100 text-neutral-300 cursor-not-allowed opacity-50"
         )}
       >
@@ -95,7 +95,7 @@ export const Carousel: React.FC<CarouselProps> = ({
         className={cn(
           "w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-200 cursor-pointer",
           canScrollNext
-            ? "border-neutral-300 bg-white text-neutral-800 hover:border-[#253A7B] hover:text-[#253A7B] shadow-sm hover:shadow active:scale-95"
+            ? "border-neutral-300 bg-white text-neutral-800 hover:border-brand-primary hover:text-brand-primary shadow-sm hover:shadow active:scale-95"
             : "border-neutral-200 bg-neutral-100 text-neutral-300 cursor-not-allowed opacity-50"
         )}
       >

@@ -2,7 +2,11 @@
 
 import React, { createContext, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import LeadPopup from "./LeadPopup";
+import dynamic from "next/dynamic";
+
+const LeadPopup = dynamic(() => import("./LeadPopup"), {
+  ssr: false,
+});
 
 interface LeadPopupOptions {
   source?: string;
