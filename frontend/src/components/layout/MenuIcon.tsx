@@ -81,7 +81,7 @@ export const MenuIcon: React.FC<MenuIconProps> = ({ type, className }) => {
     <span
       className={
         className ||
-        "flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[10px] bg-[#EEF1FA] text-[#253A7B] transition-all duration-200 ease-out group-hover/item:bg-[#253A7B] group-hover/item:text-white"
+        "flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[10px] bg-icon-bg-primary text-brand-primary transition-all duration-200 ease-out group-hover/item:bg-brand-primary group-hover/item:text-white"
       }
     >
       <IconComponent size={16} strokeWidth={2} />

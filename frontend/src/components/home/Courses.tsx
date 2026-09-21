@@ -185,7 +185,7 @@ function getFlag(country: string) {
     return "🌎";
 }
 
-function ImagePlaceholder({ category }: { category?: string }) {
+function ImagePlaceholder() {
     return (
         <div
             className="
@@ -198,7 +198,7 @@ function ImagePlaceholder({ category }: { category?: string }) {
         bg-gradient-to-br
         from-[#f3f4f7]
         to-[#e2e4e9]
-        text-[#253A7B]/40
+        text-brand-primary/40
       "
             aria-label="Course image placeholder"
         >
@@ -223,13 +223,13 @@ function CourseCard({ course }: { course: Course }) {
         overflow-hidden
         rounded-[22px]
         border
-        border-[#dedede]
+        border-border-card
         bg-white
       "
         >
             {/* Image */}
             <div className="relative aspect-[1.83/1] overflow-hidden">
-                <ImagePlaceholder category={course.title} />
+                <ImagePlaceholder />
 
                 {/* Country Badge */}
                 <div
@@ -241,10 +241,10 @@ function CourseCard({ course }: { course: Course }) {
             items-center
             gap-2
             rounded-[12px]
-            bg-[#253A7B]
+            bg-brand-primary
             px-4
             py-2.5
-            text-[15px]
+            text-body-small
             font-medium
             text-white
             shadow-sm
@@ -260,7 +260,7 @@ function CourseCard({ course }: { course: Course }) {
                 {/* University */}
                 <div className="mb-2.5 flex items-center gap-1.5">
                     <span className="text-[14px] leading-none">{getFlag(course.country)}</span>
-                    <span className="text-[15px] font-medium text-[#121314]">
+                    <span className="text-body-small font-medium text-content-primary">
                         {course.university}
                     </span>
                 </div>
@@ -269,11 +269,10 @@ function CourseCard({ course }: { course: Course }) {
                 <h3
                     className="
             min-h-[66px]
-            text-[29px]
-            font-medium
-            leading-[1.08]
-            tracking-[-0.8px]
-            text-[#121314]
+            font-heading
+            font-normal
+            text-h4
+            text-content-primary
           "
                 >
                     {course.title}
@@ -285,9 +284,8 @@ function CourseCard({ course }: { course: Course }) {
             mt-3
             line-clamp-2
             min-h-[44px]
-            text-[14px]
-            leading-[1.55]
-            text-[#777]
+            text-body-small
+            text-content-secondary
           "
                 >
                     {course.description}
@@ -307,14 +305,14 @@ function CourseCard({ course }: { course: Course }) {
             gap-3
             rounded-full
             border
-            border-[#E93F61]
+            border-brand-accent
             bg-white
-            text-[15px]
+            text-btn
             font-medium
-            text-[#E93F61]
+            text-brand-accent
             transition-all
             duration-200
-            hover:bg-[#E93F61]
+            hover:bg-brand-accent
             hover:text-white
           "
                 >
@@ -349,7 +347,7 @@ export default function TopCoursesSection() {
     };
 
     return (
-        <section className="w-full bg-white text-[#121314]">
+        <section className="w-full bg-white text-content-primary">
             <Container size="lg" className="py-12 sm:py-16">
                 {/* =========================
             SECTION HEADER
@@ -357,49 +355,22 @@ export default function TopCoursesSection() {
                 <header className="mx-auto max-w-[720px] text-center">
                     {/* Eyebrow */}
                     <div className="mb-5 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+                        <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
 
-                        <span
-                            className="
-                text-[15px]
-                font-medium
-                tracking-[-0.1px]
-                text-[#253A7B]
-              "
-                        >
+                        <span className="text-body-small font-medium tracking-[-0.1px] text-brand-primary">
                             Popular Courses
                         </span>
                     </div>
 
                     {/* Heading */}
-                    <h2
-                        className="
-              text-[44px]
-              font-normal
-              leading-[1.02]
-              tracking-[-1.8px]
-              text-[#121314]
-              sm:text-[50px]
-              lg:text-[48px]
-          "
-                    >
+                    <h2 className="text-h2 font-normal text-content-primary">
                         Top Courses to Study
                         <br />
                         Abroad
                     </h2>
 
                     {/* Description */}
-                    <p
-                        className="
-              mx-auto
-              mt-7
-              max-w-[570px]
-              text-[15px]
-              leading-[1.55]
-              text-[#777]
-              sm:text-[16px]
-            "
-                    >
+                    <p className="mx-auto mt-7 max-w-[570px] text-body text-content-secondary">
                         High-demand programmes with excellent ROI, global job prospects,
                         and pathways to permanent residency.
                     </p>
@@ -422,7 +393,7 @@ export default function TopCoursesSection() {
               items-center
               justify-center
               rounded-full
-              text-[#E93F61]
+              text-brand-accent
               transition-colors
               hover:bg-[#fff0f3]
             "
@@ -440,7 +411,7 @@ export default function TopCoursesSection() {
               overflow-x-auto
               rounded-full
               border
-              border-[#e2e2e2]
+              border-border-default
               bg-white
               p-1.5
               scrollbar-none
@@ -459,13 +430,13 @@ export default function TopCoursesSection() {
                     rounded-full
                     px-[17px]
                     py-[11px]
-                    text-[15px]
+                    text-body-small
                     font-medium
                     transition-all
                     duration-200
                     ${isActive
-                                            ? "bg-[#E93F61] text-white"
-                                            : "text-[#253A7B] hover:bg-[#f4f5fa]"
+                                            ? "bg-brand-accent text-white"
+                                            : "text-brand-primary hover:bg-surface-subtle"
                                         }
                   `}
                                 >
@@ -488,7 +459,7 @@ export default function TopCoursesSection() {
               items-center
               justify-center
               rounded-full
-              text-[#E93F61]
+              text-brand-accent
               transition-colors
               hover:bg-[#fff0f3]
             "
@@ -516,9 +487,9 @@ export default function TopCoursesSection() {
               inline-flex
               items-center
               gap-2
-              text-[15px]
+              text-btn
               font-medium
-              text-[#E93F61]
+              text-brand-accent
               transition-all
               hover:gap-3
             "
@@ -538,7 +509,7 @@ export default function TopCoursesSection() {
             flex-col
             gap-6
             rounded-[22px]
-            bg-[#253A7B]
+            bg-brand-primary
             px-6
             py-5
             sm:px-8
@@ -566,7 +537,7 @@ export default function TopCoursesSection() {
                             <GraduationCap
                                 size={38}
                                 strokeWidth={1.8}
-                                className="text-[#253A7B]"
+                                className="text-brand-primary"
                             />
                         </div>
 
@@ -574,12 +545,10 @@ export default function TopCoursesSection() {
                         <div>
                             <h3
                                 className="
-                  text-[22px]
-                  font-medium
-                  leading-[1.2]
-                  tracking-[-0.4px]
+                  font-heading
+                  font-normal
+                  text-h4
                   text-white
-                  sm:text-[24px]
                 "
                             >
                                 Not sure which course fits your profile?
@@ -589,10 +558,9 @@ export default function TopCoursesSection() {
                                 className="
                   mt-1.5
                   max-w-[610px]
-                  text-[14px]
-                  leading-[1.5]
-                  text-[#b6c0dc]
-                  sm:text-[15px]
+                  text-body-small
+                  text-content-on-primary
+                  sm:text-body
                 "
                             >
                                 Our counsellors will analyse your academics, budget & career
@@ -614,16 +582,16 @@ export default function TopCoursesSection() {
               justify-between
               gap-5
               rounded-full
-              bg-[#E93F61]
+              bg-brand-accent
               pl-5
               pr-2
-              text-[15px]
+              text-btn
               font-medium
               text-white
               transition-all
               duration-200
               hover:scale-[1.02]
-              hover:bg-[#d93657]
+              hover:bg-brand-accent-hover
             "
                     >
                         <span>Book Free Counselling</span>
@@ -637,7 +605,7 @@ export default function TopCoursesSection() {
                 justify-center
                 rounded-full
                 bg-white
-                text-[#121314]
+                text-content-primary
               "
                         >
                             <Phone size={17} fill="currentColor" strokeWidth={1.5} />

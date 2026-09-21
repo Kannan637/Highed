@@ -79,7 +79,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
             value={filters.query || ""}
             onChange={(e) => handleQueryChange(e.target.value)}
             placeholder="Search degrees, universities..."
-            className="w-full rounded-xl border border-neutral-300 bg-white py-2.5 pl-10 pr-9 text-xs sm:text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-[#253A7B] focus:outline-none focus:ring-1 focus:ring-[#253A7B]"
+            className="w-full rounded-xl border border-neutral-300 bg-white py-2.5 pl-10 pr-9 text-xs sm:text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-[#253A7B]"
           />
           {filters.query && (
             <button
@@ -112,7 +112,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
               onClick={() => handleTypeChange(item.id as ExploreContentType)}
               className={`flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 filters.type === item.id
-                  ? "bg-[#253A7B] text-white shadow-xs"
+                  ? "bg-brand-primary text-white shadow-xs"
                   : "text-neutral-700 hover:bg-neutral-100"
               }`}
             >
@@ -142,7 +142,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
               <button
                 type="button"
                 onClick={() => handleCountryChange("all")}
-                className="text-[11px] font-semibold text-[#253A7B] hover:underline cursor-pointer"
+                className="text-[11px] font-semibold text-brand-primary hover:underline cursor-pointer"
               >
                 Reset
               </button>
@@ -154,7 +154,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
               onClick={() => handleCountryChange("all")}
               className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 !filters.country
-                  ? "bg-[#253A7B] text-white shadow-xs"
+                  ? "bg-brand-primary text-white shadow-xs"
                   : "text-neutral-700 hover:bg-neutral-100"
               }`}
             >
@@ -173,7 +173,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
                   onClick={() => handleCountryChange(c.slug)}
                   className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-[#253A7B] text-white shadow-xs"
+                      ? "bg-brand-primary text-white shadow-xs"
                       : "text-neutral-700 hover:bg-neutral-100"
                   }`}
                 >
@@ -230,7 +230,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
             id="study-area-select"
             value={filters.area || ""}
             onChange={(e) => handleAreaChange(e.target.value || undefined)}
-            className="w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 text-xs sm:text-sm text-neutral-700 shadow-2xs focus:border-[#253A7B] focus:outline-none cursor-pointer"
+            className="w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 text-xs sm:text-sm text-neutral-700 shadow-2xs focus:border-brand-primary focus:outline-none cursor-pointer"
           >
             <option value="">All Disciplines ({studyAreas.length})</option>
             {studyAreas.map((area) => (

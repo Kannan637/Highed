@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Clock, Briefcase, BookOpen, ArrowRight, Layers } from "lucide-react";
 import { Course } from "@/types/explore";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
@@ -8,74 +9,237 @@ interface CourseCardProps {
   countryName?: string;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({ course, countryName }) => {
+export const CourseCard: React.FC<CourseCardProps> = ({
+  course,
+  countryName,
+}) => {
   return (
-    <div className="group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white p-6 shadow-xs transition-all duration-300 hover:border-[#253A7B]/40 hover:shadow-xl hover:-translate-y-0.5">
-      <div>
-        {/* Header Badges */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="rounded-full bg-[#EEF1FA] px-3 py-1 text-xs font-semibold text-[#253A7B]">
+    <div
+      className="
+        group flex h-full flex-col overflow-hidden
+        rounded-[24px]
+        border border-neutral-200/90
+        bg-white
+        shadow-sm
+        transition-all duration-300
+        hover:border-brand-primary/30
+        hover:shadow-xl
+      "
+    >
+      {/* ================= IMAGE ================= */}
+      <div className="relative p-2.5">
+        <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-neutral-100">
+          <Image
+            src={course.image || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop"}
+            alt={course.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="
+              object-cover
+              transition-transform duration-500
+              group-hover:scale-[1.03]
+            "
+          />
+
+          {/* Course Level */}
+          <span
+            className="
+              absolute left-3 top-3
+              rounded-full
+              bg-white/95
+              px-3 py-1.5
+              font-['DM_Sans']
+              text-[11px]
+              font-medium
+              text-brand-primary
+              shadow-sm
+              backdrop-blur-sm
+            "
+          >
             {course.level}
           </span>
-          <div className="flex items-center gap-1.5 text-xs text-neutral-500 font-medium">
-            <Clock size={13} />
+
+          {/* Duration */}
+          <div
+            className="
+              absolute right-3 top-3
+              flex items-center gap-1.5
+              rounded-full
+              bg-white/95
+              px-3 py-1.5
+              font-['DM_Sans']
+              text-[11px]
+              font-medium
+              text-neutral-700
+              shadow-sm
+              backdrop-blur-sm
+            "
+          >
+            <Clock size={12} />
             <span>{course.duration}</span>
           </div>
         </div>
+      </div>
 
-        {/* Title */}
-        <h3 className="font-heading text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
-          {course.name}
-        </h3>
+      {/* ================= CONTENT ================= */}
+      <div className="flex flex-1 flex-col px-5 pb-5">
+        {/* Course Name */}
+        <div className="mt-1">
+          <h3
+            className="
+              font-['DM_Sans']
+              text-[18px]
+              font-bold
+              leading-[1.25]
+              tracking-[-0.02em]
+              text-neutral-900
+              line-clamp-2
+              transition-colors
+              group-hover:text-brand-primary
+            "
+          >
+            {course.name}
+          </h3>
 
-        {/* Study Area */}
-        <div className="mt-2 flex items-center gap-1.5 text-xs text-neutral-500">
-          <Layers size={13} className="text-neutral-400" />
-          <span>{course.studyArea}</span>
-          {countryName && <span>• {countryName}</span>}
+          {/* Study Area */}
+          <div
+            className="
+              mt-2
+              flex items-center gap-1.5
+              font-['DM_Sans']
+              text-[12px]
+              font-medium
+              text-neutral-500
+            "
+          >
+            <Layers
+              size={14}
+              className="shrink-0 text-neutral-400"
+            />
+
+            <span className="truncate">
+              {course.studyArea}
+              {countryName && ` • ${countryName}`}
+            </span>
+          </div>
         </div>
 
-        {/* Tuition Box */}
-        <div className="mt-4 rounded-xl bg-neutral-50 border border-neutral-200/70 p-3">
-          <div className="text-[11px] font-medium uppercase tracking-wider text-neutral-500">
+        {/* ================= FEE ================= */}
+        <div className="mt-4">
+          <div
+            className="
+              font-['DM_Sans']
+              text-[10px]
+              font-medium
+              uppercase
+              tracking-[0.08em]
+              text-neutral-400
+            "
+          >
             Average Annual Fee
           </div>
-          <div className="mt-0.5 text-sm font-bold text-[#253A7B]">
+
+          <div
+            className="
+              mt-0.5
+              font-['DM_Sans']
+              text-[15px]
+              font-semibold
+              text-brand-primary
+            "
+          >
             {course.averageFee}
           </div>
         </div>
 
-        {/* Career Prospects */}
-        {course.careerProspects && course.careerProspects.length > 0 && (
-          <div className="mt-4">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
-              <Briefcase size={12} />
-              Career Outcomes
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {course.careerProspects.map((career) => (
-                <span
-                  key={career}
-                  className="rounded-md border border-neutral-200 bg-neutral-50/80 px-2 py-0.5 text-[11px] font-medium text-neutral-700"
-                >
-                  {career}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+        {/* ================= CAREER OUTCOMES ================= */}
+        {course.careerProspects &&
+          course.careerProspects.length > 0 && (
+            <div className="mt-4">
+              <div
+                className="
+                  mb-2
+                  flex items-center gap-1.5
+                  font-['DM_Sans']
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.08em]
+                  text-neutral-400
+                "
+              >
+                <Briefcase size={12} />
+                Career Outcomes
+              </div>
 
-      {/* Action Footer */}
-      <div className="mt-6 pt-4 border-t border-neutral-100">
-        <LeadCTAButton
-          source={`explore_course_${course.id}`}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#253A7B] py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-[#1c2c5c] transition-all cursor-pointer active:scale-95"
-        >
-          <BookOpen size={16} />
-          <span>Check Course Eligibility</span>
-          <ArrowRight size={14} />
-        </LeadCTAButton>
+              <div className="flex flex-wrap gap-1.5">
+                {course.careerProspects.slice(0, 3).map((career) => (
+                  <span
+                    key={career}
+                    className="
+                      rounded-[7px]
+                      border border-neutral-200
+                      bg-neutral-50
+                      px-2.5 py-1
+                      font-['DM_Sans']
+                      text-[11px]
+                      font-medium
+                      leading-none
+                      text-neutral-700
+                    "
+                  >
+                    {career}
+                  </span>
+                ))}
+
+                {course.careerProspects.length > 3 && (
+                  <span
+                    className="
+                      rounded-[7px]
+                      bg-neutral-100
+                      px-2 py-1
+                      font-['DM_Sans']
+                      text-[11px]
+                      font-medium
+                      leading-none
+                      text-neutral-600
+                    "
+                  >
+                    +{course.careerProspects.length - 3}
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+        {/* ================= CTA ================= */}
+        <div className="mt-auto pt-5">
+          <div className="border-t border-neutral-200/80 pt-4">
+            <LeadCTAButton
+              source={`explore_course_${course.id}`}
+              variant="ghost"
+              size="sm"
+              className="
+                flex w-full items-center justify-between
+                rounded-[10px]
+                !px-0
+                font-['DM_Sans']
+                text-[13px]
+                font-semibold
+                text-brand-primary
+                transition-colors
+                hover:text-brand-accent
+              "
+            >
+              <span className="flex items-center gap-1.5">
+                <BookOpen size={16} />
+                Check Course Eligibility
+              </span>
+
+              <ArrowRight size={15} />
+            </LeadCTAButton>
+          </div>
+        </div>
       </div>
     </div>
   );

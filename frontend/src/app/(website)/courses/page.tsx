@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import Card from "@/components/ui/Card";
+import IconBox from "@/components/ui/IconBox";
+import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
 export const metadata = constructMetadata({
@@ -24,8 +26,7 @@ export const metadata = constructMetadata({
 const courseCategories = [
   {
     title: "Engineering & Technology",
-    color: "#EEF1FA",
-    iconColor: "#253A7B",
+    variant: "primary" as const,
     courses: [
       "Computer Science & AI",
       "Data Science & Analytics",
@@ -39,8 +40,7 @@ const courseCategories = [
   },
   {
     title: "Business & Management",
-    color: "#FDF0F3",
-    iconColor: "#E93F61",
+    variant: "accent" as const,
     courses: [
       "MBA",
       "Finance & Accounting",
@@ -54,8 +54,7 @@ const courseCategories = [
   },
   {
     title: "Medicine & Healthcare",
-    color: "#EBF5EE",
-    iconColor: "#1E7B47",
+    variant: "success" as const,
     courses: [
       "MBBS / Medicine",
       "Dentistry",
@@ -69,8 +68,7 @@ const courseCategories = [
   },
   {
     title: "Arts, Design & Creative",
-    color: "#FEF9EC",
-    iconColor: "#B38728",
+    variant: "gold" as const,
     courses: [
       "Graphic Design & UX",
       "Architecture",
@@ -84,8 +82,7 @@ const courseCategories = [
   },
   {
     title: "Law & Social Sciences",
-    color: "#EEF1FA",
-    iconColor: "#253A7B",
+    variant: "primary" as const,
     courses: [
       "LLM / Law",
       "International Relations",
@@ -99,8 +96,7 @@ const courseCategories = [
   },
   {
     title: "Sciences & Research",
-    color: "#FDF0F3",
-    iconColor: "#E93F61",
+    variant: "accent" as const,
     courses: [
       "Biotechnology",
       "Environmental Science",
@@ -114,9 +110,16 @@ const courseCategories = [
   },
 ];
 
+const variantBgMap = {
+  primary: "bg-icon-bg-primary",
+  accent: "bg-icon-bg-accent",
+  success: "bg-icon-bg-success",
+  gold: "bg-icon-bg-gold",
+};
+
 export default function CoursesPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
+    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Course Explorer"
@@ -126,21 +129,19 @@ export default function CoursesPage() {
 
         <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {courseCategories.map((cat) => (
-            <div
+            <Card
               key={cat.title}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col rounded-3xl border border-gray-100 bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg overflow-hidden"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col overflow-hidden p-0"
             >
               {/* Header */}
-              <div className="p-6 pb-4" style={{ backgroundColor: cat.color }}>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-xs mb-4">
-                  <BookOpen size={20} style={{ color: cat.iconColor }} />
-                </div>
-                <h3 className="font-heading text-xl font-bold text-[#121314]">{cat.title}</h3>
+              <div className={`p-6 pb-4 ${variantBgMap[cat.variant]}`}>
+                <IconBox icon={BookOpen} variant={cat.variant} className="bg-surface-default shadow-card-resting mb-4" />
+                <h3 className="text-h5 text-content-primary">{cat.title}</h3>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {cat.popularIn.map((country) => (
                     <span
                       key={country}
-                      className="rounded-full bg-white/70 px-2.5 py-0.5 font-body text-[11px] font-semibold text-gray-600"
+                      className="rounded-full bg-white/70 px-2.5 py-0.5 text-caption font-medium text-content-secondary"
                     >
                       {country}
                     </span>
@@ -152,8 +153,8 @@ export default function CoursesPage() {
               <div className="flex flex-1 flex-col p-5">
                 <ul className="space-y-2">
                   {cat.courses.map((course) => (
-                    <li key={course} className="flex items-center gap-2 font-body text-sm text-gray-700">
-                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#E93F61]" />
+                    <li key={course} className="flex items-center gap-2 text-body-small text-content-secondary">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
                       {course}
                     </li>
                   ))}
@@ -161,40 +162,28 @@ export default function CoursesPage() {
               </div>
 
               {/* Footer */}
-              <div className="border-t border-gray-100 px-5 py-4">
+              <div className="border-t border-border-default px-5 py-4">
                 <Link
                   href={`/study-in/${cat.slug}#courses`}
-                  className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#E93F61]"
+                  className="inline-flex items-center gap-1.5 text-body-small font-medium text-brand-primary transition-colors hover:text-brand-accent"
                 >
                   Explore Universities
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 flex flex-col items-center gap-5 rounded-3xl bg-[linear-gradient(135deg,#253A7B,#142456)] px-8 py-14 text-center text-white sm:px-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-xs font-semibold tracking-wide text-white backdrop-blur-xs">
-            <ShieldCheck size={14} className="text-[#E93F61]" />
-            Personalised Course Matching — 100% Free
-          </span>
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            Not Sure Which Course to Pick?
-          </h2>
-          <p className="max-w-xl font-body text-base text-white/85">
-            Tell us your interests, GPA, and career goals. Our counsellors will recommend the best course-country-university combination within 24 hours.
-          </p>
-          <LeadCTAButton
-            source="courses_page_cta"
-            contextTitle="Get My Course Recommendation"
-            contextCTA="Get My Recommendation"
-            className="inline-flex h-12 items-center gap-2.5 rounded-full bg-[#E93F61] px-8 font-body text-base font-semibold text-white shadow-lg transition-all duration-200 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
-          >
-            <span>Get My Course Recommendation</span>
-            <ArrowRight size={18} />
-          </LeadCTAButton>
+        <div className="mt-16">
+          <CTASection
+            badge="Personalised Course Matching — 100% Free"
+            title="Not Sure Which Course to Pick?"
+            subtitle="Tell us your interests, GPA, and career goals. Our counsellors will recommend the best course-country-university combination within 24 hours."
+            ctaLabel="Get My Course Recommendation"
+            ctaSource="courses_page_cta"
+          />
         </div>
       </Container>
     </div>

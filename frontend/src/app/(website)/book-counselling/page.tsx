@@ -1,5 +1,8 @@
 import React from "react";
 import Container from "@/components/ui/Container";
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
+import IconBox from "@/components/ui/IconBox";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { ShieldCheck, Award, Clock, Users, PhoneCall, ArrowRight } from "lucide-react";
 import { constructMetadata } from "@/seo/metadata";
@@ -15,7 +18,7 @@ export const metadata = constructMetadata({
 
 export default function BookCounsellingPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24">
+    <div className="bg-surface-neutral py-16 sm:py-24">
       {/* Auto-open modal on route entry */}
       <AutoOpenLeadPopup />
 
@@ -23,57 +26,51 @@ export default function BookCounsellingPage() {
         <div className="grid grid-cols-4 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Information & Trust */}
           <div className="col-span-4 lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF1FA] px-4 py-1.5 font-body text-xs font-semibold text-[#253A7B]">
+            <Badge variant="primary">
               <ShieldCheck size={16} />
               <span>Official University Representative</span>
-            </div>
+            </Badge>
 
-            <h1 className="mt-4 font-heading text-4xl font-bold tracking-tight text-[#121314] sm:text-5xl">
+            <h1 className="mt-4 text-h1 text-content-primary">
               Take the First Step Towards Your Global Degree
             </h1>
 
-            <p className="mt-4 font-body text-base leading-relaxed text-gray-600 sm:text-lg">
+            <p className="mt-4 text-body leading-relaxed text-content-secondary sm:text-body-large">
               Our experienced counselors provide step-by-step guidance on program selection, university admissions, scholarship filings, and visa documentation. Completely free of charge.
             </p>
 
             <div className="mt-10 space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-xs text-[#253A7B]">
-                  <Users size={22} />
-                </div>
+                <IconBox icon={Users} variant="primary" size="sm" className="bg-surface-default shadow-card-resting" />
                 <div>
-                  <h3 className="font-body text-base font-bold text-[#121314]">
+                  <h3 className="text-body font-medium text-content-primary">
                     1-on-1 Dedicated Advisor
                   </h3>
-                  <p className="font-body text-sm text-gray-500">
+                  <p className="text-body-small text-content-secondary">
                     Get an advisor dedicated to your application from profile evaluation to pre-departure.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-xs text-[#E93F61]">
-                  <Award size={22} />
-                </div>
+                <IconBox icon={Award} variant="accent" size="sm" className="bg-surface-default shadow-card-resting" />
                 <div>
-                  <h3 className="font-body text-base font-bold text-[#121314]">
+                  <h3 className="text-body font-medium text-content-primary">
                     Maximum Scholarship Opportunities
                   </h3>
-                  <p className="font-body text-sm text-gray-500">
+                  <p className="text-body-small text-content-secondary">
                     We match your profile with university and government scholarships up to 100% tuition.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-xs text-[#1E7B47]">
-                  <Clock size={22} />
-                </div>
+                <IconBox icon={Clock} variant="success" size="sm" className="bg-surface-default shadow-card-resting" />
                 <div>
-                  <h3 className="font-body text-base font-bold text-[#121314]">
-                    Fast-Track Offers & Visa Support
+                  <h3 className="text-body font-medium text-content-primary">
+                    Fast-Track Offers &amp; Visa Support
                   </h3>
-                  <p className="font-body text-sm text-gray-500">
+                  <p className="text-body-small text-content-secondary">
                     Direct university portal access for priority processing and 98%+ visa success.
                   </p>
                 </div>
@@ -83,41 +80,41 @@ export default function BookCounsellingPage() {
 
           {/* Right Column: LeadPopup Trigger Card */}
           <div className="col-span-4 lg:col-span-6">
-            <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
-                <PhoneCall size={28} />
-              </div>
+            <Card hover={false} className="p-8 shadow-md sm:p-10">
+              <IconBox icon={PhoneCall} variant="primary" size="lg" />
 
-              <h2 className="mt-6 font-heading text-2xl font-bold text-[#121314] sm:text-3xl">
+              <h2 className="mt-6 text-h3 text-content-primary">
                 Ready to speak with an admissions expert?
               </h2>
 
-              <p className="mt-3 font-body text-base leading-relaxed text-gray-600">
+              <p className="mt-3 text-body leading-relaxed text-content-secondary">
                 Click below to request an instant callback. Enter your phone number and our certified counsellors will evaluate your profile.
               </p>
 
               <div className="mt-8">
                 <LeadCTAButton
                   source="book_counselling_page"
-                  className="flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#E93F61] font-body text-base font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#d93657] active:scale-[0.98] cursor-pointer"
+                  variant="accent"
+                  size="lg"
+                  fullWidth
                 >
                   <span>Book Free Counselling</span>
                   <ArrowRight size={18} />
                 </LeadCTAButton>
               </div>
 
-              <div className="mt-6 border-t border-gray-100 pt-6 text-center">
-                <p className="font-body text-sm text-gray-500">
+              <div className="mt-6 border-t border-border-default pt-6 text-center">
+                <p className="text-body-small text-content-secondary">
                   Prefer calling directly?{" "}
                   <a
                     href="tel:+919050180501"
-                    className="font-bold text-[#253A7B] hover:underline"
+                    className="font-medium text-brand-primary hover:underline"
                   >
                     +91 90501 80501
                   </a>
                 </p>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </Container>

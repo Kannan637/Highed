@@ -2,6 +2,8 @@ import React from "react";
 import { Calendar, Clock, Video, ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -48,7 +50,7 @@ const upcomingEvents = [
 
 export default function EventsPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
+    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Global Events"
@@ -60,35 +62,33 @@ export default function EventsPage() {
           {upcomingEvents.map((evt) => {
             const IconComp = evt.icon;
             return (
-              <div
+              <Card
                 key={evt.title}
-                className="group grid grid-cols-4 items-center gap-6 rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:border-[#253A7B]/20 hover:shadow-md lg:grid-cols-12"
+                className="group grid grid-cols-4 items-center gap-6 p-7 lg:grid-cols-12"
               >
                 <div className="col-span-4 lg:col-span-9">
-                  <div className="flex flex-wrap items-center gap-3 text-xs font-semibold">
-                    <span className="rounded-full bg-[#EEF1FA] px-3.5 py-1 text-[#253A7B]">
-                      {evt.type}
-                    </span>
-                    <div className="flex items-center gap-1.5 text-gray-500">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Badge variant="primary">{evt.type}</Badge>
+                    <div className="flex items-center gap-1.5 text-caption font-medium text-content-secondary">
                       <Calendar size={13} />
                       <span>{evt.date}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-gray-500">
+                    <div className="flex items-center gap-1.5 text-caption font-medium text-content-secondary">
                       <Clock size={13} />
                       <span>{evt.time}</span>
                     </div>
                   </div>
 
-                  <h3 className="mt-3 font-heading text-2xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
+                  <h3 className="mt-3 text-h4 text-content-primary transition-colors group-hover:text-brand-primary">
                     {evt.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-body-small text-content-secondary">
                     {evt.description}
                   </p>
 
-                  <div className="mt-3 flex items-center gap-1.5 text-xs font-medium text-gray-500">
-                    <IconComp size={14} className="text-[#E93F61]" />
+                  <div className="mt-3 flex items-center gap-1.5 text-caption font-medium text-content-secondary">
+                    <IconComp size={14} className="text-brand-accent" />
                     <span>{evt.location}</span>
                   </div>
                 </div>
@@ -96,13 +96,16 @@ export default function EventsPage() {
                 <div className="col-span-4 flex justify-start lg:col-span-3 lg:justify-end">
                   <LeadCTAButton
                     source={`event_${evt.title.toLowerCase().replace(/\s+/g, '_')}`}
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#E93F61] px-7 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#D93657] active:scale-[0.98] cursor-pointer sm:w-auto"
+                    variant="accent"
+                    size="md"
+                    fullWidth
+                    className="sm:w-auto"
                   >
                     <span>Register Free</span>
                     <ArrowRight size={16} />
                   </LeadCTAButton>
                 </div>
-              </div>
+              </Card>
             );
           })}
         </div>

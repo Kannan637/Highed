@@ -21,35 +21,46 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end lg:hidden">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Filter Listings"
+      className="fixed inset-0 z-50 flex flex-col justify-end lg:hidden"
+    >
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Drawer Panel */}
       <div className="relative z-10 max-h-[85vh] w-full overflow-hidden rounded-t-3xl bg-white shadow-2xl flex flex-col animate-in slide-in-from-bottom duration-300">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4">
-          <h3 className="font-heading text-lg font-bold text-neutral-900">
+          <h3 className="font-heading text-lg font-normal text-neutral-900">
             Filter Listings
           </h3>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full p-1 text-neutral-500 hover:bg-neutral-100 cursor-pointer"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-100 cursor-pointer"
             aria-label="Close filters drawer"
           >
             <X size={20} />
@@ -77,7 +88,7 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
               onApply();
               onClose();
             }}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#253A7B] py-3 text-xs sm:text-sm font-semibold text-white hover:bg-[#1b2b5c] transition-colors cursor-pointer shadow-xs"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-primary py-3 text-xs sm:text-sm font-semibold text-white hover:bg-[#1b2b5c] transition-colors cursor-pointer shadow-xs"
           >
             <Check size={16} />
             <span>Apply Filters</span>

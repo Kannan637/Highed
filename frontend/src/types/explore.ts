@@ -10,6 +10,7 @@ export interface University {
   type?: "Public" | "Private" | "Branch Campus";
   studentsCount?: string;
   acceptanceRate?: string;
+  image?: string;
 }
 
 export interface Course {
@@ -22,6 +23,7 @@ export interface Course {
   careerProspects: string[];
   studyArea: string;
   universities?: string[];
+  image?: string;
 }
 
 export interface Scholarship {
@@ -34,6 +36,7 @@ export interface Scholarship {
   type: "Government" | "University" | "Merit" | "Research";
   provider?: string;
   deadline?: string;
+  image?: string;
 }
 
 export type ExploreContentType = "all" | "universities" | "courses" | "scholarships";

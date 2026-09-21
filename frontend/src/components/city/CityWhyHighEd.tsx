@@ -50,22 +50,22 @@ export const CityWhyHighEd: React.FC<CityWhyHighEdProps> = ({ city }) => {
             return (
               <div
                 key={idx}
-                className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200/80 bg-linear-to-b from-white to-neutral-50/50 p-8 shadow-xs transition-all duration-300 hover:border-[#253A7B]/40 hover:shadow-lg"
+                className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200/80 bg-linear-to-b from-white to-neutral-50/50 p-8 shadow-xs transition-all duration-300 hover:border-brand-primary/40 hover:shadow-lg"
               >
                 <div>
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B] shadow-xs">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-icon-bg-primary text-brand-primary shadow-xs">
                     <IconComponent size={28} />
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-neutral-900">
+                  <h3 className="font-heading font-normal text-h4 text-content-primary">
                     {item.title}
                   </h3>
-                  <p className="mt-3 font-body text-base leading-relaxed text-neutral-600">
+                  <p className="mt-3 text-body text-content-secondary leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="mt-6 flex items-center gap-2 pt-4 border-t border-neutral-100 font-body text-xs font-semibold text-[#253A7B]">
-                  <CheckCircle2 size={16} className="text-[#E93F61]" />
+                <div className="mt-6 flex items-center gap-2 pt-4 border-t border-neutral-100 text-caption font-medium text-brand-primary">
+                  <CheckCircle2 size={16} className="text-brand-accent" />
                   <span>Proven success for {city.name} aspirants</span>
                 </div>
               </div>

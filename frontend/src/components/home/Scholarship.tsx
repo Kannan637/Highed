@@ -1,12 +1,7 @@
-"use client";
-
-import {
-    ArrowRight,
-    Phone,
-} from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import Image from "next/image";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
 import Container from "@/components/ui/Container";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 const scholarshipItems = {
     left: [
@@ -22,8 +17,6 @@ const scholarshipItems = {
 };
 
 export default function ScholarshipsLoansSection() {
-    const { openLeadPopup } = useLeadPopup();
-    
     return (
         <section
             className="
@@ -31,7 +24,7 @@ export default function ScholarshipsLoansSection() {
         overflow-hidden
         bg-white
         py-16
-        text-[#121314]
+        text-content-primary
         sm:py-20
         lg:py-[72px]
       "
@@ -44,27 +37,15 @@ export default function ScholarshipsLoansSection() {
                 <div className="text-center">
                     {/* Eyebrow */}
                     <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+                        <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
 
-                        <span className="text-[14px] font-medium text-[#253A7B] sm:text-[15px]">
+                        <span className="text-body-small font-medium text-brand-primary">
                             Scholarships & Loans
                         </span>
                     </div>
 
                     {/* Heading */}
-                    <h2
-                        className="
-              mx-auto
-              max-w-[760px]
-              text-[39px]
-              font-normal
-              leading-[1.03]
-              tracking-[-1.8px]
-              text-[#121314]
-              sm:text-[46px]
-              lg:text-[47px]
-            "
-                    >
+                    <h2 className="mx-auto max-w-[760px] text-h2 font-normal text-content-primary">
                         Scholarships & Education
                         <br />
                         Loan Assistance in Tamil Nadu
@@ -103,7 +84,7 @@ export default function ScholarshipsLoansSection() {
                     max-w-[345px]
                     overflow-hidden
                     rounded-[28px]
-                    bg-[#eef1f5]
+                    bg-surface-neutral-alt
                     shadow-[0_8px_30px_rgba(0,0,0,0.06)]
                   "
                             >
@@ -144,7 +125,7 @@ export default function ScholarshipsLoansSection() {
                     max-w-[345px]
                     overflow-hidden
                     rounded-[26px]
-                    bg-[#eef1f5]
+                    bg-surface-neutral-alt
                   "
                             >
                                 <Image
@@ -174,14 +155,14 @@ export default function ScholarshipsLoansSection() {
                     justify-center
                     rounded-full
                     border
-                    border-[#eeeeee]
-                    bg-[#fafafa]
+                    border-border-default
+                    bg-surface-neutral
                     px-5
                     py-2.5
                     text-center
-                    text-[14px]
+                    text-body-small
                     font-medium
-                    text-[#121314]
+                    text-content-primary
                   "
                                 >
                                     {item}
@@ -209,27 +190,11 @@ export default function ScholarshipsLoansSection() {
                 >
                     {/* Book Counselling */}
 
-                    <button
-                        type="button"
-                        onClick={() => openLeadPopup({ source: "scholarship_counselling" })}
-                        className="
-              group
-              flex
-              h-[55px]
-              items-center
-              justify-between
-              gap-5
-              rounded-full
-              bg-[#E93F61]
-              pl-[18px]
-              pr-2
-              text-[15px]
-              font-medium
-              text-white
-              transition-all
-              duration-200
-              hover:bg-[#d93657]
-            "
+                    <LeadCTAButton
+                        source="scholarship_counselling"
+                        variant="accent"
+                        size="md"
+                        className="group flex h-[55px] items-center justify-between gap-5 rounded-full bg-brand-accent pl-[18px] pr-2 text-btn font-medium text-white transition-all duration-200 hover:bg-brand-accent-hover"
                     >
                         <span className="whitespace-nowrap">
                             Book Free Counselling
@@ -244,42 +209,25 @@ export default function ScholarshipsLoansSection() {
                 justify-center
                 rounded-full
                 bg-white
-                text-[#121314]
+                text-content-primary
               "
                         >
                             <Phone
                                 size={18}
                                 strokeWidth={2}
                                 fill="currentColor"
+                                aria-hidden="true"
                             />
                         </span>
-                    </button>
+                    </LeadCTAButton>
 
                     {/* Explore Scholarships */}
 
-                    <button
-                        type="button"
-                        onClick={() => openLeadPopup({ source: "explore_scholarships" })}
-                        className="
-              group
-              flex
-              h-[55px]
-              items-center
-              justify-between
-              gap-7
-              rounded-full
-              border
-              border-[#121314]
-              bg-white
-              px-5
-              text-[15px]
-              font-medium
-              text-[#121314]
-              transition-all
-              duration-200
-              hover:bg-[#121314]
-              hover:text-white
-            "
+                    <LeadCTAButton
+                        source="explore_scholarships"
+                        variant="outline"
+                        size="md"
+                        className="group flex h-[55px] items-center justify-between gap-7 rounded-full border border-content-primary bg-white px-5 text-btn font-medium text-content-primary transition-all duration-200 hover:bg-content-primary hover:text-white"
                     >
                         <span className="whitespace-nowrap">
                             Explore Scholarships
@@ -288,13 +236,14 @@ export default function ScholarshipsLoansSection() {
                         <ArrowRight
                             size={19}
                             strokeWidth={2}
+                            aria-hidden="true"
                             className="
                 transition-transform
                 duration-200
                 group-hover:translate-x-1
               "
                         />
-                    </button>
+                    </LeadCTAButton>
                 </div>
             </Container>
         </section>
@@ -331,7 +280,7 @@ function ScholarshipLabel({
             h-px
             w-[48px]
             xl:w-[72px]
-            bg-[#d4d4d4]
+            bg-border-default
           "
                 />
             ) : (
@@ -343,7 +292,7 @@ function ScholarshipLabel({
             h-px
             w-[48px]
             xl:w-[72px]
-            bg-[#d4d4d4]
+            bg-border-default
           "
                 />
             )}
@@ -357,14 +306,14 @@ function ScholarshipLabel({
           min-h-[44px]
           items-center
           rounded-full
-          bg-[#fafafa]
+          bg-surface-neutral
           px-4
-          text-[14px]
+          text-body-small
           font-medium
-          text-[#121314]
+          text-content-primary
           shadow-[0_2px_8px_rgba(18,19,20,0.02)]
           border
-          border-[#f0f0f0]
+          border-border-default
           ${side === "left"
                         ? "mr-[40px] xl:mr-[60px]"
                         : "ml-[40px] xl:ml-[60px]"

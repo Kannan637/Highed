@@ -34,7 +34,7 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
         <button
           type="button"
           onClick={() => openLeadPopup({ source: "explore_empty_state" })}
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#E93F61] px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#d93657] transition-all active:scale-95 cursor-pointer"
+          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-accent/90 transition-all active:scale-95 cursor-pointer"
         >
           <Headset size={16} />
           <span>Ask an Expert</span>

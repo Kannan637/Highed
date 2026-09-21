@@ -47,7 +47,7 @@ export default function FAQSection() {
         w-full
         bg-white
         py-16
-        text-[#121314]
+        text-content-primary
         sm:py-20
         lg:py-[80px]
       "
@@ -55,62 +55,53 @@ export default function FAQSection() {
             <Container size="lg">
                 <div className="grid grid-cols-4 lg:grid-cols-12 gap-8">
                     <div className="col-span-4 lg:col-span-8 lg:col-start-3">
-                {/* =====================================================
+                        {/* =====================================================
             HEADER
         ====================================================== */}
 
-                <header className="text-center">
-                    {/* Eyebrow */}
-                    <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+                        <header className="text-center">
+                            {/* Eyebrow */}
+                            <div className="mb-7 flex items-center justify-center gap-2">
+                                <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
 
-                        <span className="text-[14px] font-medium text-[#253A7B] sm:text-[15px]">
-                            FAQ
-                        </span>
-                    </div>
+                                <span className="text-body-small font-medium text-brand-primary">
+                                    FAQ
+                                </span>
+                            </div>
 
-                    {/* Heading */}
-                    <h2
-                        className="
-              mx-auto
-              text-[38px]
-              font-normal
-              leading-[1.02]
-              tracking-[-1.7px]
-              text-[#121314]
-              sm:text-[45px]
-              lg:text-[47px]
-            "
-                    >
-                        Frequently Asked Questions –
-                        <br className="hidden sm:block" />
-                        Study Abroad from Tamil Nadu
-                    </h2>
-                </header>
+                            {/* Heading */}
+                            <h2 className="mx-auto text-h2 font-normal text-content-primary">
+                                Frequently Asked Questions –
+                                <br className="hidden sm:block" />
+                                Study Abroad from Tamil Nadu
+                            </h2>
+                        </header>
 
-                {/* =====================================================
+                        {/* =====================================================
             FAQ ACCORDION
         ====================================================== */}
 
-                <div className="mt-12 sm:mt-14">
-                    {faqs.map((faq, index) => {
-                        const isOpen = openIndex === index;
+                        <div className="mt-12 sm:mt-14">
+                            {faqs.map((faq, index) => {
+                                const isOpen = openIndex === index;
 
-                        return (
-                            <div
-                                key={faq.question}
-                                className="
+                                return (
+                                    <div
+                                        key={faq.question}
+                                        className="
                   border-b
-                  border-[#eeeeee]
+                  border-border-default
                 "
-                            >
-                                {/* Question */}
+                                    >
+                                        {/* Question */}
 
-                                <button
-                                    type="button"
-                                    onClick={() => toggleFAQ(index)}
-                                    aria-expanded={isOpen}
-                                    className="
+                                        <button
+                                            id={`faq-btn-${index}`}
+                                            type="button"
+                                            onClick={() => toggleFAQ(index)}
+                                            aria-expanded={isOpen}
+                                            aria-controls={`faq-answer-${index}`}
+                                            className="
                     group
                     flex
                     w-full
@@ -120,28 +111,25 @@ export default function FAQSection() {
                     py-[15px]
                     text-left
                   "
-                                >
-                                    <span
-                                        className={`
-                      text-[16px]
-                      font-normal
-                      leading-[1.4]
-                      tracking-[-0.2px]
+                                        >
+                                            <span
+                                                className={`
+                      text-body
+                      font-medium
                       transition-colors
-                      sm:text-[17px]
                       ${isOpen
-                                                ? "text-[#253A7B]"
-                                                : "text-[#121314] group-hover:text-[#253A7B]"
-                                            }
+                                                        ? "text-brand-primary"
+                                                        : "text-content-primary group-hover:text-brand-primary"
+                                                    }
                     `}
-                                    >
-                                        {faq.question}
-                                    </span>
+                                            >
+                                                {faq.question}
+                                            </span>
 
-                                    {/* Arrow */}
+                                            {/* Arrow */}
 
-                                    <span
-                                        className="
+                                            <span
+                                                className="
                       flex
                       h-[26px]
                       w-[26px]
@@ -149,94 +137,96 @@ export default function FAQSection() {
                       items-center
                       justify-center
                       rounded-full
-                      bg-[#253A7B]
+                      bg-brand-primary
                       text-white
                       transition-transform
                       duration-300
                       group-hover:scale-105
                     "
-                                    >
-                                        <ChevronDown
-                                            size={17}
-                                            strokeWidth={2.5}
-                                            className={`
+                                            >
+                                                <ChevronDown
+                                                    size={17}
+                                                    strokeWidth={2.5}
+                                                    aria-hidden="true"
+                                                    className={`
                         transition-transform
                         duration-300
                         ${isOpen ? "rotate-180" : "rotate-0"}
                       `}
-                                        />
-                                    </span>
-                                </button>
+                                                />
+                                            </span>
+                                        </button>
 
-                                {/* =================================================
+                                        {/* =================================================
                     ANSWER
                 ================================================== */}
 
-                                <div
-                                    className={`
+                                        <div
+                                            id={`faq-answer-${index}`}
+                                            role="region"
+                                            aria-labelledby={`faq-btn-${index}`}
+                                            className={`
                     grid
                     transition-all
                     duration-300
                     ease-in-out
                     ${isOpen
-                                            ? "grid-rows-[1fr] opacity-100"
-                                            : "grid-rows-[0fr] opacity-0"
-                                        }
+                                                    ? "grid-rows-[1fr] opacity-100"
+                                                    : "grid-rows-[0fr] opacity-0"
+                                                }
                   `}
-                                >
-                                    <div className="overflow-hidden">
-                                        <p
-                                            className="
+                                        >
+                                            <div className="overflow-hidden">
+                                                <p
+                                                    className="
                         max-w-[640px]
                         pb-5
                         pr-10
-                        text-[14px]
-                        leading-[1.65]
-                        text-[#121314]/65
-                        sm:text-[15px]
+                        text-body
+                        text-content-secondary
                       "
-                                        >
-                                            {faq.answer}
-                                        </p>
+                                                >
+                                                    {faq.answer}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+                                );
+                            })}
+                        </div>
 
-                {/* =====================================================
+                        {/* =====================================================
                     BOTTOM CTA
                 ====================================================== */}
-                <div className="mt-12 flex justify-center">
-                    <button
-                        type="button"
-                        onClick={() => openLeadPopup({ source: "faq_cta" })}
-                        className="
+                        <div className="mt-12 flex justify-center">
+                            <button
+                                type="button"
+                                onClick={() => openLeadPopup({ source: "faq_cta" })}
+                                className="
               group
               inline-flex
               items-center
               gap-2
               rounded-full
-              bg-[#E93F61]
+              bg-brand-accent
               px-6
               py-3
-              text-[15px]
+              text-btn
               font-medium
               text-white
               transition-all
               duration-200
-              hover:bg-[#d93657]
+              hover:bg-brand-accent-hover
             "
-                    >
-                        <span>Still have questions? Let&apos;s talk</span>
-                        <ArrowRight
-                            size={18}
-                            strokeWidth={2.2}
-                            className="transition-transform duration-200 group-hover:translate-x-1"
-                        />
-                    </button>
-                </div>
+                            >
+                                <span>Still have questions? Let&apos;s talk</span>
+                                <ArrowRight
+                                    size={18}
+                                    strokeWidth={2.2}
+                                    className="transition-transform duration-200 group-hover:translate-x-1"
+                                />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </Container>

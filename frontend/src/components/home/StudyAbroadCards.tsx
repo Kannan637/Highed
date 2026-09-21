@@ -62,7 +62,7 @@ export const StudyAbroadCards = () => {
                 w-full
                 overflow-hidden
                 rounded-[14px]
-                bg-[#FAFAFA]
+                bg-surface-neutral
                 no-underline
                 transition-all
                 duration-200
@@ -73,9 +73,9 @@ export const StudyAbroadCards = () => {
                 md:flex-col
               "
             >
-            {/* Image */}
-            <div
-              className="
+              {/* Image */}
+              <div
+                className="
                 flex
                 h-[76px]
                 w-[90px]
@@ -86,28 +86,28 @@ export const StudyAbroadCards = () => {
                 md:h-[140px]
                 md:w-full
               "
-              style={{
-                backgroundColor: card.bgColor,
-              }}
-            >
-              {card.image && (
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  width={140}
-                  height={140}
-                  className="
+                style={{
+                  backgroundColor: card.bgColor,
+                }}
+              >
+                {card.image && (
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    width={140}
+                    height={140}
+                    className="
                     h-full
                     w-full
                     object-contain
                   "
-                />
-              )}
-            </div>
+                  />
+                )}
+              </div>
 
-            {/* Content */}
-            <div
-              className="
+              {/* Content */}
+              <div
+                className="
                 flex
                 min-w-0
                 flex-1
@@ -120,33 +120,26 @@ export const StudyAbroadCards = () => {
                 md:flex-none
                 md:w-full
               "
-            >
-              <span
-                className="
-                  text-[16px]
-                  font-medium
-                  leading-[20px]
-                  text-[#111111]
-                "
               >
-                {card.title}
-              </span>
+                <span className="text-body font-medium text-content-primary">
+                  {card.title}
+                </span>
 
-              <ArrowRight
-                size={20}
-                strokeWidth={2}
-                className="
+                <ArrowRight
+                  size={20}
+                  strokeWidth={2}
+                  className="
                   shrink-0
-                  text-[#111111]
+                  text-content-primary
                   transition-transform
                   duration-300
                   ease-out
                   group-hover:translate-x-1
                 "
-              />
-            </div>
-          </button>
-        ))}
+                />
+              </div>
+            </button>
+          ))}
         </div>
       </Container>
     </section>

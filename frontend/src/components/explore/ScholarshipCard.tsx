@@ -1,5 +1,11 @@
 import React from "react";
-import { Award, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import {
+  Award,
+  CheckCircle2,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
 import { Scholarship } from "@/types/explore";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
@@ -13,61 +19,236 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
   countryName,
 }) => {
   return (
-    <div className="group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white p-6 shadow-xs transition-all duration-300 hover:border-[#253A7B]/40 hover:shadow-xl hover:-translate-y-0.5">
-      <div>
-        {/* Badges */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/70 px-3 py-1 text-xs font-bold text-amber-800">
-            <Award size={13} className="text-amber-600 shrink-0" />
+    <div
+      className="
+        group flex h-full flex-col overflow-hidden
+        rounded-[24px]
+        border border-neutral-200/90
+        bg-white
+        shadow-sm
+        transition-all duration-300
+        hover:border-brand-primary/30
+        hover:shadow-xl
+      "
+    >
+      {/* ================= IMAGE ================= */}
+      <div className="relative p-2.5">
+        <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-neutral-100">
+          <Image
+            src={scholarship.image || "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"}
+            alt={scholarship.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="
+              object-cover
+              transition-transform duration-500
+              group-hover:scale-[1.03]
+            "
+          />
+
+          {/* Scholarship Amount */}
+          <div
+            className="
+              absolute left-3 top-3
+              inline-flex items-center gap-1.5
+              rounded-full
+              bg-white/95
+              px-3 py-1.5
+              font-['DM_Sans']
+              text-[11px]
+              font-medium
+              text-brand-primary
+              shadow-sm
+              backdrop-blur-sm
+            "
+          >
+            <Award
+              size={13}
+              className="shrink-0"
+            />
             <span>{scholarship.amount}</span>
           </div>
 
-          <span className="rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-medium text-neutral-600">
+          {/* Scholarship Type */}
+          <span
+            className="
+              absolute right-3 top-3
+              rounded-full
+              bg-white/95
+              px-3 py-1.5
+              font-['DM_Sans']
+              text-[11px]
+              font-medium
+              text-neutral-700
+              shadow-sm
+              backdrop-blur-sm
+            "
+          >
             {scholarship.type}
           </span>
         </div>
+      </div>
 
-        {/* Title */}
-        <h3 className="font-heading text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
-          {scholarship.name}
-        </h3>
+      {/* ================= CONTENT ================= */}
+      <div className="flex flex-1 flex-col px-5 pb-5">
+        {/* Scholarship Name */}
+        <div className="mt-1">
+          <h3
+            className="
+              font-['DM_Sans']
+              text-[18px]
+              font-bold
+              leading-[1.25]
+              tracking-[-0.02em]
+              text-neutral-900
+              line-clamp-2
+              transition-colors
+              group-hover:text-brand-primary
+            "
+          >
+            {scholarship.name}
+          </h3>
 
-        {countryName && (
-          <p className="mt-1 text-xs text-neutral-400">
-            Available in {countryName}
-          </p>
-        )}
+          {/* Country */}
+          {countryName && (
+            <p
+              className="
+                mt-2
+                font-['DM_Sans']
+                text-[12px]
+                font-medium
+                text-neutral-500
+              "
+            >
+              Available in {countryName}
+            </p>
+          )}
+        </div>
 
-        {/* Details list */}
-        <div className="mt-5 space-y-3">
-          <div className="flex items-start gap-2 text-xs sm:text-sm text-neutral-600">
-            <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-600" />
-            <div>
-              <strong className="font-semibold text-neutral-900">Eligibility: </strong>
-              <span>{scholarship.eligibility}</span>
+        {/* ================= DETAILS ================= */}
+        <div
+          className="
+            mt-4
+            rounded-[12px]
+            border border-neutral-200/70
+            bg-neutral-50/70
+            p-3
+          "
+        >
+          {/* Eligibility */}
+          <div className="flex items-start gap-2.5">
+            <CheckCircle2
+              size={16}
+              className="
+                mt-0.5
+                shrink-0
+                text-emerald-600
+              "
+            />
+
+            <div className="min-w-0">
+              <div
+                className="
+                  font-['DM_Sans']
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.08em]
+                  text-neutral-400
+                "
+              >
+                Eligibility
+              </div>
+
+              <p
+                className="
+                  mt-0.5
+                  font-['DM_Sans']
+                  text-[12px]
+                  font-medium
+                  leading-[1.45]
+                  text-neutral-700
+                  line-clamp-2
+                "
+              >
+                {scholarship.eligibility}
+              </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-2 text-xs sm:text-sm text-neutral-600">
-            <ShieldCheck size={16} className="mt-0.5 shrink-0 text-[#253A7B]" />
-            <div>
-              <strong className="font-semibold text-neutral-900">Coverage: </strong>
-              <span>{scholarship.coverage}</span>
+          {/* Divider */}
+          <div className="my-3 border-t border-neutral-200/80" />
+
+          {/* Coverage */}
+          <div className="flex items-start gap-2.5">
+            <ShieldCheck
+              size={16}
+              className="
+                mt-0.5
+                shrink-0
+                text-brand-primary
+              "
+            />
+
+            <div className="min-w-0">
+              <div
+                className="
+                  font-['DM_Sans']
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.08em]
+                  text-neutral-400
+                "
+              >
+                Coverage
+              </div>
+
+              <p
+                className="
+                  mt-0.5
+                  font-['DM_Sans']
+                  text-[12px]
+                  font-medium
+                  leading-[1.45]
+                  text-neutral-700
+                  line-clamp-2
+                "
+              >
+                {scholarship.coverage}
+              </p>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Action Footer */}
-      <div className="mt-6 pt-4 border-t border-neutral-100">
-        <LeadCTAButton
-          source={`explore_scholarship_${scholarship.id}`}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#253A7B] py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-[#1c2c5c] transition-all cursor-pointer active:scale-95"
-        >
-          <Award size={16} />
-          <span>Check Scholarship Eligibility</span>
-          <ArrowRight size={14} />
-        </LeadCTAButton>
+        {/* ================= CTA ================= */}
+        <div className="mt-auto pt-5">
+          <div className="border-t border-neutral-200/80 pt-4">
+            <LeadCTAButton
+              source={`explore_scholarship_${scholarship.id}`}
+              variant="ghost"
+              size="sm"
+              className="
+                flex w-full items-center justify-between
+                rounded-[10px]
+                !px-0
+                font-['DM_Sans']
+                text-[13px]
+                font-semibold
+                text-brand-primary
+                transition-colors
+                hover:text-brand-accent
+              "
+            >
+              <span className="flex items-center gap-1.5">
+                <Award size={16} />
+                Check Scholarship Eligibility
+              </span>
+
+              <ArrowRight size={15} />
+            </LeadCTAButton>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -10,8 +10,7 @@ import { siteConfig } from "@/config/site.config";
 import CountryHero from "@/components/country/CountryHero";
 import CountryFeatureCards from "@/components/country/CountryFeatureCards";
 import CountryWhyStudy from "@/components/country/CountryWhyStudy";
-import CountryUniversities from "@/components/country/CountryUniversities";
-import CountryCourses from "@/components/country/CountryCourses";
+import Countrtcourese from "@/components/country/CountryCourses&university"
 import CountryScholarships from "@/components/country/CountryScholarships";
 import CountryIntakes from "@/components/country/CountryIntakes";
 import CountryVisa from "@/components/country/CountryVisa";
@@ -20,6 +19,8 @@ import CountryWhyHighEd from "@/components/country/CountryWhyHighEd";
 import CountryFAQ from "@/components/country/CountryFAQ";
 import CountryRelatedBlogs from "@/components/country/CountryRelatedBlogs";
 import CountryCTA from "@/components/country/CountryCTA";
+
+import Service from "@/components/home/Service";
 
 interface CountryPageProps {
   params: Promise<{
@@ -93,14 +94,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <CountryHero country={country} />
       <CountryFeatureCards country={country} />
       <CountryWhyStudy country={country} />
-      <CountryUniversities country={country} />
-      <CountryCourses country={country} />
+      <Service />
+      <Countrtcourese country={country} />
       <CountryScholarships country={country} />
       <CountryIntakes country={country} />
       <CountryVisa country={country} />
-      <CountryTestimonials country={country} />
+      <CountryTestimonials />
       <CountryWhyHighEd country={country} />
-      <CountryFAQ country={country} />
+      <CountryFAQ />
       <CountryRelatedBlogs country={country} />
       <CountryCTA country={country} />
     </>

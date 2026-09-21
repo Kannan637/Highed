@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -79,7 +81,7 @@ const articles = [
 
 export default function BlogPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24 font-body">
+    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
       <Container size="lg">
         <SectionHeading
           badge="Insights & Advice"
@@ -89,55 +91,54 @@ export default function BlogPage() {
 
         <div className="mt-12 grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {articles.map((article) => (
-            <div
+            <Card
               key={article.slug}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:shadow-lg"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between p-7"
             >
               <div>
-                <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span className="rounded-full bg-[#EEF1FA] px-3 py-1 font-semibold text-[#253A7B]">
-                    {article.category}
-                  </span>
-                  <div className="flex items-center gap-1.5">
+                <div className="flex items-center justify-between">
+                  <Badge variant="primary">{article.category}</Badge>
+                  <div className="flex items-center gap-1.5 text-caption text-content-secondary">
                     <Clock size={13} />
                     <span>{article.readTime}</span>
                   </div>
                 </div>
 
-                <h3 className="mt-5 font-heading text-xl font-bold leading-snug text-[#121314] transition-colors group-hover:text-[#253A7B]">
+                <h3 className="mt-5 text-h5 leading-snug text-content-primary transition-colors group-hover:text-brand-primary">
                   {article.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mt-3 text-body-small leading-relaxed text-content-secondary">
                   {article.summary}
                 </p>
               </div>
 
-              <div className="mt-6 border-t border-gray-100 pt-4">
+              <div className="mt-6 border-t border-border-default pt-4">
                 <Link
                   href={article.href}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#253A7B] transition-colors group-hover:text-[#E93F61]"
+                  className="inline-flex items-center gap-1.5 text-body-small font-medium text-brand-primary transition-colors group-hover:text-brand-accent"
                 >
                   <span>Explore Destination Guide</span>
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* Lead Generation Callout */}
-        <div className="mt-16 rounded-3xl bg-[#EEF1FA] p-8 text-center sm:p-12">
-          <h3 className="font-heading text-2xl font-bold text-[#253A7B] sm:text-3xl">
+        <div className="mt-16 rounded-[var(--radius-card)] bg-surface-brand-light p-8 text-center sm:p-12">
+          <h3 className="text-h3 text-brand-primary">
             Have Questions About Admission Deadlines or Visas?
           </h3>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-gray-600 sm:text-base">
+          <p className="mx-auto mt-3 max-w-xl text-body-small text-content-secondary sm:text-body">
             Skip the guesswork. Speak directly with a dedicated country specialist advisor today.
           </p>
           <div className="mt-6">
             <LeadCTAButton
               source="blog_cta"
-              className="inline-flex h-12 items-center gap-2 rounded-full bg-[#E93F61] px-8 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#D93657] active:scale-[0.98] cursor-pointer"
+              variant="accent"
+              size="md"
             >
               <span>Get Free Expert Guidance</span>
               <ArrowRight size={16} />

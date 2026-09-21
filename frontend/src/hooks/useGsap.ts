@@ -23,8 +23,8 @@ export function useGsap(
 
     if (prefersReducedMotion) return;
 
-    const ctx = gsap.context(() => {
-      effect(ctx);
+    const ctx = gsap.context((self) => {
+      effect(self as gsap.Context);
     }, scope?.current || undefined);
 
     return () => {

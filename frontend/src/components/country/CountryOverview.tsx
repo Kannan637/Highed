@@ -22,22 +22,22 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
           {/* Main Description */}
           <div className="col-span-1 lg:col-span-7">
             <div className="rounded-[24px] border border-neutral-100 bg-[#FAFAFA] p-8 shadow-sm sm:p-10 md:p-12 transition-shadow hover:shadow-md">
-              <h3 className="font-body text-[24px] sm:text-[28px] md:text-[32px] font-medium leading-tight tracking-tight text-[#111111]">
+              <h3 className="font-heading font-normal text-h3 text-content-primary">
                 An International Education Hub Built for the Future
               </h3>
-              <p className="mt-5 font-body text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-[#555555]">
+              <p className="mt-5 text-body text-content-secondary">
                 {country.description}
               </p>
 
               <div className="mt-10 border-t border-neutral-200/80 pt-8">
-                <h4 className="font-body text-[13px] font-bold uppercase tracking-widest text-[#111111]/60">
+                <h4 className="text-caption font-medium uppercase tracking-widest text-content-secondary">
                   Medium of Instruction & Daily Life
                 </h4>
                 <div className="mt-4 flex flex-wrap gap-2.5">
                   {country.language.map((lang) => (
                     <span
                       key={lang}
-                      className="inline-flex items-center rounded-full bg-white px-4 py-1.5 font-body text-[14px] font-medium text-[#111111] shadow-sm ring-1 ring-inset ring-neutral-200"
+                      className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-body-small font-medium text-content-primary shadow-sm ring-1 ring-inset ring-neutral-200"
                     >
                       {lang}
                     </span>
@@ -55,10 +55,10 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   <Check className="h-[22px] w-[22px]" strokeWidth={2.5} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-body text-[17px] sm:text-[18px] font-medium text-[#111111]">
+                  <h4 className="font-heading font-normal text-h5 text-content-primary">
                     Official Degrees
                   </h4>
-                  <p className="mt-1.5 font-body text-[14px] leading-relaxed text-[#555555]">
+                  <p className="mt-1.5 text-body-small text-content-secondary">
                     Dual accredited degrees recognized in UK, US, Australia & globally.
                   </p>
                 </div>
@@ -71,10 +71,10 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   <Sparkles className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-body text-[17px] sm:text-[18px] font-medium text-[#111111]">
+                  <h4 className="font-heading font-normal text-h5 text-content-primary">
                     Affordable Tuition
                   </h4>
-                  <p className="mt-1.5 font-body text-[14px] leading-relaxed text-[#555555]">
+                  <p className="mt-1.5 text-body-small text-content-secondary">
                     Save up to 40% compared to Western home campus tuition fees.
                   </p>
                 </div>
@@ -87,10 +87,10 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   <Briefcase className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-body text-[17px] sm:text-[18px] font-medium text-[#111111]">
+                  <h4 className="font-heading font-normal text-h5 text-content-primary">
                     High Employability
                   </h4>
-                  <p className="mt-1.5 font-body text-[14px] leading-relaxed text-[#555555]">
+                  <p className="mt-1.5 text-body-small text-content-secondary">
                     Access regional HQs of Fortune 500 tech, finance & logistics giants.
                   </p>
                 </div>

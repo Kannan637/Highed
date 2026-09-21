@@ -63,14 +63,14 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
       {chips.map((chip) => (
         <span
           key={chip.key}
-          className="inline-flex items-center gap-1.5 rounded-full border border-[#253A7B]/20 bg-[#EEF1FA] px-3 py-1 text-xs font-semibold text-[#253A7B]"
+          className="inline-flex items-center gap-1.5 rounded-full border border-brand-primary/20 bg-icon-bg-primary px-3 py-1 text-xs font-semibold text-brand-primary"
         >
           <span>{chip.label}:</span>
           <span className="text-neutral-900">{chip.value}</span>
           <button
             type="button"
             onClick={() => onRemove(chip.key)}
-            className="rounded-full p-0.5 hover:bg-[#253A7B]/10 transition-colors cursor-pointer"
+            className="rounded-full p-0.5 hover:bg-brand-primary/10 transition-colors cursor-pointer"
             aria-label={`Remove ${chip.label} filter`}
           >
             <X size={12} />
@@ -81,7 +81,7 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
       <button
         type="button"
         onClick={onClearAll}
-        className="inline-flex items-center gap-1 text-xs font-semibold text-neutral-500 hover:text-[#E93F61] transition-colors ml-2 cursor-pointer"
+        className="inline-flex items-center gap-1 text-xs font-semibold text-neutral-500 hover:text-brand-accent transition-colors ml-2 cursor-pointer"
       >
         <RotateCcw size={11} />
         <span>Clear All</span>

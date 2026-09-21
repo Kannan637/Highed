@@ -31,7 +31,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
       <div className="mx-auto w-full max-w-[1200px] px-6 py-8">
         {eventsData ? (
           <div>
-            <h3 className="mb-4 font-body text-[17px] font-semibold leading-[24px] text-[#253A7B]">
+            <h3 className="mb-4 text-h5 text-brand-primary">
               Our Events
             </h3>
             <div className="grid grid-cols-4 gap-3">
@@ -40,13 +40,13 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                   href={event.href || "/events"}
                   key={event.label}
                   onClick={onClose}
-                  className="group/item flex items-center gap-3 rounded-xl px-3.5 py-3 font-body text-[15px] font-medium leading-[22px] tracking-[-0.03em] text-[#121314] transition-all duration-200 ease-out hover:bg-[#F5F6FA] hover:text-[#253A7B] hover:translate-x-1"
+                  className="group/item flex items-center gap-3 rounded-xl px-3.5 py-3 font-body text-body-small font-medium tracking-tight text-content-primary transition-all duration-200 ease-out hover:bg-surface-subtle hover:text-brand-primary hover:translate-x-1"
                 >
                   <MenuIcon type={event.icon} />
                   <span className="flex-1">{event.label}</span>
                   <ArrowRight
                     size={15}
-                    className="text-[#253A7B] opacity-0 -translate-x-1 transition-all duration-200 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                    className="text-brand-primary opacity-0 -translate-x-1 transition-all duration-200 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
                     strokeWidth={2}
                   />
                 </Link>
@@ -55,11 +55,11 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
           </div>
         ) : dropdownData && "countries" in dropdownData ? (
           <div>
-            <div className="mb-5 border-b border-gray-100 pb-3">
-              <h3 className="font-body text-[20px] font-semibold tracking-[-0.02em] text-[#253A7B]">
+            <div className="mb-5 border-b border-border-default pb-3">
+              <h3 className="text-h4 text-brand-primary">
                 Top Countries We&apos;re Serving
               </h3>
-              <p className="mt-1 font-body text-[14px] text-gray-500">
+              <p className="mt-1 font-body text-body-small text-content-secondary">
                 Discover global study destinations with world-class universities and top career prospects.
               </p>
             </div>
@@ -70,7 +70,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                   href={country.href || `/study-in/${country.name.toLowerCase()}`}
                   key={country.name}
                   onClick={onClose}
-                  className="group/item flex flex-col items-center gap-2.5 rounded-2xl border border-gray-100 bg-[#FAFAFC] p-4 text-center transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[#253A7B]/30 hover:bg-white hover:shadow-md"
+                  className="group/item flex flex-col items-center gap-2.5 rounded-2xl border border-border-default bg-surface-neutral p-4 text-center transition-all duration-200 ease-out hover:-translate-y-1 hover:border-brand-primary/30 hover:bg-white hover:shadow-md"
                 >
                   <span className="flex h-[42px] w-[42px] items-center justify-center overflow-hidden rounded-full bg-white shadow-xs transition-transform duration-200 ease-out group-hover/item:scale-105">
                     <ReactCountryFlag
@@ -85,11 +85,11 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                     />
                   </span>
 
-                  <span className="font-body text-[15px] font-semibold leading-[22px] tracking-[-0.03em] text-[#121314] transition-colors duration-200 group-hover/item:text-[#253A7B]">
+                  <span className="font-body text-body-small font-medium tracking-tight text-content-primary transition-colors duration-200 group-hover/item:text-brand-primary">
                     {country.name}
                   </span>
 
-                  <span className="flex items-center gap-1 font-body text-[12px] text-gray-500 transition-colors duration-200 group-hover/item:text-[#253A7B]">
+                  <span className="flex items-center gap-1 font-body text-caption text-content-secondary transition-colors duration-200 group-hover/item:text-brand-primary">
                     Explore
                     <ArrowRight
                       size={12}
@@ -100,19 +100,19 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
               ))}
             </div>
 
-            <div className="mt-6 flex items-center justify-between rounded-xl border border-gray-100 bg-[#F8F9FE] px-5 py-3">
-              <div className="flex items-center gap-2.5 font-body text-[13px] text-[#121314]">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EBF5EE] text-[#1E7B47]">
+            <div className="mt-6 flex items-center justify-between rounded-xl border border-border-default bg-[#F8F9FE] px-5 py-3">
+              <div className="flex items-center gap-2.5 font-body text-caption text-content-primary">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-icon-bg-success text-[#1E7B47]">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </span>
-                <span className="font-medium text-gray-700">
-                  Trusted by <strong className="font-semibold text-[#121314]">10,000+ students</strong> +{" "}
-                  <strong className="font-semibold text-[#121314]">500+ global universities</strong>
+                <span className="font-medium text-content-secondary">
+                  Trusted by <strong className="font-medium text-content-primary">10,000+ students</strong> +{" "}
+                  <strong className="font-medium text-content-primary">500+ global universities</strong>
                 </span>
               </div>
-              <span className="font-body text-[13px] font-medium text-gray-500">
+              <span className="font-body text-caption font-medium text-content-secondary">
                 Official University Representative
               </span>
             </div>
@@ -121,7 +121,7 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
           <div className="grid grid-cols-3 gap-x-12">
             {dropdownData.columns.map((column) => (
               <div key={column.title}>
-                <h3 className="mb-3 font-body text-[15px] font-semibold leading-[22px] tracking-[-0.02em] text-[#253A7B]">
+                <h3 className="mb-3 text-h5 text-brand-primary">
                   {column.title}
                 </h3>
                 <div className="space-y-0.5">
@@ -130,13 +130,13 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                       href={item.href || "#"}
                       key={item.label}
                       onClick={onClose}
-                      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 font-body text-[14.5px] font-medium leading-[22px] tracking-[-0.03em] text-[#121314] transition-all duration-200 ease-out hover:bg-[#F5F6FA] hover:text-[#253A7B] hover:translate-x-1"
+                      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 font-body text-body-small font-medium tracking-tight text-content-primary transition-all duration-200 ease-out hover:bg-surface-subtle hover:text-brand-primary hover:translate-x-1"
                     >
                       <MenuIcon type={item.icon} />
                       <span className="flex-1">{item.label}</span>
                       <ArrowRight
                         size={15}
-                        className="text-[#253A7B] opacity-0 -translate-x-1 transition-all duration-200 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                        className="text-brand-primary opacity-0 -translate-x-1 transition-all duration-200 ease-out group-hover/item:opacity-100 group-hover/item:translate-x-0"
                         strokeWidth={2}
                       />
                     </Link>

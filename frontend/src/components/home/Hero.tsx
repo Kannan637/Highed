@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import Container from "@/components/ui/Container";
 import Image from "next/image";
 import { ArrowRight, GraduationCap, Building2, ShieldCheck, Globe } from "lucide-react";
 import gsap from "gsap";
@@ -351,7 +352,7 @@ function Hero() {
                 w-full
                 flex-col
                 overflow-hidden
-                bg-[linear-gradient(180deg,#253A7B,#12204C)]
+                bg-[linear-gradient(180deg,var(--color-brand-primary),#12204C)]
             "
         >
 
@@ -360,26 +361,20 @@ function Hero() {
                 HERO
             ====================================================== */}
             <section className="relative z-10 w-full overflow-hidden text-white">
-                <div
+                <Container
                     ref={heroContentRef}
+                    size="lg"
                     className="
                         relative
-                        mx-auto
                         flex
-                        w-full
-                        max-w-7xl
-                        2xl:max-w-[1440px]
                         flex-col
                         items-center
-                        px-6
                         pt-16
                         pb-16
                         text-center
-                        sm:px-8
                         sm:pt-18
                         sm:pb-24
                         md:pb-32
-                        2xl:px-12
                     "
                 >
                     {/* =================================================
@@ -408,7 +403,7 @@ function Hero() {
                                 items-center
                                 justify-center
                                 rounded-full
-                                bg-[#E93F61]
+                                bg-brand-accent
                                 text-[13px]
                                 font-bold
                                 text-white
@@ -433,7 +428,7 @@ function Hero() {
                                 py-1.5
                                 text-[11px]
                                 font-medium
-                                text-[#111827]
+                                text-content-primary
                                 shadow-sm
                                 select-none
                             "
@@ -480,7 +475,7 @@ function Hero() {
                                 py-1.5
                                 text-[11px]
                                 font-medium
-                                text-[#111827]
+                                text-content-primary
                                 shadow-sm
                                 select-none
                             "
@@ -503,7 +498,7 @@ function Hero() {
                                 items-center
                                 justify-center
                                 rounded-full
-                                bg-[#D6B66A]
+                                bg-brand-gold
                                 text-[13px]
                                 font-bold
                                 text-white
@@ -524,7 +519,7 @@ function Hero() {
                             h-7.5
                             items-center
                             rounded-full
-                            bg-[#E93F61]
+                            bg-brand-accent
                             px-3.5
                             text-[12px]
                             font-medium
@@ -545,23 +540,12 @@ function Hero() {
                     <h1
                         className="
                             max-w-[800px]
-                            font-body
-                            text-[44px]
-                            font-medium
-                            leading-[1.04]
-                            tracking-[-1.8px]
-                            sm:text-[52px]
-                            sm:tracking-[-2px]
-                            md:text-[60px]
-                            md:leading-[1.05]
-                            md:tracking-[-2.2px]
-                            lg:text-[66px]
-                            lg:leading-[1.05]
-                            lg:tracking-[-2.5px]
+                            text-display
+                            text-white
                         "
                     >
                         Study Abroad{" "}
-                        <span className="text-[#E93F61]">
+                        <span className="text-brand-accent">
                             Advisors
                         </span>
                         <br />
@@ -578,12 +562,7 @@ function Hero() {
                             md:mt-8
                             max-w-[720px]
                             px-2
-                            text-[15px]
-                            sm:text-[16.5px]
-                            md:text-[17px]
-                            font-normal
-                            leading-relaxed
-                            sm:leading-[27px]
+                            text-body-large
                             text-white/85
                         "
                     >
@@ -611,7 +590,7 @@ function Hero() {
                                 rounded-full
                                 bg-gradient-to-r
                                 from-[#FF5E7E]
-                                via-[#E93F61]
+                                via-brand-accent
                                 to-[#FF5E7E]
                                 p-[2px]
                                 cursor-pointer
@@ -660,16 +639,14 @@ function Hero() {
                                     justify-center
                                     gap-2.5
                                     rounded-full
-                                    bg-[#E93F61]
+                                    bg-brand-accent
                                     px-6
                                     sm:px-7
-                                    text-[15px]
-                                    sm:text-[16px]
-                                    font-semibold
+                                    text-btn
                                     text-white
                                     transition-colors
                                     duration-300
-                                    group-hover:bg-[#d83556]
+                                    group-hover:bg-brand-accent-hover
                                 "
                             >
                                 <span>Book Free Counselling</span>
@@ -705,9 +682,7 @@ function Hero() {
                                 bg-transparent
                                 px-6
                                 sm:px-7
-                                font-body
-                                text-[16px]
-                                font-medium
+                                text-btn
                                 text-white
                                 transition-all
                                 duration-300
@@ -742,7 +717,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-caption sm:text-body-small md:text-body font-medium text-white/95 leading-snug">
                                     1000+ Students Placed
                                 </span>
                             </div>
@@ -752,7 +727,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-caption sm:text-body-small md:text-body font-medium text-white/95 leading-snug">
                                     500+ Global Universities
                                 </span>
                             </div>
@@ -762,7 +737,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-caption sm:text-body-small md:text-body font-medium text-white/95 leading-snug">
                                     95%+ Visa Success Rate
                                 </span>
                             </div>
@@ -772,7 +747,7 @@ function Hero() {
                                     strokeWidth={1.9}
                                     aria-hidden="true"
                                 />
-                                <span className="font-body text-[12.5px] min-[380px]:text-[13.5px] sm:text-[14px] md:text-[15px] lg:text-[16px] font-medium text-white/95 leading-snug">
+                                <span className="font-body text-caption sm:text-body-small md:text-body font-medium text-white/95 leading-snug">
                                     50+ Countries Covered
                                 </span>
                             </div>
@@ -811,7 +786,7 @@ function Hero() {
                                 items-center
                                 justify-center
                                 rounded-full
-                                bg-[#E93F61]
+                                bg-brand-accent
                                 text-[14px]
                                 font-bold
                                 text-white
@@ -841,7 +816,7 @@ function Hero() {
                                 py-2
                                 text-[14px]
                                 font-medium
-                                text-[#111827]
+                                text-content-primary
                                 shadow-sm
                                 transition-shadow
                                 duration-200
@@ -897,7 +872,7 @@ function Hero() {
                                 py-2
                                 text-[14px]
                                 font-medium
-                                text-[#111827]
+                                text-content-primary
                                 shadow-sm
                                 transition-shadow
                                 duration-200
@@ -923,7 +898,7 @@ function Hero() {
                                 items-center
                                 justify-center
                                 rounded-full
-                                bg-[#D6B66A]
+                                bg-brand-gold
                                 text-[14px]
                                 font-bold
                                 text-white
@@ -976,7 +951,7 @@ function Hero() {
                                 items-center
                                 justify-center
                                 rounded-full
-                                bg-[#D6B66A]
+                                bg-brand-gold
                                 text-[14px]
                                 font-bold
                                 text-white
@@ -1006,7 +981,7 @@ function Hero() {
                                 py-2
                                 text-[14px]
                                 font-medium
-                                text-[#111827]
+                                text-content-primary
                                 shadow-sm
                                 transition-shadow
                                 duration-200
@@ -1022,7 +997,7 @@ function Hero() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Container>
             </section>
 
             {/* =========================================================
@@ -1079,7 +1054,6 @@ function Hero() {
                         src="/images/hero/ChatGPT Image Sep 14, 2026, 09_45_43 AM.webp"
                         alt=""
                         fill
-                        priority
                         sizes="100vw"
                         className="
       object-cover

@@ -21,7 +21,7 @@ export const ExploreSort: React.FC<ExploreSortProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.value as ExploreSortOption)}
         aria-label="Sort listings"
-        className="rounded-xl border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-2xs focus:border-[#253A7B] focus:outline-none cursor-pointer"
+        className="rounded-xl border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-2xs focus:border-brand-primary focus:outline-none cursor-pointer"
       >
         <option value="recommended">Recommended</option>
         <option value="name">Alphabetical (A-Z)</option>

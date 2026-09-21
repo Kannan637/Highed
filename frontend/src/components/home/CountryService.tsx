@@ -12,6 +12,7 @@ import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 import gsap from "gsap";
 import Image from "next/image";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
+import Container from "@/components/ui/Container";
 
 type Destination = {
     country: string;
@@ -258,40 +259,26 @@ export default function StudyDestinations() {
                 w-full
                 overflow-hidden
                 bg-white
-                px-6
                 py-16
-                text-[#121314]
-                sm:px-8
+                text-content-primary
                 sm:py-20
-                lg:px-8
-                2xl:px-12
                 lg:py-[88px]
             "
         >
-            <div className="mx-auto max-w-7xl 2xl:max-w-[1440px]">
+            <Container size="lg">
                 {/* =====================================================
             HEADER
         ====================================================== */}
                 <div className="mx-auto max-w-[760px] text-center">
                     <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
+                        <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
 
-                        <span className="text-[14px] font-medium text-[#253A7B] sm:text-[15px]">
+                        <span className="text-body-small font-medium text-brand-primary">
                             Study Destinations
                         </span>
                     </div>
 
-                    <h2
-                        className="
-              text-[40px]
-              font-normal
-              leading-[1.03]
-              tracking-[-1.8px]
-              text-[#121314]
-              sm:text-[48px]
-              lg:text-[50px]
-            "
-                    >
+                    <h2 className="text-h2 font-normal text-content-primary">
                         Study Abroad from Coimbatore
                         <br />
                         – Top Destinations
@@ -347,12 +334,12 @@ export default function StudyDestinations() {
                 items-center
                 justify-center
                 rounded-full
-                bg-[#253A7B]
+                bg-brand-primary
                 text-white
                 shadow-[0_8px_20px_rgba(37,58,123,0.22)]
                 transition-all
                 hover:scale-105
-                hover:bg-[#1f3168]
+                hover:bg-brand-primary-hover
               "
                         >
                             <ArrowLeft size={21} strokeWidth={2.2} />
@@ -375,12 +362,12 @@ export default function StudyDestinations() {
                 items-center
                 justify-center
                 rounded-full
-                bg-[#253A7B]
+                bg-brand-primary
                 text-white
                 shadow-[0_8px_20px_rgba(37,58,123,0.22)]
                 transition-all
                 hover:scale-105
-                hover:bg-[#1f3168]
+                hover:bg-brand-primary-hover
               "
                         >
                             <ArrowRight size={21} strokeWidth={2.2} />
@@ -431,7 +418,7 @@ export default function StudyDestinations() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-[#253A7B]
+                  bg-brand-primary
                   text-white
                 "
                             >
@@ -451,7 +438,7 @@ export default function StudyDestinations() {
                       rounded-full
                       transition-all
                       ${index === activeIndex
-                                                ? "w-6 bg-[#E93F61]"
+                                                ? "w-6 bg-brand-accent"
                                                 : "w-1.5 bg-[#cfd3dc]"
                                             }
                     `}
@@ -470,7 +457,7 @@ export default function StudyDestinations() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-[#253A7B]
+                  bg-brand-primary
                   text-white
                 "
                             >
@@ -495,9 +482,9 @@ export default function StudyDestinations() {
               rounded-full
               px-5
               py-2.5
-              text-[15px]
+              text-btn
               font-medium
-              text-[#E93F61]
+              text-brand-accent
               transition-all
               hover:bg-[#fff1f4]
             "
@@ -511,7 +498,7 @@ export default function StudyDestinations() {
                         />
                     </button>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
@@ -558,7 +545,7 @@ function DestinationCard({
         h-[435px]
         overflow-hidden
         rounded-[27px]
-        bg-[#eef1f5]
+        bg-surface-neutral-alt
         ${isActive
                     ? "relative w-full shadow-[0_16px_40px_rgba(18,19,20,0.10)]"
                     : "absolute top-0 w-[345px] cursor-pointer"
@@ -575,7 +562,7 @@ function DestinationCard({
             {/* =====================================================
           IMAGE
       ====================================================== */}
-            <div ref={imageRef} className="absolute inset-0 bg-[#e8ebf0]">
+            <div ref={imageRef} className="absolute inset-0 bg-surface-neutral-alt">
                 <Image
                     src={destination.image}
                     alt={`${destination.country} study destination`}
@@ -593,8 +580,8 @@ function DestinationCard({
           absolute
           inset-0
           bg-gradient-to-t
-          from-[#121314]
-          via-[#121314]/45
+          from-content-primary
+          via-content-primary/45
           to-transparent
           ${isActive
                         ? "opacity-85"
@@ -607,7 +594,7 @@ function DestinationCard({
           SIDE CARD OVERLAY
       ====================================================== */}
             {!isActive && (
-                <div className="absolute inset-0 bg-[#253A7B]/10 transition-colors hover:bg-transparent" />
+                <div className="absolute inset-0 bg-brand-primary/10 transition-colors hover:bg-transparent" />
             )}
 
             {/* =====================================================
@@ -634,17 +621,15 @@ function DestinationCard({
                     <MapPin
                         size={17}
                         strokeWidth={2.2}
-                        className="text-[#E93F61]"
+                        className="text-brand-accent"
                     />
 
                     <h3
                         className={`
-              font-medium
+              font-heading
+              font-normal
               tracking-[-0.7px]
-              ${isActive
-                                ? "text-[29px] sm:text-[31px]"
-                                : "text-[26px]"
-                            }
+              ${isActive ? "text-h3" : "text-h4"}
             `}
                     >
                         {destination.country}
@@ -655,11 +640,11 @@ function DestinationCard({
                 <p
                     className={`
             max-w-[540px]
-            text-[14px]
+            text-body-small
             leading-[1.55]
             text-white/90
             ${isActive
-                            ? "sm:text-[15px]"
+                            ? "sm:text-body"
                             : "line-clamp-2"
                         }
           `}
@@ -679,14 +664,14 @@ function DestinationCard({
               items-center
               gap-2
               rounded-full
-              bg-[#E93F61]
+              bg-brand-accent
               px-4
               py-2
-              text-[14px]
+              text-btn
               font-medium
               text-white
               transition-all
-              hover:bg-[#d93657]
+              hover:bg-brand-accent-hover
             "
                     >
                         <span>Explore</span>
@@ -718,7 +703,7 @@ function DestinationCard({
             bg-white/10
             px-3.5
             py-2
-            text-[12px]
+            text-caption
             font-medium
             text-white
             backdrop-blur-md

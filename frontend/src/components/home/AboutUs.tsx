@@ -1,5 +1,3 @@
-"use client";
-
 import {
     BriefcaseBusiness,
     ArrowRight,
@@ -7,7 +5,7 @@ import {
 
 import Image from "next/image";
 import Container from "@/components/ui/Container";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 /* =========================================================
    COMPANY LOGOS
@@ -157,7 +155,7 @@ function TrustBadge({
           w-[7px]
           shrink-0
           rounded-full
-          bg-[#E93F61]
+          bg-brand-accent
         "
             />
 
@@ -166,7 +164,7 @@ function TrustBadge({
           whitespace-nowrap
           text-[13px]
           font-medium
-          text-[#E93F61]
+          text-brand-accent
         "
             >
                 {text}
@@ -180,15 +178,13 @@ function TrustBadge({
 ========================================================= */
 
 export default function AboutSection() {
-    const { openLeadPopup } = useLeadPopup();
-
     return (
         <section
             className={`
         relative
         w-full
         overflow-hidden
-        bg-[#253A7B]
+        bg-brand-primary
         text-white
       `}
         >
@@ -241,7 +237,7 @@ export default function AboutSection() {
       ====================================================== */}
 
             <Container size="lg" className="relative z-10">
-                <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 items-center lg:min-h-[800px]">
+                <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:min-h-[800px]">
                     {/* ===================================================
                         LEFT — STUDENT VISUAL
                     ==================================================== */}
@@ -265,55 +261,50 @@ export default function AboutSection() {
                             lg:order-1
                         "
                     >
-                    {/* =================================================
+                        {/* =================================================
               STUDENT IMAGE PLACEHOLDER
           ================================================== */}
 
-                    <div
-                        className="
-    relative
-    z-10
-    h-[420px]
-    w-full
-    max-w-[340px]
-    sm:max-w-none
-    sm:h-[680px]
-    sm:w-[540px]
-    lg:absolute
-    lg:bottom-0
-    lg:left-[-20px]
-    lg:h-[850px]
-    lg:w-[680px]
-  "
-                    >
-                        <Image
-                            src="/images/about/ChatGPT Image Sep 14, 2026, 12_10_06 PM.webp"
-                            alt="Student"
-                            fill
-                            sizes="(max-width: 640px) 340px, (max-width: 1024px) 540px, 680px"
-                            priority
-                            className="object-contain object-bottom"
-                        />
-                    </div>
+                        <div
+                            className="
+                            relative
+                            z-10
+                            w-full
+                            max-w-[340px]
+                            sm:max-w-[480px]
+                            lg:max-w-[580px]
+                            xl:max-w-[620px]
+                            lg:ml-[-20px]
+                        "
+                        >
+                            <Image
+                                src="/images/about/ChatGPT Image Sep 14, 2026, 12_10_06 PM.webp"
+                                alt="HighEd international student"
+                                width={1145}
+                                height={1374}
+                                sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 620px"
+                                className="block w-full h-auto object-contain object-bottom"
+                            />
+                        </div>
 
-                    {/* =================================================
+                        {/* =================================================
               DESKTOP TRUST BADGES
           ================================================== */}
 
-                    {trustPoints.map((point) => (
-                        <TrustBadge
-                            key={point.text}
-                            text={point.text}
-                            position={point.position}
-                        />
-                    ))}
+                        {trustPoints.map((point) => (
+                            <TrustBadge
+                                key={point.text}
+                                text={point.text}
+                                position={point.position}
+                            />
+                        ))}
 
-                    {/* =================================================
+                        {/* =================================================
               MOBILE TRUST BADGES
           ================================================== */}
 
-                    <div
-                        className="
+                        <div
+                            className="
               absolute
               bottom-7
               left-1/2
@@ -326,9 +317,9 @@ export default function AboutSection() {
               gap-2
               md:hidden
             "
-                    >
-                        <div
-                            className="
+                        >
+                            <div
+                                className="
                 flex
                 items-center
                 gap-2
@@ -340,38 +331,41 @@ export default function AboutSection() {
                 py-2
                 shadow-[0_8px_20px_rgba(18,19,20,0.15)]
               "
-                        >
-                            <span
-                                className="
+                            >
+                                <span
+                                    className="
                   h-[7px]
                   w-[7px]
                   rounded-full
-                  bg-[#E93F61]
+                  bg-brand-accent
                 "
-                            />
+                                />
 
-                            <span
-                                className="
-                  text-[12px]
+                                <span
+                                    className="
+                  text-caption
                   font-medium
-                  text-[#E93F61]
+                  text-brand-accent
                 "
-                            >
-                                Trusted by Students & Parents
-                            </span>
+                                >
+                                    Trusted by Students & Parents
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* ===================================================
+                    {/* ===================================================
                     RIGHT — CONTENT
                 ==================================================== */}
 
-                <div
-                    className="
+                    <div
+                        className="
                         col-span-4
                         lg:col-span-6
                         relative
+                        flex
+                        flex-col
+                        justify-center
                         z-20
                         px-0
                         pb-10
@@ -382,13 +376,13 @@ export default function AboutSection() {
                         order-1
                         lg:order-2
                     "
-                >
-                    {/* =================================================
+                    >
+                        {/* =================================================
               EYEBROW
           ================================================== */}
 
-                    <div
-                        className="
+                        <div
+                            className="
               mb-7
               flex
               items-center
@@ -396,104 +390,95 @@ export default function AboutSection() {
               lg:justify-start
               gap-2
             "
-                    >
-                        <span
-                            className="
+                        >
+                            <span
+                                className="
                 h-[7px]
                 w-[7px]
                 rounded-full
                 bg-white
               "
-                        />
+                            />
 
-                        <span
-                            className="
-                text-[14px]
+                            <span
+                                className="
+                text-body-small
                 font-medium
                 text-white
-                sm:text-[15px]
               "
-                        >
-                            About Us
-                        </span>
-                    </div>
+                            >
+                                About Us
+                            </span>
+                        </div>
 
-                    {/* =================================================
+                        {/* =================================================
               HEADING
           ================================================== */}
 
-                    <h2
-                        className="
+                        <h2
+                            className="
               mx-auto
               lg:mx-0
               max-w-[680px]
-              text-[40px]
-              font-normal
-              leading-[1.02]
-              tracking-[-1.8px]
+              text-h2
               text-white
-              sm:text-[47px]
-              lg:text-[48px]
             "
-                    >
-                        Leading Overseas{" "}
-                        <span className="text-[#E93F61]">
-                            Education
-                        </span>
-                        <br />
-                        Advisors in Coimbatore
-                    </h2>
+                        >
+                            Leading Overseas{" "}
+                            <span className="text-brand-accent">
+                                Education
+                            </span>
+                            <br />
+                            Advisors in Coimbatore
+                        </h2>
 
-                    {/* =================================================
+                        {/* =================================================
               ABOUT COPY
           ================================================== */}
 
-                    <div
-                        className="
+                        <div
+                            className="
               mx-auto
               lg:mx-0
               mt-14
               max-w-[610px]
               space-y-7
-              text-[15px]
-              leading-[1.6]
+              text-body
               text-white
-              sm:text-[16px]
-              lg:text-[17px]
             "
-                    >
-                        <p>
-                            HighEd is a trusted overseas education advisory
-                            helping students across Tamil Nadu achieve their
-                            study abroad goals with personalized counselling
-                            and transparent guidance.
-                        </p>
+                        >
+                            <p>
+                                HighEd is a trusted overseas education advisory
+                                helping students across Tamil Nadu achieve their
+                                study abroad goals with personalized counselling
+                                and transparent guidance.
+                            </p>
 
-                        <p>
-                            From Chennai and Coimbatore to Madurai, Trichy,
-                            Salem, Tirunelveli and other cities, our experienced
-                            counsellors simplify university selection,
-                            applications, scholarships, education loans and
-                            student visa processes.
-                        </p>
+                            <p>
+                                From Chennai and Coimbatore to Madurai, Trichy,
+                                Salem, Tirunelveli and other cities, our experienced
+                                counsellors simplify university selection,
+                                applications, scholarships, education loans and
+                                student visa processes.
+                            </p>
 
-                        <p>
-                            With strong global university partnerships and
-                            student-focused guidance, we help aspiring students
-                            choose the right country, course and university for
-                            their academic and career goals.
-                        </p>
-                    </div>
+                            <p>
+                                With strong global university partnerships and
+                                student-focused guidance, we help aspiring students
+                                choose the right country, course and university for
+                                their academic and career goals.
+                            </p>
+                        </div>
 
-                    {/* =================================================
+                        {/* =================================================
               COMPANY OUTCOMES
           ================================================== */}
 
-                    <div className="mt-10">
-                        {/* Label */}
+                        <div className="mt-10">
+                            {/* Label */}
 
-                        <div
-                            className="
+                            <div
+                                className="
                 mb-4
                 flex
                 items-center
@@ -501,94 +486,77 @@ export default function AboutSection() {
                 lg:justify-start
                 gap-2
               "
-                        >
-                            <BriefcaseBusiness
-                                size={15}
-                                strokeWidth={2}
-                                className="text-[#E93F61]"
-                            />
+                            >
+                                <BriefcaseBusiness
+                                    size={15}
+                                    strokeWidth={2}
+                                    className="text-brand-accent"
+                                />
 
-                            <span
-                                className="
-                  text-[13px]
+                                <span
+                                    className="
+                  text-body-small
                   font-medium
                   text-white/80
-                  sm:text-[14px]
                 "
-                            >
-                                Our students work at leading global companies
-                            </span>
-                        </div>
+                                >
+                                    Our students work at leading global companies
+                                </span>
+                            </div>
 
-                        {/* =================================================
+                            {/* =================================================
                 COMPANY LOGOS
             ================================================== */}
 
-                        <div className="group relative mx-auto lg:mx-0 w-full max-w-[570px] overflow-hidden py-2">
-                            {/* Fade edges */}
-                            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#253A7B] to-transparent" />
-                            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#253A7B] to-transparent" />
+                            <div className="group relative mx-auto lg:mx-0 w-full max-w-[570px] overflow-hidden py-2">
+                                {/* Fade edges */}
+                                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-brand-primary to-transparent" />
+                                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-brand-primary to-transparent" />
 
-                            <div className="flex w-max animate-[scroll_25s_linear_infinite] items-center gap-4 group-hover:[animation-play-state:paused]">
-                                {[...companies, ...companies, ...companies].map((company, i) => (
-                                    <CompanyLogo
-                                        key={`${company.name}-${i}`}
-                                        company={company}
-                                    />
-                                ))}
+                                <div className="flex w-max animate-[scroll_25s_linear_infinite] items-center gap-4 group-hover:[animation-play-state:paused]">
+                                    {[...companies, ...companies, ...companies].map((company, i) => (
+                                        <CompanyLogo
+                                            key={`${company.name}-${i}`}
+                                            company={company}
+                                        />
+                                    ))}
+                                </div>
                             </div>
-                        </div>
 
-                        <style>{`
+                            <style>{`
                             @keyframes scroll {
                                 0% { transform: translateX(0); }
                                 100% { transform: translateX(calc(-33.3333% - 0.333rem)); }
                             }
                         `}</style>
-                    </div>
+                        </div>
 
-                    {/* =================================================
+                        {/* =================================================
               CTA
           ================================================== */}
 
-                    <button
-                        type="button"
-                        onClick={() => openLeadPopup({ source: "about_cta" })}
-                        className="
-              group
-              mt-9
-              inline-flex
-              items-center
-              gap-2
-              rounded-full
-              bg-[#E93F61]
-              px-5
-              py-2.5
-              text-[14px]
-              font-medium
-              text-white
-              transition-all
-              duration-200
-              hover:gap-3
-              hover:bg-[#d93657]
-            "
-                    >
-                        <span>
-                            Start Your Journey
-                        </span>
+                        <LeadCTAButton
+                            source="about_cta"
+                            variant="accent"
+                            size="md"
+                            className="mt-9 gap-2 group"
+                        >
+                            <span>
+                                Start Your Journey
+                            </span>
 
-                        <ArrowRight
-                            size={17}
-                            strokeWidth={2.2}
-                            className="
+                            <ArrowRight
+                                size={17}
+                                strokeWidth={2.2}
+                                className="
                 transition-transform
                 duration-200
                 group-hover:translate-x-0.5
               "
-                        />
-                    </button>
+                            />
+                        </LeadCTAButton>
+                    </div>
                 </div>
-            </div>
             </Container>
         </section>
     );

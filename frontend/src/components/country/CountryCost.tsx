@@ -26,29 +26,29 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
           <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-gradient-to-b from-[#253A7B]/[0.03] to-white p-7 md:p-9 shadow-sm">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-icon-bg-primary text-brand-primary">
                   <GraduationCap size={24} />
                 </div>
                 <div>
-                  <h3 className="font-heading text-xl font-bold text-neutral-900">
+                  <h3 className="font-heading font-normal text-h4 text-content-primary">
                     Annual Tuition Fees
                   </h3>
-                  <p className="text-xs text-neutral-500">Degree & program ranges</p>
+                  <p className="text-caption font-medium text-neutral-500">Degree & program ranges</p>
                 </div>
               </div>
 
               {/* Big Fee Display */}
               <div className="rounded-2xl bg-white border border-neutral-200/80 p-6 shadow-xs">
-                <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                <div className="text-caption font-medium uppercase tracking-wider text-neutral-400">
                   Estimated Range
                 </div>
-                <div className="mt-2 font-heading text-3xl md:text-4xl font-bold text-[#253A7B]">
+                <div className="mt-2 font-heading font-normal text-h3 text-brand-primary">
                   {costDetails.tuitionMin}
-                  <span className="text-lg md:text-xl font-normal text-neutral-500">
+                  <span className="text-h4 font-normal text-neutral-500">
                     {" "}to {costDetails.tuitionMax}
                   </span>
                 </div>
-                <div className="mt-1 text-xs text-neutral-500">
+                <div className="mt-1 text-caption font-medium text-neutral-500">
                   Per academic year (varies by university, tier, and discipline)
                 </div>
               </div>
@@ -56,8 +56,8 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
               {/* Tuition Offsets Note */}
               <div className="mt-6 flex items-start gap-3 rounded-2xl bg-emerald-50/70 border border-emerald-200/60 p-4">
                 <Sparkles className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div className="text-xs md:text-sm text-emerald-900 leading-relaxed">
-                  <span className="font-semibold">Scholarships Available: </span>
+                <div className="text-body-small font-medium text-emerald-900 leading-relaxed">
+                  <span className="font-medium underline">Scholarships Available: </span>
                   International applicants can offset tuition by 20% to 100% through merit awards, early-bird fee discounts, and departmental grants.
                 </div>
               </div>
@@ -66,13 +66,13 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
             <div className="mt-8 pt-6 border-t border-neutral-100 flex items-center justify-between">
               <a
                 href="#scholarships"
-                className="text-xs sm:text-sm font-semibold text-[#253A7B] hover:text-[#E93F61] transition-colors"
+                className="text-body-small font-medium text-brand-primary hover:text-brand-accent transition-colors"
               >
                 View Eligible Scholarships →
               </a>
               <LeadCTAButton
                 source={`country_cost_calc_${country.slug}`}
-                className="text-xs sm:text-sm font-semibold text-[#E93F61] hover:underline cursor-pointer"
+                className="text-body-small font-medium text-brand-accent hover:underline cursor-pointer"
               >
                 Calculate My Budget
               </LeadCTAButton>
@@ -83,27 +83,27 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
           <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-neutral-200/90 bg-gradient-to-b from-rose-50/30 to-white p-7 md:p-9 shadow-sm">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDF0F3] text-[#E93F61]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-icon-bg-accent text-brand-accent">
                   <Wallet size={24} />
                 </div>
                 <div>
-                  <h3 className="font-heading text-xl font-bold text-neutral-900">
+                  <h3 className="font-heading font-normal text-h4 text-content-primary">
                     Living & Lifestyle Costs
                   </h3>
-                  <p className="text-xs text-neutral-500">Estimated monthly expenses</p>
+                  <p className="text-caption font-medium text-neutral-500">Estimated monthly expenses</p>
                 </div>
               </div>
 
               {/* Monthly Overview Card */}
               <div className="rounded-2xl bg-white border border-neutral-200/80 p-6 shadow-xs mb-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                <div className="text-caption font-medium uppercase tracking-wider text-neutral-400">
                   Total Monthly Average
                 </div>
-                <div className="mt-2 font-heading text-3xl md:text-4xl font-bold text-neutral-900">
+                <div className="mt-2 font-heading font-normal text-h3 text-content-primary">
                   {costDetails.livingCostMonthly}
-                  <span className="text-sm md:text-base font-normal text-neutral-500"> / month</span>
+                  <span className="text-body-small font-normal text-neutral-500"> / month</span>
                 </div>
-                <div className="mt-1 text-xs text-neutral-500">
+                <div className="mt-1 text-caption font-medium text-neutral-500">
                   Covers single-student accommodation, groceries, local commute, and utilities
                 </div>
               </div>
@@ -111,34 +111,34 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
               {/* Breakdown Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="rounded-xl border border-neutral-200/70 bg-white p-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-neutral-600 mb-1">
+                  <div className="flex items-center gap-2 text-caption font-medium text-neutral-600 mb-1">
                     <Home className="w-4 h-4 text-indigo-600" />
                     <span>Accommodation</span>
                   </div>
-                  <div className="font-heading text-lg font-bold text-neutral-900">
+                  <div className="font-heading font-normal text-h4 text-content-primary">
                     {costDetails.accommodationMonthly}
                   </div>
-                  <div className="text-[11px] text-neutral-400">Dorms or shared flat</div>
+                  <div className="text-caption font-medium text-neutral-400">Dorms or shared flat</div>
                 </div>
 
                 <div className="rounded-xl border border-neutral-200/70 bg-white p-4">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-neutral-600 mb-1">
+                  <div className="flex items-center gap-2 text-caption font-medium text-neutral-600 mb-1">
                     <Utensils className="w-4 h-4 text-amber-600" />
                     <span>Food & Commute</span>
                   </div>
-                  <div className="font-heading text-lg font-bold text-neutral-900">
+                  <div className="font-heading font-normal text-h4 text-content-primary">
                     {costDetails.foodAndTransportMonthly}
                   </div>
-                  <div className="text-[11px] text-neutral-400">Groceries & student passes</div>
+                  <div className="text-caption font-medium text-neutral-400">Groceries & student passes</div>
                 </div>
               </div>
 
               {/* Work permit callout */}
               {visaDetails?.workPermitHours && (
-                <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-neutral-100/80 p-3 text-xs text-neutral-600">
-                  <Clock className="w-4 h-4 text-[#253A7B] shrink-0" />
+                <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-neutral-100/80 p-3 text-caption font-medium text-neutral-600">
+                  <Clock className="w-4 h-4 text-brand-primary shrink-0" />
                   <span>
-                    <strong className="text-neutral-900">Part-Time Work: </strong>
+                    <strong className="font-medium text-neutral-900">Part-Time Work: </strong>
                     {visaDetails.workPermitHours}
                   </span>
                 </div>
@@ -146,12 +146,12 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
             </div>
 
             <div className="mt-8 pt-6 border-t border-neutral-100 flex items-center justify-between">
-              <span className="text-xs text-neutral-500">
+              <span className="text-caption font-medium text-neutral-500">
                 Official figures indexed for 2026 intake
               </span>
               <LeadCTAButton
                 source={`country_cost_counsel_${country.slug}`}
-                className="text-xs sm:text-sm font-semibold text-[#253A7B] hover:text-[#E93F61] transition-colors cursor-pointer"
+                className="text-body-small font-medium text-brand-primary hover:text-brand-accent transition-colors cursor-pointer"
               >
                 Plan Living Budget →
               </LeadCTAButton>

@@ -21,6 +21,9 @@ import ExploreFilters from "./ExploreFilters";
 import ExploreFilterDrawer from "./ExploreFilterDrawer";
 import ActiveFilters from "./ActiveFilters";
 import ExploreResults from "./ExploreResults";
+import Pagination from "@/components/ui/Pagination";
+
+const ITEMS_PER_PAGE = 6;
 
 interface ExploreContentProps {
   country?: Country;
@@ -54,6 +57,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
     sort: initialSort,
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   // Sync state back to URL query parameters
@@ -85,6 +89,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
 
   const handleFiltersChange = (newFilters: FiltersType) => {
     setFilters(newFilters);
+    setCurrentPage(1);
     updateUrl(newFilters);
   };
 
@@ -93,6 +98,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
     if (key === "type") updated.type = "all";
     if (key === "country") updated.country = country ? country.slug : undefined;
     setFilters(updated);
+    setCurrentPage(1);
     updateUrl(updated);
   };
 
@@ -107,6 +113,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
       sort: "recommended",
     };
     setFilters(reset);
+    setCurrentPage(1);
     updateUrl(reset);
   };
 
@@ -114,8 +121,8 @@ function ExploreContentInner({ country }: ExploreContentProps) {
   const activeCountrySlug = country
     ? country.slug
     : filters.country && filters.country !== "all"
-    ? filters.country
-    : undefined;
+      ? filters.country
+      : undefined;
 
   // Base raw records for the active country or all countries
   const rawUniversities = useMemo(() => {
@@ -241,6 +248,12 @@ function ExploreContentInner({ country }: ExploreContentProps) {
     return list;
   }, [filters, rawUniversities, rawCourses, rawScholarships]);
 
+  const totalPages = Math.ceil(processedResults.length / ITEMS_PER_PAGE);
+  const paginatedResults = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return processedResults.slice(start, start + ITEMS_PER_PAGE);
+  }, [processedResults, currentPage]);
+
   return (
     <section className="bg-neutral-50/50 py-12">
       <Container size="lg">
@@ -268,13 +281,13 @@ function ExploreContentInner({ country }: ExploreContentProps) {
             />
 
             <ExploreResults
-              results={processedResults}
+              results={paginatedResults}
               countryName={
                 country
                   ? country.name
                   : activeCountrySlug
-                  ? countries[activeCountrySlug]?.name
-                  : undefined
+                    ? countries[activeCountrySlug]?.name
+                    : undefined
               }
               onReset={handleClearAll}
               query={filters.query}
@@ -284,6 +297,17 @@ function ExploreContentInner({ country }: ExploreContentProps) {
               activeType={filters.type}
               onOpenFiltersMobile={() => setIsMobileDrawerOpen(true)}
             />
+
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(page) => {
+                  setCurrentPage(page);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              />
+            )}
           </main>
         </div>
 
@@ -312,7 +336,7 @@ export const ExploreContent: React.FC<ExploreContentProps> = ({ country }) => {
     <Suspense
       fallback={
         <div className="py-24 text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#253A7B] border-r-transparent align-[-0.125em]" />
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand-primary border-r-transparent align-[-0.125em]" />
           <p className="mt-4 text-sm text-neutral-500">Loading directory listings...</p>
         </div>
       }

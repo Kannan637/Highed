@@ -1,5 +1,3 @@
-"use client";
-
 import { Check } from "lucide-react";
 import Container from "@/components/ui/Container";
 
@@ -41,7 +39,7 @@ const ourApproach = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-[#121314]">
+        <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-content-primary">
             <Container size="lg">
                 <div className="grid grid-cols-4 lg:grid-cols-12 gap-6">
                     {/* =========================
@@ -49,8 +47,8 @@ export default function WhyChooseUs() {
                     ========================== */}
                     <div className="col-span-4 lg:col-span-8 lg:col-start-3 text-center">
                         <div className="mb-7 flex items-center justify-center gap-2">
-                            <span className="h-[7px] w-[7px] rounded-full bg-[#253A7B]" />
-                            <span className="text-[14px] font-medium text-[#253A7B]">
+                            <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
+                            <span className="text-body-small font-medium text-brand-primary">
                                 Why Choose Us
                             </span>
                         </div>
@@ -59,13 +57,8 @@ export default function WhyChooseUs() {
                             className="
                                 mx-auto
                                 max-w-[700px]
-                                text-[40px]
-                                font-normal
-                                leading-[1.02]
-                                tracking-[-1.8px]
-                                text-[#121314]
-                                sm:text-[44px]
-                                lg:text-[46px]
+                                text-h2
+                                text-content-primary
                             "
                         >
                             Your Success Starts With the
@@ -113,11 +106,8 @@ export default function WhyChooseUs() {
                             >
                                 <h3
                                     className="
-                                        text-[23px]
-                                        font-medium
-                                        leading-tight
-                                        tracking-[-0.6px]
-                                        text-[#121314]
+                                        text-h4
+                                        text-content-primary
                                     "
                                 >
                                     Other Consultants
@@ -143,7 +133,7 @@ export default function WhyChooseUs() {
                                     col-span-4
                                     lg:col-span-6
                                     rounded-[30px]
-                                    bg-[#253A7B]
+                                    bg-brand-primary
                                     px-8
                                     py-9
                                     text-white
@@ -155,10 +145,8 @@ export default function WhyChooseUs() {
                             >
                                 <h3
                                     className="
-                                        text-[23px]
-                                        font-medium
-                                        leading-tight
-                                        tracking-[-0.6px]
+                                        text-h4
+                                        text-white
                                     "
                                 >
                                     Our Approach
@@ -208,24 +196,20 @@ function ComparisonItem({
           justify-center
           rounded-full
           ${isApproach
-                        ? "bg-[#E93F61] text-white"
+                        ? "bg-brand-accent text-white"
                         : "bg-[#d8d9db] text-[#6f7175]"
                     }
         `}
             >
-                <Check size={12} strokeWidth={2.8} />
+                <Check size={12} strokeWidth={2.8} aria-hidden="true" />
             </span>
 
             {/* Text */}
             <div className="min-w-0">
                 <h4
                     className={`
-            text-[20px]
-            font-medium
-            leading-[1.2]
-            tracking-[-0.45px]
-            sm:text-[21px]
-            ${isApproach ? "text-white" : "text-[#121314]"}
+            text-h5
+            ${isApproach ? "text-white" : "text-content-primary"}
           `}
                 >
                     {title}
@@ -235,11 +219,10 @@ function ComparisonItem({
                     className={`
             mt-1.5
             max-w-[330px]
-            text-[14px]
-            leading-[1.55]
+            text-body-small
             ${isApproach
-                            ? "text-[#e0e5f5]"
-                            : "text-[#121314]"
+                            ? "text-content-on-primary"
+                            : "text-content-secondary"
                         }
           `}
                 >

@@ -37,7 +37,7 @@ export const ExploreResults: React.FC<ExploreResultsProps> = ({
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-neutral-200 mb-6">
         <div className="flex items-center gap-3">
           <p className="text-xs sm:text-sm font-semibold text-neutral-800">
-            Showing <span className="text-[#253A7B] font-bold">{totalCount}</span> {totalCount === 1 ? "result" : "results"}
+            Showing <span className="text-brand-primary font-bold">{totalCount}</span> {totalCount === 1 ? "result" : "results"}
           </p>
         </div>
 

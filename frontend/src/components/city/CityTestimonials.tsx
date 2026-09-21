@@ -24,7 +24,7 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
           {city.testimonials.map((item, idx) => (
             <div
               key={idx}
-              className="relative flex flex-col justify-between rounded-3xl border border-neutral-200/80 bg-neutral-50/40 p-8 shadow-xs transition-all duration-300 hover:border-[#253A7B]/40 hover:bg-white hover:shadow-xl"
+              className="relative flex flex-col justify-between rounded-3xl border border-neutral-200/80 bg-neutral-50/40 p-8 shadow-xs transition-all duration-300 hover:border-brand-primary/40 hover:bg-white hover:shadow-xl"
             >
               <div>
                 {/* 5-Star Rating & Quote icon */}
@@ -34,13 +34,13 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
                       <Star key={i} size={16} fill="currentColor" />
                     ))}
                   </div>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EEF1FA] text-[#253A7B]">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-icon-bg-primary text-brand-primary">
                     <Quote size={14} />
                   </div>
                 </div>
 
                 {/* Testimonial Quote */}
-                <p className="font-body text-sm leading-relaxed text-neutral-700 italic">
+                <p className="text-body-small font-medium leading-relaxed text-content-primary italic">
                   &quot;{item.quote}&quot;
                 </p>
               </div>
@@ -48,15 +48,15 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
               {/* Student info */}
               <div className="mt-8 pt-5 border-t border-neutral-200/60">
                 <div className="flex items-center gap-3.5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#253A7B] font-heading text-base font-bold text-white shadow-xs">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary font-heading font-normal text-h5 text-white shadow-xs">
                     {item.studentName.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-heading text-base font-bold text-neutral-900 truncate">
+                    <h4 className="font-heading font-normal text-h5 text-content-primary truncate">
                       {item.studentName}
                     </h4>
-                    <div className="flex items-center gap-1 font-body text-xs text-neutral-500 truncate">
-                      <MapPin size={11} className="text-[#E93F61]" />
+                    <div className="flex items-center gap-1 text-caption font-medium text-neutral-500 truncate">
+                      <MapPin size={11} className="text-brand-accent" />
                       <span className="truncate">{item.city}</span>
                     </div>
                   </div>
@@ -64,11 +64,11 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
 
                 {/* University Admit Badge */}
                 <div className="mt-4 rounded-xl bg-white border border-neutral-200/80 p-3">
-                  <div className="flex items-center gap-2 font-body text-xs font-bold text-[#253A7B]">
-                    <GraduationCap size={14} className="text-[#E93F61]" />
+                  <div className="flex items-center gap-2 text-body-small font-medium text-brand-primary">
+                    <GraduationCap size={14} className="text-brand-accent" />
                     <span className="truncate">{item.destination}</span>
                   </div>
-                  <p className="font-body text-[11px] text-neutral-500 mt-0.5 truncate">
+                  <p className="text-caption font-medium text-neutral-500 mt-0.5 truncate">
                     {item.course}
                   </p>
                 </div>
@@ -79,7 +79,7 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
 
         {/* Join our success stories CTA */}
         <div className="mt-12 text-center">
-          <p className="font-body text-sm text-neutral-600">
+          <p className="text-body-small text-content-secondary">
             Want to be our next success story from {city.name}?
           </p>
           <div className="mt-3">
@@ -87,7 +87,7 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
               source={`city_stories_cta_${city.slug}`}
               contextTitle={`Be the Next Success Story from ${city.name}`}
               contextCTA="Start My Application"
-              className="inline-flex items-center gap-2 rounded-full bg-[#E93F61] px-7 py-3 font-body text-sm font-semibold text-white shadow-md hover:bg-[#d93657] transition-all cursor-pointer hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-7 py-3 text-btn font-medium text-white shadow-md hover:bg-brand-accent/90 transition-all cursor-pointer hover:scale-105 active:scale-95"
             >
               <span>Begin Your Journey Today</span>
               <span>→</span>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { GraduationCap, MapPin, Trophy, ArrowRight } from "lucide-react";
 import { University } from "@/types/explore";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
@@ -13,77 +14,213 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
   countryName,
 }) => {
   return (
-    <div className="group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white p-6 shadow-xs transition-all duration-300 hover:border-[#253A7B]/40 hover:shadow-xl hover:-translate-y-0.5">
-      <div>
-        {/* Header Badges */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          {university.ranking ? (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EEF1FA] px-3 py-1 text-xs font-semibold text-[#253A7B]">
+    <div
+      className="
+        group flex h-full flex-col overflow-hidden
+        rounded-[24px]
+        border border-neutral-200/90
+        bg-white
+        shadow-sm
+        transition-all duration-300
+        hover:border-brand-primary/30
+        hover:shadow-xl
+      "
+    >
+      {/* ================= IMAGE ================= */}
+      <div className="relative p-2.5">
+        <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-neutral-100">
+          <Image
+            src={university.image || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop"}
+            alt={university.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="
+              object-cover
+              transition-transform duration-500
+              group-hover:scale-[1.03]
+            "
+          />
+
+          {/* Ranking - Inside Image */}
+          {university.ranking && (
+            <div
+              className="
+                absolute left-3 top-3
+                inline-flex items-center gap-1.5
+                rounded-full
+                bg-white/95
+                px-3 py-1.5
+                text-[11px]
+                font-medium
+                text-brand-primary
+                shadow-sm
+                backdrop-blur-sm
+              "
+            >
               <Trophy size={13} className="shrink-0" />
               <span>{university.ranking}</span>
-            </span>
-          ) : (
-            <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-              Accredited
-            </span>
+            </div>
           )}
+        </div>
+      </div>
 
-          <span className="inline-flex items-center text-[11px] font-medium text-neutral-400">
-            University
-          </span>
+      {/* ================= CONTENT ================= */}
+      <div className="flex flex-1 flex-col px-5 pb-5">
+        {/* University Name */}
+        <div className="mt-1">
+          <h3
+            className="
+              font-['DM_Sans']
+              text-[18px]
+              font-bold
+              leading-[1.25]
+              tracking-[-0.02em]
+              text-content-primary
+              line-clamp-2
+              transition-colors
+              group-hover:text-brand-primary
+            "
+          >
+            {university.name}
+          </h3>
+
+          {/* Location */}
+          <div
+            className="
+              mt-2
+              flex items-center gap-1.5
+              font-['DM_Sans']
+              text-[12px]
+              font-medium
+              text-neutral-500
+            "
+          >
+            <MapPin
+              size={14}
+              className="shrink-0 text-brand-accent"
+            />
+
+            <span className="truncate">
+              {university.location}
+              {countryName ? `, ${countryName}` : ""}
+            </span>
+          </div>
         </div>
 
-        {/* Title */}
-        <h3 className="font-heading text-xl font-bold leading-snug text-neutral-900 group-hover:text-[#253A7B] transition-colors">
-          {university.name}
-        </h3>
-
-        {/* Location */}
-        <div className="mt-2 flex items-center gap-1.5 text-xs text-neutral-500">
-          <MapPin size={14} className="text-[#E93F61] shrink-0" />
-          <span>{university.location}{countryName ? `, ${countryName}` : ""}</span>
-        </div>
-
-        {/* Tuition Info */}
-        <div className="mt-4 rounded-xl bg-neutral-50 border border-neutral-200/70 p-3">
-          <div className="text-[11px] font-medium uppercase tracking-wider text-neutral-500">
+        {/* ================= FEE ================= */}
+        <div className="mt-4">
+          <div
+            className="
+              font-['DM_Sans']
+              text-[10px]
+              font-medium
+              uppercase
+              tracking-[0.08em]
+              text-neutral-400
+            "
+          >
             Tuition Range
           </div>
-          <div className="mt-0.5 text-sm font-bold text-[#253A7B]">
+
+          <div
+            className="
+              mt-0.5
+              font-['DM_Sans']
+              text-[15px]
+              font-semibold
+              text-brand-primary
+            "
+          >
             {university.tuitionRange}
           </div>
         </div>
 
-        {/* Popular Programs */}
-        {university.popularPrograms && university.popularPrograms.length > 0 && (
-          <div className="mt-4">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">
-              Popular Programs
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {university.popularPrograms.map((prog) => (
-                <span
-                  key={prog}
-                  className="rounded-md border border-neutral-200 bg-white px-2 py-0.5 text-[11px] font-medium text-neutral-700"
-                >
-                  {prog}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+        {/* ================= COURSES ================= */}
+        {university.popularPrograms &&
+          university.popularPrograms.length > 0 && (
+            <div className="mt-4">
+              <div
+                className="
+                  mb-2
+                  font-['DM_Sans']
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.08em]
+                  text-neutral-400
+                "
+              >
+                Courses
+              </div>
 
-      {/* Action Footer */}
-      <div className="mt-6 pt-4 border-t border-neutral-100">
-        <LeadCTAButton
-          source={`explore_uni_${university.id}`}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#253A7B] py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-[#1c2c5c] transition-all cursor-pointer active:scale-95"
-        >
-          <GraduationCap size={16} />
-          <span>Check Admission Eligibility</span>
-          <ArrowRight size={14} />
-        </LeadCTAButton>
+              <div className="flex flex-wrap gap-1.5">
+                {university.popularPrograms.slice(0, 3).map((program) => (
+                  <span
+                    key={program}
+                    className="
+                      rounded-[7px]
+                      border border-neutral-200
+                      bg-neutral-50
+                      px-2.5 py-1
+                      font-['DM_Sans']
+                      text-[11px]
+                      font-medium
+                      leading-none
+                      text-neutral-700
+                    "
+                  >
+                    {program}
+                  </span>
+                ))}
+
+                {university.popularPrograms.length > 3 && (
+                  <span
+                    className="
+                      rounded-[7px]
+                      bg-neutral-100
+                      px-2 py-1
+                      font-['DM_Sans']
+                      text-[11px]
+                      font-medium
+                      leading-none
+                      text-neutral-600
+                    "
+                  >
+                    +{university.popularPrograms.length - 3}
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+        {/* ================= CTA ================= */}
+        <div className="mt-auto pt-5">
+          <div className="border-t border-neutral-200/80 pt-4">
+            <LeadCTAButton
+              source={`explore_uni_${university.id}`}
+              variant="ghost"
+              size="sm"
+              className="
+                flex w-full items-center justify-between
+                rounded-[10px]
+                !px-0
+                font-['DM_Sans']
+                text-[13px]
+                font-semibold
+                text-brand-primary
+                transition-colors
+                hover:text-brand-accent
+              "
+            >
+              <span className="flex items-center gap-1.5">
+                <GraduationCap size={16} />
+                Apply With Guidance
+              </span>
+
+              <ArrowRight size={15} />
+            </LeadCTAButton>
+          </div>
+        </div>
       </div>
     </div>
   );

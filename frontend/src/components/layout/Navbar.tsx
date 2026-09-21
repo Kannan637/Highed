@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="relative z-[9999] w-full border-b border-gray-100 bg-white font-body">
+    <nav className="relative z-[9999] w-full border-b border-border-default bg-white font-body">
       {/* MAIN HEADER */}
       <Container size="lg" className="flex h-[72px] items-center justify-between">
         {/* LOGO */}
@@ -46,9 +46,9 @@ export const Navbar: React.FC = () => {
           <a
             href="tel:+919050180501"
             aria-label="Call support"
-            className="flex h-10 w-10 touch-manipulation items-center justify-center rounded-full bg-[#F3F5FA] text-[#253A7B] transition-all duration-300 active:scale-95"
+            className="flex h-11 w-11 touch-manipulation items-center justify-center rounded-full bg-[#F3F5FA] text-brand-primary transition-all duration-300 active:scale-95"
           >
-            <Phone size={17} fill="currentColor" strokeWidth={0} />
+            <Phone size={17} fill="currentColor" strokeWidth={0} aria-hidden="true" />
           </a>
 
           {/* HAMBURGER */}
@@ -57,12 +57,12 @@ export const Navbar: React.FC = () => {
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMobileMenuOpen}
-            className="relative z-[10001] flex h-10 w-10 touch-manipulation select-none items-center justify-center rounded-xl border border-gray-200 bg-white text-[#121314] transition-all duration-300 active:scale-95"
+            className="relative z-[10001] flex h-11 w-11 touch-manipulation select-none items-center justify-center rounded-xl border border-gray-200 bg-white text-content-primary transition-all duration-300 active:scale-95"
           >
             {isMobileMenuOpen ? (
-              <X size={22} strokeWidth={2} />
+              <X size={22} strokeWidth={2} aria-hidden="true" />
             ) : (
-              <Menu size={22} strokeWidth={2} />
+              <Menu size={22} strokeWidth={2} aria-hidden="true" />
             )}
           </button>
         </div>

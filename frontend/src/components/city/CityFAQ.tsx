@@ -34,14 +34,14 @@ export const CityFAQ: React.FC<CityFAQProps> = ({ city }) => {
         {/* Still have questions prompt */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl bg-white border border-neutral-200/80 p-5 md:p-6 shadow-xs">
           <div className="flex items-center gap-3.5">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EEF1FA] text-[#253A7B]">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-icon-bg-primary text-brand-primary">
               <HelpCircle size={22} />
             </div>
             <div>
-              <p className="text-sm font-bold text-neutral-900">
+              <p className="text-body-small font-medium text-neutral-900">
                 Still have questions regarding studying abroad from {city.name}?
               </p>
-              <p className="text-xs text-neutral-500 mt-0.5">
+              <p className="text-caption font-medium text-neutral-500 mt-0.5">
                 Our certified educational advisors provide instant 1-on-1 clarity.
               </p>
             </div>
@@ -51,7 +51,7 @@ export const CityFAQ: React.FC<CityFAQProps> = ({ city }) => {
             source={`city_faq_help_${city.slug}`}
             contextTitle={`FAQ Assistance for ${city.name}`}
             contextCTA="Talk to an Advisor"
-            className="inline-flex items-center gap-2 rounded-full bg-[#253A7B] px-5 py-2.5 text-xs font-semibold text-white hover:bg-[#1b2b5c] transition-all cursor-pointer shrink-0 shadow-sm"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-primary px-5 py-2.5 text-body-small font-medium text-white hover:bg-[#1b2b5c] transition-all cursor-pointer shrink-0 shadow-sm"
           >
             <MessageSquare size={14} />
             <span>Ask an Advisor</span>
