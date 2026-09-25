@@ -91,7 +91,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                     fill="currentColor"
                     strokeWidth={0}
                     className={`transition-transform duration-200 ${
-                      isAccordionOpen ? "rotate-180 text-brand-primary" : "text-gray-400"
+                      isAccordionOpen ? "rotate-180 text-brand-primary" : "text-gray-600"
                     }`}
                   />
                 </button>

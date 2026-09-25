@@ -74,7 +74,7 @@ export const DesktopNavigation: React.FC = () => {
               <ChevronDown
                 size={15}
                 strokeWidth={2}
-                className={`transition-transform duration-200 ease-out ${isOpen ? "rotate-180 text-brand-primary" : "text-gray-400 group-hover:text-brand-primary"
+                className={`transition-transform duration-200 ease-out ${isOpen ? "rotate-180 text-brand-primary" : "text-gray-600 group-hover:text-brand-primary"
                   }`}
               />
             </button>

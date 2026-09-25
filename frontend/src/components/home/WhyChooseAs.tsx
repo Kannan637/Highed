@@ -1,13 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import { Check } from "lucide-react";
-import { DM_Sans } from "next/font/google";
-
-const dmSans = DM_Sans({
-    subsets: ["latin"],
-    display: "swap",
-});
 
 const otherConsultants = [
     {
@@ -49,7 +41,7 @@ export default function WhyChooseUs() {
     return (
         <section
             className={`
-                ${dmSans.className}
+                font-body
                 relative
                 mx-auto
                 mt-6
@@ -120,7 +112,7 @@ export default function WhyChooseUs() {
                             items-center
                             gap-[8px]
                             rounded-full
-                            bg-[#E93F61]
+                            bg-brand-accent
                             px-[14px]
                             text-[14px]
                             font-medium
@@ -359,7 +351,7 @@ export default function WhyChooseUs() {
                                                 items-center
                                                 justify-center
                                                 rounded-full
-                                                bg-[#E93F61]
+                                                bg-brand-accent
                                             "
                                         >
                                             <Check

@@ -185,7 +185,7 @@ function TestimonialCard({
               active:scale-[0.98]
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-[#E93F61]
+              focus-visible:ring-brand-accent
               focus-visible:ring-offset-2
               motion-reduce:transition-none
             "

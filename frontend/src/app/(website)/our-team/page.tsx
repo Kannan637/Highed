@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -202,8 +202,11 @@ function TeamCard({
 export default function OurTeamPage() {
     const root = useRef<HTMLDivElement>(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (!root.current) return;
+        if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
 
         const ctx = gsap.context(() => {
             /* HERO */
@@ -405,17 +408,17 @@ export default function OurTeamPage() {
                     <div className="py-20 sm:py-28">
                         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
                             <div className="lg:col-span-5">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#E93F61]">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">
                                     HOW WE WORK
                                 </span>
 
-                                <h2 className="mt-4 font-heading text-4xl font-bold leading-[1] tracking-[-0.05em] sm:text-5xl">
+                                <h2 className="mt-4 font-heading text-4xl font-bold leading-[1] tracking-[-0.05em] sm:text-5xl text-content-primary">
                                     More than
                                     <br />
                                     just counselling.
                                 </h2>
 
-                                <p className="mt-6 max-w-md text-[15px] leading-7 text-black/45">
+                                <p className="mt-6 max-w-md text-[15px] leading-7 text-content-secondary">
                                     We combine human guidance, global university knowledge and
                                     technology to help students make informed decisions.
                                 </p>

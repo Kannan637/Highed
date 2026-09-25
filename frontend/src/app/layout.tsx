@@ -124,7 +124,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en-IN"
+      lang="en"
       className={`${dmSans.variable} h-full antialiased`}
     >
       <head>

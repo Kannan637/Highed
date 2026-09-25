@@ -60,7 +60,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
             </p>
 
             {city.slug !== "chennai" && (
-              <div className="mt-5 rounded-xl border border-[#E93F61]/30 bg-brand-accent/10 p-4 backdrop-blur-md">
+              <div className="mt-5 rounded-xl border border-brand-accent/30 bg-brand-accent/10 p-4 backdrop-blur-md">
                 <h4 className="font-heading font-normal text-h5 text-white">Serving Students in {city.name}</h4>
                 <p className="mt-1 text-body-small text-white/80 leading-relaxed">
                   HighEd is based in Chennai and provides students across {city.name} with online counselling, application assistance, scholarship guidance, education loan support and visa preparation.
@@ -119,7 +119,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                     Study Abroad From {city.name}
                   </h3>
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-accent/20 border border-[#E93F61]/40 text-brand-accent">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-accent/20 border border-brand-accent/40 text-brand-accent">
                   <Sparkles size={22} />
                 </div>
               </div>

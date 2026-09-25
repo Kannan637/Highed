@@ -163,8 +163,8 @@ function TrustBadge({
                 className="
           whitespace-nowrap
           text-[13px]
-          font-medium
-          text-brand-accent
+          font-semibold
+          text-content-primary
         "
             >
                 {text}

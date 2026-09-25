@@ -52,7 +52,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                 size={18}
                 aria-hidden="true"
                 className={cn(
-                  "shrink-0 text-gray-400 transition-transform duration-300",
+                  "shrink-0 text-gray-600 transition-transform duration-300",
                   isOpen && "rotate-180 text-brand-primary"
                 )}
               />

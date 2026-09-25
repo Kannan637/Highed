@@ -3,8 +3,8 @@ import Container from "@/components/ui/Container";
 import Card from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import IconBox from "@/components/ui/IconBox";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
-import { ShieldCheck, Award, Clock, Users, PhoneCall, ArrowRight } from "lucide-react";
+import LeadForm from "@/components/forms/LeadForm";
+import { ShieldCheck, Award, Clock, Users } from "lucide-react";
 import { constructMetadata } from "@/seo/metadata";
 import { AutoOpenLeadPopup } from "./AutoOpenLeadPopup";
 
@@ -78,33 +78,22 @@ export default function BookCounsellingPage() {
             </div>
           </div>
 
-          {/* Right Column: LeadPopup Trigger Card */}
+          {/* Right Column: Lead Form */}
           <div className="col-span-4 lg:col-span-6">
-            <Card hover className="p-8 sm:p-10 rounded-2xl border-border bg-card shadow-sm">
-              <IconBox icon={PhoneCall} variant="primary" size="lg" />
-
-              <h2 className="mt-6 text-2xl sm:text-3xl font-bold text-content-primary">
-                Ready to speak with an admissions expert?
+            <Card className="p-6 sm:p-8 rounded-2xl border-border bg-card shadow-sm">
+              <h2 className="text-xl sm:text-2xl font-bold text-content-primary">
+                Book Your Free Counselling Session
               </h2>
-
-              <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
-                Click below to request an instant callback. Enter your phone number and our certified counsellors will evaluate your profile.
+              <p className="mt-2 text-sm text-content-secondary">
+                Fill out the form below. A certified education advisor will review your profile and contact you within 24 hours.
               </p>
 
-              <div className="mt-8">
-                <LeadCTAButton
-                  source="book_counselling_page"
-                  variant="accent"
-                  size="lg"
-                  fullWidth
-                  iconBadge={<ArrowRight size={18} />}
-                >
-                  Book Free Counselling
-                </LeadCTAButton>
+              <div className="mt-6">
+                <LeadForm defaultCountry="General" />
               </div>
 
-              <div className="mt-6 border-t border-border pt-6 text-center">
-                <p className="text-sm text-content-secondary">
+              <div className="mt-6 border-t border-border pt-5 text-center">
+                <p className="text-xs sm:text-sm text-content-secondary">
                   Prefer calling directly?{" "}
                   <a
                     href="tel:+919050180501"

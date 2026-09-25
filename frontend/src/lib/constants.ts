@@ -2,7 +2,7 @@ export const SITE_NAME = "HighEd";
 export const SITE_TAGLINE = "Study Abroad Consultants & Global Education Advisory";
 export const BRAND_COLORS = {
   primary: "#253A7B",
-  accent: "#E93F61",
+  accent: "#D8284D",
   white: "#FFFFFF",
   goldFrom: "#A67C00",
   goldVia: "#FCF6BA",

@@ -45,7 +45,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
         {/* Header: Eyebrow Badge, Title, Description */}
         <div className="flex flex-col items-center text-center gap-3 mb-8 sm:mb-12">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 rounded-2xl bg-[#E93F61] px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs">
+          <div className="inline-flex items-center gap-2 rounded-2xl bg-brand-accent px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs">
             <Sparkles className="size-3.5 text-white" />
             <span>Destination Insights &amp; Guides</span>
           </div>
@@ -85,7 +85,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
                   >
                     <div className="flex flex-col gap-2.5">
                       <div className="flex items-center gap-2">
-                        <span className="rounded-full bg-[#E93F61] px-2.5 py-1 text-xs font-semibold text-white">
+                        <span className="rounded-full bg-brand-accent px-2.5 py-1 text-xs font-semibold text-white">
                           {article.category}
                         </span>
                         <span className="text-xs text-content-secondary">•</span>

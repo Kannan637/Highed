@@ -131,7 +131,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
 
             {/* Eyebrow Badge — 12 Columns */}
             <div className="col-span-12">
-              <div className="inline-flex items-center gap-2 rounded-2xl bg-[#E93F61] px-3.5 py-2 text-xs font-semibold text-white">
+              <div className="inline-flex items-center gap-2 rounded-2xl bg-brand-accent px-3.5 py-2 text-xs font-semibold text-white">
                 <Sparkles className="size-3.5 text-white" />
                 <span>Verified Guides &amp; Insights</span>
               </div>

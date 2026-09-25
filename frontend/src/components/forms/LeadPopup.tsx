@@ -258,7 +258,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
             type="button"
             onClick={animateClose}
             aria-label="Close"
-            className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
+            className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
           >
             <X size={18} />
           </button>
@@ -329,7 +329,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               </form>
 
               {/* Contact */}
-              <p className="mt-5 text-center font-body text-xs text-gray-400">
+              <p className="mt-5 text-center font-body text-xs text-gray-600">
                 You can always reach us on{" "}
                 <a
                   href="tel:+919050180501"
@@ -340,7 +340,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               </p>
 
               {/* Terms */}
-              <p className="mt-3 text-center font-body text-[11px] text-gray-400">
+              <p className="mt-3 text-center font-body text-[11px] text-gray-600">
                 By Continuing, You agree to our{" "}
                 <Link
                   href="/terms"

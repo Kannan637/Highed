@@ -1,145 +1,57 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 import Image from "next/image";
 
-const logos = [
-    "/icons/University/American-College-Dublin.webp",
-    "/icons/University/Amity-University,-Dubai,-UAE.webp",
-    "/icons/University/AURA-Business-School.webp",
-    "/icons/University/Brescia-University-College.webp",
-    "/icons/University/EAE.webp",
-    "/icons/University/griffith.webp",
-    "/icons/University/Holmes-Instittue-of-Dublin.webp",
-    "/icons/University/it-carlow.webp",
+interface UniversityLogo {
+    name: string;
+    src: string;
+}
+
+const universities: UniversityLogo[] = [
+    {
+        name: "American College Dublin",
+        src: "/icons/University/American-College-Dublin.webp",
+    },
+    {
+        name: "Amity University Dubai",
+        src: "/icons/University/Amity-University,-Dubai,-UAE.webp",
+    },
+    {
+        name: "AURA Business School",
+        src: "/icons/University/AURA-Business-School.webp",
+    },
+    {
+        name: "Brescia University College",
+        src: "/icons/University/Brescia-University-College.webp",
+    },
+    {
+        name: "EAE Business School",
+        src: "/icons/University/EAE.webp",
+    },
+    {
+        name: "Griffith College",
+        src: "/icons/University/griffith.webp",
+    },
+    {
+        name: "Holmes Institute Dublin",
+        src: "/icons/University/Holmes-Instittue-of-Dublin.webp",
+    },
+    {
+        name: "IT Carlow",
+        src: "/icons/University/it-carlow.webp",
+    },
 ];
 
-function MarqueeRow({
-    direction,
-}: {
-    direction: "left" | "right";
-}) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const trackRef = useRef<HTMLDivElement>(null);
-    const animationRef = useRef<gsap.core.Tween | null>(null);
+// Doubled array for seamless 0% -> -50% CSS looping
+const loopedLogos = [...universities, ...universities];
 
-    useEffect(() => {
-        const container = containerRef.current;
-        const track = trackRef.current;
-
-        if (!container || !track) return;
-
-        const originalItems = Array.from(
-            track.querySelectorAll<HTMLElement>(".marquee-item")
-        );
-
-        if (!originalItems.length) return;
-
-        // Duplicate logos for seamless looping
-        originalItems.forEach((item) => {
-            track.appendChild(item.cloneNode(true));
-        });
-
-        const firstItem = originalItems[0];
-
-        const calculateLoopWidth = () => {
-            const styles = window.getComputedStyle(track);
-            const gap = parseFloat(styles.columnGap || "0");
-
-            return (firstItem.offsetWidth + gap) * originalItems.length;
-        };
-
-        let loopWidth = calculateLoopWidth();
-
-        const state = {
-            x: direction === "right" ? -loopWidth : 0,
-        };
-
-        gsap.set(track, {
-            x: state.x,
-        });
-
-        animationRef.current = gsap.to(state, {
-            x: direction === "left" ? -loopWidth : 0,
-            duration: 28,
-            ease: "none",
-            repeat: -1,
-
-            onUpdate: () => {
-                let x = state.x;
-
-                if (direction === "left" && x <= -loopWidth) {
-                    x += loopWidth;
-                    state.x = x;
-                }
-
-                if (direction === "right" && x >= 0) {
-                    x -= loopWidth;
-                    state.x = x;
-                }
-
-                gsap.set(track, { x });
-            },
-        });
-
-        const handleResize = () => {
-            const currentX = state.x;
-
-            loopWidth = calculateLoopWidth();
-
-            // Keep the animation position inside the new loop
-            if (direction === "left") {
-                state.x = Math.max(-loopWidth, Math.min(0, currentX));
-            } else {
-                state.x = Math.max(-loopWidth, Math.min(0, currentX));
-            }
-
-            gsap.set(track, {
-                x: state.x,
-            });
-        };
-
-        const handleMouseEnter = () => {
-            if (!animationRef.current) return;
-
-            gsap.to(animationRef.current, {
-                timeScale: 0,
-                duration: 0.35,
-                ease: "power2.out",
-            });
-        };
-
-        const handleMouseLeave = () => {
-            if (!animationRef.current) return;
-
-            gsap.to(animationRef.current, {
-                timeScale: 1,
-                duration: 0.5,
-                ease: "power2.out",
-            });
-        };
-
-        container.addEventListener("mouseenter", handleMouseEnter);
-        container.addEventListener("mouseleave", handleMouseLeave);
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            container.removeEventListener("mouseenter", handleMouseEnter);
-            container.removeEventListener("mouseleave", handleMouseLeave);
-            window.removeEventListener("resize", handleResize);
-
-            animationRef.current?.kill();
-        };
-    }, [direction]);
+function MarqueeRow({ direction }: { direction: "left" | "right" }) {
+    const animationClass =
+        direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
 
     return (
-        <div
-            ref={containerRef}
-            className="relative col-span-12 overflow-hidden"
-        >
-            {/* Left fade */}
+        <div className="marquee-container relative col-span-12 overflow-hidden py-1">
+            {/* Left gradient fade */}
             <div
+                aria-hidden="true"
                 className="
                     pointer-events-none
                     absolute
@@ -158,8 +70,9 @@ function MarqueeRow({
                 "
             />
 
-            {/* Right fade */}
+            {/* Right gradient fade */}
             <div
+                aria-hidden="true"
                 className="
                     pointer-events-none
                     absolute
@@ -178,24 +91,21 @@ function MarqueeRow({
                 "
             />
 
-            {/* Moving track */}
+            {/* CSS Moving track */}
             <div
-                ref={trackRef}
-                className="
-                    flex
-                    w-max
+                className={`
+                    ${animationClass}
                     items-center
                     gap-8
                     sm:gap-10
                     md:gap-12
                     lg:gap-16
-                "
+                `}
             >
-                {logos.map((logo, index) => (
+                {loopedLogos.map((item, index) => (
                     <div
-                        key={index}
+                        key={`${item.name}-${index}`}
                         className="
-                            marquee-item
                             flex
                             h-16
                             w-[110px]
@@ -210,10 +120,11 @@ function MarqueeRow({
                         "
                     >
                         <Image
-                            src={logo}
-                            alt="University"
+                            src={item.src}
+                            alt={`${item.name} logo`}
                             width={140}
                             height={60}
+                            loading="lazy"
                             style={{ width: "auto", height: "auto" }}
                             className="
                                 h-auto
@@ -240,6 +151,7 @@ function MarqueeRow({
 export default function LogoMarquee() {
     return (
         <section
+            aria-labelledby="universities-marquee-heading"
             className="
                 w-full
                 overflow-hidden
@@ -264,7 +176,7 @@ export default function LogoMarquee() {
                     lg:px-12
                 "
             >
-                {/* Heading */}
+                {/* Heading (Semantic H2 with proper hierarchy) */}
                 <div
                     className="
                         col-span-12
@@ -275,7 +187,8 @@ export default function LogoMarquee() {
                         md:mb-8
                     "
                 >
-                    <h6
+                    <h2
+                        id="universities-marquee-heading"
                         className="
                             max-w-[90%]
                             text-center
@@ -293,7 +206,7 @@ export default function LogoMarquee() {
                         "
                     >
                         Top Universities we work with
-                    </h6>
+                    </h2>
                 </div>
 
                 {/* Row 1 — Left */}

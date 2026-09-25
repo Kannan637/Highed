@@ -52,14 +52,16 @@ export const LeadPopupProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <LeadPopupContext.Provider value={{ openLeadPopup, closeLeadPopup, isOpen }}>
       {children}
-      <LeadPopup
-        isOpen={isOpen}
-        onClose={closeLeadPopup}
-        source={source}
-        page={pathname}
-        contextTitle={contextTitle}
-        contextCTA={contextCTA}
-      />
+      {isOpen && (
+        <LeadPopup
+          isOpen={isOpen}
+          onClose={closeLeadPopup}
+          source={source}
+          page={pathname}
+          contextTitle={contextTitle}
+          contextCTA={contextCTA}
+        />
+      )}
     </LeadPopupContext.Provider>
   );
 };

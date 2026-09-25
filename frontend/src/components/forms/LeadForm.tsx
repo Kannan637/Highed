@@ -270,7 +270,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
             )}
           </Button>
 
-          <p className="text-center font-body text-[11px] text-gray-400">
+          <p className="text-center font-body text-[11px] text-gray-600">
             🔒 Your details are 100% confidential. No spam, ever.
           </p>
         </form>

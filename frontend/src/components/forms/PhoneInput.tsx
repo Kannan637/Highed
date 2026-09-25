@@ -276,7 +276,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
       {/* Input wrapper */}
       <div
         className={`relative flex h-12 w-full items-center rounded-xl border bg-white transition-colors ${error
-          ? "border-[#E93F61]"
+          ? "border-brand-accent"
           : "border-gray-200 focus-within:border-brand-primary"
           }`}
       >
@@ -365,7 +365,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
           aria-label="Mobile phone number"
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="h-full min-w-0 flex-1 bg-transparent px-3 font-body text-sm text-content-primary outline-none placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-full min-w-0 flex-1 bg-transparent px-3 font-body text-sm text-content-primary outline-none placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 

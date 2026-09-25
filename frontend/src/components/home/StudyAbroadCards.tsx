@@ -42,7 +42,7 @@ const cards: StudyAbroadCard[] = [
     href: "/services",
     icon: HeartHandshake,
     bgColor: "#F2E6EC",
-    iconColor: "#E93F61",
+    iconColor: "#D8284D",
   },
 ];
 

@@ -8,8 +8,8 @@
   /* Brand Colors */
   --brand-primary: #253A7B;
   --brand-primary-hover: #1f3168;
-  --brand-accent: #E93F61;
-  --brand-accent-hover: #d93657;
+  --brand-accent: #D8284D;
+  --brand-accent-hover: #c42244;
   --brand-gold: #D6B66A;
 
   /* Content */
@@ -534,6 +534,53 @@ p {
   }
 }
 
+
+/* ============================================================
+   PERFORMANCE: Pure CSS Marquee (replaces GSAP in LogoMarquee)
+   ============================================================ */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .animate-marquee-left,
+.marquee-container:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+  }
+}
 
 html,
 body {

@@ -177,11 +177,11 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 font-body text-caption font-medium text-gray-400 sm:flex-row gap-4">
+        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 font-body text-caption font-medium text-gray-300 sm:flex-row gap-4">
           <div>
             © {new Date().getFullYear()} HighEd Global Education Advisory. All rights reserved.
           </div>
-          <div className="flex items-center gap-4 text-xs text-gray-400">
+          <div className="flex items-center gap-4 text-xs text-gray-300">
             <Link href="/privacy-policy" className="hover:text-white transition-colors py-1">
               Privacy Policy
             </Link>
@@ -192,7 +192,7 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-center gap-1">
             <span>Crafted with</span>
-            <Heart size={12} className="fill-[#E93F61] text-brand-accent" />
+            <Heart size={12} className="fill-brand-accent text-brand-accent" />
             <span>for international students</span>
           </div>
         </div>
