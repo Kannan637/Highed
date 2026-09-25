@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  --font-heading: var(--font-body);
   --background: #ffffff;
   --foreground: #171717;
 
@@ -13,7 +14,8 @@
 
   /* Content */
   --content-primary: #121314;
-  --content-secondary: #666666; /* Darkened from #777 for AA contrast (5.74:1) */
+  --content-secondary: #666666;
+  /* Darkened from #777 for AA contrast (5.74:1) */
   --content-muted: rgba(18, 19, 20, 0.65);
   --content-inverse: #ffffff;
   --content-on-primary: #e0e5f5;
@@ -25,9 +27,12 @@
   --surface-neutral-alt: #eef1f5;
 
   /* Borders */
-  --border-default: #E5E7EB; /* neutral-200 */
+  --border: rgba(0, 0, 0, 0.1);
+  --border-default: rgba(0, 0, 0, 0.1);
+  /* neutral-200 */
   --border-light: #eeeeee;
-  --border-card: #dedede;
+  --border-card: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.1);
 
   /* Feedback */
   --feedback-success: #16A34A;
@@ -35,12 +40,12 @@
   --feedback-error: #DC2626;
 
   /* Shadows / Elevation */
-  --shadow-card-resting: 0 1px 2px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05);
-  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.08), 0 12px 28px rgba(0,0,0,0.08);
-  --shadow-badge: 0 8px 22px rgba(18,19,20,0.12);
-  --shadow-brand-cta: 0 8px 20px rgba(37,58,123,0.22);
-  --shadow-icon-box: inset 0 0 8px rgba(255,255,255,0.25), 0 6px 16px rgba(37,58,123,0.20);
-  --shadow-focus: 0 0 0 3px rgba(37,58,123,0.35);
+  --shadow-card-resting: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.08), 0 12px 28px rgba(0, 0, 0, 0.08);
+  --shadow-badge: 0 8px 22px rgba(18, 19, 20, 0.12);
+  --shadow-brand-cta: 0 8px 20px rgba(37, 58, 123, 0.22);
+  --shadow-icon-box: inset 0 0 8px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(37, 58, 123, 0.20);
+  --shadow-focus: 0 0 0 3px rgba(37, 58, 123, 0.35);
 
   /* Radius */
   --radius-icon: 15px;
@@ -91,9 +96,11 @@
   --color-surface-neutral-alt: var(--surface-neutral-alt);
 
   /* Border Colors */
+  --color-border: var(--border);
   --color-border-default: var(--border-default);
   --color-border-light: var(--border-light);
   --color-border-card: var(--border-card);
+  --color-input: var(--input);
 
   /* Feedback Colors */
   --color-feedback-success: var(--feedback-success);
@@ -123,7 +130,7 @@
   --color-icon-bg-gold: var(--icon-bg-gold);
 
   --font-body: var(--font-body), sans-serif;
-  --font-heading: var(--font-heading), serif;
+  --font-heading: var(--font-body), sans-serif;
 
   --animate-shiny-text: shiny-text 3s ease-in-out infinite;
   --animate-shiny-stroke: shiny-stroke 2s linear infinite;
@@ -132,7 +139,9 @@
     0% {
       background-position: 100% 0;
     }
-    35%, 100% {
+
+    35%,
+    100% {
       background-position: 0% 0;
     }
   }
@@ -141,6 +150,7 @@
     0% {
       background-position: 200% 0;
     }
+
     100% {
       background-position: -200% 0;
     }
@@ -171,7 +181,8 @@ body {
   background: var(--background);
   color: var(--content-primary);
   font-family: var(--font-body);
-  font-weight: 500; /* DM Sans Medium (500) default */
+  font-weight: 500;
+  /* DM Sans Medium (500) default */
 }
 
 /* UI elements use DM Sans Medium by default */
@@ -183,7 +194,7 @@ textarea {
   font-weight: 500;
 }
 
-/* Headings: Hedvig Letters Serif Regular (400) only */
+/* Headings: DM Sans only */
 h1 {
   font-family: var(--font-heading);
   font-weight: 400;
@@ -234,18 +245,23 @@ h6 {
   h1 {
     font-size: 56px;
   }
+
   h2 {
     font-size: 48px;
   }
+
   h3 {
     font-size: 36px;
   }
+
   h4 {
     font-size: 28px;
   }
+
   h5 {
     font-size: 24px;
   }
+
   h6 {
     font-size: 20px;
   }
@@ -276,7 +292,7 @@ p {
 /* ============================================================
    TYPOGRAPHY SIZE SYSTEM UTILITIES (design system.md)
    Canonical mapping:
-   Hedvig Letters Serif Regular (400) -> All headings / display
+   DM Sans -> All headings / display
    DM Sans Medium (500) -> All body / UI / buttons / navigation
    ============================================================ */
 
@@ -287,6 +303,7 @@ p {
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
+
 @media (min-width: 1024px) {
   .text-display {
     font-size: 64px;
@@ -300,6 +317,7 @@ p {
   line-height: 1.08;
   letter-spacing: -0.025em;
 }
+
 @media (min-width: 1024px) {
   .text-h1 {
     font-size: 56px;
@@ -313,6 +331,7 @@ p {
   line-height: 1.12;
   letter-spacing: -0.02em;
 }
+
 @media (min-width: 1024px) {
   .text-h2 {
     font-size: 48px;
@@ -326,6 +345,7 @@ p {
   line-height: 1.2;
   letter-spacing: -0.015em;
 }
+
 @media (min-width: 1024px) {
   .text-h3 {
     font-size: 36px;
@@ -339,6 +359,7 @@ p {
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
+
 @media (min-width: 1024px) {
   .text-h4 {
     font-size: 28px;
@@ -351,6 +372,7 @@ p {
   font-size: 20px;
   line-height: 1.3;
 }
+
 @media (min-width: 1024px) {
   .text-h5 {
     font-size: 24px;
@@ -363,6 +385,7 @@ p {
   font-size: 18px;
   line-height: 1.6;
 }
+
 @media (min-width: 1024px) {
   .text-body-large {
     font-size: 20px;
@@ -403,6 +426,7 @@ p {
   font-size: 15px;
   line-height: 1.4;
 }
+
 @media (min-width: 1024px) {
   .text-nav {
     font-size: 16px;
@@ -416,12 +440,14 @@ p {
   font-size: 14px;
   line-height: 1.55;
 }
+
 .text-label-md {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
 }
+
 .text-label-lg {
   font-family: var(--font-body);
   font-weight: 500;
@@ -442,6 +468,7 @@ p {
 }
 
 @media (min-width: 640px) {
+
   .container,
   .site-container {
     padding-inline: 32px;
@@ -449,6 +476,7 @@ p {
 }
 
 @media (min-width: 1024px) {
+
   .container,
   .site-container {
     max-width: 1280px;
@@ -457,6 +485,7 @@ p {
 }
 
 @media (min-width: 1440px) {
+
   .container,
   .site-container {
     max-width: 1440px;
@@ -494,6 +523,7 @@ p {
    ACCESSIBILITY: Reduced Motion (WCAG 2.2 AA / MDN Standard)
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

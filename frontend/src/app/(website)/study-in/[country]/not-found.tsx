@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft, Globe } from "lucide-react";
 import Container from "@/components/ui/Container";
+import { buttonVariants } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 export default function CountryNotFound() {
   return (
@@ -19,14 +21,14 @@ export default function CountryNotFound() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/"
-            className="inline-flex h-11 items-center gap-2 rounded-full bg-[#253A7B] px-6 font-body text-sm font-semibold text-white transition-colors hover:bg-[#1b2b5d]"
+            className={cn(buttonVariants({ variant: "primary" }), "gap-2")}
           >
             <ArrowLeft size={16} />
             <span>Return to Home</span>
           </Link>
           <Link
             href="/study-in/dubai"
-            className="inline-flex h-11 items-center rounded-full border border-gray-300 bg-white px-6 font-body text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+            className={buttonVariants({ variant: "outline" })}
           >
             Explore Dubai
           </Link>

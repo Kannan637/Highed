@@ -8,6 +8,9 @@ import {
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
+import { buttonVariants } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 interface CountryHeroProps {
   country: Country;
@@ -59,19 +62,15 @@ export const CountryHero = ({ country }: CountryHeroProps) => {
           {/* =====================================================
               TRUST BADGE
           ====================================================== */}
-          <div className="mb-7 inline-flex items-center rounded-full bg-[#F43F68] px-4 py-2 text-sm font-medium leading-none text-white shadow-lg shadow-black/10">
+          <Badge variant="accent" size="lg" className="mb-7 gap-2">
             <span>
               Trusted by{" "}
               <span className="font-bold">10,000+</span> students
             </span>
-
-            <span
-              aria-hidden="true"
-              className="ml-2 text-lg leading-none"
-            >
+            <span aria-hidden="true" className="text-base leading-none">
               ↗
             </span>
-          </div>
+          </Badge>
 
           {/* =====================================================
               HEADING
@@ -123,72 +122,24 @@ export const CountryHero = ({ country }: CountryHeroProps) => {
               source={`country_hero_${country.slug}`}
               variant="accent"
               size="lg"
-              className="
-                h-12
-                rounded-full
-                bg-[#F43F68]
-                px-6
-                font-sans
-                text-sm
-                font-medium
-                text-white
-                shadow-lg
-                shadow-[#F43F68]/20
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:bg-[#E9355D]
-                sm:h-13
-                sm:px-7
-              "
+              iconBadge={<ArrowRight size={18} strokeWidth={2.5} />}
             >
-              <span>Get Free Counselling</span>
-
-              <ArrowRight
-                size={19}
-                strokeWidth={2}
-                className="ml-1"
-              />
+              Get Free Counselling
             </LeadCTAButton>
 
             {/* Secondary CTA */}
             <Link
               href={`/study-in/${country.slug}/explore?type=universities`}
-              className="
-                group
-                inline-flex
-                h-12
-                items-center
-                justify-center
-                gap-2
-                rounded-full
-                border
-                border-white/80
-                bg-white/5
-                px-6
-                font-sans
-                text-sm
-                font-medium
-                text-white
-                backdrop-blur-sm
-                transition-all
-                duration-300
-                hover:bg-white
-                hover:text-[#172F70]
-                sm:h-13
-                sm:px-7
-              "
+              className={cn(
+                buttonVariants({ variant: "inverse", size: "lg" }),
+                "group border-white/80 hover:bg-white hover:text-brand-primary"
+              )}
             >
               <span>Explore Universities</span>
-
               <ArrowRight
                 size={18}
                 strokeWidth={2}
-                className="
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
+                className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </Link>
           </div>

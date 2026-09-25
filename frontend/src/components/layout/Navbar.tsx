@@ -46,9 +46,9 @@ export const Navbar: React.FC = () => {
           <a
             href="tel:+919050180501"
             aria-label="Call support"
-            className="flex h-11 w-11 touch-manipulation items-center justify-center rounded-full bg-[#F3F5FA] text-brand-primary transition-all duration-300 active:scale-95"
+            className="flex size-12 touch-manipulation items-center justify-center rounded-full bg-[#F3F5FA] text-brand-primary transition-all duration-300 active:scale-95"
           >
-            <Phone size={17} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+            <Phone size={18} fill="currentColor" strokeWidth={0} aria-hidden="true" />
           </a>
 
           {/* HAMBURGER */}
@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMobileMenuOpen}
-            className="relative z-[10001] flex h-11 w-11 touch-manipulation select-none items-center justify-center rounded-xl border border-gray-200 bg-white text-content-primary transition-all duration-300 active:scale-95"
+            className="relative z-[10001] flex size-12 touch-manipulation select-none items-center justify-center rounded-xl border border-border bg-white text-foreground transition-all duration-300 active:scale-95 cursor-pointer"
           >
             {isMobileMenuOpen ? (
               <X size={22} strokeWidth={2} aria-hidden="true" />

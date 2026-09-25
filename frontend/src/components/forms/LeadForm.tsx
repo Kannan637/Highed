@@ -5,8 +5,10 @@ import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { LeadService } from "@/services/lead.service";
 import { LeadSubmission } from "@/types/lead";
 import { validateLeadSubmission } from "@/lib/validations";
-import Button from "@/components/ui/Button";
 import PhoneInput from "./PhoneInput";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { Button } from "@/components/ui/Button";
 
 interface LeadFormProps {
   defaultCountry?: string;
@@ -90,6 +92,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
           fullName: "",
           email: "",
           phone: "",
+          countryCode: "+91",
           destinationCountry: defaultCountry,
           studyLevel: "Master's Degree",
           preferredCourse: "",
@@ -133,12 +136,12 @@ export const LeadForm: React.FC<LeadFormProps> = ({
             </div>
           )}
 
-          {/* Full Name (ISS-014 & ISS-015) */}
+          {/* Full Name */}
           <div>
-            <label htmlFor="lead-fullName" className="mb-1 block font-body text-xs font-semibold text-gray-700">
+            <label htmlFor="lead-fullName" className="mb-1.5 block font-body text-xs font-semibold text-content-secondary">
               Full Name *
             </label>
-            <input
+            <Input
               id="lead-fullName"
               type="text"
               name="fullName"
@@ -146,13 +149,9 @@ export const LeadForm: React.FC<LeadFormProps> = ({
               placeholder="e.g. Alex Johnson"
               value={formData.fullName}
               onChange={handleChange}
+              error={!!fieldErrors.fullName}
               aria-invalid={!!fieldErrors.fullName}
               aria-describedby={fieldErrors.fullName ? "lead-fullName-error" : undefined}
-              className={`h-11 w-full rounded-xl border px-4 font-body text-sm outline-none transition-colors ${
-                fieldErrors.fullName
-                  ? "border-[#E93F61] focus:border-[#E93F61]"
-                  : "border-gray-200 focus:border-brand-primary"
-              }`}
             />
             {fieldErrors.fullName && (
               <p id="lead-fullName-error" className="mt-1 font-body text-xs text-brand-accent" role="alert">
@@ -164,10 +163,10 @@ export const LeadForm: React.FC<LeadFormProps> = ({
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Email Address */}
             <div>
-              <label htmlFor="lead-email" className="mb-1 block font-body text-xs font-semibold text-gray-700">
+              <label htmlFor="lead-email" className="mb-1.5 block font-body text-xs font-semibold text-content-secondary">
                 Email Address *
               </label>
-              <input
+              <Input
                 id="lead-email"
                 type="email"
                 name="email"
@@ -175,13 +174,9 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 placeholder="alex@example.com"
                 value={formData.email}
                 onChange={handleChange}
+                error={!!fieldErrors.email}
                 aria-invalid={!!fieldErrors.email}
                 aria-describedby={fieldErrors.email ? "lead-email-error" : undefined}
-                className={`h-11 w-full rounded-xl border px-4 font-body text-sm outline-none transition-colors ${
-                  fieldErrors.email
-                    ? "border-[#E93F61] focus:border-[#E93F61]"
-                    : "border-gray-200 focus:border-brand-primary"
-                }`}
               />
               {fieldErrors.email && (
                 <p id="lead-email-error" className="mt-1 font-body text-xs text-brand-accent" role="alert">
@@ -216,15 +211,14 @@ export const LeadForm: React.FC<LeadFormProps> = ({
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Target Country */}
             <div>
-              <label htmlFor="lead-destinationCountry" className="mb-1 block font-body text-xs font-semibold text-gray-700">
+              <label htmlFor="lead-destinationCountry" className="mb-1.5 block font-body text-xs font-semibold text-content-secondary">
                 Target Country
               </label>
-              <select
+              <Select
                 id="lead-destinationCountry"
                 name="destinationCountry"
                 value={formData.destinationCountry}
                 onChange={handleChange}
-                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-brand-primary"
               >
                 <option value="Dubai">Dubai (UAE)</option>
                 <option value="USA">United States (USA)</option>
@@ -232,47 +226,47 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 <option value="Canada">Canada</option>
                 <option value="Australia">Australia</option>
                 <option value="Germany">Germany</option>
-              </select>
+              </Select>
             </div>
 
             {/* Study Level */}
             <div>
-              <label htmlFor="lead-studyLevel" className="mb-1 block font-body text-xs font-semibold text-gray-700">
+              <label htmlFor="lead-studyLevel" className="mb-1.5 block font-body text-xs font-semibold text-content-secondary">
                 Study Level
               </label>
-              <select
+              <Select
                 id="lead-studyLevel"
                 name="studyLevel"
                 value={formData.studyLevel}
                 onChange={handleChange}
-                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 font-body text-sm outline-none transition-colors focus:border-brand-primary"
               >
                 <option value="Undergraduate">Bachelor&apos;s Degree</option>
                 <option value="Master's Degree">Master&apos;s / Postgraduate</option>
                 <option value="MBA">MBA / Business</option>
                 <option value="Doctorate">Doctorate / PhD</option>
                 <option value="Diploma">Diploma / Pathway</option>
-              </select>
+              </Select>
             </div>
           </div>
 
           <Button
             type="submit"
             variant="accent"
+            size="default"
             fullWidth
             disabled={loading}
-            className="mt-2 h-12"
+            className="mt-2 h-12 rounded-full gap-2 text-base font-semibold"
           >
             {loading ? (
-              <span className="flex items-center gap-2">
+              <>
                 <Loader2 size={18} className="animate-spin" />
-                Submitting...
-              </span>
+                <span>Submitting...</span>
+              </>
             ) : (
-              <span className="flex items-center gap-2">
+              <>
                 <Send size={16} />
-                Confirm My Counselling Session
-              </span>
+                <span>Confirm My Counselling Session</span>
+              </>
             )}
           </Button>
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import { Badge } from "@/components/ui/Badge";
 import { Globe } from "lucide-react";
 
 interface ExploreHeroProps {
@@ -38,7 +39,7 @@ export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
 
         {/* Header content */}
         <div className="max-w-3xl">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-semibold backdrop-blur-md">
+          <Badge variant="inverse" size="sm" className="mb-3">
             {country ? (
               <>
                 <span>{country.flag}</span>
@@ -50,7 +51,7 @@ export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
                 <span>Global Unified Directory</span>
               </>
             )}
-          </div>
+          </Badge>
 
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
             {country

@@ -839,20 +839,21 @@ export default function OurStoryPage() {
 
                     <div className="mx-auto mt-14 flex max-w-4xl flex-wrap justify-center gap-3">
                         {destinations.map((destination) => (
-                            <div
+                            <Link
                                 key={destination}
-                                className="destination-pill group flex items-center gap-3 rounded-full border border-black/10 bg-surface-neutral px-6 py-4 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:border-[#253A7B]/20 hover:bg-[#253A7B] hover:text-white"
+                                href={`/study-in/${destination.toLowerCase().replace(/ /g, "-")}`}
+                                className="destination-pill group flex items-center gap-3 rounded-full border border-border bg-surface-neutral px-6 py-3.5 text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/20 hover:bg-brand-primary hover:text-white cursor-pointer"
                             >
                                 <MapPin
                                     size={16}
-                                    className="text-[#253A7B] transition-colors group-hover:text-white"
+                                    className="text-brand-primary transition-colors group-hover:text-white"
                                 />
                                 {destination}
                                 <ArrowUpRight
                                     size={15}
                                     className="opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100"
                                 />
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -862,9 +863,9 @@ export default function OurStoryPage() {
           FINAL CTA
       ========================================================== */}
 
-            <section className="final-cta bg-[#253A7B] text-white">
+            <section className="final-cta bg-brand-primary text-white">
                 <div className="cta-content mx-auto max-w-[1200px] px-6 py-32 text-center md:px-10 lg:py-44">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-[18px] bg-white/10">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10">
                         <GraduationCap size={26} />
                     </div>
 
@@ -883,7 +884,7 @@ export default function OurStoryPage() {
 
                     <Link
                         href="/book-counselling"
-                        className="group mt-10 inline-flex h-14 items-center gap-3 rounded-full bg-white px-8 text-sm font-semibold text-[#253A7B] transition-all hover:gap-4"
+                        className="group mt-10 inline-flex h-14 items-center gap-3 rounded-full bg-white px-8 text-sm font-semibold text-brand-primary shadow-md transition-all hover:gap-4 hover:shadow-lg"
                     >
                         Book Free Counselling
                         <ArrowRight

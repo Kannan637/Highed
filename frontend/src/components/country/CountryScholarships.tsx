@@ -9,6 +9,9 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Carousel from "@/components/ui/Carousel";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { buttonVariants } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 interface CountryScholarshipsProps {
   country: Country;
@@ -41,10 +44,10 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({ countr
             >
               <div>
                 {/* Scholarship Amount Badge */}
-                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200/70 px-3.5 py-1 text-caption font-medium text-amber-800">
-                  <Award size={14} className="text-amber-600" />
+                <Badge variant="warning" className="mb-4 gap-1.5">
+                  <Award size={14} />
                   <span>{scholarship.amount}</span>
-                </div>
+                </Badge>
 
                 <h3 className="font-heading font-normal text-h4 text-content-primary leading-snug">
                   {scholarship.name}
@@ -88,7 +91,10 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({ countr
         <div className="mt-8 flex justify-center px-4">
           <Link
             href={`/study-in/${country.slug}/explore?type=scholarships`}
-            className="inline-flex items-center justify-center font-medium rounded-[var(--radius-btn)] transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-content-inverse min-h-[44px] h-auto py-2.5 px-6 text-btn gap-2 max-w-full text-center"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "max-w-full text-center"
+            )}
           >
             <Compass className="w-4 h-4 shrink-0" />
             <span>Explore All Scholarships & Application Deadlines</span>

@@ -10,40 +10,39 @@ import {
     BadgeCheck,
     Plane,
     ArrowUpRight,
+    type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
 
-export interface BlogAuthor {
-    name: string;
-    role: string;
-    avatar: string;
-}
+export const CARD_BG_COLORS = [
+    "#E5EDF2",
+    "#DEECE1",
+    "#F2EAE0",
+    "#F2E7ED",
+] as const;
 
-export interface BlogCardItem {
+export interface ServiceCardItem {
     meta?: string;
     title: string;
     description?: string;
-    author?: BlogAuthor;
     href?: string;
-    icon?: React.ComponentType<{
-        size?: number;
-        className?: string;
-        strokeWidth?: number;
-        "aria-hidden"?: boolean | "true" | "false";
-    }>;
+    icon?: LucideIcon;
     customText?: string;
+    bgColor?: string;
 }
 
-export interface Blog2Header {
+export interface ServicesHeader {
     heading: string;
     description: string;
     ctaText: string;
     ctaHref: string;
 }
 
-export interface Blog2Props {
-    header?: Partial<Blog2Header>;
-    posts?: BlogCardItem[];
+export interface ServicesSectionProps {
+    header?: Partial<ServicesHeader>;
+    posts?: ServiceCardItem[];
     className?: string;
     renderCtaLink?: (props: {
         href: string;
@@ -55,7 +54,7 @@ export interface Blog2Props {
     }) => React.ReactNode;
 }
 
-const defaultHeader: Blog2Header = {
+const defaultHeader: ServicesHeader = {
     heading: "Complete Study Abroad Advisory Services",
     description:
         "From university shortlisting and scholarship assistance to visa approval and pre-departure briefings, we provide end-to-end guidance for your global education journey.",
@@ -63,7 +62,7 @@ const defaultHeader: Blog2Header = {
     ctaHref: "/services",
 };
 
-const defaultPosts: BlogCardItem[] = [
+const defaultPosts: ServiceCardItem[] = [
     {
         title: "Free Study Abroad Counselling",
         description:
@@ -93,7 +92,7 @@ const defaultPosts: BlogCardItem[] = [
         icon: BadgeDollarSign,
     },
     {
-        title: "Visa  & Mock Interview Training",
+        title: "Visa & Mock Interview Training",
         description:
             "Get complete visa documentation and interview preparation support.",
         href: "/services",
@@ -101,7 +100,7 @@ const defaultPosts: BlogCardItem[] = [
         customText: "VISA",
     },
     {
-        title: "Pre-Departure &  Accommodation",
+        title: "Pre-Departure & Accommodation",
         description:
             "Travel stress-free with complete pre-departure support.",
         href: "/services",
@@ -109,23 +108,14 @@ const defaultPosts: BlogCardItem[] = [
     },
 ];
 
-const colorVariants = [
-    "bg-violet-400/60 hover:bg-violet-400/50",
-    "bg-amber-400/60 hover:bg-amber-400/50",
-    "bg-emerald-400/60 hover:bg-emerald-400/50",
-    "bg-orange-400/60 hover:bg-orange-400/50",
-    "bg-blue-400/60 hover:bg-blue-400/50",
-    "bg-rose-400/60 hover:bg-rose-400/50",
-];
-
-export function Blog2({
+export function ServicesSection({
     header,
     posts,
     className,
     renderCtaLink,
     renderCardLink,
-}: Blog2Props = {}) {
-    const activeHeader: Blog2Header = {
+}: ServicesSectionProps = {}) {
+    const activeHeader: ServicesHeader = {
         ...defaultHeader,
         ...header,
     };
@@ -134,9 +124,8 @@ export function Blog2({
         posts && posts.length > 0 ? posts : defaultPosts;
 
     const ctaContent = (
-        <span className="group/cta inline-flex items-center gap-2 text-sm font-semibold text-[#253A7B] transition-colors hover:text-[#1B2B5C]">
+        <span className="group/cta inline-flex items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-primary-hover">
             {activeHeader.ctaText}
-
             <ArrowUpRight
                 className="size-4 transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
                 strokeWidth={2}
@@ -147,121 +136,107 @@ export function Blog2({
     return (
         <section
             className={cn(
-                "w-full bg-background px-4 py-8 sm:py-12 font-body",
+                "w-full bg-background py-12 sm:py-16 md:py-20 tracking-[-0.04em] [letter-spacing:-0.04em] [&_*]:[letter-spacing:-0.04em]",
                 className
             )}
-            style={{
-                fontFamily: "var(--font-body), 'DM Sans', sans-serif",
-            }}
         >
-            <div className="mx-auto max-w-6xl">
-                <div className="mx-auto mb-7 flex w-fit items-center gap-2 rounded-full bg-[#E93E60] px-6 py-3">
-                    <span className="size-[7px] rounded-full bg-white" />
+            <Container size="lg">
+                <SectionHeading
+                    eyebrow="Our Services"
+                    title={activeHeader.heading}
+                    description={activeHeader.description}
+                    className="mb-8"
+                />
 
-                    <span className="font-body text-[13px] font-medium leading-none text-white">
-                        Our Services
-                    </span>
-                </div>
-
-                <div className="mb-12 flex flex-col items-center gap-4 text-center md:mb-16">
-                    <h2
-                        className="max-w-2xl !font-body text-[30px] font-medium leading-[1.15] tracking-[-0.03em] text-[#2E2E2E] sm:text-[36px] md:text-[44px]"
-                        style={{
-                            fontFamily: "var(--font-body), 'DM Sans', sans-serif",
-                        }}
-                    >
-                        {activeHeader.heading}
-                    </h2>
-
-                    {activeHeader.description && (
-                        <p className="max-w-lg font-body text-[14px] font-normal leading-6 text-muted-foreground sm:text-[16px]">
-                            {activeHeader.description}
-                        </p>
-                    )}
-
-                    {activeHeader.ctaHref &&
-                        (renderCtaLink ? (
+                {activeHeader.ctaHref && (
+                    <div className="mb-12 flex justify-center -mt-4">
+                        {renderCtaLink ? (
                             renderCtaLink({
                                 href: activeHeader.ctaHref,
                                 children: ctaContent,
                             })
                         ) : (
-                            <Link href={activeHeader.ctaHref}>
+                            <Link
+                                href={activeHeader.ctaHref}
+                                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-full"
+                            >
                                 {ctaContent}
                             </Link>
-                        ))}
-                </div>
+                        )}
+                    </div>
+                )}
 
                 <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {activePosts.map((post, index) => {
                         const Icon = post.icon;
+                        const cardBg =
+                            post.bgColor ||
+                            CARD_BG_COLORS[index % CARD_BG_COLORS.length];
 
-                        const card = (
-                            <article
-                                key={index}
+                        const cardInner = (
+                            <div
                                 className={cn(
-                                    "group relative flex h-full min-h-[360px] flex-col overflow-hidden rounded-[28px] p-6 font-body transition-all duration-300 sm:min-h-[380px] sm:p-7",
-                                    colorVariants[index % colorVariants.length]
+                                    "relative flex flex-col justify-between h-full min-h-[340px] rounded-3xl p-7 sm:p-8",
+                                    "border border-black/[0.06] shadow-[0_2px_8px_rgba(0,0,0,0.03)]",
+                                    "transition-all duration-300 ease-out",
+                                    "group-hover/card:-translate-y-1.5 group-hover/card:shadow-[0_16px_32px_rgba(0,0,0,0.07)]",
+                                    "group-hover/card:border-black/[0.12]"
                                 )}
-                                style={{
-                                    fontFamily: "var(--font-body), 'DM Sans', sans-serif",
-                                }}
+                                style={{ backgroundColor: cardBg }}
                             >
-                                <div className="flex items-center justify-start">
-                                    {(Icon || post.customText) && (
-                                        <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[15px] bg-white shadow-sm">
-                                            {post.customText ? (
-                                                <span className="text-[10px] font-bold tracking-wide text-[#253A7B]">
-                                                    {post.customText}
-                                                </span>
-                                            ) : Icon ? (
-                                                <Icon
-                                                    size={24}
-                                                    strokeWidth={2.4}
-                                                    className="text-[#253A7B]"
-                                                    aria-hidden="true"
-                                                />
-                                            ) : null}
+                                {/* Header / Icon */}
+                                <div>
+                                    {post.customText ? (
+                                        <div className="flex size-14 items-center justify-center rounded-2xl bg-white shadow-xs transition-transform duration-300 group-hover/card:scale-105">
+                                            <span className="text-xs font-bold tracking-tight text-brand-primary">
+                                                {post.customText}
+                                            </span>
                                         </div>
-                                    )}
+                                    ) : Icon ? (
+                                        <div className="flex size-14 items-center justify-center rounded-2xl bg-white shadow-xs text-brand-primary transition-transform duration-300 group-hover/card:scale-105">
+                                            <Icon
+                                                className="size-6 text-brand-primary"
+                                                strokeWidth={2}
+                                            />
+                                        </div>
+                                    ) : null}
                                 </div>
 
-                                <div className="flex flex-1 flex-col justify-center py-8">
-                                    <h3
-                                        className="max-w-[290px] !font-body text-[22px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#2E2E2E] sm:text-[24px]"
-                                        style={{
-                                            fontFamily:
-                                                "var(--font-body), 'DM Sans', sans-serif",
-                                        }}
-                                    >
+                                {/* Content */}
+                                <div className="flex-1 py-6 flex flex-col justify-center">
+                                    <h3 className="text-xl sm:text-2xl font-semibold text-content-primary leading-snug tracking-[-0.03em]">
                                         {post.title}
                                     </h3>
 
                                     {post.description && (
-                                        <p className="mt-3 max-w-[300px] font-body text-[14px] font-medium leading-6 text-[#2E2E2E]/70">
+                                        <p className="mt-3 text-sm sm:text-[15px] font-normal leading-relaxed text-content-secondary">
                                             {post.description}
                                         </p>
                                     )}
                                 </div>
 
-                                <div className="flex items-center justify-end">
-                                    <div className="inline-flex items-center gap-2 rounded-full bg-[#253A7B] px-5 py-2.5 font-body text-[13px] font-semibold text-white shadow-sm transition-all duration-300 group-hover:bg-[#1B2B5C]">
+                                {/* Footer CTA Pill */}
+                                <div className="flex items-center justify-end pt-2">
+                                    <span className="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-brand-primary text-white text-xs font-semibold shadow-xs transition-all duration-200 group-hover/card:bg-brand-primary-hover group-hover/card:shadow-sm">
                                         Explore
-
                                         <ArrowUpRight
-                                            className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                                            strokeWidth={2}
+                                            className="size-4 transition-transform duration-200 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5"
+                                            strokeWidth={2.2}
                                         />
-                                    </div>
+                                    </span>
                                 </div>
-                            </article>
+                            </div>
                         );
 
                         if (renderCardLink && post.href) {
-                            return renderCardLink({
+                          return (
+                            <div key={index} className="group/card h-full">
+                              {renderCardLink({
                                 href: post.href,
-                                children: card,
-                            });
+                                children: cardInner,
+                              })}
+                            </div>
+                          );
                         }
 
                         if (post.href) {
@@ -269,20 +244,24 @@ export function Blog2({
                                 <Link
                                     key={index}
                                     href={post.href}
-                                    className="block h-full rounded-[28px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#253A7B] focus-visible:ring-offset-2"
+                                    className="group/card block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
                                 >
-                                    {card}
+                                    {cardInner}
                                 </Link>
                             );
                         }
 
-                        return card;
+                        return (
+                            <div key={index} className="group/card h-full">
+                                {cardInner}
+                            </div>
+                        );
                     })}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
 
-export default Blog2;
-export { Blog2 as ServicesSection };
+export default ServicesSection;
+export { ServicesSection as Blog2 };

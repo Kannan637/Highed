@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { SearchX, RotateCcw, Headset } from "lucide-react";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
+import { Button } from "@/components/ui/Button";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 interface ExploreEmptyStateProps {
   onReset: () => void;
@@ -11,10 +14,8 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
   onReset,
   query,
 }) => {
-  const { openLeadPopup } = useLeadPopup();
-
   return (
-    <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-neutral-300 bg-white p-8 sm:p-12 text-center shadow-xs">
+    <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-black/10 bg-white p-8 sm:p-12 text-center shadow-xs">
       <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-100 text-neutral-400 mb-5">
         <SearchX size={32} />
       </div>
@@ -31,23 +32,26 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
       </p>
 
       <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-        <button
-          type="button"
-          onClick={() => openLeadPopup({ source: "explore_empty_state" })}
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-brand-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-accent/90 transition-all active:scale-95 cursor-pointer"
+        <LeadCTAButton
+          source="explore_empty_state"
+          variant="accent"
+          size="default"
+          className="w-full sm:w-auto gap-2"
         >
           <Headset size={16} />
           <span>Ask an Expert</span>
-        </button>
+        </LeadCTAButton>
 
-        <button
+        <Button
           type="button"
+          variant="outline"
+          size="default"
           onClick={onReset}
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-neutral-200 bg-white px-6 py-2.5 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 hover:text-neutral-900 transition-all active:scale-95 cursor-pointer"
+          className="w-full sm:w-auto gap-2"
         >
           <RotateCcw size={14} />
           <span>Clear Filters</span>
-        </button>
+        </Button>
       </div>
     </div>
   );

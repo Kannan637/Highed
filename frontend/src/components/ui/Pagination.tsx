@@ -35,10 +35,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="p-2 rounded-xl border border-neutral-300 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
         aria-label="Previous page"
       >
-        <ChevronLeft size={20} />
+        <ChevronLeft size={18} />
       </button>
 
       {startPage > 1 && (
@@ -46,7 +46,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             type="button"
             onClick={() => onPageChange(1)}
-            className="w-10 h-10 flex items-center justify-center rounded-xl border border-neutral-300 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 transition-colors"
+            className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 transition-colors cursor-pointer"
           >
             1
           </button>
@@ -59,10 +59,10 @@ export const Pagination: React.FC<PaginationProps> = ({
           key={page}
           type="button"
           onClick={() => onPageChange(page)}
-          className={`w-10 h-10 flex items-center justify-center rounded-xl text-sm font-medium transition-colors ${
+          className={`size-10 flex items-center justify-center rounded-full text-sm font-medium transition-colors cursor-pointer ${
             currentPage === page
-              ? "bg-brand-primary text-white shadow-md"
-              : "border border-neutral-300 bg-white text-neutral-600 hover:bg-neutral-50"
+              ? "bg-brand-primary text-white shadow-xs"
+              : "border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50"
           }`}
         >
           {page}
@@ -77,7 +77,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             type="button"
             onClick={() => onPageChange(totalPages)}
-            className="w-10 h-10 flex items-center justify-center rounded-xl border border-neutral-300 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 transition-colors"
+            className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 transition-colors cursor-pointer"
           >
             {totalPages}
           </button>
@@ -88,10 +88,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         type="button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="p-2 rounded-xl border border-neutral-300 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
         aria-label="Next page"
       >
-        <ChevronRight size={20} />
+        <ChevronRight size={18} />
       </button>
     </div>
   );

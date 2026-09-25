@@ -7,6 +7,7 @@ import CourseCard from "./CourseCard";
 import ScholarshipCard from "./ScholarshipCard";
 import ExploreEmptyState from "./ExploreEmptyState";
 import ExploreSort from "./ExploreSort";
+import { Button } from "@/components/ui/Button";
 
 interface ExploreResultsProps {
   results: ExploreResult[];
@@ -43,14 +44,16 @@ export const ExploreResults: React.FC<ExploreResultsProps> = ({
 
         <div className="flex items-center gap-3">
           {/* Mobile Filter Button */}
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="sm"
             onClick={onOpenFiltersMobile}
-            className="lg:hidden inline-flex items-center gap-1.5 rounded-xl border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-2xs hover:bg-neutral-50 cursor-pointer"
+            className="lg:hidden gap-2"
           >
-            <SlidersHorizontal size={13} />
+            <SlidersHorizontal size={15} />
             <span>Filters</span>
-          </button>
+          </Button>
 
           {/* Sort Dropdown */}
           <ExploreSort

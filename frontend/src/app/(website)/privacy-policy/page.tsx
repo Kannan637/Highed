@@ -17,35 +17,35 @@ export default function PrivacyPolicyPage() {
   const lastUpdated = "September 12, 2026";
 
   return (
-    <div className="bg-surface-neutral py-12 sm:py-20">
+    <div className="bg-background py-12 sm:py-20">
       <Container size="md">
         {/* Breadcrumb / Back Link */}
-        <div className="mb-8">
+        <div className="mb-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-body text-sm font-medium text-brand-primary transition-colors hover:text-brand-accent"
+            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="size-4" />
             Back to Home
           </Link>
         </div>
 
         {/* Page Header */}
-        <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xs sm:p-12">
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-10 md:p-12 shadow-xs">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-icon-bg-primary text-brand-primary">
-              <Shield className="h-6 w-6" aria-hidden="true" />
+            <span className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-brand-primary">
+              <Shield className="size-6" aria-hidden="true" />
             </span>
             <div>
-              <span className="font-body text-xs font-medium uppercase tracking-wider text-brand-primary">
+              <span className="text-xs font-semibold uppercase tracking-wider text-brand-primary">
                 Legal Documentation
               </span>
-              <h1 className="text-h2 text-content-primary">
+              <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
                 Privacy Policy
               </h1>
             </div>
           </div>
-          <p className="mt-4 font-body text-sm text-gray-500">
+          <p className="mt-4 text-xs sm:text-sm text-muted-foreground">
             Last Updated: {lastUpdated}
           </p>
 
@@ -117,18 +117,18 @@ export default function PrivacyPolicyPage() {
             <p>
               If you have questions, concerns, or requests regarding this Privacy Policy or our data management practices, please contact us at:
             </p>
-            <div className="mt-4 rounded-2xl bg-[#F8F9FE] p-6 text-sm text-gray-700">
-              <p className="font-semibold text-content-primary">{siteConfig.name} Admissions Office</p>
-              <p className="mt-1">{siteConfig.contact.address}</p>
-              <p className="mt-1">
+            <div className="mt-6 rounded-xl border border-border bg-neutral-50/70 p-6 text-sm text-foreground">
+              <p className="font-bold text-foreground">{siteConfig.name} Admissions Office</p>
+              <p className="mt-1 text-muted-foreground">{siteConfig.contact.address}</p>
+              <p className="mt-2 text-muted-foreground">
                 Email:{" "}
-                <a href={`mailto:${siteConfig.contact.email}`} className="text-brand-primary font-medium underline">
+                <a href={`mailto:${siteConfig.contact.email}`} className="text-brand-primary font-semibold underline">
                   {siteConfig.contact.email}
                 </a>
               </p>
-              <p className="mt-1">
+              <p className="mt-1 text-muted-foreground">
                 Phone:{" "}
-                <a href={`tel:${siteConfig.contact.phone}`} className="text-brand-primary font-medium underline">
+                <a href={`tel:${siteConfig.contact.phone}`} className="text-brand-primary font-semibold underline">
                   {siteConfig.contact.phone}
                 </a>
               </p>

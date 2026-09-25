@@ -4,6 +4,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
 
 export interface CTASectionProps extends React.HTMLAttributes<HTMLDivElement> {
   badge?: string;
@@ -31,9 +32,9 @@ export const CTASection: React.FC<CTASectionProps> = ({
       {...props}
     >
       {badge && (
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 font-body text-caption font-medium tracking-wide text-white backdrop-blur-xs">
+        <Badge variant="inverse" size="default">
           {badge}
-        </span>
+        </Badge>
       )}
       <h2 className="text-h3 text-white">{title}</h2>
       {subtitle && (

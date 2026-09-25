@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
 import { Country } from "@/types/country";
 
 interface CountryCTAProps {
@@ -34,10 +35,10 @@ export const CountryCTA: React.FC<CountryCTAProps> = ({ country }) => {
           <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
             {/* Left Content Column */}
             <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:col-span-7">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-caption font-medium text-white/95 backdrop-blur-md border border-white/15">
+              <Badge variant="inverse" size="default">
                 <span className="h-2 w-2 rounded-full bg-brand-accent animate-pulse" />
                 <span>Zero Consultation Charges</span>
-              </span>
+              </Badge>
 
               <h2 className="mt-4 sm:mt-6 font-heading font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-white">
                 Ready to Study in{" "}
@@ -65,10 +66,10 @@ export const CountryCTA: React.FC<CountryCTAProps> = ({ country }) => {
                 {country?.slug && (
                   <Link
                     href={`/study-in/${country.slug}/explore`}
-                    className="inline-flex min-h-[48px] items-center justify-center rounded-[var(--radius-btn)] border-2 border-white/40 bg-white/5 px-7 text-btn font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white hover:text-brand-primary w-full sm:w-auto"
+                    className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 text-btn font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white hover:text-brand-primary w-full sm:w-auto"
                   >
                     <span>Explore Directory</span>
-                    <ArrowRight size={18} className="ml-2" />
+                    <ArrowRight size={18} />
                   </Link>
                 )}
               </div>

@@ -177,11 +177,20 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 font-body text-caption font-medium text-gray-400 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 font-body text-caption font-medium text-gray-400 sm:flex-row gap-4">
           <div>
             © {new Date().getFullYear()} HighEd Global Education Advisory. All rights reserved.
           </div>
-          <div className="mt-3 flex items-center gap-1 sm:mt-0">
+          <div className="flex items-center gap-4 text-xs text-gray-400">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors py-1">
+              Privacy Policy
+            </Link>
+            <span>•</span>
+            <Link href="/terms" className="hover:text-white transition-colors py-1">
+              Terms of Service
+            </Link>
+          </div>
+          <div className="flex items-center gap-1">
             <span>Crafted with</span>
             <Heart size={12} className="fill-[#E93F61] text-brand-accent" />
             <span>for international students</span>

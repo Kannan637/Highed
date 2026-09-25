@@ -27,21 +27,21 @@ export const CityFAQ: React.FC<CityFAQProps> = ({ city }) => {
           align="center"
         />
 
-        <div className="mt-10 rounded-2xl border border-neutral-200/80 bg-white p-6 md:p-8 shadow-xs">
+        <div className="mt-10 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-xs">
           <Accordion items={accordionItems} />
         </div>
 
         {/* Still have questions prompt */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl bg-white border border-neutral-200/80 p-5 md:p-6 shadow-xs">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl bg-card border border-border p-5 md:p-6 shadow-xs">
           <div className="flex items-center gap-3.5">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-icon-bg-primary text-brand-primary">
+            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-brand-primary">
               <HelpCircle size={22} />
             </div>
             <div>
-              <p className="text-body-small font-medium text-neutral-900">
+              <p className="text-sm font-semibold text-foreground">
                 Still have questions regarding studying abroad from {city.name}?
               </p>
-              <p className="text-caption font-medium text-neutral-500 mt-0.5">
+              <p className="text-xs text-muted-foreground mt-0.5">
                 Our certified educational advisors provide instant 1-on-1 clarity.
               </p>
             </div>
@@ -51,9 +51,10 @@ export const CityFAQ: React.FC<CityFAQProps> = ({ city }) => {
             source={`city_faq_help_${city.slug}`}
             contextTitle={`FAQ Assistance for ${city.name}`}
             contextCTA="Talk to an Advisor"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-primary px-5 py-2.5 text-body-small font-medium text-white hover:bg-[#1b2b5c] transition-all cursor-pointer shrink-0 shadow-sm"
+            size="default"
+            className="h-11 sm:h-12 px-6 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center gap-2 shrink-0 shadow-sm"
           >
-            <MessageSquare size={14} />
+            <MessageSquare size={16} />
             <span>Ask an Advisor</span>
           </LeadCTAButton>
         </div>

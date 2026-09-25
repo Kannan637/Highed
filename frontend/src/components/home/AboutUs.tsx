@@ -186,6 +186,9 @@ export default function AboutSection() {
         overflow-hidden
         bg-brand-primary
         text-white
+        tracking-[-0.04em]
+        [letter-spacing:-0.04em]
+        [&_*]:[letter-spacing:-0.04em]
       `}
         >
             {/* =====================================================
@@ -539,21 +542,10 @@ export default function AboutSection() {
                             source="about_cta"
                             variant="accent"
                             size="md"
-                            className="mt-9 gap-2 group"
+                            className="mt-9"
+                            iconBadge={<ArrowRight size={17} strokeWidth={2.2} />}
                         >
-                            <span>
-                                Start Your Journey
-                            </span>
-
-                            <ArrowRight
-                                size={17}
-                                strokeWidth={2.2}
-                                className="
-                transition-transform
-                duration-200
-                group-hover:translate-x-0.5
-              "
-                            />
+                            Start Your Journey
                         </LeadCTAButton>
                     </div>
                 </div>

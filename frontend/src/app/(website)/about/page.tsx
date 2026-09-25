@@ -7,6 +7,7 @@ import Card from "@/components/ui/Card";
 import IconBox from "@/components/ui/IconBox";
 import CTASection from "@/components/ui/CTASection";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { buttonVariants } from "@/components/ui/Button";
 import { constructMetadata } from "@/seo/metadata";
 
 export const metadata = constructMetadata({
@@ -41,13 +42,13 @@ export default function AboutPage() {
               source="about_hero"
               variant="accent"
               size="lg"
+              iconBadge={<ArrowRight size={18} />}
             >
-              <span>Book Free Consultation</span>
-              <ArrowRight size={18} />
+              Book Free Consultation
             </LeadCTAButton>
             <Link
               href="/study-in"
-              className="inline-flex h-13 items-center gap-2 rounded-[var(--radius-btn)] border-2 border-brand-primary bg-surface-default px-7 text-btn font-medium text-brand-primary transition-all duration-300 hover:bg-brand-primary hover:text-content-inverse"
+              className={buttonVariants({ variant: "outline", size: "lg" })}
             >
               Explore Destinations
             </Link>
@@ -62,7 +63,7 @@ export default function AboutPage() {
             { value: "98.6%", label: "Visa Success Rate", color: "text-feedback-success" },
             { value: "100%", label: "Free Counselling", color: "text-brand-primary" },
           ].map((stat) => (
-            <Card key={stat.label} hover={false} className="col-span-2 lg:col-span-3 text-center">
+            <Card key={stat.label} hover className="col-span-2 lg:col-span-3 text-center p-6 rounded-2xl border-border bg-card">
               <div className={`font-heading text-h3 ${stat.color}`}>{stat.value}</div>
               <div className="mt-2 text-body-small text-content-secondary">{stat.label}</div>
             </Card>
@@ -78,26 +79,26 @@ export default function AboutPage() {
           />
 
           <div className="mt-12 grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
-            <Card className="col-span-4 lg:col-span-4 p-8">
+            <Card hover className="col-span-4 lg:col-span-4 p-8 rounded-2xl border-border bg-card">
               <IconBox icon={Building2} variant="primary" />
-              <h3 className="mt-6 text-h4 text-content-primary">Direct University Portals</h3>
-              <p className="mt-3 text-body text-content-secondary">
+              <h3 className="mt-6 text-xl font-semibold text-content-primary">Direct University Portals</h3>
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Official representation means your application is processed directly through verified university agent channels for faster offer turnaround.
               </p>
             </Card>
 
-            <Card className="col-span-4 lg:col-span-4 p-8">
+            <Card hover className="col-span-4 lg:col-span-4 p-8 rounded-2xl border-border bg-card">
               <IconBox icon={Award} variant="accent" />
-              <h3 className="mt-6 text-h4 text-content-primary">Maximum Scholarships</h3>
-              <p className="mt-3 text-body text-content-secondary">
+              <h3 className="mt-6 text-xl font-semibold text-content-primary">Maximum Scholarships</h3>
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Our advisors cross-reference hundreds of merit, athletic, and governmental scholarships to maximize fee waivers for eligible students.
               </p>
             </Card>
 
-            <Card className="col-span-4 lg:col-span-4 p-8">
+            <Card hover className="col-span-4 lg:col-span-4 p-8 rounded-2xl border-border bg-card">
               <IconBox icon={Globe2} variant="success" />
-              <h3 className="mt-6 text-h4 text-content-primary">Global Visas &amp; Housing</h3>
-              <p className="mt-3 text-body text-content-secondary">
+              <h3 className="mt-6 text-xl font-semibold text-content-primary">Global Visas &amp; Housing</h3>
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Complete mock visa interview preparation, financial documentation verification, and pre-departure accommodation support.
               </p>
             </Card>

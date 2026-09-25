@@ -131,17 +131,18 @@ export default function CoursesPage() {
           {courseCategories.map((cat) => (
             <Card
               key={cat.title}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col overflow-hidden p-0"
+              hover
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col overflow-hidden p-0 rounded-2xl border-border bg-card shadow-xs transition-all duration-300 hover:shadow-md hover:border-brand-primary/20"
             >
               {/* Header */}
-              <div className={`p-6 pb-4 ${variantBgMap[cat.variant]}`}>
-                <IconBox icon={BookOpen} variant={cat.variant} className="bg-surface-default shadow-card-resting mb-4" />
-                <h3 className="text-h5 text-content-primary">{cat.title}</h3>
-                <div className="mt-2 flex flex-wrap gap-1.5">
+              <div className={`p-6 pb-5 ${variantBgMap[cat.variant]}`}>
+                <IconBox icon={BookOpen} variant={cat.variant} size="md" className="bg-surface-default shadow-xs mb-4" />
+                <h3 className="text-xl font-semibold text-content-primary">{cat.title}</h3>
+                <div className="mt-3 flex flex-wrap gap-1.5">
                   {cat.popularIn.map((country) => (
                     <span
                       key={country}
-                      className="rounded-full bg-white/70 px-2.5 py-0.5 text-caption font-medium text-content-secondary"
+                      className="rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium text-content-secondary shadow-2xs"
                     >
                       {country}
                     </span>
@@ -150,25 +151,25 @@ export default function CoursesPage() {
               </div>
 
               {/* Courses List */}
-              <div className="flex flex-1 flex-col p-5">
-                <ul className="space-y-2">
+              <div className="flex flex-1 flex-col p-6">
+                <ul className="space-y-2.5">
                   {cat.courses.map((course) => (
-                    <li key={course} className="flex items-center gap-2 text-body-small text-content-secondary">
+                    <li key={course} className="flex items-center gap-2 text-sm text-content-secondary">
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
-                      {course}
+                      <span>{course}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Footer */}
-              <div className="border-t border-border-default px-5 py-4">
+              <div className="border-t border-border px-6 py-4">
                 <Link
                   href={`/study-in/${cat.slug}#courses`}
-                  className="inline-flex items-center gap-1.5 text-body-small font-medium text-brand-primary transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
                 >
-                  Explore Universities
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  <span>Explore Universities</span>
+                  <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </div>
             </Card>

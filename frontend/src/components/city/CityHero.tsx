@@ -3,6 +3,7 @@ import { ArrowRight, Compass, MapPin, ShieldCheck, Sparkles, GraduationCap, Awar
 import { CityData } from "@/types/city";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
 interface CityHeroProps {
@@ -36,12 +37,12 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
           {/* Left Column: Content */}
           <div className="col-span-4 text-left lg:col-span-7">
             {/* City Location Pill */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
+            <Badge variant="inverse" size="default" className="mb-5">
               <MapPin size={15} className="text-brand-accent" />
-              <span className="text-caption md:text-body-small font-medium tracking-wide text-white">
+              <span>
                 {city.slug === "chennai" ? "Main Office" : "Study Abroad Services"} • {city.name}
               </span>
-            </div>
+            </Badge>
 
             {/* Heading */}
             <h1 className="font-heading font-normal text-h1">
@@ -73,7 +74,8 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                 source={`city_hero_${city.slug}`}
                 contextTitle={`Study Abroad Counselling in ${city.name}`}
                 contextCTA="Book Free Counselling"
-                className="inline-flex h-12 items-center gap-2.5 rounded-full bg-brand-accent px-7 text-btn font-medium text-white shadow-lg transition-all duration-300 hover:bg-brand-accent/90 hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
+                variant="accent"
+                size="default"
               >
                 <span>Book Free Counselling</span>
                 <ArrowRight size={17} />
@@ -159,7 +161,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                   source={`city_card_${city.slug}`}
                   contextTitle={`Free Profile Evaluation - ${city.name}`}
                   contextCTA="Start My Free Application"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-white py-3 text-btn font-medium text-brand-primary shadow-md transition-all hover:bg-neutral-100 hover:shadow-lg active:scale-98 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white py-3 text-btn font-medium text-brand-primary shadow-md transition-all hover:bg-neutral-100 hover:shadow-lg active:scale-98 cursor-pointer"
                 >
                   <span>Start Free Evaluation</span>
                   <ArrowRight size={15} />

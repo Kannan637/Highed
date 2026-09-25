@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans, Hedvig_Letters_Serif } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const hedvig = Hedvig_Letters_Serif({
-  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
@@ -131,7 +125,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-IN"
-      className={`${dmSans.variable} ${hedvig.variable} h-full antialiased`}
+      className={`${dmSans.variable} h-full antialiased`}
     >
       <head>
         <JsonLd data={organizationSchema} />

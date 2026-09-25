@@ -107,28 +107,29 @@ export default function ServicesPage() {
             return (
               <Card
                 key={svc.title}
-                className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between p-7 scroll-mt-28"
+                hover
+                className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between p-7 rounded-2xl border-border bg-card shadow-xs transition-all duration-300 hover:shadow-md hover:border-brand-primary/20 scroll-mt-28"
               >
                 <div>
-                  <IconBox icon={Icon} variant={svc.variant} />
+                  <IconBox icon={Icon} variant={svc.variant} size="md" />
 
-                  <h3 className="mt-5 text-h5 text-content-primary transition-colors group-hover:text-brand-primary">
+                  <h3 className="mt-5 text-xl font-semibold text-content-primary transition-colors group-hover:text-brand-primary">
                     {svc.title}
                   </h3>
 
-                  <p className="mt-2.5 text-body-small text-content-secondary leading-relaxed">
+                  <p className="mt-2.5 text-sm text-content-secondary leading-relaxed">
                     {svc.description}
                   </p>
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-6 pt-2">
                   <Link
                     href={svc.href}
                     aria-label={`Learn more about ${svc.title}`}
-                    className="inline-flex items-center gap-1.5 text-body-small font-medium text-brand-primary transition-colors hover:text-brand-accent"
+                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
                   >
-                    Learn More
-                    <ArrowRight size={15} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
+                    <span>Learn More</span>
+                    <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </Card>

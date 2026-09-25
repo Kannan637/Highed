@@ -47,12 +47,13 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
     } else {
       document.body.style.overflow = "";
     }
+
     return () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
 
-  // Focus trap for accessibility (ISS-009)
+  // Focus trap for accessibility
   useFocusTrap(popupRef, {
     isActive: isOpen,
     onEscape: () => animateClose(),
@@ -63,24 +64,41 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
   useEffect(() => {
     if (!isOpen || !overlayRef.current || !popupRef.current) return;
 
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     if (prefersReducedMotion) {
       gsap.set(overlayRef.current, { opacity: 1 });
-      gsap.set(popupRef.current, { opacity: 1, scale: 1, y: 0 });
+      gsap.set(popupRef.current, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+      });
       return;
     }
 
     gsap.fromTo(
       overlayRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 0.3, ease: "power2.out" }
+      {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      }
     );
 
     gsap.fromTo(
       popupRef.current,
       { opacity: 0, scale: 0.96, y: 20 },
-      { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "power2.out", delay: 0.05 }
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "power2.out",
+        delay: 0.05,
+      }
     );
   }, [isOpen]);
 
@@ -94,9 +112,15 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
 
   // Close animation
   const animateClose = useCallback(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    if (prefersReducedMotion || !overlayRef.current || !popupRef.current) {
+    if (
+      prefersReducedMotion ||
+      !overlayRef.current ||
+      !popupRef.current
+    ) {
       resetForm();
       onClose();
       return;
@@ -125,23 +149,29 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
   // Escape key
   useEffect(() => {
     if (!isOpen) return;
+
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") animateClose();
+      if (e.key === "Escape") {
+        animateClose();
+      }
     };
+
     window.addEventListener("keydown", handleEscape);
+
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, animateClose]);
 
   // Validate & submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setPhoneError("");
     setSubmitError("");
 
     if (isSubmittingRef.current || loading) return;
 
-    // Validate phone using centralized validator (ISS-037)
     const cleanPhone = phone.replace(/\s/g, "");
+
     const errors = validateLeadPopup({
       countryCode,
       phone: cleanPhone,
@@ -160,7 +190,9 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           countryCode,
           phone: cleanPhone,
@@ -174,7 +206,9 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
       if (data.success) {
         setIsSuccess(true);
       } else {
-        setSubmitError(data.message || "Something went wrong. Please try again.");
+        setSubmitError(
+          data.message || "Something went wrong. Please try again."
+        );
       }
     } catch {
       setSubmitError("Something went wrong. Please try again.");
@@ -194,19 +228,24 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
       aria-modal="true"
       aria-label="Book Free Counselling"
       onClick={(e) => {
-        if (e.target === overlayRef.current) animateClose();
+        if (e.target === overlayRef.current) {
+          animateClose();
+        }
       }}
     >
       {/* Overlay Background */}
-      <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-black/45"
+        aria-hidden="true"
+      />
 
       {/* Popup Container */}
       <div
         ref={popupRef}
-        className="relative z-10 flex w-full max-w-[760px] flex-col md:flex-row overflow-hidden rounded-3xl bg-white shadow-2xl"
+        className="relative z-10 flex w-full max-w-[760px] flex-col overflow-hidden rounded-3xl bg-white shadow-2xl md:flex-row"
       >
-        {/* Mobile Banner Image — visible on mobile */}
-        <div className="relative h-32 w-full shrink-0 md:hidden bg-[#1B357F] overflow-hidden">
+        {/* Mobile Banner Image */}
+        <div className="relative h-32 w-full shrink-0 overflow-hidden bg-[#1B357F] md:hidden">
           <Image
             src="/images/lead-popup/Leadpop-v2.webp"
             alt="Study abroad counselling"
@@ -216,8 +255,8 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
           />
         </div>
 
-        {/* Left Image Section — visible on desktop */}
-        <div className="relative hidden w-[320px] shrink-0 md:block bg-[#1B357F]">
+        {/* Left Image Section — Desktop */}
+        <div className="relative hidden w-[320px] shrink-0 bg-[#1B357F] md:block">
           <Image
             src="/images/lead-popup/Leadpop-v2.webp"
             alt="Study abroad counselling"
@@ -229,7 +268,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
 
         {/* Right Form Section */}
         <div className="relative flex flex-1 flex-col px-7 py-8 sm:px-10 sm:py-10">
-          {/* Close Button — 44x44px accessible touch target */}
+          {/* Close Button */}
           <button
             type="button"
             onClick={animateClose}
@@ -253,14 +292,23 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               />
 
               {/* Heading */}
-              <h2 className="font-heading text-[22px] font-normal leading-tight text-content-primary sm:text-[26px]">
-                {contextTitle || "Let's turn your study-abroad dreams into your success story."}
+              <h2
+                className="max-w-[390px] !text-[18px] !leading-[1.3] font-medium tracking-[-0.02em] text-[#121314] sm:!text-[20px]"
+              >
+                {contextTitle ||
+                  "Let's turn your study-abroad dreams into your success story."}
               </h2>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+              <form
+                onSubmit={handleSubmit}
+                className="mt-6 flex flex-col gap-4"
+              >
                 {submitError && (
-                  <div className="rounded-xl bg-icon-bg-accent px-4 py-3 font-body text-xs text-brand-accent" role="alert">
+                  <div
+                    className="rounded-xl bg-icon-bg-accent px-4 py-3 font-body text-xs text-brand-accent"
+                    role="alert"
+                  >
                     {submitError}
                   </div>
                 )}
@@ -277,15 +325,20 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-accent font-body text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-accent/90 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-accent font-body text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-accent/90 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
                 >
                   {loading ? (
                     <>
-                      <Loader2 size={18} className="animate-spin" />
+                      <Loader2
+                        size={18}
+                        className="animate-spin"
+                      />
                       <span>Submitting...</span>
                     </>
                   ) : (
-                    <span>{contextCTA || "Book Free Counselling"}</span>
+                    <span>
+                      {contextCTA || "Request Callback"}
+                    </span>
                   )}
                 </button>
               </form>
@@ -304,11 +357,17 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
               {/* Terms */}
               <p className="mt-3 text-center font-body text-[11px] text-gray-400">
                 By Continuing, You agree to our{" "}
-                <Link href="/terms" className="text-brand-primary underline hover:no-underline">
+                <Link
+                  href="/terms"
+                  className="text-brand-primary underline hover:no-underline"
+                >
                   terms
                 </Link>{" "}
                 and{" "}
-                <Link href="/privacy-policy" className="text-brand-primary underline hover:no-underline">
+                <Link
+                  href="/privacy-policy"
+                  className="text-brand-primary underline hover:no-underline"
+                >
                   privacy policy
                 </Link>
                 .

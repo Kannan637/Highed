@@ -68,27 +68,27 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
     <div className="space-y-6">
       {/* Search Input */}
       <div>
-        <label htmlFor="explore-search" className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
+        <label htmlFor="explore-search" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
           Keyword Search
         </label>
         <div className="relative">
-          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+          <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
             id="explore-search"
             type="text"
             value={filters.query || ""}
             onChange={(e) => handleQueryChange(e.target.value)}
             placeholder="Search degrees, universities..."
-            className="w-full rounded-xl border border-neutral-300 bg-white py-2.5 pl-10 pr-9 text-xs sm:text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-[#253A7B]"
+            className="w-full h-12 rounded-xl border border-input bg-background py-2.5 pl-10 pr-10 text-sm text-foreground placeholder:text-muted-foreground focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
           />
           {filters.query && (
             <button
               type="button"
               onClick={() => handleQueryChange("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+              className="absolute right-2 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground"
               aria-label="Clear search query"
             >
-              <X size={14} />
+              <X size={16} />
             </button>
           )}
         </div>
@@ -96,7 +96,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
 
       {/* Content Type Filter */}
       <div>
-        <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2.5">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5">
           Directory Category
         </h4>
         <div className="space-y-1.5">
@@ -110,18 +110,18 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
               key={item.id}
               type="button"
               onClick={() => handleTypeChange(item.id as ExploreContentType)}
-              className={`flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`flex w-full items-center justify-between min-h-[44px] sm:min-h-12 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
                 filters.type === item.id
                   ? "bg-brand-primary text-white shadow-xs"
-                  : "text-neutral-700 hover:bg-neutral-100"
+                  : "text-foreground hover:bg-neutral-100"
               }`}
             >
               <span>{item.label}</span>
               <span
-                className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
                   filters.type === item.id
                     ? "bg-white/20 text-white"
-                    : "bg-neutral-200/70 text-neutral-600"
+                    : "bg-neutral-100 text-muted-foreground"
                 }`}
               >
                 {item.count}
@@ -133,16 +133,16 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
 
       {/* Destination Country Filter (for common/global explore directory) */}
       {showCountryFilter && (
-        <div className="pt-4 border-t border-neutral-200">
+        <div className="pt-5 border-t border-border">
           <div className="flex items-center justify-between mb-2.5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               Destination Country
             </h4>
             {filters.country && (
               <button
                 type="button"
                 onClick={() => handleCountryChange("all")}
-                className="text-[11px] font-semibold text-brand-primary hover:underline cursor-pointer"
+                className="text-xs font-semibold text-brand-primary hover:underline cursor-pointer"
               >
                 Reset
               </button>
@@ -152,10 +152,10 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
             <button
               type="button"
               onClick={() => handleCountryChange("all")}
-              className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`flex w-full items-center justify-between min-h-[44px] rounded-xl px-3.5 py-2 text-sm font-semibold transition-all cursor-pointer ${
                 !filters.country
                   ? "bg-brand-primary text-white shadow-xs"
-                  : "text-neutral-700 hover:bg-neutral-100"
+                  : "text-foreground hover:bg-neutral-100"
               }`}
             >
               <span className="flex items-center gap-2">
@@ -171,10 +171,10 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
                   key={c.slug}
                   type="button"
                   onClick={() => handleCountryChange(c.slug)}
-                  className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                  className={`flex w-full items-center justify-between min-h-[44px] rounded-xl px-3.5 py-2 text-sm font-semibold transition-all cursor-pointer ${
                     isSelected
                       ? "bg-brand-primary text-white shadow-xs"
-                      : "text-neutral-700 hover:bg-neutral-100"
+                      : "text-foreground hover:bg-neutral-100"
                   }`}
                 >
                   <span className="flex items-center gap-2">
@@ -190,11 +190,11 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
 
       {/* Course Level Filter (shown for all or courses) */}
       {(filters.type === "all" || filters.type === "courses") && (
-        <div className="pt-4 border-t border-neutral-200">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2.5">
+        <div className="pt-5 border-t border-border">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5">
             Degree Level
           </h4>
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {[
               { id: undefined, label: "All Levels" },
               { id: "undergraduate", label: "Undergraduate (Bachelor's)" },
@@ -204,14 +204,14 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
             ].map((lvl, idx) => (
               <label
                 key={idx}
-                className="flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs sm:text-sm text-neutral-700 hover:bg-neutral-50 cursor-pointer"
+                className="flex items-center gap-3 min-h-[44px] rounded-xl px-3 py-2 text-sm text-foreground hover:bg-neutral-50 cursor-pointer"
               >
                 <input
                   type="radio"
                   name="course-level"
                   checked={filters.level === lvl.id}
                   onChange={() => handleLevelChange(lvl.id as CourseLevel | undefined)}
-                  className="accent-[#253A7B] cursor-pointer"
+                  className="size-4 accent-[#253A7B] cursor-pointer"
                 />
                 <span>{lvl.label}</span>
               </label>
@@ -222,15 +222,15 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
 
       {/* Study Area / Field of Study Filter */}
       {(filters.type === "all" || filters.type === "courses") && studyAreas.length > 0 && (
-        <div className="pt-4 border-t border-neutral-200">
-          <label htmlFor="study-area-select" className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
+        <div className="pt-5 border-t border-border">
+          <label htmlFor="study-area-select" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
             Field of Study
           </label>
           <select
             id="study-area-select"
             value={filters.area || ""}
             onChange={(e) => handleAreaChange(e.target.value || undefined)}
-            className="w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 text-xs sm:text-sm text-neutral-700 shadow-2xs focus:border-brand-primary focus:outline-none cursor-pointer"
+            className="w-full h-12 rounded-xl border border-input bg-background px-3 py-2 text-sm text-foreground shadow-2xs focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer"
           >
             <option value="">All Disciplines ({studyAreas.length})</option>
             {studyAreas.map((area) => (
@@ -244,11 +244,11 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
 
       {/* Scholarship Type Filter */}
       {(filters.type === "all" || filters.type === "scholarships") && (
-        <div className="pt-4 border-t border-neutral-200">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2.5">
+        <div className="pt-5 border-t border-border">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5">
             Scholarship Funding Type
           </h4>
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {[
               { id: undefined, label: "All Scholarship Types" },
               { id: "Government", label: "Government Sponsored" },
@@ -258,7 +258,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
             ].map((st, idx) => (
               <label
                 key={idx}
-                className="flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs sm:text-sm text-neutral-700 hover:bg-neutral-50 cursor-pointer"
+                className="flex items-center gap-3 min-h-[44px] rounded-xl px-3 py-2 text-sm text-foreground hover:bg-neutral-50 cursor-pointer"
               >
                 <input
                   type="radio"
@@ -267,7 +267,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
                   onChange={() =>
                     handleScholarshipTypeChange(st.id as ScholarshipType | undefined)
                   }
-                  className="accent-[#253A7B] cursor-pointer"
+                  className="size-4 accent-[#253A7B] cursor-pointer"
                 />
                 <span>{st.label}</span>
               </label>

@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@/components/ui/Container";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/Badge";
 import IconBox from "@/components/ui/IconBox";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { ShieldCheck, Award, Clock, Users, PhoneCall, ArrowRight } from "lucide-react";
@@ -80,14 +80,14 @@ export default function BookCounsellingPage() {
 
           {/* Right Column: LeadPopup Trigger Card */}
           <div className="col-span-4 lg:col-span-6">
-            <Card hover={false} className="p-8 shadow-md sm:p-10">
+            <Card hover className="p-8 sm:p-10 rounded-2xl border-border bg-card shadow-sm">
               <IconBox icon={PhoneCall} variant="primary" size="lg" />
 
-              <h2 className="mt-6 text-h3 text-content-primary">
+              <h2 className="mt-6 text-2xl sm:text-3xl font-bold text-content-primary">
                 Ready to speak with an admissions expert?
               </h2>
 
-              <p className="mt-3 text-body leading-relaxed text-content-secondary">
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Click below to request an instant callback. Enter your phone number and our certified counsellors will evaluate your profile.
               </p>
 
@@ -97,18 +97,18 @@ export default function BookCounsellingPage() {
                   variant="accent"
                   size="lg"
                   fullWidth
+                  iconBadge={<ArrowRight size={18} />}
                 >
-                  <span>Book Free Counselling</span>
-                  <ArrowRight size={18} />
+                  Book Free Counselling
                 </LeadCTAButton>
               </div>
 
-              <div className="mt-6 border-t border-border-default pt-6 text-center">
-                <p className="text-body-small text-content-secondary">
+              <div className="mt-6 border-t border-border pt-6 text-center">
+                <p className="text-sm text-content-secondary">
                   Prefer calling directly?{" "}
                   <a
                     href="tel:+919050180501"
-                    className="font-medium text-brand-primary hover:underline"
+                    className="font-semibold text-brand-primary hover:underline"
                   >
                     +91 90501 80501
                   </a>

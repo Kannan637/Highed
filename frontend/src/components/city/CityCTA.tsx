@@ -4,6 +4,7 @@ import { ArrowRight, Compass, ShieldCheck } from "lucide-react";
 import { CityData } from "@/types/city";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
 
 interface CityCTAProps {
   city: CityData;
@@ -19,10 +20,10 @@ export const CityCTA: React.FC<CityCTAProps> = ({ city }) => {
           <div className="pointer-events-none absolute -left-20 -bottom-20 h-[350px] w-[350px] rounded-full bg-blue-400/15 blur-[100px]" />
 
           <div className="relative mx-auto max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 text-caption font-medium tracking-wide text-white backdrop-blur-md border border-white/20">
+            <Badge variant="inverse" size="default">
               <ShieldCheck size={15} className="text-brand-accent" />
               Direct Representative of 850+ Accredited Global Universities
-            </span>
+            </Badge>
 
             <h2 className="mt-6 font-heading font-normal text-h2 leading-tight">
               Ready to Study Abroad from {city.name}?
@@ -37,7 +38,8 @@ export const CityCTA: React.FC<CityCTAProps> = ({ city }) => {
                 source={`city_cta_${city.slug}`}
                 contextTitle={`Main CTA - Study Abroad from ${city.name}`}
                 contextCTA="Book Free Counselling"
-                className="inline-flex h-12 items-center gap-2.5 rounded-full bg-brand-accent px-8 text-btn font-medium text-white shadow-xl transition-all duration-300 hover:bg-brand-accent/90 hover:scale-105 active:scale-95 cursor-pointer"
+                variant="accent"
+                size="default"
               >
                 <span>Book Free Counselling Session</span>
                 <ArrowRight size={17} />
@@ -45,7 +47,7 @@ export const CityCTA: React.FC<CityCTAProps> = ({ city }) => {
 
               <Link
                 href="/study-in"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 text-btn font-medium text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/20 active:scale-95"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-btn font-medium text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/20 active:scale-95"
               >
                 <Compass size={17} />
                 <span>Explore All Destinations</span>

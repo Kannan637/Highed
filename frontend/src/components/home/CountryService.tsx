@@ -13,6 +13,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 type Destination = {
     country: string;
@@ -258,32 +259,25 @@ export default function StudyDestinations() {
             className="
                 w-full
                 overflow-hidden
-                bg-white
                 py-16
                 text-content-primary
                 sm:py-20
                 lg:py-[88px]
+                tracking-[-0.04em]
+                [letter-spacing:-0.04em]
+                [&_*]:[letter-spacing:-0.04em]
             "
         >
             <Container size="lg">
                 {/* =====================================================
             HEADER
         ====================================================== */}
-                <div className="mx-auto max-w-[760px] text-center">
-                    <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
-
-                        <span className="text-body-small font-medium text-brand-primary">
-                            Study Destinations
-                        </span>
-                    </div>
-
-                    <h2 className="text-h2 font-normal text-content-primary">
-                        Study Abroad from Coimbatore
-                        <br />
-                        – Top Destinations
-                    </h2>
-                </div>
+                {/* HEADER */}
+                <SectionHeading
+                    eyebrow="Study Destinations"
+                    title="Study Abroad from Coimbatore – Top Destinations"
+                    className="mb-10 sm:mb-12"
+                />
 
                 {/* =====================================================
             DESKTOP CAROUSEL
@@ -324,13 +318,13 @@ export default function StudyDestinations() {
                             aria-label="Previous destination"
                             className="
                 absolute
-                -left-[22px]
+                -left-6
                 top-1/2
                 z-30
                 flex
-                h-11
-                w-11
+                size-12
                 -translate-y-1/2
+                cursor-pointer
                 items-center
                 justify-center
                 rounded-full
@@ -340,6 +334,9 @@ export default function StudyDestinations() {
                 transition-all
                 hover:scale-105
                 hover:bg-brand-primary-hover
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-brand-primary
               "
                         >
                             <ArrowLeft size={21} strokeWidth={2.2} />
@@ -352,13 +349,13 @@ export default function StudyDestinations() {
                             aria-label="Next destination"
                             className="
                 absolute
-                -right-[22px]
+                -right-6
                 top-1/2
                 z-30
                 flex
-                h-11
-                w-11
+                size-12
                 -translate-y-1/2
+                cursor-pointer
                 items-center
                 justify-center
                 rounded-full
@@ -368,6 +365,9 @@ export default function StudyDestinations() {
                 transition-all
                 hover:scale-105
                 hover:bg-brand-primary-hover
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-brand-primary
               "
                         >
                             <ArrowRight size={21} strokeWidth={2.2} />
@@ -411,37 +411,23 @@ export default function StudyDestinations() {
                                 type="button"
                                 onClick={handlePrevious}
                                 aria-label="Previous destination"
-                                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-brand-primary
-                  text-white
-                "
+                                className="flex size-12 cursor-pointer items-center justify-center rounded-full bg-brand-primary text-white shadow-xs transition-colors hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                             >
                                 <ArrowLeft size={20} />
                             </button>
 
                             {/* Pagination */}
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-2">
                                 {destinations.map((destination, index) => (
                                     <button
                                         key={destination.country}
                                         type="button"
                                         aria-label={`Go to ${destination.country}`}
                                         onClick={() => goTo(index)}
-                                        className={`
-                      h-1.5
-                      rounded-full
-                      transition-all
-                      ${index === activeIndex
-                                                ? "w-6 bg-brand-accent"
-                                                : "w-1.5 bg-[#cfd3dc]"
-                                            }
-                    `}
+                                        className={`h-2 rounded-full cursor-pointer transition-all ${index === activeIndex
+                                            ? "w-7 bg-brand-accent"
+                                            : "w-2 bg-border hover:bg-gray-400"
+                                            }`}
                                     />
                                 ))}
                             </div>
@@ -450,16 +436,7 @@ export default function StudyDestinations() {
                                 type="button"
                                 onClick={handleNext}
                                 aria-label="Next destination"
-                                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-brand-primary
-                  text-white
-                "
+                                className="flex size-12 cursor-pointer items-center justify-center rounded-full bg-brand-primary text-white shadow-xs transition-colors hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                             >
                                 <ArrowRight size={20} />
                             </button>
@@ -467,30 +444,14 @@ export default function StudyDestinations() {
                     </div>
                 </div>
 
-                {/* =====================================================
-            VIEW ALL COUNTRIES
-        ====================================================== */}
+                {/* VIEW ALL COUNTRIES */}
                 <div className="mt-10 flex justify-center lg:mt-8">
                     <button
                         type="button"
                         onClick={() => openLeadPopup({ source: "country_cta" })}
-                        className="
-              group
-              inline-flex
-              items-center
-              gap-2
-              rounded-full
-              px-5
-              py-2.5
-              text-btn
-              font-medium
-              text-brand-accent
-              transition-all
-              hover:bg-[#fff1f4]
-            "
+                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-brand-accent transition-all hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                     >
                         <span>View All Countries</span>
-
                         <ArrowRight
                             size={18}
                             strokeWidth={2.2}
@@ -628,7 +589,7 @@ function DestinationCard({
                         className={`
               font-heading
               font-normal
-              tracking-[-0.7px]
+              tracking-[-0.04em]
               ${isActive ? "text-h3" : "text-h4"}
             `}
                     >
@@ -698,15 +659,12 @@ function DestinationCard({
             items-center
             gap-2
             rounded-full
-            border
-            border-white/20
-            bg-white/10
+            bg-[#818181]
             px-3.5
             py-2
             text-caption
             font-medium
             text-white
-            backdrop-blur-md
           "
                 >
                     <MapPin size={14} />

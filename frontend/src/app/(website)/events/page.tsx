@@ -3,7 +3,7 @@ import { Calendar, Clock, Video, ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/Badge";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -64,31 +64,32 @@ export default function EventsPage() {
             return (
               <Card
                 key={evt.title}
-                className="group grid grid-cols-4 items-center gap-6 p-7 lg:grid-cols-12"
+                hover
+                className="group grid grid-cols-4 items-center gap-6 p-7 sm:p-8 rounded-2xl border-border bg-card shadow-xs transition-all duration-300 hover:shadow-md hover:border-brand-primary/20 lg:grid-cols-12"
               >
                 <div className="col-span-4 lg:col-span-9">
                   <div className="flex flex-wrap items-center gap-3">
                     <Badge variant="primary">{evt.type}</Badge>
-                    <div className="flex items-center gap-1.5 text-caption font-medium text-content-secondary">
-                      <Calendar size={13} />
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-content-secondary">
+                      <Calendar size={14} />
                       <span>{evt.date}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-caption font-medium text-content-secondary">
-                      <Clock size={13} />
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-content-secondary">
+                      <Clock size={14} />
                       <span>{evt.time}</span>
                     </div>
                   </div>
 
-                  <h3 className="mt-3 text-h4 text-content-primary transition-colors group-hover:text-brand-primary">
+                  <h3 className="mt-3.5 text-xl font-semibold text-content-primary transition-colors group-hover:text-brand-primary">
                     {evt.title}
                   </h3>
 
-                  <p className="mt-2 text-body-small text-content-secondary">
+                  <p className="mt-2 text-sm sm:text-base leading-relaxed text-content-secondary">
                     {evt.description}
                   </p>
 
-                  <div className="mt-3 flex items-center gap-1.5 text-caption font-medium text-content-secondary">
-                    <IconComp size={14} className="text-brand-accent" />
+                  <div className="mt-3.5 flex items-center gap-1.5 text-xs font-medium text-content-secondary">
+                    <IconComp size={15} className="text-brand-accent" />
                     <span>{evt.location}</span>
                   </div>
                 </div>
@@ -97,12 +98,12 @@ export default function EventsPage() {
                   <LeadCTAButton
                     source={`event_${evt.title.toLowerCase().replace(/\s+/g, '_')}`}
                     variant="accent"
-                    size="md"
+                    size="default"
                     fullWidth
                     className="sm:w-auto"
+                    iconBadge={<ArrowRight size={16} />}
                   >
-                    <span>Register Free</span>
-                    <ArrowRight size={16} />
+                    Register Free
                   </LeadCTAButton>
                 </div>
               </Card>

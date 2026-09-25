@@ -1,6 +1,7 @@
 import { ArrowRight, Phone } from "lucide-react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 const scholarshipItems = {
@@ -25,42 +26,24 @@ export default function ScholarshipsLoansSection() {
         bg-white
         py-16
         text-content-primary
+        tracking-[-0.04em]
+        [letter-spacing:-0.04em]
+        [&_*]:[letter-spacing:-0.04em]
         sm:py-20
         lg:py-[72px]
       "
         >
             <Container size="lg">
-                {/* =====================================================
-            HEADER
-        ====================================================== */}
+                {/* HEADER */}
+                <SectionHeading
+                    eyebrow="Scholarships & Loans"
+                    title="Scholarships & Education Loan Assistance in Tamil Nadu"
+                    className="mb-10 sm:mb-12"
+                />
 
-                <div className="text-center">
-                    {/* Eyebrow */}
-                    <div className="mb-7 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
-
-                        <span className="text-body-small font-medium text-brand-primary">
-                            Scholarships & Loans
-                        </span>
-                    </div>
-
-                    {/* Heading */}
-                    <h2 className="mx-auto max-w-[760px] text-h2 font-normal text-content-primary">
-                        Scholarships & Education
-                        <br />
-                        Loan Assistance in Tamil Nadu
-                    </h2>
-                </div>
-
-                {/* =====================================================
-            SCHOLARSHIP VISUAL
-        ====================================================== */}
-
-                <div className="mt-14 lg:mt-[66px]">
-                    {/* ===================================================
-              DESKTOP LAYOUT (12-Column Grid: 4 + 4 + 4)
-          ==================================================== */}
-
+                {/* SCHOLARSHIP VISUAL */}
+                <div className="mt-8 lg:mt-12">
+                    {/* DESKTOP LAYOUT (12-Column Grid: 4 + 4 + 4) */}
                     <div className="hidden lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                         {/* LEFT ITEMS (4 Cols) */}
                         <div className="col-span-4 flex flex-col justify-around h-[460px] py-6">
@@ -75,19 +58,7 @@ export default function ScholarshipsLoansSection() {
 
                         {/* CENTER IMAGE (4 Cols) */}
                         <div className="col-span-4 flex justify-center">
-                            <div
-                                className="
-                    relative
-                    z-10
-                    h-[460px]
-                    w-full
-                    max-w-[345px]
-                    overflow-hidden
-                    rounded-[28px]
-                    bg-surface-neutral-alt
-                    shadow-[0_8px_30px_rgba(0,0,0,0.06)]
-                  "
-                            >
+                            <div className="relative z-10 h-[460px] w-full max-w-[345px] overflow-hidden rounded-3xl bg-surface-neutral shadow-sm">
                                 <Image
                                     src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
                                     alt="Student studying abroad"
@@ -110,24 +81,11 @@ export default function ScholarshipsLoansSection() {
                         </div>
                     </div>
 
-                    {/* ===================================================
-              MOBILE LAYOUT (4-Column Grid)
-          ==================================================== */}
-
+                    {/* MOBILE LAYOUT (4-Column Grid) */}
                     <div className="grid grid-cols-4 gap-4 lg:hidden">
                         {/* Image */}
                         <div className="col-span-4 flex justify-center">
-                            <div
-                                className="
-                    relative
-                    h-[430px]
-                    w-full
-                    max-w-[345px]
-                    overflow-hidden
-                    rounded-[26px]
-                    bg-surface-neutral-alt
-                  "
-                            >
+                            <div className="relative h-[380px] sm:h-[430px] w-full max-w-[345px] overflow-hidden rounded-3xl bg-surface-neutral shadow-sm">
                                 <Image
                                     src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
                                     alt="Student studying abroad"
@@ -146,24 +104,7 @@ export default function ScholarshipsLoansSection() {
                             ].map((item) => (
                                 <div
                                     key={item}
-                                    className="
-                    col-span-4
-                    sm:col-span-2
-                    flex
-                    min-h-[48px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-border-default
-                    bg-surface-neutral
-                    px-5
-                    py-2.5
-                    text-center
-                    text-body-small
-                    font-medium
-                    text-content-primary
-                  "
+                                    className="col-span-4 sm:col-span-2 flex min-h-12 items-center justify-center rounded-full border border-border bg-surface-neutral px-5 py-2.5 text-center text-sm font-medium text-content-primary"
                                 >
                                     {item}
                                 </div>
@@ -172,77 +113,24 @@ export default function ScholarshipsLoansSection() {
                     </div>
                 </div>
 
-                {/* =====================================================
-            CTA BUTTONS
-        ====================================================== */}
-
-                <div
-                    className="
-            mt-12
-            flex
-            flex-col
-            items-center
-            justify-center
-            gap-3
-            sm:flex-row
-            lg:mt-[58px]
-          "
-                >
-                    {/* Book Counselling */}
-
+                {/* CTA BUTTONS */}
+                <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <LeadCTAButton
                         source="scholarship_counselling"
                         variant="accent"
-                        size="md"
-                        className="group flex h-[55px] items-center justify-between gap-5 rounded-full bg-brand-accent pl-[18px] pr-2 text-btn font-medium text-white transition-all duration-200 hover:bg-brand-accent-hover"
+                        size="default"
+                        iconBadge={<Phone size={18} strokeWidth={2} />}
                     >
-                        <span className="whitespace-nowrap">
-                            Book Free Counselling
-                        </span>
-
-                        <span
-                            className="
-                flex
-                h-[40px]
-                w-[40px]
-                items-center
-                justify-center
-                rounded-full
-                bg-white
-                text-content-primary
-              "
-                        >
-                            <Phone
-                                size={18}
-                                strokeWidth={2}
-                                fill="currentColor"
-                                aria-hidden="true"
-                            />
-                        </span>
+                        Book Free Counselling
                     </LeadCTAButton>
-
-                    {/* Explore Scholarships */}
 
                     <LeadCTAButton
                         source="explore_scholarships"
                         variant="outline"
-                        size="md"
-                        className="group flex h-[55px] items-center justify-between gap-7 rounded-full border border-content-primary bg-white px-5 text-btn font-medium text-content-primary transition-all duration-200 hover:bg-content-primary hover:text-white"
+                        size="default"
                     >
-                        <span className="whitespace-nowrap">
-                            Explore Scholarships
-                        </span>
-
-                        <ArrowRight
-                            size={19}
-                            strokeWidth={2}
-                            aria-hidden="true"
-                            className="
-                transition-transform
-                duration-200
-                group-hover:translate-x-1
-              "
-                        />
+                        <span>Explore Scholarships</span>
+                        <ArrowRight size={18} strokeWidth={2} className="transition-transform duration-200 group-hover:translate-x-1" />
                     </LeadCTAButton>
                 </div>
             </Container>

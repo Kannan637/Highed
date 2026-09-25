@@ -1,5 +1,5 @@
 import React from "react";
-import { Star, Quote, GraduationCap, MapPin } from "lucide-react";
+import { Star, Quote, GraduationCap, MapPin, ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CityData } from "@/types/city";
@@ -87,10 +87,11 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
               source={`city_stories_cta_${city.slug}`}
               contextTitle={`Be the Next Success Story from ${city.name}`}
               contextCTA="Start My Application"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-7 py-3 text-btn font-medium text-white shadow-md hover:bg-brand-accent/90 transition-all cursor-pointer hover:scale-105 active:scale-95"
+              variant="accent"
+              size="default"
             >
               <span>Begin Your Journey Today</span>
-              <span>→</span>
+              <ArrowRight size={16} />
             </LeadCTAButton>
           </div>
         </div>

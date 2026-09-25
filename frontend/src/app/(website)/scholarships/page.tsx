@@ -5,7 +5,7 @@ import ReactCountryFlag from "react-country-flag";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/Badge";
 import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -119,32 +119,33 @@ export default function ScholarshipsPage() {
           {scholarshipsByCountry.map((dest) => (
             <Card
               key={dest.country}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col overflow-hidden p-0"
+              hover
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col overflow-hidden p-0 rounded-2xl border-border bg-card shadow-xs transition-all duration-300 hover:shadow-md hover:border-brand-primary/20"
             >
               {/* Header */}
               <div className={`flex items-center gap-3.5 p-6 pb-4 ${variantBgMap[dest.variant]}`}>
-                <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-surface-default shadow-card-resting">
+                <span className="flex size-12 items-center justify-center overflow-hidden rounded-full bg-surface-default shadow-xs">
                   <ReactCountryFlag
                     countryCode={dest.code}
                     svg
-                    style={{ width: "28px", height: "28px", borderRadius: "50%", objectFit: "cover" }}
+                    style={{ width: "30px", height: "30px", borderRadius: "50%", objectFit: "cover" }}
                   />
                 </span>
                 <div>
-                  <h3 className="text-h6 text-content-primary">Study in {dest.country}</h3>
-                  <p className="text-caption text-content-secondary">{dest.scholarships.length} scholarships available</p>
+                  <h3 className="text-lg font-semibold text-content-primary">Study in {dest.country}</h3>
+                  <p className="text-xs text-content-secondary">{dest.scholarships.length} scholarships available</p>
                 </div>
               </div>
 
               {/* Scholarship List */}
-              <div className="flex flex-1 flex-col gap-3 p-5">
+              <div className="flex flex-1 flex-col gap-3.5 p-6">
                 {dest.scholarships.map((s) => (
                   <div key={s.name} className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-body-small font-medium text-content-primary">{s.name}</p>
-                      <p className="mt-0.5 text-caption text-content-secondary">{s.coverage}</p>
+                      <p className="text-sm font-semibold text-content-primary">{s.name}</p>
+                      <p className="mt-0.5 text-xs text-content-secondary">{s.coverage}</p>
                     </div>
-                    <Badge variant={typeVariantMap[s.type] || "gray"} className="mt-0.5 shrink-0 text-[11px]">
+                    <Badge variant={typeVariantMap[s.type] || "gray"} className="mt-0.5 shrink-0 text-xs">
                       {s.type}
                     </Badge>
                   </div>
@@ -152,13 +153,13 @@ export default function ScholarshipsPage() {
               </div>
 
               {/* Footer */}
-              <div className="border-t border-border-default px-5 py-4">
+              <div className="border-t border-border px-6 py-4">
                 <Link
                   href={`/study-in/${dest.slug}#scholarships`}
-                  className="inline-flex items-center gap-1.5 text-body-small font-medium text-brand-primary transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
                 >
-                  View All {dest.country} Scholarships
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  <span>View All {dest.country} Scholarships</span>
+                  <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </div>
             </Card>

@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { X, RotateCcw, Check } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface ExploreFilterDrawerProps {
   isOpen: boolean;
@@ -73,26 +74,30 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
         </div>
 
         {/* Action Buttons Footer */}
-        <div className="flex items-center gap-3 border-t border-neutral-200 p-4 bg-neutral-50">
-          <button
+        <div className="flex items-center gap-3 border-t border-black/10 p-4 bg-neutral-50">
+          <Button
             type="button"
+            variant="outline"
+            size="default"
             onClick={onClear}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-neutral-300 bg-white py-3 text-xs sm:text-sm font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors cursor-pointer"
+            className="flex-1 gap-1.5"
           >
             <RotateCcw size={14} />
             <span>Clear All</span>
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="primary"
+            size="default"
             onClick={() => {
               onApply();
               onClose();
             }}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-primary py-3 text-xs sm:text-sm font-semibold text-white hover:bg-[#1b2b5c] transition-colors cursor-pointer shadow-xs"
+            className="flex-1 gap-1.5"
           >
             <Check size={16} />
             <span>Apply Filters</span>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

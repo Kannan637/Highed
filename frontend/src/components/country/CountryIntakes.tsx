@@ -72,9 +72,9 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
                   <div className="mt-6 pt-5 border-t border-neutral-100">
                     <LeadCTAButton
                       source={`country_intake_${country.slug}_${intake.season.replace(/\s+/g, "_")}`}
-                      className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-body-small font-medium transition-all cursor-pointer ${isMajor
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-body-small font-medium transition-all cursor-pointer ${isMajor
                           ? "bg-brand-primary text-white hover:bg-[#1b2b5c] shadow-xs"
-                          : "border border-neutral-300 text-neutral-800 hover:border-brand-primary hover:text-brand-primary bg-white"
+                          : "border border-black/10 text-neutral-800 hover:border-brand-primary hover:text-brand-primary bg-white"
                         }`}
                     >
                       <span>Apply for {intake.season.split(" ")[0]}</span>

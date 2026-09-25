@@ -17,18 +17,18 @@ export const CourseCard: React.FC<CourseCardProps> = ({
     <div
       className="
         group flex h-full flex-col overflow-hidden
-        rounded-[24px]
-        border border-neutral-200/90
-        bg-white
-        shadow-sm
+        rounded-2xl
+        border border-border
+        bg-card
+        shadow-xs
         transition-all duration-300
-        hover:border-brand-primary/30
-        hover:shadow-xl
+        hover:border-primary/40
+        hover:shadow-lg
       "
     >
       {/* ================= IMAGE ================= */}
       <div className="relative p-2.5">
-        <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-neutral-100">
+        <div className="relative h-[190px] overflow-hidden rounded-xl bg-neutral-100">
           <Image
             src={course.image || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop"}
             alt={course.name}
@@ -48,11 +48,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({
               rounded-full
               bg-white/95
               px-3 py-1.5
-              font-['DM_Sans']
               text-[11px]
-              font-medium
+              font-semibold
               text-brand-primary
-              shadow-sm
+              shadow-xs
               backdrop-blur-sm
             "
           >
@@ -67,11 +66,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({
               rounded-full
               bg-white/95
               px-3 py-1.5
-              font-['DM_Sans']
               text-[11px]
               font-medium
               text-neutral-700
-              shadow-sm
+              shadow-xs
               backdrop-blur-sm
             "
           >
@@ -87,12 +85,12 @@ export const CourseCard: React.FC<CourseCardProps> = ({
         <div className="mt-1">
           <h3
             className="
-              font-['DM_Sans']
+              font-heading
               text-[18px]
               font-bold
               leading-[1.25]
-              tracking-[-0.02em]
-              text-neutral-900
+              tracking-tight
+              text-foreground
               line-clamp-2
               transition-colors
               group-hover:text-brand-primary
@@ -106,15 +104,14 @@ export const CourseCard: React.FC<CourseCardProps> = ({
             className="
               mt-2
               flex items-center gap-1.5
-              font-['DM_Sans']
-              text-[12px]
+              text-[13px]
               font-medium
-              text-neutral-500
+              text-muted-foreground
             "
           >
             <Layers
               size={14}
-              className="shrink-0 text-neutral-400"
+              className="shrink-0 text-muted-foreground/70"
             />
 
             <span className="truncate">
@@ -128,12 +125,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({
         <div className="mt-4">
           <div
             className="
-              font-['DM_Sans']
-              text-[10px]
-              font-medium
+              text-[11px]
+              font-bold
               uppercase
-              tracking-[0.08em]
-              text-neutral-400
+              tracking-wider
+              text-muted-foreground
             "
           >
             Average Annual Fee
@@ -142,9 +138,8 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           <div
             className="
               mt-0.5
-              font-['DM_Sans']
               text-[15px]
-              font-semibold
+              font-bold
               text-brand-primary
             "
           >
@@ -160,12 +155,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                 className="
                   mb-2
                   flex items-center gap-1.5
-                  font-['DM_Sans']
-                  text-[10px]
-                  font-medium
+                  text-[11px]
+                  font-bold
                   uppercase
-                  tracking-[0.08em]
-                  text-neutral-400
+                  tracking-wider
+                  text-muted-foreground
                 "
               >
                 <Briefcase size={12} />
@@ -177,11 +171,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                   <span
                     key={career}
                     className="
-                      rounded-[7px]
-                      border border-neutral-200
+                      rounded-lg
+                      border border-border
                       bg-neutral-50
                       px-2.5 py-1
-                      font-['DM_Sans']
                       text-[11px]
                       font-medium
                       leading-none
@@ -195,14 +188,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                 {course.careerProspects.length > 3 && (
                   <span
                     className="
-                      rounded-[7px]
+                      rounded-lg
                       bg-neutral-100
                       px-2 py-1
-                      font-['DM_Sans']
                       text-[11px]
                       font-medium
                       leading-none
-                      text-neutral-600
+                      text-muted-foreground
                     "
                   >
                     +{course.careerProspects.length - 3}
@@ -214,24 +206,25 @@ export const CourseCard: React.FC<CourseCardProps> = ({
 
         {/* ================= CTA ================= */}
         <div className="mt-auto pt-5">
-          <div className="border-t border-neutral-200/80 pt-4">
+          <div className="border-t border-border pt-4">
             <LeadCTAButton
               source={`explore_course_${course.id}`}
-              variant="ghost"
-              size="sm"
+              variant="outline"
+              size="default"
               className="
                 flex w-full items-center justify-between
-                rounded-[10px]
-                !px-0
-                font-['DM_Sans']
-                text-[13px]
+                h-12 px-4
+                rounded-full
+                text-sm
                 font-semibold
                 text-brand-primary
+                border border-black/10
+                hover:border-brand-primary
+                hover:bg-brand-primary/5
                 transition-colors
-                hover:text-brand-accent
               "
             >
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-2">
                 <BookOpen size={16} />
                 Check Course Eligibility
               </span>

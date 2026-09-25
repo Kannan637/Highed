@@ -15,13 +15,13 @@ export const ExploreSort: React.FC<ExploreSortProps> = ({
 }) => {
   return (
     <div className="flex items-center gap-2">
-      <ArrowUpDown size={14} className="text-neutral-400 shrink-0" />
-      <span className="text-xs font-medium text-neutral-500 hidden sm:inline">Sort:</span>
+      <ArrowUpDown size={15} className="text-muted-foreground shrink-0" />
+      <span className="text-xs font-semibold text-muted-foreground hidden sm:inline">Sort:</span>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value as ExploreSortOption)}
         aria-label="Sort listings"
-        className="rounded-xl border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-2xs focus:border-brand-primary focus:outline-none cursor-pointer"
+        className="h-10 rounded-full border border-black/10 bg-card px-4 text-xs sm:text-sm font-medium text-foreground shadow-2xs focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer"
       >
         <option value="recommended">Recommended</option>
         <option value="name">Alphabetical (A-Z)</option>

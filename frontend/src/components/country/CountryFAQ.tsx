@@ -199,10 +199,10 @@ export default function FAQSection() {
                 ====================================================== */}
             <div className="mt-12 flex justify-center">
               <LeadCTAButton
-                source="faq_cta"
+                source="country_faq_cta"
                 variant="outline"
                 size="lg"
-                className="group border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-content-inverse rounded-full w-full sm:w-auto justify-center"
+                className="w-full sm:w-auto"
               >
                 <span>Still have questions? Let&apos;s talk</span>
                 <ArrowRight

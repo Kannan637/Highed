@@ -4,7 +4,7 @@ import ReactCountryFlag from "react-country-flag";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/Badge";
 import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -114,11 +114,11 @@ export default function SuccessStoriesPage() {
         />
 
         {/* Stats Bar */}
-        <div className="mb-14 grid grid-cols-4 gap-4 rounded-[var(--radius-card)] border border-brand-primary/15 bg-brand-primary p-6 text-content-inverse lg:grid-cols-12">
+        <div className="mb-14 grid grid-cols-4 gap-4 rounded-2xl border border-brand-primary/15 bg-brand-primary p-8 text-white lg:grid-cols-12 shadow-md">
           {stats.map((s) => (
             <div key={s.label} className="col-span-2 lg:col-span-3 text-center">
-              <div className="font-heading text-h3 text-white">{s.value}</div>
-              <div className="mt-1 text-caption font-medium text-white/70">{s.label}</div>
+              <div className="font-heading text-3xl sm:text-4xl font-bold text-white">{s.value}</div>
+              <div className="mt-1 text-xs sm:text-sm font-medium text-white/75">{s.label}</div>
             </div>
           ))}
         </div>
@@ -128,47 +128,52 @@ export default function SuccessStoriesPage() {
           {testimonials.map((t) => (
             <Card
               key={t.name}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 flex flex-col p-7"
+              hover
+              className="col-span-4 sm:col-span-2 lg:col-span-4 flex flex-col justify-between p-7 rounded-2xl border-border bg-card shadow-xs transition-all duration-300 hover:shadow-md hover:border-brand-primary/20"
             >
-              {/* Star Rating */}
-              <div className="flex items-center gap-0.5 mb-4">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star key={i} size={14} className="fill-brand-gold text-brand-gold" />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <div className="relative flex-1">
-                <Quote size={20} className="mb-2 text-brand-accent/30" />
-                <p className="text-body-small leading-relaxed text-content-secondary">{t.text}</p>
-              </div>
-
-              {/* Divider */}
-              <div className="my-5 border-t border-border-default" />
-
-              {/* Student Info */}
-              <div className="flex items-start gap-3.5">
-                <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-body-small font-medium text-white ${t.avatarColor}`}
-                >
-                  {t.avatar}
+              <div>
+                {/* Star Rating */}
+                <div className="flex items-center gap-1 mb-4">
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <Star key={i} size={15} className="fill-brand-gold text-brand-gold" />
+                  ))}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <p className="text-body-small font-medium text-content-primary">{t.name}</p>
-                    <ReactCountryFlag
-                      countryCode={t.code}
-                      svg
-                      style={{ width: "16px", height: "16px", borderRadius: "50%", objectFit: "cover" }}
-                    />
+
+                {/* Quote */}
+                <div className="relative">
+                  <Quote size={22} className="mb-2 text-brand-accent/40" />
+                  <p className="text-sm leading-relaxed text-content-secondary">{t.text}</p>
+                </div>
+              </div>
+
+              <div>
+                {/* Divider */}
+                <div className="my-5 border-t border-border" />
+
+                {/* Student Info */}
+                <div className="flex items-start gap-3.5">
+                  <div
+                    className={`flex size-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white shadow-xs ${t.avatarColor}`}
+                  >
+                    {t.avatar}
                   </div>
-                  <p className="text-caption text-content-secondary truncate">{t.program}</p>
-                  <p className="text-caption font-medium text-brand-primary truncate">{t.university}</p>
-                  {t.scholarship && (
-                    <Badge variant="success" className="mt-1.5 text-[11px]">
-                      {t.scholarship}
-                    </Badge>
-                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-semibold text-content-primary">{t.name}</p>
+                      <ReactCountryFlag
+                        countryCode={t.code}
+                        svg
+                        style={{ width: "16px", height: "16px", borderRadius: "50%", objectFit: "cover" }}
+                      />
+                    </div>
+                    <p className="text-xs text-content-secondary truncate">{t.program}</p>
+                    <p className="text-xs font-semibold text-brand-primary truncate">{t.university}</p>
+                    {t.scholarship && (
+                      <Badge variant="success" className="mt-1.5 text-xs">
+                        {t.scholarship}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
               </div>
             </Card>

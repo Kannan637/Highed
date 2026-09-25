@@ -17,18 +17,18 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
     <div
       className="
         group flex h-full flex-col overflow-hidden
-        rounded-[24px]
-        border border-neutral-200/90
-        bg-white
-        shadow-sm
+        rounded-2xl
+        border border-border
+        bg-card
+        shadow-xs
         transition-all duration-300
-        hover:border-brand-primary/30
-        hover:shadow-xl
+        hover:border-primary/40
+        hover:shadow-lg
       "
     >
       {/* ================= IMAGE ================= */}
       <div className="relative p-2.5">
-        <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-neutral-100">
+        <div className="relative h-[190px] overflow-hidden rounded-xl bg-neutral-100">
           <Image
             src={university.image || "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop"}
             alt={university.name}
@@ -53,7 +53,7 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
                 text-[11px]
                 font-medium
                 text-brand-primary
-                shadow-sm
+                shadow-xs
                 backdrop-blur-sm
               "
             >
@@ -70,12 +70,12 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
         <div className="mt-1">
           <h3
             className="
-              font-['DM_Sans']
+              font-heading
               text-[18px]
               font-bold
               leading-[1.25]
-              tracking-[-0.02em]
-              text-content-primary
+              tracking-tight
+              text-foreground
               line-clamp-2
               transition-colors
               group-hover:text-brand-primary
@@ -89,10 +89,9 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
             className="
               mt-2
               flex items-center gap-1.5
-              font-['DM_Sans']
-              text-[12px]
+              text-[13px]
               font-medium
-              text-neutral-500
+              text-muted-foreground
             "
           >
             <MapPin
@@ -111,12 +110,11 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
         <div className="mt-4">
           <div
             className="
-              font-['DM_Sans']
-              text-[10px]
-              font-medium
+              text-[11px]
+              font-bold
               uppercase
-              tracking-[0.08em]
-              text-neutral-400
+              tracking-wider
+              text-muted-foreground
             "
           >
             Tuition Range
@@ -125,9 +123,8 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
           <div
             className="
               mt-0.5
-              font-['DM_Sans']
               text-[15px]
-              font-semibold
+              font-bold
               text-brand-primary
             "
           >
@@ -142,15 +139,14 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
               <div
                 className="
                   mb-2
-                  font-['DM_Sans']
-                  text-[10px]
-                  font-medium
+                  text-[11px]
+                  font-bold
                   uppercase
-                  tracking-[0.08em]
-                  text-neutral-400
+                  tracking-wider
+                  text-muted-foreground
                 "
               >
-                Courses
+                Popular Programs
               </div>
 
               <div className="flex flex-wrap gap-1.5">
@@ -158,11 +154,10 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
                   <span
                     key={program}
                     className="
-                      rounded-[7px]
-                      border border-neutral-200
+                      rounded-lg
+                      border border-border
                       bg-neutral-50
                       px-2.5 py-1
-                      font-['DM_Sans']
                       text-[11px]
                       font-medium
                       leading-none
@@ -176,14 +171,13 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
                 {university.popularPrograms.length > 3 && (
                   <span
                     className="
-                      rounded-[7px]
+                      rounded-lg
                       bg-neutral-100
                       px-2 py-1
-                      font-['DM_Sans']
                       text-[11px]
                       font-medium
                       leading-none
-                      text-neutral-600
+                      text-muted-foreground
                     "
                   >
                     +{university.popularPrograms.length - 3}
@@ -195,24 +189,25 @@ export const UniversityCard: React.FC<UniversityCardProps> = ({
 
         {/* ================= CTA ================= */}
         <div className="mt-auto pt-5">
-          <div className="border-t border-neutral-200/80 pt-4">
+          <div className="border-t border-border pt-4">
             <LeadCTAButton
               source={`explore_uni_${university.id}`}
-              variant="ghost"
-              size="sm"
+              variant="outline"
+              size="default"
               className="
                 flex w-full items-center justify-between
-                rounded-[10px]
-                !px-0
-                font-['DM_Sans']
-                text-[13px]
+                h-12 px-4
+                rounded-full
+                text-sm
                 font-semibold
                 text-brand-primary
+                border border-black/10
+                hover:border-brand-primary
+                hover:bg-brand-primary/5
                 transition-colors
-                hover:text-brand-accent
               "
             >
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-2">
                 <GraduationCap size={16} />
                 Apply With Guidance
               </span>

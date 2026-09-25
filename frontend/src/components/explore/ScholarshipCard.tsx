@@ -22,18 +22,18 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
     <div
       className="
         group flex h-full flex-col overflow-hidden
-        rounded-[24px]
-        border border-neutral-200/90
-        bg-white
-        shadow-sm
+        rounded-2xl
+        border border-border
+        bg-card
+        shadow-xs
         transition-all duration-300
-        hover:border-brand-primary/30
-        hover:shadow-xl
+        hover:border-primary/40
+        hover:shadow-lg
       "
     >
       {/* ================= IMAGE ================= */}
       <div className="relative p-2.5">
-        <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-neutral-100">
+        <div className="relative h-[190px] overflow-hidden rounded-xl bg-neutral-100">
           <Image
             src={scholarship.image || "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"}
             alt={scholarship.name}
@@ -54,11 +54,10 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
               rounded-full
               bg-white/95
               px-3 py-1.5
-              font-['DM_Sans']
               text-[11px]
-              font-medium
+              font-bold
               text-brand-primary
-              shadow-sm
+              shadow-xs
               backdrop-blur-sm
             "
           >
@@ -76,11 +75,10 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
               rounded-full
               bg-white/95
               px-3 py-1.5
-              font-['DM_Sans']
               text-[11px]
               font-medium
               text-neutral-700
-              shadow-sm
+              shadow-xs
               backdrop-blur-sm
             "
           >
@@ -95,12 +93,12 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
         <div className="mt-1">
           <h3
             className="
-              font-['DM_Sans']
+              font-heading
               text-[18px]
               font-bold
               leading-[1.25]
-              tracking-[-0.02em]
-              text-neutral-900
+              tracking-tight
+              text-foreground
               line-clamp-2
               transition-colors
               group-hover:text-brand-primary
@@ -114,10 +112,9 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
             <p
               className="
                 mt-2
-                font-['DM_Sans']
-                text-[12px]
+                text-[13px]
                 font-medium
-                text-neutral-500
+                text-muted-foreground
               "
             >
               Available in {countryName}
@@ -129,10 +126,10 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
         <div
           className="
             mt-4
-            rounded-[12px]
-            border border-neutral-200/70
+            rounded-xl
+            border border-border/80
             bg-neutral-50/70
-            p-3
+            p-3.5
           "
         >
           {/* Eligibility */}
@@ -149,12 +146,11 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
             <div className="min-w-0">
               <div
                 className="
-                  font-['DM_Sans']
-                  text-[10px]
-                  font-medium
+                  text-[11px]
+                  font-bold
                   uppercase
-                  tracking-[0.08em]
-                  text-neutral-400
+                  tracking-wider
+                  text-muted-foreground
                 "
               >
                 Eligibility
@@ -163,7 +159,6 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
               <p
                 className="
                   mt-0.5
-                  font-['DM_Sans']
                   text-[12px]
                   font-medium
                   leading-[1.45]
@@ -177,7 +172,7 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
           </div>
 
           {/* Divider */}
-          <div className="my-3 border-t border-neutral-200/80" />
+          <div className="my-2.5 border-t border-border" />
 
           {/* Coverage */}
           <div className="flex items-start gap-2.5">
@@ -193,12 +188,11 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
             <div className="min-w-0">
               <div
                 className="
-                  font-['DM_Sans']
-                  text-[10px]
-                  font-medium
+                  text-[11px]
+                  font-bold
                   uppercase
-                  tracking-[0.08em]
-                  text-neutral-400
+                  tracking-wider
+                  text-muted-foreground
                 "
               >
                 Coverage
@@ -207,7 +201,6 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
               <p
                 className="
                   mt-0.5
-                  font-['DM_Sans']
                   text-[12px]
                   font-medium
                   leading-[1.45]
@@ -223,24 +216,25 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
 
         {/* ================= CTA ================= */}
         <div className="mt-auto pt-5">
-          <div className="border-t border-neutral-200/80 pt-4">
+          <div className="border-t border-border pt-4">
             <LeadCTAButton
               source={`explore_scholarship_${scholarship.id}`}
-              variant="ghost"
-              size="sm"
+              variant="outline"
+              size="default"
               className="
                 flex w-full items-center justify-between
-                rounded-[10px]
-                !px-0
-                font-['DM_Sans']
-                text-[13px]
+                h-12 px-4
+                rounded-full
+                text-sm
                 font-semibold
                 text-brand-primary
+                border border-black/10
+                hover:border-brand-primary
+                hover:bg-brand-primary/5
                 transition-colors
-                hover:text-brand-accent
               "
             >
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-2">
                 <Award size={16} />
                 Check Scholarship Eligibility
               </span>

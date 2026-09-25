@@ -6,7 +6,8 @@ import { ChevronDown, Phone } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import { navDropdowns } from "@/data/navigation";
 import { MenuIcon } from "./MenuIcon";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
+import { Badge } from "@/components/ui/Badge";
+import { LeadCTAButton } from "@/components/forms/LeadCTAButton";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface MobileNavigationProps {
@@ -19,7 +20,6 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
   onClose,
 }) => {
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
-  const { openLeadPopup } = useLeadPopup();
   const navRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when mobile nav is open (ISS-008)
@@ -189,9 +189,9 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
               className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left text-nav text-content-primary transition-colors duration-200 hover:text-brand-primary"
             >
               <span>Blog</span>
-              <span className="rounded-full bg-icon-bg-primary px-2.5 py-0.5 text-caption text-brand-primary">
+              <Badge variant="brand" size="sm">
                 Articles
-              </span>
+              </Badge>
             </Link>
           </div>
 
@@ -203,27 +203,24 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
               className="flex min-h-[56px] w-full touch-manipulation items-center justify-between text-left text-nav text-content-primary transition-colors duration-200 hover:text-brand-primary"
             >
               <span>Events</span>
-              <span className="rounded-full bg-icon-bg-primary px-2.5 py-0.5 text-caption text-brand-primary">
+              <Badge variant="brand" size="sm">
                 Upcoming
-              </span>
+              </Badge>
             </Link>
           </div>
 
           {/* MOBILE CTA */}
           <div className="pt-5 pb-2">
-            <button
-              type="button"
-              onClick={() => {
-                onClose();
-                openLeadPopup({ source: "mobile_navbar" });
-              }}
-              className="flex h-[52px] w-full items-center justify-center gap-3 rounded-full bg-brand-accent px-6 text-btn text-white shadow-md transition-all duration-300 active:scale-[0.98] cursor-pointer"
+            <LeadCTAButton
+              source="mobile_navbar"
+              variant="accent"
+              size="default"
+              fullWidth
+              iconBadge={<Phone size={16} fill="#253A7B" strokeWidth={0} />}
+              onClick={onClose}
             >
-              <span>Book Free Counselling</span>
-              <span className="flex h-[34px] w-[34px] items-center justify-center rounded-full bg-white">
-                <Phone size={16} fill="#253A7B" strokeWidth={0} />
-              </span>
-            </button>
+              Book Free Counselling
+            </LeadCTAButton>
           </div>
         </div>
       </div>

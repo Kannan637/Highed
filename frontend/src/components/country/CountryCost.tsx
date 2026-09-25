@@ -72,6 +72,8 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
               </a>
               <LeadCTAButton
                 source={`country_cost_calc_${country.slug}`}
+                variant="link"
+                size="sm"
                 className="text-body-small font-medium text-brand-accent hover:underline cursor-pointer"
               >
                 Calculate My Budget
@@ -151,6 +153,8 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
               </span>
               <LeadCTAButton
                 source={`country_cost_counsel_${country.slug}`}
+                variant="link"
+                size="sm"
                 className="text-body-small font-medium text-brand-primary hover:text-brand-accent transition-colors cursor-pointer"
               >
                 Plan Living Budget →

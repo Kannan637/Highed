@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { allCountries } from "@/data/countries";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -16,7 +18,7 @@ export const metadata = constructMetadata({
 
 export default function StudyInPage() {
   return (
-    <div className="bg-[#FAFAFC] py-16 sm:py-24">
+    <div className="bg-background py-16 sm:py-24">
       <Container size="lg">
         <SectionHeading
           badge="Global Destinations"
@@ -29,54 +31,56 @@ export default function StudyInPage() {
             <Link
               key={country.slug}
               href={`/study-in/${country.slug}`}
-              className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:border-[#253A7B]/20 hover:shadow-xl hover:-translate-y-1"
+              className="col-span-4 sm:col-span-2 lg:col-span-4 group"
             >
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-[#F8F9FE] shadow-2xs">
-                    <ReactCountryFlag
-                      countryCode={country.code}
-                      svg
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </span>
-                  <span className="rounded-full bg-[#EBF5EE] px-3 py-1 font-body text-xs font-bold text-[#1E7B47]">
-                    Popular
-                  </span>
+              <Card hover className="h-full flex flex-col justify-between rounded-2xl border-border bg-card p-6 sm:p-8">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="flex size-14 items-center justify-center overflow-hidden rounded-2xl bg-neutral-50 border border-border shadow-2xs">
+                      <ReactCountryFlag
+                        countryCode={country.code}
+                        svg
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </span>
+                    <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border-emerald-200">
+                      Popular
+                    </Badge>
+                  </div>
+
+                  <h3 className="mt-6 font-heading text-2xl font-bold text-foreground transition-colors group-hover:text-brand-primary">
+                    Study in {country.name}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                    {country.tagline}
+                  </p>
+
+                  <div className="mt-6 space-y-2 border-t border-border pt-4 text-xs text-muted-foreground">
+                    <div>
+                      <span className="font-semibold text-foreground">Currency:</span>{" "}
+                      {country.currency.split("(")[0]}
+                    </div>
+                    <div>
+                      <span className="font-semibold text-foreground">Visa Processing:</span>{" "}
+                      {country.visaDetails.processingTime}
+                    </div>
+                  </div>
                 </div>
 
-                <h3 className="mt-6 font-heading text-2xl font-bold text-[#121314] transition-colors group-hover:text-[#253A7B]">
-                  Study in {country.name}
-                </h3>
-
-                <p className="mt-3 font-body text-sm leading-relaxed text-gray-600 line-clamp-3">
-                  {country.tagline}
-                </p>
-
-                <div className="mt-6 space-y-2 border-t border-gray-100 pt-4 font-body text-xs text-gray-500">
-                  <div>
-                    <span className="font-semibold text-gray-700">Currency:</span>{" "}
-                    {country.currency.split("(")[0]}
-                  </div>
-                  <div>
-                    <span className="font-semibold text-gray-700">Visa Processing:</span>{" "}
-                    {country.visaDetails.processingTime}
-                  </div>
+                <div className="mt-6 pt-4 border-t border-border flex items-center justify-between min-h-[44px] text-sm font-semibold text-brand-primary transition-colors group-hover:text-brand-accent">
+                  <span>Explore {country.name} Guide</span>
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
                 </div>
-              </div>
-
-              <div className="mt-6 flex items-center justify-between font-body text-sm font-semibold text-[#253A7B] transition-colors group-hover:text-[#E93F61]">
-                <span>Explore {country.name} Guide</span>
-                <ArrowRight
-                  size={16}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </div>
+              </Card>
             </Link>
           ))}
         </div>

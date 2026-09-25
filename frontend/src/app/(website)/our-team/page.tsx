@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -153,9 +154,9 @@ function TeamCard({
                 <a
                     href={member.linkedin}
                     aria-label={`${member.name} LinkedIn`}
-                    className="absolute right-5 top-5 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white text-[#253A7B] opacity-0 shadow-lg transition-all duration-300 hover:scale-105 group-hover:translate-y-0 group-hover:opacity-100"
+                    className="absolute right-5 top-5 flex size-11 sm:size-12 translate-y-2 items-center justify-center rounded-full bg-white text-brand-primary opacity-0 shadow-lg transition-all duration-300 hover:scale-105 group-hover:translate-y-0 group-hover:opacity-100"
                 >
-                    <Globe size={16} />
+                    <Globe size={18} />
                 </a>
             </div>
 
@@ -167,7 +168,7 @@ function TeamCard({
                             {member.name}
                         </h3>
 
-                        <p className="mt-1 text-[12px] font-medium text-brand-primary">
+                        <p className="mt-1 text-xs font-semibold text-brand-primary">
                             {member.role}
                         </p>
                     </div>
@@ -175,9 +176,9 @@ function TeamCard({
                     <a
                         href={member.email}
                         aria-label={`Email ${member.name}`}
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F3F4F8] text-black/45 transition-all hover:bg-[#253A7B] hover:text-white"
+                        className="flex size-10 sm:size-11 shrink-0 items-center justify-center rounded-full bg-surface-subtle text-content-secondary transition-all hover:bg-brand-primary hover:text-white"
                     >
-                        <Mail size={15} />
+                        <Mail size={16} />
                     </a>
                 </div>
 
@@ -315,10 +316,10 @@ export default function OurTeamPage() {
                 <Container size="lg">
                     <div className="relative py-20 sm:py-28 lg:py-32">
                         <div className="max-w-5xl">
-                            <div className="team-eyebrow inline-flex items-center gap-2 rounded-full border border-[#253A7B]/10 bg-[#F1F3FA] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#253A7B]">
+                            <Badge variant="brand" className="team-eyebrow gap-2 uppercase tracking-[0.14em]">
                                 <Users size={13} />
                                 Meet Our Team
-                            </div>
+                            </Badge>
 
                             <h1 className="team-title mt-6 max-w-5xl font-heading text-[50px] font-bold leading-[0.96] tracking-[-0.06em] sm:text-[68px] lg:text-[88px]">
                                 People behind
@@ -341,12 +342,14 @@ export default function OurTeamPage() {
                                 "Visa Guidance",
                                 "Student Success",
                             ].map((item) => (
-                                <span
+                                <Badge
                                     key={item}
-                                    className="rounded-full border border-black/[0.07] bg-[#FAFAFC] px-4 py-2 text-[11px] font-semibold text-black/45"
+                                    variant="neutral"
+                                    size="sm"
+                                    className="font-semibold text-black/60"
                                 >
                                     {item}
-                                </span>
+                                </Badge>
                             ))}
                         </div>
                     </div>
@@ -478,10 +481,10 @@ export default function OurTeamPage() {
 
                         <div className="relative grid gap-10 px-7 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:items-center lg:px-14 lg:py-16">
                             <div className="team-cta-content lg:col-span-8">
-                                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white/75 backdrop-blur">
+                                <Badge variant="inverse" className="mb-5 gap-2 uppercase tracking-[0.14em]">
                                     <Sparkles size={13} className="text-[#FCF6BA]" />
                                     Start your journey
-                                </div>
+                                </Badge>
 
                                 <h2 className="max-w-3xl font-heading text-3xl font-bold leading-[1.02] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
                                     Your dream university is closer than you think.
@@ -499,12 +502,9 @@ export default function OurTeamPage() {
                                     variant="accent"
                                     size="lg"
                                     className="w-full sm:w-auto"
+                                    iconBadge={<ArrowUpRight size={17} />}
                                 >
                                     Book Free Counselling
-                                    <ArrowUpRight
-                                        size={17}
-                                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                    />
                                 </LeadCTAButton>
                             </div>
                         </div>

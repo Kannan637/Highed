@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CityData } from "@/types/city";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Badge } from "@/components/ui/Badge";
 
 interface CityDestinationsProps {
   city: CityData;
@@ -25,31 +26,31 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
           {city.destinations.map((dest, idx) => (
             <div
               key={idx}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200/80 bg-white p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/40 hover:shadow-xl"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-4xl" role="img" aria-label={dest.name}>
                     {dest.flag}
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-icon-bg-primary px-3 py-1 text-caption font-medium text-brand-primary">
-                    <span>Popular from {city.name}</span>
-                  </span>
+                  <Badge variant="brand" size="sm">
+                    Popular from {city.name}
+                  </Badge>
                 </div>
 
-                <h3 className="font-heading font-normal text-h4 text-content-primary group-hover:text-brand-primary transition-colors">
+                <h3 className="font-heading font-bold text-xl text-foreground group-hover:text-brand-primary transition-colors">
                   Study in {dest.name}
                 </h3>
 
-                <p className="mt-3 text-body-small leading-relaxed text-content-secondary">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {dest.tagline}
                 </p>
               </div>
 
-              <div className="mt-8 pt-5 border-t border-neutral-100 flex items-center justify-between">
+              <div className="mt-8 pt-5 border-t border-border flex items-center justify-between gap-3">
                 <Link
                   href={dest.href}
-                  className="inline-flex items-center gap-2 text-body-small font-medium text-brand-primary transition-colors hover:text-brand-accent"
+                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent"
                 >
                   <span>Explore {dest.name}</span>
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -59,7 +60,9 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
                   source={`city_dest_${city.slug}_${dest.name.toLowerCase().replace(/\s+/g, "_")}`}
                   contextTitle={`Apply for ${dest.name} from ${city.name}`}
                   contextCTA="Get Free Advice"
-                  className="rounded-full bg-neutral-100 px-3.5 py-1.5 text-caption font-medium text-neutral-700 hover:bg-brand-accent hover:text-white transition-colors cursor-pointer"
+                  variant="outline"
+                  size="sm"
+                  className="h-11 px-5 rounded-full text-xs sm:text-sm font-semibold text-brand-primary border border-black/10 hover:border-brand-primary hover:bg-brand-primary/5 transition-colors cursor-pointer"
                 >
                   Apply Now
                 </LeadCTAButton>
@@ -84,7 +87,8 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
             source={`city_dest_compare_${city.slug}`}
             contextTitle={`Country Comparison for ${city.name} Student`}
             contextCTA="Compare Countries"
-            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-brand-accent px-6 py-3 text-btn font-medium text-white shadow-md hover:bg-brand-accent/90 transition-all cursor-pointer"
+            variant="accent"
+            size="default"
           >
             <span>Compare My Options Free</span>
             <ArrowRight size={16} />
