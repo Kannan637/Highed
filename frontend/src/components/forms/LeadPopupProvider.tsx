@@ -21,8 +21,8 @@ interface LeadPopupContextType {
 }
 
 export const LeadPopupContext = createContext<LeadPopupContextType>({
-  openLeadPopup: () => {},
-  closeLeadPopup: () => {},
+  openLeadPopup: () => { },
+  closeLeadPopup: () => { },
   isOpen: false,
 });
 

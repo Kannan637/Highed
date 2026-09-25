@@ -179,7 +179,6 @@ export const LeadSuccess: React.FC = () => {
           <span className="text-[11px] font-normal leading-none text-[#6B7280]">
             Need help sooner?
           </span>
-
           <a
             href="tel:+919050180501"
             className="mt-1 text-[14px] font-medium leading-none tracking-[-0.01em] text-[#253A7B] transition-opacity hover:opacity-70"

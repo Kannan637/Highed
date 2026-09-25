@@ -146,21 +146,6 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
     });
   }, [onClose, resetForm]);
 
-  // Escape key
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        animateClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleEscape);
-
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen, animateClose]);
-
   // Validate & submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

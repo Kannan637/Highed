@@ -350,13 +350,14 @@ function Hero() {
                 relative
                 flex
                 min-h-[540px]
-                w-full
                 flex-col
                 overflow-hidden
                 bg-[linear-gradient(180deg,var(--color-brand-primary),#12204C)]
                 tracking-[-0.04em]
                 [letter-spacing:-0.04em]
                 [&_*]:[letter-spacing:-0.04em]
+                items-center
+                self-center
             "
         >
 
