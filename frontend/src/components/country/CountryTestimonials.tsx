@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 /* =========================================================
    TYPES
@@ -237,17 +238,7 @@ function TestimonialCard({
       ================================================= */}
 
       <div className="px-7 pb-7 pt-4 md:px-8">
-        <p
-          className="
-            mx-auto
-            max-w-[310px]
-            text-center
-            text-body-small
-            font-medium
-            leading-[1.5]
-            text-content-primary
-          "
-        >
+        <p className="mx-auto max-w-[310px] text-center text-body-small font-medium text-content-primary">
           &quot;{testimonial.quote}&quot;
         </p>
       </div>
@@ -265,28 +256,13 @@ function TestimonialCard({
           text-center
         "
       >
-        <h3
-          className="
-            font-heading
-            font-normal
-            text-h5
-            text-content-primary
-          "
-        >
+        <h3 className="card-title text-content-primary">
           {testimonial.name}
         </h3>
 
         {/* UNIVERSITY */}
 
-        <p
-          className="
-            mt-2
-            text-caption
-            font-medium
-            leading-[1.4]
-            text-content-secondary
-          "
-        >
+        <p className="mt-2 text-caption font-medium text-content-secondary">
           {testimonial.university}, {testimonial.country}
         </p>
       </div>
@@ -505,34 +481,11 @@ export default function StudentTestimonials() {
         >
           {/* EYEBROW */}
 
-          <div
-            className="
-              inline-flex
-              min-h-8
-              items-center
-              gap-2
-              rounded-full
-              text-body-small
-              font-medium
-              text-brand-primary
-            "
-          >
-            <span
-              className="
-                h-2
-                w-2
-                rounded-full
-                bg-brand-primary
-              "
-              aria-hidden="true"
-            />
-
-            <span>Real Stories</span>
-          </div>
+          <EyebrowBadge>Real Stories</EyebrowBadge>
 
           {/* HEADING */}
 
-          <h2 className="mt-6 max-w-[720px] font-heading font-normal text-h2 text-content-primary">
+          <h2 className="mt-6 max-w-[720px] text-content-primary">
             Real Student Stories, Real
             <br />
             Study Abroad Success

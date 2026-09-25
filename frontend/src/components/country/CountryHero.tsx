@@ -8,7 +8,7 @@ import {
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
-import { Badge } from "@/components/ui/Badge";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -62,54 +62,21 @@ export const CountryHero = ({ country }: CountryHeroProps) => {
           {/* =====================================================
               TRUST BADGE
           ====================================================== */}
-          <Badge variant="accent" size="lg" className="mb-7 gap-2">
-            <span>
-              Trusted by{" "}
-              <span className="font-bold">10,000+</span> students
-            </span>
-            <span aria-hidden="true" className="text-base leading-none">
-              ↗
-            </span>
-          </Badge>
+          <EyebrowBadge className="mb-7">
+            Trusted by 10,000+ students
+          </EyebrowBadge>
 
           {/* =====================================================
               HEADING
           ====================================================== */}
-          <h1
-            className="
-              max-w-[760px]
-              font-sans
-              text-[42px]
-              font-medium
-              leading-[1.02]
-              tracking-[-0.045em]
-              text-white
-              sm:text-[52px]
-              md:text-[60px]
-              lg:text-[64px]
-              xl:text-[68px]
-            "
-          >
+          <h1 className="max-w-[760px] text-white">
             {country.title}
           </h1>
 
           {/* =====================================================
               DESCRIPTION
           ====================================================== */}
-          <p
-            className="
-              mt-6
-              max-w-[700px]
-              font-sans
-              text-[15px]
-              font-normal
-              leading-[1.55]
-              tracking-[-0.01em]
-              text-white/85
-              sm:text-base
-              md:text-[17px]
-            "
-          >
+          <p className="mt-6 max-w-[700px] text-white/90">
             {country.tagline}
           </p>
 
@@ -120,11 +87,8 @@ export const CountryHero = ({ country }: CountryHeroProps) => {
             {/* Primary CTA */}
             <LeadCTAButton
               source={`country_hero_${country.slug}`}
-              variant="accent"
-              size="lg"
-              iconBadge={<ArrowRight size={18} strokeWidth={2.5} />}
             >
-              Get Free Counselling
+              Book Free Counselling
             </LeadCTAButton>
 
             {/* Secondary CTA */}

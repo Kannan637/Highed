@@ -56,10 +56,10 @@ export const CityWhyHighEd: React.FC<CityWhyHighEdProps> = ({ city }) => {
                   <div className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-brand-primary shadow-xs">
                     <IconComponent size={28} />
                   </div>
-                  <h3 className="font-heading font-bold text-xl text-foreground">
+                  <h3 className="card-title text-foreground">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  <p className="mt-3 text-content-secondary leading-relaxed">
                     {item.description}
                   </p>
                 </div>

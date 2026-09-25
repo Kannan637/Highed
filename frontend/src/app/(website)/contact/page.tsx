@@ -34,7 +34,7 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                 <IconBox icon={Phone} variant="primary" />
                 <div>
-                  <h3 className="text-lg font-semibold text-content-primary">Direct Phone Support</h3>
+                  <h3 className="card-title text-content-primary">Direct Phone Support</h3>
                   <p className="mt-1 text-sm text-content-secondary">Call or WhatsApp our admissions desk directly:</p>
                   <p className="mt-2">
                     <a href="tel:+919050180501" className="text-base font-semibold text-brand-primary hover:underline">
@@ -55,7 +55,7 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                 <IconBox icon={Mail} variant="accent" />
                 <div>
-                  <h3 className="text-lg font-semibold text-content-primary">Email Enquiries</h3>
+                  <h3 className="card-title text-content-primary">Email Enquiries</h3>
                   <p className="mt-1 text-sm text-content-secondary">Send application documents or general questions:</p>
                   <p className="mt-2">
                     <a href={`mailto:${siteConfig.contact.email}`} className="text-base font-semibold text-brand-primary hover:underline">
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                 <IconBox icon={MapPin} variant="success" />
                 <div>
-                  <h3 className="text-lg font-semibold text-content-primary">Our Admissions Office</h3>
+                  <h3 className="card-title text-content-primary">Our Admissions Office</h3>
                   <p className="mt-1 text-sm font-semibold text-content-primary">Chennai</p>
                   <p className="mt-1 text-sm text-content-secondary">{siteConfig.contact.address}</p>
                   <p className="mt-2 text-xs text-brand-accent font-medium leading-relaxed">
@@ -93,7 +93,7 @@ export default function ContactPage() {
                 <span>100% Free Service</span>
               </Badge>
 
-              <h2 className="mt-5 text-2xl sm:text-3xl font-bold text-content-primary">
+              <h2 className="mt-5 text-content-primary">
                 Book Instant Counselling
               </h2>
 

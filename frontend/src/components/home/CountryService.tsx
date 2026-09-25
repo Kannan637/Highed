@@ -286,9 +286,9 @@ export default function StudyDestinations() {
                 text-content-primary
                 sm:py-20
                 lg:py-[88px]
-                tracking-[-0.04em]
-                [letter-spacing:-0.04em]
-                [&_*]:[letter-spacing:-0.04em]
+                tracking-tight-5
+                [letter-spacing:var(--tracking-tight-5)]
+                [&_*]:[letter-spacing:var(--tracking-tight-5)]
             "
         >
             <Container size="lg">
@@ -608,14 +608,7 @@ function DestinationCard({
                         className="text-brand-accent"
                     />
 
-                    <h3
-                        className={`
-              font-heading
-              font-normal
-              tracking-[-0.04em]
-              ${isActive ? "text-h3" : "text-h4"}
-            `}
-                    >
+                    <h3 className={`card-title ${isActive ? "text-brand-primary" : "text-content-primary"}`}>
                         {destination.country}
                     </h3>
                 </div>
@@ -625,7 +618,6 @@ function DestinationCard({
                     className={`
             max-w-[540px]
             text-body-small
-            leading-[1.55]
             text-white/90
             ${isActive
                             ? "sm:text-body"

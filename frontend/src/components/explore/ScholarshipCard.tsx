@@ -91,19 +91,7 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
       <div className="flex flex-1 flex-col px-5 pb-5">
         {/* Scholarship Name */}
         <div className="mt-1">
-          <h3
-            className="
-              font-heading
-              text-[18px]
-              font-bold
-              leading-[1.25]
-              tracking-tight
-              text-foreground
-              line-clamp-2
-              transition-colors
-              group-hover:text-brand-primary
-            "
-          >
+          <h3 className="card-title text-foreground line-clamp-2 transition-colors group-hover:text-brand-primary">
             {scholarship.name}
           </h3>
 
@@ -156,16 +144,7 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
                 Eligibility
               </div>
 
-              <p
-                className="
-                  mt-0.5
-                  text-[12px]
-                  font-medium
-                  leading-[1.45]
-                  text-neutral-700
-                  line-clamp-2
-                "
-              >
+              <p className="mt-0.5 text-caption font-medium text-content-primary line-clamp-2">
                 {scholarship.eligibility}
               </p>
             </div>
@@ -186,28 +165,11 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
             />
 
             <div className="min-w-0">
-              <div
-                className="
-                  text-[11px]
-                  font-bold
-                  uppercase
-                  tracking-wider
-                  text-muted-foreground
-                "
-              >
+              <div className="text-caption font-medium uppercase tracking-wider text-content-secondary">
                 Coverage
               </div>
 
-              <p
-                className="
-                  mt-0.5
-                  text-[12px]
-                  font-medium
-                  leading-[1.45]
-                  text-neutral-700
-                  line-clamp-2
-                "
-              >
+              <p className="mt-0.5 text-caption font-medium text-content-primary line-clamp-2">
                 {scholarship.coverage}
               </p>
             </div>

@@ -132,7 +132,7 @@ export default function ScholarshipsPage() {
                   />
                 </span>
                 <div>
-                  <h3 className="text-lg font-semibold text-content-primary">Study in {dest.country}</h3>
+                  <h3 className="card-title text-content-primary">Study in {dest.country}</h3>
                   <p className="text-xs text-content-secondary">{dest.scholarships.length} scholarships available</p>
                 </div>
               </div>
@@ -172,7 +172,7 @@ export default function ScholarshipsPage() {
             badge="Free Scholarship Profile Matching"
             title="Find Your Best Scholarship Match"
             subtitle="Share your profile with our counsellors and we'll identify every scholarship opportunity you qualify for across all 6 destinations."
-            ctaLabel="Check My Scholarship Eligibility"
+            ctaLabel="Book Free Counselling"
             ctaSource="scholarships_page_cta"
           />
         </div>

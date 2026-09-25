@@ -31,7 +31,7 @@ export default function BookCounsellingPage() {
               <span>Official University Representative</span>
             </Badge>
 
-            <h1 className="mt-4 text-h1 text-content-primary">
+            <h1 className="mt-4 text-content-primary">
               Take the First Step Towards Your Global Degree
             </h1>
 
@@ -43,7 +43,7 @@ export default function BookCounsellingPage() {
               <div className="flex items-start gap-4">
                 <IconBox icon={Users} variant="primary" size="sm" className="bg-surface-default shadow-card-resting" />
                 <div>
-                  <h3 className="text-body font-medium text-content-primary">
+                  <h3 className="card-title text-content-primary">
                     1-on-1 Dedicated Advisor
                   </h3>
                   <p className="text-body-small text-content-secondary">
@@ -55,7 +55,7 @@ export default function BookCounsellingPage() {
               <div className="flex items-start gap-4">
                 <IconBox icon={Award} variant="accent" size="sm" className="bg-surface-default shadow-card-resting" />
                 <div>
-                  <h3 className="text-body font-medium text-content-primary">
+                  <h3 className="card-title text-content-primary">
                     Maximum Scholarship Opportunities
                   </h3>
                   <p className="text-body-small text-content-secondary">
@@ -67,7 +67,7 @@ export default function BookCounsellingPage() {
               <div className="flex items-start gap-4">
                 <IconBox icon={Clock} variant="success" size="sm" className="bg-surface-default shadow-card-resting" />
                 <div>
-                  <h3 className="text-body font-medium text-content-primary">
+                  <h3 className="card-title text-content-primary">
                     Fast-Track Offers &amp; Visa Support
                   </h3>
                   <p className="text-body-small text-content-secondary">
@@ -81,7 +81,7 @@ export default function BookCounsellingPage() {
           {/* Right Column: Lead Form */}
           <div className="col-span-4 lg:col-span-6">
             <Card className="p-6 sm:p-8 rounded-2xl border-border bg-card shadow-sm">
-              <h2 className="text-xl sm:text-2xl font-bold text-content-primary">
+              <h2 className="text-content-primary">
                 Book Your Free Counselling Session
               </h2>
               <p className="mt-2 text-sm text-content-secondary">

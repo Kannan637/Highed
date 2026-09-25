@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Country } from "@/types/country";
 import { articles } from "@/data/articles";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 interface CountryRelatedBlogsProps {
   country: Country;
@@ -45,13 +46,10 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
         {/* Header: Eyebrow Badge, Title, Description */}
         <div className="flex flex-col items-center text-center gap-3 mb-8 sm:mb-12">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 rounded-2xl bg-brand-accent px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs">
-            <Sparkles className="size-3.5 text-white" />
-            <span>Destination Insights &amp; Guides</span>
-          </div>
+          <EyebrowBadge>Destination Insights &amp; Guides</EyebrowBadge>
 
           {/* Title */}
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-content-primary sm:text-3xl md:text-4xl">
+          <h2 className="text-content-primary">
             Expert Guides for Studying in {country.name}
           </h2>
 
@@ -80,8 +78,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
                 <article className="grid grid-cols-12 gap-3 sm:gap-4 w-full">
                   {/* Left Text Box: 12 cols mobile, 7 cols tablet, 8 cols desktop */}
                   <div
-                    className="col-span-12 sm:col-span-7 md:col-span-8 order-2 sm:order-1 flex flex-col justify-between gap-4 rounded-3xl p-6 sm:rounded-4xl sm:p-7 md:p-8 transition-colors duration-200"
-                    style={{ backgroundColor: "#F5F5F9" }}
+                    className="col-span-12 sm:col-span-7 md:col-span-8 order-2 sm:order-1 flex flex-col justify-between gap-4 rounded-3xl bg-surface-neutral p-6 sm:rounded-4xl sm:p-7 md:p-8 transition-colors duration-200"
                   >
                     <div className="flex flex-col gap-2.5">
                       <div className="flex items-center gap-2">
@@ -94,7 +91,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-bold leading-snug text-content-primary transition-colors group-hover:text-brand-primary sm:text-xl md:text-2xl">
+                      <h3 className="article-title text-content-primary transition-colors group-hover:text-brand-primary">
                         {article.title}
                       </h3>
 

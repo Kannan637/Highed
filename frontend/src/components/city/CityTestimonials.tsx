@@ -52,7 +52,7 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
                     {item.studentName.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-heading font-normal text-h5 text-content-primary truncate">
+                    <h4 className="card-title text-content-primary truncate">
                       {item.studentName}
                     </h4>
                     <div className="flex items-center gap-1 text-caption font-medium text-neutral-500 truncate">

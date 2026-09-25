@@ -11,7 +11,7 @@ export default function NotFound() {
           <Search size={36} />
         </div>
 
-        <h1 className="font-heading text-4xl font-bold text-foreground sm:text-5xl">
+        <h1 className="text-foreground">
           Page Not Found
         </h1>
 

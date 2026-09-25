@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Play } from "lucide-react";
+import { Play, ArrowRight } from "lucide-react";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import Link from "next/link";
 
 const successStories = [
     {
@@ -28,42 +31,57 @@ const successStories = [
 
 export default function SuccessStories() {
     return (
-        <section className="w-full bg-[#F5F5F9] px-6 py-16 md:px-8 lg:py-20">
+        <section className="w-full bg-[#F5F5F9] py-16 md:px-8 lg:py-20 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
             <div className="mx-auto flex max-w-[1320px] flex-col items-center">
-                {/* Badge */}
-                <div className="mb-5 inline-flex h-8 items-center gap-2 rounded-full bg-[#E93F61] px-4">
-                    <span className="h-2 w-2 rounded-full bg-white" />
-                    <span className="font-dm-sans text-sm font-medium text-white">
-                        Success Story
-                    </span>
-                </div>
+
+                {/* Eyebrow Badge */}
+                <EyebrowBadge>Real Stories</EyebrowBadge>
 
                 {/* Heading */}
-                <h2 className="text-center font-dm-sans text-[40px] font-medium leading-[1.1] tracking-[-0.04em] text-[#121314] md:text-[48px]">
-                    Over students Success Storys
+                <h2 className="px-6 text-center text-content-primary">
+                    Student Success Stories
                 </h2>
 
                 {/* Description */}
-                <p className="mt-5 max-w-[520px] text-center font-dm-sans text-base font-normal leading-6 text-[#A0A0A0]">
+                <p className="mt-5 max-w-[520px] px-6 text-center text-content-secondary">
                     Stay informed with expert breakdowns of immigration policies,
                     <br className="hidden md:block" />
                     scholarship criteria, and global campus life.
                 </p>
 
-                {/* Cards */}
-                <div className="mt-12 grid w-full grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[22px]">
+                {/* =========================================
+                    MOBILE CAROUSEL
+                ========================================== */}
+                <div
+                    className="
+                        mt-12
+                        flex
+                        w-full
+                        snap-x
+                        snap-mandatory
+                        gap-4
+                        overflow-x-auto
+                        overscroll-x-contain
+                        px-6
+                        pb-4
+                        scrollbar-none
+                        sm:hidden
+                    "
+                >
                     {successStories.map((story) => (
                         <div
                             key={story.id}
                             className="
-                group
-                relative
-                h-[500px]
-                w-[302px]
-                overflow-hidden
-                rounded-[24px]
-                bg-black
-              "
+                                group
+                                relative
+                                h-[500px]
+                                w-[302px]
+                                min-w-[302px]
+                                snap-center
+                                overflow-hidden
+                                rounded-[24px]
+                                bg-black
+                            "
                         >
                             {/* Image */}
                             <Image
@@ -72,16 +90,16 @@ export default function SuccessStories() {
                                 fill
                                 sizes="302px"
                                 className="
-                  object-cover
-                  object-center
-                  transition-transform
-                  duration-500
-                  ease-out
-                  group-hover:scale-[1.03]
-                "
+                                    object-cover
+                                    object-center
+                                    transition-transform
+                                    duration-500
+                                    ease-out
+                                    group-hover:scale-[1.03]
+                                "
                             />
 
-                            {/* Dark overlay */}
+                            {/* Overlay */}
                             <div className="absolute inset-0 bg-black/5 transition-colors duration-300 group-hover:bg-black/15" />
 
                             {/* Play Button */}
@@ -89,75 +107,155 @@ export default function SuccessStories() {
                                 type="button"
                                 aria-label={`Play success story ${story.id}`}
                                 className="
-                  absolute
-                  left-1/2
-                  top-1/2
-                  flex
-                  h-16
-                  w-16
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#253A7B]
-                  text-white
-                  shadow-lg
-                  transition-all
-                  duration-300
-                  hover:scale-110
-                  hover:bg-[#E93F61]
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-white
-                  focus:ring-offset-2
-                  focus:ring-offset-[#253A7B]
-                "
+                                    absolute
+                                    left-1/2
+                                    top-1/2
+                                    flex
+                                    h-16
+                                    w-16
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    items-center
+                                    justify-center
+                                    rounded-full
+                                    bg-[#253A7B]
+                                    text-white
+                                    shadow-lg
+                                    transition-all
+                                    duration-300
+                                    hover:scale-110
+                                    hover:bg-[#E93F61]
+                                    focus:outline-none
+                                    focus:ring-2
+                                    focus:ring-white
+                                    focus:ring-offset-2
+                                    focus:ring-offset-[#253A7B]
+                                "
                             >
                                 <Play
                                     size={24}
                                     strokeWidth={0}
                                     fill="currentColor"
                                     className="ml-1"
+                                    aria-hidden="true"
                                 />
                             </button>
                         </div>
                     ))}
                 </div>
 
-                {/* View All Stories */}
-                <button
-                    type="button"
+                {/* =========================================
+                    TABLET / DESKTOP GRID
+                ========================================== */}
+                <div
                     className="
-            mt-12
-            inline-flex
-            h-12
-            items-center
-            gap-3
-            rounded-full
-            bg-[#E93F61]
-            pl-6
-            pr-1.5
-            font-dm-sans
-            text-base
-            font-medium
-            text-white
-            transition-all
-            duration-300
-            hover:scale-[1.02]
-            hover:bg-[#d93657]
-            focus:outline-none
-            focus:ring-2
-            focus:ring-[#E93F61]
-            focus:ring-offset-2
-          "
+                        mt-12
+                        hidden
+                        w-full
+                        justify-items-center
+                        gap-6
+                        sm:grid
+                        sm:grid-cols-2
+                        lg:grid-cols-4
+                        lg:gap-[22px]
+                    "
                 >
-                    <span>View All Storys</span>
+                    {successStories.map((story) => (
+                        <div
+                            key={story.id}
+                            className="
+                                group
+                                relative
+                                h-[500px]
+                                w-[302px]
+                                overflow-hidden
+                                rounded-[24px]
+                                bg-black
+                            "
+                        >
+                            {/* Image */}
+                            <Image
+                                src={story.image}
+                                alt={story.alt}
+                                fill
+                                sizes="302px"
+                                className="
+                                    object-cover
+                                    object-center
+                                    transition-transform
+                                    duration-500
+                                    ease-out
+                                    group-hover:scale-[1.03]
+                                "
+                            />
 
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#E93F61]">
-                        <ArrowRight size={20} strokeWidth={2} />
-                    </span>
-                </button>
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-black/5 transition-colors duration-300 group-hover:bg-black/15" />
+
+                            {/* Play Button */}
+                            <button
+                                type="button"
+                                aria-label={`Play success story ${story.id}`}
+                                className="
+                                    absolute
+                                    left-1/2
+                                    top-1/2
+                                    flex
+                                    h-16
+                                    w-16
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    items-center
+                                    justify-center
+                                    rounded-full
+                                    bg-[#253A7B]
+                                    text-white
+                                    shadow-lg
+                                    transition-all
+                                    duration-300
+                                    hover:scale-110
+                                    hover:bg-[#E93F61]
+                                    focus:outline-none
+                                    focus:ring-2
+                                    focus:ring-white
+                                    focus:ring-offset-2
+                                    focus:ring-offset-[#253A7B]
+                                "
+                            >
+                                <Play
+                                    size={24}
+                                    strokeWidth={0}
+                                    fill="currentColor"
+                                    className="ml-1"
+                                    aria-hidden="true"
+                                />
+                            </button>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Bottom CTA */}
+                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-8">
+                    <LeadCTAButton source="real_stories_bottom">
+                        Book Free Counselling
+                    </LeadCTAButton>
+
+                    <Link
+                        href="/success-stories"
+                        aria-label="View all student success stories"
+                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-[#E93F61] transition-all duration-200 hover:bg-[#E93F61]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E93F61] focus-visible:ring-offset-2"
+                    >
+                        <span>View All Stories</span>
+
+                        <ArrowRight
+                            size={18}
+                            strokeWidth={2.2}
+                            aria-hidden="true"
+                            className="transition-transform duration-200 group-hover:translate-x-1"
+                        />
+                    </Link>
+                </div>
+
             </div>
         </section>
     );

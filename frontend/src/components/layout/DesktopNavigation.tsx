@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { navDropdowns } from "@/data/navigation";
 import { NavigationDropdown } from "./NavigationDropdown";
 import { LeadCTAButton } from "@/components/forms/LeadCTAButton";
@@ -114,11 +114,8 @@ export const DesktopNavigation: React.FC = () => {
 
       <LeadCTAButton
         source="navbar"
-        variant="accent"
-        size="default"
-        iconBadge={<Phone size={17} fill="#253A7B" strokeWidth={0} />}
         onClick={handleClose}
-        className="ml-2 text-white cursor-pointer"
+        className="ml-2 cursor-pointer"
       >
         Book Free Counselling
       </LeadCTAButton>

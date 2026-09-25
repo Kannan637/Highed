@@ -20,7 +20,7 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
         <SearchX size={32} />
       </div>
 
-      <h3 className="font-heading text-2xl font-bold text-neutral-900">
+      <h3 className="text-content-primary">
         No Matching Results Found
       </h3>
 

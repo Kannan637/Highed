@@ -11,7 +11,7 @@ export default function CountryNotFound() {
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EEF1FA] text-[#253A7B]">
           <Globe size={32} />
         </div>
-        <h1 className="mt-6 font-heading text-3xl font-bold text-[#121314] sm:text-4xl">
+        <h1 className="mt-6 text-content-primary">
           Country Destination Not Found
         </h1>
         <p className="mt-3 font-body text-base text-gray-600">

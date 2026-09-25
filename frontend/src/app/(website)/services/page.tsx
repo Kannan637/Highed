@@ -113,11 +113,11 @@ export default function ServicesPage() {
                 <div>
                   <IconBox icon={Icon} variant={svc.variant} size="md" />
 
-                  <h3 className="mt-5 text-xl font-semibold text-content-primary transition-colors group-hover:text-brand-primary">
+                  <h3 className="mt-5 card-title text-content-primary transition-colors group-hover:text-brand-primary">
                     {svc.title}
                   </h3>
 
-                  <p className="mt-2.5 text-sm text-content-secondary leading-relaxed">
+                  <p className="mt-2.5 text-content-secondary leading-relaxed">
                     {svc.description}
                   </p>
                 </div>

@@ -139,7 +139,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
 
             {/* H1 Heading — 12 Columns (Spans 10 cols on large screens) */}
             <div className="col-span-12 lg:col-span-10">
-              <h1 className="font-heading text-3xl font-bold tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
+              <h1 className="text-white">
                 Study Abroad Guides &amp; News
               </h1>
             </div>
@@ -261,7 +261,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
                           </span>
                         </div>
 
-                        <h2 className="font-heading text-lg font-bold leading-snug tracking-tight text-foreground transition-colors group-hover:text-brand-primary sm:text-xl md:text-2xl">
+                        <h2 className="article-title text-foreground transition-colors group-hover:text-brand-primary">
                           {article.title}
                         </h2>
 

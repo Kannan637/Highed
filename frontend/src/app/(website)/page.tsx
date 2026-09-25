@@ -9,10 +9,11 @@ import ScholarShip from "@/components/home/Scholarship";
 import FAQSection from "@/components/home/FAQ";
 import RealStory from "@/components/home/RealStory"
 import LogoMarquee from "@/components/home/LogoMarquee";
+import Testimonials from "@/components/home/testimonial";
 
 export default function Home() {
   return (
-    <div className="w-full tracking-[-0.04em] [letter-spacing:-0.04em] [&_*]:[letter-spacing:-0.04em]">
+    <div className="w-full tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Hero />
       <StudyAbroadCards />
       <LogoMarquee />
@@ -22,6 +23,7 @@ export default function Home() {
       <Courses />
       <ScholarShip />
       <RealStory />
+      <Testimonials />
       <WhyChooseAs />
       <FAQSection />
     </div>

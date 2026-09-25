@@ -70,6 +70,9 @@
   --duration-slow: 500ms;
   --easing-default: ease;
   --easing-in-out: ease-in-out;
+
+  /* Typography / Tracking */
+  --tracking-tight-5: -0.05em;
 }
 
 @theme {
@@ -132,6 +135,8 @@
   --font-body: var(--font-body), sans-serif;
   --font-heading: var(--font-body), sans-serif;
 
+  --tracking-tight-5: -0.05em;
+
   --animate-shiny-text: shiny-text 3s ease-in-out infinite;
   --animate-shiny-stroke: shiny-stroke 2s linear infinite;
 
@@ -155,6 +160,10 @@
       background-position: -200% 0;
     }
   }
+}
+
+.tracking-tight-5 {
+  letter-spacing: var(--tracking-tight-5, -0.05em);
 }
 
 .animate-shiny-text {
@@ -182,6 +191,7 @@ body {
   color: var(--content-primary);
   font-family: var(--font-body);
   font-weight: 500;
+  letter-spacing: var(--tracking-tight-5);
   /* DM Sans Medium (500) default */
 }
 
@@ -192,53 +202,56 @@ select,
 textarea {
   font-family: var(--font-body);
   font-weight: 500;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 /* Headings: DM Sans only */
 h1 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 36px;
   line-height: 1.08;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.04em;
 }
 
 h2 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 32px;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 h3 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 28px;
   line-height: 1.2;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.04em;
 }
 
 h4 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 24px;
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.04em;
 }
 
 h5 {
   font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 18px;
   line-height: 1.3;
+  letter-spacing: -0.04em;
 }
 
 h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 1.35;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -263,7 +276,7 @@ h6 {
   }
 
   h6 {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -273,6 +286,7 @@ p {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.6;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 /* ============================================================
@@ -292,16 +306,16 @@ p {
 /* ============================================================
    TYPOGRAPHY SIZE SYSTEM UTILITIES (design system.md)
    Canonical mapping:
-   DM Sans -> All headings / display
+   DM Sans Semibold (600) -> All headings / display
    DM Sans Medium (500) -> All body / UI / buttons / navigation
    ============================================================ */
 
 .text-display {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 40px;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -312,10 +326,10 @@ p {
 
 .text-h1 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 36px;
   line-height: 1.08;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -326,10 +340,10 @@ p {
 
 .text-h2 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 32px;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -340,10 +354,10 @@ p {
 
 .text-h3 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 28px;
   line-height: 1.2;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -354,10 +368,10 @@ p {
 
 .text-h4 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 24px;
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -368,9 +382,10 @@ p {
 
 .text-h5 {
   font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 18px;
   line-height: 1.3;
+  letter-spacing: -0.04em;
 }
 
 @media (min-width: 1024px) {
@@ -379,11 +394,26 @@ p {
   }
 }
 
+.text-h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+}
+
+@media (min-width: 1024px) {
+  .text-h6 {
+    font-size: 18px;
+  }
+}
+
 .text-body-large {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 18px;
   line-height: 1.6;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 @media (min-width: 1024px) {
@@ -397,6 +427,7 @@ p {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.6;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 .text-body-small {
@@ -404,6 +435,7 @@ p {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.55;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 .text-caption {
@@ -411,6 +443,7 @@ p {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.45;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 .text-btn {
@@ -418,6 +451,7 @@ p {
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 .text-nav {
@@ -425,6 +459,7 @@ p {
   font-weight: 500;
   font-size: 15px;
   line-height: 1.4;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 @media (min-width: 1024px) {
@@ -439,6 +474,7 @@ p {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.55;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 .text-label-md {
@@ -446,6 +482,7 @@ p {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
+  letter-spacing: var(--tracking-tight-5);
 }
 
 .text-label-lg {
@@ -453,6 +490,34 @@ p {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
+  letter-spacing: var(--tracking-tight-5);
+}
+
+/* Semantic Component Typography (Rule 9 exceptions) */
+.modal-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+}
+
+.article-title,
+.card-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+}
+
+.footer-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* ============================================================
@@ -542,6 +607,7 @@ p {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -551,6 +617,7 @@ p {
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -576,6 +643,7 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .animate-marquee-left,
   .animate-marquee-right {
     animation: none !important;

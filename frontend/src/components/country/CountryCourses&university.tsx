@@ -6,13 +6,14 @@ import {
   ArrowLeft,
   ArrowRight,
   GraduationCap,
-  Phone,
   BookOpen,
 } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 import { Country } from "@/types/country";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 type Course = {
   country: string;
@@ -387,15 +388,7 @@ function CourseCard({ course }: { course: Course }) {
         </div>
 
         {/* Title */}
-        <h3
-          className="
-            min-h-[66px]
-            font-heading
-            font-normal
-            text-h4
-            text-content-primary
-          "
-        >
+        <h3 className="card-title min-h-[66px] text-content-primary">
           {course.title}
         </h3>
 
@@ -494,8 +487,6 @@ function CourseCard({ course }: { course: Course }) {
 }
 
 export default function TopCoursesSection({ country: _country }: { country?: Country } = {}) {
-  const { openLeadPopup } = useLeadPopup();
-
   const [activeCategory, setActiveCategory] = useState("MBA");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -580,37 +571,10 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
         ========================== */}
         <header className="mx-auto max-w-[720px] text-center">
           {/* Eyebrow */}
-          <div
-            className="
-              mx-auto
-              mb-5
-              flex
-              w-fit
-              items-center
-              justify-center
-              gap-2
-              rounded-full
-              bg-[#E93E60]
-              px-6
-              py-3
-            "
-          >
-            <span className="h-[7px] w-[7px] rounded-full bg-white" />
-
-            <span
-              className="
-                text-[14px]
-                font-medium
-                tracking-[-0.1px]
-                text-white
-              "
-            >
-              Popular Courses
-            </span>
-          </div>
+          <EyebrowBadge>Popular Courses</EyebrowBadge>
 
           {/* Heading */}
-          <h2 className="text-h2 font-normal text-content-primary">
+          <h2 className="text-content-primary">
             Top Courses to Study
             <br />
             Abroad
@@ -899,14 +863,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
 
             {/* Text */}
             <div>
-              <h3
-                className="
-                  font-heading
-                  font-normal
-                  text-h4
-                  text-white
-                "
-              >
+              <h3 className="text-white">
                 Not sure which course fits your
                 profile?
               </h3>
@@ -928,55 +885,9 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
           </div>
 
           {/* CTA */}
-          <button
-            type="button"
-            onClick={() =>
-              openLeadPopup({
-                source: "course_counselling",
-              })
-            }
-            className="
-              group
-              flex
-              h-[52px]
-              shrink-0
-              items-center
-              justify-between
-              gap-5
-              rounded-full
-              bg-brand-accent
-              pl-5
-              pr-2
-              text-btn
-              font-medium
-              text-white
-              transition-all
-              duration-200
-              hover:scale-[1.02]
-              hover:bg-brand-accent-hover
-            "
-          >
-            <span>Book Free Counselling</span>
-
-            <span
-              className="
-                flex
-                h-[38px]
-                w-[38px]
-                items-center
-                justify-center
-                rounded-full
-                bg-white
-                text-content-primary
-              "
-            >
-              <Phone
-                size={17}
-                fill="currentColor"
-                strokeWidth={1.5}
-              />
-            </span>
-          </button>
+          <LeadCTAButton source="course_counselling">
+            Book Free Counselling
+          </LeadCTAButton>
         </div>
       </Container>
     </section>

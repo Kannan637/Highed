@@ -55,11 +55,11 @@ export const CityServices: React.FC<CityServicesProps> = ({ city }) => {
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-bold text-lg text-foreground group-hover:text-brand-primary transition-colors">
+                  <h3 className="card-title text-foreground group-hover:text-brand-primary transition-colors">
                     {service.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-3 text-content-secondary leading-relaxed">
                     {service.description}
                   </p>
                 </div>

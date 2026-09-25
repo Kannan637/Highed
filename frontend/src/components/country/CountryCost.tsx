@@ -30,7 +30,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                   <GraduationCap size={24} />
                 </div>
                 <div>
-                  <h3 className="font-heading font-normal text-h4 text-content-primary">
+                  <h3 className="card-title text-content-primary">
                     Annual Tuition Fees
                   </h3>
                   <p className="text-caption font-medium text-neutral-500">Degree & program ranges</p>
@@ -42,7 +42,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                 <div className="text-caption font-medium uppercase tracking-wider text-neutral-400">
                   Estimated Range
                 </div>
-                <div className="mt-2 font-heading font-normal text-h3 text-brand-primary">
+                <div className="mt-2 font-heading text-h3 text-brand-primary">
                   {costDetails.tuitionMin}
                   <span className="text-h4 font-normal text-neutral-500">
                     {" "}to {costDetails.tuitionMax}
@@ -89,7 +89,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                   <Wallet size={24} />
                 </div>
                 <div>
-                  <h3 className="font-heading font-normal text-h4 text-content-primary">
+                  <h3 className="card-title text-content-primary">
                     Living & Lifestyle Costs
                   </h3>
                   <p className="text-caption font-medium text-neutral-500">Estimated monthly expenses</p>
@@ -101,7 +101,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
                 <div className="text-caption font-medium uppercase tracking-wider text-neutral-400">
                   Total Monthly Average
                 </div>
-                <div className="mt-2 font-heading font-normal text-h3 text-content-primary">
+                <div className="mt-2 font-heading text-h3 text-content-primary">
                   {costDetails.livingCostMonthly}
                   <span className="text-body-small font-normal text-neutral-500"> / month</span>
                 </div>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import { navDropdowns } from "@/data/navigation";
 import { MenuIcon } from "./MenuIcon";
@@ -213,10 +213,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
           <div className="pt-5 pb-2">
             <LeadCTAButton
               source="mobile_navbar"
-              variant="accent"
-              size="default"
               fullWidth
-              iconBadge={<Phone size={16} fill="#253A7B" strokeWidth={0} />}
               onClick={onClose}
             >
               Book Free Counselling

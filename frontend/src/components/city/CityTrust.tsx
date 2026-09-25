@@ -45,7 +45,7 @@ export const CityTrust: React.FC<CityTrustProps> = ({ city }) => {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-icon-bg-primary text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
                   <Icon size={24} />
                 </div>
-                <h3 className="font-heading font-normal text-h5 text-content-primary">
+                <h3 className="card-title text-content-primary">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-body-small leading-relaxed text-content-secondary">

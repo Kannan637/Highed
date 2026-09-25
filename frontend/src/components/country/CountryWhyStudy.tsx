@@ -2,6 +2,7 @@
 
 import { Star } from "lucide-react";
 import { Country } from "@/types/country";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 const features = [
   {
@@ -118,39 +119,8 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
         {/* ───────────────── RIGHT CONTENT ───────────────── */}
         <div className="w-full max-w-[645px]">
           {/* Badge */}
-          <div className="mb-5 flex justify-center lg:justify-start">
-            <div
-              className="
-                inline-flex
-                h-[32px]
-                items-center
-                gap-2
-                rounded-full
-                bg-brand-accent
-                px-3.5
-              "
-            >
-              <span
-                className="
-                  h-1.5
-                  w-1.5
-                  shrink-0
-                  rounded-full
-                  bg-white
-                "
-              />
-
-              <span
-                className="
-                  text-xs
-                  font-semibold
-                  leading-none
-                  text-white
-                "
-              >
-                Why Choose This Destination
-              </span>
-            </div>
+          <div className="flex justify-center lg:justify-start">
+            <EyebrowBadge>Why Choose This Destination</EyebrowBadge>
           </div>
 
           {/* Heading */}
@@ -159,15 +129,8 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
               mx-auto
               max-w-[620px]
               text-center
-              font-heading
-              text-3xl
-              font-bold
-              leading-[1.15]
-              tracking-tight
               text-foreground
-              sm:text-4xl
               lg:mx-0
-              lg:text-5xl
             "
           >
             Why choose {countryName} for your studies?
@@ -217,28 +180,11 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
 
                 {/* Card content */}
                 <div className="min-w-0 flex-1">
-                  <h3
-                    className="
-                      font-heading
-                      text-lg
-                      font-bold
-                      leading-snug
-                      tracking-tight
-                      text-foreground
-                    "
-                  >
+                  <h3 className="card-title text-foreground">
                     {feature.title}
                   </h3>
 
-                  <p
-                    className="
-                      mt-1.5
-                      max-w-[540px]
-                      text-sm
-                      leading-relaxed
-                      text-muted-foreground
-                    "
-                  >
+                  <p className="mt-1.5 max-w-[540px] text-content-secondary">
                     {feature.description}
                   </p>
                 </div>

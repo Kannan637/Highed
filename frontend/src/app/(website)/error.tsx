@@ -21,7 +21,7 @@ export default function Error({
         <span className="text-3xl">⚠️</span>
       </div>
 
-      <h2 className="font-heading text-3xl font-bold text-[#121314] sm:text-4xl">
+      <h2 className="text-content-primary">
         Something Went Wrong
       </h2>
 

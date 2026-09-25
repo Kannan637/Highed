@@ -53,7 +53,7 @@ export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
             )}
           </Badge>
 
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+          <h1 className="text-white">
             {country
               ? `Explore Study Opportunities in ${country.name}`
               : "Explore Universities, Courses & Scholarships Worldwide"}

@@ -1,11 +1,11 @@
 import {
     BriefcaseBusiness,
-    ArrowRight,
 } from "lucide-react";
 
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 /* =========================================================
    COMPANY LOGOS
@@ -162,7 +162,7 @@ function TrustBadge({
             <span
                 className="
           whitespace-nowrap
-          text-[13px]
+          text-caption
           font-semibold
           text-content-primary
         "
@@ -186,9 +186,9 @@ export default function AboutSection() {
         overflow-hidden
         bg-brand-primary
         text-white
-        tracking-[-0.04em]
-        [letter-spacing:-0.04em]
-        [&_*]:[letter-spacing:-0.04em]
+        tracking-tight-5
+        [letter-spacing:var(--tracking-tight-5)]
+        [&_*]:[letter-spacing:var(--tracking-tight-5)]
       `}
         >
             {/* =====================================================
@@ -384,35 +384,9 @@ export default function AboutSection() {
               EYEBROW
           ================================================== */}
 
-                        <div
-                            className="
-              mb-7
-              flex
-              items-center
-              justify-center
-              lg:justify-start
-              gap-2
-            "
-                        >
-                            <span
-                                className="
-                h-[7px]
-                w-[7px]
-                rounded-full
-                bg-white
-              "
-                            />
-
-                            <span
-                                className="
-                text-body-small
-                font-medium
-                text-white
-              "
-                            >
-                                About Us
-                            </span>
-                        </div>
+                        <EyebrowBadge className="self-center lg:self-start">
+                            About Us
+                        </EyebrowBadge>
 
                         {/* =================================================
               HEADING
@@ -423,7 +397,6 @@ export default function AboutSection() {
               mx-auto
               lg:mx-0
               max-w-[680px]
-              text-h2
               text-white
             "
                         >
@@ -540,12 +513,9 @@ export default function AboutSection() {
 
                         <LeadCTAButton
                             source="about_cta"
-                            variant="accent"
-                            size="md"
                             className="mt-9"
-                            iconBadge={<ArrowRight size={17} strokeWidth={2.2} />}
                         >
-                            Start Your Journey
+                            Book Free Counselling
                         </LeadCTAButton>
                     </div>
                 </div>

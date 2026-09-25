@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
-import { Badge } from "@/components/ui/Badge";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 import { Country } from "@/types/country";
 
 interface CountryCTAProps {
@@ -35,12 +35,11 @@ export const CountryCTA: React.FC<CountryCTAProps> = ({ country }) => {
           <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
             {/* Left Content Column */}
             <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:col-span-7">
-              <Badge variant="inverse" size="default">
-                <span className="h-2 w-2 rounded-full bg-brand-accent animate-pulse" />
-                <span>Zero Consultation Charges</span>
-              </Badge>
+              <EyebrowBadge>
+                Zero Consultation Charges
+              </EyebrowBadge>
 
-              <h2 className="mt-4 sm:mt-6 font-heading font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-white">
+              <h2 className="mt-4 sm:mt-6 text-white">
                 Ready to Study in{" "}
                 <span className="text-brand-accent underline decoration-brand-accent/40 underline-offset-4">
                   {countryName}?
@@ -55,12 +54,8 @@ export const CountryCTA: React.FC<CountryCTAProps> = ({ country }) => {
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
                 <LeadCTAButton
                   source={`country_bottom_cta_${countrySlug}`}
-                  variant="accent"
-                  size="lg"
-                  className="w-full sm:w-auto shadow-lg hover:shadow-xl justify-center"
                 >
-                  <span>Get Free Counselling</span>
-                  <ArrowRight size={18} strokeWidth={2.2} />
+                  Book Free Counselling
                 </LeadCTAButton>
 
                 {country?.slug && (

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowRight, GraduationCap, Building2, ShieldCheck, Globe } from "lucide-react";
 import gsap from "gsap";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -353,9 +354,9 @@ function Hero() {
                 flex-col
                 overflow-hidden
                 bg-[linear-gradient(180deg,var(--color-brand-primary),#12204C)]
-                tracking-[-0.04em]
-                [letter-spacing:-0.04em]
-                [&_*]:[letter-spacing:-0.04em]
+                tracking-tight-5
+                [letter-spacing:var(--tracking-tight-5)]
+                [&_*]:[letter-spacing:var(--tracking-tight-5)]
                 items-center
                 self-center
             "
@@ -516,28 +517,9 @@ function Hero() {
                     {/* =================================================
                         TRUSTED BADGE
                     ================================================== */}
-                    <div
-                        className="
-                            mb-5
-                            sm:mb-6
-                            inline-flex
-                            h-7.5
-                            items-center
-                            rounded-full
-                            bg-brand-accent
-                            px-3.5
-                            text-[12px]
-                            font-medium
-                            whitespace-nowrap
-                            shadow-xs
-                        "
-                    >
-                        Trusted by{" "}
-                        <span className="mx-1 font-bold">
-                            10,000+
-                        </span>{" "}
-                        students
-                    </div>
+                    <EyebrowBadge className="mb-5 sm:mb-6">
+                        Trusted by 10,000+ students
+                    </EyebrowBadge>
 
                     {/* =================================================
                         TITLE
@@ -545,7 +527,6 @@ function Hero() {
                     <h1
                         className="
                             max-w-[800px]
-                            text-display
                             text-white
                         "
                     >
@@ -584,11 +565,8 @@ function Hero() {
                         {/* Primary Button: Book Free Counselling */}
                         <LeadCTAButton
                             source="hero_primary_cta"
-                            variant="accent"
-                            size="default"
                             id="cta-book-counselling"
-                            className="w-full sm:w-auto max-w-[280px] sm:max-w-none shadow-md"
-                            iconBadge={<ArrowRight size={18} strokeWidth={2.2} />}
+                            className="w-full sm:w-auto max-w-[280px] sm:max-w-none"
                         >
                             Book Free Counselling
                         </LeadCTAButton>
@@ -938,7 +916,7 @@ function Hero() {
                         lg:text-[350px]
                         font-black
                         leading-none
-                        tracking-[-0.04em]
+                        tracking-tight-5
                         text-[#25397A]
                         opacity-20
                     "

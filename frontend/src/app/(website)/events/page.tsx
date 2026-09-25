@@ -80,7 +80,7 @@ export default function EventsPage() {
                     </div>
                   </div>
 
-                  <h3 className="mt-3.5 text-xl font-semibold text-content-primary transition-colors group-hover:text-brand-primary">
+                  <h3 className="mt-3.5 card-title text-content-primary transition-colors group-hover:text-brand-primary">
                     {evt.title}
                   </h3>
 

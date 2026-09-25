@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-    ArrowUpRight,
     Globe,
     Mail,
     Sparkles,
@@ -164,7 +163,7 @@ function TeamCard({
             <div className="p-6 sm:p-7">
                 <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
-                        <h3 className="font-heading text-xl tracking-[-0.035em] text-content-primary">
+                        <h3 className="card-title text-content-primary">
                             {member.name}
                         </h3>
 
@@ -182,7 +181,7 @@ function TeamCard({
                     </a>
                 </div>
 
-                <p className="mt-4 text-[13px] leading-6 text-black/50">
+                <p className="mt-4 text-body-small text-content-secondary">
                     {member.bio}
                 </p>
 
@@ -324,13 +323,13 @@ export default function OurTeamPage() {
                                 Meet Our Team
                             </Badge>
 
-                            <h1 className="team-title mt-6 max-w-5xl font-heading text-[50px] font-bold leading-[0.96] tracking-[-0.06em] sm:text-[68px] lg:text-[88px]">
+                            <h1 className="team-title mt-6 max-w-5xl">
                                 People behind
                                 <br />
                                 <span className="text-[#253A7B]">your next chapter.</span>
                             </h1>
 
-                            <p className="team-description mt-7 max-w-2xl text-[16px] leading-7 text-black/50 sm:text-[18px] sm:leading-8">
+                            <p className="team-description mt-7 max-w-2xl text-content-secondary">
                                 A team of counsellors, advisors, application specialists and
                                 problem-solvers working together to make your study-abroad
                                 journey simpler.
@@ -372,7 +371,7 @@ export default function OurTeamPage() {
                                     THE PEOPLE
                                 </span>
 
-                                <h2 className="mt-3 font-heading text-3xl font-bold tracking-[-0.045em] sm:text-4xl">
+                                <h2 className="mt-3">
                                     One team. Many strengths.
                                 </h2>
                             </div>
@@ -412,13 +411,13 @@ export default function OurTeamPage() {
                                     HOW WE WORK
                                 </span>
 
-                                <h2 className="mt-4 font-heading text-4xl font-bold leading-[1] tracking-[-0.05em] sm:text-5xl text-content-primary">
+                                <h2 className="mt-4 text-content-primary">
                                     More than
                                     <br />
                                     just counselling.
                                 </h2>
 
-                                <p className="mt-6 max-w-md text-[15px] leading-7 text-content-secondary">
+                                <p className="mt-6 max-w-md text-content-secondary">
                                     We combine human guidance, global university knowledge and
                                     technology to help students make informed decisions.
                                 </p>
@@ -455,11 +454,11 @@ export default function OurTeamPage() {
                                             {value.number}
                                         </span>
 
-                                        <h3 className="mt-5 font-heading text-xl font-bold tracking-[-0.03em]">
+                                        <h3 className="mt-5 card-title text-content-primary">
                                             {value.title}
                                         </h3>
 
-                                        <p className="mt-3 text-[13px] leading-6 text-black/45">
+                                        <p className="mt-3 text-body-small text-content-secondary">
                                             {value.text}
                                         </p>
                                     </div>
@@ -489,11 +488,11 @@ export default function OurTeamPage() {
                                     Start your journey
                                 </Badge>
 
-                                <h2 className="max-w-3xl font-heading text-3xl font-bold leading-[1.02] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
+                                <h2 className="max-w-3xl text-white">
                                     Your dream university is closer than you think.
                                 </h2>
 
-                                <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/55">
+                                <p className="mt-5 max-w-2xl text-white/70">
                                     Talk to our team about your course, destination and
                                     university options.
                                 </p>
@@ -502,10 +501,7 @@ export default function OurTeamPage() {
                             <div className="lg:col-span-4 lg:flex lg:justify-end">
                                 <LeadCTAButton
                                     source="our_team_cta"
-                                    variant="accent"
-                                    size="lg"
                                     className="w-full sm:w-auto"
-                                    iconBadge={<ArrowUpRight size={17} />}
                                 >
                                     Book Free Counselling
                                 </LeadCTAButton>

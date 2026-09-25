@@ -30,7 +30,7 @@ export const CityCourses: React.FC<CityCoursesProps> = ({ city }) => {
                 <div className="mb-3 flex size-10 items-center justify-center rounded-xl bg-primary/10 text-brand-primary transition-colors group-hover:bg-brand-primary group-hover:text-white">
                   <BookOpen size={18} />
                 </div>
-                <h3 className="font-heading font-bold text-base text-foreground group-hover:text-brand-primary transition-colors">
+                <h3 className="card-title text-foreground group-hover:text-brand-primary transition-colors">
                   {course}
                 </h3>
               </div>

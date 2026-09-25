@@ -22,10 +22,10 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
           {/* Main Description */}
           <div className="col-span-1 lg:col-span-7">
             <div className="rounded-[24px] border border-neutral-100 bg-[#FAFAFA] p-8 shadow-sm sm:p-10 md:p-12 transition-shadow hover:shadow-md">
-              <h3 className="font-heading font-normal text-h3 text-content-primary">
+              <h3 className="text-content-primary">
                 An International Education Hub Built for the Future
               </h3>
-              <p className="mt-5 text-body text-content-secondary">
+              <p className="mt-5 text-content-secondary">
                 {country.description}
               </p>
 
@@ -55,7 +55,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   <Check className="h-[22px] w-[22px]" strokeWidth={2.5} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-heading font-normal text-h5 text-content-primary">
+                  <h4 className="card-title text-content-primary">
                     Official Degrees
                   </h4>
                   <p className="mt-1.5 text-body-small text-content-secondary">
@@ -71,7 +71,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   <Sparkles className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-heading font-normal text-h5 text-content-primary">
+                  <h4 className="card-title text-content-primary">
                     Affordable Tuition
                   </h4>
                   <p className="mt-1.5 text-body-small text-content-secondary">
@@ -87,7 +87,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   <Briefcase className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <div>
-                  <h4 className="font-heading font-normal text-h5 text-content-primary">
+                  <h4 className="card-title text-content-primary">
                     High Employability
                   </h4>
                   <p className="mt-1.5 text-body-small text-content-secondary">

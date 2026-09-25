@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { Country } from "@/types/country";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 const otherConsultants = [
   {
@@ -51,18 +52,12 @@ export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
                         HEADER
                     ========================== */}
           <div className="col-span-4 lg:col-span-8 lg:col-start-3 text-center">
-            <div className="mb-7 flex items-center justify-center gap-2">
-              <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
-              <span className="text-body-small font-medium text-brand-primary">
-                Why Choose Us
-              </span>
-            </div>
+            <EyebrowBadge>Why Choose Us</EyebrowBadge>
 
             <h2
               className="
                                 mx-auto
                                 max-w-[700px]
-                                text-h2
                                 text-content-primary
                             "
             >
@@ -109,12 +104,7 @@ export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
                                     lg:py-10
                                 "
               >
-                <h3
-                  className="
-                                        text-h4
-                                        text-content-primary
-                                    "
-                >
+                <h3 className="card-title text-content-primary">
                   Other Consultants
                 </h3>
 
@@ -148,12 +138,7 @@ export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
                                     lg:py-10
                                 "
               >
-                <h3
-                  className="
-                                        text-h4
-                                        text-white
-                                    "
-                >
+                <h3 className="card-title text-white">
                   Our Approach
                 </h3>
 
@@ -211,12 +196,7 @@ function ComparisonItem({
 
       {/* Text */}
       <div className="min-w-0">
-        <h4
-          className={`
-            text-h5
-            ${isApproach ? "text-white" : "text-content-primary"}
-          `}
-        >
+        <h4 className={isApproach ? "text-white" : "text-content-primary"}>
           {title}
         </h4>
 

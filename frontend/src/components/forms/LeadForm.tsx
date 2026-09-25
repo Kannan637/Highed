@@ -116,8 +116,8 @@ export const LeadForm: React.FC<LeadFormProps> = ({
 
   return (
     <div className="rounded-3xl border border-border-default bg-white p-8 shadow-lg sm:p-10">
-      <h3 className="font-heading text-2xl font-bold text-content-primary">{title}</h3>
-      <p className="mt-2 font-body text-sm text-content-secondary">{subtitle}</p>
+      <h3 className="text-content-primary">{title}</h3>
+      <p className="mt-2 text-content-secondary">{subtitle}</p>
 
       {status.type === "success" ? (
         <div className="mt-6 flex items-start gap-3 rounded-2xl bg-icon-bg-success p-5 text-sm text-[#1E7B47]">

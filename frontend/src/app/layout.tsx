@@ -131,7 +131,7 @@ export default function RootLayout({
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>
-      <body className="min-h-full flex flex-col font-body font-medium">{children}</body>
+      <body className="min-h-full flex flex-col font-body font-medium tracking-tight-5">{children}</body>
     </html>
   );
 }

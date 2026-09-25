@@ -395,7 +395,7 @@ export default function OurStoryPage() {
                             </span>
                         </div>
 
-                        <h1 className="hero-title max-w-4xl overflow-hidden text-[52px] font-medium leading-[0.94] tracking-[-0.055em] sm:text-[64px] lg:text-[82px]">
+                        <h1 className="hero-title max-w-4xl overflow-hidden">
                             <span className="block overflow-hidden">
                                 Every journey
                             </span>
@@ -407,7 +407,7 @@ export default function OurStoryPage() {
                             </span>
                         </h1>
 
-                        <p className="hero-copy mt-8 max-w-xl text-[17px] leading-8 text-white/65 md:text-[18px]">
+                        <p className="hero-copy mt-8 max-w-xl text-white/80">
                             HighEd exists to make one of life&apos;s biggest decisions feel
                             clearer — where to study, what to study and where your education
                             can take you.
@@ -484,7 +484,7 @@ export default function OurStoryPage() {
                             MORE THAN A CONSULTANCY
                         </span>
 
-                        <h2 className="mt-8 overflow-hidden text-[45px] font-medium leading-[1.02] tracking-[-0.055em] md:text-[68px] lg:text-[88px]">
+                        <h2 className="mt-8 overflow-hidden">
                             {"We help turn ambition into a direction."
                                 .split(" ")
                                 .map((word, index) => (
@@ -499,7 +499,7 @@ export default function OurStoryPage() {
                     </div>
 
                     <div className="mt-16 grid gap-10 md:grid-cols-2 md:items-end">
-                        <p className="reveal max-w-xl text-[18px] leading-8 text-black/50">
+                        <p className="reveal max-w-xl text-content-secondary">
                             Choosing an international education isn&apos;t just about filling out
                             an application. It&apos;s about understanding yourself, your
                             opportunities and the future you want to create.
@@ -549,17 +549,17 @@ export default function OurStoryPage() {
                                 WHERE IT STARTED
                             </span>
 
-                            <h2 className="reveal mt-6 text-4xl font-medium leading-[1.05] tracking-[-0.045em] md:text-5xl">
+                            <h2 className="reveal mt-6">
                                 One question changed the way we saw education.
                             </h2>
 
-                            <p className="reveal mt-7 text-[17px] leading-8 text-black/50">
+                            <p className="reveal mt-7 text-content-secondary">
                                 Why should students have to navigate a complicated world of
                                 countries, universities, courses, applications and decisions
                                 alone?
                             </p>
 
-                            <p className="reveal mt-5 text-[17px] leading-8 text-black/50">
+                            <p className="reveal mt-5 text-content-secondary">
                                 That question became the foundation of HighEd — a place where
                                 students could find clarity before making one of the biggest
                                 decisions of their lives.
@@ -588,11 +588,11 @@ export default function OurStoryPage() {
                                 OUR JOURNEY
                             </span>
 
-                            <h2 className="reveal mt-6 text-4xl font-medium leading-[1.04] tracking-[-0.045em] md:text-6xl">
+                            <h2 className="reveal mt-6 text-white">
                                 Years of moving forward.
                             </h2>
 
-                            <p className="reveal mt-7 max-w-sm text-[16px] leading-7 text-white/45">
+                            <p className="reveal mt-7 max-w-sm text-white/70">
                                 Every chapter brought us closer to the same purpose: helping
                                 students discover what&apos;s possible.
                             </p>
@@ -615,11 +615,11 @@ export default function OurStoryPage() {
                                             {item.year}
                                         </div>
 
-                                        <h3 className="mt-3 text-2xl font-medium tracking-[-0.03em]">
+                                        <h3 className="mt-3 card-title">
                                             {item.title}
                                         </h3>
 
-                                        <p className="mt-4 max-w-xl text-[16px] leading-7 text-white/45">
+                                        <p className="mt-4 max-w-xl text-white/70">
                                             {item.text}
                                         </p>
                                     </div>
@@ -641,7 +641,7 @@ export default function OurStoryPage() {
                             VISION & MISSION
                         </span>
 
-                        <h2 className="reveal mt-6 text-4xl font-medium tracking-[-0.045em] md:text-6xl">
+                        <h2 className="reveal mt-6">
                             Built for where education is going next.
                         </h2>
                     </div>
@@ -667,11 +667,11 @@ export default function OurStoryPage() {
                                         OUR VISION
                                     </span>
 
-                                    <h3 className="mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.04em] md:text-5xl">
+                                    <h3 className="mt-4 text-white">
                                         A world where every student can see beyond borders.
                                     </h3>
 
-                                    <p className="mt-6 max-w-lg text-[16px] leading-7 text-white/55">
+                                    <p className="mt-6 max-w-lg text-white/80">
                                         We envision a future where access to global education is
                                         clearer, more informed and shaped around the individual
                                         student.
@@ -700,11 +700,11 @@ export default function OurStoryPage() {
                                         OUR MISSION
                                     </span>
 
-                                    <h3 className="mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.04em] md:text-5xl">
+                                    <h3 className="mt-4 text-content-primary">
                                         Simplify the journey from ambition to opportunity.
                                     </h3>
 
-                                    <p className="mt-6 max-w-lg text-[16px] leading-7 text-black/50">
+                                    <p className="mt-6 max-w-lg text-content-secondary">
                                         We guide students with personalised advice, global
                                         opportunities and practical support at every important
                                         step.
@@ -728,7 +728,7 @@ export default function OurStoryPage() {
                                 WHAT WE BELIEVE
                             </span>
 
-                            <h2 className="reveal mt-6 text-4xl font-medium leading-[1.05] tracking-[-0.045em] md:text-6xl">
+                            <h2 className="reveal mt-6">
                                 Principles that stay with us.
                             </h2>
                         </div>
@@ -745,11 +745,11 @@ export default function OurStoryPage() {
                                         </span>
 
                                         <div>
-                                            <h3 className="text-2xl font-medium tracking-[-0.03em]">
+                                            <h3 className="card-title text-content-primary">
                                                 {value.title}
                                             </h3>
 
-                                            <p className="mt-3 max-w-xl text-[15px] leading-7 text-black/50">
+                                            <p className="mt-3 max-w-xl text-content-secondary">
                                                 {value.text}
                                             </p>
                                         </div>
@@ -784,11 +784,11 @@ export default function OurStoryPage() {
                                     THE PEOPLE MATTER
                                 </span>
 
-                                <h2 className="reveal mt-6 text-4xl font-medium leading-[1.02] tracking-[-0.045em] md:text-6xl">
+                                <h2 className="reveal mt-6 text-white">
                                     Behind every application is a person with a story.
                                 </h2>
 
-                                <p className="reveal mt-6 max-w-xl text-[17px] leading-8 text-white/60">
+                                <p className="reveal mt-6 max-w-xl text-white/80">
                                     That&apos;s why we listen first. Because the right destination
                                     isn&apos;t just about rankings or a course list — it&apos;s about
                                     whether it fits the person who will live that story.
@@ -831,11 +831,11 @@ export default function OurStoryPage() {
                         THINK GLOBAL
                     </span>
 
-                    <h2 className="reveal mx-auto mt-6 max-w-4xl text-4xl font-medium leading-[1.03] tracking-[-0.045em] md:text-6xl">
+                    <h2 className="reveal mx-auto mt-6 max-w-4xl">
                         One world. Thousands of possibilities.
                     </h2>
 
-                    <p className="reveal mx-auto mt-6 max-w-xl text-[17px] leading-8 text-black/50">
+                    <p className="reveal mx-auto mt-6 max-w-xl text-content-secondary">
                         Explore opportunities across destinations that open doors to
                         different cultures, experiences and futures.
                     </p>
@@ -876,11 +876,11 @@ export default function OurStoryPage() {
                         YOUR STORY STARTS HERE
                     </span>
 
-                    <h2 className="mx-auto mt-6 max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.055em] md:text-7xl">
+                    <h2 className="mx-auto mt-6 max-w-4xl text-white">
                         The next chapter is yours to write.
                     </h2>
 
-                    <p className="mx-auto mt-7 max-w-xl text-[17px] leading-8 text-white/55">
+                    <p className="mx-auto mt-7 max-w-xl text-white/80">
                         Tell us where you want to go. We&apos;ll help you understand the path
                         to get there.
                     </p>

@@ -45,7 +45,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
             </Badge>
 
             {/* Heading */}
-            <h1 className="font-heading font-normal text-h1">
+            <h1 className="text-white">
               {city.title}
             </h1>
 
@@ -61,7 +61,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
 
             {city.slug !== "chennai" && (
               <div className="mt-5 rounded-xl border border-brand-accent/30 bg-brand-accent/10 p-4 backdrop-blur-md">
-                <h4 className="font-heading font-normal text-h5 text-white">Serving Students in {city.name}</h4>
+                <h4 className="card-title text-white">Serving Students in {city.name}</h4>
                 <p className="mt-1 text-body-small text-white/80 leading-relaxed">
                   HighEd is based in Chennai and provides students across {city.name} with online counselling, application assistance, scholarship guidance, education loan support and visa preparation.
                 </p>
@@ -74,11 +74,8 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                 source={`city_hero_${city.slug}`}
                 contextTitle={`Study Abroad Counselling in ${city.name}`}
                 contextCTA="Book Free Counselling"
-                variant="accent"
-                size="default"
               >
-                <span>Book Free Counselling</span>
-                <ArrowRight size={17} />
+                Book Free Counselling
               </LeadCTAButton>
 
               <a
@@ -115,7 +112,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                   <span className="text-caption font-medium uppercase tracking-wider text-brand-accent">
                     HighEd Advantage
                   </span>
-                  <h3 className="font-heading font-normal text-h4 text-white mt-1">
+                  <h3 className="card-title text-white mt-1">
                     Study Abroad From {city.name}
                   </h3>
                 </div>
@@ -130,7 +127,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                     <GraduationCap size={16} />
                   </div>
                   <div>
-                    <h4 className="font-heading font-normal text-h5 text-white">Profile Evaluation</h4>
+                    <h4 className="card-title text-white">Profile Evaluation</h4>
                     <p className="text-caption font-medium text-white/70 mt-0.5">Custom roadmap matching your GPA, budget & career goals</p>
                   </div>
                 </div>
@@ -140,7 +137,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                     <Award size={16} />
                   </div>
                   <div>
-                    <h4 className="font-heading font-normal text-h5 text-white">Scholarship Strategy</h4>
+                    <h4 className="card-title text-white">Scholarship Strategy</h4>
                     <p className="text-caption font-medium text-white/70 mt-0.5">Assistance securing tuition fee waivers & graduate assistantships</p>
                   </div>
                 </div>
@@ -150,7 +147,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                     <ShieldCheck size={16} />
                   </div>
                   <div>
-                    <h4 className="font-heading font-normal text-h5 text-white">Visa File & Mock Prep</h4>
+                    <h4 className="card-title text-white">Visa File & Mock Prep</h4>
                     <p className="text-caption font-medium text-white/70 mt-0.5">Comprehensive documentation and mock interviews for 99% approval</p>
                   </div>
                 </div>

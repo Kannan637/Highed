@@ -40,195 +40,142 @@ const ourApproach = [
 export default function WhyChooseUs() {
     return (
         <section
-            className={`
+            className="
                 font-body
                 relative
                 mx-auto
                 mt-6
-                sm:mt-8
                 w-[1850px]
                 max-w-[calc(100%-24px)]
-                sm:max-w-[calc(100%-48px)]
-                2xl:max-w-[1600px]
                 overflow-hidden
                 rounded-[28px]
-                sm:rounded-[36px]
                 min-h-fit
-                xl:h-[956px]
                 shadow-[0_20px_50px_rgba(0,0,0,0.08)]
-                tracking-[-0.04em]
-                [letter-spacing:-0.04em]
-                [&_*]:[letter-spacing:-0.04em]
-            `}
+                tracking-tight-5
+                [letter-spacing:var(--tracking-tight-5)]
+                [&_*]:[letter-spacing:var(--tracking-tight-5)]
+                sm:mt-8
+                sm:max-w-[calc(100%-48px)]
+                sm:rounded-[36px]
+                xl:h-[956px]
+                2xl:max-w-[1600px]
+            "
         >
-            {/* =====================================================
-                BACKGROUND IMAGE
-            ====================================================== */}
+            {/* BACKGROUND IMAGE */}
             <Image
                 src="/images/whychooseus/ChatGPT Image Sep 24, 2026, 12_21_45 PM.webp"
                 alt="Student studying outdoors with educational guidance"
                 fill
+                priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
                 className="object-cover object-center"
             />
 
-            {/* Subtle multi-layer overlay for WCAG AA readability and vivid photo preservation */}
-            {/* <div className="absolute inset-0 bg-black/25" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/55" /> */}
-
-            {/* =====================================================
-                MAIN CONTENT WRAPPER
-                - Natural responsive column on mobile/tablet (< xl)
-                - Staggered editorial floating layout on desktop (>= xl)
-            ====================================================== */}
-            <div className="relative z-10 h-full w-full flex flex-col justify-between items-center py-10 sm:py-14 xl:py-0 xl:block">
-
-                {/* =================================================
-                    HEADER: BADGE & MAIN HEADING
-                ================================================== */}
+            {/* MAIN CONTENT */}
+            <div className="relative z-10 flex h-full w-full flex-col items-center justify-between py-10 sm:py-14 xl:block xl:py-0">
+                {/* HEADER */}
                 <div
                     className="
                         relative
                         z-20
                         flex
-                        flex-col
-                        items-center
-                        text-center
-                        px-4
                         w-full
                         max-w-[680px]
+                        flex-col
+                        items-center
+                        px-4
+                        text-center
                         xl:absolute
-                        xl:top-[74px]
                         xl:left-1/2
+                        xl:top-[24px]
                         xl:-translate-x-1/2
                         xl:px-0
                     "
                 >
-                    {/* Badge */}
-                    <div
-                        className="
-                            inline-flex
-                            h-[31px]
-                            items-center
-                            gap-[8px]
-                            rounded-full
-                            bg-brand-accent
-                            px-[14px]
-                            text-[14px]
-                            font-medium
-                            leading-none
-                            text-white
-                            shadow-sm
-                        "
-                    >
-                        <span className="h-[7px] w-[7px] rounded-full bg-white animate-pulse" />
-                        <span>Why Choose Us</span>
+                    {/* BADGE */}
+                    <div className="mb-5 inline-flex h-8 items-center gap-2 rounded-full bg-[#E93F61] px-4">
+                        <span className="h-2 w-2 rounded-full bg-white" />
+
+                        <span className="font-dm-sans text-sm font-medium text-white">
+                            Why Choose Us
+                        </span>
                     </div>
 
-                    {/* Main Heading */}
-                    <h2
-                        className="
-                            mt-4
-                            text-center
-                            text-[30px]
-                            sm:text-[38px]
-                            lg:text-[44px]
-                            xl:text-[48px]
-                            font-medium
-                            leading-[1.12]
-                            tracking-[-0.04em]
-                            text-white
-                            drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]
-                        "
-                    >
+                    {/* MAIN HEADING */}
+                    <h2 className="text-center text-white">
                         Your Success Starts With
                         <br className="hidden sm:inline" />
                         {" "}the Right Guidance
                     </h2>
                 </div>
 
-                {/* =================================================
-                    CARDS CONTAINER
-                    - Mobile/Tablet: Centered responsive grid/flex
-                    - Desktop (>= xl): Staggered absolute placement
-                ================================================== */}
+                {/* CARDS CONTAINER */}
                 <div
                     className="
                         relative
                         z-20
-                        w-full
                         mt-8
-                        sm:mt-12
-                        px-4
-                        sm:px-8
                         flex
+                        w-full
                         flex-col
-                        lg:flex-row
                         items-center
-                        lg:items-stretch
                         justify-center
                         gap-6
+                        px-4
+                        sm:mt-12
+                        sm:px-8
+                        lg:flex-row
+                        lg:items-stretch
                         lg:gap-8
                         xl:static
                         xl:mt-0
                         xl:px-0
                     "
                 >
-                    {/* =================================================
-                        LEFT CARD — OTHER CONSULTANTS
-                    ================================================== */}
+                    {/* LEFT CARD — OTHER CONSULTANTS */}
                     <div
                         className="
+                            flex
+                            min-h-[440px]
                             w-full
                             max-w-[460px]
-                            xl:max-w-none
-                            xl:w-[440px]
-                            min-h-[440px]
-                            rounded-[28px]
-                            sm:rounded-[30px]
-                            bg-white
-                            p-7
-                            sm:p-8
-                            xl:px-[34px]
-                            xl:py-[36px]
-                            shadow-[0_20px_50px_rgba(0,0,0,0.12)]
-                            hover:shadow-[0_28px_70px_rgba(0,0,0,0.18)]
-                            hover:-translate-y-1
-                            transition-all
-                            duration-300
-                            flex
                             flex-col
                             justify-between
+                            rounded-[28px]
+                            bg-white
+                            p-7
+                            shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:shadow-[0_28px_70px_rgba(0,0,0,0.18)]
+                            sm:rounded-[30px]
+                            sm:p-8
                             xl:absolute
-                            xl:left-[36px]
-                            2xl:left-[60px]
                             xl:bottom-[48px]
+                            xl:left-[36px]
+                            xl:w-[440px]
+                            xl:max-w-none
+                            xl:px-[34px]
+                            xl:py-[36px]
+                            2xl:left-[60px]
                             2xl:bottom-[60px]
                         "
                     >
                         <div>
-                            {/* Card Title */}
-                            <h3
-                                className="
-                                    text-[22px]
-                                    sm:text-[24px]
-                                    font-medium
-                                    leading-[1.2]
-                                    tracking-[-0.04em]
-                                    text-[#121314]
-                                "
-                            >
+                            {/* CARD TITLE */}
+                            <h3 className="card-title text-content-primary">
                                 Other Consultants
                             </h3>
 
-                            {/* Items */}
-                            <div className="mt-7 sm:mt-9 flex flex-col gap-6 sm:gap-[26px]">
+                            {/* ITEMS */}
+                            <div className="mt-7 flex flex-col gap-6 sm:mt-9 sm:gap-[26px]">
                                 {otherConsultants.map((item) => (
                                     <div
                                         key={item.title}
-                                        className="flex gap-[16px] items-start"
+                                        className="flex items-start gap-[16px]"
                                     >
-                                        {/* Check Circle */}
+                                        {/* CHECK CIRCLE */}
                                         <div
                                             className="
                                                 mt-[3px]
@@ -250,33 +197,13 @@ export default function WhyChooseUs() {
                                             />
                                         </div>
 
-                                        {/* Text */}
+                                        {/* TEXT */}
                                         <div className="min-w-0">
-                                            <h4
-                                                className="
-                                                    text-[19px]
-                                                    sm:text-[20px]
-                                                    font-medium
-                                                    leading-[1.25]
-                                                    tracking-[-0.04em]
-                                                    text-[#121314]
-                                                "
-                                            >
+                                            <h4 className="card-title text-content-primary">
                                                 {item.title}
                                             </h4>
 
-                                            <p
-                                                className="
-                                                    mt-1.5
-                                                    max-w-[320px]
-                                                    text-[15px]
-                                                    sm:text-[16px]
-                                                    font-normal
-                                                    leading-[1.45]
-                                                    tracking-[-0.04em]
-                                                    text-[#55575A]
-                                                "
-                                            >
+                                            <p className="mt-1.5 max-w-[320px] text-content-secondary">
                                                 {item.description}
                                             </p>
                                         </div>
@@ -286,61 +213,50 @@ export default function WhyChooseUs() {
                         </div>
                     </div>
 
-                    {/* =================================================
-                        RIGHT CARD — OUR APPROACH
-                    ================================================== */}
+                    {/* RIGHT CARD — OUR APPROACH */}
                     <div
                         className="
+                            flex
+                            min-h-[440px]
                             w-full
                             max-w-[460px]
-                            xl:max-w-none
-                            xl:w-[440px]
-                            min-h-[440px]
-                            rounded-[28px]
-                            sm:rounded-[30px]
-                            bg-[#2E4389]
-                            p-7
-                            sm:p-8
-                            xl:px-[34px]
-                            xl:py-[36px]
-                            shadow-[0_20px_50px_rgba(37,58,123,0.30)]
-                            hover:shadow-[0_28px_70px_rgba(37,58,123,0.42)]
-                            hover:-translate-y-1
-                            transition-all
-                            duration-300
-                            flex
                             flex-col
                             justify-between
+                            rounded-[28px]
+                            bg-[#2E4389]
+                            p-7
+                            shadow-[0_20px_50px_rgba(37,58,123,0.30)]
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:shadow-[0_28px_70px_rgba(37,58,123,0.42)]
+                            sm:rounded-[30px]
+                            sm:p-8
                             xl:absolute
                             xl:right-[36px]
-                            2xl:right-[60px]
                             xl:top-[280px]
+                            xl:w-[440px]
+                            xl:max-w-none
+                            xl:px-[34px]
+                            xl:py-[36px]
+                            2xl:right-[60px]
                             2xl:top-[290px]
                         "
                     >
                         <div>
-                            {/* Card Title */}
-                            <h3
-                                className="
-                                    text-[22px]
-                                    sm:text-[24px]
-                                    font-medium
-                                    leading-[1.2]
-                                    tracking-[-0.04em]
-                                    text-white
-                                "
-                            >
+                            {/* CARD TITLE */}
+                            <h3 className="card-title text-white">
                                 Our Approach
                             </h3>
 
-                            {/* Items */}
-                            <div className="mt-7 sm:mt-9 flex flex-col gap-6 sm:gap-[26px]">
+                            {/* ITEMS */}
+                            <div className="mt-7 flex flex-col gap-6 sm:mt-9 sm:gap-[26px]">
                                 {ourApproach.map((item) => (
                                     <div
                                         key={item.title}
-                                        className="flex gap-[16px] items-start"
+                                        className="flex items-start gap-[16px]"
                                     >
-                                        {/* Pink Check Circle */}
+                                        {/* ACCENT CHECK CIRCLE */}
                                         <div
                                             className="
                                                 mt-[3px]
@@ -362,33 +278,13 @@ export default function WhyChooseUs() {
                                             />
                                         </div>
 
-                                        {/* Text */}
+                                        {/* TEXT */}
                                         <div className="min-w-0">
-                                            <h4
-                                                className="
-                                                    text-[19px]
-                                                    sm:text-[20px]
-                                                    font-medium
-                                                    leading-[1.25]
-                                                    tracking-[-0.04em]
-                                                    text-white
-                                                "
-                                            >
+                                            <h4 className="card-title text-white">
                                                 {item.title}
                                             </h4>
 
-                                            <p
-                                                className="
-                                                    mt-1.5
-                                                    max-w-[320px]
-                                                    text-[15px]
-                                                    sm:text-[16px]
-                                                    font-normal
-                                                    leading-[1.45]
-                                                    tracking-[-0.04em]
-                                                    text-white/95
-                                                "
-                                            >
+                                            <p className="mt-1.5 max-w-[320px] text-white/90">
                                                 {item.description}
                                             </p>
                                         </div>
@@ -397,9 +293,8 @@ export default function WhyChooseUs() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </section >
+        </section>
     );
 }

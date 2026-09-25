@@ -64,7 +64,7 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({ countr
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-normal text-h5 leading-snug text-content-primary">
+                  <h3 className="card-title text-content-primary">
                     {card.title}
                   </h3>
 

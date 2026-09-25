@@ -146,7 +146,7 @@ export const LeadSuccess: React.FC = () => {
       {/* Title */}
       <h3
         ref={titleRef}
-        className="mt-6 text-[28px] font-medium leading-[1.15] tracking-[-0.025em] text-[#121314] sm:text-[30px]"
+        className="mt-6 text-content-primary"
       >
         Thank you!
       </h3>
@@ -154,7 +154,7 @@ export const LeadSuccess: React.FC = () => {
       {/* Message */}
       <p
         ref={messageRef}
-        className="mt-3 max-w-[310px] text-[14px] font-normal leading-[1.55] tracking-[-0.005em] text-[#6B7280]"
+        className="mt-3 max-w-[310px] text-content-secondary"
       >
         Your request has been received. Our counsellor will contact you shortly.
       </p>

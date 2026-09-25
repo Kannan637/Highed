@@ -67,7 +67,7 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
 
         {/* Steps */}
         <div className="rounded-2xl sm:rounded-3xl border border-border-default bg-white p-5 sm:p-8 md:p-10 shadow-xs">
-          <h3 className="font-heading font-normal text-h4 text-content-primary mb-8">
+          <h3 className="text-content-primary mb-8">
             5 Simple Steps to Secure Your {country.name} Student Visa
           </h3>
 
@@ -78,7 +78,7 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
                   {step.stepNumber}
                 </div>
                 <div className="pt-1">
-                  <h4 className="font-heading font-normal text-h5 text-content-primary">
+                  <h4 className="text-content-primary">
                     {step.title}
                   </h4>
                   <p className="mt-1 text-body-small leading-relaxed text-content-secondary">

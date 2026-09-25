@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Award, Globe2, Building2 } from "lucide-react";
+import { Award, Globe2, Building2 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
 import IconBox from "@/components/ui/IconBox";
 import CTASection from "@/components/ui/CTASection";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 import { buttonVariants } from "@/components/ui/Button";
 import { constructMetadata } from "@/seo/metadata";
 
@@ -24,12 +25,9 @@ export default function AboutPage() {
       <Container size="lg">
         {/* Hero Section */}
         <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-icon-bg-primary px-4 py-1.5 text-caption font-medium text-brand-primary border border-brand-primary/20">
-            <ShieldCheck size={16} />
-            <span>Official University Representative</span>
-          </span>
+          <EyebrowBadge>Official University Representative</EyebrowBadge>
 
-          <h1 className="mt-4 text-h1 text-content-primary">
+          <h1 className="mt-4 text-content-primary">
             Empowering Ambitious Minds to Study Globally
           </h1>
 
@@ -40,11 +38,8 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <LeadCTAButton
               source="about_hero"
-              variant="accent"
-              size="lg"
-              iconBadge={<ArrowRight size={18} />}
             >
-              Book Free Consultation
+              Book Free Counselling
             </LeadCTAButton>
             <Link
               href="/study-in"
@@ -81,7 +76,7 @@ export default function AboutPage() {
           <div className="mt-12 grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
             <Card hover className="col-span-4 lg:col-span-4 p-8 rounded-2xl border-border bg-card">
               <IconBox icon={Building2} variant="primary" />
-              <h3 className="mt-6 text-xl font-semibold text-content-primary">Direct University Portals</h3>
+              <h3 className="mt-6 card-title text-content-primary">Direct University Portals</h3>
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Official representation means your application is processed directly through verified university agent channels for faster offer turnaround.
               </p>
@@ -89,7 +84,7 @@ export default function AboutPage() {
 
             <Card hover className="col-span-4 lg:col-span-4 p-8 rounded-2xl border-border bg-card">
               <IconBox icon={Award} variant="accent" />
-              <h3 className="mt-6 text-xl font-semibold text-content-primary">Maximum Scholarships</h3>
+              <h3 className="mt-6 card-title text-content-primary">Maximum Scholarships</h3>
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Our advisors cross-reference hundreds of merit, athletic, and governmental scholarships to maximize fee waivers for eligible students.
               </p>
@@ -97,7 +92,7 @@ export default function AboutPage() {
 
             <Card hover className="col-span-4 lg:col-span-4 p-8 rounded-2xl border-border bg-card">
               <IconBox icon={Globe2} variant="success" />
-              <h3 className="mt-6 text-xl font-semibold text-content-primary">Global Visas &amp; Housing</h3>
+              <h3 className="mt-6 card-title text-content-primary">Global Visas &amp; Housing</h3>
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-content-secondary">
                 Complete mock visa interview preparation, financial documentation verification, and pre-departure accommodation support.
               </p>
@@ -110,7 +105,7 @@ export default function AboutPage() {
           <CTASection
             title="Ready to Start Your Study Abroad Journey?"
             subtitle="Connect with a certified counsellor today. Zero consultation fees, 100% personalized advisory."
-            ctaLabel="Schedule Free Strategy Session"
+            ctaLabel="Book Free Counselling"
             ctaSource="about_bottom"
           />
         </div>

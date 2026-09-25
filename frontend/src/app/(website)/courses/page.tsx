@@ -137,7 +137,7 @@ export default function CoursesPage() {
               {/* Header */}
               <div className={`p-6 pb-5 ${variantBgMap[cat.variant]}`}>
                 <IconBox icon={BookOpen} variant={cat.variant} size="md" className="bg-surface-default shadow-xs mb-4" />
-                <h3 className="text-xl font-semibold text-content-primary">{cat.title}</h3>
+                <h3 className="card-title text-content-primary">{cat.title}</h3>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {cat.popularIn.map((country) => (
                     <span
@@ -182,7 +182,7 @@ export default function CoursesPage() {
             badge="Personalised Course Matching — 100% Free"
             title="Not Sure Which Course to Pick?"
             subtitle="Tell us your interests, GPA, and career goals. Our counsellors will recommend the best course-country-university combination within 24 hours."
-            ctaLabel="Get My Course Recommendation"
+            ctaLabel="Book Free Counselling"
             ctaSource="courses_page_cta"
           />
         </div>

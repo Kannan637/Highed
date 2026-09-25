@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Container from "@/components/ui/Container";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 const faqs = [
   {
@@ -60,16 +61,10 @@ export default function FAQSection() {
 
             <header className="text-center">
               {/* Eyebrow */}
-              <div className="mb-7 flex items-center justify-center gap-2">
-                <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
-
-                <span className="text-body-small font-medium text-brand-primary">
-                  FAQ
-                </span>
-              </div>
+              <EyebrowBadge>FAQ</EyebrowBadge>
 
               {/* Heading */}
-              <h2 className="mx-auto text-h2 font-normal text-content-primary">
+              <h2 className="mx-auto text-content-primary">
                 Frequently Asked Questions –
                 <br className="hidden sm:block" />
                 Study Abroad from Tamil Nadu
@@ -200,16 +195,8 @@ export default function FAQSection() {
             <div className="mt-12 flex justify-center">
               <LeadCTAButton
                 source="country_faq_cta"
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto"
               >
-                <span>Still have questions? Let&apos;s talk</span>
-                <ArrowRight
-                  size={18}
-                  strokeWidth={2.2}
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                />
+                Book Free Counselling
               </LeadCTAButton>
             </div>
           </div>

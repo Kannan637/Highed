@@ -160,6 +160,9 @@ export default function LogoMarquee() {
                 sm:py-14
                 md:py-16
                 lg:py-20
+                tracking-tight-5
+                [letter-spacing:var(--tracking-tight-5)]
+                [&_*]:[letter-spacing:var(--tracking-tight-5)]
             "
         >
             <div
@@ -180,33 +183,20 @@ export default function LogoMarquee() {
                 <div
                     className="
                         col-span-12
-                        mb-5
                         flex
                         justify-center
-                        sm:mb-6
-                        md:mb-8
                     "
                 >
-                    <h2
+                    <h6
                         id="universities-marquee-heading"
                         className="
                             max-w-[90%]
                             text-center
-                            text-[20px]
-                            font-semibold
-                            leading-[25px]
-                            tracking-[-0.04em]
                             text-[#121314]
-                            sm:text-[22px]
-                            sm:leading-[27px]
-                            md:text-[24px]
-                            md:leading-[29px]
-                            lg:text-[26px]
-                            lg:leading-[31.2px]
                         "
                     >
                         Top Universities we work with
-                    </h2>
+                    </h6>
                 </div>
 
                 {/* Row 1 — Left */}

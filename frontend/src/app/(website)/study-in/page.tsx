@@ -53,11 +53,11 @@ export default function StudyInPage() {
                     </Badge>
                   </div>
 
-                  <h3 className="mt-6 font-heading text-2xl font-bold text-foreground transition-colors group-hover:text-brand-primary">
+                  <h3 className="mt-6 card-title text-foreground transition-colors group-hover:text-brand-primary">
                     Study in {country.name}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                  <p className="mt-3 text-content-secondary line-clamp-3">
                     {country.tagline}
                   </p>
 

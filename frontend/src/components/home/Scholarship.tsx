@@ -1,8 +1,10 @@
-import { ArrowRight, Phone } from "lucide-react";
+
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import Link from "next/link";
 
 const scholarshipItems = {
     left: [
@@ -26,9 +28,9 @@ export default function ScholarshipsLoansSection() {
         bg-white
         py-16
         text-content-primary
-        tracking-[-0.04em]
-        [letter-spacing:-0.04em]
-        [&_*]:[letter-spacing:-0.04em]
+        tracking-tight-5
+        [letter-spacing:var(--tracking-tight-5)]
+        [&_*]:[letter-spacing:var(--tracking-tight-5)]
         sm:py-20
         lg:py-[72px]
       "
@@ -43,10 +45,10 @@ export default function ScholarshipsLoansSection() {
 
                 {/* SCHOLARSHIP VISUAL */}
                 <div className="mt-8 lg:mt-12">
-                    {/* DESKTOP LAYOUT (12-Column Grid: 4 + 4 + 4) */}
-                    <div className="hidden lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-                        {/* LEFT ITEMS (4 Cols) */}
-                        <div className="col-span-4 flex flex-col justify-around h-[460px] py-6">
+                    {/* DESKTOP */}
+                    <div className="hidden items-center lg:grid lg:grid-cols-12 lg:gap-8">
+                        {/* LEFT ITEMS */}
+                        <div className="col-span-4 flex h-[460px] flex-col justify-around py-6">
                             {scholarshipItems.left.map((item) => (
                                 <ScholarshipLabel
                                     key={item}
@@ -56,21 +58,22 @@ export default function ScholarshipsLoansSection() {
                             ))}
                         </div>
 
-                        {/* CENTER IMAGE (4 Cols) */}
+                        {/* CENTER IMAGE */}
                         <div className="col-span-4 flex justify-center">
-                            <div className="relative z-10 h-[460px] w-full max-w-[345px] overflow-hidden rounded-3xl bg-surface-neutral shadow-sm">
+                            <div className="relative z-10 h-[460px] w-full max-w-[345px] overflow-hidden rounded-3xl bg-surface-neutral">
                                 <Image
                                     src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
                                     alt="Student studying abroad"
                                     fill
-                                    sizes="(max-width: 1024px) 100vw, 345px"
+                                    sizes="345px"
                                     className="object-cover"
+                                    priority={false}
                                 />
                             </div>
                         </div>
 
-                        {/* RIGHT ITEMS (4 Cols) */}
-                        <div className="col-span-4 flex flex-col justify-around h-[460px] py-6">
+                        {/* RIGHT ITEMS */}
+                        <div className="col-span-4 flex h-[460px] flex-col justify-around py-6">
                             {scholarshipItems.right.map((item) => (
                                 <ScholarshipLabel
                                     key={item}
@@ -81,22 +84,22 @@ export default function ScholarshipsLoansSection() {
                         </div>
                     </div>
 
-                    {/* MOBILE LAYOUT (4-Column Grid) */}
+                    {/* MOBILE */}
                     <div className="grid grid-cols-4 gap-4 lg:hidden">
-                        {/* Image */}
+                        {/* IMAGE */}
                         <div className="col-span-4 flex justify-center">
-                            <div className="relative h-[380px] sm:h-[430px] w-full max-w-[345px] overflow-hidden rounded-3xl bg-surface-neutral shadow-sm">
+                            <div className="relative h-[380px] w-full max-w-[345px] overflow-hidden rounded-3xl bg-surface-neutral sm:h-[430px]">
                                 <Image
                                     src="/images/Scholarship/ChatGPT Image Sep 14, 2026, 12_34_47 PM.webp"
                                     alt="Student studying abroad"
                                     fill
-                                    sizes="(max-width: 1024px) 345px, 100vw"
+                                    sizes="(max-width: 639px) 100vw, 345px"
                                     className="object-cover"
                                 />
                             </div>
                         </div>
 
-                        {/* Mobile labels */}
+                        {/* MOBILE LABELS */}
                         <div className="col-span-4 mt-4 grid grid-cols-4 gap-3">
                             {[
                                 ...scholarshipItems.left,
@@ -104,7 +107,24 @@ export default function ScholarshipsLoansSection() {
                             ].map((item) => (
                                 <div
                                     key={item}
-                                    className="col-span-4 sm:col-span-2 flex min-h-12 items-center justify-center rounded-full border border-border bg-surface-neutral px-5 py-2.5 text-center text-sm font-medium text-content-primary"
+                                    className="
+                    col-span-4
+                    flex
+                    min-h-12
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-border
+                    bg-surface-neutral
+                    px-5
+                    py-2.5
+                    text-center
+                    text-sm
+                    font-medium
+                    text-content-primary
+                    sm:col-span-2
+                  "
                                 >
                                     {item}
                                 </div>
@@ -114,24 +134,23 @@ export default function ScholarshipsLoansSection() {
                 </div>
 
                 {/* CTA BUTTONS */}
-                <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                    <LeadCTAButton
-                        source="scholarship_counselling"
-                        variant="accent"
-                        size="default"
-                        iconBadge={<Phone size={18} strokeWidth={2} />}
-                    >
+                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row">
+                    <LeadCTAButton source="scholarship_counselling">
                         Book Free Counselling
                     </LeadCTAButton>
 
-                    <LeadCTAButton
-                        source="explore_scholarships"
-                        variant="outline"
-                        size="default"
+                    <Link
+                        href="/scholarships"
+                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-brand-accent transition-all hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                     >
                         <span>Explore Scholarships</span>
-                        <ArrowRight size={18} strokeWidth={2} className="transition-transform duration-200 group-hover:translate-x-1" />
-                    </LeadCTAButton>
+
+                        <ArrowRight
+                            size={18}
+                            strokeWidth={2.2}
+                            className="transition-transform duration-200 group-hover:translate-x-1"
+                        />
+                    </Link>
                 </div>
             </Container>
         </section>
@@ -158,57 +177,43 @@ function ScholarshipLabel({
         ${side === "left" ? "justify-end" : "justify-start"}
       `}
         >
-            {/* Connecting line */}
-            {side === "left" ? (
-                <span
-                    aria-hidden="true"
-                    className="
-            absolute
-            right-0
-            h-px
-            w-[48px]
-            xl:w-[72px]
-            bg-border-default
-          "
-                />
-            ) : (
-                <span
-                    aria-hidden="true"
-                    className="
-            absolute
-            left-0
-            h-px
-            w-[48px]
-            xl:w-[72px]
-            bg-border-default
-          "
-                />
-            )}
+            {/* CONNECTING LINE */}
+            <span
+                aria-hidden="true"
+                className={`
+          absolute
+          h-px
+          w-[48px]
+          bg-border-default
+          xl:w-[72px]
+          ${side === "left" ? "right-0" : "left-0"}
+        `}
+            />
 
-            {/* Label */}
+            {/* LABEL */}
             <div
                 className={`
           relative
           z-10
           flex
           min-h-[44px]
+          max-w-full
           items-center
           rounded-full
+          border
+          border-border-default
           bg-surface-neutral
           px-4
           text-body-small
           font-medium
           text-content-primary
-          shadow-[0_2px_8px_rgba(18,19,20,0.02)]
-          border
-          border-border-default
           ${side === "left"
                         ? "mr-[40px] xl:mr-[60px]"
                         : "ml-[40px] xl:ml-[60px]"
                     }
         `}
             >
-                {text}
+                <span className="whitespace-nowrap">{text}</span>
             </div>
         </div>
     );

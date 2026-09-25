@@ -92,7 +92,7 @@ export default function CTASection({ className = "" }: CTASectionProps) {
                 <span>Free 1-on-1 Consultation</span>
               </Badge>
 
-              <h2 className="font-heading text-xl font-bold leading-tight tracking-[-0.04em] text-white sm:text-2xl md:text-3xl">
+              <h2 className="text-white">
                 Have Questions About{" "}
                 <span className="relative inline-block whitespace-nowrap">
                   Admissions

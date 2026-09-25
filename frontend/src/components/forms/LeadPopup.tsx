@@ -278,7 +278,7 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
 
               {/* Heading */}
               <h2
-                className="max-w-[390px] !text-[18px] !leading-[1.3] font-medium tracking-[-0.02em] text-[#121314] sm:!text-[20px]"
+                className="modal-title max-w-[390px] text-content-primary"
               >
                 {contextTitle ||
                   "Let's turn your study-abroad dreams into your success story."}

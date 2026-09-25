@@ -50,7 +50,7 @@ export const StudyAbroadCards = () => {
   const { openLeadPopup } = useLeadPopup();
 
   return (
-    <section className="relative z-30 w-full -translate-y-8 -mb-8 sm:-translate-y-10 sm:-mb-10 md:-translate-y-1/2 md:-mb-[90px] tracking-[-0.04em] [letter-spacing:-0.04em] [&_*]:[letter-spacing:-0.04em]">
+    <section className="relative z-30 w-full -translate-y-8 -mb-8 sm:-translate-y-10 sm:-mb-10 md:-translate-y-1/2 md:-mb-[90px] tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <div className="grid grid-cols-4 gap-3 rounded-2xl border-[6px] sm:border-8 border-white bg-white p-2 shadow-xl lg:grid-cols-12 lg:gap-4">
           {cards.map((card) => {

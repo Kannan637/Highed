@@ -5,16 +5,20 @@ import {
     ArrowDownToLine,
     ArrowLeft,
     ArrowRight,
-    GraduationCap,
     Plane,
     BookOpen,
 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
+import {
+    Card,
+    CardContent,
+    CardTitle,
+    CardDescription,
+} from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
+import CounsellingCTA from "@/components/ui/CounsellingCTA";
 
 type Course = {
     country: string;
@@ -181,10 +185,18 @@ const courses: Record<string, Course[]> = {
 function getFlag(country: string) {
     if (country.includes("Finland")) return "🇫🇮";
     if (country.includes("Ireland")) return "🇮🇪";
-    if (country.includes("San Francisco") || country.includes("USA")) return "🇺🇸";
-    if (country.includes("UK") || country.includes("United Kingdom")) return "🇬🇧";
+
+    if (country.includes("San Francisco") || country.includes("USA")) {
+        return "🇺🇸";
+    }
+
+    if (country.includes("UK") || country.includes("United Kingdom")) {
+        return "🇬🇧";
+    }
+
     if (country.includes("Australia")) return "🇦🇺";
     if (country.includes("Canada")) return "🇨🇦";
+
     return "🌎";
 }
 
@@ -192,20 +204,24 @@ function ImagePlaceholder() {
     return (
         <div
             className="
-        flex
-        h-full
-        w-full
-        flex-col
-        items-center
-        justify-center
-        bg-gradient-to-br
-        from-[#f3f4f7]
-        to-[#e2e4e9]
-        text-brand-primary/40
-      "
+                flex
+                h-full
+                w-full
+                flex-col
+                items-center
+                justify-center
+                bg-gradient-to-br
+                from-[#f3f4f7]
+                to-[#e2e4e9]
+                text-brand-primary/40
+            "
             aria-label="Course image placeholder"
         >
-            <BookOpen size={48} strokeWidth={1.5} />
+            <BookOpen
+                size={48}
+                strokeWidth={1.5}
+                aria-hidden="true"
+            />
         </div>
     );
 }
@@ -216,53 +232,123 @@ function CourseCard({ course }: { course: Course }) {
     return (
         <Card
             hover
-            className="col-span-4 sm:col-span-2 lg:col-span-4 flex flex-col overflow-hidden rounded-2xl border-border bg-card p-0 shadow-xs transition-all duration-300 hover:shadow-md"
+            className="
+                col-span-4
+                flex
+                flex-col
+                overflow-hidden
+                rounded-2xl
+                border-border
+                bg-card
+                p-0
+                shadow-xs
+                transition-all
+                duration-300
+                hover:shadow-md
+                sm:col-span-2
+                lg:col-span-4
+            "
         >
-            {/* Image */}
+            {/* IMAGE */}
             <div className="relative aspect-[1.83/1] w-full overflow-hidden">
                 <ImagePlaceholder />
 
-                {/* Country Badge */}
+                {/* COUNTRY BADGE */}
                 <Badge
                     variant="brand"
-                    className="absolute left-4 top-4 inline-flex items-center gap-1.5 shadow-sm"
+                    className="
+                        absolute
+                        left-4
+                        top-4
+                        inline-flex
+                        items-center
+                        gap-1.5
+                        shadow-sm
+                    "
                 >
-                    <Plane size={14} strokeWidth={2.2} />
+                    <Plane
+                        size={14}
+                        strokeWidth={2.2}
+                        aria-hidden="true"
+                    />
+
                     <span>{course.country}</span>
                 </Badge>
             </div>
 
-            {/* Content */}
+            {/* CONTENT */}
             <CardContent className="flex flex-1 flex-col p-5">
-                {/* University */}
+                {/* UNIVERSITY */}
                 <div className="mb-2 flex items-center gap-1.5">
-                    <span className="text-sm leading-none">{getFlag(course.country)}</span>
+                    <span
+                        className="text-sm leading-none"
+                        aria-hidden="true"
+                    >
+                        {getFlag(course.country)}
+                    </span>
+
                     <span className="text-body-small font-medium text-content-primary">
                         {course.university}
                     </span>
                 </div>
 
-                {/* Title */}
-                <CardTitle className="min-h-[56px] text-lg sm:text-xl font-normal text-content-primary">
+                {/* TITLE */}
+                <CardTitle className="min-h-[56px] text-lg font-normal text-content-primary sm:text-xl">
                     {course.title}
                 </CardTitle>
 
-                {/* Description */}
-                <CardDescription className="mt-2 line-clamp-2 min-h-[40px] text-sm text-content-secondary">
+                {/* DESCRIPTION */}
+                <CardDescription className="mt-2 min-h-[40px] line-clamp-2 text-sm text-content-secondary">
                     {course.description}
                 </CardDescription>
 
-                {/* CTA */}
-                <Button
+                {/* DOWNLOAD BROCHURE */}
+                <button
                     type="button"
-                    variant="outline"
-                    fullWidth
-                    onClick={() => openLeadPopup({ source: "course_brochure" })}
-                    className="mt-4"
+                    onClick={() =>
+                        openLeadPopup({
+                            source: "course_brochure",
+                        })
+                    }
+                    className="
+                        mt-4
+                        inline-flex
+                        h-12
+                        w-full
+                        flex-row
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-full
+                        border
+                        border-border
+                        bg-white
+                        px-5
+                        text-sm
+                        font-medium
+                        leading-none
+                        text-content-primary
+                        whitespace-nowrap
+                        transition-all
+                        duration-200
+                        hover:bg-surface-subtle
+                        focus-visible:outline-none
+                        focus-visible:ring-2
+                        focus-visible:ring-brand-accent
+                        active:scale-[0.98]
+                    "
                 >
-                    <span>Download Brochure</span>
-                    <ArrowDownToLine size={18} strokeWidth={2.2} />
-                </Button>
+                    <span className="whitespace-nowrap">
+                        Download Brochure
+                    </span>
+
+                    <ArrowDownToLine
+                        size={18}
+                        strokeWidth={2.2}
+                        aria-hidden="true"
+                        className="shrink-0"
+                    />
+                </button>
             </CardContent>
         </Card>
     );
@@ -277,19 +363,37 @@ export default function TopCoursesSection() {
 
     const previousCategory = () => {
         const nextIndex =
-            activeIndex === 0 ? categories.length - 1 : activeIndex - 1;
+            activeIndex === 0
+                ? categories.length - 1
+                : activeIndex - 1;
+
         setActiveCategory(categories[nextIndex]);
     };
 
     const nextCategory = () => {
         const nextIndex =
-            activeIndex === categories.length - 1 ? 0 : activeIndex + 1;
+            activeIndex === categories.length - 1
+                ? 0
+                : activeIndex + 1;
+
         setActiveCategory(categories[nextIndex]);
     };
 
     return (
-        <section className="w-full bg-background text-content-primary tracking-[-0.04em] [letter-spacing:-0.04em] [&_*]:[letter-spacing:-0.04em]">
-            <Container size="lg" className="py-12 sm:py-16 md:py-20">
+        <section
+            className="
+                w-full
+                bg-background
+                text-content-primary
+                tracking-tight-5
+                [letter-spacing:var(--tracking-tight-5)]
+                [&_*]:[letter-spacing:var(--tracking-tight-5)]
+            "
+        >
+            <Container
+                size="lg"
+                className="py-12 sm:py-16 md:py-20"
+            >
                 {/* SECTION HEADER */}
                 <SectionHeading
                     eyebrow="Popular Courses"
@@ -299,28 +403,76 @@ export default function TopCoursesSection() {
 
                 {/* CATEGORY NAVIGATION */}
                 <div className="mt-8 flex items-center justify-center gap-3">
-                    {/* Left Arrow */}
+                    {/* LEFT ARROW */}
                     <button
                         type="button"
                         onClick={previousCategory}
                         aria-label="Previous course category"
-                        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+                        className="
+                            flex
+                            size-10
+                            shrink-0
+                            cursor-pointer
+                            items-center
+                            justify-center
+                            rounded-full
+                            text-brand-accent
+                            transition-colors
+                            hover:bg-brand-accent/10
+                            focus-visible:outline-none
+                            focus-visible:ring-2
+                            focus-visible:ring-brand-accent
+                        "
                     >
-                        <ArrowLeft size={20} strokeWidth={2.2} />
+                        <ArrowLeft
+                            size={20}
+                            strokeWidth={2.2}
+                            aria-hidden="true"
+                        />
                     </button>
 
-                    {/* Category Pills */}
-                    <div className="flex max-w-full items-center gap-1.5 overflow-x-auto rounded-full border border-border bg-white p-1.5 shadow-2xs scrollbar-none">
+                    {/* CATEGORY PILLS */}
+                    <div
+                        className="
+                            flex
+                            max-w-full
+                            items-center
+                            gap-1.5
+                            overflow-x-auto
+                            rounded-full
+                            border
+                            border-border
+                            bg-white
+                            p-1.5
+                            shadow-2xs
+                            scrollbar-none
+                        "
+                    >
                         {categories.map((category) => {
-                            const isActive = category === activeCategory;
+                            const isActive =
+                                category === activeCategory;
 
                             return (
                                 <button
                                     key={category}
                                     type="button"
-                                    onClick={() => setActiveCategory(category)}
+                                    onClick={() =>
+                                        setActiveCategory(category)
+                                    }
+                                    aria-pressed={isActive}
                                     className={`
-                                        flex h-10 shrink-0 cursor-pointer items-center rounded-full px-5 text-sm font-medium transition-all duration-200
+                                        flex
+                                        h-10
+                                        shrink-0
+                                        cursor-pointer
+                                        items-center
+                                        justify-center
+                                        rounded-full
+                                        px-5
+                                        text-sm
+                                        font-medium
+                                        transition-all
+                                        duration-200
                                         ${isActive
                                             ? "bg-brand-accent text-white shadow-xs"
                                             : "text-brand-primary hover:bg-surface-subtle"
@@ -333,69 +485,97 @@ export default function TopCoursesSection() {
                         })}
                     </div>
 
-                    {/* Right Arrow */}
+                    {/* RIGHT ARROW */}
                     <button
                         type="button"
                         onClick={nextCategory}
                         aria-label="Next course category"
-                        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+                        className="
+                            flex
+                            size-10
+                            shrink-0
+                            cursor-pointer
+                            items-center
+                            justify-center
+                            rounded-full
+                            text-brand-accent
+                            transition-colors
+                            hover:bg-brand-accent/10
+                            focus-visible:outline-none
+                            focus-visible:ring-2
+                            focus-visible:ring-brand-accent
+                        "
                     >
-                        <ArrowRight size={20} strokeWidth={2.2} />
+                        <ArrowRight
+                            size={20}
+                            strokeWidth={2.2}
+                            aria-hidden="true"
+                        />
                     </button>
                 </div>
 
                 {/* COURSE CARDS */}
                 <div className="mt-10 grid grid-cols-4 gap-6 lg:grid-cols-12">
                     {activeCourses.map((course, index) => (
-                        <CourseCard key={`${activeCategory}-${index}`} course={course} />
+                        <CourseCard
+                            key={`${activeCategory}-${index}`}
+                            course={course}
+                        />
                     ))}
                 </div>
 
-                {/* VIEW ALL */}
-                <div className="mt-8 flex justify-center">
+                {/* VIEW ALL COURSES */}
+                <div className="mt-10 flex justify-center lg:mt-8">
                     <button
                         type="button"
-                        onClick={() => openLeadPopup({ source: `view_all_${activeCategory.toLowerCase()}` })}
-                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-brand-accent transition-all hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+                        onClick={() =>
+                            openLeadPopup({
+                                source: `view_all_${activeCategory.toLowerCase()}`,
+                            })
+                        }
+                        className="
+                            group
+                            inline-flex
+                            h-12
+                            cursor-pointer
+                            flex-row
+                            items-center
+                            justify-center
+                            gap-2
+                            whitespace-nowrap
+                            rounded-full
+                            px-6
+                            text-sm
+                            font-semibold
+                            text-brand-accent
+                            transition-all
+                            hover:bg-brand-accent/10
+                            focus-visible:outline-none
+                            focus-visible:ring-2
+                            focus-visible:ring-brand-accent
+                        "
                     >
-                        <span>View All {activeCategory} Courses</span>
-                        <ArrowRight size={18} strokeWidth={2.2} />
+                        <span>
+                            View All {activeCategory} Courses
+                        </span>
+
+                        <ArrowRight
+                            size={18}
+                            strokeWidth={2.2}
+                            aria-hidden="true"
+                            className="
+                                shrink-0
+                                transition-transform
+                                duration-200
+                                ease-out
+                                group-hover:translate-x-1
+                            "
+                        />
                     </button>
                 </div>
 
                 {/* COUNSELLING CTA */}
-                <div className="mt-10 flex flex-col gap-6 rounded-2xl bg-brand-primary p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:px-16 shadow-lg">
-                    {/* Left Content */}
-                    <div className="flex items-center gap-5">
-                        <div className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm">
-                            <GraduationCap
-                                size={32}
-                                strokeWidth={1.8}
-                                className="text-brand-primary"
-                            />
-                        </div>
-
-                        <div>
-                            <h3 className="font-heading text-xl sm:text-2xl font-semibold text-white">
-                                Not sure which course fits your profile?
-                            </h3>
-                            <p className="mt-1.5 max-w-xl text-sm text-white/80">
-                                Our counsellors will analyse your academics, budget & career
-                                goals to recommend the perfect programme.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* CTA */}
-                    <Button
-                        variant="accent"
-                        size="default"
-                        onClick={() => openLeadPopup({ source: "course_counselling" })}
-                        iconBadge={<ArrowRight size={18} strokeWidth={2} />}
-                    >
-                        Book Free Counselling
-                    </Button>
-                </div>
+                <CounsellingCTA />
             </Container>
         </section>
     );

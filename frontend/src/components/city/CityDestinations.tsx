@@ -38,11 +38,11 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
                   </Badge>
                 </div>
 
-                <h3 className="font-heading font-bold text-xl text-foreground group-hover:text-brand-primary transition-colors">
+                <h3 className="card-title text-foreground group-hover:text-brand-primary transition-colors">
                   Study in {dest.name}
                 </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-3 text-content-secondary">
                   {dest.tagline}
                 </p>
               </div>
@@ -78,7 +78,7 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
               <Globe size={24} />
             </div>
             <div>
-              <h4 className="font-heading font-normal text-h4">Unsure which destination fits your profile & budget?</h4>
+              <h4 className="text-white">Unsure which destination fits your profile & budget?</h4>
               <p className="text-body-small text-white/80 mt-1">Our counsellors in {city.name} will compare tuition costs, post-study work visas, and admission chances for you.</p>
             </div>
           </div>
