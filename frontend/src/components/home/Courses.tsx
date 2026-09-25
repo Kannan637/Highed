@@ -6,11 +6,14 @@ import {
     ArrowLeft,
     ArrowRight,
     GraduationCap,
-    Phone,
     Plane,
     BookOpen,
 } from "lucide-react";
 import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 
 type Course = {
@@ -211,116 +214,57 @@ function CourseCard({ course }: { course: Course }) {
     const { openLeadPopup } = useLeadPopup();
 
     return (
-        <article
-            className="
-        group
-        col-span-4
-        sm:col-span-2
-        lg:col-span-4
-        flex
-        min-w-0
-        flex-col
-        overflow-hidden
-        rounded-[22px]
-        border
-        border-border-card
-        bg-white
-      "
+        <Card
+            hover
+            className="col-span-4 sm:col-span-2 lg:col-span-4 flex flex-col overflow-hidden rounded-2xl border-border bg-card p-0 shadow-xs transition-all duration-300 hover:shadow-md"
         >
             {/* Image */}
-            <div className="relative aspect-[1.83/1] overflow-hidden">
+            <div className="relative aspect-[1.83/1] w-full overflow-hidden">
                 <ImagePlaceholder />
 
                 {/* Country Badge */}
-                <div
-                    className="
-            absolute
-            left-4
-            top-4
-            inline-flex
-            items-center
-            gap-2
-            rounded-[12px]
-            bg-brand-primary
-            px-4
-            py-2.5
-            text-body-small
-            font-medium
-            text-white
-            shadow-sm
-          "
+                <Badge
+                    variant="brand"
+                    className="absolute left-4 top-4 inline-flex items-center gap-1.5 shadow-sm"
                 >
-                    <Plane size={16} strokeWidth={2.2} />
+                    <Plane size={14} strokeWidth={2.2} />
                     <span>{course.country}</span>
-                </div>
+                </Badge>
             </div>
 
             {/* Content */}
-            <div className="flex flex-1 flex-col px-[18px] pb-3 pt-4">
+            <CardContent className="flex flex-1 flex-col p-5">
                 {/* University */}
-                <div className="mb-2.5 flex items-center gap-1.5">
-                    <span className="text-[14px] leading-none">{getFlag(course.country)}</span>
+                <div className="mb-2 flex items-center gap-1.5">
+                    <span className="text-sm leading-none">{getFlag(course.country)}</span>
                     <span className="text-body-small font-medium text-content-primary">
                         {course.university}
                     </span>
                 </div>
 
                 {/* Title */}
-                <h3
-                    className="
-            min-h-[66px]
-            font-heading
-            font-normal
-            text-h4
-            text-content-primary
-          "
-                >
+                <CardTitle className="min-h-[56px] text-lg sm:text-xl font-normal text-content-primary">
                     {course.title}
-                </h3>
+                </CardTitle>
 
                 {/* Description */}
-                <p
-                    className="
-            mt-3
-            line-clamp-2
-            min-h-[44px]
-            text-body-small
-            text-content-secondary
-          "
-                >
+                <CardDescription className="mt-2 line-clamp-2 min-h-[40px] text-sm text-content-secondary">
                     {course.description}
-                </p>
+                </CardDescription>
 
                 {/* CTA */}
-                <button
+                <Button
                     type="button"
+                    variant="outline"
+                    fullWidth
                     onClick={() => openLeadPopup({ source: "course_brochure" })}
-                    className="
-            mt-3
-            flex
-            h-[47px]
-            w-full
-            items-center
-            justify-center
-            gap-3
-            rounded-full
-            border
-            border-brand-accent
-            bg-white
-            text-btn
-            font-medium
-            text-brand-accent
-            transition-all
-            duration-200
-            hover:bg-brand-accent
-            hover:text-white
-          "
+                    className="mt-4"
                 >
                     <span>Download Brochure</span>
                     <ArrowDownToLine size={18} strokeWidth={2.2} />
-                </button>
-            </div>
-        </article>
+                </Button>
+            </CardContent>
+        </Card>
     );
 }
 
@@ -329,94 +273,44 @@ export default function TopCoursesSection() {
     const [activeCategory, setActiveCategory] = useState("MBA");
 
     const activeCourses = courses[activeCategory];
-
     const activeIndex = categories.indexOf(activeCategory);
 
     const previousCategory = () => {
         const nextIndex =
             activeIndex === 0 ? categories.length - 1 : activeIndex - 1;
-
         setActiveCategory(categories[nextIndex]);
     };
 
     const nextCategory = () => {
         const nextIndex =
             activeIndex === categories.length - 1 ? 0 : activeIndex + 1;
-
         setActiveCategory(categories[nextIndex]);
     };
 
     return (
-        <section className="w-full bg-white text-content-primary">
-            <Container size="lg" className="py-12 sm:py-16">
-                {/* =========================
-            SECTION HEADER
-        ========================== */}
-                <header className="mx-auto max-w-[720px] text-center">
-                    {/* Eyebrow */}
-                    <div className="mb-5 flex items-center justify-center gap-2">
-                        <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
+        <section className="w-full bg-background text-content-primary tracking-[-0.04em] [letter-spacing:-0.04em] [&_*]:[letter-spacing:-0.04em]">
+            <Container size="lg" className="py-12 sm:py-16 md:py-20">
+                {/* SECTION HEADER */}
+                <SectionHeading
+                    eyebrow="Popular Courses"
+                    title="Top Courses to Study Abroad"
+                    description="High-demand programmes with excellent ROI, global job prospects, and pathways to permanent residency."
+                />
 
-                        <span className="text-body-small font-medium tracking-[-0.1px] text-brand-primary">
-                            Popular Courses
-                        </span>
-                    </div>
-
-                    {/* Heading */}
-                    <h2 className="text-h2 font-normal text-content-primary">
-                        Top Courses to Study
-                        <br />
-                        Abroad
-                    </h2>
-
-                    {/* Description */}
-                    <p className="mx-auto mt-7 max-w-[570px] text-body text-content-secondary">
-                        High-demand programmes with excellent ROI, global job prospects,
-                        and pathways to permanent residency.
-                    </p>
-                </header>
-
-                {/* =========================
-            CATEGORY NAVIGATION
-        ========================== */}
-                <div className="mt-11 flex items-center justify-center gap-3">
+                {/* CATEGORY NAVIGATION */}
+                <div className="mt-8 flex items-center justify-center gap-3">
                     {/* Left Arrow */}
                     <button
                         type="button"
                         onClick={previousCategory}
                         aria-label="Previous course category"
-                        className="
-              flex
-              h-9
-              w-9
-              shrink-0
-              items-center
-              justify-center
-              rounded-full
-              text-brand-accent
-              transition-colors
-              hover:bg-[#fff0f3]
-            "
+                        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                     >
-                        <ArrowLeft size={21} strokeWidth={2.2} />
+                        <ArrowLeft size={20} strokeWidth={2.2} />
                     </button>
 
                     {/* Category Pills */}
-                    <div
-                        className="
-              flex
-              max-w-full
-              items-center
-              gap-1
-              overflow-x-auto
-              rounded-full
-              border
-              border-border-default
-              bg-white
-              p-1.5
-              scrollbar-none
-            "
-                    >
+                    <div className="flex max-w-full items-center gap-1.5 overflow-x-auto rounded-full border border-border bg-white p-1.5 shadow-2xs scrollbar-none">
                         {categories.map((category) => {
                             const isActive = category === activeCategory;
 
@@ -426,19 +320,12 @@ export default function TopCoursesSection() {
                                     type="button"
                                     onClick={() => setActiveCategory(category)}
                                     className={`
-                    shrink-0
-                    rounded-full
-                    px-[17px]
-                    py-[11px]
-                    text-body-small
-                    font-medium
-                    transition-all
-                    duration-200
-                    ${isActive
-                                            ? "bg-brand-accent text-white"
+                                        flex h-10 shrink-0 cursor-pointer items-center rounded-full px-5 text-sm font-medium transition-all duration-200
+                                        ${isActive
+                                            ? "bg-brand-accent text-white shadow-xs"
                                             : "text-brand-primary hover:bg-surface-subtle"
                                         }
-                  `}
+                                    `}
                                 >
                                     {category}
                                 </button>
@@ -451,118 +338,48 @@ export default function TopCoursesSection() {
                         type="button"
                         onClick={nextCategory}
                         aria-label="Next course category"
-                        className="
-              flex
-              h-9
-              w-9
-              shrink-0
-              items-center
-              justify-center
-              rounded-full
-              text-brand-accent
-              transition-colors
-              hover:bg-[#fff0f3]
-            "
+                        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-brand-accent transition-colors hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                     >
-                        <ArrowRight size={21} strokeWidth={2.2} />
+                        <ArrowRight size={20} strokeWidth={2.2} />
                     </button>
                 </div>
 
-                {/* =========================
-            COURSE CARDS
-        ========================== */}
-                <div className="mt-11 grid grid-cols-4 gap-5 lg:grid-cols-12 lg:gap-6">
+                {/* COURSE CARDS */}
+                <div className="mt-10 grid grid-cols-4 gap-6 lg:grid-cols-12">
                     {activeCourses.map((course, index) => (
                         <CourseCard key={`${activeCategory}-${index}`} course={course} />
                     ))}
                 </div>
 
-                {/* =========================
-            VIEW ALL
-        ========================== */}
+                {/* VIEW ALL */}
                 <div className="mt-8 flex justify-center">
                     <button
                         type="button"
-                        className="
-              inline-flex
-              items-center
-              gap-2
-              text-btn
-              font-medium
-              text-brand-accent
-              transition-all
-              hover:gap-3
-            "
+                        onClick={() => openLeadPopup({ source: `view_all_${activeCategory.toLowerCase()}` })}
+                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-brand-accent transition-all hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
                     >
                         <span>View All {activeCategory} Courses</span>
                         <ArrowRight size={18} strokeWidth={2.2} />
                     </button>
                 </div>
 
-                {/* =========================
-            COUNSELLING CTA
-        ========================== */}
-                <div
-                    className="
-            mt-9
-            flex
-            flex-col
-            gap-6
-            rounded-[22px]
-            bg-brand-primary
-            px-6
-            py-5
-            sm:px-8
-            lg:flex-row
-            lg:items-center
-            lg:justify-between
-            lg:px-24
-          "
-                >
+                {/* COUNSELLING CTA */}
+                <div className="mt-10 flex flex-col gap-6 rounded-2xl bg-brand-primary p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:px-16 shadow-lg">
                     {/* Left Content */}
                     <div className="flex items-center gap-5">
-                        {/* Icon */}
-                        <div
-                            className="
-                flex
-                h-[80px]
-                w-[80px]
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                bg-white
-              "
-                        >
+                        <div className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm">
                             <GraduationCap
-                                size={38}
+                                size={32}
                                 strokeWidth={1.8}
                                 className="text-brand-primary"
                             />
                         </div>
 
-                        {/* Text */}
                         <div>
-                            <h3
-                                className="
-                  font-heading
-                  font-normal
-                  text-h4
-                  text-white
-                "
-                            >
+                            <h3 className="font-heading text-xl sm:text-2xl font-semibold text-white">
                                 Not sure which course fits your profile?
                             </h3>
-
-                            <p
-                                className="
-                  mt-1.5
-                  max-w-[610px]
-                  text-body-small
-                  text-content-on-primary
-                  sm:text-body
-                "
-                            >
+                            <p className="mt-1.5 max-w-xl text-sm text-white/80">
                                 Our counsellors will analyse your academics, budget & career
                                 goals to recommend the perfect programme.
                             </p>
@@ -570,47 +387,14 @@ export default function TopCoursesSection() {
                     </div>
 
                     {/* CTA */}
-                    <button
-                        type="button"
+                    <Button
+                        variant="accent"
+                        size="default"
                         onClick={() => openLeadPopup({ source: "course_counselling" })}
-                        className="
-              group
-              flex
-              h-[52px]
-              shrink-0
-              items-center
-              justify-between
-              gap-5
-              rounded-full
-              bg-brand-accent
-              pl-5
-              pr-2
-              text-btn
-              font-medium
-              text-white
-              transition-all
-              duration-200
-              hover:scale-[1.02]
-              hover:bg-brand-accent-hover
-            "
+                        iconBadge={<ArrowRight size={18} strokeWidth={2} />}
                     >
-                        <span>Book Free Counselling</span>
-
-                        <span
-                            className="
-                flex
-                h-[38px]
-                w-[38px]
-                items-center
-                justify-center
-                rounded-full
-                bg-white
-                text-content-primary
-              "
-                        >
-                            <Phone size={17} fill="currentColor" strokeWidth={1.5} />
-                        </span>
-                    </button>
+                        Book Free Counselling
+                    </Button>
                 </div>
             </Container>
         </section>

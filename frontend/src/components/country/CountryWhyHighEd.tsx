@@ -42,7 +42,7 @@ interface CountryWhyHighEdProps {
   country?: Country;
 }
 
-export default function WhyChooseUs({ country }: CountryWhyHighEdProps = {}) {
+export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-content-primary">
       <Container size="lg">

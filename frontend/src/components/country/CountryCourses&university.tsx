@@ -12,6 +12,7 @@ import {
 
 import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
+import { Country } from "@/types/country";
 
 type Course = {
   country: string;
@@ -492,7 +493,7 @@ function CourseCard({ course }: { course: Course }) {
   );
 }
 
-export default function TopCoursesSection({ country }: { country?: any } = {}) {
+export default function TopCoursesSection({ country: _country }: { country?: Country } = {}) {
   const { openLeadPopup } = useLeadPopup();
 
   const [activeCategory, setActiveCategory] = useState("MBA");

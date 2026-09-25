@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Star } from "lucide-react";
 import { Country } from "@/types/country";
 
@@ -85,8 +84,15 @@ interface CountryWhyStudyProps {
 }
 
 export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {}) {
+  const displayFeatures =
+    country?.whyStudy && country.whyStudy.length > 0
+      ? country.whyStudy
+      : features;
+
+  const countryName = country?.name || "the UK";
+
   return (
-    <section className="w-full bg-[#f6f6fa]">
+    <section className="w-full bg-neutral-50/60 py-16 sm:py-20 lg:py-24">
       <div
         className="
           mx-auto
@@ -97,13 +103,11 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
           items-center
           gap-12
           px-6
-          py-16
           sm:px-10
-          sm:py-20
           lg:grid-cols-[500px_minmax(0,1fr)]
-          lg:gap-[110px]
+          lg:gap-[80px]
+          xl:gap-[110px]
           lg:px-[80px]
-          lg:py-[80px]
         "
       >
         {/* ───────────────── LEFT IMAGE ───────────────── */}
@@ -118,18 +122,18 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
             <div
               className="
                 inline-flex
-                h-[31px]
+                h-[32px]
                 items-center
-                gap-[9px]
+                gap-2
                 rounded-full
-                bg-[#ef3d61]
-                px-[14px]
+                bg-brand-accent
+                px-3.5
               "
             >
               <span
                 className="
-                  h-[7px]
-                  w-[7px]
+                  h-1.5
+                  w-1.5
                   shrink-0
                   rounded-full
                   bg-white
@@ -138,11 +142,9 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
 
               <span
                 className="
-                  font-dm-sans
-                  text-[13px]
+                  text-xs
                   font-semibold
                   leading-none
-                  tracking-[-0.01em]
                   text-white
                 "
               >
@@ -157,62 +159,59 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
               mx-auto
               max-w-[620px]
               text-center
-              font-dm-sans
-              text-[40px]
-              font-medium
-              leading-[1.08]
-              tracking-[-0.045em]
-              text-[#202b3c]
-              sm:text-[46px]
+              font-heading
+              text-3xl
+              font-bold
+              leading-[1.15]
+              tracking-tight
+              text-foreground
+              sm:text-4xl
               lg:mx-0
-              lg:text-[48px]
-              xl:text-[50px]
+              lg:text-5xl
             "
           >
-            Why choose the UK for
-            <br />
-            your studies?
+            Why choose {countryName} for your studies?
           </h2>
 
           {/* Cards */}
-          <div className="mt-[38px] flex flex-col gap-[24px]">
-            {features.map((feature) => (
+          <div className="mt-8 flex flex-col gap-4">
+            {displayFeatures.map((feature) => (
               <article
                 key={feature.title}
                 className="
                   flex
-                  min-h-[120px]
+                  min-h-[110px]
                   w-full
                   items-center
-                  gap-[24px]
-                  rounded-[24px]
-                  bg-white
-                  px-[24px]
-                  py-[24px]
+                  gap-5
+                  rounded-2xl
+                  border border-border
+                  bg-card
+                  p-6
+                  shadow-xs
                   transition-all
                   duration-300
-                  hover:-translate-y-[2px]
-                  hover:shadow-[0_12px_35px_rgba(32,43,60,0.07)]
-                  sm:px-[24px]
+                  hover:-translate-y-0.5
+                  hover:shadow-md
+                  hover:border-primary/30
                 "
               >
                 {/* Icon */}
                 <div
                   className="
                     flex
-                    h-[48px]
-                    w-[48px]
+                    size-12
                     shrink-0
                     items-center
                     justify-center
                     rounded-full
-                    bg-[#ef3d61]
+                    bg-brand-accent/10
+                    text-brand-accent
                   "
                 >
                   <Star
                     aria-hidden="true"
-                    className="h-[23px] w-[23px] text-white"
-                    strokeWidth={1.8}
+                    className="size-5 fill-brand-accent text-brand-accent"
                   />
                 </div>
 
@@ -220,13 +219,12 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
                 <div className="min-w-0 flex-1">
                   <h3
                     className="
-                      font-dm-sans
-                      text-[18px]
-                      font-semibold
-                      leading-[1.3]
-                      tracking-[-0.025em]
-                      text-[#202b3c]
-                      sm:text-[19px]
+                      font-heading
+                      text-lg
+                      font-bold
+                      leading-snug
+                      tracking-tight
+                      text-foreground
                     "
                   >
                     {feature.title}
@@ -234,14 +232,11 @@ export default function WhyChooseCountry({ country }: CountryWhyStudyProps = {})
 
                   <p
                     className="
-                      mt-[5px]
+                      mt-1.5
                       max-w-[540px]
-                      font-dm-sans
-                      text-[14px]
-                      font-normal
-                      leading-[1.5]
-                      tracking-[-0.005em]
-                      text-[#697386]
+                      text-sm
+                      leading-relaxed
+                      text-muted-foreground
                     "
                   >
                     {feature.description}

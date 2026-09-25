@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
+import { ChevronDown } from "lucide-react";
 
 interface PhoneInputProps {
   countryCode: string;
@@ -31,155 +37,345 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   id = "phone-input",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState<number>(0);
+  const [focusedIndex, setFocusedIndex] = useState(0);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerBtnRef = useRef<HTMLButtonElement>(null);
   const optionRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const focusTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
 
+  const errorId = `${id}-error`;
+  const listboxId = `${id}-country-listbox`;
+
+  /*
+   * Close dropdown when clicking outside
+   */
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
-  // When dropdown opens, focus the active country code option
+  /*
+   * Clean up pending focus timeout
+   */
   useEffect(() => {
-    if (isOpen) {
-      const activeIdx = countryCodes.findIndex((cc) => cc.code === countryCode);
-      const targetIdx = activeIdx >= 0 ? activeIdx : 0;
-      setTimeout(() => {
-        setFocusedIndex(targetIdx);
-        optionRefs.current[targetIdx]?.focus();
-      }, 50);
+    return () => {
+      if (focusTimeoutRef.current) {
+        clearTimeout(focusTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  /*
+   * Focus selected country when dropdown opens
+   */
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const activeIndex = countryCodes.findIndex(
+      (country) => country.code === countryCode
+    );
+
+    const targetIndex = activeIndex >= 0 ? activeIndex : 0;
+
+    if (focusTimeoutRef.current) {
+      clearTimeout(focusTimeoutRef.current);
     }
+
+    focusTimeoutRef.current = setTimeout(() => {
+      setFocusedIndex(targetIndex);
+      optionRefs.current[targetIndex]?.focus();
+    }, 0);
+
+    return () => {
+      if (focusTimeoutRef.current) {
+        clearTimeout(focusTimeoutRef.current);
+      }
+    };
   }, [isOpen, countryCode]);
 
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "").slice(0, 15);
+  /*
+   * Phone number input
+   */
+  const handlePhoneChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = event.target.value
+      .replace(/\D/g, "")
+      .slice(0, 15);
+
     onPhoneChange(value);
   };
 
-  const handleTriggerKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+  /*
+   * Open / close dropdown
+   */
+  const toggleDropdown = useCallback(() => {
     if (disabled) return;
-    if (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      setIsOpen(true);
+
+    setIsOpen((previous) => !previous);
+  }, [disabled]);
+
+  /*
+   * Trigger keyboard navigation
+   */
+  const handleTriggerKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>
+  ) => {
+    if (disabled) return;
+
+    switch (event.key) {
+      case "ArrowDown":
+        event.preventDefault();
+
+        if (!isOpen) {
+          setIsOpen(true);
+        }
+        break;
+
+      case "ArrowUp":
+        event.preventDefault();
+
+        if (!isOpen) {
+          setIsOpen(true);
+        }
+        break;
+
+      case "Enter":
+      case " ":
+        event.preventDefault();
+        setIsOpen((previous) => !previous);
+        break;
+
+      case "Escape":
+        if (isOpen) {
+          event.preventDefault();
+          setIsOpen(false);
+        }
+        break;
+
+      default:
+        break;
     }
   };
 
-  const handleOptionKeyDown = (e: React.KeyboardEvent, index: number) => {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      const nextIndex = (index + 1) % countryCodes.length;
-      setFocusedIndex(nextIndex);
-      optionRefs.current[nextIndex]?.focus();
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      const prevIndex = (index - 1 + countryCodes.length) % countryCodes.length;
-      setFocusedIndex(prevIndex);
-      optionRefs.current[prevIndex]?.focus();
-    } else if (e.key === "Escape") {
-      e.preventDefault();
-      setIsOpen(false);
-      triggerBtnRef.current?.focus();
-    } else if (e.key === "Tab") {
-      setIsOpen(false);
+  /*
+   * Country option keyboard navigation
+   */
+  const handleOptionKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    switch (event.key) {
+      case "ArrowDown": {
+        event.preventDefault();
+
+        const nextIndex =
+          index === countryCodes.length - 1
+            ? 0
+            : index + 1;
+
+        setFocusedIndex(nextIndex);
+        optionRefs.current[nextIndex]?.focus();
+        break;
+      }
+
+      case "ArrowUp": {
+        event.preventDefault();
+
+        const previousIndex =
+          index === 0
+            ? countryCodes.length - 1
+            : index - 1;
+
+        setFocusedIndex(previousIndex);
+        optionRefs.current[previousIndex]?.focus();
+        break;
+      }
+
+      case "Home": {
+        event.preventDefault();
+
+        setFocusedIndex(0);
+        optionRefs.current[0]?.focus();
+        break;
+      }
+
+      case "End": {
+        event.preventDefault();
+
+        const lastIndex = countryCodes.length - 1;
+
+        setFocusedIndex(lastIndex);
+        optionRefs.current[lastIndex]?.focus();
+        break;
+      }
+
+      case "Enter":
+      case " ": {
+        event.preventDefault();
+
+        selectCountryCode(countryCodes[index].code);
+        break;
+      }
+
+      case "Escape": {
+        event.preventDefault();
+
+        setIsOpen(false);
+        triggerBtnRef.current?.focus();
+        break;
+      }
+
+      case "Tab": {
+        setIsOpen(false);
+        break;
+      }
+
+      default:
+        break;
     }
   };
 
+  /*
+   * Select country
+   */
   const selectCountryCode = (code: string) => {
     onCountryCodeChange(code);
     setIsOpen(false);
-    triggerBtnRef.current?.focus();
+
+    requestAnimationFrame(() => {
+      triggerBtnRef.current?.focus();
+    });
   };
 
-  const errorId = `${id}-error`;
-
   return (
-    <div>
-      <label htmlFor={id} className="mb-1.5 block font-body text-xs font-semibold text-content-secondary">
+    <div className="w-full">
+      {/* Label */}
+      <label
+        htmlFor={id}
+        className="mb-1.5 block font-body text-xs font-semibold text-content-secondary"
+      >
         Mobile Number *
       </label>
+
+      {/* Input wrapper */}
       <div
-        className={`flex h-12 items-center overflow-hidden rounded-xl border bg-white transition-colors ${
-          error ? "border-[#E93F61]" : "border-gray-200 focus-within:border-brand-primary"
-        }`}
+        className={`relative flex h-12 w-full items-center rounded-xl border bg-white transition-colors ${error
+          ? "border-[#E93F61]"
+          : "border-gray-200 focus-within:border-brand-primary"
+          }`}
       >
-        {/* Country Code Selector (ISS-017 & ISS-010) */}
-        <div ref={dropdownRef} className="relative">
+        {/* Country selector */}
+        <div
+          ref={dropdownRef}
+          className="relative h-full shrink-0"
+        >
           <button
             ref={triggerBtnRef}
             type="button"
-            onClick={() => !disabled && setIsOpen(!isOpen)}
+            onClick={toggleDropdown}
             onKeyDown={handleTriggerKeyDown}
             disabled={disabled}
-            className="flex h-full min-h-[44px] items-center gap-1 border-r border-gray-200 px-3 font-body text-sm font-medium text-content-primary transition-colors hover:bg-gray-50 disabled:opacity-50"
-            aria-label="Select country code"
+            className="flex h-full min-h-[44px] items-center gap-1.5 border-r border-gray-200 px-3 font-body text-sm font-medium text-content-primary transition-colors hover:bg-gray-50 focus:outline-none focus-visible:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Select country calling code"
             aria-haspopup="listbox"
             aria-expanded={isOpen}
-            aria-controls={`${id}-country-listbox`}
+            aria-controls={listboxId}
           >
             <span>{countryCode}</span>
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className={`transition-transform ${isOpen ? "rotate-180" : ""}`}>
-              <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+
+            <ChevronDown
+              size={14}
+              strokeWidth={1.75}
+              className={`shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+                }`}
+              aria-hidden="true"
+            />
           </button>
 
+          {/* Country dropdown */}
           {isOpen && (
             <div
-              id={`${id}-country-listbox`}
+              id={listboxId}
               role="listbox"
               aria-label="Country calling codes"
-              className="absolute left-0 top-full z-50 mt-1 w-32 overflow-hidden rounded-lg border border-border-default bg-white shadow-xl"
+              className="absolute left-0 top-[calc(100%+6px)] z-[100] w-32 overflow-hidden rounded-xl border border-gray-200 bg-white p-1 shadow-lg"
             >
-              {countryCodes.map((cc, idx) => (
-                <button
-                  key={cc.code}
-                  ref={(el) => {
-                    optionRefs.current[idx] = el;
-                  }}
-                  type="button"
-                  role="option"
-                  aria-selected={countryCode === cc.code}
-                  tabIndex={focusedIndex === idx ? 0 : -1}
-                  onClick={() => selectCountryCode(cc.code)}
-                  onKeyDown={(e) => handleOptionKeyDown(e, idx)}
-                  className={`flex min-h-[44px] w-full items-center px-3.5 py-2.5 text-left font-body text-sm transition-colors hover:bg-icon-bg-primary ${
-                    countryCode === cc.code
+              {countryCodes.map((country, index) => {
+                const isSelected =
+                  countryCode === country.code;
+
+                return (
+                  <button
+                    key={country.code}
+                    ref={(element) => {
+                      optionRefs.current[index] = element;
+                    }}
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    tabIndex={
+                      focusedIndex === index ? 0 : -1
+                    }
+                    onClick={() =>
+                      selectCountryCode(country.code)
+                    }
+                    onKeyDown={(event) =>
+                      handleOptionKeyDown(event, index)
+                    }
+                    className={`flex min-h-[40px] w-full items-center rounded-lg px-3 py-2 text-left font-body text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/30 ${isSelected
                       ? "bg-icon-bg-primary font-semibold text-brand-primary"
-                      : "text-content-primary"
-                  }`}
-                >
-                  {cc.label}
-                </button>
-              ))}
+                      : "text-content-primary hover:bg-gray-50"
+                      }`}
+                  >
+                    {country.label}
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>
 
-        {/* Phone Input (ISS-014 & ISS-015) */}
+        {/* Phone input */}
         <input
           id={id}
           type="tel"
           inputMode="numeric"
           pattern="[0-9]*"
+          autoComplete="tel"
           placeholder="Mobile Number"
           value={phone}
           onChange={handlePhoneChange}
           disabled={disabled}
           aria-label="Mobile phone number"
-          aria-invalid={!!error}
+          aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="h-full flex-1 bg-transparent px-3 font-body text-sm text-content-primary outline-none placeholder:text-gray-400 disabled:opacity-50"
+          className="h-full min-w-0 flex-1 bg-transparent px-3 font-body text-sm text-content-primary outline-none placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 
+      {/* Validation error */}
       {error && (
-        <p id={errorId} className="mt-1.5 font-body text-xs text-brand-accent" role="alert">
+        <p
+          id={errorId}
+          className="mt-1.5 font-body text-xs text-brand-accent"
+          role="alert"
+        >
           {error}
         </p>
       )}

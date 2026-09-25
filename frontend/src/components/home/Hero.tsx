@@ -6,7 +6,9 @@ import Container from "@/components/ui/Container";
 import Image from "next/image";
 import { ArrowRight, GraduationCap, Building2, ShieldCheck, Globe } from "lucide-react";
 import gsap from "gsap";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { buttonVariants } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 const questionSets = {
     left: [
@@ -30,7 +32,6 @@ const questionSets = {
 };
 
 function Hero() {
-    const { openLeadPopup } = useLeadPopup();
     /*
      * Container refs for interactive cursor reaction
      */
@@ -353,6 +354,9 @@ function Hero() {
                 flex-col
                 overflow-hidden
                 bg-[linear-gradient(180deg,var(--color-brand-primary),#12204C)]
+                tracking-[-0.04em]
+                [letter-spacing:-0.04em]
+                [&_*]:[letter-spacing:-0.04em]
             "
         >
 
@@ -546,7 +550,7 @@ function Hero() {
                     >
                         Study Abroad{" "}
                         <span className="text-brand-accent">
-                            Advisors
+                            <i>Advisors</i>
                         </span>
                         <br />
                         in Tamil Nadu
@@ -577,123 +581,27 @@ function Hero() {
                     ================================================== */}
                     <div className="relative z-30 mt-7 sm:mt-8 md:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4">
                         {/* Primary Button: Book Free Counselling */}
-                        <button
-                            type="button"
+                        <LeadCTAButton
+                            source="hero_primary_cta"
+                            variant="accent"
+                            size="default"
                             id="cta-book-counselling"
-                            onClick={() => openLeadPopup({ source: "hero_primary_cta" })}
-                            className="
-                                group
-                                relative
-                                inline-flex
-                                items-center
-                                justify-center
-                                rounded-full
-                                bg-gradient-to-r
-                                from-[#FF5E7E]
-                                via-brand-accent
-                                to-[#FF5E7E]
-                                p-[2px]
-                                cursor-pointer
-                                touch-manipulation
-                                select-none
-                                transition-all
-                                duration-300
-                                hover:scale-[1.03]
-                                active:scale-[0.98]
-                                shadow-[0_8px_24px_rgba(233,63,97,0.32)]
-                                w-full
-                                sm:w-auto
-                                max-w-[280px]
-                                sm:max-w-none
-                            "
+                            className="w-full sm:w-auto max-w-[280px] sm:max-w-none shadow-md"
+                            iconBadge={<ArrowRight size={18} strokeWidth={2.2} />}
                         >
-                            {/* Animated Shiny Stroke Border (Reacts on Hover across the stroke) */}
-                            <span
-                                className="
-                                    absolute
-                                    inset-0
-                                    rounded-full
-                                    bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.2)_20%,#ffffff_50%,rgba(255,255,255,0.2)_80%,transparent_100%)]
-                                    bg-[length:200%_100%]
-                                    opacity-0
-                                    group-hover:opacity-100
-                                    group-hover:animate-shiny-stroke
-                                    transition-opacity
-                                    duration-300
-                                    pointer-events-none
-                                "
-                                aria-hidden="true"
-                            />
+                            Book Free Counselling
+                        </LeadCTAButton>
 
-                            {/* Inner Button Body */}
-                            <span
-                                className="
-                                    relative
-                                    z-10
-                                    flex
-                                    h-12
-                                    sm:h-[50px]
-                                    w-full
-                                    sm:w-auto
-                                    items-center
-                                    justify-center
-                                    gap-2.5
-                                    rounded-full
-                                    bg-brand-accent
-                                    px-6
-                                    sm:px-7
-                                    text-btn
-                                    text-white
-                                    transition-colors
-                                    duration-300
-                                    group-hover:bg-brand-accent-hover
-                                "
-                            >
-                                <span>Book Free Counselling</span>
-
-                                <ArrowRight
-                                    size={18}
-                                    strokeWidth={2.2}
-                                    className="transition-transform duration-300 group-hover:translate-x-1"
-                                />
-                            </span>
-                        </button>
-
-                        {/* Secondary Button: Explore Universities (Stroke White, No Fill, 16px DM Sans Medium) */}
+                        {/* Secondary Button: Explore */}
                         <Link
                             href="/explore"
                             id="cta-explore-universities"
-                            className="
-                                group
-                                relative
-                                inline-flex
-                                h-12
-                                sm:h-[50px]
-                                w-full
-                                sm:w-auto
-                                max-w-[280px]
-                                sm:max-w-none
-                                items-center
-                                justify-center
-                                gap-2.5
-                                rounded-full
-                                border
-                                border-white
-                                bg-transparent
-                                px-6
-                                sm:px-7
-                                text-btn
-                                text-white
-                                transition-all
-                                duration-300
-                                hover:bg-white/10
-                                hover:border-white
-                                hover:scale-[1.03]
-                                active:scale-[0.98]
-                            "
+                            className={cn(
+                                buttonVariants({ variant: "inverse", size: "default" }),
+                                "w-full sm:w-auto max-w-[280px] sm:max-w-none border-white/80 hover:bg-white/20"
+                            )}
                         >
                             <span>Explore</span>
-
                             <ArrowRight
                                 size={18}
                                 strokeWidth={2.2}

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
 import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 const faqs = [
     {
@@ -34,7 +35,6 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-    const { openLeadPopup } = useLeadPopup();
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleFAQ = (index: number) => {
@@ -42,150 +42,69 @@ export default function FAQSection() {
     };
 
     return (
-        <section
-            className="
-        w-full
-        bg-white
-        py-16
-        text-content-primary
-        sm:py-20
-        lg:py-[80px]
-      "
-        >
+        <section className="w-full bg-white py-14 sm:py-18 md:py-20 text-content-primary tracking-[-0.04em] [letter-spacing:-0.04em] [&_*]:[letter-spacing:-0.04em]">
             <Container size="lg">
                 <div className="grid grid-cols-4 lg:grid-cols-12 gap-8">
                     <div className="col-span-4 lg:col-span-8 lg:col-start-3">
-                        {/* =====================================================
-            HEADER
-        ====================================================== */}
+                        {/* HEADER */}
+                        <SectionHeading
+                            eyebrow="FAQ"
+                            title="Frequently Asked Questions – Study Abroad from Tamil Nadu"
+                            className="mb-10 sm:mb-12"
+                        />
 
-                        <header className="text-center">
-                            {/* Eyebrow */}
-                            <div className="mb-7 flex items-center justify-center gap-2">
-                                <span className="h-[7px] w-[7px] rounded-full bg-brand-primary" />
-
-                                <span className="text-body-small font-medium text-brand-primary">
-                                    FAQ
-                                </span>
-                            </div>
-
-                            {/* Heading */}
-                            <h2 className="mx-auto text-h2 font-normal text-content-primary">
-                                Frequently Asked Questions –
-                                <br className="hidden sm:block" />
-                                Study Abroad from Tamil Nadu
-                            </h2>
-                        </header>
-
-                        {/* =====================================================
-            FAQ ACCORDION
-        ====================================================== */}
-
-                        <div className="mt-12 sm:mt-14">
+                        {/* FAQ ACCORDION */}
+                        <div className="divide-y divide-border">
                             {faqs.map((faq, index) => {
                                 const isOpen = openIndex === index;
 
                                 return (
-                                    <div
-                                        key={faq.question}
-                                        className="
-                  border-b
-                  border-border-default
-                "
-                                    >
-                                        {/* Question */}
-
+                                    <div key={faq.question} className="border-b border-border">
+                                        {/* Question Trigger - 48px min touch target */}
                                         <button
                                             id={`faq-btn-${index}`}
                                             type="button"
                                             onClick={() => toggleFAQ(index)}
                                             aria-expanded={isOpen}
                                             aria-controls={`faq-answer-${index}`}
-                                            className="
-                    group
-                    flex
-                    w-full
-                    items-center
-                    justify-between
-                    gap-5
-                    py-[15px]
-                    text-left
-                  "
+                                            className="group flex min-h-14 w-full cursor-pointer items-center justify-between gap-5 py-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                                         >
                                             <span
-                                                className={`
-                      text-body
-                      font-medium
-                      transition-colors
-                      ${isOpen
-                                                        ? "text-brand-primary"
+                                                className={`text-base sm:text-lg font-medium transition-colors ${
+                                                    isOpen
+                                                        ? "text-brand-primary font-semibold"
                                                         : "text-content-primary group-hover:text-brand-primary"
-                                                    }
-                    `}
+                                                }`}
                                             >
                                                 {faq.question}
                                             </span>
 
-                                            {/* Arrow */}
-
-                                            <span
-                                                className="
-                      flex
-                      h-[26px]
-                      w-[26px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-brand-primary
-                      text-white
-                      transition-transform
-                      duration-300
-                      group-hover:scale-105
-                    "
-                                            >
+                                            {/* Chevron Toggle Icon */}
+                                            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white shadow-2xs transition-transform duration-300 group-hover:scale-105">
                                                 <ChevronDown
-                                                    size={17}
+                                                    size={18}
                                                     strokeWidth={2.5}
                                                     aria-hidden="true"
-                                                    className={`
-                        transition-transform
-                        duration-300
-                        ${isOpen ? "rotate-180" : "rotate-0"}
-                      `}
+                                                    className={`transition-transform duration-300 ${
+                                                        isOpen ? "rotate-180" : "rotate-0"
+                                                    }`}
                                                 />
                                             </span>
                                         </button>
 
-                                        {/* =================================================
-                    ANSWER
-                ================================================== */}
-
+                                        {/* Answer Content */}
                                         <div
                                             id={`faq-answer-${index}`}
                                             role="region"
                                             aria-labelledby={`faq-btn-${index}`}
-                                            className={`
-                    grid
-                    transition-all
-                    duration-300
-                    ease-in-out
-                    ${isOpen
-                                                    ? "grid-rows-[1fr] opacity-100"
-                                                    : "grid-rows-[0fr] opacity-0"
-                                                }
-                  `}
+                                            className={`grid transition-all duration-300 ease-in-out ${
+                                                isOpen
+                                                    ? "grid-rows-[1fr] opacity-100 pb-5"
+                                                    : "grid-rows-[0fr] opacity-0 pb-0"
+                                            }`}
                                         >
                                             <div className="overflow-hidden">
-                                                <p
-                                                    className="
-                        max-w-[640px]
-                        pb-5
-                        pr-10
-                        text-body
-                        text-content-secondary
-                      "
-                                                >
+                                                <p className="max-w-2xl pr-8 text-sm sm:text-base leading-relaxed text-content-secondary">
                                                     {faq.answer}
                                                 </p>
                                             </div>
@@ -195,37 +114,16 @@ export default function FAQSection() {
                             })}
                         </div>
 
-                        {/* =====================================================
-                    BOTTOM CTA
-                ====================================================== */}
+                        {/* BOTTOM CTA */}
                         <div className="mt-12 flex justify-center">
-                            <button
-                                type="button"
-                                onClick={() => openLeadPopup({ source: "faq_cta" })}
-                                className="
-              group
-              inline-flex
-              items-center
-              gap-2
-              rounded-full
-              bg-brand-accent
-              px-6
-              py-3
-              text-btn
-              font-medium
-              text-white
-              transition-all
-              duration-200
-              hover:bg-brand-accent-hover
-            "
+                            <LeadCTAButton
+                                source="faq_cta"
+                                variant="accent"
+                                size="default"
+                                iconBadge={<ArrowRight size={18} strokeWidth={2.2} />}
                             >
-                                <span>Still have questions? Let&apos;s talk</span>
-                                <ArrowRight
-                                    size={18}
-                                    strokeWidth={2.2}
-                                    className="transition-transform duration-200 group-hover:translate-x-1"
-                                />
-                            </button>
+                                Still have questions? Let&apos;s talk
+                            </LeadCTAButton>
                         </div>
                     </div>
                 </div>

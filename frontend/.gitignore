@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lead persistence & PII protection (ISS-improve.md)
+/data/leads/*
+!/data/leads/.gitkeep

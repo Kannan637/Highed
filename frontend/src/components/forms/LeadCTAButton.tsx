@@ -2,9 +2,10 @@
 
 import React from "react";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
-import { Button, ButtonProps } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
 
-interface LeadCTAButtonProps extends Omit<ButtonProps, "onClick"> {
+interface LeadCTAButtonProps
+  extends Omit<React.ComponentPropsWithoutRef<typeof Button>, "onClick"> {
   source?: string;
   contextTitle?: string;
   contextCTA?: string;

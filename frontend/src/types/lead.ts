@@ -7,6 +7,8 @@ export interface LeadSubmission {
   preferredCourse?: string;
   studyLevel?: string;
   message?: string;
+  source?: string;
+  page?: string;
 }
 
 export interface LeadPopupData {
