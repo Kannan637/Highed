@@ -76,7 +76,6 @@ export default function WhyChooseUs() {
                 src="/images/whychooseus/ChatGPT Image Sep 24, 2026, 12_21_45 PM.webp"
                 alt="Student studying outdoors with educational guidance"
                 fill
-                priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
                 className="object-cover object-center"
             />
