@@ -162,16 +162,31 @@ export default function StudyDestinations() {
     const activeCountry = getDestination(0);
     const nextCountry = getDestination(1);
 
-    // Smooth crossfade + slide + image "settle" whenever the active
-    // destination changes. Runs for both the desktop and mobile card, and
-    // whichever one is hidden by CSS just animates invisibly (harmless).
+    // Smooth, orchestrated transition whenever the active destination
+    // changes. One timeline drives all four target groups (instead of four
+    // independent tweens), so there's a single kill/overwrite point and a
+    // single place to clear inline transforms once it settles. Runs for
+    // both the desktop and mobile card; whichever is hidden by CSS just
+    // animates invisibly (harmless, and inexpensive since it's
+    // transform/opacity only).
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
             return;
         }
 
+        if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+
         const dir = directionRef.current;
+
+        const cardTargets = [
+            desktopCardRef.current,
+            mobileCardRef.current,
+            prevCardRef.current,
+            nextCardRef.current,
+        ].filter((el): el is HTMLElement => el !== null);
 
         const contentTargets = [
             desktopContentRef.current,
@@ -188,51 +203,59 @@ export default function StudyDestinations() {
             nextContentRef.current,
         ].filter((el): el is HTMLDivElement => el !== null);
 
-        const cardTargets = [
-            desktopCardRef.current,
-            mobileCardRef.current,
-            prevCardRef.current,
-            nextCardRef.current,
-        ].filter((el): el is HTMLElement => el !== null);
+        const allTargets = [...cardTargets, ...contentTargets, ...imageTargets, ...sideTargets];
+        if (!allTargets.length) return;
+
+        gsap.killTweensOf(allTargets);
+
+        const tl = gsap.timeline({
+            defaults: { force3D: true, overwrite: "auto" },
+            // Drop inline transform/opacity once settled so idle cards don't
+            // keep a GPU layer or stale computed style hanging around.
+            onComplete: () => gsap.set(allTargets, { clearProps: "transform,opacity" }),
+        });
 
         if (cardTargets.length) {
-            gsap.killTweensOf(cardTargets);
-            gsap.fromTo(
+            tl.fromTo(
                 cardTargets,
-                { x: dir * 60 },
-                { x: 0, duration: 0.6, ease: "power3.out" }
-            );
-        }
-
-        if (contentTargets.length) {
-            gsap.killTweensOf(contentTargets);
-            gsap.fromTo(
-                contentTargets,
-                { opacity: 0, x: dir * 28, scale: 0.98 },
-                { opacity: 1, x: 0, scale: 1, duration: 0.55, ease: "power3.out" }
+                { x: dir * 48 },
+                { x: 0, duration: 0.5, ease: "power3.out" },
+                0
             );
         }
 
         if (imageTargets.length) {
-            gsap.killTweensOf(imageTargets);
-            gsap.fromTo(
+            tl.fromTo(
                 imageTargets,
-                { scale: 1.12 },
-                { scale: 1, duration: 0.8, ease: "power2.out" }
+                { scale: 1.06 },
+                { scale: 1, duration: 0.7, ease: "power2.out" },
+                0
+            );
+        }
+
+        // Content lifts on Y only — the card itself already carries the X
+        // motion, so this avoids stacking two horizontal movements, which is
+        // what made the old transition read as jittery rather than smooth.
+        if (contentTargets.length) {
+            tl.fromTo(
+                contentTargets,
+                { opacity: 0, y: 14 },
+                { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+                0.08
             );
         }
 
         if (sideTargets.length) {
-            gsap.killTweensOf(sideTargets);
-            gsap.fromTo(
+            tl.fromTo(
                 sideTargets,
-                { opacity: 0.3 },
-                { opacity: 1, duration: 0.5, ease: "power2.out" }
+                { opacity: 0.35 },
+                { opacity: 1, duration: 0.4, ease: "power2.out" },
+                0.1
             );
         }
 
         return () => {
-            gsap.killTweensOf([...cardTargets, ...contentTargets, ...imageTargets, ...sideTargets]);
+            tl.kill();
         };
     }, [activeIndex]);
 
@@ -528,7 +551,7 @@ function DestinationCard({
                     src={destination.image}
                     alt={`${destination.country} study destination`}
                     fill
-                    className={`object-cover transition-all duration-700 ${isActive ? "grayscale-0" : "grayscale opacity-75"}`}
+                    className={`object-cover transition-[filter,opacity] duration-500 ease-out ${isActive ? "grayscale-0" : "grayscale opacity-75"}`}
                     sizes={isActive ? "(max-width: 768px) 100vw, 650px" : "345px"}
                 />
             </div>

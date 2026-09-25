@@ -229,14 +229,14 @@ export function ServicesSection({
                         );
 
                         if (renderCardLink && post.href) {
-                          return (
-                            <div key={index} className="group/card h-full">
-                              {renderCardLink({
-                                href: post.href,
-                                children: cardInner,
-                              })}
-                            </div>
-                          );
+                            return (
+                                <div key={index} className="group/card h-full">
+                                    {renderCardLink({
+                                        href: post.href,
+                                        children: cardInner,
+                                    })}
+                                </div>
+                            );
                         }
 
                         if (post.href) {
