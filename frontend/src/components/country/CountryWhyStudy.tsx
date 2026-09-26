@@ -33,14 +33,16 @@ const features = [
   },
 ];
 
-function DestinationImage() {
+function DestinationImage({ country }: { country?: Country }) {
+  const imageSrc = country?.heroImage || "/images/countries/UK.webp";
+
   return (
-    <div className="relative mx-auto w-full max-w-[500px]">
+    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px]">
       <span
         aria-hidden="true"
         className="
           absolute
-          -right-12
+          -right-6
           top-2
           hidden
           size-2
@@ -52,9 +54,9 @@ function DestinationImage() {
 
       <svg
         viewBox="0 0 256 256"
-        className="block h-auto w-full"
+        className="block h-auto w-full drop-shadow-sm"
         role="img"
-        aria-label="Student studying abroad"
+        aria-label={`Why choose ${country?.name || "destination"} for studies`}
       >
         <defs>
           <clipPath id="destination-image-shape">
@@ -85,7 +87,7 @@ function DestinationImage() {
         </defs>
 
         <image
-          href="/images/country/uk-why-choose.png"
+          href={imageSrc}
           x="0"
           y="0"
           width="256"
@@ -143,7 +145,7 @@ export default function WhyChooseCountry({
       >
         {/* LEFT IMAGE */}
         <div className="flex items-center justify-center lg:justify-start">
-          <DestinationImage />
+          <DestinationImage country={country} />
         </div>
 
         {/* RIGHT CONTENT */}
