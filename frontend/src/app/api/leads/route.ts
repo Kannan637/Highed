@@ -7,6 +7,7 @@ const ALLOWED_ORIGINS = [
   "https://www.highed.in",
   "https://highed.org",
   "https://www.highed.org",
+  "https://highed-rho.vercel.app",
   "http://localhost:3000",
   "http://localhost",
 ];
@@ -25,7 +26,9 @@ export async function POST(req: NextRequest) {
     // 2. Origin / Referer validation
     const origin = req.headers.get("origin") || req.headers.get("referer") || "";
     if (origin) {
-      const isValidOrigin = ALLOWED_ORIGINS.some((allowed) => origin.startsWith(allowed));
+      const isValidOrigin =
+        ALLOWED_ORIGINS.some((allowed) => origin.startsWith(allowed)) ||
+        /^https:\/\/[a-zA-Z0-9_.-]+\.vercel\.app/.test(origin);
       if (!isValidOrigin) {
         return NextResponse.json(
           { success: false, message: "Unauthorized request origin." },

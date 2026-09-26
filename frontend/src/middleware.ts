@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 const PRIMARY_HOST = process.env.PRIMARY_HOST || "highed.in";
 
 const REDIRECT_HOSTS = new Set([
-  "highed-rho.vercel.app",
   `www.${PRIMARY_HOST}`,
 ]);
 
