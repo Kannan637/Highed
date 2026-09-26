@@ -45,7 +45,7 @@ interface CountryWhyHighEdProps {
 
 export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-content-primary">
+    <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-content-primary tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <div className="grid grid-cols-4 lg:grid-cols-12 gap-6">
           {/* =========================
@@ -80,7 +80,7 @@ export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
                             overflow-hidden
                             rounded-[36px]
                             border
-                            border-[#e3e5ea]
+                            border-border-default
                             bg-gradient-to-r
                             from-white
                             via-[#eef2ff]
@@ -196,7 +196,7 @@ function ComparisonItem({
 
       {/* Text */}
       <div className="min-w-0">
-        <h4 className={isApproach ? "text-white" : "text-content-primary"}>
+        <h4 className={isApproach ? "text-white card-title" : "text-content-primary card-title"}>
           {title}
         </h4>
 

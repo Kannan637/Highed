@@ -25,7 +25,7 @@ const reviewAvatars = [
 
 export const CountryHero = ({ country }: CountryHeroProps) => {
   return (
-    <section className="relative min-h-[620px] overflow-hidden bg-[#172D67] text-white md:min-h-[680px] lg:min-h-[720px]">
+    <section className="relative min-h-[620px] overflow-hidden bg-[#172D67] text-white md:min-h-[680px] lg:min-h-[720px] tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       {/* =========================================================
           BACKGROUND IMAGE
       ========================================================== */}
@@ -41,13 +41,12 @@ export const CountryHero = ({ country }: CountryHeroProps) => {
           />
 
           {/* Overall image overlay */}
-          <div className="absolute inset-0 bg-[#10285F]/25" />
 
           {/* Strong left-side gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#172F70] via-[#1E4B9A]/90 via-45% to-transparent" />
+
 
           {/* Bottom gradient */}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/20 to-transparent" />
+
         </div>
       )}
 
@@ -148,7 +147,7 @@ export const CountryHero = ({ country }: CountryHeroProps) => {
                 className="shrink-0"
               />
 
-              <span className="font-sans text-sm font-medium text-white sm:text-base">
+              <span className="text-body-small font-medium text-white sm:text-body">
                 4.9 review in Google
               </span>
             </div>

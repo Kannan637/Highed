@@ -2,7 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Award, CheckCircle2, Compass, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  CheckCircle2,
+  Compass,
+  ShieldCheck,
+} from "lucide-react";
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -17,88 +23,149 @@ interface CountryScholarshipsProps {
   country: Country;
 }
 
-export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({ country }) => {
+export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
+  country,
+}) => {
   return (
-    <section id="scholarships" className="bg-neutral-50/60 py-12 sm:py-16 md:py-20 border-t border-neutral-200/60">
+    <section
+      id="scholarships"
+      className="border-t border-border/60 bg-surface-neutral/60 py-14 sm:py-18 md:py-24"
+    >
       <Container size="lg">
-        <div className="flex flex-col items-center justify-center text-center mb-10 gap-6">
-          <div className="w-full flex justify-center">
-            <SectionHeading
-              badge="Financial Support"
-              title={`Scholarships & Grants in ${country.name}`}
-              subtitle={`Offset your tuition with merit-based awards, government stipends, and university waivers.`}
-              className="text-center mb-0 max-w-2xl"
-            />
-          </div>
+        {/* Section Header */}
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+          <SectionHeading
+            badge="Financial Support"
+            title={`Scholarships & Grants in ${country.name}`}
+            subtitle="Offset your tuition with merit-based awards, government stipends, and university waivers."
+            className="mx-auto mb-0 text-center"
+          />
         </div>
 
+        {/* Scholarship Carousel */}
         <Carousel
           ariaLabel={`Scholarships in ${country.name}`}
-          className="px-1"
+          className="!overflow-visible px-1 pb-2"
           controlsPosition="top"
         >
           {country.scholarshipsList.map((scholarship, idx) => (
             <Card
-              key={scholarship.name + idx}
-              className="snap-start shrink-0 w-[84vw] max-w-[340px] sm:w-[360px] md:w-[400px] flex flex-col justify-between"
+              key={`${scholarship.name}-${idx}`}
+              className={cn(
+                "group flex h-full min-h-[330px] shrink-0 snap-start flex-col",
+                "w-[calc(100vw-40px)] max-w-[360px]",
+                "sm:w-[370px] md:w-[400px]",
+                "rounded-2xl border border-border/70 bg-white",
+                "p-5 sm:p-6",
+                "shadow-sm transition-all duration-300",
+                "hover:-translate-y-1 hover:shadow-md"
+              )}
             >
-              <div>
-                {/* Scholarship Amount Badge */}
-                <Badge variant="warning" className="mb-4 gap-1.5">
-                  <Award size={14} />
-                  <span>{scholarship.amount}</span>
-                </Badge>
+              {/* Top */}
+              <div className="flex-1">
+                {/* Amount */}
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <Badge
+                    variant="warning"
+                    className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
+                  >
+                    <Award size={14} />
+                    <span>{scholarship.amount}</span>
+                  </Badge>
 
-                <h3 className="card-title text-content-primary">
+                  <span className="text-xs font-medium text-content-tertiary">
+                    Scholarship
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl font-semibold leading-snug tracking-tight text-content-primary sm:text-[22px]">
                   {scholarship.name}
                 </h3>
 
-                <div className="mt-5 space-y-3">
-                  <div className="flex items-start gap-2.5 text-body-small text-neutral-600">
-                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-600" />
-                    <div>
-                      <strong className="font-medium text-neutral-900">Eligibility: </strong>
-                      <span>{scholarship.eligibility}</span>
+                {/* Details */}
+                <div className="mt-6 space-y-4">
+                  {/* Eligibility */}
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-50">
+                      <CheckCircle2
+                        size={15}
+                        className="text-emerald-600"
+                      />
+                    </div>
+
+                    <div className="min-w-0 text-sm leading-6 text-content-secondary">
+                      <p>
+                        <strong className="font-semibold text-content-primary">
+                          Eligibility
+                        </strong>
+                      </p>
+                      <p className="mt-0.5">{scholarship.eligibility}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-body-small text-neutral-600">
-                    <ShieldCheck size={16} className="mt-0.5 shrink-0 text-brand-primary" />
-                    <div>
-                      <strong className="font-medium text-neutral-900">Coverage: </strong>
-                      <span>{scholarship.coverage}</span>
+                  {/* Coverage */}
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
+                      <ShieldCheck
+                        size={15}
+                        className="text-brand-primary"
+                      />
+                    </div>
+
+                    <div className="min-w-0 text-sm leading-6 text-content-secondary">
+                      <p>
+                        <strong className="font-semibold text-content-primary">
+                          Coverage
+                        </strong>
+                      </p>
+                      <p className="mt-0.5">{scholarship.coverage}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-5 border-t border-neutral-100 flex items-center justify-between">
+              {/* Bottom CTA */}
+              <div className="mt-7 border-t border-border-light pt-5">
                 <LeadCTAButton
                   source={`country_scholarship_${country.slug}`}
                   variant="ghost"
                   size="sm"
-                  className="inline-flex items-center gap-1.5 text-btn font-medium text-brand-primary hover:text-brand-accent !px-0"
+                  className={cn(
+                    "group/cta inline-flex w-full items-center justify-between",
+                    "rounded-xl px-3 py-2.5",
+                    "text-sm font-semibold text-brand-primary",
+                    "transition-colors hover:bg-brand-primary/5",
+                    "hover:text-brand-accent"
+                  )}
                 >
                   <span>Check Qualification</span>
-                  <ArrowRight size={14} />
+
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-primary/10 transition-transform duration-300 group-hover/cta:translate-x-0.5">
+                    <ArrowRight size={15} />
+                  </span>
                 </LeadCTAButton>
               </div>
             </Card>
           ))}
         </Carousel>
 
-        {/* Directory Explore Link */}
-        <div className="mt-8 flex justify-center px-4">
+        {/* Explore All */}
+        <div className="mt-10 flex justify-center px-2 sm:mt-12">
           <Link
             href={`/study-in/${country.slug}/explore?type=scholarships`}
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "max-w-full text-center"
+              "group flex h-auto min-h-12 w-full max-w-[560px] items-center justify-center gap-2 rounded-xl px-4 py-3 text-center text-sm sm:w-auto sm:px-5"
             )}
           >
-            <Compass className="w-4 h-4 shrink-0" />
-            <span>Explore All Scholarships & Application Deadlines</span>
-            <ArrowRight className="w-4 h-4 shrink-0" />
+            <Compass className="h-4 w-4 shrink-0" />
+
+            <span className="leading-5">
+              Explore All Scholarships & Application Deadlines
+            </span>
+
+            <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
         </div>
       </Container>

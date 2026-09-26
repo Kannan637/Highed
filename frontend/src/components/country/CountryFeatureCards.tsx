@@ -43,7 +43,7 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({ countr
   ];
 
   return (
-    <section className="relative z-30 w-full mt-3 sm:-translate-y-8 sm:-mb-8 md:-translate-y-10 md:-mb-10 lg:-translate-y-1/2 lg:-mb-[110px]">
+    <section className="relative z-30 w-full mt-3 sm:-translate-y-8 sm:-mb-8 md:-translate-y-10 md:-mb-10 lg:-translate-y-1/2 lg:-mb-[110px] tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <div className="grid grid-cols-1 gap-3 rounded-[24px] border-[3px] sm:border-[8px] border-white bg-white p-1 sm:p-1.5 shadow-xl md:grid-cols-3 lg:gap-4">
           {cards.map((card, idx) => {
@@ -52,7 +52,7 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({ countr
               <Link
                 key={idx}
                 href={card.href}
-                className="group flex flex-col justify-between overflow-hidden rounded-[14px] bg-[#FAFAFA] p-5 sm:p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                className="group flex flex-col justify-between overflow-hidden rounded-[14px] bg-surface-neutral p-5 sm:p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4 sm:mb-5">

@@ -11,7 +11,7 @@ interface CountryIntakesProps {
 
 export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
   return (
-    <section id="intakes" className="bg-white py-12 sm:py-16 md:py-20">
+    <section id="intakes" className="bg-white py-12 sm:py-16 md:py-20 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <SectionHeading
           badge="Admission Calendar"
@@ -28,8 +28,8 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
                 <div
                   key={intake.season + idx}
                   className={`col-span-4 sm:col-span-2 lg:col-span-4 relative flex flex-col justify-between rounded-2xl border p-5 sm:p-7 transition-all duration-300 ${isMajor
-                      ? "border-brand-primary bg-gradient-to-b from-[#253A7B]/[0.04] to-white shadow-lg ring-1 ring-[#253A7B]/10"
-                      : "border-neutral-200/90 bg-neutral-50/50 hover:bg-white hover:shadow-md"
+                      ? "border-brand-primary bg-gradient-to-b from-brand-primary/[0.04] to-white shadow-lg ring-1 ring-brand-primary/10"
+                      : "border-border/90 bg-surface-neutral/50 hover:bg-white hover:shadow-md"
                     }`}
                 >
                   {/* Step indicator header */}
@@ -38,13 +38,13 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
                       <span
                         className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-caption font-medium ${isMajor
                             ? "bg-brand-primary text-white"
-                            : "bg-neutral-200 text-neutral-700"
+                            : "bg-surface-subtle text-content-secondary"
                           }`}
                       >
                         {isMajor && <CheckCircle size={12} />}
                         {intake.type} Intake
                       </span>
-                      <div className="flex items-center gap-1 text-caption font-medium text-neutral-400">
+                      <div className="flex items-center gap-1 text-caption font-medium text-content-muted">
                         <Calendar size={14} className="text-brand-primary" />
                         <span>Phase {idx + 1}</span>
                       </div>
@@ -54,27 +54,27 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
                       {intake.season}
                     </h3>
 
-                    <div className="mt-5 space-y-3 rounded-xl bg-white/80 border border-neutral-200/60 p-4 text-body-small">
+                    <div className="mt-5 space-y-3 rounded-xl bg-white/80 border border-border/60 p-4 text-body-small">
                       <div className="flex items-center justify-between">
-                        <span className="text-neutral-500 flex items-center gap-1.5">
+                        <span className="text-content-secondary flex items-center gap-1.5">
                           <Clock size={13} />
                           Classes Start:
                         </span>
-                        <strong className="text-neutral-900 font-medium">{intake.months}</strong>
+                        <strong className="text-content-primary font-medium">{intake.months}</strong>
                       </div>
-                      <div className="flex items-center justify-between pt-2 border-t border-neutral-100">
-                        <span className="text-neutral-500">Apply Before:</span>
+                      <div className="flex items-center justify-between pt-2 border-t border-border-light">
+                        <span className="text-content-secondary">Apply Before:</span>
                         <strong className="text-brand-accent font-medium">{intake.deadline}</strong>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-5 border-t border-neutral-100">
+                  <div className="mt-6 pt-5 border-t border-border-light">
                     <LeadCTAButton
                       source={`country_intake_${country.slug}_${intake.season.replace(/\s+/g, "_")}`}
                       className={`inline-flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-body-small font-medium transition-all cursor-pointer ${isMajor
-                          ? "bg-brand-primary text-white hover:bg-[#1b2b5c] shadow-xs"
-                          : "border border-black/10 text-neutral-800 hover:border-brand-primary hover:text-brand-primary bg-white"
+                          ? "bg-brand-primary text-white hover:bg-brand-primary-hover shadow-xs"
+                          : "border border-border text-content-primary hover:border-brand-primary hover:text-brand-primary bg-white"
                         }`}
                     >
                       <span>Apply for {intake.season.split(" ")[0]}</span>

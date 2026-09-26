@@ -118,7 +118,13 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
             </div>
           </div>
         ) : dropdownData && "columns" in dropdownData ? (
-          <div className="grid grid-cols-3 gap-x-12">
+          <div
+            className={`grid gap-x-12 ${
+              dropdownData.columns.length === 2
+                ? "grid-cols-2 max-w-[800px] mx-auto"
+                : "grid-cols-3"
+            }`}
+          >
             {dropdownData.columns.map((column) => (
               <div key={column.title}>
                 <h3 className="mb-3 text-h5 text-brand-primary">

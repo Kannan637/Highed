@@ -41,7 +41,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
   if (displayArticles.length === 0) return null;
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 md:py-20 font-body">
+    <section className="w-full bg-white py-12 sm:py-16 md:py-20 font-body tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <div className="mx-auto max-w-[1000px] w-full px-4 sm:px-6">
         {/* Header: Eyebrow Badge, Title, Description */}
         <div className="flex flex-col items-center text-center gap-3 mb-8 sm:mb-12">
@@ -54,7 +54,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
           </h2>
 
           {/* Description */}
-          <p className="max-w-2xl text-sm leading-relaxed text-content-secondary sm:text-base font-body">
+          <p className="max-w-2xl text-body leading-relaxed text-content-secondary">
             Practical breakdowns of visa rules, university admissions, post-study
             work permits, and living expenses in {country.name}.
           </p>
@@ -95,13 +95,13 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
                         {article.title}
                       </h3>
 
-                      <p className="text-pretty text-sm leading-relaxed text-content-secondary line-clamp-2 sm:line-clamp-3">
+                      <p className="text-pretty text-body-small leading-relaxed text-content-secondary line-clamp-2 sm:line-clamp-3">
                         {article.summary}
                       </p>
                     </div>
 
                     {/* Brand Card Button with Circular Arrow Badge */}
-                    <div className="mt-2 flex w-fit items-center gap-2.5 rounded-full bg-brand-primary pl-4 pr-1.5 py-1 text-sm font-medium text-white transition-all duration-200 group-hover:bg-[#1B2958] shadow-xs">
+                    <div className="mt-2 flex w-fit items-center gap-2.5 rounded-full bg-brand-primary pl-4 pr-1.5 py-1 text-sm font-medium text-white transition-all duration-200 group-hover:bg-brand-primary-hover shadow-xs">
                       <span>Read more</span>
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-brand-primary shadow-xs transition-transform duration-200 group-hover:translate-x-0.5">
                         <ArrowRight className="size-4 text-brand-primary" />
@@ -129,7 +129,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
         <div className="mt-8 sm:mt-12 flex justify-center">
           <Link
             href="/blog"
-            className="flex h-[48px] items-center gap-3 rounded-full bg-brand-primary pl-6 pr-2 text-[16px] font-medium text-white shadow-md transition-all duration-200 hover:bg-[#1B2958] active:scale-[0.98] cursor-pointer"
+            className="flex h-[48px] items-center gap-3 rounded-full bg-brand-primary pl-6 pr-2 text-btn font-medium text-white shadow-md transition-all duration-200 hover:bg-brand-primary-hover active:scale-[0.98] cursor-pointer"
           >
             <span>View All Blogs</span>
             <span className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-white text-brand-primary shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">

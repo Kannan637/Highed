@@ -1,19 +1,37 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, GraduationCap, Award, FileText, ShieldCheck, Banknote, Plane, Home } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  GraduationCap,
+  Award,
+  FileText,
+  ShieldCheck,
+  Banknote,
+  Plane,
+  Home,
+} from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
-import IconBox from "@/components/ui/IconBox";
 import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
+import { cn } from "@/lib/utils";
+import {
+  CARD_BG_COLORS,
+  CardDecorativeIcons,
+} from "@/components/home/service-constants";
 
 export const metadata = constructMetadata({
   title: "Study Abroad Services | Counselling, Admissions & Visa",
   description:
     "Explore HighEd's full range of overseas education services including career counselling, university application, SOP & LOR assistance, scholarship guidance, visa support, and education loan processing.",
   path: "/services",
-  keywords: ["study abroad services", "overseas education consultant", "university application assistance", "visa assistance india"],
+  keywords: [
+    "study abroad services",
+    "overseas education consultant",
+    "university application assistance",
+    "visa assistance india",
+  ],
 });
 
 const services = [
@@ -21,8 +39,7 @@ const services = [
     id: "career-counselling",
     icon: BookOpen,
     title: "Career Counselling",
-    href: "/book-counselling",
-    variant: "primary" as const,
+    href: "/services/career-counselling",
     description:
       "One-on-one profile evaluation with certified counsellors. We assess your academic background, career goals, and target country to build a personalized study-abroad roadmap.",
   },
@@ -30,8 +47,7 @@ const services = [
     id: "university-application",
     icon: GraduationCap,
     title: "University Application",
-    href: "/study-in",
-    variant: "accent" as const,
+    href: "/services/university-application",
     description:
       "End-to-end application management including shortlisting, document checklist, deadline tracking, and direct portal submission to 500+ partner universities.",
   },
@@ -39,8 +55,7 @@ const services = [
     id: "scholarship-assistance",
     icon: Award,
     title: "Scholarship Assistance",
-    href: "/scholarships",
-    variant: "gold" as const,
+    href: "/services/scholarship-assistance",
     description:
       "We match your academic profile to government, university, and merit-based scholarships worth up to 100% tuition waiver across all major study destinations.",
   },
@@ -48,8 +63,7 @@ const services = [
     id: "sop-lor-assistance",
     icon: FileText,
     title: "SOP & LOR Assistance",
-    href: "/book-counselling",
-    variant: "success" as const,
+    href: "/services/sop-lor-assistance",
     description:
       "Expert writing and editing support for your Statement of Purpose and Letters of Recommendation — crafted to meet each university's admissions rubric.",
   },
@@ -57,8 +71,7 @@ const services = [
     id: "visa-assistance",
     icon: ShieldCheck,
     title: "Visa Assistance",
-    href: "/book-counselling",
-    variant: "primary" as const,
+    href: "/services/visa-assistance",
     description:
       "Comprehensive F-1, Tier-4, Student Direct Stream, and Schengen visa filing support. 98%+ visa success rate across all partner countries.",
   },
@@ -66,8 +79,7 @@ const services = [
     id: "education-loan",
     icon: Banknote,
     title: "Education Loan",
-    href: "/book-counselling",
-    variant: "gold" as const,
+    href: "/services/education-loan",
     description:
       "We partner with leading NBFCs and banks to help students secure collateral and non-collateral education loans from ₹7.5 Lakhs to ₹1.5 Crore.",
   },
@@ -75,8 +87,7 @@ const services = [
     id: "accommodation",
     icon: Home,
     title: "Student Accommodation",
-    href: "/book-counselling",
-    variant: "success" as const,
+    href: "/services/accommodation-pre-departure",
     description:
       "Safe, verified on-campus and off-campus housing near your university. We assist with booking student dorms, private apartments, and homestays before you fly.",
   },
@@ -84,8 +95,7 @@ const services = [
     id: "pre-departure-support",
     icon: Plane,
     title: "Pre-Departure Support",
-    href: "/book-counselling",
-    variant: "accent" as const,
+    href: "/services/accommodation-pre-departure",
     description:
       "Arrival orientation, accommodation shortlisting, forex guidance, travel insurance, and a dedicated post-arrival helpdesk to settle you in confidently.",
   },
@@ -93,46 +103,129 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
+    <div className="w-full bg-white py-12 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)] sm:py-16 md:py-20">
       <Container size="lg">
         <SectionHeading
-          badge="Our Services"
+          eyebrow="Our Services"
           title="Everything You Need to Study Abroad"
           subtitle="From profile evaluation to pre-departure, our certified counsellors handle every step of your international education journey — completely free of charge."
+          className="mb-8"
         />
 
-        <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
-          {services.map((svc) => {
+        <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((svc, index) => {
             const Icon = svc.icon;
+            const cardBg = CARD_BG_COLORS[index % CARD_BG_COLORS.length];
+            const DecorativeIcon =
+              CardDecorativeIcons[index % CardDecorativeIcons.length];
+
             return (
-              <Card
+              <Link
                 key={svc.title}
-                hover
-                className="col-span-4 sm:col-span-2 lg:col-span-4 group flex flex-col justify-between p-7 rounded-2xl border-border bg-card shadow-xs transition-all duration-300 hover:shadow-md hover:border-brand-primary/20 scroll-mt-28"
+                id={svc.id}
+                href={svc.href}
+                className="group/card block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 scroll-mt-28"
               >
-                <div>
-                  <IconBox icon={Icon} variant={svc.variant} size="md" />
+                <div
+                  className={cn(
+                    "group relative isolate flex h-full min-h-[340px] flex-col justify-between overflow-hidden rounded-3xl p-7 sm:p-8",
+                    /* Border */
+                    "border border-black/[0.06]",
+                    /* Shadow */
+                    "shadow-[0_2px_8px_rgba(0,0,0,0.03)]",
+                    /* Animation */
+                    "transition-all duration-300 ease-out",
+                    "group-hover/card:-translate-y-1.5",
+                    "group-hover/card:border-black/[0.12]",
+                    "group-hover/card:shadow-[0_16px_32px_rgba(0,0,0,0.07)]"
+                  )}
+                  style={{
+                    backgroundColor: cardBg,
+                  }}
+                >
+                  {/* =================================================
+                      DECORATIVE BACKGROUND SVG
+                  ================================================== */}
+                  {DecorativeIcon && (
+                    <DecorativeIcon
+                      aria-hidden="true"
+                      className={cn(
+                        "pointer-events-none absolute -right-10 -top-10 z-0",
+                        "h-55 w-55",
+                        "opacity-30",
+                        "text-black/[0.08]",
+                        "transition-all duration-500 ease-out",
+                        "group-hover/card:scale-105",
+                        "group-hover/card:text-black/[0.10]"
+                      )}
+                    />
+                  )}
 
-                  <h3 className="mt-5 card-title text-content-primary transition-colors group-hover:text-brand-primary">
-                    {svc.title}
-                  </h3>
+                  {/* =================================================
+                      CONTENT LAYER
+                      z-10 keeps all content above the SVG.
+                  ================================================== */}
+                  <div className="relative z-10 flex h-full flex-col justify-between">
+                    {/* =================================================
+                        ICON
+                    ================================================== */}
+                    <div>
+                      <div className="flex size-14 items-center justify-center rounded-2xl bg-white text-brand-primary shadow-xs transition-transform duration-300 group-hover/card:scale-105">
+                        <Icon
+                          className="size-6 text-brand-primary"
+                          strokeWidth={2}
+                        />
+                      </div>
+                    </div>
 
-                  <p className="mt-2.5 text-content-secondary leading-relaxed">
-                    {svc.description}
-                  </p>
+                    {/* =================================================
+                        CONTENT
+                    ================================================== */}
+                    <div className="flex flex-1 flex-col justify-center py-6">
+                      <h3 className="card-title text-content-primary">
+                        {svc.title}
+                      </h3>
+
+                      {svc.description && (
+                        <p className="mt-3 text-body-small text-content-secondary leading-relaxed">
+                          {svc.description}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* =================================================
+                        CARD CTA
+                    ================================================== */}
+                    <div className="flex items-center justify-end pt-2">
+                      <span
+                        className="
+                          inline-flex
+                          h-10
+                          items-center
+                          gap-1.5
+                          rounded-full
+                          bg-brand-primary
+                          px-5
+                          text-xs
+                          font-semibold
+                          text-white
+                          shadow-xs
+                          transition-all
+                          duration-200
+                          group-hover/card:bg-brand-primary-hover
+                          group-hover/card:shadow-sm
+                        "
+                      >
+                        Explore
+                        <ArrowUpRight
+                          className="size-4 transition-transform duration-200 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5"
+                          strokeWidth={2.2}
+                        />
+                      </span>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="mt-6 pt-2">
-                  <Link
-                    href={svc.href}
-                    aria-label={`Learn more about ${svc.title}`}
-                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </Card>
+              </Link>
             );
           })}
         </div>

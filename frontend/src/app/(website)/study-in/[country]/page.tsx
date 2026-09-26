@@ -88,7 +88,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
   );
 
   return (
-    <>
+    <div className="w-full tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
       <CountryHero country={country} />
@@ -104,6 +104,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <CountryFAQ />
       <CountryRelatedBlogs country={country} />
       <CountryCTA country={country} />
-    </>
+    </div>
   );
 }

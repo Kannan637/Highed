@@ -5,7 +5,6 @@ import {
   ArrowDownToLine,
   ArrowLeft,
   ArrowRight,
-  GraduationCap,
   BookOpen,
 } from "lucide-react";
 
@@ -13,7 +12,7 @@ import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 import { Country } from "@/types/country";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import CounsellingCTA from "@/components/ui/CounsellingCTA";
 
 type Course = {
   country: string;
@@ -561,7 +560,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
   };
 
   return (
-    <section className="w-full bg-white text-content-primary">
+    <section className="w-full bg-white text-content-primary tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container
         size="lg"
         className="py-12 sm:py-16"
@@ -615,7 +614,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               rounded-full
               text-brand-accent
               transition-colors
-              hover:bg-[#fff0f3]
+              hover:bg-brand-accent/10
             "
           >
             <ArrowLeft
@@ -635,7 +634,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               rounded-full
               border
               border-border-default
-              bg-[#F5F5F9]
+              bg-surface-subtle
               p-1.5
               scrollbar-none
             "
@@ -687,7 +686,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               rounded-full
               text-brand-accent
               transition-colors
-              hover:bg-[#fff0f3]
+              hover:bg-brand-accent/10
             "
           >
             <ArrowRight
@@ -822,73 +821,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
         {/* =========================
             COUNSELLING CTA
         ========================== */}
-        <div
-          className="
-            mt-9
-            flex
-            flex-col
-            gap-6
-            rounded-[22px]
-            bg-brand-primary
-            px-6
-            py-5
-            sm:px-8
-            lg:flex-row
-            lg:items-center
-            lg:justify-between
-            lg:px-24
-          "
-        >
-          {/* Left Content */}
-          <div className="flex items-center gap-5">
-            {/* Icon */}
-            <div
-              className="
-                flex
-                h-[80px]
-                w-[80px]
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                bg-white
-              "
-            >
-              <GraduationCap
-                size={38}
-                strokeWidth={1.8}
-                className="text-brand-primary"
-              />
-            </div>
-
-            {/* Text */}
-            <div>
-              <h3 className="text-white">
-                Not sure which course fits your
-                profile?
-              </h3>
-
-              <p
-                className="
-                  mt-1.5
-                  max-w-[610px]
-                  text-body-small
-                  text-content-on-primary
-                  sm:text-body
-                "
-              >
-                Our counsellors will analyse your
-                academics, budget & career goals to
-                recommend the perfect programme.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <LeadCTAButton source="course_counselling">
-            Book Free Counselling
-          </LeadCTAButton>
-        </div>
+        <CounsellingCTA />
       </Container>
     </section>
   );

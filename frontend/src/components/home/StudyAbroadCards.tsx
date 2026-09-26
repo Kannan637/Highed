@@ -2,14 +2,21 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Globe, BookOpen, Award, HeartHandshake, type LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Globe,
+  BookOpen,
+  Award,
+  HeartHandshake,
+  type LucideIcon,
+} from "lucide-react";
 import Container from "@/components/ui/Container";
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 
 interface StudyAbroadCard {
   title: string;
   href: string;
-  image?: string;
+  image: string;
   icon: LucideIcon;
   bgColor: string;
   iconColor: string;
@@ -17,31 +24,35 @@ interface StudyAbroadCard {
 
 const cards: StudyAbroadCard[] = [
   {
-    title: "Country & University",
+    title: "Top Country",
     href: "/study-in",
+    image: "/images/HeroBottomCard/Top Country.webp",
     icon: Globe,
-    bgColor: "#E4ECF2",
+    bgColor: "#E9EEF8",
     iconColor: "#253A7B",
   },
   {
-    title: "Courses",
+    title: "Top Courses & University",
     href: "/courses",
+    image: "/images/HeroBottomCard/corses & Unviersity.webp",
     icon: BookOpen,
-    bgColor: "#DEEDE0",
+    bgColor: "#E8F4ED",
     iconColor: "#1E7B47",
   },
   {
     title: "Scholarship",
     href: "/scholarships",
+    image: "/images/HeroBottomCard/Scholarship.webp",
     icon: Award,
-    bgColor: "#F2EBE1",
+    bgColor: "#F5F0E3",
     iconColor: "#B38728",
   },
   {
-    title: "Student Support",
+    title: "Student Service",
     href: "/services",
+    image: "/images/HeroBottomCard/Student Serivce.webp",
     icon: HeartHandshake,
-    bgColor: "#F2E6EC",
+    bgColor: "#F2E7ED",
     iconColor: "#D8284D",
   },
 ];
@@ -50,21 +61,50 @@ export const StudyAbroadCards = () => {
   const { openLeadPopup } = useLeadPopup();
 
   return (
-    <section className="relative z-30 w-full -translate-y-8 -mb-8 sm:-translate-y-10 sm:-mb-10 md:-translate-y-1/2 md:-mb-[90px] tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
+    <section
+      className="
+        relative z-30 w-full
+        -translate-y-8 -mb-8
+        sm:-translate-y-10 sm:-mb-10
+        md:-translate-y-1/2 md:-mb-[90px]
+        tracking-tight-5
+        [letter-spacing:var(--tracking-tight-5)]
+        [&_*]:[letter-spacing:var(--tracking-tight-5)]
+      "
+    >
       <Container size="lg">
-        <div className="grid grid-cols-4 gap-3 rounded-2xl border-[6px] sm:border-8 border-white bg-white p-2 shadow-xl lg:grid-cols-12 lg:gap-4">
+        <div
+          className="
+            grid grid-cols-4
+            gap-3
+            rounded-2xl
+            border-[6px] border-white
+            bg-white
+            p-2
+            shadow-xl
+            sm:border-8
+            lg:grid-cols-12
+            lg:gap-4
+          "
+        >
           {cards.map((card) => {
             const Icon = card.icon;
+
             return (
               <button
                 key={card.title}
                 type="button"
-                onClick={() => openLeadPopup({ source: `card_${card.title.toLowerCase().replace(/ /g, "_")}` })}
+                onClick={() =>
+                  openLeadPopup({
+                    source: `card_${card.title
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, "_")
+                      .replace(/^_|_$/g, "")}`,
+                  })
+                }
                 className="
                   group
                   col-span-4
-                  sm:col-span-2
-                  lg:col-span-3
                   flex
                   min-h-19
                   w-full
@@ -76,23 +116,23 @@ export const StudyAbroadCards = () => {
                   no-underline
                   transition-all
                   duration-200
-                  hover:shadow-md
                   hover:-translate-y-0.5
+                  hover:shadow-md
+                  sm:col-span-2
+                  lg:col-span-3
                   md:h-46
                   md:min-h-0
                   md:flex-col
                 "
               >
-                {/* Visual / Icon Area */}
+                {/* Image Area */}
                 <div
                   className="
-                    flex
+                    relative
                     h-19
                     w-22.5
                     shrink-0
-                    items-center
-                    justify-center
-                    transition-colors
+                    overflow-hidden
                     md:h-35
                     md:w-full
                   "
@@ -104,16 +144,25 @@ export const StudyAbroadCards = () => {
                     <Image
                       src={card.image}
                       alt={card.title}
-                      width={140}
-                      height={140}
-                      className="h-full w-full object-contain"
+                      fill
+                      sizes="(max-width: 639px) 90px, (max-width: 767px) 25vw, (max-width: 1023px) 25vw, 25vw"
+                      className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
+                      priority
                     />
                   ) : (
-                    <Icon
-                      size={36}
-                      style={{ color: card.iconColor }}
-                      className="transition-transform duration-300 group-hover:scale-110"
-                    />
+                    <div className="flex h-full w-full items-center justify-center">
+                      <Icon
+                        size={36}
+                        style={{
+                          color: card.iconColor,
+                        }}
+                        className="
+                          transition-transform
+                          duration-300
+                          group-hover:scale-110
+                        "
+                      />
+                    </div>
                   )}
                 </div>
 
@@ -128,11 +177,19 @@ export const StudyAbroadCards = () => {
                     gap-3
                     px-4
                     md:h-12
-                    md:flex-none
                     md:w-full
+                    md:flex-none
                   "
                 >
-                  <span className="text-body font-medium text-content-primary">
+                  <span
+                    className="
+                      min-w-0
+                      text-body
+                      font-medium
+                      leading-tight
+                      text-content-primary
+                    "
+                  >
                     {card.title}
                   </span>
 

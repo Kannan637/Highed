@@ -10,7 +10,7 @@ interface CountryOverviewProps {
 
 export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => {
   return (
-    <section className="bg-white py-16 sm:py-20 md:py-24">
+    <section className="bg-white py-16 sm:py-20 md:py-24 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <SectionHeading
           badge="Destination Profile"
@@ -21,15 +21,15 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
         <div className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
           {/* Main Description */}
           <div className="col-span-1 lg:col-span-7">
-            <div className="rounded-[24px] border border-neutral-100 bg-[#FAFAFA] p-8 shadow-sm sm:p-10 md:p-12 transition-shadow hover:shadow-md">
-              <h3 className="text-content-primary">
+            <div className="rounded-[24px] border border-border-default bg-surface-neutral p-8 shadow-sm sm:p-10 md:p-12 transition-shadow hover:shadow-md">
+              <h3 className="card-title text-content-primary">
                 An International Education Hub Built for the Future
               </h3>
               <p className="mt-5 text-content-secondary">
                 {country.description}
               </p>
 
-              <div className="mt-10 border-t border-neutral-200/80 pt-8">
+              <div className="mt-10 border-t border-border-default pt-8">
                 <h4 className="text-caption font-medium uppercase tracking-widest text-content-secondary">
                   Medium of Instruction & Daily Life
                 </h4>
@@ -37,7 +37,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
                   {country.language.map((lang) => (
                     <span
                       key={lang}
-                      className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-body-small font-medium text-content-primary shadow-sm ring-1 ring-inset ring-neutral-200"
+                      className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-body-small font-medium text-content-primary shadow-sm ring-1 ring-inset ring-border"
                     >
                       {lang}
                     </span>
@@ -49,7 +49,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
 
           {/* Highlights Checklist */}
           <div className="col-span-1 space-y-4 lg:col-span-5">
-            <div className="group rounded-[20px] border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+            <div className="group rounded-[20px] border border-border-default bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
               <div className="flex items-start gap-4 sm:gap-5">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F0FDF4] text-[#16A34A] shadow-sm">
                   <Check className="h-[22px] w-[22px]" strokeWidth={2.5} aria-hidden="true" />
@@ -65,7 +65,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
               </div>
             </div>
 
-            <div className="group rounded-[20px] border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+            <div className="group rounded-[20px] border border-border-default bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
               <div className="flex items-start gap-4 sm:gap-5">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EFF6FF] text-[#3B82F6] shadow-sm">
                   <Sparkles className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />
@@ -81,7 +81,7 @@ export const CountryOverview: React.FC<CountryOverviewProps> = ({ country }) => 
               </div>
             </div>
 
-            <div className="group rounded-[20px] border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+            <div className="group rounded-[20px] border border-border-default bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
               <div className="flex items-start gap-4 sm:gap-5">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#FEF2F2] text-[#EF4444] shadow-sm">
                   <Briefcase className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden="true" />

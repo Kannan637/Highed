@@ -49,24 +49,23 @@ export const navDropdowns: Record<string, NavDropdownData> = {
       {
         title: "Counselling & Guidance",
         items: [
-          { label: "Career Counselling", href: "/services#career-counselling", icon: "career" },
-          { label: "University Application", href: "/services#university-application", icon: "university" },
-          { label: "Scholarship Assistance", href: "/scholarships", icon: "scholarship" },
+          { label: "Career Counselling", href: "/services/career-counselling", icon: "career" },
+          { label: "University Application", href: "/services/university-application", icon: "university" },
+          { label: "Scholarship Assistance", href: "/services/scholarship-assistance", icon: "scholarship" },
         ],
       },
       {
         title: "Application Support",
         items: [
-          { label: "SOP & LOR Assistance", href: "/services#sop-lor-assistance", icon: "document" },
-          { label: "Visa Assistance", href: "/services#visa-assistance", icon: "visa" },
+          { label: "SOP & LOR Assistance", href: "/services/sop-lor-assistance", icon: "document" },
+          { label: "Visa Assistance", href: "/services/visa-assistance", icon: "visa" },
         ],
       },
       {
         title: "Financial & Pre-Departure",
         items: [
-          { label: "Education Loan", href: "/services#education-loan", icon: "loan" },
-          { label: "Accommodation", href: "/services#accommodation", icon: "home" },
-          { label: "Pre-Departure Support", href: "/services#pre-departure-support", icon: "support" },
+          { label: "Education Loan", href: "/services/education-loan", icon: "loan" },
+          { label: "Accommodation & Pre-Departure Support", href: "/services/accommodation-pre-departure", icon: "support" },
         ],
       },
     ],
@@ -88,18 +87,10 @@ export const navDropdowns: Record<string, NavDropdownData> = {
         title: "Tools & Calculators",
         items: [
           { label: "Study Abroad Cost Calculator", href: "/book-counselling", icon: "cost" },
-          { label: "Education Loan EMI Calculator", href: "/services#education-loan", icon: "calculator" },
+          { label: "Education Loan EMI Calculator", href: "/services/education-loan", icon: "calculator" },
           { label: "Profile Eligibility Checker", href: "/book-counselling", icon: "check" },
           { label: "Scholarship Finder", href: "/scholarships", icon: "scholarship" },
           { label: "Test Score Evaluator (IELTS/PTE)", href: "/book-counselling", icon: "ielts" },
-        ],
-      },
-      {
-        title: "Accommodation & Living",
-        items: [
-          { label: "Accommodation", href: "/services#accommodation", icon: "home" },
-          { label: "Pre-Departure Support", href: "/services#pre-departure-support", icon: "support" },
-          { label: "Cost of Living Guides", href: "/blog", icon: "cost" },
         ],
       },
     ],

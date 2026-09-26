@@ -25,7 +25,7 @@ export const CountryCTA: React.FC<CountryCTAProps> = ({ country }) => {
   ];
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <div className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] md:rounded-[48px] bg-gradient-to-br from-brand-primary via-[#21326c] to-[#142352] p-6 sm:p-10 md:p-14 lg:p-16 text-white shadow-2xl">
           {/* Decorative background glows */}
