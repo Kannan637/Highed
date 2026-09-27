@@ -142,9 +142,9 @@ function CategoryTab({
         <button
             type="button"
             onClick={onClick}
-            className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-medium whitespace-nowrap cursor-pointer transition-all duration-200 sm:text-sm ${isActive
-                ? "bg-[#E93F61] text-white shadow-sm"
-                : "text-content-secondary hover:bg-[#E93F61]/10 hover:text-[#E93F61]"
+            className={`inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-xs font-semibold whitespace-nowrap cursor-pointer transition-all duration-200 sm:text-sm ${isActive
+                ? "bg-brand-accent text-white shadow-sm"
+                : "text-content-secondary hover:bg-brand-accent/10 hover:text-brand-accent"
                 }`}
         >
             <span>{category.label}</span>

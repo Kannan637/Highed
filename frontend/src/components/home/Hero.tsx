@@ -5,7 +5,6 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
 import { ArrowRight, GraduationCap, Building2, ShieldCheck, Globe } from "lucide-react";
-import gsap from "gsap";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
 import { buttonVariants } from "@/components/ui/Button";
@@ -64,17 +63,19 @@ function Hero() {
 
     /*
      * ============================================================
-     * One-by-One Sequential Typewriter Timeline
+     * One-by-One Sequential Typewriter Loop (Native async / 0-dependency)
      *
      * Exactly ONE question types at any time.
      * Order: Left -> Right Top -> Right Bottom -> Pause -> Repeat
-     * Deferred to requestAnimationFrame to prevent blocking initial paint.
+     * Zero external dependencies (GSAP eliminated).
      * ============================================================
      */
     useEffect(() => {
         if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             return;
         }
+
+        let isCancelled = false;
 
         const leftTargets = [desktopLeftText.current, mobileLeftText.current];
         const rightTopTargets = [
@@ -83,113 +84,85 @@ function Hero() {
         ];
         const rightBottomTargets = [desktopRightBottomText.current];
 
-        let ctx: gsap.Context | null = null;
-        const rafId = requestAnimationFrame(() => {
-            ctx = gsap.context(() => {
-                const masterTl = gsap.timeline({ repeat: -1 });
+        const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-                // Initial pause so the user can read the starting questions
-                masterTl.to({}, { duration: 3.5 });
+        const setText = (targets: (HTMLElement | null)[], text: string) => {
+            for (const el of targets) {
+                if (el) el.textContent = text || "\u00A0";
+            }
+        };
 
-                // Helper to add a type-out -> type-in sequence for a single question position
-                const addTypeStep = (
-                    targets: (HTMLElement | null)[],
-                    oldText: string,
-                    newText: string
-                ) => {
-                    // 1. Type out (erase character by character)
-                    const eraseState = { progress: 0 };
-                    masterTl.to(eraseState, {
-                        progress: 1,
-                        duration: Math.max(oldText.length * 0.035, 0.35),
-                        ease: "none",
-                        onUpdate: () => {
-                            const remaining = Math.ceil(
-                                oldText.length * (1 - eraseState.progress)
-                            );
-                            const txt = oldText.substring(0, remaining);
-                            for (const el of targets) {
-                                if (el) el.textContent = txt || "\u00A0";
-                            }
-                        },
-                    });
+        const typeStep = async (
+            targets: (HTMLElement | null)[],
+            oldText: string,
+            newText: string
+        ) => {
+            // 1. Erase character by character
+            const eraseDuration = Math.max(oldText.length * 35, 350);
+            const eraseStepTime = Math.max(25, Math.floor(eraseDuration / (oldText.length || 1)));
+            for (let len = oldText.length; len >= 0; len--) {
+                if (isCancelled) return;
+                setText(targets, oldText.substring(0, len));
+                await sleep(eraseStepTime);
+            }
 
-                    // 2. Brief breath before typing new question
-                    masterTl.to({}, { duration: 0.12 });
+            if (isCancelled) return;
+            await sleep(120);
 
-                    // 3. Type in (type character by character)
-                    const typeState = { progress: 0 };
-                    masterTl.to(typeState, {
-                        progress: 1,
-                        duration: Math.max(newText.length * 0.045, 0.5),
-                        ease: "none",
-                        onUpdate: () => {
-                            const chars = Math.floor(
-                                newText.length * typeState.progress
-                            );
-                            const txt = newText.substring(0, chars);
-                            for (const el of targets) {
-                                if (el) el.textContent = txt || "\u00A0";
-                            }
-                        },
-                        onComplete: () => {
-                            for (const el of targets) {
-                                if (el) el.textContent = newText;
-                            }
-                        },
-                    });
+            // 2. Type in character by character
+            const typeDuration = Math.max(newText.length * 45, 500);
+            const typeStepTime = Math.max(30, Math.floor(typeDuration / (newText.length || 1)));
+            for (let len = 1; len <= newText.length; len++) {
+                if (isCancelled) return;
+                setText(targets, newText.substring(0, len));
+                await sleep(typeStepTime);
+            }
 
-                    // 4. Clean pause between questions so they type strictly one after another
-                    masterTl.to({}, { duration: 0.35 });
-                };
+            if (isCancelled) return;
+            setText(targets, newText);
+            await sleep(350);
+        };
 
-                const totalSets = questionSets.left.length; // 4 sets
+        const runTypewriterLoop = async () => {
+            await sleep(3500);
+            let idx = 0;
+            const totalSets = questionSets.left.length;
 
-                // Build full 4-cycle loop: 0->1, 1->2, 2->3, 3->0
-                for (let i = 0; i < totalSets; i++) {
-                    const nextIdx = (i + 1) % totalSets;
+            while (!isCancelled) {
+                const nextIdx = (idx + 1) % totalSets;
 
-                    // 1) Animate Left Question
-                    addTypeStep(
-                        leftTargets,
-                        questionSets.left[i],
-                        questionSets.left[nextIdx]
-                    );
+                // 1) Animate Left Question
+                await typeStep(leftTargets, questionSets.left[idx], questionSets.left[nextIdx]);
+                if (isCancelled) break;
 
-                    // 2) Animate Right Top Question (strictly AFTER Left has finished)
-                    addTypeStep(
-                        rightTopTargets,
-                        questionSets.rightTop[i],
-                        questionSets.rightTop[nextIdx]
-                    );
+                // 2) Animate Right Top Question (strictly AFTER Left has finished)
+                await typeStep(rightTopTargets, questionSets.rightTop[idx], questionSets.rightTop[nextIdx]);
+                if (isCancelled) break;
 
-                    // 3) Animate Right Bottom Question (strictly AFTER Right Top has finished)
-                    addTypeStep(
-                        rightBottomTargets,
-                        questionSets.rightBottom[i],
-                        questionSets.rightBottom[nextIdx]
-                    );
+                // 3) Animate Right Bottom Question (strictly AFTER Right Top has finished)
+                await typeStep(rightBottomTargets, questionSets.rightBottom[idx], questionSets.rightBottom[nextIdx]);
+                if (isCancelled) break;
 
-                    // 4) Pause with all three questions visible together
-                    masterTl.to({}, { duration: 3.5 });
-                }
-            });
-        });
+                // 4) Pause with all three questions visible together
+                await sleep(3500);
+                idx = nextIdx;
+            }
+        };
+
+        const timer = setTimeout(runTypewriterLoop, 150);
 
         return () => {
-            cancelAnimationFrame(rafId);
-            ctx?.revert();
+            isCancelled = true;
+            clearTimeout(timer);
         };
     }, []);
 
     /*
      * ============================================================
-     * Interactive Cursor Reaction (Magnetic Proximity & Tilt)
+     * Interactive Cursor Reaction (Native GPU Transform / 0-dependency)
      *
      * Questions reflect and react dynamically as the cursor moves
-     * near them, gliding with smooth spring-like momentum.
-     * Throttled with requestAnimationFrame and cached bounding centers
-     * to eliminate layout thrashing and reduce TBT to 0ms.
+     * near them, gliding with smooth momentum via GPU transform.
      * ============================================================
      */
     useEffect(() => {
@@ -210,34 +183,14 @@ function Hero() {
             { ref: desktopRightBottomContainerRef, baseRot: -7 },
         ];
 
-        const animators = badgeItems.map(({ ref, baseRot }) => {
-            if (!ref.current) return null;
-            return {
-                xTo: gsap.quickTo(ref.current, "x", {
-                    duration: 0.45,
-                    ease: "power2.out",
-                }),
-                yTo: gsap.quickTo(ref.current, "y", {
-                    duration: 0.45,
-                    ease: "power2.out",
-                }),
-                rotTo: gsap.quickTo(ref.current, "rotation", {
-                    duration: 0.45,
-                    ease: "power2.out",
-                }),
-                scaleXTo: gsap.quickTo(ref.current, "scaleX", {
-                    duration: 0.45,
-                    ease: "power2.out",
-                }),
-                scaleYTo: gsap.quickTo(ref.current, "scaleY", {
-                    duration: 0.45,
-                    ease: "power2.out",
-                }),
-                baseRot,
-            };
+        // Apply smooth transition styling to containers
+        badgeItems.forEach(({ ref }) => {
+            if (ref.current) {
+                ref.current.style.transition = "transform 0.4s cubic-bezier(0.2, 0.8, 0.4, 1)";
+                ref.current.style.willChange = "transform";
+            }
         });
 
-        // Cache coordinates to avoid forced synchronous layout recalculation on every mousemove
         const centers = [
             { x: 0, y: 0 },
             { x: 0, y: 0 },
@@ -264,8 +217,8 @@ function Hero() {
         const renderMouseReaction = () => {
             rafId = null;
             badgeItems.forEach((item, index) => {
-                const anim = animators[index];
-                if (!anim || !item.ref.current) return;
+                const el = item.ref.current;
+                if (!el) return;
 
                 const center = centers[index];
                 if (!center || (center.x === 0 && center.y === 0)) return;
@@ -280,29 +233,14 @@ function Hero() {
                     const norm = 1 - dist / maxDist; // 0 to 1
                     const pull = Math.pow(norm, 1.3);
 
-                    // Magnetic pull towards cursor (up to 24px)
                     const targetX = Math.max(-24, Math.min(24, dx * 0.2 * pull));
                     const targetY = Math.max(-20, Math.min(20, dy * 0.2 * pull));
-
-                    // Interactive tilt reacting to cursor angle
-                    const targetRot =
-                        anim.baseRot + Math.max(-7, Math.min(7, (dx / 25) * pull));
-
-                    // Subtle magnetic scale expansion
+                    const targetRot = item.baseRot + Math.max(-7, Math.min(7, (dx / 25) * pull));
                     const targetScale = 1 + 0.08 * pull;
 
-                    anim.xTo(targetX);
-                    anim.yTo(targetY);
-                    anim.rotTo(targetRot);
-                    anim.scaleXTo(targetScale);
-                    anim.scaleYTo(targetScale);
+                    el.style.transform = `translate3d(${targetX.toFixed(1)}px, ${targetY.toFixed(1)}px, 0) rotate(${targetRot.toFixed(1)}deg) scale(${targetScale.toFixed(3)})`;
                 } else {
-                    // Smoothly settle back to resting position
-                    anim.xTo(0);
-                    anim.yTo(0);
-                    anim.rotTo(anim.baseRot);
-                    anim.scaleXTo(1);
-                    anim.scaleYTo(1);
+                    el.style.transform = `translate3d(0, 0, 0) rotate(${item.baseRot}deg) scale(1)`;
                 }
             });
         };
@@ -320,13 +258,10 @@ function Hero() {
                 cancelAnimationFrame(rafId);
                 rafId = null;
             }
-            animators.forEach((anim) => {
-                if (!anim) return;
-                anim.xTo(0);
-                anim.yTo(0);
-                anim.rotTo(anim.baseRot);
-                anim.scaleXTo(1);
-                anim.scaleYTo(1);
+            badgeItems.forEach((item) => {
+                if (item.ref.current) {
+                    item.ref.current.style.transform = `translate3d(0, 0, 0) rotate(${item.baseRot}deg) scale(1)`;
+                }
             });
         };
 
@@ -941,6 +876,7 @@ function Hero() {
                         src="/images/hero/ChatGPT Image Sep 14, 2026, 09_45_43 AM.webp"
                         alt=""
                         fill
+                        priority
                         sizes="100vw"
                         className="
       object-cover

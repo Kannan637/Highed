@@ -81,6 +81,7 @@ export const StudyAbroadCards = () => {
               <button
                 key={card.title}
                 type="button"
+                aria-label={`Explore ${card.title}`}
                 onClick={() =>
                   openLeadPopup({
                     source: `card_${card.title
@@ -107,7 +108,6 @@ export const StudyAbroadCards = () => {
                       fill
                       sizes="(max-width: 639px) 90px, (max-width: 767px) 25vw, (max-width: 1023px) 25vw, 25vw"
                       className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
-                      priority
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">

@@ -15,8 +15,10 @@ export default function WebsiteLayout({
   return (
     <LeadPopupProvider>
       <div className="flex min-h-screen w-full max-w-full flex-col font-body tracking-tight-5 overflow-x-hidden">
-        <TopBar />
-        <Navbar />
+        <header className="w-full">
+          <TopBar />
+          <Navbar />
+        </header>
         <main id="main-content" tabIndex={-1} className="flex-1 w-full max-w-full overflow-x-hidden outline-hidden">
           {children}
         </main>

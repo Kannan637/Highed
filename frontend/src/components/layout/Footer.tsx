@@ -42,9 +42,9 @@ export const Footer: React.FC = () => {
 
           {/* Study Abroad Countries */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-3">
-            <h4 className="footer-title">
+            <h3 className="footer-title">
               Study Abroad
-            </h4>
+            </h3>
             <ul className="mt-4 space-y-2.5 font-body text-body-small font-medium text-gray-300">
               <li>
                 <Link href="/study-in/dubai" className="transition-colors hover:text-white">
@@ -81,9 +81,9 @@ export const Footer: React.FC = () => {
 
           {/* Student Services */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-2">
-            <h4 className="footer-title">
+            <h3 className="footer-title">
               Services
-            </h4>
+            </h3>
             <ul className="mt-4 space-y-2.5 font-body text-body-small font-medium text-gray-300">
               <li>
                 <Link href="/services#career-counselling" className="transition-colors hover:text-white">
@@ -115,9 +115,9 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-3">
-            <h4 className="footer-title">
+            <h3 className="footer-title">
               Quick Links
-            </h4>
+            </h3>
             <ul className="mt-4 space-y-2.5 font-body text-body-small font-medium text-gray-300">
               <li>
                 <Link href="/about" className="transition-colors hover:text-white">
@@ -150,9 +150,9 @@ export const Footer: React.FC = () => {
 
         {/* City Locations - SEO Internal Linking */}
         <div className="mt-12 border-t border-white/10 pt-8">
-          <h4 className="footer-title text-white/90">
+          <h3 className="footer-title text-white/90">
             Study Abroad Consultants by City
-          </h4>
+          </h3>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-body text-caption font-medium text-gray-300">
             <Link href="/best-study-consultant-in/chennai" className="transition-colors hover:text-white">
               Best Study Consultant in Chennai

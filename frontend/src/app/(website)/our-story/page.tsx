@@ -369,7 +369,7 @@ export default function OurStoryPage() {
     }, []);
 
     return (
-        <main
+        <div
             ref={root}
             className="overflow-hidden bg-surface-neutral text-content-primary"
         >
@@ -902,7 +902,7 @@ export default function OurStoryPage() {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     );
 }
 

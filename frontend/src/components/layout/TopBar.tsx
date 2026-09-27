@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
-import { AnimatedShinyText } from "@/components/ui/AnimatedShinyText";
 
 export const TopBar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -33,12 +32,12 @@ export const TopBar = () => {
           {/* Announcement Banner Content */}
           <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 text-center font-body text-body-small md:text-body font-medium tracking-tight">
             <span aria-hidden="true" className="shrink-0 text-sm md:text-base">🎓</span>
-            <AnimatedShinyText className="font-body font-medium cursor-pointer">
+            <span className="font-body font-semibold text-neutral-900">
               Upcoming: Study Abroad Fair 2026 —
-            </AnimatedShinyText>
+            </span>
             <Link
               href="/events"
-              className="font-body font-medium text-brand-accent cursor-pointer hover:underline hover:decoration-brand-accent shrink-0"
+              className="font-body font-bold text-[#8B001F] hover:underline hover:decoration-[#8B001F] shrink-0"
             >
               Register Now →
             </Link>

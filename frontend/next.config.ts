@@ -32,6 +32,10 @@ const securityHeaders = [
     value: "0",
   },
   {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin-allow-popups",
+  },
+  {
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
@@ -59,6 +63,11 @@ const nextConfig: NextConfig = {
     "127.0.0.1",
   ],
 
+  // Package treeshaking optimization
+  experimental: {
+    optimizePackageImports: ["lucide-react", "country-flag-icons"],
+  },
+
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],
@@ -71,12 +80,39 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // Security Headers
+  // Headers (Security & Long-Term Static Caching)
   async headers() {
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/icons/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/logos/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
     ];
   },

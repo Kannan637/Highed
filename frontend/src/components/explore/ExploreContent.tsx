@@ -272,7 +272,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
           </aside>
 
           {/* Main Results Column */}
-          <main className="col-span-4 lg:col-span-8 xl:col-span-9">
+          <section aria-label="Search results" className="col-span-4 lg:col-span-8 xl:col-span-9">
             <ActiveFilters
               filters={filters}
               onRemove={handleRemoveFilter}
@@ -308,7 +308,7 @@ function ExploreContentInner({ country }: ExploreContentProps) {
                 }}
               />
             )}
-          </main>
+          </section>
         </div>
 
         {/* Mobile Filter Drawer */}

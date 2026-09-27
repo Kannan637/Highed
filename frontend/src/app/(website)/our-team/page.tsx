@@ -302,7 +302,7 @@ export default function OurTeamPage() {
     }, []);
 
     return (
-        <main
+        <div
             ref={root}
             className="min-h-screen overflow-hidden bg-[#FAFAFC] font-body text-[#121314]"
         >
@@ -510,6 +510,6 @@ export default function OurTeamPage() {
                     </div>
                 </Container>
             </section>
-        </main>
+        </div>
     );
 }

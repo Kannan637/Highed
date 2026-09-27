@@ -187,16 +187,19 @@ export default function LogoMarquee() {
                         justify-center
                     "
                 >
-                    <h6
+                    <h2
                         id="universities-marquee-heading"
                         className="
                             max-w-[90%]
                             text-center
                             text-[#121314]
+                            text-h6
+                            font-heading
+                            font-semibold
                         "
                     >
                         Top Universities we work with
-                    </h6>
+                    </h2>
                 </div>
 
                 {/* Row 1 — Left */}

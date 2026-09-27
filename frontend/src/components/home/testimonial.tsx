@@ -99,6 +99,7 @@ export default function Testimonials2() {
 
                 {/* Rating */}
                 <div
+                  role="img"
                   className="mb-6 flex items-center gap-1"
                   aria-label="5 out of 5 stars"
                 >
