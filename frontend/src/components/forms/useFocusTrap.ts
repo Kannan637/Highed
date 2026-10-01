@@ -22,7 +22,7 @@ export function useFocusTrap(
         const focusables = containerRef.current.querySelectorAll<HTMLElement>(
             FOCUSABLE_SELECTOR
         );
-        focusables[0]?.focus();
+        focusables[0]?.focus({ preventScroll: true });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isActive]);
 
@@ -50,10 +50,10 @@ export function useFocusTrap(
 
             if (e.shiftKey && document.activeElement === first) {
                 e.preventDefault();
-                last.focus();
+                last.focus({ preventScroll: true });
             } else if (!e.shiftKey && document.activeElement === last) {
                 e.preventDefault();
-                first.focus();
+                first.focus({ preventScroll: true });
             }
         };
 

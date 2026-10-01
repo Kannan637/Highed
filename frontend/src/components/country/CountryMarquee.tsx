@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+// import { Country } from "@/types";
 interface UniversityLogo {
     name: string;
     src: string;
@@ -192,10 +192,11 @@ export default function LogoMarquee() {
                         className="
                             max-w-[90%]
                             text-center
-                            text-[#121314]
+                            text-brand-primary
+                            font-semibold
                         "
                     >
-                        Top Universities Over Student Studying
+                        Top Universities Where Our Students Study
                     </h6>
                 </div>
 

@@ -24,6 +24,7 @@ export interface FAQCategory {
 export interface FAQSectionProps {
   badge?: string;
   title?: string;
+  accentText?: string;
   subtitle?: string;
   categories?: FAQCategory[];
   contactLabel?: string;
@@ -155,6 +156,7 @@ function CategoryTab({
 export function FAQSection({
   badge = "Need Help?",
   title = "Frequently Asked Questions",
+  accentText = "Questions",
   subtitle = "Find clear answers to common questions about studying abroad, admissions, visas, costs, and career opportunities.",
   categories = defaultCategories,
 }: FAQSectionProps) {
@@ -193,6 +195,7 @@ export function FAQSection({
         <SectionHeading
           badge={badge}
           title={title}
+          accentText={accentText}
           description={subtitle}
           align="center"
         />
@@ -292,7 +295,10 @@ export function FAQSection({
 
         {/* BOTTOM CTA */}
         <div className="mt-12 flex justify-center">
-          <LeadCTAButton source="faq">
+          <LeadCTAButton
+            source="faq"
+            className="w-fit max-w-[320px] sm:w-auto sm:max-w-none"
+          >
             Ask Expert - Request Callback
           </LeadCTAButton>
         </div>

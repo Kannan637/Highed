@@ -18,12 +18,13 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
         <SectionHeading
           badge="Financial Planning"
           title={`Cost of Studying & Living in ${country.name}`}
+          accentText="Cost of Studying"
           subtitle={`Transparent, verified estimates to help you budget your international journey with zero surprises.`}
         />
 
         <div className="grid grid-cols-4 lg:grid-cols-12 gap-8">
           {/* Left Block: Academic Investment (Tuition) */}
-          <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-border/90 bg-gradient-to-b from-brand-primary/[0.03] to-white p-7 md:p-9 shadow-sm">
+          <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-black/[0.06] bg-white p-7 md:p-9 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300 hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-icon-bg-primary text-brand-primary">
@@ -38,7 +39,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
               </div>
 
               {/* Big Fee Display */}
-              <div className="rounded-2xl bg-white border border-border/80 p-6 shadow-xs">
+              <div className="rounded-2xl bg-neutral-50/70 border border-black/[0.06] p-6 shadow-2xs">
                 <div className="text-caption font-medium uppercase tracking-wider text-content-muted">
                   Estimated Range
                 </div>
@@ -82,7 +83,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
           </div>
 
           {/* Right Block: Cost of Living Breakdown */}
-          <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-border/90 bg-gradient-to-b from-rose-50/30 to-white p-7 md:p-9 shadow-sm">
+          <div className="col-span-4 lg:col-span-6 flex flex-col justify-between rounded-3xl border border-black/[0.06] bg-white p-7 md:p-9 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300 hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-icon-bg-accent text-brand-accent">
@@ -97,7 +98,7 @@ export const CountryCost: React.FC<CountryCostProps> = ({ country }) => {
               </div>
 
               {/* Monthly Overview Card */}
-              <div className="rounded-2xl bg-white border border-border/80 p-6 shadow-xs mb-4">
+              <div className="rounded-2xl bg-neutral-50/70 border border-black/[0.06] p-6 shadow-2xs mb-4">
                 <div className="text-caption font-medium uppercase tracking-wider text-content-muted">
                   Total Monthly Average
                 </div>

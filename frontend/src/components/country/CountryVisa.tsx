@@ -1,17 +1,19 @@
+
 "use client";
 
 import React from "react";
 import {
-  CheckCircle2,
-  Clock3,
-  BriefcaseBusiness,
-  FileText,
   ArrowRight,
+  BriefcaseBusiness,
+  Clock3,
+  FileText,
   ShieldCheck,
 } from "lucide-react";
+
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/utils";
 
 interface CountryVisaProps {
   country: Country;
@@ -40,389 +42,374 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
 
   return (
     <section
+      id="visa"
       className="
         w-full
-        bg-surface-subtle
+        overflow-hidden
+        border-t
+        border-border-default
+        bg-surface-neutral
         py-16
         sm:py-20
         lg:py-24
-        tracking-tight-5
-        [letter-spacing:var(--tracking-tight-5)]
-        [&_*]:[letter-spacing:var(--tracking-tight-5)]
       "
     >
       <Container size="lg">
-        {/* ───────────────── HEADER ───────────────── */}
-        <SectionHeading
-          badge="Immigration & Visas"
-          title={`Student Visa Guide for ${country.name}`}
-          subtitle="A streamlined, university-sponsored process with high approval rates and rapid processing."
-        />
+        {/* ========================================================
+            CENTERED HEADER
+            ======================================================== */}
 
-        {/* ───────────────── VISA HIGHLIGHTS ───────────────── */}
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            badge="Immigration & Visas"
+            title={`Student Visa Guide for ${country.name}`}
+            subtitle="A streamlined, university-sponsored process with high approval rates and rapid processing."
+            className="text-center"
+          />
+        </div>
+
+        {/* ========================================================
+            VISA HIGHLIGHTS
+            ======================================================== */}
+
         <div
           className="
+            mx-auto
             mt-10
-            grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-3
-            lg:mt-12
-            lg:gap-5
+            max-w-5xl
+            overflow-hidden
+            rounded-[var(--radius-card)]
+            border
+            border-border-card
+            bg-surface-default
+            shadow-card-resting
+            sm:mt-12
           "
         >
-          {highlights.map((item) => {
-            const Icon = item.icon;
+          <div className="grid grid-cols-1 sm:grid-cols-3">
+            {highlights.map((item, index) => {
+              const Icon = item.icon;
 
-            return (
-              <article
-                key={item.label}
-                className="
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-border-default
-                  bg-white
-                  p-5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-brand-primary/20
-                  hover:shadow-md
-                  sm:p-6
-                "
-              >
-                {/* Decorative accent */}
+              return (
                 <div
-                  aria-hidden="true"
-                  className="
-                    absolute
-                    -right-8
-                    -top-8
-                    size-20
-                    rounded-full
-                    bg-brand-primary/[0.04]
-                    transition-transform
-                    duration-300
-                    group-hover:scale-125
-                  "
-                />
-
-                <div className="relative flex items-start gap-4">
+                  key={item.label}
+                  className={cn(
+                    "flex flex-col items-center px-6 py-7 text-center sm:px-7 sm:py-8",
+                    index !== 0 &&
+                    "border-t border-border-light sm:border-l sm:border-t-0"
+                  )}
+                >
                   <div
                     className="
                       flex
                       size-11
-                      shrink-0
                       items-center
                       justify-center
-                      rounded-xl
-                      bg-brand-primary/10
+                      rounded-[var(--radius-icon)]
+                      bg-icon-bg-primary
                       text-brand-primary
-                      transition-colors
-                      duration-300
-                      group-hover:bg-brand-primary
-                      group-hover:text-white
                     "
                   >
                     <Icon
                       aria-hidden="true"
                       className="size-5"
-                      strokeWidth={2}
+                      strokeWidth={1.8}
                     />
                   </div>
 
-                  <div className="min-w-0">
-                    <p
-                      className="
-                        text-xs
-                        font-medium
-                        text-content-secondary
-                      "
-                    >
-                      {item.label}
-                    </p>
+                  <p
+                    className="
+                      mt-4
+                      text-caption
+                      font-medium
+                      uppercase
+                      tracking-[0.04em]
+                      text-content-secondary
+                    "
+                  >
+                    {item.label}
+                  </p>
 
-                    <p
-                      className="
-                        mt-1.5
-                        text-sm
-                        font-semibold
-                        leading-snug
-                        text-content-primary
-                        sm:text-base
-                      "
-                    >
-                      {item.value}
-                    </p>
-                  </div>
+                  <p
+                    className="
+                      mt-1
+                      text-h5
+                      text-content-primary
+                    "
+                  >
+                    {item.value}
+                  </p>
                 </div>
-              </article>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
-        {/* ───────────────── VISA PROCESS ───────────────── */}
-        <div
-          className="
-            mt-6
-            overflow-hidden
-            rounded-3xl
-            border
-            border-border-default
-            bg-white
-            shadow-xs
-            lg:mt-8
-          "
-        >
-          {/* Process header */}
+        {/* ========================================================
+            VISA PROCESS
+            ======================================================== */}
+
+        <div className="mx-auto mt-20 max-w-4xl text-center sm:mt-24 lg:mt-28">
+          <div className="mx-auto max-w-2xl">
+            <p
+              className="
+                text-caption
+                font-semibold
+                uppercase
+                tracking-[0.08em]
+                text-brand-primary
+              "
+            >
+              Application Process
+            </p>
+
+            <h3
+              className="
+                mt-3
+                text-h3
+                text-content-primary
+              "
+            >
+              5 simple steps to secure your {country.name} student visa
+            </h3>
+
+            <p
+              className="
+                mx-auto
+                mt-4
+                max-w-xl
+                text-body
+                text-content-secondary
+              "
+            >
+              Follow a clear application journey with support from our
+              specialized immigration counselors.
+            </p>
+          </div>
+
+          {/* ======================================================
+              STEPS
+              ====================================================== */}
+
           <div
             className="
-              border-b
-              border-border-default
-              px-5
-              py-6
+              mt-10
+              overflow-hidden
+              rounded-[var(--radius-card)]
+              border
+              border-border-card
+              bg-surface-default
+              text-left
+              shadow-card-resting
+              sm:mt-12
+            "
+          >
+            {visaDetails.steps.map((step, index) => (
+              <article
+                key={step.stepNumber}
+                className={cn(
+                  "group grid grid-cols-[52px_1fr] gap-4 px-5 py-6 sm:grid-cols-[68px_1fr] sm:gap-6 sm:px-7 sm:py-7 lg:px-8",
+                  index !== 0 && "border-t border-border-light"
+                )}
+              >
+                {/* Number */}
+
+                <div className="flex justify-center">
+                  <div
+                    className="
+                      flex
+                      size-10
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-icon-bg-primary
+                      text-sm
+                      font-semibold
+                      tabular-nums
+                      text-brand-primary
+                      transition-colors
+                      duration-[var(--duration-fast)]
+                      group-hover:bg-brand-primary
+                      group-hover:text-content-inverse
+                    "
+                  >
+                    {String(step.stepNumber).padStart(2, "0")}
+                  </div>
+                </div>
+
+                {/* Content */}
+
+                <div className="min-w-0 text-left">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                    <h4
+                      className="
+                        text-h5
+                        text-content-primary
+                        transition-colors
+                        duration-[var(--duration-fast)]
+                        group-hover:text-brand-primary
+                      "
+                    >
+                      {step.title}
+                    </h4>
+
+                    <span
+                      className="
+                        hidden
+                        shrink-0
+                        text-caption
+                        font-medium
+                        uppercase
+                        tracking-[0.04em]
+                        text-content-muted
+                        sm:block
+                      "
+                    >
+                      Step {index + 1}
+                    </span>
+                  </div>
+
+                  <p
+                    className="
+                      mt-2
+                      max-w-2xl
+                      text-body-small
+                      leading-6
+                      text-content-secondary
+                    "
+                  >
+                    {step.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* ========================================================
+            HIGHED VISA ASSISTANCE
+            ======================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-10
+            max-w-4xl
+            overflow-hidden
+            rounded-[var(--radius-card)]
+            border
+            border-brand-primary/15
+            bg-surface-brand-light
+            sm:mt-12
+          "
+        >
+          <div
+            className="
+              flex
+              flex-col
+              items-center
+              gap-5
+              px-6
+              py-7
+              text-center
               sm:px-8
-              sm:py-7
-              lg:px-10
+              sm:py-8
             "
           >
             <div
               className="
                 flex
-                flex-col
-                gap-4
-                sm:flex-row
-                sm:items-end
-                sm:justify-between
+                size-11
+                items-center
+                justify-center
+                rounded-[var(--radius-icon)]
+                bg-surface-default
+                text-brand-primary
+                shadow-sm
               "
             >
-              <div>
-                <p
-                  className="
-                    text-xs
-                    font-semibold
-                    uppercase
-                    tracking-wide
-                    text-brand-primary
-                  "
-                >
-                  Application Process
-                </p>
+              <ShieldCheck
+                aria-hidden="true"
+                className="size-5"
+                strokeWidth={1.8}
+              />
+            </div>
 
-                <h3
-                  className="
-                    mt-1.5
-                    text-xl
-                    font-semibold
-                    text-content-primary
-                    sm:text-2xl
-                  "
-                >
-                  5 simple steps to secure your {country.name} student visa
-                </h3>
-              </div>
-
-              <div
+            <div className="max-w-2xl">
+              <p
                 className="
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-2
-                  rounded-full
-                  bg-brand-primary/10
-                  px-3.5
-                  py-2
-                  text-xs
-                  font-medium
+                  text-caption
+                  font-semibold
+                  uppercase
+                  tracking-[0.06em]
                   text-brand-primary
                 "
               >
-                <ShieldCheck className="size-4" />
-                Guided by HighEd
-              </div>
-            </div>
-          </div>
+                HighEd Visa Assistance
+              </p>
 
-          {/* Steps */}
-          <div className="px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-            <div className="relative">
-              {/* Connecting line */}
-              <div
-                aria-hidden="true"
+              <h4
                 className="
-                  absolute
-                  bottom-8
-                  left-[19px]
-                  top-8
-                  hidden
-                  w-px
-                  bg-border-default
-                  sm:block
+                  mt-2
+                  text-h5
+                  text-content-primary
                 "
-              />
+              >
+                100% Visa Filing Assistance Included
+              </h4>
 
-              <div className="space-y-7 sm:space-y-8">
-                {visaDetails.steps.map((step, index) => (
-                  <article
-                    key={step.stepNumber}
-                    className="
-                      relative
-                      flex
-                      gap-4
-                      sm:gap-6
-                    "
-                  >
-                    {/* Step number */}
-                    <div
-                      className="
-                        relative
-                        z-10
-                        flex
-                        size-10
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-brand-primary
-                        text-sm
-                        font-semibold
-                        text-white
-                        ring-8
-                        ring-white
-                      "
-                    >
-                      {step.stepNumber}
-                    </div>
-
-                    {/* Step content */}
-                    <div className="min-w-0 flex-1 pb-1">
-                      <div
-                        className="
-                          flex
-                          flex-col
-                          gap-1
-                          sm:flex-row
-                          sm:items-center
-                          sm:justify-between
-                        "
-                      >
-                        <h4
-                          className="
-                            text-base
-                            font-semibold
-                            text-content-primary
-                            sm:text-lg
-                          "
-                        >
-                          {step.title}
-                        </h4>
-
-                        <span
-                          className="
-                            hidden
-                            text-xs
-                            font-medium
-                            text-content-secondary
-                            sm:block
-                          "
-                        >
-                          Step {index + 1}
-                        </span>
-                      </div>
-
-                      <p
-                        className="
-                          mt-1.5
-                          max-w-2xl
-                          text-sm
-                          leading-relaxed
-                          text-content-secondary
-                        "
-                      >
-                        {step.description}
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+              <p
+                className="
+                  mt-2
+                  text-body-small
+                  leading-6
+                  text-content-secondary
+                "
+              >
+                Our specialized immigration counselors review your financial
+                documentation, medical scheduling, and university submissions
+                with zero service fees.
+              </p>
             </div>
-          </div>
 
-          {/* Assistance CTA */}
-          <div className="border-t border-border-default p-5 sm:p-8 lg:p-10">
-            <div
+            <button
+              type="button"
               className="
+                group
                 flex
-                flex-col
-                gap-5
-                rounded-2xl
-                bg-brand-primary/[0.06]
-                p-5
-                sm:flex-row
-                sm:items-center
-                sm:justify-between
-                sm:p-6
+                h-11
+                cursor-pointer
+                items-center
+                gap-2
+                rounded-[var(--radius-btn)]
+                bg-brand-primary
+                px-5
+                text-btn
+                text-content-inverse
+                shadow-button
+                transition-all
+                duration-[var(--duration-fast)]
+                hover:bg-brand-primary-dark
+                hover:shadow-button-hover
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-brand-primary
+                focus-visible:ring-offset-2
               "
             >
-              <div className="flex items-start gap-3.5">
-                <div
-                  className="
-                    flex
-                    size-10
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-brand-primary
-                    text-white
-                  "
-                >
-                  <CheckCircle2 className="size-5" />
-                </div>
-
-                <div>
-                  <h4
-                    className="
-                      text-sm
-                      font-semibold
-                      text-content-primary
-                      sm:text-base
-                    "
-                  >
-                    HighEd 100% Visa Filing Assistance Included
-                  </h4>
-
-                  <p
-                    className="
-                      mt-1
-                      max-w-2xl
-                      text-xs
-                      leading-relaxed
-                      text-content-secondary
-                      sm:text-sm
-                    "
-                  >
-                    Our specialized immigration counselors review your
-                    financial documentation, medical scheduling, and
-                    university submissions with zero service fees.
-                  </p>
-                </div>
-              </div>
+              Get Visa Guidance
 
               <ArrowRight
                 aria-hidden="true"
                 className="
-                  hidden
-                  size-5
-                  shrink-0
-                  text-brand-primary
-                  sm:block
+                  size-4
+                  transition-transform
+                  duration-[var(--duration-fast)]
+                  group-hover:translate-x-1
                 "
+                strokeWidth={1.8}
               />
-            </div>
+            </button>
           </div>
         </div>
       </Container>

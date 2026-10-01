@@ -1,5 +1,5 @@
 import React from "react";
-import { Star, Quote, GraduationCap, MapPin, ArrowRight } from "lucide-react";
+import { Star, Quote, GraduationCap, MapPin } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CityData } from "@/types/city";
@@ -11,20 +11,21 @@ interface CityTestimonialsProps {
 
 export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-12 sm:py-16 md:py-20 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <SectionHeading
           badge="Real Success Stories"
           title={`Success Stories from ${city.name}`}
+          accentText="Success Stories"
           subtitle={`Discover how ambitious graduates and students from ${city.name} secured admits to top world-ranked universities with HighEd.`}
           align="center"
         />
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {city.testimonials.map((item, idx) => (
             <div
               key={idx}
-              className="relative flex flex-col justify-between rounded-3xl border border-neutral-200/80 bg-neutral-50/40 p-8 shadow-xs transition-all duration-300 hover:border-brand-primary/40 hover:bg-white hover:shadow-xl"
+              className="relative flex flex-col justify-between rounded-3xl border border-black/[0.06] bg-white p-7 sm:p-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-black/[0.12] hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]"
             >
               <div>
                 {/* 5-Star Rating & Quote icon */}
@@ -46,9 +47,9 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
               </div>
 
               {/* Student info */}
-              <div className="mt-8 pt-5 border-t border-neutral-200/60">
+              <div className="mt-8 pt-5 border-t border-border-light">
                 <div className="flex items-center gap-3.5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary font-heading font-normal text-h5 text-white shadow-xs">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-primary to-indigo-900 text-white font-semibold text-sm shadow-xs">
                     {item.studentName.charAt(0)}
                   </div>
                   <div className="min-w-0">
@@ -82,16 +83,16 @@ export const CityTestimonials: React.FC<CityTestimonialsProps> = ({ city }) => {
           <p className="text-body-small text-content-secondary">
             Want to be our next success story from {city.name}?
           </p>
-          <div className="mt-3">
+          <div className="mt-3 flex justify-center">
             <LeadCTAButton
               source={`city_stories_cta_${city.slug}`}
               contextTitle={`Be the Next Success Story from ${city.name}`}
               contextCTA="Start My Application"
               variant="accent"
               size="default"
+              className="w-fit max-w-[280px] sm:w-auto sm:max-w-none"
             >
-              <span>Begin Your Journey Today</span>
-              <ArrowRight size={16} />
+              Begin Your Journey Today
             </LeadCTAButton>
           </div>
         </div>

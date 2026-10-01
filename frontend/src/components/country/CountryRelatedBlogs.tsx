@@ -49,8 +49,8 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
           <EyebrowBadge>Destination Insights &amp; Guides</EyebrowBadge>
 
           {/* Title */}
-          <h2 className="text-content-primary">
-            Expert Guides for Studying in {country.name}
+          <h2 className="text-brand-primary">
+            Expert Guides for Studying in <span className="text-brand-accent">{country.name}</span>
           </h2>
 
           {/* Description */}
@@ -129,7 +129,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
         <div className="mt-8 sm:mt-12 flex justify-center">
           <Link
             href="/blog"
-            className="flex h-[48px] items-center gap-3 rounded-full bg-brand-primary pl-6 pr-2 text-btn font-medium text-white shadow-md transition-all duration-200 hover:bg-brand-primary-hover active:scale-[0.98] cursor-pointer"
+            className="group flex h-[48px] items-center gap-3 rounded-full bg-brand-primary pl-6 pr-2 text-btn font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-primary-hover active:scale-[0.98] cursor-pointer"
           >
             <span>View All Blogs</span>
             <span className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-white text-brand-primary shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">

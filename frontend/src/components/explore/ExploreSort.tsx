@@ -14,7 +14,7 @@ export const ExploreSort: React.FC<ExploreSortProps> = ({
   type,
 }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <ArrowUpDown size={15} className="text-muted-foreground shrink-0" />
       <span className="text-xs font-semibold text-muted-foreground hidden sm:inline">Sort:</span>
       <select

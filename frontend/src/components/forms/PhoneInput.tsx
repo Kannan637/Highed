@@ -276,7 +276,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
       {/* Input wrapper */}
       <div
         className={`relative flex h-12 w-full items-center rounded-xl border bg-white transition-colors ${error
-          ? "border-brand-accent"
+          ? "border-brand-accent focus-within:border-brand-accent"
           : "border-gray-200 focus-within:border-brand-primary"
           }`}
       >
@@ -291,7 +291,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
             onClick={toggleDropdown}
             onKeyDown={handleTriggerKeyDown}
             disabled={disabled}
-            className="flex h-full min-h-[44px] items-center gap-1.5 border-r border-gray-200 px-3 font-body text-sm font-medium text-content-primary transition-colors hover:bg-gray-50 focus:outline-none focus-visible:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-full min-h-[44px] items-center gap-1.5 rounded-l-xl border-r border-gray-200 px-3 font-body text-sm font-medium text-content-primary transition-colors hover:bg-gray-50 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Select country calling code"
             aria-haspopup="listbox"
             aria-expanded={isOpen}
@@ -365,7 +365,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
           aria-label="Mobile phone number"
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="h-full min-w-0 flex-1 bg-transparent px-3 font-body text-sm text-content-primary outline-none placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-12 w-full min-w-0 flex-1 rounded-r-xl border-0 bg-transparent px-4 font-body text-sm text-content-primary outline-none ring-0 placeholder:text-gray-500 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
 

@@ -255,12 +255,12 @@ function ExploreContentInner({ country }: ExploreContentProps) {
   }, [processedResults, currentPage]);
 
   return (
-    <section className="bg-neutral-50/50 py-12">
+    <section className="bg-[#F5F5F9]/50 py-12 sm:py-16 md:py-20 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <div className="grid grid-cols-4 lg:grid-cols-12 gap-8 items-start">
           {/* Sidebar Filters (Desktop) */}
           <aside className="hidden lg:block lg:col-span-4 xl:col-span-3">
-            <div className="sticky top-28 rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+            <div className="sticky top-28 rounded-3xl border border-black/[0.06] bg-white p-6 sm:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
               <ExploreFilters
                 filters={filters}
                 onChange={handleFiltersChange}

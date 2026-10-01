@@ -10,9 +10,8 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/company/highed",
   },
   contact: {
-    phone: "+919050180501",
-    email: "admissions@highed.org",
-    address: "Global Education Towers, Level 4, Academic City",
+    phone: "+919043982424",
+    email: "[EMAIL_ADDRESS]",
+    address: "1st Floor, 11, 1st St, Venus Colony, Venus Garden,CIT Nagar, Saidapet, Chennai, Tamil Nadu 600017",
   },
 };
-

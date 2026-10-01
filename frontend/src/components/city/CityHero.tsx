@@ -13,8 +13,20 @@ interface CityHeroProps {
 export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
   const statIcons = [Users, ShieldCheck, Award, GraduationCap];
 
+  const renderHeading = () => {
+    if (!city.title.includes(city.name)) return city.title;
+    const parts = city.title.split(city.name);
+    return (
+      <>
+        {parts[0]}
+        <span className="text-brand-accent">{city.name}</span>
+        {parts.slice(1).join(city.name)}
+      </>
+    );
+  };
+
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#16234B_0%,#253A7B_55%,#1B2958_100%)] pb-16 pt-8 md:pt-12 text-white">
+    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#16234B_0%,#253A7B_55%,#1B2958_100%)] pb-16 pt-8 md:pt-12 text-white tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       {/* Background Ambient Glows */}
       <div className="pointer-events-none absolute -left-32 top-0 h-[450px] w-[450px] rounded-full bg-blue-400/10 blur-[120px]" />
       <div className="pointer-events-none absolute -right-32 bottom-10 h-[450px] w-[450px] rounded-full bg-brand-accent/15 blur-[120px]" />
@@ -37,7 +49,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
           {/* Left Column: Content */}
           <div className="col-span-4 text-left lg:col-span-7">
             {/* City Location Pill */}
-            <Badge variant="inverse" size="default" className="mb-5">
+            <Badge variant="inverse" size="default" className="mb-5 rounded-full">
               <MapPin size={15} className="text-brand-accent" />
               <span>
                 {city.slug === "chennai" ? "Main Office" : "Study Abroad Services"} • {city.name}
@@ -46,7 +58,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
 
             {/* Heading */}
             <h1 className="text-white">
-              {city.title}
+              {renderHeading()}
             </h1>
 
             {/* Tagline */}
@@ -69,18 +81,19 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
             )}
 
             {/* Primary & Secondary CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
               <LeadCTAButton
                 source={`city_hero_${city.slug}`}
                 contextTitle={`Study Abroad Counselling in ${city.name}`}
                 contextCTA="Book Free Counselling"
+                className="w-fit max-w-[280px] sm:w-auto sm:max-w-none"
               >
                 Book Free Counselling
               </LeadCTAButton>
 
               <a
                 href="#destinations"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-btn font-medium text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/20 active:scale-95"
+                className="inline-flex h-12 w-fit max-w-[280px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-btn font-semibold text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95"
               >
                 <Compass size={17} />
                 <span>Explore Destinations</span>
@@ -158,10 +171,12 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                   source={`city_card_${city.slug}`}
                   contextTitle={`Free Profile Evaluation - ${city.name}`}
                   contextCTA="Start My Free Application"
-                  className="w-full flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white py-3 text-btn font-medium text-brand-primary shadow-md transition-all hover:bg-neutral-100 hover:shadow-lg active:scale-98 cursor-pointer"
+                  variant="white"
+                  fullWidth
+                  className="h-12 font-semibold shadow-md transition-all hover:bg-neutral-100 hover:shadow-lg active:scale-98 cursor-pointer gap-2"
                 >
                   <span>Start Free Evaluation</span>
-                  <ArrowRight size={15} />
+                  <ArrowRight size={16} />
                 </LeadCTAButton>
               </div>
             </div>

@@ -57,20 +57,20 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
   if (chips.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-2 mb-6 pt-2">
+    <div className="flex flex-wrap items-center gap-2 mb-6 pt-2 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <span className="text-xs font-semibold text-neutral-400">Active Filters:</span>
 
       {chips.map((chip) => (
         <span
           key={chip.key}
-          className="inline-flex items-center gap-1.5 rounded-full border border-brand-primary/20 bg-icon-bg-primary px-3 py-1 text-xs font-semibold text-brand-primary"
+          className="inline-flex items-center gap-1.5 rounded-full border border-brand-primary/20 bg-icon-bg-primary px-3 py-1.5 text-xs font-semibold text-brand-primary"
         >
           <span>{chip.label}:</span>
           <span className="text-neutral-900">{chip.value}</span>
           <button
             type="button"
             onClick={() => onRemove(chip.key)}
-            className="rounded-full p-0.5 hover:bg-brand-primary/10 transition-colors cursor-pointer"
+            className="rounded-full p-1 hover:bg-brand-primary/10 transition-colors cursor-pointer"
             aria-label={`Remove ${chip.label} filter`}
           >
             <X size={12} />
@@ -81,9 +81,9 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
       <button
         type="button"
         onClick={onClearAll}
-        className="inline-flex items-center gap-1 text-xs font-semibold text-neutral-500 hover:text-brand-accent transition-colors ml-2 cursor-pointer"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-brand-accent transition-colors ml-2 py-1 px-2 rounded-full hover:bg-neutral-100 cursor-pointer"
       >
-        <RotateCcw size={11} />
+        <RotateCcw size={12} />
         <span>Clear All</span>
       </button>
     </div>

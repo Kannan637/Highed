@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -25,7 +26,6 @@ import {
   CardTitle,
 } from "@/components/ui/Card";
 
-import { Badge } from "@/components/ui/Badge";
 import { Button, buttonVariants } from "@/components/ui/Button";
 import { Separator } from "@/components/ui/separator";
 
@@ -47,11 +47,13 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
   const scholarships = country?.scholarshipsList || [];
   const totalCount = scholarships.length;
 
-  /**
-   * Update carousel state
-   */
+  /* ============================================================
+     CAROUSEL STATE
+     ============================================================ */
+
   const updateCarouselState = useCallback(() => {
     const container = carouselRef.current;
+
     if (!container) return;
 
     const { scrollLeft, scrollWidth, clientWidth } = container;
@@ -60,10 +62,14 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
     setCanScrollNext(scrollLeft + clientWidth < scrollWidth - 8);
 
     const firstCard = container.firstElementChild as HTMLElement | null;
+
     if (!firstCard) return;
 
-    const gap = 16;
+    const computedStyle = window.getComputedStyle(container);
+    const gap = parseFloat(computedStyle.columnGap || "0") || 0;
+
     const cardWidth = firstCard.offsetWidth;
+
     const index = Math.round(scrollLeft / (cardWidth + gap));
 
     setActiveIndex(
@@ -71,74 +77,87 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
     );
   }, [totalCount]);
 
-  /**
-   * Scroll to specific slide
-   */
-  const scrollToIndex = useCallback(
-    (index: number) => {
-      const container = carouselRef.current;
-      if (!container) return;
+  /* ============================================================
+     SCROLL TO INDEX
+     ============================================================ */
 
-      const firstCard = container.firstElementChild as HTMLElement | null;
-      if (!firstCard) return;
+  const scrollToIndex = useCallback((index: number) => {
+    const container = carouselRef.current;
 
-      const gap = 16;
-      const cardWidth = firstCard.offsetWidth;
+    if (!container) return;
 
-      container.scrollTo({
-        left: index * (cardWidth + gap),
-        behavior: "smooth",
-      });
-    },
-    []
-  );
+    const firstCard = container.firstElementChild as HTMLElement | null;
 
-  /**
-   * Next / Prev button handler
-   */
-  const scroll = useCallback(
-    (direction: "prev" | "next") => {
-      const container = carouselRef.current;
-      if (!container) return;
+    if (!firstCard) return;
 
-      const firstCard = container.firstElementChild as HTMLElement | null;
-      const cardWidth = firstCard ? firstCard.offsetWidth : container.clientWidth * 0.85;
-      const gap = 16;
-      const scrollStep = cardWidth + gap;
+    const computedStyle = window.getComputedStyle(container);
+    const gap = parseFloat(computedStyle.columnGap || "0") || 0;
 
-      container.scrollBy({
-        left: direction === "next" ? scrollStep : -scrollStep,
-        behavior: "smooth",
-      });
-    },
-    []
-  );
+    const cardWidth = firstCard.offsetWidth;
 
-  /**
-   * Keyboard accessibility
-   */
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") {
-      e.preventDefault();
+    container.scrollTo({
+      left: index * (cardWidth + gap),
+      behavior: "smooth",
+    });
+  }, []);
+
+  /* ============================================================
+     PREVIOUS / NEXT
+     ============================================================ */
+
+  const scroll = useCallback((direction: "prev" | "next") => {
+    const container = carouselRef.current;
+
+    if (!container) return;
+
+    const firstCard = container.firstElementChild as HTMLElement | null;
+
+    const computedStyle = window.getComputedStyle(container);
+    const gap = parseFloat(computedStyle.columnGap || "0") || 0;
+
+    const cardWidth = firstCard
+      ? firstCard.offsetWidth
+      : container.clientWidth * 0.86;
+
+    const scrollStep = cardWidth + gap;
+
+    container.scrollBy({
+      left: direction === "next" ? scrollStep : -scrollStep,
+      behavior: "smooth",
+    });
+  }, []);
+
+  /* ============================================================
+     KEYBOARD NAVIGATION
+     ============================================================ */
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
       scroll("prev");
-    } else if (e.key === "ArrowRight") {
-      e.preventDefault();
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
       scroll("next");
     }
   };
 
-  /**
-   * Sync scroll listener
-   */
+  /* ============================================================
+     SCROLL LISTENER
+     ============================================================ */
+
   useEffect(() => {
     updateCarouselState();
 
     const container = carouselRef.current;
+
     if (!container) return;
 
     container.addEventListener("scroll", updateCarouselState, {
       passive: true,
     });
+
     window.addEventListener("resize", updateCarouselState);
 
     return () => {
@@ -147,34 +166,45 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
     };
   }, [updateCarouselState]);
 
-  if (!scholarships.length) return null;
+  if (!scholarships.length) {
+    return null;
+  }
 
   return (
     <section
       id="scholarships"
-      className="border-t border-border/60 bg-surface-neutral/60 py-12 sm:py-16 md:py-20 overflow-hidden"
+      className="
+        w-full
+        overflow-hidden
+        border-t
+        border-border-default
+        bg-surface-neutral
+        py-16
+        sm:py-20
+        lg:py-24
+      "
     >
       <Container size="lg">
-        {/* =====================================================
-            HEADER + DESKTOP CONTROLS
-        ===================================================== */}
-        <div className="mb-8 flex flex-col gap-6 sm:mb-10 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <SectionHeading
-              badge="Financial Support"
-              title={`Scholarships & Grants in ${country.name}`}
-              subtitle="Offset your tuition with merit-based awards, government stipends, and university waivers."
-              className="text-left"
-            />
-          </div>
+        {/* ========================================================
+            HEADER
+            ======================================================== */}
 
-          {/* Desktop Controls */}
-          {totalCount > 1 && (
-            <div className="hidden items-center gap-3 sm:flex">
-              <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {activeIndex + 1} / {totalCount}
-              </span>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            badge="Financial Support"
+            title={`Scholarships & Grants in ${country.name} `}
+            subtitle="Offset your tuition with merit-based awards, government stipends, and university waivers."
+            className="text-center"
+          />
+        </div>
 
+        {/* ========================================================
+            NAVIGATION
+            ======================================================== */}
+
+        {totalCount > 1 && (
+          <div className="mt-8 flex items-center justify-center sm:mt-10">
+            <div className="flex items-center gap-4">
               <Button
                 type="button"
                 variant="outline"
@@ -182,10 +212,40 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
                 disabled={!canScrollPrev}
                 onClick={() => scroll("prev")}
                 aria-label="Previous scholarship"
-                className="size-10 rounded-full cursor-pointer"
+                className="
+                  size-10
+                  cursor-pointer
+                  rounded-full
+                  border-border-default
+                  bg-surface-default
+                  shadow-none
+                  transition-all
+                  duration-200
+                  hover:border-brand-primary
+                  hover:text-brand-primary
+                  disabled:cursor-not-allowed
+                "
               >
-                <ChevronLeft className="size-4" />
+                <ChevronLeft
+                  aria-hidden="true"
+                  className="size-4"
+                />
               </Button>
+
+              <span
+                className="
+                  min-w-16
+                  text-center
+                  text-caption
+                  font-medium
+                  tabular-nums
+                  text-content-secondary
+                "
+              >
+                {String(activeIndex + 1).padStart(2, "0")}
+                {" / "}
+                {String(totalCount).padStart(2, "0")}
+              </span>
 
               <Button
                 type="button"
@@ -194,104 +254,284 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
                 disabled={!canScrollNext}
                 onClick={() => scroll("next")}
                 aria-label="Next scholarship"
-                className="size-10 rounded-full cursor-pointer"
+                className="
+                  size-10
+                  cursor-pointer
+                  rounded-full
+                  border-border-default
+                  bg-surface-default
+                  shadow-none
+                  transition-all
+                  duration-200
+                  hover:border-brand-primary
+                  hover:text-brand-primary
+                  disabled:cursor-not-allowed
+                "
               >
-                <ChevronRight className="size-4" />
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-4"
+                />
               </Button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
-        {/* =====================================================
-            CAROUSEL TRACK
-        ===================================================== */}
+        {/* ========================================================
+            SCHOLARSHIP CAROUSEL
+            ======================================================== */}
+
         <div
           role="region"
-          aria-label={`Scholarships in ${country.name}`}
+          aria-label={`Scholarships in ${country.name} `}
           tabIndex={0}
           onKeyDown={handleKeyDown}
-          className="relative outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/20 focus-visible:ring-offset-4"
+          className="
+            mt-10
+            outline-none
+            focus-visible:ring-2
+            focus-visible:ring-brand-primary
+            focus-visible:ring-offset-4
+            sm:mt-12
+            lg:mt-14
+          "
         >
           <div
             ref={carouselRef}
-            className={cn(
-              "flex gap-4 overflow-x-auto scroll-smooth",
-              "snap-x snap-mandatory",
-              "scrollbar-none",
-              "px-1 py-2",
-              "touch-pan-x"
-            )}
+            className="
+              flex
+              snap-x
+              snap-mandatory
+              gap-4
+              overflow-x-auto
+              scroll-smooth
+              scrollbar-none
+              px-1
+              py-2
+              touch-pan-x
+              sm:gap-5
+            "
             style={{
               WebkitOverflowScrolling: "touch",
             }}
           >
             {scholarships.map((scholarship, index) => (
               <Card
-                key={`${scholarship.name}-${index}`}
+                key={`${scholarship.name} -${index} `}
                 className={cn(
+                  /* Layout */
                   "group flex shrink-0 snap-start flex-col",
-                  "rounded-2xl border-border/70 bg-background",
-                  "shadow-xs transition-all duration-300",
-                  "hover:-translate-y-1 hover:shadow-md",
-                  // Mobile peeking card width
-                  "w-[84vw] min-w-[270px] max-w-[340px]",
-                  // Tablet
-                  "sm:w-[calc(50%-8px)] sm:max-w-none",
-                  // Desktop
-                  "lg:w-[calc(33.333%-11px)]"
+
+                  /* Mobile */
+                  "w-[86vw] min-w-[280px] max-w-[360px]",
+
+                  /* Tablet */
+                  "sm:w-[calc(50%-10px)] sm:max-w-none",
+
+                  /* Desktop */
+                  "lg:w-[calc(33.333%-13.333px)]",
+
+                  /* Global design system */
+                  "rounded-[var(--radius-card)]",
+                  "border-border-card",
+                  "bg-surface-default",
+
+                  /* Elevation */
+                  "shadow-card-resting",
+
+                  /* Interaction */
+                  "transition-all",
+                  "duration-[var(--duration-normal)]",
+                  "ease-[var(--easing-default)]",
+
+                  "hover:border-brand-primary/20",
+                  "hover:shadow-card-hover"
                 )}
               >
-                {/* CARD HEADER */}
-                <CardHeader className="space-y-4 p-5 sm:p-6">
-                  <div className="flex items-center justify-between gap-3">
-                    <Badge
-                      variant="secondary"
-                      className="gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800"
-                    >
-                      <Award className="size-3.5 text-amber-600" />
-                      <span>{scholarship.amount}</span>
-                    </Badge>
+                {/* ==================================================
+                    CARD HEADER
+                    ================================================== */}
 
-                    <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                <CardHeader className="space-y-5 p-6 sm:p-7">
+                  <div className="flex items-start justify-between gap-4">
+                    {/* Award icon */}
+
+                    <div
+                      className="
+                        flex
+                        size-11
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-[var(--radius-icon)]
+                        bg-icon-bg-gold
+                        text-brand-gold
+                      "
+                    >
+                      <Award
+                        aria-hidden="true"
+                        className="size-5"
+                        strokeWidth={1.8}
+                      />
+                    </div>
+
+                    {/* Scholarship label */}
+
+                    <span
+                      className="
+                        pt-1
+                        text-caption
+                        font-medium
+                        uppercase
+                        tracking-[0.04em]
+                        text-content-muted
+                      "
+                    >
                       Scholarship
                     </span>
                   </div>
 
-                  <CardTitle className="line-clamp-2 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                  {/* Amount */}
+
+                  <div>
+                    <p
+                      className="
+                        text-caption
+                        font-medium
+                        text-content-secondary
+                      "
+                    >
+                      Award Amount
+                    </p>
+
+                    <p
+                      className="
+                        mt-1
+                        text-h5
+                        text-brand-primary
+                      "
+                    >
+                      {scholarship.amount}
+                    </p>
+                  </div>
+
+                  {/* Title */}
+
+                  <CardTitle
+                    className="
+                      line-clamp-2
+                      text-h5
+                      text-content-primary
+                    "
+                  >
                     {scholarship.name}
                   </CardTitle>
                 </CardHeader>
 
-                {/* CARD CONTENT */}
-                <CardContent className="flex-1 space-y-4 p-5 pt-0 sm:p-6 sm:pt-0">
-                  <div className="space-y-3 rounded-xl bg-muted/40 p-3.5">
+                {/* ==================================================
+                    CARD CONTENT
+                    ================================================== */}
+
+                <CardContent className="flex-1 px-6 pb-6 sm:px-7 sm:pb-7">
+                  <div
+                    className="
+                      rounded-[16px]
+                      border
+                      border-border-light
+                      bg-surface-neutral
+                    "
+                  >
                     {/* Eligibility */}
-                    <div className="flex items-start gap-3">
-                      <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600">
-                        <CheckCircle2 className="size-3.5" />
+
+                    <div className="flex items-start gap-3.5 p-4">
+                      <div
+                        className="
+                          mt-0.5
+                          flex
+                          size-8
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-[var(--radius-icon)]
+                          bg-icon-bg-success
+                          text-feedback-success
+                        "
+                      >
+                        <CheckCircle2
+                          aria-hidden="true"
+                          className="size-4"
+                          strokeWidth={1.8}
+                        />
                       </div>
+
                       <div className="min-w-0">
-                        <p className="mb-0.5 text-xs font-semibold text-foreground">
+                        <p
+                          className="
+                            text-caption
+                            font-medium
+                            text-content-secondary
+                          "
+                        >
                           Eligibility
                         </p>
-                        <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+
+                        <p
+                          className="
+                            mt-1
+                            line-clamp-3
+                            text-body-small
+                            text-content-primary
+                          "
+                        >
                           {scholarship.eligibility}
                         </p>
                       </div>
                     </div>
 
-                    <Separator />
+                    <Separator className="bg-border-light" />
 
                     {/* Coverage */}
-                    <div className="flex items-start gap-3">
-                      <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
-                        <ShieldCheck className="size-3.5" />
+
+                    <div className="flex items-start gap-3.5 p-4">
+                      <div
+                        className="
+                          mt-0.5
+                          flex
+                          size-8
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-[var(--radius-icon)]
+                          bg-icon-bg-primary
+                          text-brand-primary
+                        "
+                      >
+                        <ShieldCheck
+                          aria-hidden="true"
+                          className="size-4"
+                          strokeWidth={1.8}
+                        />
                       </div>
+
                       <div className="min-w-0">
-                        <p className="mb-0.5 text-xs font-semibold text-foreground">
+                        <p
+                          className="
+                            text-caption
+                            font-medium
+                            text-content-secondary
+                          "
+                        >
                           Coverage
                         </p>
-                        <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+
+                        <p
+                          className="
+                            mt-1
+                            line-clamp-3
+                            text-body-small
+                            text-content-primary
+                          "
+                        >
                           {scholarship.coverage}
                         </p>
                       </div>
@@ -299,25 +539,61 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
                   </div>
                 </CardContent>
 
-                {/* CARD FOOTER */}
-                <CardFooter className="flex-col p-0">
-                  <Separator />
-                  <div className="w-full p-4 sm:p-5">
+                {/* ==================================================
+                    CARD FOOTER
+                    ================================================== */}
+
+                <CardFooter className="border-t border-border-light p-0">
+                  <div className="w-full p-5 sm:p-6">
                     <LeadCTAButton
-                      source={`country_scholarship_${country.slug}`}
+                      source={`country_scholarship_${country.slug} `}
                       variant="ghost"
                       size="sm"
-                      className={cn(
-                        "group/cta flex w-full items-center justify-between",
-                        "rounded-xl px-3 py-2.5",
-                        "font-semibold text-brand-primary",
-                        "hover:bg-brand-primary/5",
-                        "hover:text-brand-accent cursor-pointer"
-                      )}
+                      className="
+                        group/cta
+                        flex
+                        w-full
+                        cursor-pointer
+                        items-center
+                        justify-between
+                        rounded-[var(--radius-btn)]
+                        px-3
+                        py-2.5
+                        text-btn
+                        text-brand-primary
+                        transition-colors
+                        duration-[var(--duration-fast)]
+                        hover:bg-surface-brand-light
+                        hover:text-brand-primary
+                      "
                     >
                       <span>Check Qualification</span>
-                      <span className="flex size-8 items-center justify-center rounded-full bg-brand-primary/10 transition-transform duration-300 group-hover/cta:translate-x-0.5">
-                        <ArrowRight className="size-4" />
+
+                      <span
+                        className="
+                          flex
+                          size-8
+                          items-center
+                          justify-center
+                          rounded-full
+                          bg-icon-bg-primary
+                          text-brand-primary
+                          transition-all
+                          duration-[var(--duration-fast)]
+                          group-hover/cta:bg-brand-primary
+                          group-hover/cta:text-content-inverse
+                        "
+                      >
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="
+                            size-4
+                            transition-transform
+                            duration-[var(--duration-fast)]
+                            group-hover/cta:translate-x-0.5
+                          "
+                          strokeWidth={1.8}
+                        />
                       </span>
                     </LeadCTAButton>
                   </div>
@@ -327,14 +603,14 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
           </div>
         </div>
 
-        {/* =====================================================
-            MOBILE CONTROLS (Dots + Next/Prev)
-        ===================================================== */}
+        {/* ========================================================
+            MOBILE PAGINATION
+            ======================================================== */}
+
         {totalCount > 1 && (
-          <div className="mt-6 flex items-center justify-between gap-4 sm:hidden">
-            {/* Pagination Dots */}
+          <div className="mt-6 flex justify-center sm:hidden">
             <div
-              className="flex items-center gap-1.5"
+              className="flex items-center gap-1"
               role="tablist"
               aria-label="Scholarship carousel pagination"
             >
@@ -344,67 +620,88 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
                   type="button"
                   role="tab"
                   aria-selected={activeIndex === index}
-                  aria-label={`Go to scholarship ${index + 1}`}
+                  aria-label={`Go to scholarship ${index + 1} `}
                   onClick={() => scrollToIndex(index)}
-                  className={cn(
-                    "h-2 rounded-full transition-all duration-300 cursor-pointer",
-                    activeIndex === index
-                      ? "w-6 bg-brand-accent shadow-xs"
-                      : "w-2 bg-muted-foreground/25 hover:bg-muted-foreground/40"
-                  )}
-                />
+                  className="
+                    flex
+                    min-h-9
+                    min-w-9
+                    cursor-pointer
+                    items-center
+                    justify-center
+                    rounded-full
+                  "
+                >
+                  <span
+                    className={cn(
+                      "h-1.5 rounded-full transition-all duration-200",
+                      activeIndex === index
+                        ? "w-6 bg-brand-primary"
+                        : "w-1.5 bg-content-muted/30"
+                    )}
+                  />
+                </button>
               ))}
-            </div>
-
-            {/* Mobile Navigation Buttons */}
-            <div className="flex items-center gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                disabled={!canScrollPrev}
-                onClick={() => scroll("prev")}
-                aria-label="Previous scholarship"
-                className="size-9 rounded-full cursor-pointer"
-              >
-                <ChevronLeft className="size-4" />
-              </Button>
-
-              <span className="min-w-10 text-center text-xs font-semibold text-muted-foreground">
-                {activeIndex + 1} / {totalCount}
-              </span>
-
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                disabled={!canScrollNext}
-                onClick={() => scroll("next")}
-                aria-label="Next scholarship"
-                className="size-9 rounded-full cursor-pointer"
-              >
-                <ChevronRight className="size-4" />
-              </Button>
             </div>
           </div>
         )}
 
-        {/* =====================================================
+        {/* ========================================================
             EXPLORE ALL
-        ===================================================== */}
-        <div className="mt-8 flex justify-center sm:mt-12">
+            ======================================================== */}
+
+        <div className="mt-10 flex justify-center sm:mt-12">
           <Link
-            href={`/study-in/${country.slug}/explore?type=scholarships`}
+            href={`/ study -in /${country.slug}/explore ? type = scholarships`}
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "group flex h-auto min-h-12 w-full max-w-[560px] items-center justify-center gap-2 rounded-xl px-4 py-3 text-center text-sm sm:w-auto sm:px-6 cursor-pointer"
+              `
+                group
+flex
+h - 12
+w - full
+max - w - [420px]
+cursor - pointer
+items - center
+justify - center
+gap - 2.5
+rounded - [var(--radius - btn)]
+border - border -default
+bg - surface -default
+px - 6
+text - btn
+text - content - primary
+shadow - none
+transition - all
+duration - [var(--duration - fast)]
+hover: border - brand - primary
+hover: bg - surface - brand - light
+hover: text - brand - primary
+sm: w - auto
+sm: max - w - none
+  `
             )}
           >
-            <Compass className="size-4 text-brand-primary" />
-            <span className="text-center text-sm font-semibold">
+            <Compass
+              aria-hidden="true"
+              className="size-4 text-brand-primary"
+              strokeWidth={1.8}
+            />
+
+            <span>
               Explore All Scholarships & Application Deadlines
             </span>
-            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+
+            <ArrowRight
+              aria-hidden="true"
+              className="
+                size-4
+                transition-transform
+                duration-[var(--duration-fast)]
+                group-hover:translate-x-1
+              "
+              strokeWidth={1.8}
+            />
           </Link>
         </div>
       </Container>
@@ -412,4 +709,4 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
   );
 };
 
-export default CountryScholarships;
+export default CountryScholarships

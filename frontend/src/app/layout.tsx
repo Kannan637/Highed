@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Syne } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
 import "./globals.css";
@@ -11,6 +11,12 @@ export const viewport: Viewport = {
 
 const dmSans = DM_Sans({
   variable: "--font-body",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const syne = Syne({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
@@ -130,7 +136,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${syne.variable} h-full antialiased`}
     >
       <head>
         <JsonLd data={organizationSchema} />

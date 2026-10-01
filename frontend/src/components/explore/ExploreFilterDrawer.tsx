@@ -52,7 +52,7 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
       />
 
       {/* Drawer Panel */}
-      <div className="relative z-10 max-h-[85vh] w-full overflow-hidden rounded-t-3xl bg-white shadow-2xl flex flex-col animate-in slide-in-from-bottom duration-300">
+      <div className="relative z-10 max-h-[85vh] w-full overflow-hidden rounded-t-[32px] bg-white shadow-2xl flex flex-col animate-in slide-in-from-bottom duration-300 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4">
           <h3 className="modal-title text-content-primary">
@@ -80,7 +80,7 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
             variant="outline"
             size="default"
             onClick={onClear}
-            className="flex-1 gap-1.5"
+            className="flex-1 h-12 rounded-full font-semibold gap-1.5"
           >
             <RotateCcw size={14} />
             <span>Clear All</span>
@@ -93,7 +93,7 @@ export const ExploreFilterDrawer: React.FC<ExploreFilterDrawerProps> = ({
               onApply();
               onClose();
             }}
-            className="flex-1 gap-1.5"
+            className="flex-1 h-12 rounded-full font-semibold gap-1.5"
           >
             <Check size={16} />
             <span>Apply Filters</span>

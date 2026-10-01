@@ -18,7 +18,7 @@ def test_lead_form_renders_and_validates_required_fields(page: Page):
     submit_btn.click(force=True)
 
     # Verify client validation error is displayed
-    error_banner = page.locator("text=Please correct the errors in the form below")
+    error_banner = page.locator("text=Please correct the highlighted fields before submitting")
     expect(error_banner).to_be_visible(timeout=5000)
 
 def test_lead_form_successful_submission(page: Page):
@@ -38,5 +38,5 @@ def test_lead_form_successful_submission(page: Page):
     submit_btn.click(force=True)
 
     # Success confirmation
-    success_view = page.locator("text=Request Submitted!")
+    success_view = page.locator("text=Request Submitted Successfully")
     expect(success_view).to_be_visible(timeout=6000)

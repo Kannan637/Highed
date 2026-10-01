@@ -22,18 +22,19 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
     <div
       className="
         group flex h-full flex-col overflow-hidden
-        rounded-2xl
-        border border-border
-        bg-card
-        shadow-xs
-        transition-all duration-300
-        hover:border-primary/40
-        hover:shadow-lg
+        rounded-3xl
+        border border-black/[0.06]
+        bg-white
+        shadow-[0_2px_8px_rgba(0,0,0,0.03)]
+        transition-all duration-300 ease-out
+        hover:-translate-y-1.5
+        hover:border-black/[0.12]
+        hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]
       "
     >
       {/* ================= IMAGE ================= */}
-      <div className="relative p-2.5">
-        <div className="relative h-[190px] overflow-hidden rounded-xl bg-neutral-100">
+      <div className="relative p-3">
+        <div className="relative h-[200px] overflow-hidden rounded-2xl bg-neutral-100">
           <Image
             src={scholarship.image || "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"}
             alt={scholarship.name}
@@ -114,10 +115,10 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
         <div
           className="
             mt-4
-            rounded-xl
-            border border-border/80
+            rounded-2xl
+            border border-black/[0.06]
             bg-neutral-50/70
-            p-3.5
+            p-4
           "
         >
           {/* Eligibility */}
@@ -151,7 +152,7 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
           </div>
 
           {/* Divider */}
-          <div className="my-2.5 border-t border-border" />
+          <div className="my-2.5 border-t border-border-light" />
 
           {/* Coverage */}
           <div className="flex items-start gap-2.5">
@@ -178,22 +179,23 @@ export const ScholarshipCard: React.FC<ScholarshipCardProps> = ({
 
         {/* ================= CTA ================= */}
         <div className="mt-auto pt-5">
-          <div className="border-t border-border pt-4">
+          <div className="border-t border-border-light pt-4">
             <LeadCTAButton
               source={`explore_scholarship_${scholarship.id}`}
               variant="outline"
               size="default"
               className="
                 flex w-full items-center justify-between
-                h-12 px-4
+                h-12 px-5
                 rounded-full
                 text-sm
                 font-semibold
                 text-brand-primary
                 border border-black/10
-                hover:border-brand-primary
+                hover:border-brand-accent
+                hover:text-brand-accent
                 hover:bg-brand-primary/5
-                transition-colors
+                transition-all duration-200
               "
             >
               <span className="flex items-center gap-2">

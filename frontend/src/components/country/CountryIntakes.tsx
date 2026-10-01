@@ -1,98 +1,437 @@
+"use client";
+
 import React from "react";
-import { ArrowRight, Calendar, AlertCircle, Clock, CheckCircle } from "lucide-react";
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ImageIcon,
+} from "lucide-react";
+
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { LeadCTAButton } from "@/components/forms/LeadCTAButton";
+import { cn } from "@/lib/utils";
 
 interface CountryIntakesProps {
   country: Country;
 }
 
-export const CountryIntakes: React.FC<CountryIntakesProps> = ({ country }) => {
+export const CountryIntakes: React.FC<CountryIntakesProps> = ({
+  country,
+}) => {
   return (
-    <section id="intakes" className="bg-white py-12 sm:py-16 md:py-20 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
+    <section
+      id="intakes"
+      className="
+        w-full
+        overflow-hidden
+        border-t
+        border-border-default
+        bg-surface-neutral
+        py-16
+        sm:py-20
+        lg:py-24
+      "
+    >
       <Container size="lg">
-        <SectionHeading
-          badge="Admission Calendar"
-          title={`Upcoming Intakes in ${country.name}`}
-          subtitle={`Plan your application timeline systematically to maximize scholarship funding and university housing.`}
-        />
+        {/* ========================================================
+            CENTERED HEADER
+        ======================================================== */}
 
-        {/* Timeline Grid */}
-        <div className="relative mt-8 sm:mt-12">
-          <div className="grid grid-cols-4 gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            badge="Admission Calendar"
+            title={`Upcoming Intakes in ${country.name}`}
+            subtitle="Plan your application timeline systematically to maximize scholarship funding and university housing."
+            className="text-center"
+          />
+        </div>
+
+        {/* ========================================================
+            INTAKE GRID
+        ======================================================== */}
+
+        <div className="mx-auto mt-10 max-w-6xl sm:mt-12 lg:mt-14">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {country.intakes.map((intake, idx) => {
               const isMajor = intake.type === "Major";
+
               return (
-                <div
-                  key={intake.season + idx}
-                  className={`col-span-4 sm:col-span-2 lg:col-span-4 relative flex flex-col justify-between rounded-2xl border p-5 sm:p-7 transition-all duration-300 ${isMajor
-                      ? "border-brand-primary bg-gradient-to-b from-brand-primary/[0.04] to-white shadow-lg ring-1 ring-brand-primary/10"
-                      : "border-border/90 bg-surface-neutral/50 hover:bg-white hover:shadow-md"
-                    }`}
+                <article
+                  key={`${intake.season}-${idx}`}
+                  className={cn(
+                    `
+                      group
+                      flex
+                      h-full
+                      flex-col
+                      overflow-hidden
+                      rounded-[var(--radius-card)]
+                      border
+                      bg-surface-default
+                      shadow-card-resting
+                      transition-all
+                      duration-[var(--duration-normal)]
+                      ease-[var(--easing-default)]
+                      hover:shadow-card-hover
+                    `,
+                    isMajor
+                      ? "border-brand-primary/20"
+                      : "border-border-card"
+                  )}
                 >
-                  {/* Step indicator header */}
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span
-                        className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-caption font-medium ${isMajor
-                            ? "bg-brand-primary text-white"
-                            : "bg-surface-subtle text-content-secondary"
-                          }`}
-                      >
-                        {isMajor && <CheckCircle size={12} />}
+                  {/* ==================================================
+                      IMAGE PLACEHOLDER
+                  ================================================== */}
+
+                  <div
+                    className="
+                      relative
+                      aspect-[16/9]
+                      w-full
+                      overflow-hidden
+                      bg-surface-subtle
+                    "
+                  >
+                    {/* Replace this div with <Image /> later */}
+
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        flex
+                        items-center
+                        justify-center
+                        border-b
+                        border-border-light
+                        bg-surface-subtle
+                      "
+                    >
+                      <div className="flex flex-col items-center gap-2 text-content-muted">
+                        <ImageIcon
+                          aria-hidden="true"
+                          className="size-7"
+                          strokeWidth={1.5}
+                        />
+
+                        <span className="text-caption">
+                          Intake Image
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Major intake label */}
+
+                    <div
+                      className="
+                        absolute
+                        left-4
+                        top-4
+                        inline-flex
+                        items-center
+                        gap-1.5
+                        rounded-full
+                        bg-surface-default/95
+                        px-3
+                        py-1.5
+                        text-caption
+                        font-semibold
+                        text-content-primary
+                        shadow-sm
+                        backdrop-blur-sm
+                      "
+                    >
+                      {isMajor && (
+                        <CheckCircle
+                          aria-hidden="true"
+                          className="size-3.5 text-brand-primary"
+                          strokeWidth={2}
+                        />
+                      )}
+
+                      <span>
                         {intake.type} Intake
                       </span>
-                      <div className="flex items-center gap-1 text-caption font-medium text-content-muted">
-                        <Calendar size={14} className="text-brand-primary" />
-                        <span>Phase {idx + 1}</span>
-                      </div>
-                    </div>
-
-                    <h3 className="card-title text-content-primary mt-2">
-                      {intake.season}
-                    </h3>
-
-                    <div className="mt-5 space-y-3 rounded-xl bg-white/80 border border-border/60 p-4 text-body-small">
-                      <div className="flex items-center justify-between">
-                        <span className="text-content-secondary flex items-center gap-1.5">
-                          <Clock size={13} />
-                          Classes Start:
-                        </span>
-                        <strong className="text-content-primary font-medium">{intake.months}</strong>
-                      </div>
-                      <div className="flex items-center justify-between pt-2 border-t border-border-light">
-                        <span className="text-content-secondary">Apply Before:</span>
-                        <strong className="text-brand-accent font-medium">{intake.deadline}</strong>
-                      </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-5 border-t border-border-light">
-                    <LeadCTAButton
-                      source={`country_intake_${country.slug}_${intake.season.replace(/\s+/g, "_")}`}
-                      className={`inline-flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-body-small font-medium transition-all cursor-pointer ${isMajor
-                          ? "bg-brand-primary text-white hover:bg-brand-primary-hover shadow-xs"
-                          : "border border-border text-content-primary hover:border-brand-primary hover:text-brand-primary bg-white"
-                        }`}
+                  {/* ==================================================
+                      CARD CONTENT
+                  ================================================== */}
+
+                  <div className="flex flex-1 flex-col p-6 sm:p-7">
+                    {/* Phase */}
+
+                    <div className="flex items-center justify-between gap-4">
+                      <span
+                        className="
+                          flex
+                          items-center
+                          gap-2
+                          text-caption
+                          font-medium
+                          text-content-secondary
+                        "
+                      >
+                        <Calendar
+                          aria-hidden="true"
+                          className="size-4 text-brand-primary"
+                          strokeWidth={1.8}
+                        />
+
+                        Phase {idx + 1}
+                      </span>
+
+                      <span
+                        className="
+                          text-caption
+                          font-medium
+                          tabular-nums
+                          text-content-muted
+                        "
+                      >
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    {/* Season */}
+
+                    <div className="mt-6">
+                      <p
+                        className="
+                          text-caption
+                          font-medium
+                          uppercase
+                          tracking-[0.04em]
+                          text-content-muted
+                        "
+                      >
+                        Intake
+                      </p>
+
+                      <h3
+                        className="
+                          mt-1
+                          text-h3
+                          text-content-primary
+                        "
+                      >
+                        {intake.season}
+                      </h3>
+                    </div>
+
+                    {/* ==================================================
+                        INTAKE DETAILS
+                    ================================================== */}
+
+                    <div
+                      className="
+                        mt-6
+                        overflow-hidden
+                        rounded-[16px]
+                        border
+                        border-border-light
+                        bg-surface-neutral
+                      "
                     >
-                      <span>Apply for {intake.season.split(" ")[0]}</span>
-                      <ArrowRight size={14} />
-                    </LeadCTAButton>
+                      {/* Classes Start */}
+
+                      <div
+                        className="
+                          flex
+                          items-start
+                          justify-between
+                          gap-4
+                          px-4
+                          py-4
+                        "
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Clock
+                            aria-hidden="true"
+                            className="
+                              size-4
+                              shrink-0
+                              text-brand-primary
+                            "
+                            strokeWidth={1.8}
+                          />
+
+                          <span
+                            className="
+                              text-body-small
+                              text-content-secondary
+                            "
+                          >
+                            Classes Start
+                          </span>
+                        </div>
+
+                        <strong
+                          className="
+                            text-right
+                            text-body-small
+                            font-semibold
+                            text-content-primary
+                          "
+                        >
+                          {intake.months}
+                        </strong>
+                      </div>
+
+                      {/* Deadline */}
+
+                      <div
+                        className="
+                          flex
+                          items-start
+                          justify-between
+                          gap-4
+                          border-t
+                          border-border-light
+                          px-4
+                          py-4
+                        "
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Calendar
+                            aria-hidden="true"
+                            className="
+                              size-4
+                              shrink-0
+                              text-brand-accent
+                            "
+                            strokeWidth={1.8}
+                          />
+
+                          <span
+                            className="
+                              text-body-small
+                              text-content-secondary
+                            "
+                          >
+                            Apply Before
+                          </span>
+                        </div>
+
+                        <strong
+                          className="
+                            text-right
+                            text-body-small
+                            font-semibold
+                            text-brand-accent
+                          "
+                        >
+                          {intake.deadline}
+                        </strong>
+                      </div>
+                    </div>
+
+                    {/* ==================================================
+                        CTA
+                    ================================================== */}
+
+                    <div className="mt-auto pt-7">
+                      <LeadCTAButton
+                        source={`country_intake_${country.slug}_${intake.season.replace(
+                          /\s+/g,
+                          "_"
+                        )}`}
+                        className="
+                          h-11
+                          w-full
+                          cursor-pointer
+                          rounded-[var(--radius-btn)]
+                          text-btn
+                        "
+                      >
+                        Apply for {intake.season.split(" ")[0]}
+                      </LeadCTAButton>
+                    </div>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
         </div>
 
-        {/* Pro Tip Banner */}
-        <div className="mt-8 flex items-start gap-3 rounded-2xl bg-amber-50/80 border border-amber-200/80 p-5 text-body-small text-amber-900 shadow-xs">
-          <AlertCircle size={20} className="text-amber-600 shrink-0 mt-0.5" />
-          <div className="leading-relaxed">
-            <strong className="font-medium text-amber-950">HighEd Application Strategy: </strong>
-            We recommend initiating university shortlisting at least 3 to 5 months prior to the intake. This secures optimal early-bird scholarship evaluations and gives ample cushion for CAS / I-20 / study permit visa processing.
+        {/* ========================================================
+            APPLICATION STRATEGY
+        ======================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-8
+            max-w-5xl
+            overflow-hidden
+            rounded-[var(--radius-card)]
+            border
+            border-feedback-warning/25
+            bg-icon-bg-gold
+            sm:mt-10
+          "
+        >
+          <div
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+              px-6
+              py-6
+              text-center
+              sm:flex-row
+              sm:items-start
+              sm:px-7
+              sm:py-7
+              sm:text-left
+            "
+          >
+            {/* Icon */}
+
+            <div
+              className="
+                flex
+                size-10
+                shrink-0
+                items-center
+                justify-center
+                rounded-[var(--radius-icon)]
+                bg-surface-default
+                text-feedback-warning
+                shadow-sm
+              "
+            >
+              <AlertCircle
+                aria-hidden="true"
+                className="size-5"
+                strokeWidth={1.8}
+              />
+            </div>
+
+            {/* Content */}
+
+            <div className="min-w-0">
+              <p
+                className="
+                  text-body-small
+                  leading-6
+                  text-content-primary
+                "
+              >
+                <strong className="font-semibold">
+                  HighEd Application Strategy:
+                </strong>{" "}
+                We recommend initiating university shortlisting at least 3 to
+                5 months prior to the intake. This secures optimal early-bird
+                scholarship evaluations and gives ample cushion for CAS / I-20
+                / study permit visa processing.
+              </p>
+            </div>
           </div>
         </div>
       </Container>

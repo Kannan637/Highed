@@ -1,30 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { Play, ArrowRight } from "lucide-react";
+import { Play } from "lucide-react";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
-import Link from "next/link";
 
 const successStories = [
     {
         id: 1,
-        image: "/images/storis/story-1.webp",
+        image: "/images/stories/story-1.webp",
         alt: "Student success story",
     },
     {
         id: 2,
-        image: "/images/storis/story-2.webp",
+        image: "/images/stories/story-2.webp",
         alt: "Student success story",
     },
     {
         id: 3,
-        image: "/images/storis/story-3.webp",
+        image: "/images/stories/story-3.webp",
         alt: "Student success story",
     },
     {
         id: 4,
-        image: "/images/storis/story-4.webp",
+        image: "/images/stories/story-4.webp",
         alt: "Student success story",
     },
 ];
@@ -38,8 +36,8 @@ export default function SuccessStories() {
                 <EyebrowBadge>Real Stories</EyebrowBadge>
 
                 {/* Heading */}
-                <h2 className="px-6 text-center text-content-primary">
-                    Student Success Stories
+                <h2 className="px-6 text-center text-brand-primary">
+                    Student <span className="text-brand-accent">Success</span> Stories
                 </h2>
 
                 {/* Description */}
@@ -235,7 +233,7 @@ export default function SuccessStories() {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-8">
+                {/* <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-8">
                     <LeadCTAButton source="real_stories_bottom">
                         Book Free Counselling
                     </LeadCTAButton>
@@ -243,7 +241,7 @@ export default function SuccessStories() {
                     <Link
                         href="/success-stories"
                         aria-label="View all student success stories"
-                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-[#E93F61] transition-all duration-200 hover:bg-[#E93F61]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E93F61] focus-visible:ring-offset-2"
+                        className="group inline-flex h-12 cursor-pointer items-center gap-2 rounded-full px-6 text-sm font-semibold text-brand-primary transition-all duration-200 hover:text-brand-accent hover:bg-brand-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
                     >
                         <span>View All Stories</span>
 
@@ -254,7 +252,7 @@ export default function SuccessStories() {
                             className="transition-transform duration-200 group-hover:translate-x-1"
                         />
                     </Link>
-                </div>
+                </div> */}
 
             </div>
         </section>

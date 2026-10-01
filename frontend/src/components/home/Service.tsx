@@ -36,6 +36,7 @@ export interface ServiceCardItem {
 
 export interface ServicesHeader {
     heading: string;
+    accentWord?: string;
     description: string;
     ctaText: string;
     ctaHref: string;
@@ -62,9 +63,10 @@ export interface ServicesSectionProps {
 ========================================================= */
 
 const defaultHeader: ServicesHeader = {
-    heading: "Complete Study Abroad Advisory Services",
+    heading: "Complete Study Abroad Counselling & Advisory Services",
+    accentWord: "Study Abroad",
     description:
-        "From university shortlisting and scholarship assistance to visa approval and pre-departure briefings, we provide end-to-end guidance for your global education journey.",
+        "From university shortlisting and course selection to scholarships, applications, student visa preparation and pre-departure support, we provide end-to-end guidance for your study abroad journey.",
     ctaText: "Explore All Services",
     ctaHref: "/services",
 };
@@ -153,6 +155,7 @@ export function ServicesSection({
                 <SectionHeading
                     eyebrow="Our Services"
                     title={activeHeader.heading}
+                    accentText={activeHeader.accentWord}
                     description={activeHeader.description}
                     className="mb-8"
                 />

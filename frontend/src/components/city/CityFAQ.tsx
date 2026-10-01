@@ -1,5 +1,5 @@
 import React from "react";
-import { HelpCircle, MessageSquare } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import { CityData } from "@/types/city";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -23,6 +23,7 @@ export const CityFAQ: React.FC<CityFAQProps> = ({ city }) => {
         <SectionHeading
           badge="Frequently Asked Questions"
           title={`Got Questions About Studying Abroad from ${city.name}?`}
+          accentText="Studying Abroad"
           subtitle={`Everything you need to know regarding local transcript evaluation, zero consultation charges, university admissions, and visa procedures.`}
           align="center"
         />
@@ -52,10 +53,9 @@ export const CityFAQ: React.FC<CityFAQProps> = ({ city }) => {
             contextTitle={`FAQ Assistance for ${city.name}`}
             contextCTA="Talk to an Advisor"
             size="default"
-            className="h-11 sm:h-12 px-6 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center gap-2 shrink-0 shadow-sm"
+            className="w-fit max-w-[280px] sm:w-auto sm:max-w-none shrink-0"
           >
-            <MessageSquare size={16} />
-            <span>Ask an Advisor</span>
+            Ask an Advisor
           </LeadCTAButton>
         </div>
       </Container>

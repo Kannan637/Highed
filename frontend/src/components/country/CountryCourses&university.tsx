@@ -573,10 +573,8 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
           <EyebrowBadge>Popular Courses</EyebrowBadge>
 
           {/* Heading */}
-          <h2 className="text-content-primary">
-            Top Courses to Study
-            <br />
-            Abroad
+          <h2 className="text-brand-primary">
+            Top Courses to <span className="text-brand-accent">Study Abroad</span>
           </h2>
 
           {/* Description */}

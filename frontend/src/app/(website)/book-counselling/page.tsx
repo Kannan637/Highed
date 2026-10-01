@@ -1,12 +1,10 @@
 import React from "react";
 import Container from "@/components/ui/Container";
-import Card from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import IconBox from "@/components/ui/IconBox";
 import LeadForm from "@/components/forms/LeadForm";
 import { ShieldCheck, Award, Clock, Users } from "lucide-react";
 import { constructMetadata } from "@/seo/metadata";
-import { AutoOpenLeadPopup } from "./AutoOpenLeadPopup";
 
 export const metadata = constructMetadata({
   title: "Book Free Study Abroad Counselling",
@@ -19,9 +17,6 @@ export const metadata = constructMetadata({
 export default function BookCounsellingPage() {
   return (
     <div className="bg-surface-neutral py-16 sm:py-24">
-      {/* Auto-open modal on route entry */}
-      <AutoOpenLeadPopup />
-
       <Container size="lg">
         <div className="grid grid-cols-4 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Information & Trust */}
@@ -80,30 +75,24 @@ export default function BookCounsellingPage() {
 
           {/* Right Column: Lead Form */}
           <div className="col-span-4 lg:col-span-6">
-            <Card className="p-6 sm:p-8 rounded-2xl border-border bg-card shadow-sm">
-              <h2 className="text-content-primary">
-                Book Your Free Counselling Session
-              </h2>
-              <p className="mt-2 text-sm text-content-secondary">
-                Fill out the form below. A certified education advisor will review your profile and contact you within 24 hours.
+            <LeadForm
+              defaultCountry="General"
+              imageSrc={null}
+              title="Book Your Free Counselling Session"
+              subtitle="Fill out the form below. A certified education advisor will review your profile and contact you within 24 hours."
+            />
+
+            <div className="mt-6 border-t border-border-default pt-5 text-center">
+              <p className="text-xs sm:text-sm text-content-secondary">
+                Prefer calling directly?{" "}
+                <a
+                  href="tel:+919050180501"
+                  className="font-semibold text-brand-primary hover:underline"
+                >
+                  +91 90501 80501
+                </a>
               </p>
-
-              <div className="mt-6">
-                <LeadForm defaultCountry="General" />
-              </div>
-
-              <div className="mt-6 border-t border-border pt-5 text-center">
-                <p className="text-xs sm:text-sm text-content-secondary">
-                  Prefer calling directly?{" "}
-                  <a
-                    href="tel:+919050180501"
-                    className="font-semibold text-brand-primary hover:underline"
-                  >
-                    +91 90501 80501
-                  </a>
-                </p>
-              </div>
-            </Card>
+            </div>
           </div>
         </div>
       </Container>

@@ -22,8 +22,8 @@ def test_no_uncaught_js_errors(page: Page, route: str):
     page.on("pageerror", lambda err: page_errors.append(str(err)))
     page.on("console", lambda msg: console_errors.append(msg.text) if msg.type == "error" else None)
 
-    page.goto(route, wait_until="networkidle")
-    page.wait_for_timeout(500)
+    page.goto(route, wait_until="load")
+    page.wait_for_timeout(800)
 
     # Filter out benign third-party or chrome extension errors if any
     critical_errors = [

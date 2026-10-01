@@ -1,12 +1,4 @@
-
-"use client";
-
 import { Card, CardContent } from "@/components/ui/Card";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar";
 import { Star, ArrowRight } from "lucide-react";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
@@ -14,40 +6,46 @@ import Link from "next/link";
 
 const testimonials = [
   {
-    text: "Setting up smart spend limits and approvals took minutes — now our team moves faster.",
-    name: "Guillermo Rauch",
-    avatar: "https://github.com/rauchg.png",
-    fallback: "GR",
+    text: "HighEd guided me from GRE prep to getting my UK student visa approved without any stress. Highly recommended!",
+    name: "Karthik Subramanian",
+    fallback: "KS",
+    degree: "MSc Computer Science, University of Leeds",
+    gradient: "from-brand-primary to-indigo-900",
   },
   {
-    text: "Love how fast we integrated our banks, wallets, and started tracking expenses in real-time.",
-    name: "Lee Robinson",
-    avatar: "https://github.com/leerob.png",
-    fallback: "LR",
+    text: "Securing a 50% tuition scholarship seemed impossible until HighEd restructured my SOP and university applications.",
+    name: "Pooja Ramakrishnan",
+    fallback: "PR",
+    degree: "MBA, Trinity College Dublin",
+    gradient: "from-brand-accent to-rose-800",
   },
   {
-    text: "Audit prep went from painful to painless. This tool just works and saves hours every week.",
-    name: "Dan Abramov",
-    avatar: "https://github.com/gaearon.png",
-    fallback: "DA",
+    text: "From selecting universities in Canada to education loan disbursement, their team was beside me at every single step.",
+    name: "Anand Venkatesh",
+    fallback: "AV",
+    degree: "MEng Software Engineering, University of Windsor",
+    gradient: "from-blue-700 to-brand-primary",
   },
   {
-    text: "We automated multi-step approvals and finally stopped chasing down manual receipts.",
-    name: "Kent C. Dodds",
-    avatar: "https://github.com/kentcdodds.png",
-    fallback: "KD",
+    text: "The visa mock interviews gave me immense confidence. Cleared my US F-1 visa in the first attempt in Chennai!",
+    name: "Deepika Sundaram",
+    fallback: "DS",
+    degree: "MS Data Analytics, Northeastern University",
+    gradient: "from-rose-700 to-brand-accent",
   },
   {
-    text: "Smart controls, simple interface. It’s the only tool our finance ops actually enjoy using.",
-    name: "Evan You",
-    avatar: "https://github.com/yyx990803.png",
-    fallback: "EY",
+    text: "Transparent, honest, and highly professional counsellors in Coimbatore. Best study abroad consultancy by far.",
+    name: "Manoj Kumar",
+    fallback: "MK",
+    degree: "Master of Management, University of Melbourne",
+    gradient: "from-indigo-800 to-brand-primary",
   },
   {
-    text: "Vendor payments used to be messy. Now we track, approve, and sync everything instantly.",
-    name: "Theo Browne",
-    avatar: "https://github.com/t3dotgg/t3dotgg.png",
-    fallback: "TB",
+    text: "They helped me compare German public universities with zero tuition fees and handled all document translations.",
+    name: "Sowmya Natarajan",
+    fallback: "SN",
+    degree: "MSc Automotive Systems, RWTH Aachen",
+    gradient: "from-brand-accent to-amber-700",
   },
 ];
 
@@ -60,8 +58,8 @@ export default function Testimonials2() {
         <div className="mx-auto max-w-3xl">
           <EyebrowBadge>Student Success Stories</EyebrowBadge>
 
-          <h2 className="text-content-primary">
-            Trusted by students who chose to study abroad
+          <h2 className="text-brand-primary">
+            Trusted by students who chose to <span className="text-brand-accent">study abroad</span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-content-secondary">
@@ -70,7 +68,7 @@ export default function Testimonials2() {
           </p>
         </div>
 
-        {/* Testimonials */}
+        {/* Testimonials Grid */}
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Card
@@ -91,13 +89,13 @@ export default function Testimonials2() {
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-[#E93F61]/25
+                hover:border-brand-accent/30
                 hover:shadow-none
               "
             >
               <CardContent className="relative z-10 flex h-full min-h-[330px] flex-col p-7 md:p-8">
 
-                {/* Rating */}
+                {/* Rating (High contrast Gold Stars) */}
                 <div
                   role="img"
                   className="mb-6 flex items-center gap-1"
@@ -106,37 +104,33 @@ export default function Testimonials2() {
                   {[...Array(5)].map((_, idx) => (
                     <Star
                       key={idx}
-                      className="h-[17px] w-[17px] fill-[#E93F61] text-[#E93F61]"
+                      className="h-[17px] w-[17px] fill-amber-400 text-amber-500"
                       strokeWidth={1.5}
                     />
                   ))}
                 </div>
 
                 {/* Testimonial */}
-                <p className="flex-1 text-body-large text-content-primary">
+                <p className="flex-1 text-body-large text-content-primary leading-relaxed">
                   &ldquo;{t.text}&rdquo;
                 </p>
 
-                {/* Student */}
+                {/* Student Avatar & Metadata (Zero third-party network requests) */}
                 <div className="mt-8 flex items-center gap-3">
-                  <Avatar className="h-10 w-10 rounded-full border border-brand-primary/10">
-                    <AvatarImage
-                      src={t.avatar}
-                      alt={t.name}
-                      className="object-cover"
-                    />
-                    <AvatarFallback className="bg-brand-primary text-xs font-medium text-white">
-                      {t.fallback}
-                    </AvatarFallback>
-                  </Avatar>
+                  <div
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${t.gradient} text-white font-semibold text-sm shadow-xs`}
+                    aria-hidden="true"
+                  >
+                    {t.fallback}
+                  </div>
 
                   <div className="min-w-0">
-                    <p className="truncate text-body-small font-medium text-content-primary">
+                    <p className="truncate text-body-small font-semibold text-content-primary">
                       {t.name}
                     </p>
 
-                    <p className="mt-0.5 text-caption text-content-secondary">
-                      Study Abroad Student
+                    <p className="mt-0.5 truncate text-caption text-content-secondary">
+                      {t.degree}
                     </p>
                   </div>
                 </div>
@@ -156,25 +150,26 @@ export default function Testimonials2() {
             href="/success-stories"
             aria-label="View all student success stories"
             className="
-                            group
-                            inline-flex
-                            h-12
-                            cursor-pointer
-                            items-center
-                            gap-2
-                            rounded-full
-                            px-6
-                            text-sm
-                            font-semibold
-                            text-[#E93F61]
-                            transition-all
-                            duration-200
-                            hover:bg-[#E93F61]/10
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-[#E93F61]
-                            focus-visible:ring-offset-2
-                        "
+              group
+              inline-flex
+              h-12
+              cursor-pointer
+              items-center
+              gap-2
+              rounded-full
+              px-6
+              text-sm
+              font-semibold
+              text-brand-primary
+              transition-all
+              duration-200
+              hover:text-brand-accent
+              hover:bg-brand-primary/5
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-brand-accent
+              focus-visible:ring-offset-2
+            "
           >
             <span>View All Stories</span>
 
@@ -191,4 +186,3 @@ export default function Testimonials2() {
     </section>
   );
 }
-

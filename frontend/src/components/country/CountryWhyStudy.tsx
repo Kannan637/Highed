@@ -37,7 +37,7 @@ function DestinationImage({ country }: { country?: Country }) {
   const imageSrc = country?.heroImage || "/images/countries/UK.webp";
 
   return (
-    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px]">
+    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] top">
       <span
         aria-hidden="true"
         className="
@@ -161,12 +161,12 @@ export default function WhyChooseCountry({
               mx-auto
               max-w-[620px]
               text-center
-              text-foreground
+              text-brand-primary
               lg:mx-0
               lg:text-left
             "
           >
-            Why choose {countryName} for your studies?
+            Why choose <span className="text-brand-accent">{countryName}</span> for your studies?
           </h2>
 
           {/* CATEGORY PILLS — FAQ STYLE */}

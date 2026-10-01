@@ -71,7 +71,7 @@ export const StudyAbroadCards = () => {
       <Container size="lg">
         <div
           className={cn(
-            "grid grid-cols-4 gap-3 rounded-2xl border-[6px] border-white bg-white p-2 shadow-xl sm:border-8 lg:grid-cols-12 lg:gap-4"
+            "grid grid-cols-4 gap-3 rounded-2xl border-[6px] border-white bg-white p-2  sm:border-8 lg:grid-cols-12 lg:gap-4"
           )}
         >
           {cards.map((card) => {

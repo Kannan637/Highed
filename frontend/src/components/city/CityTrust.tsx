@@ -32,7 +32,7 @@ export const CityTrust: React.FC<CityTrustProps> = ({ city }) => {
   ];
 
   return (
-    <section className="bg-neutral-50/80 py-16 border-b border-neutral-200/70">
+    <section className="bg-[#F5F5F9]/60 py-12 sm:py-16 md:py-20 border-b border-border-light tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((item, idx) => {
@@ -40,9 +40,9 @@ export const CityTrust: React.FC<CityTrustProps> = ({ city }) => {
             return (
               <div
                 key={idx}
-                className="group relative rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/30 hover:shadow-md"
+                className="group relative rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-black/[0.12] hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-icon-bg-primary text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-icon-bg-primary text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
                   <Icon size={24} />
                 </div>
                 <h3 className="card-title text-content-primary">

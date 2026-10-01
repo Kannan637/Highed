@@ -16,6 +16,8 @@
 __pycache__/
 *.pyc
 /tests/screenshots/output/
+/tests/screenshots/*.png
+/tests/tests/
 
 # next.js
 /.next/
@@ -46,5 +48,6 @@ yarn-error.log*
 next-env.d.ts
 
 # lead persistence & PII protection (ISS-improve.md)
+/data/leads.json
 /data/leads/*
 !/data/leads/.gitkeep

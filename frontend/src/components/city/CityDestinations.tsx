@@ -13,11 +13,12 @@ interface CityDestinationsProps {
 
 export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
   return (
-    <section id="destinations" className="bg-neutral-50/70 py-20 border-t border-neutral-200/60">
+    <section id="destinations" className="bg-white py-12 sm:py-16 md:py-20 border-t border-border-light tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       <Container size="lg">
         <SectionHeading
           badge="Global Pathways"
           title={`Top Study Abroad Destinations from ${city.name}`}
+          accentText="Study Abroad"
           subtitle={`Discover why thousands of students from ${city.name} choose these world-class study destinations for their bachelor's, master's, and MBA degrees.`}
           align="center"
         />
@@ -26,14 +27,14 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
           {city.destinations.map((dest, idx) => (
             <div
               key={idx}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-black/[0.06] bg-white p-7 sm:p-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-black/[0.12] hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-4xl" role="img" aria-label={dest.name}>
                     {dest.flag}
                   </span>
-                  <Badge variant="brand" size="sm">
+                  <Badge variant="brand" size="sm" className="rounded-full">
                     Popular from {city.name}
                   </Badge>
                 </div>
@@ -42,12 +43,12 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
                   Study in {dest.name}
                 </h3>
 
-                <p className="mt-3 text-content-secondary">
+                <p className="mt-3 text-content-secondary leading-relaxed">
                   {dest.tagline}
                 </p>
               </div>
 
-              <div className="mt-8 pt-5 border-t border-border flex items-center justify-between gap-3">
+              <div className="mt-8 pt-5 border-t border-border-light flex items-center justify-between gap-3">
                 <Link
                   href={dest.href}
                   className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent"
@@ -89,9 +90,9 @@ export const CityDestinations: React.FC<CityDestinationsProps> = ({ city }) => {
             contextCTA="Compare Countries"
             variant="accent"
             size="default"
+            className="w-fit max-w-[280px] sm:w-auto sm:max-w-none shrink-0"
           >
-            <span>Compare My Options Free</span>
-            <ArrowRight size={16} />
+            Compare My Options Free
           </LeadCTAButton>
         </div>
       </Container>

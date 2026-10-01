@@ -15,8 +15,8 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
   query,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-black/10 bg-white p-8 sm:p-12 text-center shadow-xs">
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-100 text-neutral-400 mb-5">
+    <div className="flex flex-col items-center justify-center rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 text-center shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-icon-bg-primary text-brand-primary mb-5">
         <SearchX size={32} />
       </div>
 
@@ -36,7 +36,7 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
           source="explore_empty_state"
           variant="accent"
           size="default"
-          className="w-full sm:w-auto gap-2"
+          className="w-full sm:w-auto gap-2 rounded-full h-12 px-6"
         >
           <Headset size={16} />
           <span>Ask an Expert</span>
@@ -47,7 +47,7 @@ export const ExploreEmptyState: React.FC<ExploreEmptyStateProps> = ({
           variant="outline"
           size="default"
           onClick={onReset}
-          className="w-full sm:w-auto gap-2"
+          className="w-full sm:w-auto gap-2 rounded-full h-12 px-6 border-black/10 text-brand-primary hover:text-brand-accent hover:border-brand-accent hover:bg-brand-primary/5"
         >
           <RotateCcw size={14} />
           <span>Clear Filters</span>

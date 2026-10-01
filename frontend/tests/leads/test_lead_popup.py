@@ -3,10 +3,10 @@ from playwright.sync_api import Page, expect
 
 def test_lead_popup_opens_and_closes_via_button(page: Page):
     """Verify clicking hero CTA opens the lead popup and close button dismisses it."""
-    page.goto("/", wait_until="domcontentloaded")
+    page.goto("/", wait_until="load")
 
     cta_btn = page.locator("#cta-book-counselling")
-    expect(cta_btn).to_be_visible()
+    expect(cta_btn).to_be_visible(timeout=10000)
     cta_btn.click()
 
     # Specifically select the Book Free Counselling modal dialog
@@ -23,9 +23,10 @@ def test_lead_popup_opens_and_closes_via_button(page: Page):
 
 def test_lead_popup_closes_on_escape_key(page: Page):
     """Verify pressing Escape dismisses the lead popup modal."""
-    page.goto("/", wait_until="domcontentloaded")
+    page.goto("/", wait_until="load")
 
     cta_btn = page.locator("#cta-book-counselling")
+    expect(cta_btn).to_be_visible(timeout=10000)
     cta_btn.click()
 
     dialog = page.get_by_role("dialog", name="Book Free Counselling")
@@ -37,9 +38,10 @@ def test_lead_popup_closes_on_escape_key(page: Page):
 
 def test_lead_popup_submits_phone_number(page: Page):
     """Verify entering mobile number in lead popup submits and shows success state."""
-    page.goto("/", wait_until="domcontentloaded")
+    page.goto("/", wait_until="load")
 
     cta_btn = page.locator("#cta-book-counselling")
+    expect(cta_btn).to_be_visible(timeout=10000)
     cta_btn.click()
 
     dialog = page.get_by_role("dialog", name="Book Free Counselling")

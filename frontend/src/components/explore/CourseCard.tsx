@@ -17,18 +17,19 @@ export const CourseCard: React.FC<CourseCardProps> = ({
     <div
       className="
         group flex h-full flex-col overflow-hidden
-        rounded-2xl
-        border border-border
-        bg-card
-        shadow-xs
-        transition-all duration-300
-        hover:border-primary/40
-        hover:shadow-lg
+        rounded-3xl
+        border border-black/[0.06]
+        bg-white
+        shadow-[0_2px_8px_rgba(0,0,0,0.03)]
+        transition-all duration-300 ease-out
+        hover:-translate-y-1.5
+        hover:border-black/[0.12]
+        hover:shadow-[0_16px_32px_rgba(0,0,0,0.07)]
       "
     >
       {/* ================= IMAGE ================= */}
-      <div className="relative p-2.5">
-        <div className="relative h-[190px] overflow-hidden rounded-xl bg-neutral-100">
+      <div className="relative p-3">
+        <div className="relative h-[200px] overflow-hidden rounded-2xl bg-neutral-100">
           <Image
             src={course.image || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop"}
             alt={course.name}
@@ -159,14 +160,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                   <span
                     key={career}
                     className="
-                      rounded-lg
-                      border border-border
+                      rounded-full
+                      border border-black/[0.06]
                       bg-neutral-50
-                      px-2.5 py-1
-                      text-[11px]
+                      px-3 py-1
+                      text-caption
                       font-medium
-                      leading-none
-                      text-neutral-700
+                      text-content-secondary
                     "
                   >
                     {career}
@@ -176,13 +176,12 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                 {course.careerProspects.length > 3 && (
                   <span
                     className="
-                      rounded-lg
+                      rounded-full
                       bg-neutral-100
-                      px-2 py-1
-                      text-[11px]
+                      px-2.5 py-1
+                      text-caption
                       font-medium
-                      leading-none
-                      text-muted-foreground
+                      text-content-secondary
                     "
                   >
                     +{course.careerProspects.length - 3}
@@ -194,22 +193,23 @@ export const CourseCard: React.FC<CourseCardProps> = ({
 
         {/* ================= CTA ================= */}
         <div className="mt-auto pt-5">
-          <div className="border-t border-border pt-4">
+          <div className="border-t border-border-light pt-4">
             <LeadCTAButton
               source={`explore_course_${course.id}`}
               variant="outline"
               size="default"
               className="
                 flex w-full items-center justify-between
-                h-12 px-4
+                h-12 px-5
                 rounded-full
                 text-sm
                 font-semibold
                 text-brand-primary
                 border border-black/10
-                hover:border-brand-primary
+                hover:border-brand-accent
+                hover:text-brand-accent
                 hover:bg-brand-primary/5
-                transition-colors
+                transition-all duration-200
               "
             >
               <span className="flex items-center gap-2">

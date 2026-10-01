@@ -24,11 +24,11 @@ export function useFocusTrap(
     const container = containerRef.current;
     if (!container) return;
 
-    // Focus the first focusable element or container
+    // Focus the first focusable element or container without scrolling the window
     if (autoFocus) {
       const focusableElements = container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
       if (focusableElements.length > 0) {
-        focusableElements[0].focus();
+        focusableElements[0].focus({ preventScroll: true });
       }
     }
 
@@ -55,12 +55,12 @@ export function useFocusTrap(
         if (e.shiftKey) {
           if (document.activeElement === firstElement || !container.contains(document.activeElement)) {
             e.preventDefault();
-            lastElement.focus();
+            lastElement.focus({ preventScroll: true });
           }
         } else {
           if (document.activeElement === lastElement || !container.contains(document.activeElement)) {
             e.preventDefault();
-            firstElement.focus();
+            firstElement.focus({ preventScroll: true });
           }
         }
       }

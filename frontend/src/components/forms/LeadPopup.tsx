@@ -39,25 +39,44 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  // Lock body scroll when open
+  // Preserve exact scroll position when popup opens (prevent scrollup)
   useEffect(() => {
-    if (isOpen) {
-      previousFocusRef.current = document.activeElement as HTMLElement;
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!isOpen) return;
+
+    previousFocusRef.current = document.activeElement as HTMLElement;
+    const currentScrollY = window.scrollY;
+
+    // Prevent background scrolling while modal is open without altering body overflow (which causes scroll-to-top jumps)
+    const handleTouchMove = (e: TouchEvent) => {
+      if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+        e.preventDefault();
+      }
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    // Explicitly lock scroll position so window never scrolls up
+    window.scrollTo({ top: currentScrollY, left: 0, behavior: "instant" });
 
     return () => {
-      document.body.style.overflow = "";
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("wheel", handleWheel);
+      window.scrollTo({ top: currentScrollY, left: 0, behavior: "instant" });
     };
   }, [isOpen]);
 
-  // Focus trap for accessibility
+  // Focus trap for accessibility without forced scroll
   useFocusTrap(popupRef, {
     isActive: isOpen,
     onEscape: () => animateClose(),
-    autoFocus: true,
+    autoFocus: false,
   });
 
   // GSAP enter animation

@@ -16,6 +16,7 @@ export const CityCourses: React.FC<CityCoursesProps> = ({ city }) => {
         <SectionHeading
           badge="High-Growth Disciplines"
           title={`Popular Courses Chosen by Students in ${city.name}`}
+          accentText="Popular Courses"
           subtitle={`From AI and cutting-edge engineering to global business and healthcare, discover the programs commanding highest starting packages and international visa eligibility.`}
           align="center"
         />
@@ -45,9 +46,12 @@ export const CityCourses: React.FC<CityCoursesProps> = ({ city }) => {
                   source={`city_course_${city.slug}_${idx}`}
                   contextTitle={`Check Eligibility for ${course}`}
                   contextCTA="Check Eligibility"
-                  className="min-h-[44px] inline-flex items-center text-xs sm:text-sm font-semibold text-brand-primary hover:text-brand-accent transition-colors cursor-pointer"
+                  variant="link"
+                  size="sm"
+                  className="h-8 px-0 text-xs sm:text-sm font-semibold text-brand-primary hover:text-brand-accent transition-colors cursor-pointer inline-flex items-center gap-1"
                 >
-                  Eligibility →
+                  <span>Eligibility</span>
+                  <ArrowRight size={13} />
                 </LeadCTAButton>
               </div>
             </div>
@@ -65,8 +69,8 @@ export const CityCourses: React.FC<CityCoursesProps> = ({ city }) => {
               contextTitle={`Custom Course Search for ${city.name}`}
               contextCTA="Find My Course"
               variant="outline"
-              size="lg"
-              className="h-12 px-6 rounded-full font-semibold text-foreground border border-black/10 hover:border-brand-primary hover:text-brand-primary transition-all cursor-pointer inline-flex items-center gap-2"
+              size="default"
+              className="w-fit max-w-[340px] sm:w-auto sm:max-w-none h-12 px-6 rounded-full font-semibold text-foreground border border-black/10 hover:border-brand-primary hover:text-brand-primary transition-all cursor-pointer inline-flex items-center gap-2"
             >
               <span>Get Free Personalized Course Shortlist</span>
               <ArrowRight size={16} />

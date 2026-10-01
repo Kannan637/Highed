@@ -1,6 +1,5 @@
+import Image from "next/image";
 import { Check } from "lucide-react";
-import Container from "@/components/ui/Container";
-import { Country } from "@/types/country";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 const otherConsultants = [
@@ -39,181 +38,266 @@ const ourApproach = [
   },
 ];
 
+import { Country } from "@/types/country";
+
 interface CountryWhyHighEdProps {
   country?: Country;
 }
 
-export default function WhyChooseUs(_props: CountryWhyHighEdProps = {}) {
+export default function WhyChooseUs({ country: _country }: CountryWhyHighEdProps = {}) {
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-[90px] text-content-primary tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
-      <Container size="lg">
-        <div className="grid grid-cols-4 lg:grid-cols-12 gap-6">
-          {/* =========================
-                        HEADER
-                    ========================== */}
-          <div className="col-span-4 lg:col-span-8 lg:col-start-3 text-center">
-            <EyebrowBadge>Why Choose Us</EyebrowBadge>
+    <section
+      className="
+                font-body
+                relative
+                mx-auto
+                mt-6
+                w-[1850px]
+                max-w-[calc(100%-24px)]
+                overflow-hidden
+                rounded-[28px]
+                min-h-fit
+                shadow-[0_20px_50px_rgba(0,0,0,0.08)]
+                tracking-tight-5
+                [letter-spacing:var(--tracking-tight-5)]
+                [&_*]:[letter-spacing:var(--tracking-tight-5)]
+                sm:mt-8
+                sm:max-w-[calc(100%-48px)]
+                sm:rounded-[36px]
+                xl:h-[956px]
+                2xl:max-w-[1600px]
+            "
+    >
+      {/* BACKGROUND IMAGE */}
+      <Image
+        src="/images/whychooseus/ChatGPT Image Sep 24, 2026, 12_21_45 PM.webp"
+        alt="Student studying outdoors with educational guidance"
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1600px"
+        className="object-cover object-center"
+      />
 
-            <h2
-              className="
-                                mx-auto
-                                max-w-[700px]
-                                text-content-primary
-                            "
-            >
-              Your Success Starts With the
-              <br className="hidden sm:block" />
-              Right Guidance
-            </h2>
-          </div>
+      {/* MAIN CONTENT */}
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-between py-10 sm:py-14 xl:block xl:py-0">
+        {/* HEADER */}
+        <div
+          className="
+                        relative
+                        z-20
+                        flex
+                        w-full
+                        max-w-[680px]
+                        flex-col
+                        items-center
+                        px-4
+                        text-center
+                        xl:absolute
+                        xl:left-1/2
+                        xl:top-[24px]
+                        xl:-translate-x-1/2
+                        xl:px-0
+                    "
+        >
+          {/* BADGE */}
+          <EyebrowBadge className="mb-5">
+            Why Choose Us
+          </EyebrowBadge>
 
-          {/* =========================
-                        COMPARISON CONTAINER
-                    ========================== */}
+          {/* MAIN HEADING */}
+          <h2 className="text-center text-white">
+            Your Success Starts With
+            <br className="hidden sm:inline" />
+            {" "}the <span className="text-brand-accent">Right Guidance</span>
+          </h2>
+        </div>
+
+        {/* CARDS CONTAINER */}
+        <div
+          className="
+                        relative
+                        z-20
+                        mt-8
+                        flex
+                        w-full
+                        flex-col
+                        items-center
+                        justify-center
+                        gap-6
+                        px-4
+                        sm:mt-12
+                        sm:px-8
+                        lg:flex-row
+                        lg:items-stretch
+                        lg:gap-8
+                        xl:static
+                        xl:mt-0
+                        xl:px-0
+                    "
+        >
+          {/* LEFT CARD — OTHER CONSULTANTS */}
           <div
             className="
-                            col-span-4
-                            lg:col-span-10
-                            lg:col-start-2
-                            mt-4
-                            sm:mt-8
-                            overflow-hidden
-                            rounded-[36px]
-                            border
-                            border-border-default
-                            bg-gradient-to-r
-                            from-white
-                            via-[#eef2ff]
-                            to-[#dfe7ff]
-                            p-1
+                            flex
+                            min-h-[440px]
+                            w-full
+                            max-w-[460px]
+                            flex-col
+                            justify-between
+                            rounded-[28px]
+                            bg-white
+                            p-7
+                            shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:shadow-[0_28px_70px_rgba(0,0,0,0.18)]
+                            sm:rounded-[30px]
+                            sm:p-8
+                            xl:absolute
+                            xl:bottom-[48px]
+                            xl:left-[36px]
+                            xl:w-[440px]
+                            xl:max-w-none
+                            xl:px-[34px]
+                            xl:py-[36px]
+                            2xl:left-[60px]
+                            2xl:bottom-[60px]
                         "
           >
-            <div className="grid grid-cols-4 lg:grid-cols-12">
-              {/* =========================
-                                OTHER CONSULTANTS
-                            ========================== */}
-              <div
-                className="
-                                    col-span-4
-                                    lg:col-span-6
-                                    px-8
-                                    py-9
-                                    sm:px-10
-                                    sm:py-10
-                                    lg:px-9
-                                    lg:py-10
-                                "
-              >
-                <h3 className="card-title text-content-primary">
-                  Other Consultants
-                </h3>
+            <div>
+              {/* CARD TITLE */}
+              <h3 className="card-title text-content-primary">
+                Other Consultants
+              </h3>
 
-                <div className="mt-12 space-y-7">
-                  {otherConsultants.map((item) => (
-                    <ComparisonItem
-                      key={item.title}
-                      title={item.title}
-                      description={item.description}
-                      variant="other"
-                    />
-                  ))}
-                </div>
+              {/* ITEMS */}
+              <div className="mt-7 flex flex-col gap-6 sm:mt-9 sm:gap-[26px]">
+                {otherConsultants.map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-[16px]"
+                  >
+                    {/* CHECK CIRCLE */}
+                    <div
+                      className="
+                                                mt-[3px]
+                                                flex
+                                                h-[21px]
+                                                w-[21px]
+                                                shrink-0
+                                                items-center
+                                                justify-center
+                                                rounded-full
+                                                bg-[#E1E2E4]
+                                            "
+                    >
+                      <Check
+                        size={13}
+                        strokeWidth={2.4}
+                        className="text-[#5D6065]"
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* TEXT */}
+                    <div className="min-w-0">
+                      <h4 className="card-title text-content-primary">
+                        {item.title}
+                      </h4>
+
+                      <p className="mt-1.5 max-w-[320px] text-content-secondary">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </div>
+          </div>
 
-              {/* =========================
-                                OUR APPROACH
-                            ========================== */}
-              <div
-                className="
-                                    col-span-4
-                                    lg:col-span-6
-                                    rounded-[30px]
-                                    bg-brand-primary
-                                    px-8
-                                    py-9
-                                    text-white
-                                    sm:px-10
-                                    sm:py-10
-                                    lg:px-9
-                                    lg:py-10
-                                "
-              >
-                <h3 className="card-title text-white">
-                  Our Approach
-                </h3>
+          {/* RIGHT CARD — OUR APPROACH */}
+          <div
+            className="
+                            flex
+                            min-h-[440px]
+                            w-full
+                            max-w-[460px]
+                            flex-col
+                            justify-between
+                            rounded-[28px]
+                            bg-[#2E4389]
+                            p-7
+                            shadow-[0_20px_50px_rgba(37,58,123,0.30)]
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:shadow-[0_28px_70px_rgba(37,58,123,0.42)]
+                            sm:rounded-[30px]
+                            sm:p-8
+                            xl:absolute
+                            xl:right-[36px]
+                            xl:top-[280px]
+                            xl:w-[440px]
+                            xl:max-w-none
+                            xl:px-[34px]
+                            xl:py-[36px]
+                            2xl:right-[60px]
+                            2xl:top-[290px]
+                        "
+          >
+            <div>
+              {/* CARD TITLE */}
+              <h3 className="card-title text-white">
+                Our Approach
+              </h3>
 
-                <div className="mt-12 space-y-7">
-                  {ourApproach.map((item) => (
-                    <ComparisonItem
-                      key={item.title}
-                      title={item.title}
-                      description={item.description}
-                      variant="approach"
-                    />
-                  ))}
-                </div>
+              {/* ITEMS */}
+              <div className="mt-7 flex flex-col gap-6 sm:mt-9 sm:gap-[26px]">
+                {ourApproach.map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-[16px]"
+                  >
+                    {/* ACCENT CHECK CIRCLE */}
+                    <div
+                      className="
+                                                mt-[3px]
+                                                flex
+                                                h-[21px]
+                                                w-[21px]
+                                                shrink-0
+                                                items-center
+                                                justify-center
+                                                rounded-full
+                                                bg-brand-accent
+                                            "
+                    >
+                      <Check
+                        size={13}
+                        strokeWidth={2.6}
+                        className="text-white"
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* TEXT */}
+                    <div className="min-w-0">
+                      <h4 className="card-title text-white">
+                        {item.title}
+                      </h4>
+
+                      <p className="mt-1.5 max-w-[320px] text-white/90">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </Container>
-    </section>
-  );
-}
-
-function ComparisonItem({
-  title,
-  description,
-  variant,
-}: {
-  title: string;
-  description: string;
-  variant: "other" | "approach";
-}) {
-  const isApproach = variant === "approach";
-
-  return (
-    <div className="flex items-start gap-4">
-      {/* Check Icon */}
-      <span
-        className={`
-          mt-[2px]
-          flex
-          h-5
-          w-5
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          ${isApproach
-            ? "bg-brand-accent text-white"
-            : "bg-[#d8d9db] text-[#6f7175]"
-          }
-        `}
-      >
-        <Check size={12} strokeWidth={2.8} aria-hidden="true" />
-      </span>
-
-      {/* Text */}
-      <div className="min-w-0">
-        <h4 className={isApproach ? "text-white card-title" : "text-content-primary card-title"}>
-          {title}
-        </h4>
-
-        <p
-          className={`
-            mt-1.5
-            max-w-[330px]
-            text-body-small
-            ${isApproach
-              ? "text-content-on-primary"
-              : "text-content-secondary"
-            }
-          `}
-        >
-          {description}
-        </p>
       </div>
-    </div>
+    </section>
   );
 }

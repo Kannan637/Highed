@@ -1,10 +1,9 @@
-import {
-    BriefcaseBusiness,
-} from "lucide-react";
+"use client";
 
 import Image from "next/image";
+import { BriefcaseBusiness, Check } from "lucide-react";
+
 import Container from "@/components/ui/Container";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 /* =========================================================
@@ -47,30 +46,126 @@ const companies = [
 ========================================================= */
 
 const trustPoints = [
-    {
-        text: "Trusted by Students & Parents",
-        position:
-            "left-[8%] top-[22%]",
-    },
-    {
-        text: "Transparent Process with No Hidden Costs",
-        position:
-            "left-[4%] top-[50%]",
-    },
-    {
-        text: "Personalized Counselling Approach",
-        position:
-            "right-[4%] top-[67%]",
-    },
-    {
-        text: "Strong Global University Network",
-        position:
-            "left-[9%] bottom-[5%]",
-    },
+    "Trusted by Students & Parents",
+    "Transparent Process with No Hidden Costs",
+    "Personalized Counselling Approach",
+    "Strong Global University Network",
 ];
 
 /* =========================================================
-   COMPANY LOGO COMPONENT
+   SVG 1
+   Shared shape
+========================================================= */
+
+function ShapeOne({
+    className = "",
+}: {
+    className?: string;
+}) {
+    return (
+        <svg
+            viewBox="0 0 256 256"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={className}
+            aria-hidden="true"
+        >
+            <path
+                d="M 128 0 C 147.68 0 164.04 14.213 167.377 32.934 C 182.974 22.055 204.594 23.574 218.51 37.49 C 232.426 51.406 233.944 73.025 223.066 88.622 C 241.787 91.96 256 108.32 256 128 C 256 147.68 241.787 164.04 223.065 167.377 C 233.944 182.974 232.426 204.594 218.51 218.51 C 204.594 232.426 182.974 233.944 167.377 223.065 C 164.04 241.787 147.68 256 128 256 C 108.32 256 91.959 241.787 88.622 223.065 C 73.025 233.944 51.406 232.426 37.49 218.51 C 23.574 204.594 22.055 182.974 32.934 167.377 C 14.213 164.04 0 147.68 0 128 C 0 108.32 14.213 91.96 32.934 88.622 C 22.056 73.025 23.574 51.406 37.49 37.49 C 51.406 23.574 73.025 22.055 88.622 32.934 C 91.96 14.213 108.32 0 128 0 Z"
+                fill="currentColor"
+            />
+        </svg>
+    );
+}
+
+/* =========================================================
+   SVG 2
+   Shared shape — used on RIGHT only
+   NOTE: this is NOT the SVG you asked to remove.
+========================================================= */
+
+function ShapeThree({
+    className = "",
+}: {
+    className?: string;
+}) {
+    return (
+        <svg
+            viewBox="0 0 256 256"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={className}
+            aria-hidden="true"
+        >
+            <path
+                d="M 192 0 C 227.346 0 256 28.654 256 64 C 256 99.346 227.346 128 192 128 C 227.346 128 256 156.654 256 192 C 256 227.346 227.346 256 192 256 C 156.654 256 128 227.346 128 192 C 128 227.346 99.346 256 64 256 C 28.654 256 0 227.346 0 192 C 0 156.654 28.654 128 64 128 C 28.654 128 0 99.346 0 64 C 0 28.654 28.654 0 64 0 C 99.346 0 128 28.654 128 64 C 128 28.654 156.654 0 192 0 Z M 128 100 C 112.536 100 100 112.536 100 128 C 100 143.464 112.536 156 128 156 C 143.464 156 156 143.464 156 128 C 156 112.536 143.464 100 128 100 Z"
+                fill="currentColor"
+            />
+        </svg>
+    );
+}
+
+/* =========================================================
+   TRUST ITEM
+========================================================= */
+
+function TrustItem({ text }: { text: string }) {
+    return (
+        <div
+            className="
+        flex
+        min-h-[58px]
+        items-center
+        gap-3
+        rounded-2xl
+        border
+        border-[#E0E3EB]
+        bg-[#F7F8FB]
+        px-4
+        py-3
+        transition-all
+        duration-300
+        hover:-translate-y-0.5
+        hover:border-[#E93F61]/30
+        hover:bg-white
+      "
+        >
+            <span
+                className="
+          flex
+          h-7
+          w-7
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          bg-[#E93F61]
+        "
+            >
+                <Check
+                    size={14}
+                    strokeWidth={3}
+                    className="text-white"
+                />
+            </span>
+
+            <span
+                className="
+          font-body
+          text-[13px]
+          font-medium
+          leading-5
+          text-[#253A7B]
+        "
+            >
+                {text}
+            </span>
+        </div>
+    );
+}
+
+/* =========================================================
+   COMPANY LOGO
 ========================================================= */
 
 function CompanyLogo({
@@ -85,90 +180,35 @@ function CompanyLogo({
         group
         relative
         flex
-        h-[48px]
-        w-[48px]
+        h-12
+        w-12
         shrink-0
         items-center
         justify-center
+        overflow-hidden
         rounded-full
         border
-        border-white/20
+        border-[#E3E5EC]
         bg-white
-        shadow-[0_5px_18px_rgba(18,19,20,0.12)]
         transition-all
-        duration-200
+        duration-300
         hover:-translate-y-1
-        hover:shadow-[0_9px_24px_rgba(18,19,20,0.20)]
-        overflow-hidden
+        hover:shadow-md
       "
         >
             <Image
                 src={company.image}
-                alt={company.name}
+                alt={`${company.name} logo`}
                 fill
                 sizes="48px"
                 className="
           object-contain
           p-2.5
           transition-transform
-          duration-200
+          duration-300
           group-hover:scale-110
         "
             />
-        </div>
-    );
-}
-
-/* =========================================================
-   TRUST BADGE
-========================================================= */
-
-function TrustBadge({
-    text,
-    position,
-}: {
-    text: string;
-    position: string;
-}) {
-    return (
-        <div
-            className={`
-        absolute
-        z-30
-        hidden
-        items-center
-        gap-3
-        rounded-full
-        border-[7px]
-        border-white/20
-        bg-white
-        px-4
-        py-2
-        shadow-[0_8px_22px_rgba(18,19,20,0.12)]
-        md:flex
-        ${position}
-      `}
-        >
-            <span
-                className="
-          h-[7px]
-          w-[7px]
-          shrink-0
-          rounded-full
-          bg-brand-accent
-        "
-            />
-
-            <span
-                className="
-          whitespace-nowrap
-          text-caption
-          font-semibold
-          text-content-primary
-        "
-            >
-                {text}
-            </span>
         </div>
     );
 }
@@ -179,347 +219,587 @@ function TrustBadge({
 
 export default function AboutSection() {
     return (
-        <section
-            className={`
-        relative
-        w-full
-        overflow-hidden
-        bg-brand-primary
-        text-white
-        tracking-tight-5
-        [letter-spacing:var(--tracking-tight-5)]
-        [&_*]:[letter-spacing:var(--tracking-tight-5)]
-      `}
-        >
-            {/* =====================================================
-          DECORATIVE WHITE ARC — TOP LEFT
-      ====================================================== */}
-
-            <div
-                aria-hidden="true"
+        <>
+            <section
                 className="
-          pointer-events-none
-          absolute
-          -left-[230px]
-          -top-[130px]
-          hidden
-          h-[320px]
-          w-[650px]
-          rotate-[17deg]
-          rounded-[50%]
-          border-[60px]
-          border-white
-          lg:block
+          relative
+          w-full
+          overflow-hidden
+          bg-white
+          text-black
+          [letter-spacing:-0.04em]
         "
-            />
+            >
+                {/* =====================================================
+            VERY LIMITED BACKGROUND DECORATION
 
-            {/* =====================================================
-          DECORATIVE WHITE ARC — BOTTOM
-      ====================================================== */}
+            IMPORTANT:
+            The previously supplied 4-part SVG is NOT used.
+        ===================================================== */}
 
-            <div
-                aria-hidden="true"
-                className="
-          pointer-events-none
-          absolute
-          -bottom-[250px]
-          left-[310px]
-          hidden
-          h-[430px]
-          w-[650px]
-          rotate-[48deg]
-          rounded-[50%]
-          border-[55px]
-          border-white
-          lg:block
-        "
-            />
+                {/* Left top decoration */}
+                <ShapeOne
+                    className="
+            pointer-events-none
+            absolute
+            left-[1%]
+            top-[7%]
+            z-0
+            h-[110px]
+            w-[110px]
+            rotate-[-10deg]
+            text-[#F8C5D1]
+            opacity-25
+            sm:h-[135px]
+            sm:w-[135px]
+            lg:h-[155px]
+            lg:w-[155px]
+          "
+                />
 
-            {/* =====================================================
-          MAIN WRAPPER
-      ====================================================== */}
+                {/* Right decoration */}
+                <ShapeThree
+                    className="
+            pointer-events-none
+            absolute
+            right-[-35px]
+            top-[8%]
+            z-0
+            h-[145px]
+            w-[145px]
+            rotate-[8deg]
+            text-[#D9DFF4]
+            opacity-45
+            sm:h-[175px]
+            sm:w-[175px]
+            lg:h-[205px]
+            lg:w-[205px]
+          "
+                />
 
-            <Container size="lg" className="relative z-10">
-                <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:min-h-[800px]">
-                    {/* ===================================================
-                        LEFT — STUDENT VISUAL
-                    ==================================================== */}
+                <Container
+                    size="lg"
+                    className="relative z-10"
+                >
+                    {/* =====================================================
+              12 COLUMN GRID
+          ===================================================== */}
 
                     <div
                         className="
-                            col-span-4
-                            lg:col-span-6
-                            relative
-                            flex
-                            min-h-[480px]
-                            items-end
-                            justify-center
-                            overflow-visible
-                            px-0
-                            pt-10
-                            sm:min-h-[620px]
-                            lg:min-h-[800px]
-                            lg:justify-start
-                            order-2
-                            lg:order-1
-                        "
+              grid
+              grid-cols-1
+              gap-12
+              lg:grid-cols-12
+              lg:items-center
+              lg:gap-10
+              xl:gap-14
+            "
                     >
                         {/* =================================================
-              STUDENT IMAGE PLACEHOLDER
-          ================================================== */}
+                LEFT — 6 COLUMNS
+            ================================================= */}
 
                         <div
                             className="
-                            relative
-                            z-10
-                            w-full
-                            max-w-[340px]
-                            sm:max-w-[480px]
-                            lg:max-w-[580px]
-                            xl:max-w-[620px]
-                            lg:ml-[-20px]
-                        "
-                        >
-                            <Image
-                                src="/images/about/ChatGPT Image Sep 14, 2026, 12_10_06 PM.webp"
-                                alt="HighEd international student"
-                                width={1145}
-                                height={1374}
-                                sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 620px"
-                                className="block w-full h-auto object-contain object-bottom"
-                            />
-                        </div>
-
-                        {/* =================================================
-              DESKTOP TRUST BADGES
-          ================================================== */}
-
-                        {trustPoints.map((point) => (
-                            <TrustBadge
-                                key={point.text}
-                                text={point.text}
-                                position={point.position}
-                            />
-                        ))}
-
-                        {/* =================================================
-              MOBILE TRUST BADGES
-          ================================================== */}
-
-                        <div
-                            className="
-              absolute
-              bottom-7
-              left-1/2
-              z-30
-              flex
-              w-[92%]
-              -translate-x-1/2
-              flex-col
-              items-center
-              gap-2
-              md:hidden
-            "
+                order-2
+                lg:order-1
+                lg:col-span-6
+              "
                         >
                             <div
                                 className="
-                flex
-                items-center
-                gap-2
-                rounded-full
-                border-4
-                border-white/20
-                bg-white
-                px-4
-                py-2
-                shadow-[0_8px_20px_rgba(18,19,20,0.15)]
-              "
+                  relative
+                  mx-auto
+                  h-[560px]
+                  w-full
+                  max-w-[620px]
+                  sm:h-[620px]
+                  lg:h-[680px]
+                  xl:h-[720px]
+                "
                             >
-                                <span
-                                    className="
-                  h-[7px]
-                  w-[7px]
-                  rounded-full
-                  bg-brand-accent
-                "
-                                />
+                                {/* =================================================
+                    DECORATIVE SVG — peeks out from the right of the main image
+                ================================================= */}
 
-                                <span
+                                <svg
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 256 256"
+                                    fill="none"
                                     className="
-                  text-caption
-                  font-medium
-                  text-brand-accent
-                "
+                      pointer-events-none
+                      absolute
+                      right-[8%]
+                      top-[12%]
+                      z-[5]
+                      h-[180px]
+                      w-[180px]
+                      
+                      sm:h-[220px]
+                      sm:w-[220px]
+                      lg:h-[260px]
+                      lg:w-[260px]
+                    "
                                 >
-                                    Trusted by Students & Parents
-                                </span>
+                                    <path
+                                        d="M 228 0 C 172.772 0 128 44.772 128 100 L 128 0 L 0 0 L 0 28 C 0 83.228 44.772 128 100 128 L 0 128 L 0 256 L 28 256 C 83.228 256 128 211.228 128 156 L 128 256 L 256 256 L 256 228 C 256 172.772 211.228 128 156 128 L 256 128 L 256 0 Z"
+                                        fill=" #D9ECDE"
+                                    />
+                                </svg>
+
+                                {/* =================================================
+                    MAIN IMAGE
+                ================================================= */}
+
+                                <div
+                                    className="
+                    absolute
+                    left-[7%]
+                    top-[8%]
+                    z-10
+                    w-[61%]
+                    sm:left-[8%]
+                    sm:w-[60%]
+                    lg:left-[6%]
+                    lg:w-[61%]
+                  "
+                                >
+                                    <div
+                                        className="
+                      relative
+                      aspect-[4/5]
+                      overflow-hidden
+                      rounded-[42px]
+                      border-[6px]
+                      border-white
+                      bg-[#F5F5F9]
+                      shadow-[0_25px_70px_rgba(37,58,123,0.13)]
+                    "
+                                    >
+                                        <Image
+                                            src="/images/about/frame-536.webp"
+                                            alt="HighEd overseas education counselling"
+                                            fill
+                                            priority
+                                            sizes="(max-width: 640px) 58vw, (max-width: 1024px) 38vw, 30vw"
+                                            className="
+                        object-cover
+                        transition-transform
+                        duration-700
+                        hover:scale-[1.03]
+                      "
+                                        />
+                                    </div>
+                                </div>
+
+                                <div
+                                    className="
+                    absolute
+                    bottom-[9%]
+                    right-[3%]
+                    z-20
+                    w-[45%]
+                    sm:right-[4%]
+                    sm:w-[44%]
+                    lg:right-[3%]
+                    lg:w-[45%]
+                  "
+                                >
+                                    <div
+                                        className="
+                      relative
+                      aspect-[4/3]
+                      overflow-hidden
+                      rounded-[38px]
+                      border-[6px]
+                      border-white
+                      bg-[#F5F5F9]
+                      shadow-[0_22px_55px_rgba(37,58,123,0.16)]
+                    "
+                                    >
+                                        <Image
+                                            src="/images/about/frame-537.webp"
+                                            alt="HighEd student counselling"
+                                            fill
+                                            sizes="(max-width: 640px) 43vw, (max-width: 1024px) 28vw, 22vw"
+                                            className="
+                        object-cover
+                        transition-transform
+                        duration-700
+                        hover:scale-[1.03]
+                      "
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* =================================================
+                    5+ EXPERIENCE CARD
+
+                    IMPORTANT:
+                    Positioned EXACTLY between both image cards.
+                ================================================= */}
+
+                                <div
+                                    className="
+                    absolute
+                    left-[60%]
+                    top-[60%]
+                    z-40
+                    flex
+                    h-[150px]
+                    w-[100px]
+                    -translate-x-1/2
+                    -translate-y-1/2
+                    flex-col
+                    items-center
+                    justify-center
+                    rounded-[24px]
+                    bg-[#E93F61]
+                    text-center
+                    ring-[2px]
+                    ring-white
+                    sm:h-[90px]
+                    sm:w-[140px]
+                    lg:h-[100px]
+                    lg:w-[150px]
+                    lg:rounded-[28px]
+                  "
+                                >
+                                    <span
+                                        className="
+                      text-[34px]
+                      font-bold
+                      leading-none
+                      text-white
+                      sm:text-[38px]
+                      lg:text-[42px]
+                    "
+                                    >
+                                        5+
+                                    </span>
+
+                                    <span
+                                        className="
+                      mt-2
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      leading-[1.3]
+                      text-white
+                      sm:text-[11px]
+                      lg:text-[12px]
+                    "
+                                    >
+                                        Years
+                                        Experience
+                                    </span>
+                                </div>
+
+                                {/* =================================================
+                    RATING CARD
+
+                    Kept outside the experience badge.
+                ================================================= */}
+
+                                <div
+                                    className="
+                    absolute
+                    bottom-[20%]
+                    left-[3%]
+                    z-30
+                    flex
+                    h-[100px]
+                    w-[125px]
+                    flex-col
+                    items-center
+                    justify-center
+                    rounded-[26px]
+                    border
+                    border-white
+                    bg-white
+                    shadow-[0_18px_45px_rgba(37,58,123,0.13)]
+                    sm:h-[112px]
+                    sm:w-[138px]
+                    lg:bottom-[19%]
+                    lg:left-[2%]
+                    lg:h-[120px]
+                    lg:w-[145px]
+                  "
+                                >
+                                    <span
+                                        className="
+                      text-[38px]
+                      font-medium
+                      leading-none
+                      text-black
+                      sm:text-[42px]
+                    "
+                                    >
+                                        4.5
+                                    </span>
+
+                                    <div className="mt-1 flex gap-[2px]">
+                                        {Array.from({ length: 5 }).map(
+                                            (_, index) => (
+                                                <span
+                                                    key={index}
+                                                    className="
+                            text-[15px]
+                            leading-none
+                            text-[#E9B528]
+                          "
+                                                >
+                                                    ★
+                                                </span>
+                                            ),
+                                        )}
+                                    </div>
+
+                                    <span
+                                        className="
+                      mt-1
+                      text-[8px]
+                      font-medium
+                      text-black/35
+                    "
+                                    >
+                                        Rating
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    {/* ===================================================
-                    RIGHT — CONTENT
-                ==================================================== */}
-
-                    <div
-                        className="
-                        col-span-4
-                        lg:col-span-6
-                        relative
-                        flex
-                        flex-col
-                        justify-center
-                        z-20
-                        px-0
-                        pb-10
-                        pt-16
-                        text-center
-                        lg:py-[78px]
-                        lg:text-left
-                        order-1
-                        lg:order-2
-                    "
-                    >
-                        {/* =================================================
-              EYEBROW
-          ================================================== */}
-
-                        <EyebrowBadge className="self-center lg:self-start">
-                            About Us
-                        </EyebrowBadge>
 
                         {/* =================================================
-              HEADING
-          ================================================== */}
-
-                        <h2
-                            className="
-              mx-auto
-              lg:mx-0
-              max-w-[680px]
-              text-white
-            "
-                        >
-                            Leading Overseas{" "}
-                            <span className="text-brand-accent">
-                                Education
-                            </span>
-                            <br />
-                            Advisors in Coimbatore
-                        </h2>
-
-                        {/* =================================================
-              ABOUT COPY
-          ================================================== */}
+                RIGHT — 6 COLUMNS
+            ================================================= */}
 
                         <div
                             className="
-              mx-auto
-              lg:mx-0
-              mt-14
-              max-w-[610px]
-              space-y-7
-              text-body
-              text-white
-            "
+                order-1
+                flex
+                flex-col
+                justify-center
+                lg:order-2
+                lg:col-span-6
+                lg:py-[60px]
+              "
                         >
-                            <p>
-                                HighEd is a trusted overseas education advisory
-                                helping students across Tamil Nadu achieve their
-                                study abroad goals with personalized counselling
-                                and transparent guidance.
-                            </p>
+                            {/* =================================================
+                  BADGE
+              ================================================= */}
 
-                            <p>
-                                From Chennai and Coimbatore to Madurai, Trichy,
-                                Salem, Tirunelveli and other cities, our experienced
-                                counsellors simplify university selection,
-                                applications, scholarships, education loans and
-                                student visa processes.
-                            </p>
+                            <EyebrowBadge className="self-center lg:self-start">
+                                About HighEd
+                            </EyebrowBadge>
 
-                            <p>
-                                With strong global university partnerships and
-                                student-focused guidance, we help aspiring students
-                                choose the right country, course and university for
-                                their academic and career goals.
-                            </p>
-                        </div>
+                            {/* =================================================
+                  HEADING
+              ================================================= */}
 
-                        {/* =================================================
-              COMPANY OUTCOMES
-          ================================================== */}
+                            <h2
+                                className="
+                  mx-auto
+                  mt-6
+                  max-w-[650px]
+                  text-center
+                  text-brand-primary
+                  lg:mx-0
+                  lg:text-left
+                "
+                            >
+                                Your Trusted {" "}
+                                <span className="text-brand-accent">
+                                    Study Abroad
+                                </span>{" "}
+                                Education Partner
+                            </h2>
 
-                        <div className="mt-10">
-                            {/* Label */}
+                            {/* =================================================
+                  DESCRIPTION
+              ================================================= */}
 
                             <div
                                 className="
-                mb-4
-                flex
-                items-center
-                justify-center
-                lg:justify-start
-                gap-2
-              "
-                            >
-                                <BriefcaseBusiness
-                                    size={15}
-                                    strokeWidth={2}
-                                    className="text-brand-accent"
-                                />
-
-                                <span
-                                    className="
-                  text-body-small
-                  font-medium
-                  text-white/80
+                  mx-auto
+                  mt-6
+                  max-w-[620px]
+                  text-center
+                  text-body
+                  leading-7
+                  text-black/65
+                  lg:mx-0
+                  lg:text-left
                 "
-                                >
-                                    Our students work at leading global companies
-                                </span>
+                            >
+                                <p>
+                                    HighEd provides personalised study abroad guidance to help students choose the right universities, courses and international study destinations.
+                                </p>
+
+                                <p className="mt-4">
+                                    From university selection and applications to scholarships, education loans and student visa support, we help simplify every step of your study abroad journey.
+                                </p>
                             </div>
 
                             {/* =================================================
-                COMPANY LOGOS
-            ================================================== */}
+                  TRUST CARDS
+              ================================================= */}
 
-                            <div className="group relative mx-auto lg:mx-0 w-full max-w-[570px] overflow-hidden py-2">
-                                {/* Fade edges */}
-                                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-brand-primary to-transparent" />
-                                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-brand-primary to-transparent" />
-
-                                <div className="flex w-max animate-[scroll_25s_linear_infinite] items-center gap-4 group-hover:[animation-play-state:paused]">
-                                    {[...companies, ...companies, ...companies].map((company, i) => (
-                                        <CompanyLogo
-                                            key={`${company.name}-${i}`}
-                                            company={company}
-                                        />
-                                    ))}
-                                </div>
+                            <div
+                                className="
+                  mt-8
+                  grid
+                  grid-cols-1
+                  gap-3
+                  sm:grid-cols-2
+                "
+                            >
+                                {trustPoints.map((point) => (
+                                    <TrustItem
+                                        key={point}
+                                        text={point}
+                                    />
+                                ))}
                             </div>
 
-                            <style>{`
-                            @keyframes scroll {
-                                0% { transform: translateX(0); }
-                                100% { transform: translateX(calc(-33.3333% - 0.333rem)); }
-                            }
-                        `}</style>
+                            {/* =================================================
+                  COMPANY SECTION
+              ================================================= */}
+
+                            <div className="mt-8">
+                                <div
+                                    className="
+                    mb-4
+                    flex
+                    items-center
+                    justify-center
+                    gap-2
+                    lg:justify-start
+                  "
+                                >
+                                    <BriefcaseBusiness
+                                        size={16}
+                                        strokeWidth={2}
+                                        className="text-brand-accent"
+                                    />
+
+                                    <span
+                                        className="
+                      text-body-small
+                      font-medium
+                      text-brand-primary/65
+                    "
+                                    >
+                                        Our students work at leading global companies
+                                    </span>
+                                </div>
+
+                                {/* =================================================
+                    COMPANY LOGO CAROUSEL
+                ================================================= */}
+
+                                <div
+                                    className="
+                    relative
+                    mx-auto
+                    w-full
+                    max-w-[620px]
+                    overflow-hidden
+                    py-2
+                    lg:mx-0
+                  "
+                                >
+                                    {/* Left fade */}
+
+                                    <div
+                                        aria-hidden="true"
+                                        className="
+                      pointer-events-none
+                      absolute
+                      inset-y-0
+                      left-0
+                      z-20
+                      w-12
+                      bg-gradient-to-r
+                      from-white
+                      to-transparent
+                    "
+                                    />
+
+                                    {/* Right fade */}
+
+                                    <div
+                                        aria-hidden="true"
+                                        className="
+                      pointer-events-none
+                      absolute
+                      inset-y-0
+                      right-0
+                      z-20
+                      w-12
+                      bg-gradient-to-l
+                      from-white
+                      to-transparent
+                    "
+                                    />
+
+                                    <div
+                                        className="
+                      company-carousel-track
+                      flex
+                      w-max
+                      items-center
+                      gap-4
+                    "
+                                    >
+                                        {[
+                                            ...companies,
+                                            ...companies,
+                                        ].map((company, index) => (
+                                            <CompanyLogo
+                                                key={`${company.name}-${index}`}
+                                                company={company}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        {/* =================================================
-              CTA
-          ================================================== */}
-
-                        <LeadCTAButton
-                            source="about_cta"
-                            className="mt-9"
-                        >
-                            Book Free Counselling
-                        </LeadCTAButton>
                     </div>
-                </div>
-            </Container>
-        </section>
+                </Container>
+            </section>
+
+            {/* =========================================================
+          CAROUSEL ANIMATION
+      ========================================================= */}
+
+            <style >{`
+        .company-carousel-track {
+          animation: highEdCompanyScroll 24s linear infinite;
+          will-change: transform;
+        }
+
+        .company-carousel-track:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes highEdCompanyScroll {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(calc(-50% - 8px));
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .company-carousel-track {
+            animation: none !important;
+          }
+        }
+      `}</style>
+        </>
     );
 }

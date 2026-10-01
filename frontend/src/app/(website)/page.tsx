@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/home/Hero";
 import StudyAbroadCards from "@/components/home/StudyAbroadCards";
 import LogoMarquee from "@/components/home/LogoMarquee";
+import Form from "@/components/forms/LeadForm";
 
 // Below-the-fold components dynamically imported to minimize initial bundle size and TBT
 const CountryService = dynamic(() => import("@/components/home/CountryService"));
@@ -20,15 +21,21 @@ export default function Home() {
       <Hero />
       <StudyAbroadCards />
       <LogoMarquee />
+      <AboutUs />
       <CountryService />
       <ServicesSection />
-      <AboutUs />
+
       <Courses />
       <ScholarShip />
       <RealStory />
       <Testimonials />
       <WhyChooseAs />
       <FAQSection />
+      <section className="bg-surface-neutral py-16 sm:py-20 lg:py-24">
+        <div className="site-container max-w-6xl mx-auto px-4 sm:px-6">
+          <Form />
+        </div>
+      </section>
     </div>
   );
 }

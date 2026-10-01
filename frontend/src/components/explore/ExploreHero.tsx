@@ -11,7 +11,7 @@ interface ExploreHeroProps {
 
 export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#16234B_0%,#253A7B_60%,#1B2958_100%)] py-12 md:py-16 text-white border-b border-white/10">
+    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#16234B_0%,#253A7B_60%,#1B2958_100%)] py-12 md:py-16 text-white border-b border-white/10 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       {/* Subtle background glow */}
       <div className="pointer-events-none absolute -left-20 top-0 h-[300px] w-[300px] rounded-full bg-blue-400/10 blur-[100px]" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-[300px] w-[300px] rounded-full bg-brand-accent/15 blur-[100px]" />
@@ -39,7 +39,7 @@ export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
 
         {/* Header content */}
         <div className="max-w-3xl">
-          <Badge variant="inverse" size="sm" className="mb-3">
+          <Badge variant="inverse" size="sm" className="mb-4 rounded-full">
             {country ? (
               <>
                 <span>{country.flag}</span>
@@ -54,12 +54,20 @@ export const ExploreHero: React.FC<ExploreHeroProps> = ({ country }) => {
           </Badge>
 
           <h1 className="text-white">
-            {country
-              ? `Explore Study Opportunities in ${country.name}`
-              : "Explore Universities, Courses & Scholarships Worldwide"}
+            {country ? (
+              <>
+                Explore Study Opportunities in{" "}
+                <span className="text-brand-accent">{country.name}</span>
+              </>
+            ) : (
+              <>
+                Explore Universities, Courses &amp;{" "}
+                <span className="text-brand-accent">Scholarships Worldwide</span>
+              </>
+            )}
           </h1>
 
-          <p className="mt-3 text-sm md:text-base text-white/80 leading-relaxed font-body">
+          <p className="mt-3.5 text-sm md:text-base text-white/80 leading-relaxed font-body">
             {country
               ? `Browse verified academic programs, QS-ranked partner universities, tuition ranges, and available international scholarship grants in ${country.name}.`
               : "Search top-tier partner universities, degree programs, tuition ranges, and scholarship awards across USA, UK, Canada, Australia, Dubai, and Germany."}

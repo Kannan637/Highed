@@ -65,7 +65,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       {/* Search Input */}
       <div>
         <label htmlFor="explore-search" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">

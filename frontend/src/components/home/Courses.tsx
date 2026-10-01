@@ -398,6 +398,7 @@ export default function TopCoursesSection() {
                 <SectionHeading
                     eyebrow="Popular Courses"
                     title="Top Courses to Study Abroad"
+                    accentText="Study Abroad"
                     description="High-demand programmes with excellent ROI, global job prospects, and pathways to permanent residency."
                 />
 

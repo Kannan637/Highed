@@ -33,7 +33,7 @@ export const ExploreResults: React.FC<ExploreResultsProps> = ({
   onOpenFiltersMobile,
 }) => {
   return (
-    <div>
+    <div className="tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)]">
       {/* Results Header Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-neutral-200 mb-6">
         <div className="flex items-center gap-3">
@@ -49,7 +49,7 @@ export const ExploreResults: React.FC<ExploreResultsProps> = ({
             variant="outline"
             size="sm"
             onClick={onOpenFiltersMobile}
-            className="lg:hidden gap-2"
+            className="lg:hidden h-10 rounded-full px-4 font-semibold border-black/10 gap-2 cursor-pointer"
           >
             <SlidersHorizontal size={15} />
             <span>Filters</span>

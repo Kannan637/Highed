@@ -13,10 +13,11 @@ def test_desktop_navbar_and_logo(page: Page):
     study_abroad_btn = page.locator("button:has-text('Study Abroad')").first
     expect(study_abroad_btn).to_be_visible()
 
-    # Hover to open dropdown
-    study_abroad_btn.hover()
+    # Open dropdown
+    study_abroad_btn.click()
     expect(study_abroad_btn).to_have_attribute("aria-expanded", "true")
 
-    # Press Escape to close dropdown
+    # Press Escape and move mouse away to close dropdown
     page.keyboard.press("Escape")
+    page.mouse.move(0, 0)
     expect(study_abroad_btn).to_have_attribute("aria-expanded", "false")

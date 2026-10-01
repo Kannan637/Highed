@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 export interface FAQItem {
     question: string;
@@ -24,6 +23,7 @@ export interface FAQCategory {
 export interface FAQSectionProps {
     badge?: string;
     title?: string;
+    accentText?: string;
     subtitle?: string;
     categories?: FAQCategory[];
     contactLabel?: string;
@@ -155,6 +155,7 @@ function CategoryTab({
 export function FAQSection({
     badge = "Need Help?",
     title = "Frequently Asked Questions",
+    accentText = "Questions",
     subtitle = "Find clear answers to common questions about studying abroad, admissions, visas, costs, and career opportunities.",
     categories = defaultCategories,
 }: FAQSectionProps) {
@@ -193,6 +194,7 @@ export function FAQSection({
                 <SectionHeading
                     badge={badge}
                     title={title}
+                    accentText={accentText}
                     description={subtitle}
                     align="center"
                 />
@@ -291,11 +293,11 @@ export function FAQSection({
                 </div>
 
                 {/* BOTTOM CTA */}
-                <div className="mt-12 flex justify-center">
+                {/* <div className="mt-12 flex justify-center">
                     <LeadCTAButton source="faq">
                         Ask Expert - Request Callback
                     </LeadCTAButton>
-                </div>
+                </div> */}
             </Container>
         </section>
     );

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
+import EyebrowBadge from "@/components/ui/EyebrowBadge";
 
 const otherConsultants = [
     {
@@ -93,19 +94,15 @@ export default function WhyChooseUs() {
                     "
                 >
                     {/* BADGE */}
-                    <div className="mb-5 inline-flex h-8 items-center gap-2 rounded-full bg-[#E93F61] px-4">
-                        <span className="h-2 w-2 rounded-full bg-white" />
-
-                        <span className="font-dm-sans text-sm font-medium text-white">
-                            Why Choose Us
-                        </span>
-                    </div>
+                    <EyebrowBadge className="mb-5">
+                        Why Choose Us
+                    </EyebrowBadge>
 
                     {/* MAIN HEADING */}
                     <h2 className="text-center text-white">
                         Your Success Starts With
                         <br className="hidden sm:inline" />
-                        {" "}the Right Guidance
+                        {" "}the <span className="text-brand-accent">Right Guidance</span>
                     </h2>
                 </div>
 

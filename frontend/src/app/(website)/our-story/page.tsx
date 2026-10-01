@@ -441,6 +441,7 @@ export default function OurStoryPage() {
                                     alt="Students together"
                                     width={700}
                                     height={875}
+                                    unoptimized
                                     className="aspect-[4/5] w-full rounded-[30px] object-cover"
                                 />
                             </div>
@@ -525,13 +526,14 @@ export default function OurStoryPage() {
             <section id="story" className="bg-surface-neutral">
                 <div className="mx-auto max-w-[1500px] px-6 py-20 md:px-10 lg:px-16 lg:py-28">
                     <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-                        <div className="story-image reveal-scale relative overflow-hidden rounded-[36px] lg:col-span-7">
+                        <div className="story-image reveal-scale relative h-[620px] overflow-hidden rounded-[36px] lg:col-span-7">
                             <Image
                                 src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1400&q=90"
                                 alt="Students collaborating"
-                                width={800}
-                                height={620}
-                                className="h-[620px] w-full scale-110 object-cover"
+                                fill
+                                unoptimized
+                                sizes="(max-width: 1024px) 100vw, 58vw"
+                                className="scale-110 object-cover"
                             />
 
                             <div className="absolute bottom-6 left-6 rounded-[22px] bg-white/90 px-6 py-5 shadow-xl backdrop-blur">
@@ -772,6 +774,7 @@ export default function OurStoryPage() {
                             src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1600&q=90"
                             alt="Students learning together"
                             fill
+                            unoptimized
                             sizes="(max-width: 1500px) 100vw, 1500px"
                             className="floating-photo object-cover opacity-70"
                         />

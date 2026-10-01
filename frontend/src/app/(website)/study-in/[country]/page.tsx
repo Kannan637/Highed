@@ -7,6 +7,8 @@ import { generateFAQSchema } from "@/seo/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
 
+
+import CountryRealStory from "@/components/country/CountryRealStories";
 import CountryHero from "@/components/country/CountryHero";
 import CountryFeatureCards from "@/components/country/CountryFeatureCards";
 import CountryWhyStudy from "@/components/country/CountryWhyStudy";
@@ -18,6 +20,7 @@ import CountryTestimonials from "@/components/country/CountryTestimonials";
 import CountryWhyHighEd from "@/components/country/CountryWhyHighEd";
 import CountryFAQ from "@/components/country/CountryFAQ";
 import CountryRelatedBlogs from "@/components/country/CountryRelatedBlogs";
+import CountryMarquee from "@/components/country/CountryMarquee";
 import CountryCTA from "@/components/country/CountryCTA";
 
 import Service from "@/components/home/Service";
@@ -93,12 +96,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <JsonLd data={faqSchema} />
       <CountryHero country={country} />
       <CountryFeatureCards country={country} />
+      <CountryMarquee />
       <CountryWhyStudy country={country} />
       <Service />
       <Countrtcourese country={country} />
       <CountryScholarships country={country} />
       <CountryIntakes country={country} />
       <CountryVisa country={country} />
+      <CountryRealStory />
       <CountryTestimonials />
       <CountryWhyHighEd country={country} />
       <CountryFAQ />

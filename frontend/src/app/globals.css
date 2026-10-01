@@ -1,15 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --font-heading: var(--font-body);
   --background: #ffffff;
   --foreground: #171717;
 
   /* Brand Colors */
   --brand-primary: #253A7B;
   --brand-primary-hover: #1f3168;
-  --brand-accent: #D8284D;
-  --brand-accent-hover: #c42244;
+  --brand-accent: #E63A5F;
+  --brand-accent-hover: #9F1632;
   --brand-gold: #D6B66A;
 
   /* Content */
@@ -133,7 +132,7 @@
   --color-icon-bg-gold: var(--icon-bg-gold);
 
   --font-body: var(--font-body), sans-serif;
-  --font-heading: var(--font-body), sans-serif;
+  --font-heading: var(--font-heading), sans-serif;
 
   --tracking-tight-5: -0.05em;
 
@@ -295,6 +294,23 @@ p {
    ACCESSIBILITY: Global focus-visible ring
    ============================================================ */
 :focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* Form controls manage their own borders/focus rings; prevent double outline rectangle */
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none;
+}
+
+/* Preserve keyboard focus indication for native check/radio controls */
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
   outline: 2px solid var(--brand-primary);
   outline-offset: 2px;
 }
