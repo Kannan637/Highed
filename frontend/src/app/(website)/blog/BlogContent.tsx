@@ -11,28 +11,34 @@ import {
   BookOpen,
   ShieldCheck,
   Clock,
+  Calendar,
+  Globe,
+  CheckCircle2,
+  ArrowRight,
   X,
 } from "lucide-react";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import CTASection from "@/components/ui/CTA";
 import { Badge } from "@/components/ui/Badge";
-import { CardAction } from "@/components/ui/Card";
 
 export interface BlogArticle {
   title: string;
   slug: string;
   readingTime: string;
+  date?: string;
+  country?: string;
   description: string;
   image: string;
   href: string;
   category: string;
+  highlights?: string[];
 }
 
 interface BlogContentProps {
   articles: BlogArticle[];
 }
 
-const POSTS_PER_PAGE = 4;
+const POSTS_PER_PAGE = 6;
 
 export default function BlogContent({ articles }: BlogContentProps) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -80,7 +86,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
 
   return (
     <div className="w-full tracking-[-0.04em] [letter-spacing:-0.04em]">
-      {/* HERO SECTION — 12-Column Grid System at 1000px Max Width */}
+      {/* HERO SECTION — 12-Column Grid System at 1200px Max Width */}
       <section className="relative overflow-hidden bg-[linear-gradient(135deg,#16234B_0%,#253A7B_60%,#1B2958_100%)] py-12 text-white sm:py-16 md:py-20 border-b border-white/10">
         {/* Ambient Glows */}
         <div
@@ -116,7 +122,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
           </svg>
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1000px] w-full px-4 sm:px-6">
+        <div className="relative z-10 mx-auto max-w-[1200px] w-full px-4 sm:px-6">
           <div className="grid grid-cols-12 gap-y-3 sm:gap-y-4">
             {/* Breadcrumb — 12 Columns */}
             <div className="col-span-12 mb-2 sm:mb-3">
@@ -137,16 +143,16 @@ export default function BlogContent({ articles }: BlogContentProps) {
               </div>
             </div>
 
-            {/* H1 Heading — 12 Columns (Spans 10 cols on large screens) */}
+            {/* H1 Heading — 12 Columns */}
             <div className="col-span-12 lg:col-span-10">
-              <h1 className="text-white">
+              <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-heading font-semibold leading-tight">
                 Study Abroad Guides &amp; News
               </h1>
             </div>
 
             {/* Subtitle — 12 Columns */}
             <div className="col-span-12 lg:col-span-10">
-              <p className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg font-body">
+              <p className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg font-body font-normal">
                 Stay informed with expert breakdowns of immigration policies, scholarship criteria, post-study work regulations, and global campus life.
               </p>
             </div>
@@ -172,15 +178,15 @@ export default function BlogContent({ articles }: BlogContentProps) {
         </div>
       </section>
 
-      {/* BLOG CONTENT SECTION — 12-Column Grid System at 1000px Max Width */}
+      {/* BLOG CONTENT SECTION — 12-Column Grid System at 1200px Max Width */}
       <section className="w-full bg-surface-neutral px-4 py-12 font-body sm:py-16 md:py-20">
-        <div className="mx-auto max-w-[1000px] w-full grid grid-cols-12 gap-y-6 sm:gap-y-8">
+        <div className="mx-auto max-w-[1200px] w-full grid grid-cols-12 gap-y-6 sm:gap-y-8">
           {/* Search Bar — 12 Columns */}
           <div className="col-span-12 relative w-full">
             <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Search articles by title or keyword..."
+              placeholder="Search articles by title, country or keyword..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               className="w-full h-12 rounded-xl border border-input bg-card py-3.5 pl-11 pr-10 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-shadow focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 shadow-xs"
@@ -189,7 +195,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
               <button
                 type="button"
                 onClick={() => handleSearch("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg text-muted-foreground hover:bg-neutral-100 hover:text-foreground"
+                className="absolute right-3 top-1/2 -translate-y-1/2 size-8 flex items-center justify-center rounded-lg text-muted-foreground hover:bg-neutral-100 hover:text-foreground cursor-pointer"
                 aria-label="Clear search"
               >
                 <X className="size-4" />
@@ -198,28 +204,27 @@ export default function BlogContent({ articles }: BlogContentProps) {
           </div>
 
           {/* Category Filter Pills — 12 Columns */}
-          <div className="col-span-12 flex w-full items-center gap-2 overflow-x-auto pb-1 pt-0.5 no-scrollbar sm:flex-wrap">
+          <div className="col-span-12 flex w-full items-center gap-2 overflow-x-auto pb-1 pt-0.5 scrollbar-none sm:flex-wrap">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
-                className={`shrink-0 min-h-[40px] rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${activeCategory === cat
-                  ? "bg-brand-primary text-white shadow-xs"
-                  : "border border-border bg-card text-muted-foreground hover:bg-brand-primary/5 hover:text-brand-primary"
-                  }`}
+                className={`shrink-0 min-h-[40px] rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
+                  activeCategory === cat
+                    ? "bg-brand-primary text-white shadow-xs"
+                    : "border border-border bg-card text-muted-foreground hover:bg-brand-primary/5 hover:text-brand-primary"
+                }`}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          {/* Article Cards List — 12 Columns (1000px Width) */}
-          <div className="col-span-12 flex flex-col gap-4 sm:gap-5 w-full">
+          {/* Article Cards Grid — 12 Columns (2 Columns on Tablet/Desktop Matching Events Card Style) */}
+          <div className="col-span-12 w-full">
             {paginatedArticles.length === 0 ? (
-              <div
-                className="flex flex-col items-center gap-3 rounded-2xl py-16 text-center px-4 bg-neutral-100/60 border border-border"
-              >
+              <div className="flex flex-col items-center gap-3 rounded-2xl py-16 text-center px-4 bg-neutral-100/60 border border-border">
                 <Search className="size-10 text-muted-foreground/40" />
                 <p className="text-base font-semibold text-foreground">No articles found</p>
                 <p className="max-w-xs text-sm text-muted-foreground">
@@ -232,65 +237,105 @@ export default function BlogContent({ articles }: BlogContentProps) {
                     setActiveCategory("All");
                     setCurrentPage(1);
                   }}
-                  className="mt-2 min-h-[44px] px-4 py-2 text-sm font-semibold text-brand-primary underline underline-offset-4 hover:text-brand-primary/80"
+                  className="mt-2 min-h-[44px] px-4 py-2 text-sm font-semibold text-brand-primary underline underline-offset-4 hover:text-brand-primary/80 cursor-pointer"
                 >
                   Reset all filters
                 </button>
               </div>
             ) : (
-              paginatedArticles.map((article) => (
-                <Link
-                  key={article.slug}
-                  href={article.href}
-                  className="group block w-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
-                >
-                  {/* Article Card with Internal 12-Column Grid */}
-                  <article className="grid grid-cols-12 gap-3 sm:gap-4 w-full">
-                    {/* Left Text Box: 12 cols mobile, 7 cols tablet, 8 cols desktop */}
-                    <div
-                      className="col-span-12 sm:col-span-7 md:col-span-8 order-2 sm:order-1 flex flex-col justify-between gap-4 rounded-2xl border border-border p-6 sm:p-7 md:p-8 transition-colors duration-200 bg-neutral-50/70 group-hover:bg-white group-hover:border-primary/40 group-hover:shadow-md"
-                    >
-                      <div className="flex flex-col gap-2.5">
-                        <div className="flex items-center gap-2">
-                          <Badge variant="accent" size="sm">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                {paginatedArticles.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={article.href}
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xs transition-all duration-300 hover:shadow-lg hover:border-brand-primary/20 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                  >
+                    <article className="flex flex-col h-full justify-between">
+                      {/* Top Image Banner */}
+                      <div className="relative h-52 sm:h-60 w-full overflow-hidden bg-neutral-100">
+                        <Image
+                          src={article.image}
+                          alt={article.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+
+                        {/* Top Badges */}
+                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                          <span className="rounded-full bg-brand-primary/90 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white shadow-xs">
                             {article.category}
-                          </Badge>
-                          <span className="text-xs text-muted-foreground">•</span>
-                          <span className="text-xs font-medium text-brand-primary">
-                            {article.readingTime}
+                          </span>
+                          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-md shadow-xs bg-white/95 text-neutral-800">
+                            <Clock size={12} className="text-brand-accent" />
+                            <span>{article.readingTime}</span>
                           </span>
                         </div>
 
-                        <h2 className="article-title text-foreground transition-colors group-hover:text-brand-primary">
-                          {article.title}
-                        </h2>
-
-                        <p className="text-pretty text-sm leading-relaxed text-muted-foreground line-clamp-2 sm:line-clamp-3">
-                          {article.description}
-                        </p>
+                        {/* Date & Country Overlay Bar */}
+                        <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-3 text-white text-xs font-medium">
+                          {article.date && (
+                            <div className="inline-flex items-center gap-1.5 rounded-full bg-black/40 backdrop-blur-xs px-2.5 py-1">
+                              <Calendar size={13} className="text-[#D6B66A]" />
+                              <span>{article.date}</span>
+                            </div>
+                          )}
+                          {article.country && (
+                            <div className="inline-flex items-center gap-1.5 rounded-full bg-black/40 backdrop-blur-xs px-2.5 py-1">
+                              <Globe size={13} className="text-[#D6B66A]" />
+                              <span>{article.country}</span>
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      {/* Brand Card Button with Circular Arrow Badge */}
-                      <div className="mt-2">
-                        <CardAction variant="pill" className="min-h-[44px]">
-                          Read more
-                        </CardAction>
-                      </div>
-                    </div>
+                      {/* Content Card Body */}
+                      <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
+                        <div>
+                          <h2 className="font-heading text-lg sm:text-xl font-semibold leading-snug text-content-primary group-hover:text-brand-primary transition-colors line-clamp-2">
+                            {article.title}
+                          </h2>
 
-                    {/* Right Image Box: 12 cols mobile, 5 cols tablet, 4 cols desktop */}
-                    <div className="col-span-12 sm:col-span-5 md:col-span-4 order-1 sm:order-2 relative aspect-[16/9] sm:aspect-auto sm:min-h-[240px] w-full overflow-hidden rounded-2xl border border-border">
-                      <Image
-                        src={article.image}
-                        alt={article.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 42vw, 340px"
-                      />
-                    </div>
-                  </article>
-                </Link>
-              ))
+                          <p className="mt-2 text-sm text-content-secondary line-clamp-2 leading-relaxed">
+                            {article.description}
+                          </p>
+
+                          {/* Key Highlights Chips */}
+                          {article.highlights && article.highlights.length > 0 && (
+                            <div className="mt-4 flex flex-wrap gap-1.5">
+                              {article.highlights.map((hl) => (
+                                <span
+                                  key={hl}
+                                  className="inline-flex items-center gap-1 rounded-lg bg-surface-subtle px-2.5 py-1 text-[11px] font-medium text-neutral-700"
+                                >
+                                  <CheckCircle2 size={12} className="text-emerald-600 shrink-0" />
+                                  <span>{hl}</span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Action Footer */}
+                        <div className="mt-6 pt-4 border-t border-black/5 flex items-center justify-between gap-3">
+                          <div className="text-xs text-content-muted flex items-center gap-1">
+                            <BookOpen size={13} className="shrink-0 text-brand-primary" />
+                            <span className="truncate max-w-[180px] sm:max-w-[220px]">
+                              {article.country ? `${article.country} Guide` : "Admissions Guide"}
+                            </span>
+                          </div>
+
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-primary/5 group-hover:bg-brand-primary group-hover:text-white text-brand-primary border border-brand-primary/20 px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 shrink-0">
+                            <span>Read Guide</span>
+                            <ArrowRight size={13} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
+              </div>
             )}
           </div>
 
@@ -312,10 +357,11 @@ export default function BlogContent({ articles }: BlogContentProps) {
                   key={page}
                   type="button"
                   onClick={() => setCurrentPage(page)}
-                  className={`flex size-11 sm:size-12 items-center justify-center rounded-xl text-sm font-semibold transition-colors shadow-xs cursor-pointer ${currentPage === page
-                    ? "bg-brand-primary text-white"
-                    : "border border-border bg-card text-foreground hover:bg-brand-primary/5"
-                    }`}
+                  className={`flex size-11 sm:size-12 items-center justify-center rounded-xl text-sm font-semibold transition-colors shadow-xs cursor-pointer ${
+                    currentPage === page
+                      ? "bg-brand-primary text-white"
+                      : "border border-border bg-card text-foreground hover:bg-brand-primary/5"
+                  }`}
                 >
                   {page}
                 </button>
@@ -333,7 +379,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
             </div>
           )}
 
-          {/* Lead Generation CTA Callout — 12 Columns at 1000px */}
+          {/* Lead Generation CTA Callout — 12 Columns */}
           <div className="col-span-12 pt-4">
             <CTASection />
           </div>
