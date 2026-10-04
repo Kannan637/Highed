@@ -1,0 +1,62 @@
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '../../lib/utils';
+import { Loader2 } from 'lucide-react';
+
+const buttonVariants = cva(
+  'btn-motion inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium select-none cursor-pointer disabled:pointer-events-none disabled:opacity-50',
+  {
+    variants: {
+      variant: {
+        default:
+          'bg-slate-900 text-white shadow-2xs hover:bg-slate-800 border border-slate-900',
+        destructive:
+          'bg-red-600 text-white shadow-2xs hover:bg-red-700 border border-red-600 focus-visible:ring-red-600',
+        outline:
+          'border border-slate-200 bg-white text-slate-800 shadow-2xs hover:bg-slate-50 hover:text-slate-900',
+        secondary:
+          'bg-slate-100 text-slate-900 shadow-2xs hover:bg-slate-200/80 border border-slate-100',
+        ghost: 'text-slate-700 hover:bg-slate-100 hover:text-slate-900',
+        link: 'text-slate-900 underline-offset-4 hover:underline',
+      },
+      size: {
+        default: 'h-9.5 px-4 py-2 text-sm font-medium',
+        sm: 'h-8.5 rounded-md px-3 text-xs sm:text-sm font-medium',
+        lg: 'h-11 rounded-md px-6 text-base font-medium',
+        icon: 'size-9.5 p-0',
+        'icon-sm': 'size-8.5 p-0',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  isLoading?: boolean;
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, isLoading, children, disabled, ...props }, ref) => {
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        disabled={disabled || isLoading}
+        aria-busy={isLoading}
+        data-loading={isLoading}
+        {...props}
+      >
+        {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+        {children}
+      </button>
+    );
+  }
+);
+Button.displayName = 'Button';
+
+export { Button, buttonVariants };

@@ -1,11 +1,12 @@
 import React from "react";
+import type { Metadata } from "next";
 import EventsView from "@/components/events/EventsView";
 import { constructMetadata } from "@/seo/metadata";
 import { generateBreadcrumbSchema } from "@/seo/breadcrumb";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
 
-export const metadata = constructMetadata({
+export const metadata: Metadata = constructMetadata({
   title: "Upcoming Study Abroad Events, Fairs & Webinars",
   description:
     "Register for in-person university fairs, admissions days, and webinars in Chennai, Coimbatore, Tirupathi and online. Direct access to 50+ global universities.",
@@ -55,4 +56,3 @@ export default function EventsPage() {
     </>
   );
 }
-

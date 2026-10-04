@@ -8,6 +8,8 @@ import Container from "@/components/ui/Container";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { MobileNavigation } from "./MobileNavigation";
 
+import { siteConfig } from "@/config/site.config";
+
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -44,12 +46,13 @@ export const Navbar: React.FC = () => {
         <div className="relative z-[10000] flex items-center gap-2 md:hidden">
           {/* PHONE */}
           <a
-            href="tel:+919050180501"
-            aria-label="Call support"
-            className="flex size-12 touch-manipulation items-center justify-center rounded-full bg-[#F3F5FA] text-brand-primary transition-all duration-300 active:scale-95"
+            href={`tel:${siteConfig.contact.phone}`}
+            aria-label={`Call HighEd at ${siteConfig.contact.formattedPhone}`}
+            className="btn-motion flex size-12 touch-manipulation items-center justify-center rounded-full bg-[#F3F5FA] text-brand-primary"
           >
             <Phone size={18} fill="currentColor" strokeWidth={0} aria-hidden="true" />
           </a>
+
 
           {/* HAMBURGER */}
           <button
@@ -57,7 +60,7 @@ export const Navbar: React.FC = () => {
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMobileMenuOpen}
-            className="relative z-[10001] flex size-12 touch-manipulation select-none items-center justify-center rounded-xl border border-border bg-white text-foreground transition-all duration-300 active:scale-95 cursor-pointer"
+            className="btn-motion relative z-[10001] flex size-12 touch-manipulation select-none items-center justify-center rounded-xl border border-border bg-white text-foreground cursor-pointer"
           >
             {isMobileMenuOpen ? (
               <X size={22} strokeWidth={2} aria-hidden="true" />

@@ -22,11 +22,11 @@ export default function Home() {
       <StudyAbroadCards />
       <LogoMarquee />
       <AboutUs />
-      <CountryService />
-      <ServicesSection />
+      <CountryService id="top-countries" />
+      <ServicesSection id="services" />
 
-      <Courses />
-      <ScholarShip />
+      <Courses id="courses" />
+      <ScholarShip id="scholarships" />
       <RealStory />
       <Testimonials />
       <WhyChooseAs />

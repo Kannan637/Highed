@@ -173,6 +173,61 @@
   animation: shiny-stroke 2s linear infinite;
 }
 
+/* ============================================================
+   UNIFIED BUTTON MOTION (Single Source of Truth)
+   Reference: Standardized tactile button animation system
+   Covers: hover, active/pressed, focus-visible, disabled, loading
+   Respects: prefers-reduced-motion
+   ============================================================ */
+.btn-motion {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.btn-motion:hover:not(:disabled):not([disabled]) {
+  transform: translateY(-1px);
+}
+
+.btn-motion:active:not(:disabled):not([disabled]) {
+  transform: scale(0.97) translateY(0);
+  transition-duration: 100ms;
+}
+
+.btn-motion:focus-visible {
+  outline: 2px solid var(--brand-primary, #253A7B);
+  outline-offset: 2px;
+}
+
+.btn-motion:disabled,
+.btn-motion[disabled],
+.btn-motion[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+
+.btn-motion[aria-busy="true"],
+.btn-motion[data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-motion,
+  .btn-motion:hover,
+  .btn-motion:active {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 /* Global reset */
 * {
   box-sizing: border-box;

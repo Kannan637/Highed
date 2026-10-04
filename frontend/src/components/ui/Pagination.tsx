@@ -35,7 +35,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        className="btn-motion size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         aria-label="Previous page"
       >
         <ChevronLeft size={18} />
@@ -46,7 +46,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             type="button"
             onClick={() => onPageChange(1)}
-            className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 transition-colors cursor-pointer"
+            className="btn-motion size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 cursor-pointer"
           >
             1
           </button>
@@ -59,7 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           key={page}
           type="button"
           onClick={() => onPageChange(page)}
-          className={`size-10 flex items-center justify-center rounded-full text-sm font-medium transition-colors cursor-pointer ${
+          className={`btn-motion size-10 flex items-center justify-center rounded-full text-sm font-medium cursor-pointer ${
             currentPage === page
               ? "bg-brand-primary text-white shadow-xs"
               : "border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50"
@@ -77,7 +77,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <button
             type="button"
             onClick={() => onPageChange(totalPages)}
-            className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 transition-colors cursor-pointer"
+            className="btn-motion size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-sm font-medium text-neutral-600 hover:bg-neutral-50 cursor-pointer"
           >
             {totalPages}
           </button>
@@ -88,7 +88,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         type="button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        className="btn-motion size-10 flex items-center justify-center rounded-full border border-black/10 bg-white text-neutral-600 hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         aria-label="Next page"
       >
         <ChevronRight size={18} />

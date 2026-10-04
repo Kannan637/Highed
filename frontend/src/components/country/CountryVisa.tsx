@@ -375,6 +375,7 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
             <button
               type="button"
               className="
+                btn-motion
                 group
                 flex
                 h-11
@@ -387,14 +388,8 @@ export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
                 text-btn
                 text-content-inverse
                 shadow-button
-                transition-all
-                duration-[var(--duration-fast)]
                 hover:bg-brand-primary-dark
                 hover:shadow-button-hover
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-brand-primary
-                focus-visible:ring-offset-2
               "
             >
               Get Visa Guidance

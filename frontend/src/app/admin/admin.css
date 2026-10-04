@@ -1,0 +1,532 @@
+/* ============================================================
+   HighEd Admin Panel
+   Nova + shadcn/ui Design Tokens
+   Scoped to .admin-root
+   ============================================================ */
+
+.admin-root {
+  /* ----------------------------------------------------------
+     Typography
+     ---------------------------------------------------------- */
+
+  --admin-font: var(--font-body, "DM Sans", sans-serif);
+
+  font-family: var(--admin-font);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+
+  /* ----------------------------------------------------------
+     HighEd / Nova Colors
+     ---------------------------------------------------------- */
+
+  --nova-bg: #ffffff;
+  --nova-bg-subtle: #f8fafc;
+  --nova-bg-muted: #f3f5fa;
+
+  --nova-surface: #ffffff;
+  --nova-surface-subtle: #fafafa;
+  --nova-surface-brand: #eef1fa;
+
+  --nova-border: rgba(0, 0, 0, 0.1);
+  --nova-border-subtle: #eeeeee;
+  --nova-border-input: rgba(0, 0, 0, 0.1);
+
+  --nova-text-main: #121314;
+  --nova-text-secondary: #666666;
+  --nova-text-muted: rgba(18, 19, 20, 0.65);
+  --nova-text-subtle: #94a3b8;
+  --nova-text-inverse: #ffffff;
+
+  /* ----------------------------------------------------------
+     Brand
+     ---------------------------------------------------------- */
+
+  --nova-primary: #253a7b;
+  --nova-primary-hover: #1f3168;
+  --nova-primary-fg: #ffffff;
+
+  --nova-accent: #e63a5f;
+  --nova-accent-hover: #9f1632;
+  --nova-accent-fg: #ffffff;
+
+  --nova-gold: #d6b66a;
+
+  /* ----------------------------------------------------------
+     Semantic / Feedback
+     ---------------------------------------------------------- */
+
+  --nova-success: #16a34a;
+  --nova-warning: #eab308;
+  --nova-error: #dc2626;
+  --nova-info: #253a7b;
+
+  --nova-success-bg: #ebf5ee;
+  --nova-warning-bg: #fef9ec;
+  --nova-error-bg: #fdf0f3;
+  --nova-info-bg: #eef1fa;
+
+  /* ----------------------------------------------------------
+     Interactive
+     ---------------------------------------------------------- */
+
+  --nova-ring: rgba(37, 58, 123, 0.35);
+
+  --nova-hover: #f8fafc;
+  --nova-active: #f3f5fa;
+  --nova-selected: #eef1fa;
+
+  /* ----------------------------------------------------------
+     Radius
+     ---------------------------------------------------------- */
+
+  --nova-radius-sm: 6px;
+  --nova-radius-md: 8px;
+  --nova-radius-lg: 10px;
+  --nova-radius-xl: 12px;
+  --nova-radius-card: 16px;
+  --nova-radius-pill: 9999px;
+
+  /* ----------------------------------------------------------
+     Shadows
+     ---------------------------------------------------------- */
+
+  --nova-shadow-none: none;
+
+  --nova-shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.04);
+
+  --nova-shadow-card:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+
+  --nova-shadow-popover:
+    0 8px 30px rgba(0, 0, 0, 0.08);
+
+  --nova-shadow-primary:
+    0 8px 20px rgba(37, 58, 123, 0.18);
+
+  /* ----------------------------------------------------------
+     Spacing
+     ---------------------------------------------------------- */
+
+  --nova-space-1: 4px;
+  --nova-space-2: 8px;
+  --nova-space-3: 12px;
+  --nova-space-4: 16px;
+  --nova-space-5: 20px;
+  --nova-space-6: 24px;
+  --nova-space-8: 32px;
+  --nova-space-10: 40px;
+  --nova-space-12: 48px;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+.admin-root {
+  width: 100%;
+  min-height: 100%;
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-main);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.admin-root *,
+.admin-root *::before,
+.admin-root *::after {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+.admin-root h1,
+.admin-root h2,
+.admin-root h3,
+.admin-root h4,
+.admin-root h5,
+.admin-root h6 {
+  margin: 0;
+  font-family: var(--admin-font);
+  color: var(--nova-text-main);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.admin-root h1 {
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.admin-root h2 {
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.admin-root h3 {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.admin-root h4 {
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.admin-root p {
+  margin: 0;
+  color: var(--nova-text-secondary);
+  font-family: var(--admin-font);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.admin-root small {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* ============================================================
+   Links
+   ============================================================ */
+
+.admin-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.admin-root a:hover {
+  text-decoration: none;
+}
+
+/* ============================================================
+   Forms
+   ============================================================ */
+
+.admin-root input,
+.admin-root select,
+.admin-root textarea,
+.admin-root button {
+  font-family: var(--admin-font);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.admin-root input,
+.admin-root select,
+.admin-root textarea {
+  color-scheme: light;
+  color: var(--nova-text-main);
+  background: var(--nova-bg);
+  border-color: var(--nova-border-input);
+}
+
+.admin-root input::placeholder,
+.admin-root textarea::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+/* ============================================================
+   Focus
+   ============================================================ */
+
+.admin-root :focus-visible {
+  outline: 2px solid var(--nova-primary);
+  outline-offset: 2px;
+}
+
+.admin-root input:focus,
+.admin-root input:focus-visible,
+.admin-root textarea:focus,
+.admin-root textarea:focus-visible,
+.admin-root select:focus,
+.admin-root select:focus-visible {
+  outline: none;
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+
+.admin-root ::selection {
+  background: var(--nova-primary);
+  color: var(--nova-primary-fg);
+}
+
+/* ============================================================
+   Cards
+   ============================================================ */
+
+.admin-root .nova-card {
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-card);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.admin-root .nova-card-flat {
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-card);
+  box-shadow: none;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.admin-root .nova-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 0 16px;
+
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-md);
+
+  background: var(--nova-primary);
+  color: var(--nova-primary-fg);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.admin-root .nova-primary-button:hover {
+  background: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.admin-root .nova-accent-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 0 16px;
+
+  border: 1px solid var(--nova-accent);
+  border-radius: var(--nova-radius-md);
+
+  background: var(--nova-accent);
+  color: var(--nova-accent-fg);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.admin-root .nova-accent-button:hover {
+  background: var(--nova-accent-hover);
+  border-color: var(--nova-accent-hover);
+}
+
+/* ============================================================
+   Sidebar
+   ============================================================ */
+
+.admin-root .nova-sidebar {
+  background: var(--nova-bg);
+  border-right: 1px solid var(--nova-border-subtle);
+}
+
+.admin-root .nova-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 40px;
+  padding: 0 12px;
+
+  border-radius: var(--nova-radius-md);
+
+  color: var(--nova-text-secondary);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.admin-root .nova-sidebar-item:hover {
+  background: var(--nova-hover);
+  color: var(--nova-text-main);
+}
+
+.admin-root .nova-sidebar-item[data-active="true"],
+.admin-root .nova-sidebar-item.active {
+  background: var(--nova-selected);
+  color: var(--nova-primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Tables
+   ============================================================ */
+
+.admin-root .nova-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--nova-bg);
+}
+
+.admin-root .nova-table th {
+  height: 44px;
+  padding: 0 16px;
+
+  border-bottom: 1px solid var(--nova-border);
+
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-muted);
+
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+.admin-root .nova-table td {
+  height: 56px;
+  padding: 12px 16px;
+
+  border-bottom: 1px solid var(--nova-border-subtle);
+
+  color: var(--nova-text-main);
+  font-size: 14px;
+}
+
+.admin-root .nova-table tbody tr:hover {
+  background: var(--nova-hover);
+}
+
+/* ============================================================
+   Badges
+   ============================================================ */
+
+.admin-root .nova-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  min-height: 24px;
+  padding: 0 9px;
+
+  border-radius: var(--nova-radius-pill);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-root .nova-badge-primary {
+  background: var(--nova-info-bg);
+  color: var(--nova-primary);
+}
+
+.admin-root .nova-badge-success {
+  background: var(--nova-success-bg);
+  color: var(--nova-success);
+}
+
+.admin-root .nova-badge-warning {
+  background: var(--nova-warning-bg);
+  color: #a16207;
+}
+
+.admin-root .nova-badge-error {
+  background: var(--nova-error-bg);
+  color: var(--nova-error);
+}
+
+/* ============================================================
+   Dividers
+   ============================================================ */
+
+.admin-root .nova-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--nova-border-subtle);
+}
+
+/* ============================================================
+   Scrollbar
+   ============================================================ */
+
+.admin-root {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.admin-root ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.admin-root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-root ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.admin-root ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================================================
+   Responsive Typography
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  .admin-root h1 {
+    font-size: 36px;
+  }
+
+  .admin-root h2 {
+    font-size: 32px;
+  }
+
+  .admin-root h3 {
+    font-size: 28px;
+  }
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .admin-root *,
+  .admin-root *::before,
+  .admin-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

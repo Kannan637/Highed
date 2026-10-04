@@ -8,97 +8,49 @@ import {
 import { useState } from "react";
 import { Country } from "@/types/country";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
 const features = [
   {
     pill: "Study & Universities",
-    title: "Global Branch Campuses",
+    title: "Study at Global Universities",
     description:
-      "Earn prestigious degrees from top UK, Australian, and US institutions such as the University of Birmingham, Wollongong, and Curtin right in Dubai at significantly lower costs.",
+      "Dubai has become a major international education hub, with branch campuses of leading universities from the UK, Australia, and the US. Students can access internationally recognised programmes while studying in a modern, globally connected city.",
+    points: [
+      "International university branch campuses",
+      "UK, US and Australian degree options",
+      "Wide range of undergraduate and postgraduate programmes",
+      "Modern campuses with industry-focused learning",
+    ],
     icon: Building2,
   },
   {
     pill: "Work & Earnings",
-    title: "Tax-Free Earnings",
+    title: "Build Your Career in Dubai",
     description:
-      "Work part-time during your studies and transition to high-paying jobs upon graduation without any personal income tax deductions.",
+      "Dubai offers students access to a dynamic international business environment across technology, finance, hospitality, engineering, construction, healthcare, and other fast-growing sectors.",
+    points: [
+      "Access to a global business environment",
+      "Opportunities to build professional networks",
+      "Strong demand across multiple industries",
+      "Career opportunities after graduation",
+    ],
     icon: BriefcaseBusiness,
   },
   {
     pill: "Visa & Residency",
-    title: "Fast Visa & Golden Visa",
+    title: "Flexible Visa & Residency Options",
     description:
-      "Student visas are sponsored directly by the university, with typical turnaround times of 2 to 4 weeks. Outstanding university graduates with top GPAs can qualify for the prestigious 10-year UAE Golden Visa.",
+      "International students can benefit from university-sponsored student visa pathways, while eligible high-achieving graduates may explore longer-term UAE residency options such as the Golden Visa.",
+    points: [
+      "University-supported student visa process",
+      "Dedicated support for visa documentation",
+      "Potential long-term residency pathways",
+      "Golden Visa opportunities for eligible graduates",
+    ],
     icon: GraduationCap,
   },
 ];
-
-function DestinationImage({ country }: { country?: Country }) {
-  const imageSrc = country?.heroImage || "/images/countries/UK.webp";
-
-  return (
-    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] top">
-      <span
-        aria-hidden="true"
-        className="
-          absolute
-          -right-6
-          top-2
-          hidden
-          size-2
-          rounded-full
-          bg-white
-          lg:block
-        "
-      />
-
-      <svg
-        viewBox="0 0 256 256"
-        className="block h-auto w-full drop-shadow-sm"
-        role="img"
-        aria-label={`Why choose ${country?.name || "destination"} for studies`}
-      >
-        <defs>
-          <clipPath id="destination-image-shape">
-            <path
-              d="
-                M 64 0
-                C 99.346 0 128 28.654 128 64
-                L 128 192
-                C 128 227.346 99.346 256 64 256
-                C 28.654 256 0 227.346 0 192
-                C 0 156.654 28.654 128 64 128
-                C 28.654 128 0 99.346 0 64
-                C 0 28.654 28.654 0 64 0
-                Z
-
-                M 192 128
-                C 156.654 128 128 99.346 128 64
-                C 128 28.654 156.654 0 192 0
-                C 227.346 0 256 28.654 256 64
-                L 256 192
-                C 256 227.346 227.346 256 192 256
-                C 156.654 256 128 227.346 128 192
-                C 128 156.654 156.654 128 192 128
-                Z
-              "
-            />
-          </clipPath>
-        </defs>
-
-        <image
-          href={imageSrc}
-          x="0"
-          y="0"
-          width="256"
-          height="256"
-          preserveAspectRatio="xMidYMid slice"
-          clipPath="url(#destination-image-shape)"
-        />
-      </svg>
-    </div>
-  );
-}
 
 interface CountryWhyStudyProps {
   country?: Country;
@@ -108,6 +60,8 @@ export default function WhyChooseCountry({
   country,
 }: CountryWhyStudyProps = {}) {
   const countryName = country?.name || "Dubai";
+  const imageSrc = country?.heroImage || "/images/whychooseus/ChatGPT Image Sep 24, 2026, 12_21_45 PM.webp";
+
   const [activeFeature, setActiveFeature] = useState(0);
 
   const activeItem = features[activeFeature];
@@ -133,47 +87,71 @@ export default function WhyChooseCountry({
           w-full
           max-w-[1440px]
           grid-cols-1
-          items-center
-          gap-12
+          items-stretch
+          gap-10
           px-6
           sm:px-10
-          lg:grid-cols-[500px_minmax(0,1fr)]
-          lg:gap-[80px]
-          xl:gap-[110px]
+          lg:grid-cols-[0.85fr_1.15fr]
+          lg:gap-12
+          xl:grid-cols-[0.9fr_1.1fr]
+          xl:gap-16
           lg:px-[80px]
         "
       >
-        {/* LEFT IMAGE */}
-        <div className="flex items-center justify-center lg:justify-start">
-          <DestinationImage country={country} />
-        </div>
+        {/* =====================================================
+            LEFT — WHY STUDY
+        ===================================================== */}
 
-        {/* RIGHT CONTENT */}
-        <div className="w-full max-w-[645px]">
+        <div
+          className="
+            flex
+            h-full
+            w-full
+            flex-col
+            justify-center
+            py-2
+            lg:py-6
+          "
+        >
           {/* Badge */}
-          <div className="flex justify-center lg:justify-start">
-            <EyebrowBadge>Why Choose This Destination</EyebrowBadge>
-          </div>
+          <EyebrowBadge className="w-fit">Why Study in {countryName}</EyebrowBadge>
 
           {/* Heading */}
+
           <h2
             className="
-              mx-auto
-              max-w-[620px]
-              text-center
+              max-w-[600px]
               text-brand-primary
-              lg:mx-0
-              lg:text-left
             "
           >
-            Why choose <span className="text-brand-accent">{countryName}</span> for your studies?
+            Why do you need to study in{" "}
+            <span className="text-brand-accent">{countryName}</span>?
           </h2>
 
-          {/* CATEGORY PILLS — FAQ STYLE */}
-          <div className="mt-6 w-full">
+          {/* Intro */}
+
+          <p
+            className="
+              mt-4
+              max-w-[560px]
+              text-sm
+              leading-relaxed
+              text-content-secondary
+              sm:text-base
+            "
+          >
+            Discover the academic opportunities, career advantages, and
+            residency pathways available to international students choosing{" "}
+            {countryName} for higher education.
+          </p>
+
+          {/* =================================================
+              FEATURE TABS
+          ================================================= */}
+
+          <div className="mt-7 w-full">
             <div
               className="
-                mx-auto
                 flex
                 w-fit
                 max-w-full
@@ -187,7 +165,6 @@ export default function WhyChooseCountry({
                 p-1.5
                 shadow-2xs
                 scrollbar-none
-                lg:mx-0
               "
             >
               {features.map((feature, index) => {
@@ -200,24 +177,24 @@ export default function WhyChooseCountry({
                     onClick={() => setActiveFeature(index)}
                     aria-pressed={isActive}
                     className={`
+                      btn-motion
                       inline-flex
                       min-h-9
                       shrink-0
+                      cursor-pointer
                       items-center
                       justify-center
+                      whitespace-nowrap
                       rounded-full
                       px-4
                       py-2
                       text-xs
                       font-medium
-                      whitespace-nowrap
-                      cursor-pointer
-                      transition-all
-                      duration-200
                       sm:text-sm
-                      ${isActive
-                        ? "bg-[#E93F61] text-white shadow-sm"
-                        : "text-content-secondary hover:bg-[#E93F61]/10 hover:text-[#E93F61]"
+                      ${
+                        isActive
+                          ? "bg-[#E93F61] text-white shadow-sm"
+                          : "text-content-secondary hover:bg-[#E93F61]/10 hover:text-[#E93F61]"
                       }
                     `}
                   >
@@ -228,7 +205,10 @@ export default function WhyChooseCountry({
             </div>
           </div>
 
-          {/* ACTIVE ARTICLE — DIRECTLY BELOW PILLS */}
+          {/* =================================================
+              DETAILED INFORMATION CARD
+          ================================================= */}
+
           <article
             className="
               mt-4
@@ -239,13 +219,13 @@ export default function WhyChooseCountry({
               bg-card
               p-5
               shadow-2xs
-              transition-all
-              duration-200
               sm:p-6
+              lg:p-6
             "
           >
+            {/* Header */}
+
             <div className="flex items-start gap-4">
-              {/* Filled Lucide icon */}
               <div
                 className="
                   flex
@@ -261,20 +241,19 @@ export default function WhyChooseCountry({
               >
                 <ActiveIcon
                   aria-hidden="true"
-                  className="size-5 fill-current"
+                  className="size-5"
                   strokeWidth={2}
                 />
               </div>
 
-              {/* Important data only */}
               <div className="min-w-0 flex-1">
                 <h3
                   className="
-                    text-base
+                    text-lg
                     font-semibold
                     leading-snug
                     text-foreground
-                    sm:text-lg
+                    sm:text-xl
                   "
                 >
                   {activeItem.title}
@@ -284,16 +263,311 @@ export default function WhyChooseCountry({
                   className="
                     mt-2
                     text-sm
-                    leading-relaxed
+                    leading-6
                     text-content-secondary
-                    sm:text-base
+                    sm:text-[15px]
                   "
                 >
                   {activeItem.description}
                 </p>
               </div>
             </div>
+
           </article>
+        </div>
+
+        {/* =====================================================
+            RIGHT — IMAGE BACKGROUND + FORM
+        ===================================================== */}
+
+        <div className="relative flex h-full w-full">
+          <div
+            className="
+              relative
+              flex
+              h-full
+              min-h-[620px]
+              w-full
+              overflow-hidden
+              rounded-3xl
+              bg-[#253A7B]
+              lg:min-h-[640px]
+            "
+          >
+            {/* Background Image */}
+
+            <img
+              src={imageSrc}
+              alt={`${countryName} study destination`}
+              className="
+                absolute
+                inset-0
+                h-full
+                w-full
+                object-cover
+              "
+            />
+
+            {/* Image Overlay */}
+
+            <div className="absolute inset-0 bg-black/40" />
+
+            {/* Bottom Gradient */}
+
+            <div
+              className="
+                absolute
+                inset-x-0
+                bottom-0
+                h-2/3
+                bg-gradient-to-t
+                from-[#12204C]/90
+                via-[#12204C]/40
+                to-transparent
+              "
+            />
+
+            {/* =================================================
+                FORM
+            ================================================= */}
+
+            <div
+              className="
+                relative
+                z-10
+                flex
+                h-full
+                w-full
+                items-start
+                justify-center
+                p-5
+                sm:p-7
+                lg:p-10
+              "
+            >
+              <div
+                className="
+                  w-full
+                  max-w-[560px]
+                  rounded-2xl
+                  border
+                  border-white/20
+                  bg-white
+                  p-6
+                  sm:p-7
+                  lg:p-8
+                "
+              >
+                {/* Form Header */}
+
+                <div className="mb-6">
+                  <p
+                    className="
+                      text-xs
+                      font-semibold
+                      uppercase
+                      tracking-[0.08em]
+                      text-[#E93F61]
+                    "
+                  >
+                    Free Counselling
+                  </p>
+
+                  <h3
+                    className="
+                      mt-1.5
+                      text-xl
+                      font-semibold
+                      leading-tight
+                      text-[#253A7B]
+                      sm:text-2xl
+                    "
+                  >
+                    Start Your {countryName} Journey
+                  </h3>
+
+                  <p
+                    className="
+                      mt-2
+                      max-w-[460px]
+                      text-sm
+                      leading-relaxed
+                      text-content-secondary
+                    "
+                  >
+                    Get personalised guidance from our study abroad experts.
+                  </p>
+                </div>
+
+                {/* Form */}
+
+                <form className="space-y-4">
+                  {/* Full Name */}
+
+                  <div>
+                    <label
+                      htmlFor="study-name"
+                      className="
+                        mb-1.5
+                        block
+                        text-sm
+                        font-medium
+                        text-foreground
+                      "
+                    >
+                      Full Name{" "}
+                      <span className="text-xs text-muted-foreground">*</span>
+                    </label>
+
+                    <input
+                      id="study-name"
+                      type="text"
+                      placeholder="Enter your name"
+                      className="
+                        h-12
+                        w-full
+                        rounded-xl
+                        border
+                        border-border
+                        bg-background
+                        px-4
+                        text-sm
+                        text-foreground
+                        outline-none
+                        transition
+                        placeholder:text-muted-foreground
+                        focus:border-[#253A7B]
+                        focus:ring-2
+                        focus:ring-[#253A7B]/10
+                      "
+                    />
+                  </div>
+
+                  {/* Mobile */}
+
+                  <div>
+                    <label
+                      htmlFor="study-phone"
+                      className="
+                        mb-1.5
+                        block
+                        text-sm
+                        font-medium
+                        text-foreground
+                      "
+                    >
+                      Mobile Number{" "}
+                      <span className="text-xs text-muted-foreground">*</span>
+                    </label>
+
+                    <input
+                      id="study-phone"
+                      type="tel"
+                      placeholder="Enter your mobile number"
+                      className="
+                        h-12
+                        w-full
+                        rounded-xl
+                        border
+                        border-border
+                        bg-background
+                        px-4
+                        text-sm
+                        text-foreground
+                        outline-none
+                        transition
+                        placeholder:text-muted-foreground
+                        focus:border-[#253A7B]
+                        focus:ring-2
+                        focus:ring-[#253A7B]/10
+                      "
+                    />
+                  </div>
+
+                  {/* Study Level */}
+
+                  <div>
+                    <label
+                      htmlFor="study-level"
+                      className="
+                        mb-1.5
+                        block
+                        text-sm
+                        font-medium
+                        text-foreground
+                      "
+                    >
+                      Study Level
+                    </label>
+
+                    <select
+                      id="study-level"
+                      defaultValue=""
+                      className="
+                        h-12
+                        w-full
+                        rounded-xl
+                        border
+                        border-border
+                        bg-background
+                        px-4
+                        text-sm
+                        text-foreground
+                        outline-none
+                        focus:border-[#253A7B]
+                        focus:ring-2
+                        focus:ring-[#253A7B]/10
+                      "
+                    >
+                      <option value="" disabled>
+                        Select study level
+                      </option>
+
+                      <option value="undergraduate">
+                        Undergraduate
+                      </option>
+
+                      <option value="postgraduate">
+                        Postgraduate
+                      </option>
+
+                      <option value="phd">PhD</option>
+                    </select>
+                  </div>
+
+                  {/* Preferred Destination */}
+
+
+                  {/* CTA */}
+
+                  <div className="pt-1">
+                    <LeadCTAButton
+                      source="country_why_study"
+                      variant="accent"
+                      size="default"
+                      className="h-12 w-full"
+                    >
+                      Get Free Counselling
+                    </LeadCTAButton>
+                  </div>
+
+                  {/* Privacy */}
+
+                  <p
+                    className="
+                      text-center
+                      text-[11px]
+                      leading-relaxed
+                      text-muted-foreground
+                    "
+                  >
+                    Your details are safe with us. Our counsellor will contact
+                    you shortly.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

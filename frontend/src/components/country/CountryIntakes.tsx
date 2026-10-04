@@ -12,7 +12,6 @@ import {
 import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { LeadCTAButton } from "@/components/forms/LeadCTAButton";
 import { cn } from "@/lib/utils";
 
 interface CountryIntakesProps {
@@ -328,28 +327,6 @@ export const CountryIntakes: React.FC<CountryIntakesProps> = ({
                           {intake.deadline}
                         </strong>
                       </div>
-                    </div>
-
-                    {/* ==================================================
-                        CTA
-                    ================================================== */}
-
-                    <div className="mt-auto pt-7">
-                      <LeadCTAButton
-                        source={`country_intake_${country.slug}_${intake.season.replace(
-                          /\s+/g,
-                          "_"
-                        )}`}
-                        className="
-                          h-11
-                          w-full
-                          cursor-pointer
-                          rounded-[var(--radius-btn)]
-                          text-btn
-                        "
-                      >
-                        Apply for {intake.season.split(" ")[0]}
-                      </LeadCTAButton>
                     </div>
                   </div>
                 </article>

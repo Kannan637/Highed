@@ -44,7 +44,7 @@ export function MobileBottomNav() {
           <a
             href={`tel:${siteConfig.contact.phone}`}
             aria-label="Call Now"
-            className="flex-1 min-h-[44px] flex items-center justify-center gap-1.5 relative text-white font-semibold text-xs sm:text-sm leading-[22px] tracking-[0.02em] px-2 sm:px-4 py-2.5 rounded-[16px] cursor-pointer transition-all duration-200 ease-out border border-[#243A7A] bg-[radial-gradient(95%_60%_at_50%_75%,#243A7A_0%,#243A7A_100%)] shadow-[0px_4px_48px_-12px_#1187FF,inset_0px_1px_8px_-4px_#FFFFFF] active:scale-95 active:rotate-1 after:absolute after:top-[1px] after:right-[10%] after:w-[60%] after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent hover:brightness-110"
+            className="btn-motion flex-1 min-h-[44px] flex items-center justify-center gap-1.5 relative text-white font-semibold text-xs sm:text-sm leading-[22px] tracking-[0.02em] px-2 sm:px-4 py-2.5 rounded-[16px] cursor-pointer border border-[#243A7A] bg-[radial-gradient(95%_60%_at_50%_75%,#243A7A_0%,#243A7A_100%)] shadow-[0px_4px_48px_-12px_#1187FF,inset_0px_1px_8px_-4px_#FFFFFF] after:absolute after:top-[1px] after:right-[10%] after:w-[60%] after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent hover:brightness-110"
           >
             <PhoneCall size={16} className="shrink-0 text-white" aria-hidden="true" />
             <span className="whitespace-nowrap">Call Now</span>
@@ -64,7 +64,7 @@ export function MobileBottomNav() {
               router.push("/book-counselling");
             }}
             aria-label="Get Free Consulting"
-            className="flex-1 min-h-[44px] flex items-center justify-center gap-1.5 relative text-white font-semibold text-xs sm:text-sm leading-[22px] tracking-[0.02em] px-2 sm:px-4 py-2.5 rounded-[16px] cursor-pointer transition-all duration-200 ease-out border border-brand-accent bg-[radial-gradient(95%_60%_at_50%_75%,#D8284D_0%,#D8284D_100%)] shadow-[0px_4px_48px_-12px_#1187FF,inset_0px_1px_8px_-4px_#FFFFFF] active:scale-95 active:rotate-1 after:absolute after:top-[1px] after:right-[10%] after:w-[60%] after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent hover:brightness-110"
+            className="btn-motion flex-1 min-h-[44px] flex items-center justify-center gap-1.5 relative text-white font-semibold text-xs sm:text-sm leading-[22px] tracking-[0.02em] px-2 sm:px-4 py-2.5 rounded-[16px] cursor-pointer border border-brand-accent bg-[radial-gradient(95%_60%_at_50%_75%,#D8284D_0%,#D8284D_100%)] shadow-[0px_4px_48px_-12px_#1187FF,inset_0px_1px_8px_-4px_#FFFFFF] after:absolute after:top-[1px] after:right-[10%] after:w-[60%] after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent hover:brightness-110"
           >
             <Sparkles size={16} className="shrink-0 text-white" aria-hidden="true" />
             <span className="whitespace-nowrap">Free Consulting</span>
@@ -76,7 +76,7 @@ export function MobileBottomNav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp Now"
-            className="flex-1 min-h-[44px] flex items-center justify-center gap-1.5 relative text-white font-semibold text-xs sm:text-sm leading-[22px] tracking-[0.02em] px-2 sm:px-4 py-2.5 rounded-[16px] cursor-pointer transition-all duration-200 ease-out border border-[#25D366] bg-[radial-gradient(95%_60%_at_50%_75%,#12ac4c_0%,#25D366_100%)] shadow-[0px_4px_48px_-12px_#1187FF,inset_0px_1px_8px_-4px_#FFFFFF] active:scale-95 active:rotate-1 after:absolute after:top-[1px] after:right-[10%] after:w-[60%] after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent hover:brightness-110"
+            className="btn-motion flex-1 min-h-[44px] flex items-center justify-center gap-1.5 relative text-white font-semibold text-xs sm:text-sm leading-[22px] tracking-[0.02em] px-2 sm:px-4 py-2.5 rounded-[16px] cursor-pointer border border-[#25D366] bg-[radial-gradient(95%_60%_at_50%_75%,#12ac4c_0%,#25D366_100%)] shadow-[0px_4px_48px_-12px_#1187FF,inset_0px_1px_8px_-4px_#FFFFFF] after:absolute after:top-[1px] after:right-[10%] after:w-[60%] after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent hover:brightness-110"
           >
             <MessageCircle size={17} className="shrink-0 text-white" aria-hidden="true" />
             <span className="whitespace-nowrap">WhatsApp</span>

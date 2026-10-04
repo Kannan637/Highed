@@ -86,13 +86,14 @@ export const navDropdowns: Record<string, NavDropdownData> = {
       {
         title: "Tools & Calculators",
         items: [
-          { label: "Study Abroad Cost Calculator", href: "/book-counselling", icon: "cost" },
-          { label: "Education Loan EMI Calculator", href: "/services/education-loan", icon: "calculator" },
-          { label: "Profile Eligibility Checker", href: "/book-counselling", icon: "check" },
+          { label: "Study Abroad Cost Calculator", href: "/tools/study-abroad-cost", icon: "cost" },
+          { label: "Education Loan EMI Calculator", href: "/tools/education-loan-emi", icon: "calculator" },
+          { label: "Profile Eligibility Checker", href: "/tools/profile-checker", icon: "check" },
           { label: "Scholarship Finder", href: "/scholarships", icon: "scholarship" },
-          { label: "Test Score Evaluator (IELTS/PTE)", href: "/book-counselling", icon: "ielts" },
+          { label: "Test Score Evaluator (IELTS/PTE)", href: "/tools/test-score-evaluator", icon: "ielts" },
         ],
       },
+
     ],
   },
 };

@@ -1,0 +1,10 @@
+# Root gitignore
+.env*
+Backend/.env*
+node_modules/
+.DS_Store
+*.pem
+.next/
+out/
+build/
+*.tsbuildinfo

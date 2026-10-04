@@ -81,7 +81,7 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
       <button
         type="button"
         onClick={onClearAll}
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-brand-accent transition-colors ml-2 py-1 px-2 rounded-full hover:bg-neutral-100 cursor-pointer"
+        className="btn-motion inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-brand-accent ml-2 py-1 px-2 rounded-full hover:bg-neutral-100 cursor-pointer"
       >
         <RotateCcw size={12} />
         <span>Clear All</span>

@@ -145,10 +145,11 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({
                               ✓
                             </span>
                             <span>
-                              Trusted by <strong>10,000+ students</strong> +{" "}
-                              <strong>500+ global universities</strong>
+                              1-on-1 profile evaluation +{" "}
+                              <strong>zero consultancy fee</strong>
                             </span>
                           </div>
+
                         </div>
                       ) : (
                         <div className="space-y-5">

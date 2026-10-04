@@ -28,6 +28,14 @@ const countries = [
         code: "AU",
         name: "Australia",
     },
+    {
+        code: "DE",
+        name: "Germany",
+    },
+    {
+        code: "IE",
+        name: "Ireland",
+    },
 ];
 
 function CountryFlags() {
@@ -67,7 +75,7 @@ function CountryFlags() {
             </div>
 
             <span className="ml-1.5 whitespace-nowrap">
-                50+ countries
+                7 Destinations
             </span>
         </div>
     );
@@ -252,7 +260,7 @@ export default function Hero() {
                 after:hidden
             "
                                 >
-                                    Trusted by 10,000+ Students
+                                    Personalized Study Abroad Advisory
                                 </EyebrowBadge>
                             </div>
 
@@ -438,7 +446,7 @@ export default function Hero() {
                                         tracking-[-0.06em]
                                     "
                                 >
-                                    500+
+                                    7
                                 </div>
 
                                 <div
@@ -449,7 +457,7 @@ export default function Hero() {
                                         leading-tight
                                     "
                                 >
-                                    Global University
+                                    Top Destinations
                                 </div>
                             </div>
 
@@ -479,7 +487,7 @@ export default function Hero() {
                                         tracking-[-0.06em]
                                     "
                                 >
-                                    95+
+                                    100%
                                 </div>
 
                                 <div
@@ -490,7 +498,7 @@ export default function Hero() {
                                         leading-tight
                                     "
                                 >
-                                    Visa Success Rate
+                                    Free Advisory
                                 </div>
                             </div>
                         </div>
@@ -557,7 +565,7 @@ export default function Hero() {
                                         tracking-[-0.06em]
                                     "
                                 >
-                                    500+
+                                    7
                                 </div>
 
                                 <div
@@ -567,7 +575,7 @@ export default function Hero() {
                                         font-medium
                                     "
                                 >
-                                    Global University
+                                    Top Destinations
                                 </div>
                             </div>
 
@@ -597,7 +605,7 @@ export default function Hero() {
                                         tracking-[-0.06em]
                                     "
                                 >
-                                    95+
+                                    100%
                                 </div>
 
                                 <div
@@ -607,7 +615,7 @@ export default function Hero() {
                                         font-medium
                                     "
                                 >
-                                    Visa Success Rate
+                                    Free Advisory
                                 </div>
                             </div>
                         </div>

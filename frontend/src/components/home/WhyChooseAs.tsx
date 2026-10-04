@@ -46,7 +46,7 @@ export default function WhyChooseUs() {
                 relative
                 mx-auto
                 mt-6
-                w-[1850px]
+                w-full
                 max-w-[calc(100%-24px)]
                 overflow-hidden
                 rounded-[28px]

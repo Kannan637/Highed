@@ -110,7 +110,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
               key={item.id}
               type="button"
               onClick={() => handleTypeChange(item.id as ExploreContentType)}
-              className={`flex w-full items-center justify-between min-h-[44px] sm:min-h-12 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
+              className={`btn-motion flex w-full items-center justify-between min-h-[44px] sm:min-h-12 rounded-xl px-4 py-2.5 text-sm font-semibold cursor-pointer ${
                 filters.type === item.id
                   ? "bg-brand-primary text-white shadow-xs"
                   : "text-foreground hover:bg-neutral-100"
@@ -152,7 +152,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
             <button
               type="button"
               onClick={() => handleCountryChange("all")}
-              className={`flex w-full items-center justify-between min-h-[44px] rounded-xl px-3.5 py-2 text-sm font-semibold transition-all cursor-pointer ${
+              className={`btn-motion flex w-full items-center justify-between min-h-[44px] rounded-xl px-3.5 py-2 text-sm font-semibold cursor-pointer ${
                 !filters.country
                   ? "bg-brand-primary text-white shadow-xs"
                   : "text-foreground hover:bg-neutral-100"
@@ -171,7 +171,7 @@ export const ExploreFilters: React.FC<ExploreFiltersProps> = ({
                   key={c.slug}
                   type="button"
                   onClick={() => handleCountryChange(c.slug)}
-                  className={`flex w-full items-center justify-between min-h-[44px] rounded-xl px-3.5 py-2 text-sm font-semibold transition-all cursor-pointer ${
+                  className={`btn-motion flex w-full items-center justify-between min-h-[44px] rounded-xl px-3.5 py-2 text-sm font-semibold cursor-pointer ${
                     isSelected
                       ? "bg-brand-primary text-white shadow-xs"
                       : "text-foreground hover:bg-neutral-100"

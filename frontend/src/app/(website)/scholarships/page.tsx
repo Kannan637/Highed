@@ -9,10 +9,13 @@ import { Badge } from "@/components/ui/Badge";
 import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
+import Breadcrumb from "@/components/ui/Breadcrumb";
+import ScholarshipFinder from "@/components/tools/ScholarshipFinder";
+
 export const metadata = constructMetadata({
-  title: "Study Abroad Scholarships | University & Government Aid",
+  title: "Study Abroad Scholarships & Funding Finder | HighEd",
   description:
-    "Discover scholarships for Indian students studying in USA, UK, Canada, Australia, Germany, and Dubai. HighEd matches your profile to 100+ funding opportunities including full tuition waivers.",
+    "Discover scholarships for Indian students studying in USA, UK, Canada, Australia, Germany, Ireland, and Dubai. Match your profile to 100+ funding opportunities including full tuition waivers.",
   path: "/scholarships",
   keywords: ["study abroad scholarships india", "international student scholarships", "scholarship for ms usa", "uk chevening scholarship", "australia scholarship", "daad germany scholarship"],
 });
@@ -107,13 +110,36 @@ const variantBgMap = {
 
 export default function ScholarshipsPage() {
   return (
-    <div className="bg-surface-neutral py-16 sm:py-24 font-body">
+    <div className="bg-surface-neutral py-10 sm:py-16 font-body">
       <Container size="lg">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Resources", href: "/resources" },
+            { label: "Scholarship Finder" },
+          ]}
+          className="mb-8"
+        />
+
         <SectionHeading
           badge="Scholarship Finder"
           title="Fund Your Study Abroad Dream"
-          subtitle="Explore 100+ scholarships across 6 top destinations. Our counsellors will match your academic profile to the best funding opportunities — completely free."
+          subtitle="Explore 100+ scholarships across 7 top destinations. Search, filter by award tier, and calculate your live academic profile match percentage."
         />
+
+        {/* Live Interactive Scholarship Finder Tool */}
+        <div className="mb-14">
+          <ScholarshipFinder />
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-[24px] font-bold text-brand-primary sm:text-[28px]">
+            Country-Wise Scholarship Portfolios
+          </h2>
+          <p className="mt-1 text-[14px] text-content-secondary">
+            Quick overview of primary government & university bursaries by destination
+          </p>
+        </div>
 
         <div className="grid grid-cols-4 gap-6 lg:grid-cols-12 lg:gap-8">
           {scholarshipsByCountry.map((dest) => (

@@ -150,6 +150,7 @@ export default function Testimonials2() {
             href="/success-stories"
             aria-label="View all student success stories"
             className="
+              btn-motion
               group
               inline-flex
               h-12
@@ -161,14 +162,8 @@ export default function Testimonials2() {
               text-sm
               font-semibold
               text-brand-primary
-              transition-all
-              duration-200
               hover:text-brand-accent
               hover:bg-brand-primary/5
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-brand-accent
-              focus-visible:ring-offset-2
             "
           >
             <span>View All Stories</span>

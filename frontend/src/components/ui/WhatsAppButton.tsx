@@ -51,7 +51,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with an advisor on WhatsApp"
-        className="group relative flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] hover:shadow-2xl active:scale-95"
+        className="btn-motion group relative flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/30 hover:bg-[#20ba5a] hover:shadow-2xl"
       >
         {/* Subtle pulsing ambient ring (stops after 3 iterations) */}
         {showPing && (

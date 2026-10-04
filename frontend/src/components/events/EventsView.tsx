@@ -173,7 +173,7 @@ export default function EventsView() {
                     type="button"
                     onClick={() => setSelectedLocation(opt.value)}
                     className={cn(
-                      "inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shrink-0",
+                      "btn-motion inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs sm:text-sm font-semibold cursor-pointer shrink-0",
                       isSelected
                         ? "bg-brand-primary text-white shadow-xs"
                         : "bg-surface-neutral text-content-secondary hover:bg-neutral-200/70 hover:text-content-primary"
@@ -201,7 +201,7 @@ export default function EventsView() {
                 type="button"
                 onClick={() => setActiveTab("upcoming")}
                 className={cn(
-                  "rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+                  "btn-motion rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold cursor-pointer",
                   activeTab === "upcoming"
                     ? "bg-white text-brand-primary shadow-xs font-bold"
                     : "text-content-secondary hover:text-content-primary"
@@ -213,7 +213,7 @@ export default function EventsView() {
                 type="button"
                 onClick={() => setActiveTab("past")}
                 className={cn(
-                  "rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+                  "btn-motion rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold cursor-pointer",
                   activeTab === "past"
                     ? "bg-white text-brand-primary shadow-xs font-bold"
                     : "text-content-secondary hover:text-content-primary"
@@ -261,7 +261,7 @@ export default function EventsView() {
                   <button
                     type="button"
                     onClick={() => setSelectedLocation("All")}
-                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-primary px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-brand-primary-hover"
+                    className="btn-motion mt-5 inline-flex items-center gap-2 rounded-full bg-brand-primary px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-brand-primary-hover"
                   >
                     View All Locations
                   </button>
@@ -464,7 +464,7 @@ export default function EventsView() {
                           <button
                             type="button"
                             onClick={() => setActiveRecapEvent(evt)}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/5 px-3.5 py-1.5 text-xs font-semibold text-brand-primary transition-all duration-200 hover:bg-brand-primary hover:text-white cursor-pointer"
+                            className="btn-motion inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/5 px-3.5 py-1.5 text-xs font-semibold text-brand-primary hover:bg-brand-primary hover:text-white cursor-pointer"
                           >
                             <span>Learn More</span>
                             <ArrowRight size={13} />
@@ -502,7 +502,7 @@ export default function EventsView() {
                     type="button"
                     onClick={() => setSelectedGalleryCat(cat)}
                     className={cn(
-                      "rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+                      "btn-motion rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold cursor-pointer",
                       isActive
                         ? "bg-brand-primary text-white shadow-xs"
                         : "bg-white text-content-secondary hover:bg-neutral-200/80 hover:text-content-primary border border-black/5"

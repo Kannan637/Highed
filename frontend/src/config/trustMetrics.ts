@@ -1,91 +1,79 @@
 /**
- * Single source of truth for all trust metrics displayed across the site.
+ * Single source of truth for all trust metrics and claims displayed across HighEd.
  *
- * IMPORTANT: These numbers are currently unverified claims from the live site.
- * Update them only with auditable, internally verified data.
- *
- * @see Seo.md §20 — Location-page SEO / E-E-A-T fix
+ * SAFETY & ACCURACY RULE (improve.md Phase 22):
+ * If a metric cannot be audited and verified, it is marked verified: false
+ * and value: null. Public-facing components should render verified metrics or
+ * fall back to neutral qualitative copy.
  */
 
-/** Global (company-wide) trust metrics — used on homepage, about page, etc. */
-export const trustMetrics = {
-  students: {
-    value: "1,000+",
+export interface StatMetric {
+  value: string | null;
+  label: string;
+  verified: boolean;
+  description?: string;
+  source?: string;
+}
+
+export const siteStats: Record<string, StatMetric> = {
+  studentsCounselled: {
+    value: null,
     label: "Students Guided",
+    verified: false,
+    description: "Students counselled across Tamil Nadu for international admissions",
   },
-  universities: {
-    value: "200+",
+  universityPartners: {
+    value: null,
     label: "Partner Universities",
+    verified: false,
+    description: "Accredited higher education institutions represented",
   },
-  visaSuccess: {
-    value: "95%+",
-    label: "Visa Success Rate",
+  visaSuccessRate: {
+    value: null,
+    label: "Visa Guidance Track Record",
+    verified: false,
+    description: "Visa interview prep & documentation assistance",
   },
-  scholarships: {
-    value: "₹18 Cr+",
-    label: "Scholarships Secured",
+  scholarshipsSecured: {
+    value: null,
+    label: "Scholarships Assisted",
+    verified: false,
+    description: "Merit and need-based tuition fee waivers secured",
   },
-  countries: {
-    value: "50+",
-    label: "Countries Covered",
+  destinationsCovered: {
+    value: "7",
+    label: "Primary Destinations",
+    verified: true,
+    description: "USA, UK, Canada, Australia, Germany, Ireland, and Dubai",
   },
-  /** Date these numbers were last internally reviewed */
-  lastUpdated: "September 2026",
-};
-
-/**
- * Location-specific metrics — override global metrics
- * only where separately verified data exists.
- *
- * Each location can have its own verified figures.
- * If a metric is not listed here, fall back to `trustMetrics`.
- */
-export const locationMetrics: Record<
-  string,
-  {
-    students?: { value: string; label: string };
-    visaSuccess?: { value: string; label: string };
-    scholarships?: { value: string; label: string };
-    universities?: { value: string; label: string };
-  }
-> = {
-  chennai: {
-    students: { value: "1,250+", label: "Chennai Students Placed" },
-    visaSuccess: { value: "98.8%", label: "Visa Approval Rate" },
-    scholarships: { value: "₹18 Cr+", label: "Scholarships Secured" },
-    universities: { value: "850+", label: "Partner Universities" },
-  },
-  coimbatore: {
-    students: { value: "780+", label: "Coimbatore Students Placed" },
-  },
-  tirupathi: {
-    students: { value: "620+", label: "Tirupathi Students Placed" },
-    visaSuccess: { value: "98.5%", label: "Visa Success Rate" },
-    scholarships: { value: "₹8.5 Cr+", label: "Scholarships Secured" },
-    universities: { value: "240+", label: "Global Partner Admits" },
-  },
-  vellore: {
-    students: { value: "950+", label: "Vellore & VIT Admits" },
-    visaSuccess: { value: "99.4%", label: "Visa Approval Rate" },
-    scholarships: { value: "₹14 Cr+", label: "Scholarships Secured" },
-    universities: { value: "180+", label: "Top 100 Global Admits" },
-  },
-  thiruvallur: {
-    students: { value: "320+", label: "Thiruvallur Students Guided" },
+  counsellingFee: {
+    value: "₹0",
+    label: "Admissions Counselling",
+    verified: true,
+    description: "100% free guidance for university admissions",
   },
 };
 
 /**
- * Helper: get resolved metrics for a specific location.
- * Falls back to global trustMetrics for any metric not overridden.
+ * Backward-compatible helper for legacy components.
  */
-export function getLocationMetrics(slug: string) {
-  const overrides = locationMetrics[slug] || {};
+export const trustMetrics = {
+  students: siteStats.studentsCounselled,
+  universities: siteStats.universityPartners,
+  visaSuccess: siteStats.visaSuccessRate,
+  scholarships: siteStats.scholarshipsSecured,
+  countries: siteStats.destinationsCovered,
+  lastUpdated: "October 2026",
+};
+
+export function getLocationMetrics(_slug: string) {
   return {
-    students: overrides.students || trustMetrics.students,
-    visaSuccess: overrides.visaSuccess || trustMetrics.visaSuccess,
-    scholarships: overrides.scholarships || trustMetrics.scholarships,
-    universities: overrides.universities || trustMetrics.universities,
-    lastUpdated: trustMetrics.lastUpdated,
+    students: siteStats.studentsCounselled,
+    visaSuccess: siteStats.visaSuccessRate,
+    scholarships: siteStats.scholarshipsSecured,
+    universities: siteStats.universityPartners,
+    destinations: siteStats.destinationsCovered,
+    lastUpdated: "October 2026",
   };
 }
+

@@ -95,9 +95,9 @@ function CardAction({
 
   const baseClasses =
     variant === "pill"
-      ? "group/cardaction inline-flex h-11 pl-4 pr-1.5 items-center justify-between gap-2.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-semibold hover:bg-brand-primary-hover shadow-xs transition-all active:scale-95 cursor-pointer"
+      ? "btn-motion group/cardaction inline-flex h-11 pl-4 pr-1.5 items-center justify-between gap-2.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-semibold hover:bg-brand-primary-hover shadow-xs cursor-pointer"
       : variant === "outline"
-      ? "group/cardaction inline-flex h-11 px-5 items-center justify-between gap-2 rounded-full border border-black/10 bg-white text-brand-primary text-xs sm:text-sm font-semibold hover:border-brand-primary hover:bg-brand-primary/5 transition-all cursor-pointer w-full"
+      ? "btn-motion group/cardaction inline-flex h-11 px-5 items-center justify-between gap-2 rounded-full border border-black/10 bg-white text-brand-primary text-xs sm:text-sm font-semibold hover:border-brand-primary hover:bg-brand-primary/5 cursor-pointer w-full"
       : "group/cardaction inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-primary transition-colors hover:text-brand-accent cursor-pointer";
 
   const renderIcon = () => {

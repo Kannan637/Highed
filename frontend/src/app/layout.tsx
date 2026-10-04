@@ -28,19 +28,18 @@ export const metadata: Metadata = {
     template: "%s | HighEd",
   },
   description:
-    "HighEd helps students in Tamil Nadu with study abroad counselling, university applications, scholarships, education loans and student visa guidance.",
+    "HighEd helps students across Tamil Nadu with study abroad counselling, university admissions, scholarships, education loans, and student visa guidance for USA, UK, Canada, Australia, Germany, Ireland, and Dubai.",
   keywords: [
-    "study abroad consultants chennai",
-    "overseas education consultants tamil nadu",
-    "study abroad",
-    "overseas education",
-    "study abroad consultants",
-    "foreign universities",
-    "student visa",
+    "study abroad consultants in tamil nadu",
+    "overseas education consultants chennai",
+    "study abroad consultancy chennai",
+    "study abroad consultants coimbatore",
+    "foreign education counselling tamil nadu",
+    "student visa guidance",
   ],
   applicationName: "HighEd",
   alternates: {
-    canonical: "./",
+    canonical: siteConfig.url,
   },
   robots: {
     index: true,
@@ -57,16 +56,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: siteConfig.url,
-    siteName: "HighEd",
+    siteName: siteConfig.name,
     title: "Study Abroad Consultants in Tamil Nadu | HighEd",
     description:
-      "Study abroad counselling, university admissions, scholarships and student visa guidance for students in Tamil Nadu.",
+      "Study abroad counselling, university admissions, scholarships, education loan guidance, and student visa advisory for students in Tamil Nadu.",
     images: [
       {
         url: `${siteConfig.url}/images/brand/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "HighEd Study Abroad Consultants",
+        alt: "HighEd Study Abroad Consultants in Tamil Nadu",
       },
     ],
   },
@@ -74,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Study Abroad Consultants in Tamil Nadu | HighEd",
     description:
-      "Study abroad counselling, university admissions, scholarships and visa guidance.",
+      "Study abroad counselling, university admissions, scholarships, and student visa guidance for students in Tamil Nadu.",
     images: [`${siteConfig.url}/images/brand/og-image.jpg`],
   },
   icons: {
@@ -88,13 +87,21 @@ const organizationSchema = {
   "@type": "EducationalOrganization",
   "@id": `${siteConfig.url}/#organization`,
   name: siteConfig.name,
+  legalName: siteConfig.legalName,
   url: siteConfig.url,
   logo: `${siteConfig.url}/logos/Highed Logo/Highed.png`,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phone,
-  description:
-    "Study abroad consultancy providing university admissions, scholarships, education loan and student visa guidance.",
-  areaServed: ["Chennai", "Coimbatore", "Tamil Nadu", "India"],
+  description: siteConfig.description,
+  areaServed: [
+    "Chennai",
+    "Coimbatore",
+    "Vellore",
+    "Tirupathi",
+    "Thiruvallur",
+    "Tamil Nadu",
+    "India",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: siteConfig.contact.phone,
@@ -105,8 +112,10 @@ const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: siteConfig.contact.address,
-    addressLocality: "Chennai",
+    streetAddress: siteConfig.contact.addressDetails.streetAddress,
+    addressLocality: siteConfig.contact.addressDetails.addressLocality,
+    addressRegion: siteConfig.contact.addressDetails.addressRegion,
+    postalCode: siteConfig.contact.addressDetails.postalCode,
     addressCountry: "IN",
   },
   sameAs: [
@@ -127,6 +136,7 @@ const websiteSchema = {
     "query-input": "required name=search_term_string",
   },
 };
+
 
 export default function RootLayout({
   children,

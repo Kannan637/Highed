@@ -18,6 +18,7 @@ import {
   CARD_BG_COLORS,
   CardDecorativeIcons,
 } from "@/components/home/service-constants";
+import EducationLoanCalculator from "@/components/tools/EducationLoanCalculator";
 
 const loanFeatures = [
   {
@@ -156,6 +157,12 @@ export default function EducationLoanPage() {
               <LeadCTAButton source="education_loan_hero">
                 Check Loan Eligibility
               </LeadCTAButton>
+              <a
+                href="#loan-calculator"
+                className="inline-flex h-11 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                Calculate Loan EMI
+              </a>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -278,6 +285,24 @@ export default function EducationLoanPage() {
             })}
           </div>
         </Container>
+      </section>
+
+      {/* =========================================================
+          INTERACTIVE LOAN EMI CALCULATOR
+      ========================================================== */}
+      <section id="loan-calculator" className="bg-[#F5F5F9] pt-16 sm:pt-20 border-t border-border-default/60">
+        <Container size="lg">
+          <div className="mx-auto max-w-2xl text-center">
+            <EyebrowBadge>Interactive EMI Calculator</EyebrowBadge>
+            <h2 className="mt-3 text-content-primary">
+              Calculate Your Study Loan Repayments
+            </h2>
+            <p className="mt-3 text-content-secondary">
+              Simulate loan amounts, repayment tenure, and moratorium grace periods with real reducing-balance EMI calculations.
+            </p>
+          </div>
+        </Container>
+        <EducationLoanCalculator className="bg-transparent pt-6 pb-16 sm:pt-8 sm:pb-20" />
       </section>
 
       {/* =========================================================

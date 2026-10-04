@@ -14,9 +14,9 @@ import { constructMetadata } from "@/seo/metadata";
 export const metadata = constructMetadata({
   title: "About HighEd — Study Abroad Consultants",
   description:
-    "Learn about HighEd, our mission, certified counsellors, and partnerships with 500+ global universities across USA, UK, Canada, Australia, Germany, and Dubai.",
+    "Learn about HighEd, our mission, certified counsellors, and admissions guidance for accredited universities across USA, UK, Canada, Australia, Germany, Ireland, and Dubai.",
   path: "/about",
-  keywords: ["about high education", "study abroad consultants", "overseas education agency"],
+  keywords: ["about high education", "study abroad consultants chennai", "overseas education agency tamil nadu"],
 });
 
 export default function AboutPage() {
@@ -25,14 +25,14 @@ export default function AboutPage() {
       <Container size="lg">
         {/* Hero Section */}
         <div className="text-center">
-          <EyebrowBadge>Official University Representative</EyebrowBadge>
+          <EyebrowBadge>Official University Admissions Guidance</EyebrowBadge>
 
           <h1 className="mt-4 text-content-primary">
             Empowering Ambitious Minds to Study Globally
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-body-large text-content-secondary">
-            HighEd is an international education advisory firm representing over 500 accredited universities. We provide transparent, end-to-end guidance from profile evaluation to post-study work visas.
+            HighEd is an international education advisory firm headquartered in Saidapet, Chennai. We provide transparent, end-to-end guidance from profile evaluation and university selection to scholarships and student visas.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -53,10 +53,10 @@ export default function AboutPage() {
         {/* Stats Grid */}
         <div className="mt-20 grid grid-cols-4 gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-6">
           {[
-            { value: "500+", label: "Partner Universities", color: "text-brand-primary" },
-            { value: "10,000+", label: "Students Counselled", color: "text-brand-accent" },
-            { value: "98.6%", label: "Visa Success Rate", color: "text-feedback-success" },
-            { value: "100%", label: "Free Counselling", color: "text-brand-primary" },
+            { value: "7", label: "Global Destinations", color: "text-brand-primary" },
+            { value: "1-on-1", label: "Personalized Advisory", color: "text-brand-accent" },
+            { value: "End-to-End", label: "Visa & Financial Guidance", color: "text-feedback-success" },
+            { value: "100%", label: "Free Consultation", color: "text-brand-primary" },
           ].map((stat) => (
             <Card key={stat.label} hover className="col-span-2 lg:col-span-3 text-center p-6 rounded-2xl border-border bg-card">
               <div className={`font-heading text-h3 ${stat.color}`}>{stat.value}</div>

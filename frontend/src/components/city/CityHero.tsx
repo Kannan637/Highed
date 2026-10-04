@@ -37,11 +37,12 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
           <Breadcrumb
             items={[
               { label: "Home", href: "/" },
-              { label: "Locations", href: "#" },
-              { label: `${city.name}` },
+              { label: "Locations", href: "/contact" },
+              { label: city.name },
             ]}
             className="[&_span]:text-white/70 [&_a]:text-white/70 [&_a:hover]:text-white [&_svg]:text-white/40 [&_span[aria-current]]:text-white"
           />
+
         </div>
 
         {/* 2-Column Hero Grid */}
@@ -93,7 +94,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
 
               <a
                 href="#destinations"
-                className="inline-flex h-12 w-fit max-w-[280px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-btn font-semibold text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95"
+                className="btn-motion inline-flex h-12 w-fit max-w-[280px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-btn font-semibold text-white backdrop-blur-xs hover:bg-white/20 hover:border-white/50"
               >
                 <Compass size={17} />
                 <span>Explore Destinations</span>
@@ -173,7 +174,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                   contextCTA="Start My Free Application"
                   variant="white"
                   fullWidth
-                  className="h-12 font-semibold shadow-md transition-all hover:bg-neutral-100 hover:shadow-lg active:scale-98 cursor-pointer gap-2"
+                  className="h-12 font-semibold shadow-md hover:bg-neutral-100 hover:shadow-lg cursor-pointer gap-2"
                 >
                   <span>Start Free Evaluation</span>
                   <ArrowRight size={16} />

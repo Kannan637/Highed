@@ -9,21 +9,21 @@ import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
 export const metadata = constructMetadata({
-  title: "Student Success Stories — Study Abroad Testimonials",
+  title: "Student Success Stories — Study Abroad Experiences",
   description:
-    "Read real success stories from HighEd students who secured admissions at top universities in the USA, UK, Canada, Australia, Germany, and Dubai with full scholarships and visa approvals.",
+    "Read how students from Chennai and Tamil Nadu achieved admissions and visa approvals at top universities in the USA, UK, Canada, Australia, Germany, Ireland, and Dubai.",
   path: "/success-stories",
   keywords: [
     "study abroad success stories",
     "highed student testimonials",
-    "overseas education reviews",
-    "study abroad consultants testimonials india",
+    "overseas education reviews chennai",
+    "study abroad consultants testimonials tamil nadu",
   ],
 });
 
 const testimonials = [
   {
-    name: "Priya Sharma",
+    name: "P. Sharma (Chennai)",
     program: "MS Computer Science",
     university: "University of Texas at Dallas",
     country: "USA",
@@ -35,7 +35,7 @@ const testimonials = [
     avatarColor: "bg-brand-primary",
   },
   {
-    name: "Arjun Mehta",
+    name: "A. Mehta (Coimbatore)",
     program: "MBA — Finance",
     university: "University of Birmingham",
     country: "UK",
@@ -47,7 +47,7 @@ const testimonials = [
     avatarColor: "bg-brand-accent",
   },
   {
-    name: "Deepa Krishnan",
+    name: "D. Krishnan (Vellore)",
     program: "MEng Civil Engineering",
     university: "University of Toronto",
     country: "Canada",
@@ -59,7 +59,7 @@ const testimonials = [
     avatarColor: "bg-feedback-success",
   },
   {
-    name: "Rahul Nair",
+    name: "R. Nair (Chennai)",
     program: "Master of Data Science",
     university: "University of Melbourne",
     country: "Australia",
@@ -71,7 +71,7 @@ const testimonials = [
     avatarColor: "bg-brand-gold",
   },
   {
-    name: "Sneha Patel",
+    name: "S. Patel (Salem)",
     program: "MSc Mechanical Engineering",
     university: "RWTH Aachen University",
     country: "Germany",
@@ -83,24 +83,24 @@ const testimonials = [
     avatarColor: "bg-brand-primary",
   },
   {
-    name: "Karthik Venkatesh",
+    name: "K. Venkatesh (Chennai)",
     program: "MSc Finance",
     university: "SP Jain School of Global Management",
     country: "Dubai",
     code: "AE",
     scholarship: "Merit Scholarship — 20% Tuition",
     rating: 5,
-    text: "Dubai was not on my radar initially but HighEd showed me the tax-free salary potential and 100% campus placements data for SP Jain. The visa process took just 10 days. Best decision of my life!",
+    text: "Dubai was not on my radar initially but HighEd showed me the tax-free salary potential and career opportunities for SP Jain. The visa process took just 10 days. Best decision for my international career!",
     avatar: "KV",
     avatarColor: "bg-brand-accent",
   },
 ];
 
 const stats = [
-  { value: "10,000+", label: "Students Counselled" },
-  { value: "98%+", label: "Visa Success Rate" },
-  { value: "500+", label: "University Partners" },
-  { value: "100%", label: "Free of Charge" },
+  { value: "7", label: "Study Destinations" },
+  { value: "1-on-1", label: "Personalized Mentorship" },
+  { value: "End-to-End", label: "Visa & Document Guidance" },
+  { value: "100%", label: "Free Consultation" },
 ];
 
 export default function SuccessStoriesPage() {
@@ -110,7 +110,7 @@ export default function SuccessStoriesPage() {
         <SectionHeading
           badge="Student Reviews"
           title="Real Stories. Real Success."
-          subtitle="Over 10,000 students have trusted HighEd with their study-abroad journey. Here are a few of their stories."
+          subtitle="Read how students across Tamil Nadu achieved their global education aspirations with personalized guidance from HighEd."
         />
 
         {/* Stats Bar */}

@@ -45,7 +45,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https: blob:",
-      "connect-src 'self' https://wa.me ws: wss:",
+      "connect-src 'self' https://wa.me https://*.supabase.co ws: wss:",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -63,9 +63,10 @@ const nextConfig: NextConfig = {
     "127.0.0.1",
   ],
 
-  // Package treeshaking optimization
+  // Package treeshaking & build optimization
   experimental: {
     optimizePackageImports: ["lucide-react", "country-flag-icons"],
+    cpus: 4,
   },
 
   // Image optimization
@@ -80,12 +81,66 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // Headers (Security & Long-Term Static Caching)
+  // Permanent Redirects for canonical SEO
+  async redirects() {
+    return [
+      {
+        source: "/services/sop-lop-assistance",
+        destination: "/services/sop-lor-assistance",
+        permanent: true,
+      },
+      {
+        source: "/services/sop-and-lor-assistance",
+        destination: "/services/sop-lor-assistance",
+        permanent: true,
+      },
+      {
+        source: "/services/accommodation",
+        destination: "/services/accommodation-pre-departure",
+        permanent: true,
+      },
+      {
+        source: "/services/pre-departure-support",
+        destination: "/services/accommodation-pre-departure",
+        permanent: true,
+      },
+      {
+        source: "/services/acc-pre",
+        destination: "/services/accommodation-pre-departure",
+        permanent: true,
+      },
+      {
+        source: "/services/Acc&pre",
+        destination: "/services/accommodation-pre-departure",
+        permanent: true,
+      },
+    ];
+  },
+
+  // Headers (Security, SEO Protection & Long-Term Static Caching)
   async headers() {
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/admin/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, noarchive",
+          },
+        ],
+      },
+      {
+        source: "/api/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, noarchive",
+          },
+        ],
       },
       {
         source: "/images/:path*",
@@ -119,3 +174,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

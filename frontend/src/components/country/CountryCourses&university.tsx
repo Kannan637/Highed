@@ -415,6 +415,7 @@ function CourseCard({ course }: { course: Course }) {
               })
             }
             className="
+              btn-motion
               flex
               h-[47px]
               flex-1
@@ -429,8 +430,6 @@ function CourseCard({ course }: { course: Course }) {
               text-btn
               font-medium
               text-brand-accent
-              transition-all
-              duration-200
               hover:bg-brand-accent
               hover:text-white
             "
@@ -453,6 +452,7 @@ function CourseCard({ course }: { course: Course }) {
             }
             aria-label={`View ${course.title}`}
             className="
+              btn-motion
               group/arrow
               flex
               h-[47px]
@@ -463,9 +463,6 @@ function CourseCard({ course }: { course: Course }) {
               rounded-full
               bg-brand-primary
               text-white
-              transition-all
-              duration-200
-              hover:translate-x-0.5
               hover:bg-brand-accent
             "
           >
@@ -603,6 +600,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
             onClick={previousCategory}
             aria-label="Previous course category"
             className="
+              btn-motion
               flex
               h-9
               w-9
@@ -611,7 +609,6 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               justify-center
               rounded-full
               text-brand-accent
-              transition-colors
               hover:bg-brand-accent/10
             "
           >
@@ -649,14 +646,13 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
                     setActiveCategory(category)
                   }
                   className={`
+                    btn-motion
                     shrink-0
                     rounded-full
                     px-[17px]
                     py-[11px]
                     text-body-small
                     font-medium
-                    transition-all
-                    duration-200
                     ${isActive
                       ? "bg-brand-accent text-white"
                       : "text-brand-primary hover:bg-surface-subtle"
@@ -675,6 +671,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
             onClick={nextCategory}
             aria-label="Next course category"
             className="
+              btn-motion
               flex
               h-9
               w-9
@@ -683,7 +680,6 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               justify-center
               rounded-full
               text-brand-accent
-              transition-colors
               hover:bg-brand-accent/10
             "
           >
@@ -738,6 +734,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
             disabled={!canScrollPrev}
             aria-label="Previous courses"
             className={`
+              btn-motion
               flex
               h-12
               w-12
@@ -745,10 +742,8 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               justify-center
               rounded-full
               border
-              transition-all
-              duration-200
               ${canScrollPrev
-                ? "border-border-card bg-white text-content-primary shadow-sm hover:border-brand-primary hover:bg-brand-primary hover:text-white active:scale-95 cursor-pointer"
+                ? "border-border-card bg-white text-content-primary shadow-sm hover:border-brand-primary hover:bg-brand-primary hover:text-white cursor-pointer"
                 : "border-border-card/50 bg-neutral-100 text-neutral-300 cursor-not-allowed opacity-50"
               }
             `}
@@ -766,6 +761,7 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
             disabled={!canScrollNext}
             aria-label="Next courses"
             className={`
+              btn-motion
               flex
               h-12
               w-12
@@ -773,10 +769,8 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
               justify-center
               rounded-full
               border
-              transition-all
-              duration-200
               ${canScrollNext
-                ? "border-border-card bg-white text-content-primary shadow-sm hover:border-brand-primary hover:bg-brand-primary hover:text-white active:scale-95 cursor-pointer"
+                ? "border-border-card bg-white text-content-primary shadow-sm hover:border-brand-primary hover:bg-brand-primary hover:text-white cursor-pointer"
                 : "border-border-card/50 bg-neutral-100 text-neutral-300 cursor-not-allowed opacity-50"
               }
             `}
@@ -795,13 +789,13 @@ export default function TopCoursesSection({ country: _country }: { country?: Cou
           <button
             type="button"
             className="
+              btn-motion
               inline-flex
               items-center
               gap-2
               text-btn
               font-medium
               text-brand-accent
-              transition-all
               hover:gap-3
             "
           >

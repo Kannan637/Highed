@@ -1,115 +1,196 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site.config";
-import { getAllCountrySlugs } from "@/data/countries";
+import { getAllCountrySlugs, getCountryBySlug } from "@/data/countries";
 import { getAllCitySlugs } from "@/data/cities";
+import { getAllBlogArticles } from "@/data/blogArticles";
+
+// Stable revision date for baseline site content
+const STATIC_PAGE_DATE = new Date("2026-10-01T00:00:00.000Z");
+
+const CANONICAL_SERVICES = [
+  "career-counselling",
+  "university-application",
+  "scholarship-assistance",
+  "sop-lor-assistance",
+  "visa-assistance",
+  "education-loan",
+  "accommodation-pre-departure",
+];
+
+const CANONICAL_TOOLS = [
+  "study-abroad-cost",
+  "education-loan-emi",
+  "profile-checker",
+  "scholarship-finder",
+  "test-score-evaluator",
+];
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const countrySlugs = getAllCountrySlugs();
   const citySlugs = getAllCitySlugs();
+  const blogArticles = getAllBlogArticles();
 
-  const cityUrls = citySlugs.map((slug) => ({
+  // City Pages
+  const cityUrls: MetadataRoute.Sitemap = citySlugs.map((slug) => ({
     url: `${baseUrl}/best-study-consultant-in/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    lastModified: STATIC_PAGE_DATE,
+    changeFrequency: "weekly",
     priority: 0.9,
   }));
 
-  const countryUrls = countrySlugs.map((slug) => ({
+  // Country Pillar Pages
+  const countryUrls: MetadataRoute.Sitemap = countrySlugs.map((slug) => ({
     url: `${baseUrl}/study-in/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    lastModified: STATIC_PAGE_DATE,
+    changeFrequency: "weekly",
     priority: 0.9,
   }));
 
-  const exploreUrls = countrySlugs.map((slug) => ({
+  // Country Directory Explore Pages
+  const countryExploreUrls: MetadataRoute.Sitemap = countrySlugs.map((slug) => ({
     url: `${baseUrl}/study-in/${slug}/explore`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    lastModified: STATIC_PAGE_DATE,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  // Service Detail Pages
+  const serviceUrls: MetadataRoute.Sitemap = CANONICAL_SERVICES.map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    lastModified: STATIC_PAGE_DATE,
+    changeFrequency: "weekly",
     priority: 0.85,
   }));
 
-  return [
+  // Tool & Calculator Pages
+  const toolUrls: MetadataRoute.Sitemap = CANONICAL_TOOLS.map((slug) => ({
+    url: `${baseUrl}/tools/${slug}`,
+    lastModified: STATIC_PAGE_DATE,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  // Blog Articles (uses individual article lastUpdated date)
+  const blogUrls: MetadataRoute.Sitemap = blogArticles.map((article) => {
+    const lastMod = new Date(article.lastUpdated || article.publishedDate);
+    return {
+      url: `${baseUrl}/blog/${article.slug}`,
+      lastModified: isNaN(lastMod.getTime()) ? STATIC_PAGE_DATE : lastMod,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    };
+  });
+
+  // Core Static Pages
+  const coreUrls: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/explore`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/study-in`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    ...countryUrls,
-    ...exploreUrls,
-    ...cityUrls,
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "weekly",
       priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/explore`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "daily",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/courses`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/scholarships`,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/success-stories`,
-      lastModified: new Date(),
+      url: `${baseUrl}/resources`,
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/book-counselling`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/events`,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/success-stories`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/our-story`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/book-counselling`,
+      lastModified: STATIC_PAGE_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      lastModified: STATIC_PAGE_DATE,
       changeFrequency: "yearly",
       priority: 0.3,
     },
   ];
+
+  return [
+    ...coreUrls,
+    ...countryUrls,
+    ...countryExploreUrls,
+    ...serviceUrls,
+    ...cityUrls,
+    ...toolUrls,
+    ...blogUrls,
+  ];
 }
+

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 export const MASTER_CTA_CLASSNAME =
-  "group/primary rounded-full bg-gradient-to-b from-[#D9254C] to-[#B91C3C] text-center text-[16px] font-semibold text-white shadow-[0_6px_20px_rgba(185,28,60,0.28)] outline-2 -outline-offset-2 outline-white/20 transition-all duration-200 ease-out hover:from-[#C71F42] hover:to-[#9F1632] hover:shadow-[0_8px_24px_rgba(185,28,60,0.36)] active:scale-[0.96]";
+  "group/primary rounded-full bg-gradient-to-b from-[#D9254C] to-[#B91C3C] text-center text-[16px] font-semibold text-white shadow-[0_6px_20px_rgba(185,28,60,0.28)] outline-2 -outline-offset-2 outline-white/20 hover:from-[#C71F42] hover:to-[#9F1632] hover:shadow-[0_8px_24px_rgba(185,28,60,0.36)]";
 
 export const MasterCtaIcon = () => (
   <ArrowRight

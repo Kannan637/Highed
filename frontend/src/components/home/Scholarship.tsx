@@ -32,15 +32,14 @@ const SCHOLARSHIP_IMAGE =
 const CARD_GAP_PX = 16;
 
 /*
- * PAUL-inspired pastel palette
+ * Minimal pastel color palette using globals.css design tokens
  *
- * Cream    #FFF4D6
- * Lime     #DFFF7F
- * Sky      #BFE3FF
- * Pink     #FFB7D5
- * Lavender #C9B8FF
- * Peach    #FFD6A5
- * Navy     #253A82
+ * Gold / Cream : #FEF9EC (var(--icon-bg-gold))
+ * Brand Blue   : #EEF1FA (var(--surface-brand-light))
+ * Sky Blue     : #F0F7FF
+ * Soft Rose    : #FDF0F3 (var(--icon-bg-accent))
+ * Mint / Sage  : #EBF5EE (var(--icon-bg-success))
+ * Soft Lavender: #F5F2FE
  */
 
 interface ScholarshipItem {
@@ -48,7 +47,6 @@ interface ScholarshipItem {
     description: string;
     Icon: LucideIcon;
     card: string;
-    descText: string;
     tile: string;
 }
 
@@ -58,64 +56,63 @@ const scholarshipItems: readonly ScholarshipItem[] = [
         description:
             "Awards for strong academic records and test scores.",
         Icon: Award,
-        card: "bg-[#FFF4D6] text-[#253A82]",
-        descText: "text-[#253A82]/75",
-        tile: "bg-[#DFFF7F] text-[#253A82]",
+        card: "bg-[#FEF9EC] border border-[#F6E9C8] text-content-primary",
+        tile: "bg-white text-[#B58A2A] shadow-xs",
     },
     {
         label: "University Scholarships",
         description:
             "Funding offered directly by your chosen university.",
         Icon: GraduationCap,
-        card: "bg-[#DFFF7F] text-[#253A82]",
-        descText: "text-[#253A82]/75",
-        tile: "bg-[#253A82] text-[#DFFF7F]",
+        card: "bg-[#EEF1FA] border border-[#D8E1F5] text-content-primary",
+        tile: "bg-white text-brand-primary shadow-xs",
     },
     {
         label: "Education Loan Assistance",
         description:
             "Help with documents, applications, and lender choice.",
         Icon: Landmark,
-        card: "bg-[#BFE3FF] text-[#253A82]",
-        descText: "text-[#253A82]/75",
-        tile: "bg-[#FFB7D5] text-[#253A82]",
+        card: "bg-[#F0F7FF] border border-[#D5E6F8] text-content-primary",
+        tile: "bg-white text-[#1E70BF] shadow-xs",
     },
     {
         label: "Financial Planning Support",
         description:
             "Plan tuition, living costs, and repayment upfront.",
         Icon: PiggyBank,
-        card: "bg-[#FFB7D5] text-[#253A82]",
-        descText: "text-[#253A82]/75",
-        tile: "bg-[#253A82] text-[#FFB7D5]",
+        card: "bg-[#FDF0F3] border border-[#F8D6DF] text-content-primary",
+        tile: "bg-white text-brand-accent shadow-xs",
     },
     {
         label: "Government Scholarships",
         description:
             "Schemes run by central and state governments.",
         Icon: Wallet,
-        card: "bg-[#C9B8FF] text-[#253A82]",
-        descText: "text-[#253A82]/75",
-        tile: "bg-[#FFF4D6] text-[#253A82]",
+        card: "bg-[#EBF5EE] border border-[#D0EADB] text-content-primary",
+        tile: "bg-white text-[#198248] shadow-xs",
     },
     {
         label: "Sports & Talent Scholarship",
         description:
             "Support for athletes and gifted performers.",
         Icon: Trophy,
-        card: "bg-[#FFD6A5] text-[#253A82]",
-        descText: "text-[#253A82]/75",
-        tile: "bg-[#BFE3FF] text-[#253A82]",
+        card: "bg-[#F5F2FE] border border-[#E1DAFA] text-content-primary",
+        tile: "bg-white text-[#6351D4] shadow-xs",
     },
 ];
 
-export default function ScholarshipsLoansSection() {
+export default function ScholarshipsLoansSection({
+    id = "scholarships",
+}: {
+    id?: string;
+} = {}) {
     return (
         <section
+            id={id}
             className="
                 w-full
                 overflow-hidden
-                bg-brand-primary
+                bg-background
                 py-14
                 text-content-primary
                 tracking-tight-5
@@ -123,6 +120,7 @@ export default function ScholarshipsLoansSection() {
                 [&_*]:[letter-spacing:var(--tracking-tight-5)]
                 sm:py-20
                 lg:py-[72px]
+                scroll-mt-6
             "
         >
             <Container size="lg">
@@ -157,13 +155,16 @@ export default function ScholarshipsLoansSection() {
                                 text-3xl
                                 font-semibold
                                 leading-[1.08]
-                                text-white
+                                text-brand-primary
                                 sm:text-5xl
                                 lg:mx-0
                                 lg:text-6xl
                             "
                         >
-                            Scholarships and education loan help in Tamil Nadu
+                            Scholarships and education loan help in{" "}
+                            <span className="text-brand-accent">
+                                Tamil Nadu
+                            </span>
                         </h2>
 
                         <p
@@ -173,7 +174,7 @@ export default function ScholarshipsLoansSection() {
                                 max-w-[48ch]
                                 text-base
                                 leading-relaxed
-                                text-white/70
+                                text-content-secondary
                                 sm:text-lg
                                 lg:mx-0
                             "
@@ -192,7 +193,6 @@ export default function ScholarshipsLoansSection() {
                                     description,
                                     Icon,
                                     card,
-                                    descText,
                                     tile,
                                 }) => (
                                     <li
@@ -233,23 +233,18 @@ export default function ScholarshipsLoansSection() {
                                         </span>
 
                                         <div className="flex flex-col gap-2">
-                                            <h3
+                                            <h5
                                                 className="
                                                     text-xl
                                                     font-semibold
                                                     leading-tight
+                                                    text-content-primary
                                                 "
                                             >
                                                 {label}
-                                            </h3>
+                                            </h5>
 
-                                            <p
-                                                className={`
-                                                    text-sm
-                                                    leading-relaxed
-                                                    ${descText}
-                                                `}
-                                            >
+                                            <p className="text-sm leading-relaxed text-content-secondary">
                                                 {description}
                                             </p>
                                         </div>
@@ -281,6 +276,7 @@ export default function ScholarshipsLoansSection() {
                             <Link
                                 href="/scholarships"
                                 className="
+                                    btn-motion
                                     group
                                     inline-flex
                                     h-12
@@ -291,12 +287,7 @@ export default function ScholarshipsLoansSection() {
                                     text-sm
                                     font-semibold
                                     text-brand-accent
-                                    transition-colors
                                     hover:bg-brand-accent/10
-                                    focus-visible:outline-none
-                                    focus-visible:ring-2
-                                    focus-visible:ring-brand-accent
-                                    motion-reduce:transition-none
                                 "
                             >
                                 <span>Explore Scholarships</span>
@@ -334,13 +325,10 @@ export default function ScholarshipsLoansSection() {
                                 w-full
                                 max-w-[360px]
                                 overflow-hidden
-                                rounded-[28px]
-                                rounded-tr-[90px]
                                 bg-surface-neutral
                                 sm:max-w-[400px]
-                                sm:rounded-tr-[130px]
                                 lg:max-w-[460px]
-                                lg:rounded-tr-[160px]
+                                rounded-[28px]
                             "
                         >
                             <Image
@@ -441,23 +429,19 @@ function CardCarousel({
     };
 
     const controlClass = `
+        btn-motion
         flex
         size-11
         items-center
         justify-center
         rounded-full
         border
-        border-white/25
-        text-white
-        transition-colors
-        hover:bg-white/10
-        focus-visible:outline-none
-        focus-visible:ring-2
-        focus-visible:ring-brand-accent
-        disabled:cursor-not-allowed
-        disabled:opacity-35
-        disabled:hover:bg-transparent
-        motion-reduce:transition-none
+        border-border
+        bg-surface-default
+        text-content-primary
+        shadow-xs
+        hover:bg-surface-subtle
+        hover:text-brand-primary
     `;
 
     return (

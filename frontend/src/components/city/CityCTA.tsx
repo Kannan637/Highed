@@ -45,7 +45,7 @@ export const CityCTA: React.FC<CityCTAProps> = ({ city }) => {
 
               <Link
                 href="/study-in"
-                className="inline-flex h-12 w-fit max-w-[280px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 text-btn font-semibold text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/20 hover:border-white/30 active:scale-95"
+                className="btn-motion inline-flex h-12 w-fit max-w-[280px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 text-btn font-semibold text-white backdrop-blur-xs hover:bg-white/20 hover:border-white/30"
               >
                 <Compass size={17} />
                 <span>Explore All Destinations</span>

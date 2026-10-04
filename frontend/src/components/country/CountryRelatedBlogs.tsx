@@ -71,7 +71,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
             return (
               <Link
                 key={article.slug}
-                href={article.href || `/study-in/${country.slug}`}
+                href={article.href || `/blog/${article.slug}`}
                 className="group block w-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
               >
                 {/* 12-Column Grid inside the Article Card */}
@@ -129,7 +129,7 @@ export const CountryRelatedBlogs: React.FC<CountryRelatedBlogsProps> = ({
         <div className="mt-8 sm:mt-12 flex justify-center">
           <Link
             href="/blog"
-            className="group flex h-[48px] items-center gap-3 rounded-full bg-brand-primary pl-6 pr-2 text-btn font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-primary-hover active:scale-[0.98] cursor-pointer"
+            className="btn-motion group flex h-[48px] items-center gap-3 rounded-full bg-brand-primary pl-6 pr-2 text-btn font-semibold text-white shadow-md hover:bg-brand-primary-hover cursor-pointer"
           >
             <span>View All Blogs</span>
             <span className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-white text-brand-primary shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">

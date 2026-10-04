@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Heart } from "lucide-react";
 import Container from "@/components/ui/Container";
+import { siteConfig } from "@/config/site.config";
 
 export const Footer: React.FC = () => {
   return (
@@ -21,21 +22,25 @@ export const Footer: React.FC = () => {
               />
             </Link>
             <p className="mt-6 max-w-sm font-body text-body-small font-medium leading-relaxed text-gray-300">
-              HighEd is an official representative for 500+ top global universities. We offer personalized counseling, scholarship assistance, and visa guidance to make your study abroad journey seamless.
+              HighEd is an overseas education advisory based in Chennai, Tamil Nadu. We offer personalized counselling, university admissions guidance, scholarship assistance, and student visa support for top global destinations.
             </p>
 
             <div className="mt-6 space-y-2 font-body text-caption font-medium text-gray-300">
               <div className="flex items-center gap-2">
-                <Phone size={14} className="text-brand-accent" />
-                <a href="tel:+919050180501" className="hover:text-white">+91 90501 80501</a>
+                <Phone size={14} className="text-brand-accent shrink-0" />
+                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-white">
+                  {siteConfig.contact.formattedPhone}
+                </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail size={14} className="text-brand-accent" />
-                <a href="mailto:admissions@highed.org" className="hover:text-white">admissions@highed.org</a>
+                <Mail size={14} className="text-brand-accent shrink-0" />
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">
+                  {siteConfig.contact.email}
+                </a>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin size={14} className="text-brand-accent" />
-                <span>Global Education Towers, Level 4, Academic City</span>
+              <div className="flex items-start gap-2">
+                <MapPin size={14} className="text-brand-accent shrink-0 mt-0.5" />
+                <span>{siteConfig.contact.address}</span>
               </div>
             </div>
           </div>
@@ -46,11 +51,6 @@ export const Footer: React.FC = () => {
               Study Abroad
             </h3>
             <ul className="mt-4 space-y-2.5 font-body text-body-small font-medium text-gray-300">
-              <li>
-                <Link href="/study-in/dubai" className="transition-colors hover:text-white">
-                  Study in Dubai
-                </Link>
-              </li>
               <li>
                 <Link href="/study-in/usa" className="transition-colors hover:text-white">
                   Study in USA
@@ -76,6 +76,16 @@ export const Footer: React.FC = () => {
                   Study in Germany
                 </Link>
               </li>
+              <li>
+                <Link href="/study-in/ireland" className="transition-colors hover:text-white">
+                  Study in Ireland
+                </Link>
+              </li>
+              <li>
+                <Link href="/study-in/dubai" className="transition-colors hover:text-white">
+                  Study in Dubai
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -86,27 +96,27 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="mt-4 space-y-2.5 font-body text-body-small font-medium text-gray-300">
               <li>
-                <Link href="/services#career-counselling" className="transition-colors hover:text-white">
+                <Link href="/services/career-counselling" className="transition-colors hover:text-white">
                   Career Counselling
                 </Link>
               </li>
               <li>
-                <Link href="/services#university-application" className="transition-colors hover:text-white">
+                <Link href="/services/university-application" className="transition-colors hover:text-white">
                   University Applications
                 </Link>
               </li>
               <li>
-                <Link href="/scholarships" className="transition-colors hover:text-white">
+                <Link href="/services/scholarship-assistance" className="transition-colors hover:text-white">
                   Scholarships & Grants
                 </Link>
               </li>
               <li>
-                <Link href="/services#visa-assistance" className="transition-colors hover:text-white">
+                <Link href="/services/visa-assistance" className="transition-colors hover:text-white">
                   Visa Assistance
                 </Link>
               </li>
               <li>
-                <Link href="/services#education-loan" className="transition-colors hover:text-white">
+                <Link href="/services/education-loan" className="transition-colors hover:text-white">
                   Education Loans
                 </Link>
               </li>

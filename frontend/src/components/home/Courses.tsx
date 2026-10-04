@@ -311,6 +311,7 @@ function CourseCard({ course }: { course: Course }) {
                         })
                     }
                     className="
+                        btn-motion
                         mt-4
                         inline-flex
                         h-12
@@ -329,13 +330,7 @@ function CourseCard({ course }: { course: Course }) {
                         leading-none
                         text-content-primary
                         whitespace-nowrap
-                        transition-all
-                        duration-200
                         hover:bg-surface-subtle
-                        focus-visible:outline-none
-                        focus-visible:ring-2
-                        focus-visible:ring-brand-accent
-                        active:scale-[0.98]
                     "
                 >
                     <span className="whitespace-nowrap">
@@ -354,7 +349,11 @@ function CourseCard({ course }: { course: Course }) {
     );
 }
 
-export default function TopCoursesSection() {
+export default function TopCoursesSection({
+    id = "courses",
+}: {
+    id?: string;
+} = {}) {
     const { openLeadPopup } = useLeadPopup();
     const [activeCategory, setActiveCategory] = useState("MBA");
 
@@ -381,6 +380,7 @@ export default function TopCoursesSection() {
 
     return (
         <section
+            id={id}
             className="
                 w-full
                 bg-background
@@ -388,6 +388,7 @@ export default function TopCoursesSection() {
                 tracking-tight-5
                 [letter-spacing:var(--tracking-tight-5)]
                 [&_*]:[letter-spacing:var(--tracking-tight-5)]
+                scroll-mt-6
             "
         >
             <Container
@@ -410,6 +411,7 @@ export default function TopCoursesSection() {
                         onClick={previousCategory}
                         aria-label="Previous course category"
                         className="
+                            btn-motion
                             flex
                             size-10
                             shrink-0
@@ -418,11 +420,7 @@ export default function TopCoursesSection() {
                             justify-center
                             rounded-full
                             text-brand-accent
-                            transition-colors
                             hover:bg-brand-accent/10
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-brand-accent
                         "
                     >
                         <ArrowLeft
@@ -462,6 +460,7 @@ export default function TopCoursesSection() {
                                     }
                                     aria-pressed={isActive}
                                     className={`
+                                        btn-motion
                                         flex
                                         h-10
                                         shrink-0
@@ -472,8 +471,6 @@ export default function TopCoursesSection() {
                                         px-5
                                         text-sm
                                         font-medium
-                                        transition-all
-                                        duration-200
                                         ${isActive
                                             ? "bg-brand-accent text-white shadow-xs"
                                             : "text-brand-primary hover:bg-surface-subtle"
@@ -492,6 +489,7 @@ export default function TopCoursesSection() {
                         onClick={nextCategory}
                         aria-label="Next course category"
                         className="
+                            btn-motion
                             flex
                             size-10
                             shrink-0
@@ -500,11 +498,7 @@ export default function TopCoursesSection() {
                             justify-center
                             rounded-full
                             text-brand-accent
-                            transition-colors
                             hover:bg-brand-accent/10
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-brand-accent
                         "
                     >
                         <ArrowRight
@@ -535,6 +529,7 @@ export default function TopCoursesSection() {
                             })
                         }
                         className="
+                            btn-motion
                             group
                             inline-flex
                             h-12
@@ -549,11 +544,7 @@ export default function TopCoursesSection() {
                             text-sm
                             font-semibold
                             text-brand-accent
-                            transition-all
                             hover:bg-brand-accent/10
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-brand-accent
                         "
                     >
                         <span>

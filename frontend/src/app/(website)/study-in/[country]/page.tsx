@@ -106,8 +106,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <CountryRealStory />
       <CountryTestimonials />
       <CountryWhyHighEd country={country} />
-      <CountryFAQ />
+      <CountryFAQ country={country} />
       <CountryRelatedBlogs country={country} />
+
       <CountryCTA country={country} />
     </div>
   );

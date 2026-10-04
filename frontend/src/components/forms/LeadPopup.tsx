@@ -329,7 +329,9 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-accent font-body text-[15px] font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-accent/90 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
+                  aria-busy={loading}
+                  data-loading={loading}
+                  className="btn-motion flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-accent font-body text-[15px] font-semibold text-white shadow-sm hover:bg-brand-accent/90 disabled:pointer-events-none disabled:opacity-60"
                 >
                   {loading ? (
                     <>

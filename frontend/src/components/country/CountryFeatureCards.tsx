@@ -238,12 +238,12 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({
                       text-white
 
                       transition-transform
-                      duration-300
+                      duration-200
                       ease-out
 
                       group-hover:scale-105
                       group-hover:rotate-[-8deg]
-                      group-active:scale-95
+                      group-active:scale-[0.97]
 
                       sm:h-[44px]
                       sm:w-[44px]

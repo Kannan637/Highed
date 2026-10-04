@@ -61,7 +61,11 @@ const destinations: Destination[] = [
     },
 ];
 
-export default function StudyDestinations() {
+export default function StudyDestinations({
+    id = "top-countries",
+}: {
+    id?: string;
+} = {}) {
     const { openLeadPopup } = useLeadPopup();
 
     const [activeIndex, setActiveIndex] = useState(1);
@@ -360,6 +364,7 @@ export default function StudyDestinations() {
 
     return (
         <section
+            id={id}
             className="
                 w-full
                 overflow-hidden
@@ -370,6 +375,7 @@ export default function StudyDestinations() {
                 tracking-tight-5
                 [letter-spacing:var(--tracking-tight-5)]
                 [&_*]:[letter-spacing:var(--tracking-tight-5)]
+                scroll-mt-6
             "
         >
             <Container size="lg">
@@ -447,78 +453,60 @@ export default function StudyDestinations() {
                         />
 
                         {/* LEFT ARROW */}
-
-                        <button
-                            type="button"
-                            onClick={handlePrevious}
-                            aria-label="Previous destination"
-                            className="
-                                absolute
-                                -left-6
-                                top-1/2
-                                z-40
-                                flex
-                                size-12
-                                -translate-y-1/2
-                                cursor-pointer
-                                items-center
-                                justify-center
-                                rounded-full
-                                bg-white
-                                text-brand-primary
-                                shadow-[0_8px_25px_rgba(0,0,0,0.14)]
-                                transition-all
-                                duration-200
-                                hover:scale-105
-                                hover:bg-brand-primary
-                                hover:text-white
-                                focus-visible:outline-none
-                                focus-visible:ring-2
-                                focus-visible:ring-brand-accent
-                            "
-                        >
-                            <ArrowLeft
-                                size={20}
-                                strokeWidth={2.2}
-                            />
-                        </button>
+                        <div className="absolute -left-6 top-1/2 z-40 -translate-y-1/2">
+                            <button
+                                type="button"
+                                onClick={handlePrevious}
+                                aria-label="Previous destination"
+                                className="
+                                    btn-motion
+                                    flex
+                                    size-12
+                                    cursor-pointer
+                                    items-center
+                                    justify-center
+                                    rounded-full
+                                    bg-white
+                                    text-brand-primary
+                                    shadow-[0_8px_25px_rgba(0,0,0,0.14)]
+                                    hover:bg-brand-primary
+                                    hover:text-white
+                                "
+                            >
+                                <ArrowLeft
+                                    size={20}
+                                    strokeWidth={2.2}
+                                />
+                            </button>
+                        </div>
 
                         {/* RIGHT ARROW */}
-
-                        <button
-                            type="button"
-                            onClick={handleNext}
-                            aria-label="Next destination"
-                            className="
-                                absolute
-                                -right-6
-                                top-1/2
-                                z-40
-                                flex
-                                size-12
-                                -translate-y-1/2
-                                cursor-pointer
-                                items-center
-                                justify-center
-                                rounded-full
-                                bg-white
-                                text-brand-primary
-                                shadow-[0_8px_25px_rgba(0,0,0,0.14)]
-                                transition-all
-                                duration-200
-                                hover:scale-105
-                                hover:bg-brand-primary
-                                hover:text-white
-                                focus-visible:outline-none
-                                focus-visible:ring-2
-                                focus-visible:ring-brand-accent
-                            "
-                        >
-                            <ArrowRight
-                                size={20}
-                                strokeWidth={2.2}
-                            />
-                        </button>
+                        <div className="absolute -right-6 top-1/2 z-40 -translate-y-1/2">
+                            <button
+                                type="button"
+                                onClick={handleNext}
+                                aria-label="Next destination"
+                                className="
+                                    btn-motion
+                                    flex
+                                    size-12
+                                    cursor-pointer
+                                    items-center
+                                    justify-center
+                                    rounded-full
+                                    bg-white
+                                    text-brand-primary
+                                    shadow-[0_8px_25px_rgba(0,0,0,0.14)]
+                                    hover:bg-brand-primary
+                                    hover:text-white
+                                "
+                            >
+                                <ArrowRight
+                                    size={20}
+                                    strokeWidth={2.2}
+                                />
+                            </button>
+                        </div>
                     </div>
 
                     {/* =================================================
@@ -580,6 +568,7 @@ export default function StudyDestinations() {
                             onClick={handlePrevious}
                             aria-label="Previous destination"
                             className="
+                                btn-motion
                                 flex
                                 size-11
                                 cursor-pointer
@@ -589,8 +578,6 @@ export default function StudyDestinations() {
                                 bg-brand-primary
                                 text-white
                                 shadow-sm
-                                transition-all
-                                hover:scale-105
                                 hover:bg-brand-primary-hover
                             "
                         >
@@ -631,6 +618,7 @@ export default function StudyDestinations() {
                             onClick={handleNext}
                             aria-label="Next destination"
                             className="
+                                btn-motion
                                 flex
                                 size-11
                                 cursor-pointer
@@ -640,8 +628,6 @@ export default function StudyDestinations() {
                                 bg-brand-primary
                                 text-white
                                 shadow-sm
-                                transition-all
-                                hover:scale-105
                                 hover:bg-brand-primary-hover
                             "
                         >
@@ -663,6 +649,7 @@ export default function StudyDestinations() {
                             })
                         }
                         className="
+                            btn-motion
                             group
                             inline-flex
                             h-12
@@ -674,11 +661,7 @@ export default function StudyDestinations() {
                             text-sm
                             font-semibold
                             text-brand-accent
-                            transition-all
                             hover:bg-brand-accent/10
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-brand-accent
                         "
                     >
                         <span>
@@ -973,6 +956,7 @@ function DestinationCard({
                             })
                         }
                         className="
+                            btn-motion
                             group/explore
                             mt-5
                             inline-flex
@@ -986,14 +970,8 @@ function DestinationCard({
                             font-semibold
                             text-white
                             shadow-[0_8px_20px_rgba(233,63,97,0.25)]
-                            transition-all
-                            duration-200
-                            hover:-translate-y-0.5
                             hover:bg-brand-accent-hover
                             hover:shadow-[0_10px_25px_rgba(233,63,97,0.32)]
-                            focus-visible:outline-none
-                            focus-visible:ring-2
-                            focus-visible:ring-white
                         "
                     >
                         <span>

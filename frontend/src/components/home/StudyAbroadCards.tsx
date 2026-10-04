@@ -11,11 +11,11 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Container from "@/components/ui/Container";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
 import { cn } from "@/lib/utils";
 
 interface StudyAbroadCard {
   title: string;
+  targetId: string;
   href: string;
   image: string;
   icon: LucideIcon;
@@ -26,7 +26,8 @@ interface StudyAbroadCard {
 const cards: StudyAbroadCard[] = [
   {
     title: "Top Country",
-    href: "/study-in",
+    targetId: "top-countries",
+    href: "#top-countries",
     image: "/images/HeroBottomCard/Top Country.webp",
     icon: Globe,
     bgColor: "#E9EEF8",
@@ -34,7 +35,8 @@ const cards: StudyAbroadCard[] = [
   },
   {
     title: "Top Courses & University",
-    href: "/courses",
+    targetId: "courses",
+    href: "#courses",
     image: "/images/HeroBottomCard/corses & Unviersity.webp",
     icon: BookOpen,
     bgColor: "#E8F4ED",
@@ -42,7 +44,8 @@ const cards: StudyAbroadCard[] = [
   },
   {
     title: "Scholarship",
-    href: "/scholarships",
+    targetId: "scholarships",
+    href: "#scholarships",
     image: "/images/HeroBottomCard/Scholarship.webp",
     icon: Award,
     bgColor: "#F5F0E3",
@@ -50,7 +53,8 @@ const cards: StudyAbroadCard[] = [
   },
   {
     title: "Student Service",
-    href: "/services",
+    targetId: "services",
+    href: "#services",
     image: "/images/HeroBottomCard/Student Serivce.webp",
     icon: HeartHandshake,
     bgColor: "#F2E7ED",
@@ -58,8 +62,38 @@ const cards: StudyAbroadCard[] = [
   },
 ];
 
+const ID_ALIASES: Record<string, string[]> = {
+  "top-countries": ["top-countries", "destinations", "countries"],
+  courses: ["courses", "top-courses"],
+  scholarships: ["scholarships", "scholarship"],
+  services: ["services", "student-services"],
+};
+
 export const StudyAbroadCards = () => {
-  const { openLeadPopup } = useLeadPopup();
+  const handleScrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    if (e.metaKey || e.ctrlKey) return;
+
+    const candidateIds = ID_ALIASES[targetId] || [targetId];
+    let element: HTMLElement | null = null;
+    for (const id of candidateIds) {
+      const el = document.getElementById(id);
+      if (el) {
+        element = el;
+        break;
+      }
+    }
+
+    if (element) {
+      e.preventDefault();
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (typeof window !== "undefined" && window.history.pushState) {
+        window.history.pushState(null, "", `#${element.id || targetId}`);
+      }
+    }
+  };
 
   return (
     <section
@@ -78,18 +112,11 @@ export const StudyAbroadCards = () => {
             const Icon = card.icon;
 
             return (
-              <button
+              <a
                 key={card.title}
-                type="button"
-                aria-label={`Explore ${card.title}`}
-                onClick={() =>
-                  openLeadPopup({
-                    source: `card_${card.title
-                      .toLowerCase()
-                      .replace(/[^a-z0-9]+/g, "_")
-                      .replace(/^_|_$/g, "")}`,
-                  })
-                }
+                href={card.href}
+                aria-label={`Scroll to ${card.title} section`}
+                onClick={(e) => handleScrollToSection(e, card.targetId)}
                 className={cn(
                   "group col-span-4 flex min-h-19 w-full cursor-pointer overflow-hidden rounded-xl bg-surface-neutral text-left no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md sm:col-span-2 lg:col-span-3 md:h-46 md:min-h-0 md:flex-col"
                 )}
@@ -134,7 +161,7 @@ export const StudyAbroadCards = () => {
                     className="shrink-0 text-content-primary transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                   />
                 </div>
-              </button>
+              </a>
             );
           })}
         </div>

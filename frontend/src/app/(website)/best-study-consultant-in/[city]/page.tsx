@@ -81,7 +81,7 @@ export default async function CityPage({ params }: CityPageProps) {
     },
     {
       name: "Locations",
-      url: `${siteConfig.url}/#locations`,
+      url: `${siteConfig.url}/contact`,
     },
     {
       name: city.name,
@@ -103,6 +103,7 @@ export default async function CityPage({ params }: CityPageProps) {
       city.slug === "chennai"
         ? siteConfig.contact.address
         : undefined,
+    isPhysicalOffice: city.slug === "chennai",
   });
 
   return (
@@ -113,6 +114,7 @@ export default async function CityPage({ params }: CityPageProps) {
       <JsonLd data={localBusinessSchema} />
 
       {/* Hero */}
+
       <CityHero city={city} />
 
       {/* Trust */}

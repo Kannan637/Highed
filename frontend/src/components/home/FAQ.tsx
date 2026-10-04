@@ -85,7 +85,7 @@ const defaultCategories: FAQCategory[] = [
             {
                 question: "How long does the student visa process take?",
                 answer:
-                    "Student visa decisions typically take 2 to 6 weeks depending on the country. HighEd offers end-to-end documentation auditing and mock interview coaching to maintain our 98%+ visa success rate.",
+                    "Student visa decisions typically take 2 to 6 weeks depending on the country. HighEd offers end-to-end documentation auditing and mock interview coaching to maximize visa approval confidence.",
             },
             {
                 question:
@@ -142,7 +142,7 @@ function CategoryTab({
         <button
             type="button"
             onClick={onClick}
-            className={`inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-xs font-semibold whitespace-nowrap cursor-pointer transition-all duration-200 sm:text-sm ${isActive
+            className={`btn-motion inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-xs font-semibold whitespace-nowrap cursor-pointer sm:text-sm ${isActive
                 ? "bg-brand-accent text-white shadow-sm"
                 : "text-content-secondary hover:bg-brand-accent/10 hover:text-brand-accent"
                 }`}

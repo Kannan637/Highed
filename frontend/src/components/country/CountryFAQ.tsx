@@ -9,6 +9,8 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 
+import type { Country, CountryFAQ as CountryFAQItem } from "@/types/country";
+
 export interface FAQItem {
   question: string;
   answer: string;
@@ -27,6 +29,7 @@ export interface FAQSectionProps {
   accentText?: string;
   subtitle?: string;
   categories?: FAQCategory[];
+  country?: Country;
   contactLabel?: string;
   contactEmail?: string;
 }
@@ -46,7 +49,7 @@ const defaultCategories: FAQCategory[] = [
         question:
           "Which country is best for Tamil Nadu students?",
         answer:
-          "Popular destinations include the UK, USA, Canada, Australia, Ireland, and New Zealand. The ideal country depends on your academic profile, budget, preferred programme, and post-study career goals.",
+          "Popular destinations include the UK, USA, Canada, Australia, Germany, Ireland, and Dubai. The ideal country depends on your academic profile, budget, preferred programme, and post-study career goals.",
       },
       {
         question:
@@ -86,7 +89,7 @@ const defaultCategories: FAQCategory[] = [
       {
         question: "How long does the student visa process take?",
         answer:
-          "Student visa decisions typically take 2 to 6 weeks depending on the country. HighEd offers end-to-end documentation auditing and mock interview coaching to maintain our 98%+ visa success rate.",
+          "Student visa decisions typically take 2 to 6 weeks depending on the country. HighEd offers end-to-end documentation auditing and consular mock interview coaching.",
       },
       {
         question:
@@ -122,7 +125,7 @@ const defaultCategories: FAQCategory[] = [
         question:
           "Can I work part-time while studying abroad?",
         answer:
-          "Yes. Most destinations (UK, Australia, Canada, Ireland, New Zealand) permit international students to work up to 20 hours per week during term time and full-time during vacations.",
+          "Yes. Most destinations (UK, Australia, Canada, Ireland, Germany) permit international students to work up to 20 hours per week during term time and full-time during vacations.",
       },
     ],
   },
@@ -143,7 +146,7 @@ function CategoryTab({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-medium whitespace-nowrap cursor-pointer transition-all duration-200 sm:text-sm ${isActive
+      className={`btn-motion inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-medium whitespace-nowrap cursor-pointer sm:text-sm ${isActive
         ? "bg-brand-accent text-white shadow-sm"
         : "text-content-secondary hover:bg-brand-accent/10 hover:text-brand-accent"
         }`}
@@ -155,13 +158,40 @@ function CategoryTab({
 
 export function FAQSection({
   badge = "Need Help?",
-  title = "Frequently Asked Questions",
-  accentText = "Questions",
-  subtitle = "Find clear answers to common questions about studying abroad, admissions, visas, costs, and career opportunities.",
-  categories = defaultCategories,
+  title,
+  accentText,
+  subtitle,
+  categories,
+  country,
 }: FAQSectionProps) {
-  const activeCategoryList =
-    categories.length > 0 ? categories : defaultCategories;
+  // If a country is provided, create a dedicated country FAQ category matching page schema
+  const countryCategory: FAQCategory | null = country
+    ? {
+        id: `faq-${country.slug}`,
+        label: `Study in ${country.name} FAQs`,
+        items: (country.faqs || []).map((f: CountryFAQItem) => ({
+          question: f.question,
+          answer: f.answer,
+        })),
+      }
+    : null;
+
+  const resolvedCategories: FAQCategory[] = countryCategory
+    ? [countryCategory, ...defaultCategories]
+    : categories && categories.length > 0
+    ? categories
+    : defaultCategories;
+
+  const activeCategoryList = resolvedCategories;
+
+  const sectionTitle = title || (country ? `Study in ${country.name} FAQs` : "Frequently Asked Questions");
+  const sectionAccent = accentText || (country ? "FAQs" : "Questions");
+  const sectionSubtitle =
+    subtitle ||
+    (country
+      ? `Get clear, verified answers to common questions about studying, admissions, living costs, and student visas in ${country.name}.`
+      : "Find clear answers to common questions about studying abroad, admissions, visas, costs, and career opportunities.");
+
 
   const [activeCategoryId, setActiveCategoryId] = useState<string>(
     activeCategoryList[0]?.id ?? "general"
@@ -194,11 +224,12 @@ export function FAQSection({
         {/* HEADER */}
         <SectionHeading
           badge={badge}
-          title={title}
-          accentText={accentText}
-          description={subtitle}
+          title={sectionTitle}
+          accentText={sectionAccent}
+          description={sectionSubtitle}
           align="center"
         />
+
 
         {/* CATEGORY PILLS NAVIGATION */}
         <div className="mx-auto mb-10 w-full max-w-2xl">

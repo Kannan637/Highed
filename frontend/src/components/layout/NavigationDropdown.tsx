@@ -108,14 +108,15 @@ export const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                   </svg>
                 </span>
                 <span className="font-medium text-content-secondary">
-                  Trusted by <strong className="font-medium text-content-primary">10,000+ students</strong> +{" "}
-                  <strong className="font-medium text-content-primary">500+ global universities</strong>
+                  Personalized profile evaluation +{" "}
+                  <strong className="font-medium text-content-primary">zero consultancy fee</strong>
                 </span>
               </div>
               <span className="font-body text-caption font-medium text-content-secondary">
-                Official University Representative
+                Verified Global Study Pathways
               </span>
             </div>
+
           </div>
         ) : dropdownData && "columns" in dropdownData ? (
           <div

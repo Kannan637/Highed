@@ -480,7 +480,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
                 </LeadCTAButton>
 
                 {/* Trust signal chips */}
-                <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                <div className="flex flex-wrap justify-start gap-2 pt-1">
                   {trustSignals.map((signal) => (
                     <div
                       key={signal.text}

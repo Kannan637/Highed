@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center font-body font-medium text-btn rounded-full transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 select-none whitespace-nowrap",
+  "btn-motion inline-flex items-center justify-center font-body font-medium text-btn rounded-full cursor-pointer select-none whitespace-nowrap disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
@@ -43,6 +43,7 @@ export interface ButtonProps
   fullWidth?: boolean;
   iconBadge?: React.ReactNode;
   children?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -54,6 +55,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       iconBadge,
       children,
+      isLoading,
+      disabled,
       ...props
     },
     ref
@@ -61,6 +64,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
+        disabled={disabled || isLoading}
+        aria-busy={isLoading}
+        data-loading={isLoading}
         className={cn(
           buttonVariants({ variant, size }),
           fullWidth && "w-full",

@@ -43,6 +43,7 @@ export interface ServicesHeader {
 }
 
 export interface ServicesSectionProps {
+    id?: string;
     header?: Partial<ServicesHeader>;
     posts?: ServiceCardItem[];
     className?: string;
@@ -86,7 +87,7 @@ const defaultPosts: ServiceCardItem[] = [
     {
         title: "University & Course Selection",
         description:
-            "Find your best-fit program from 500+ universities worldwide.",
+            "Find your best-fit program across premier accredited universities worldwide.",
         href: "/study-in",
         icon: GraduationCap,
     },
@@ -126,6 +127,7 @@ const defaultPosts: ServiceCardItem[] = [
 ========================================================= */
 
 export function ServicesSection({
+    id = "services",
     header,
     posts,
     className,
@@ -142,8 +144,9 @@ export function ServicesSection({
 
     return (
         <section
+            id={id}
             className={cn(
-                "w-full bg-background py-12 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)] sm:py-16 md:py-20",
+                "w-full bg-background py-12 tracking-tight-5 [letter-spacing:var(--tracking-tight-5)] [&_*]:[letter-spacing:var(--tracking-tight-5)] sm:py-16 md:py-20 scroll-mt-6",
                 className
             )}
         >
@@ -369,6 +372,7 @@ export function ServicesSection({
                         <Link
                             href={activeHeader.ctaHref}
                             className="
+                                btn-motion
                                 group
                                 inline-flex
                                 h-12
@@ -380,11 +384,7 @@ export function ServicesSection({
                                 text-sm
                                 font-semibold
                                 text-brand-accent
-                                transition-all
                                 hover:bg-brand-accent/10
-                                focus-visible:outline-none
-                                focus-visible:ring-2
-                                focus-visible:ring-brand-accent
                             "
                         >
                             <span>View All Services</span>

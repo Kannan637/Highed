@@ -7,6 +7,26 @@ export interface CreateMetadataParams {
   path?: string;
   image?: string;
   keywords?: string[];
+  noIndex?: boolean;
+}
+
+/**
+ * Clean title to prevent duplicate brand suffixes (e.g. "Page | HighEd | HighEd")
+ * since RootLayout sets title.template = "%s | HighEd".
+ */
+function cleanPageTitle(rawTitle?: string): string {
+  if (!rawTitle) return siteConfig.name;
+  return rawTitle
+    .replace(/\s*\|\s*HighEd\s*(Insights|Resources)?\s*$/i, "")
+    .trim();
+}
+
+/**
+ * Normalize canonical URL: ensures single canonical hostname and no trailing slash.
+ */
+function normalizeCanonicalUrl(path = ""): string {
+  const cleanPath = path.trim().replace(/^\/+/, "").replace(/\/+$/, "");
+  return cleanPath ? `${siteConfig.url}/${cleanPath}` : siteConfig.url;
 }
 
 export function constructMetadata({
@@ -15,57 +35,70 @@ export function constructMetadata({
   path = "",
   image = siteConfig.ogImage,
   keywords = [],
+  noIndex = false,
 }: CreateMetadataParams = {}): Metadata {
-  const fullTitle = title || siteConfig.name;
-  const url = `${siteConfig.url}${path}`;
+  const pageTitle = cleanPageTitle(title);
+  const canonicalUrl = normalizeCanonicalUrl(path);
+
+  const fullImageUrl = image.startsWith("http")
+    ? image
+    : `${siteConfig.url}${image.startsWith("/") ? "" : "/"}${image}`;
 
   return {
-    title: fullTitle,
+    title: pageTitle,
     description,
     keywords: [
-      "study abroad",
-      "overseas education",
-      "international universities",
-      "scholarships for international students",
-      "student visa",
+      "study abroad consultants in tamil nadu",
+      "overseas education advisors chennai",
+      "student visa counselling",
       ...keywords,
     ],
     metadataBase: new URL(siteConfig.url),
     alternates: {
-      canonical: url,
+      canonical: canonicalUrl,
     },
     openGraph: {
-      title: fullTitle,
+      title: `${pageTitle} | ${siteConfig.name}`,
       description,
-      url,
+      url: canonicalUrl,
       siteName: siteConfig.name,
       locale: "en_IN",
       images: [
         {
-          url: image,
+          url: fullImageUrl,
           width: 1200,
           height: 630,
-          alt: fullTitle,
+          alt: `${pageTitle} — HighEd`,
         },
       ],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title: `${pageTitle} | ${siteConfig.name}`,
       description,
-      images: [image],
+      images: [fullImageUrl],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large" as const,
-        "max-snippet": -1,
-        "max-video-preview": -1,
-      },
-    },
+    robots: noIndex
+      ? {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false,
+          },
+        }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large" as const,
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        },
   };
 }
+

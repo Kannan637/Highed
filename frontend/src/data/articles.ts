@@ -19,7 +19,7 @@ export const articles: Article[] = [
     date: "Sep 2026",
     summary:
       "Learn how STEM degree graduates from US universities can extend their work authorization to 36 months under the F-1 OPT regulations.",
-    href: "/study-in/usa",
+    href: "/blog/usa-stem-opt-guide",
     countrySlug: "usa",
     tags: ["visa", "usa", "career", "stem"],
   },
@@ -31,7 +31,7 @@ export const articles: Article[] = [
     date: "Aug 2026",
     summary:
       "Discover how international students can study bachelor's and master's programs at public German universities paying zero tuition fees.",
-    href: "/study-in/germany",
+    href: "/blog/germany-tuition-free-universities",
     countrySlug: "germany",
     tags: ["scholarships", "germany", "cost", "admissions"],
   },
@@ -43,7 +43,7 @@ export const articles: Article[] = [
     date: "Aug 2026",
     summary:
       "A comprehensive breakdown of post-graduation work permit criteria, eligible designated learning institutions, and express entry points.",
-    href: "/study-in/canada",
+    href: "/blog/canada-pgwp-rules",
     countrySlug: "canada",
     tags: ["visa", "canada", "career", "immigration"],
   },
@@ -55,7 +55,7 @@ export const articles: Article[] = [
     date: "Jul 2026",
     summary:
       "Everything you need to know about working in the UK after graduating from top Russell Group and partner institutions.",
-    href: "/study-in/uk",
+    href: "/blog/uk-graduate-route-visa",
     countrySlug: "uk",
     tags: ["visa", "uk", "career"],
   },
@@ -67,7 +67,7 @@ export const articles: Article[] = [
     date: "Jul 2026",
     summary:
       "Explore the 100% tax-free income potential and premier international branch campuses in Dubai's Academic City and Knowledge Park.",
-    href: "/study-in/dubai",
+    href: "/blog/dubai-student-visa-guide",
     countrySlug: "dubai",
     tags: ["visa", "dubai", "destination", "cost"],
   },
@@ -79,7 +79,7 @@ export const articles: Article[] = [
     date: "Jun 2026",
     summary:
       "Step-by-step checklist of Genuine Student requirements, OSHC health cover, and bank proof required for Australian student visas.",
-    href: "/study-in/australia",
+    href: "/blog/australia-subclass-500-visa",
     countrySlug: "australia",
     tags: ["visa", "australia", "documentation"],
   },

@@ -19,50 +19,50 @@ interface ServiceRouteConfig {
 
 const SERVICE_ROUTES: Record<string, ServiceRouteConfig> = {
   "career-counselling": {
-    title: "Study Abroad Career Counselling & Profile Evaluation | HighEd",
+    title: "Study Abroad Career Counselling & Profile Evaluation",
     description:
       "Get free one-on-one study abroad career counselling. Expert profile evaluation, course mapping, and personalized university roadmaps with certified advisors.",
     component: CareerCounsellingPage,
   },
   "university-application": {
-    title: "University Application & Admissions Assistance | HighEd",
+    title: "University Application & Admissions Assistance",
     description:
-      "End-to-end university application filing with 100% fee waivers, fast-track offer turnaround in 48h-14 days, and representation across 500+ top universities worldwide.",
+      "End-to-end university application guidance with fee waiver assistance and admission support across accredited universities worldwide.",
     component: UniversityApplicationPage,
   },
   "scholarship-assistance": {
-    title: "Study Abroad Scholarships & Merit Grants | HighEd",
+    title: "Study Abroad Scholarships & Merit Grants Guidance",
     description:
-      "Unlock up to 100% tuition fee waivers, merit bursaries, and government grants for international studies in USA, UK, Canada, Australia, and Europe.",
+      "Guidance on international student scholarships, merit bursaries, and tuition fee waiver opportunities for USA, UK, Canada, Australia, Germany, and Ireland.",
     component: ScholarshipAssistancePage,
   },
   "sop-lor-assistance": {
-    title: "SOP & LOR Writing & Editing Assistance | HighEd",
+    title: "SOP & LOR Writing & Review Assistance",
     description:
-      "Craft compelling, plagiarism-free Statements of Purpose and Letters of Recommendation tailored to global university admissions rubrics.",
+      "Assistance with Statement of Purpose and Letter of Recommendation drafting, tailored to global university admissions rubrics.",
     component: SOPAndLORAssistancePage,
   },
   "visa-assistance": {
-    title: "Student Visa Guidance & Mock Interview Training | HighEd",
+    title: "Student Visa Guidance & Mock Interview Preparation",
     description:
-      "98.4% visa clearance rate. Comprehensive visa filing, financial solvency vetting, and 1-on-1 consular mock interviews for USA, UK, Canada, Australia, and Germany.",
+      "Comprehensive student visa filing guidance, documentation review, and 1-on-1 consular mock interviews for USA, UK, Canada, Australia, and Germany.",
     component: VisaAssistancePage,
   },
   "education-loan": {
-    title: "Study Abroad Education Loans | Collateral & Non-Collateral | HighEd",
+    title: "Study Abroad Education Loan Assistance",
     description:
-      "Fast-track education loan approval up to ₹1.5 Cr with 15+ partner banks and NBFCs. Competitive interest rates, zero collateral options, and 48-hour sanction letters.",
+      "Guidance on collateral and non-collateral education loan applications through leading nationalized banks and NBFCs for international studies.",
     component: EducationLoanPage,
   },
   "accommodation-pre-departure": {
-    title: "Student Accommodation & Pre-Departure Briefing | HighEd",
+    title: "Student Accommodation & Pre-Departure Guidance",
     description:
-      "Verified student housing near top universities with No Visa, No Pay guarantee. Port of entry document checklist, Forex, SIM cards, and travel guidance.",
+      "Guidance on verified student housing near universities, port-of-entry document checklists, Forex, SIM cards, and overseas travel preparation.",
     component: AccommodationAndPreDeparturePage,
   },
 };
 
-// Aliases for seamless redirection/fallback
+// Aliases are redirected via next.config.ts permanent 301 redirects
 const SLUG_ALIASES: Record<string, string> = {
   "sop-lop-assistance": "sop-lor-assistance",
   "sop-and-lor-assistance": "sop-lor-assistance",
@@ -84,14 +84,11 @@ interface ServicePageProps {
 }
 
 export async function generateStaticParams() {
-  const canonicalSlugs = Object.keys(SERVICE_ROUTES);
-  const aliasSlugs = Object.keys(SLUG_ALIASES);
-  const allSlugs = Array.from(new Set([...canonicalSlugs, ...aliasSlugs]));
-
-  return allSlugs.map((slug) => ({
+  return Object.keys(SERVICE_ROUTES).map((slug) => ({
     slug,
   }));
 }
+
 
 export async function generateMetadata({
   params,

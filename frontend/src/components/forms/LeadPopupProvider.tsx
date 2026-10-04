@@ -44,6 +44,7 @@ export const LeadPopupProvider: React.FC<{
   const pathname = usePathname();
 
   const isOpenRef = useRef(false);
+
   useEffect(() => {
     isOpenRef.current = isOpen;
   }, [isOpen]);
@@ -77,9 +78,10 @@ export const LeadPopupProvider: React.FC<{
   }, []);
 
   /**
-   * 10-SECOND INACTIVITY MONITOR
-   * Continually monitors user action.
-   * If there is no action on the website for 10 seconds → pop up the lead popup form.
+   * 1-MINUTE INACTIVITY MONITOR
+   *
+   * If there is no user action on the website
+   * for 1 minute → open the lead popup.
    */
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -87,7 +89,7 @@ export const LeadPopupProvider: React.FC<{
     // Pause monitor while popup is currently open
     if (isOpen) return;
 
-    // Skip popup on the dedicated full-page form route (/book-counselling)
+    // Skip popup on the dedicated full-page form route
     if (pathname === "/book-counselling") return;
 
     const clearTimer = () => {
@@ -102,21 +104,26 @@ export const LeadPopupProvider: React.FC<{
 
       timerRef.current = setTimeout(() => {
         openLeadPopup({
-          source: `inactivity_${pathname === "/" ? "home" : pathname.replace(/^\//, "").replace(/\//g, "_")}`,
+          source: `inactivity_${pathname === "/"
+            ? "home"
+            : pathname.replace(/^\//, "").replace(/\//g, "_")
+            }`,
         });
-      }, 10_000); // 10 seconds of no action
+      }, 60_000); // 1 minute of no action
     };
 
-    // Any user action resets the 10-second timer
+    // Any user action resets the 1-minute timer
     const handleAction = () => {
       startTimer();
     };
 
-    // Throttled mouse movement handler so cursor movement acts as activity without performance overhead
+    // Throttled mouse movement handler
     let lastMouseMove = 0;
+
     const handleMouseMove = () => {
       const now = Date.now();
-      if (now - lastMouseMove > 1000) {
+
+      if (now - lastMouseMove > 60_000) {
         lastMouseMove = now;
         startTimer();
       }
@@ -134,9 +141,12 @@ export const LeadPopupProvider: React.FC<{
       window.addEventListener(event, handleAction, { passive: true });
     });
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, {
+      passive: true,
+    });
 
-    // Start 10-second countdown immediately on mount or route transition
+    // Start 1-minute countdown immediately
+    // on mount or route transition
     startTimer();
 
     return () => {

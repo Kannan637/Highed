@@ -44,16 +44,18 @@ export const TopBar = () => {
           </div>
 
           {/* Close Button — 44×44px touch target (WCAG 2.5.5) */}
-          <button
-            type="button"
-            onClick={handleClose}
-            className="absolute right-0.5 sm:right-2 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full text-content-primary transition-all duration-150 cursor-pointer touch-manipulation select-none hover:bg-black/10 active:scale-90"
-            aria-label="Close announcement banner"
-          >
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/50 shadow-xs hover:bg-white/80 transition-colors duration-150">
-              <X size={12} strokeWidth={2.5} />
-            </span>
-          </button>
+          <div className="absolute right-0.5 sm:right-2 top-1/2 -translate-y-1/2">
+            <button
+              type="button"
+              onClick={handleClose}
+              className="btn-motion flex h-11 w-11 items-center justify-center rounded-full text-content-primary cursor-pointer touch-manipulation select-none hover:bg-black/10"
+              aria-label="Close announcement banner"
+            >
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/50 shadow-xs hover:bg-white/80 transition-colors duration-150">
+                <X size={12} strokeWidth={2.5} />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </aside>
