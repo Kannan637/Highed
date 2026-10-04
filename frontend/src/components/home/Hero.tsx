@@ -274,10 +274,9 @@ export default function Hero() {
                             >
                                 Study Abroad{" "}
                                 <span className="font-semibold text-brand-accent">
-                                    <i>Advisors</i>
-                                </span>
-                                <br />
-                                for Your Global Education Journey
+                                    <i>Consultants</i>
+                                </span>{" "}
+                                in Tamil Nadu
                             </h1>
 
                             {/* DESCRIPTION */}
@@ -295,9 +294,7 @@ export default function Hero() {
             md:mt-8
         "
                             >
-                                Get expert study abroad guidance to explore top universities, courses,
-                                scholarships, education loans and student visa support across the USA,
-                                UK, Canada, Australia, Ireland &amp; Europe.
+                                Personalized guidance for students from Chennai, Coimbatore and across Tamil Nadu. Explore top universities, scholarships, education loans and student visa support across the USA, UK, Canada, Australia, Germany &amp; Ireland.
                             </p>
 
                             {/* CTA BUTTONS */}

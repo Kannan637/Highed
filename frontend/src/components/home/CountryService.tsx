@@ -11,6 +11,7 @@ import React, {
 import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 import gsap from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 
 import { useLeadPopup } from "@/hooks/useLeadPopup";
 import Container from "@/components/ui/Container";
@@ -18,6 +19,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 type Destination = {
     country: string;
+    slug: string;
     description: string;
     image: string;
 };
@@ -25,39 +27,52 @@ type Destination = {
 const destinations: Destination[] = [
     {
         country: "Study in Ireland",
+        slug: "ireland",
         description:
-            "Study at leading universities with globally recognised programmes, strong academic opportunities and career-focused education.",
+            "Study in Europe's leading technology & pharma hub with top universities like Trinity & UCD and a 2-year post-study work visa.",
         image: "/images/countries/IRELAND.webp",
     },
     {
         country: "Study in the USA",
+        slug: "usa",
         description:
-            "Explore leading universities, high-value programmes, research opportunities and post-study work pathways for international students.",
+            "Explore leading universities, high-value STEM programmes, research opportunities and up to 36-month post-study OPT work pathways.",
         image: "/images/countries/USA.webp",
     },
     {
         country: "Study in Canada",
+        slug: "canada",
         description:
-            "Discover leading universities, career-focused programmes and post-study opportunities for international students.",
+            "Discover leading universities, industry-focused co-op programmes and up to 3-year Post-Graduation Work Permit (PGWP) pathways.",
         image: "/images/countries/CANADA.webp",
     },
     {
         country: "Study in the UK",
+        slug: "uk",
         description:
-            "Explore world-class universities, globally recognised degrees and a wide range of undergraduate and postgraduate programmes.",
+            "Explore world-class Russell Group universities, globally recognised degrees and a 2-year Graduate Route post-study work visa.",
         image: "/images/countries/UK.webp",
     },
     {
         country: "Study in Australia",
+        slug: "australia",
         description:
-            "Explore globally ranked universities, career-focused programmes and post-study opportunities across a wide range of disciplines.",
+            "Explore Group of Eight (Go8) universities, high living standards and generous post-study work visa rights across vibrant cities.",
         image: "/images/countries/AUSTRALIA.webp",
     },
     {
-        country: "Study in New Zealand",
+        country: "Study in Germany",
+        slug: "germany",
         description:
-            "Study in a welcoming destination offering quality education, internationally recognised programmes and opportunities for international students.",
-        image: "/images/countries/NEW ZEALAND.webp",
+            "Study at world-renowned public universities with zero tuition fees, cutting-edge engineering, and an 18-month stay-back job search visa.",
+        image: "/images/countries/study-in-germany.webp",
+    },
+    {
+        country: "Study in Dubai",
+        slug: "dubai",
+        description:
+            "Access top international branch campuses with tax-free career opportunities and modern cosmopolitan living in the UAE.",
+        image: "/images/countries/Dubai Bg.webp",
     },
 ];
 
@@ -641,13 +656,8 @@ export default function StudyDestinations({
                 ===================================================== */}
 
                 <div className="mt-10 flex justify-center lg:mt-8">
-                    <button
-                        type="button"
-                        onClick={() =>
-                            openLeadPopup({
-                                source: "country_cta",
-                            })
-                        }
+                    <Link
+                        href="/study-in"
                         className="
                             btn-motion
                             group
@@ -665,7 +675,7 @@ export default function StudyDestinations({
                         "
                     >
                         <span>
-                            View All Countries
+                            View All 7 Destinations
                         </span>
 
                         <ArrowRight
@@ -677,7 +687,7 @@ export default function StudyDestinations({
                                 group-hover:translate-x-1
                             "
                         />
-                    </button>
+                    </Link>
                 </div>
             </Container>
         </section>
@@ -945,49 +955,74 @@ function DestinationCard({
                     {destination.description}
                 </p>
 
-                {/* EXPLORE */}
+                {/* EXPLORE & COUNSELLING */}
 
                 {isActive && (
-                    <button
-                        type="button"
-                        onClick={() =>
-                            openLeadPopup({
-                                source: "country_cta",
-                            })
-                        }
-                        className="
-                            btn-motion
-                            group/explore
-                            mt-5
-                            inline-flex
-                            h-11
-                            items-center
-                            gap-2
-                            rounded-full
-                            bg-brand-accent
-                            px-5
-                            text-sm
-                            font-semibold
-                            text-white
-                            shadow-[0_8px_20px_rgba(233,63,97,0.25)]
-                            hover:bg-brand-accent-hover
-                            hover:shadow-[0_10px_25px_rgba(233,63,97,0.32)]
-                        "
-                    >
-                        <span>
-                            Explore
-                        </span>
-
-                        <ArrowRight
-                            size={16}
-                            strokeWidth={2.4}
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
+                        <Link
+                            href={`/study-in/${destination.slug}`}
                             className="
-                                transition-transform
-                                duration-200
-                                group-hover/explore:translate-x-1
+                                btn-motion
+                                group/explore
+                                inline-flex
+                                h-11
+                                items-center
+                                gap-2
+                                rounded-full
+                                bg-white
+                                px-5
+                                text-sm
+                                font-semibold
+                                text-brand-primary
+                                shadow-[0_8px_20px_rgba(0,0,0,0.18)]
+                                hover:bg-white/95
                             "
-                        />
-                    </button>
+                        >
+                            <span>
+                                Explore Guide
+                            </span>
+
+                            <ArrowRight
+                                size={16}
+                                strokeWidth={2.4}
+                                className="
+                                    transition-transform
+                                    duration-200
+                                    group-hover/explore:translate-x-1
+                                "
+                            />
+                        </Link>
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                openLeadPopup({
+                                    source: `country_cta_${destination.slug}`,
+                                })
+                            }
+                            className="
+                                btn-motion
+                                group/counsel
+                                inline-flex
+                                h-11
+                                items-center
+                                gap-2
+                                rounded-full
+                                bg-brand-accent
+                                px-5
+                                text-sm
+                                font-semibold
+                                text-white
+                                shadow-[0_8px_20px_rgba(233,63,97,0.25)]
+                                hover:bg-brand-accent-hover
+                                hover:shadow-[0_10px_25px_rgba(233,63,97,0.32)]
+                            "
+                        >
+                            <span>
+                                Free Counselling
+                            </span>
+                        </button>
+                    </div>
                 )}
             </div>
         </article>

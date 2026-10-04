@@ -647,39 +647,15 @@ export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
         )}
 
         {/* ========================================================
-            EXPLORE ALL
+            EXPLORE ALL & SCHOLARSHIP FINDER TOOL
             ======================================================== */}
 
-        <div className="mt-10 flex justify-center sm:mt-12">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:mt-12">
           <Link
-            href={`/ study -in /${country.slug}/explore ? type = scholarships`}
+            href={`/study-in/${country.slug}/explore?type=scholarships`}
             className={cn(
               buttonVariants({ variant: "outline" }),
-              `
-                group
-flex
-h - 12
-w - full
-max - w - [420px]
-cursor - pointer
-items - center
-justify - center
-gap - 2.5
-rounded - [var(--radius - btn)]
-border - border -default
-bg - surface -default
-px - 6
-text - btn
-text - content - primary
-shadow - none
-transition - all
-duration - [var(--duration - fast)]
-hover: border - brand - primary
-hover: bg - surface - brand - light
-hover: text - brand - primary
-sm: w - auto
-sm: max - w - none
-  `
+              "group flex h-12 w-full max-w-[360px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-black/10 bg-white px-6 text-sm font-semibold text-brand-primary shadow-none transition-all hover:border-brand-primary hover:bg-brand-primary/5 sm:w-auto sm:max-w-none"
             )}
           >
             <Compass
@@ -689,17 +665,36 @@ sm: max - w - none
             />
 
             <span>
-              Explore All Scholarships & Application Deadlines
+              Explore {country.name} Scholarships
             </span>
 
             <ArrowRight
               aria-hidden="true"
-              className="
-                size-4
-                transition-transform
-                duration-[var(--duration-fast)]
-                group-hover:translate-x-1
-              "
+              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
+          </Link>
+
+          <Link
+            href="/tools/scholarship-finder"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "group flex h-12 w-full max-w-[360px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-brand-accent/20 bg-brand-accent/5 px-6 text-sm font-semibold text-brand-accent shadow-none transition-all hover:border-brand-accent hover:bg-brand-accent/10 sm:w-auto sm:max-w-none"
+            )}
+          >
+            <Award
+              aria-hidden="true"
+              className="size-4 text-brand-accent"
+              strokeWidth={1.8}
+            />
+
+            <span>
+              Match Profile on Scholarship Finder
+            </span>
+
+            <ArrowRight
+              aria-hidden="true"
+              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
               strokeWidth={1.8}
             />
           </Link>

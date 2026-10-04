@@ -10,6 +10,8 @@ const testimonials = [
     name: "Karthik Subramanian",
     fallback: "KS",
     degree: "MSc Computer Science, University of Leeds",
+    destination: "UK",
+    intake: "Fall 2026",
     gradient: "from-brand-primary to-indigo-900",
   },
   {
@@ -17,6 +19,8 @@ const testimonials = [
     name: "Pooja Ramakrishnan",
     fallback: "PR",
     degree: "MBA, Trinity College Dublin",
+    destination: "Ireland",
+    intake: "Fall 2026",
     gradient: "from-brand-accent to-rose-800",
   },
   {
@@ -24,6 +28,8 @@ const testimonials = [
     name: "Anand Venkatesh",
     fallback: "AV",
     degree: "MEng Software Engineering, University of Windsor",
+    destination: "Canada",
+    intake: "Fall 2026",
     gradient: "from-blue-700 to-brand-primary",
   },
   {
@@ -31,13 +37,17 @@ const testimonials = [
     name: "Deepika Sundaram",
     fallback: "DS",
     degree: "MS Data Analytics, Northeastern University",
+    destination: "USA",
+    intake: "Fall 2026",
     gradient: "from-rose-700 to-brand-accent",
   },
   {
-    text: "Transparent, honest, and highly professional counsellors in Coimbatore. Best study abroad consultancy by far.",
+    text: "Transparent, honest, and highly professional counsellors for Coimbatore students. Best study abroad guidance by far.",
     name: "Manoj Kumar",
     fallback: "MK",
     degree: "Master of Management, University of Melbourne",
+    destination: "Australia",
+    intake: "Feb 2026",
     gradient: "from-indigo-800 to-brand-primary",
   },
   {
@@ -45,6 +55,8 @@ const testimonials = [
     name: "Sowmya Natarajan",
     fallback: "SN",
     degree: "MSc Automotive Systems, RWTH Aachen",
+    destination: "Germany",
+    intake: "Winter 2026",
     gradient: "from-brand-accent to-amber-700",
   },
 ];
@@ -95,19 +107,25 @@ export default function Testimonials2() {
             >
               <CardContent className="relative z-10 flex h-full min-h-[330px] flex-col p-7 md:p-8">
 
-                {/* Rating (High contrast Gold Stars) */}
-                <div
-                  role="img"
-                  className="mb-6 flex items-center gap-1"
-                  aria-label="5 out of 5 stars"
-                >
-                  {[...Array(5)].map((_, idx) => (
-                    <Star
-                      key={idx}
-                      className="h-[17px] w-[17px] fill-amber-400 text-amber-500"
-                      strokeWidth={1.5}
-                    />
-                  ))}
+                {/* Rating & Destination/Intake Tag */}
+                <div className="mb-5 flex items-center justify-between gap-2">
+                  <div
+                    role="img"
+                    className="flex items-center gap-1"
+                    aria-label="5 out of 5 stars"
+                  >
+                    {[...Array(5)].map((_, idx) => (
+                      <Star
+                        key={idx}
+                        className="h-[17px] w-[17px] fill-amber-400 text-amber-500"
+                        strokeWidth={1.5}
+                      />
+                    ))}
+                  </div>
+
+                  <span className="rounded-full bg-brand-primary/5 px-2.5 py-0.5 text-[11px] font-semibold text-brand-primary">
+                    {t.destination} • {t.intake}
+                  </span>
                 </div>
 
                 {/* Testimonial */}

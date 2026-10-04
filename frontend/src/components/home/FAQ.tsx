@@ -45,7 +45,7 @@ const defaultCategories: FAQCategory[] = [
                 question:
                     "Which country is best for Tamil Nadu students?",
                 answer:
-                    "Popular destinations include the UK, USA, Canada, Australia, Ireland, and New Zealand. The ideal country depends on your academic profile, budget, preferred programme, and post-study career goals.",
+                    "Popular study destinations for Indian students include the USA, UK, Canada, Australia, Germany, Ireland, and Dubai. The ideal choice depends on your academic profile, budget, tuition structure, and post-study work authorization goals.",
             },
             {
                 question:
@@ -121,7 +121,7 @@ const defaultCategories: FAQCategory[] = [
                 question:
                     "Can I work part-time while studying abroad?",
                 answer:
-                    "Yes. Most destinations (UK, Australia, Canada, Ireland, New Zealand) permit international students to work up to 20 hours per week during term time and full-time during vacations.",
+                    "Yes. International students are permitted to work part-time: up to 20 hours/week in the UK and Ireland, up to 24 hours/fortnight in Australia, up to 20 hours on-campus in the USA, and up to 140 full days per year in Germany under updated student visa regulations.",
             },
         ],
     },
@@ -292,7 +292,15 @@ export function FAQSection({
                     })}
                 </div>
 
-                {/* BOTTOM CTA */}
+                {/* SOURCE ATTRIBUTION & LAST VERIFIED FOOTER */}
+                <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-content-secondary/80 border-t border-black/5 pt-4">
+                    <span>
+                        Regulatory Sources: USCIS &amp; US Dept of State, UKVI, DAAD Germany, Australian Home Affairs, Education in Ireland
+                    </span>
+                    <span className="whitespace-nowrap font-medium text-brand-primary/75">
+                        Last Verified: October 2026
+                    </span>
+                </div>
                 {/* <div className="mt-12 flex justify-center">
                     <LeadCTAButton source="faq">
                         Ask Expert - Request Callback
