@@ -3,17 +3,17 @@ import { CityData } from "@/types/city";
 export const tirupathi: CityData = {
   slug: "tirupathi",
   name: "Tirupathi",
-  title: "Best Study Abroad Consultant for Students in Tirupathi",
+  title: "Study Abroad Consultants in Tirupathi | HighEd",
   tagline:
-    "Helping students from Tirupathi and Rayalaseema reach top universities in USA, UK, Canada, Australia, Germany, and Dubai with zero consultancy charges.",
+    "Helping students from Tirupathi and Rayalaseema reach top universities in USA, UK, Canada, Australia, Germany, Ireland, and Dubai with zero consultancy charges.",
   intro:
     "Tirupathi is a premier higher education center of Andhra Pradesh, home to Sri Venkateswara University (SVU), SPMVV, IIT Tirupati, and Mohan Babu University. HighEd provides students from Tirupathi with trusted, high-touch online overseas counseling, university matching, scholarship strategies, and visa interview preparation to make their international education dreams a reality.",
   heroImage: "/images/cities/tirupathi.webp",
   stats: [
-    { label: "Students Placed from AP", value: "620+" },
-    { label: "Visa Success Rate", value: "98.5%" },
-    { label: "Scholarships Secured", value: "₹8.5 Cr+" },
-    { label: "Global Partner Admits", value: "240+" },
+    { label: "Study Destinations", value: "7" },
+    { label: "1-on-1 Advisory", value: "100% Free" },
+    { label: "Visa Documentation", value: "End-to-End" },
+    { label: "Regional Support", value: "Online & Hybrid" },
   ],
   whyHighEd: [
     {

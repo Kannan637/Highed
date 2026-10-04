@@ -9,7 +9,7 @@ import ExploreContent from "@/components/explore/ExploreContent";
 export const metadata: Metadata = constructMetadata({
   title: "Explore Global Universities, Courses & Scholarships",
   description:
-    "Search and compare 500+ top-ranked international universities, degree courses, tuition fees, and scholarship opportunities worldwide across USA, UK, Canada, Australia, Dubai, and Germany.",
+    "Search and compare top-ranked international universities, degree courses, tuition fees, and scholarship opportunities across USA, UK, Canada, Australia, Ireland, Germany, and Dubai.",
   path: "/explore",
   keywords: [
     "explore universities worldwide",

@@ -33,292 +33,284 @@ const categories = [
 const courses: Record<string, Course[]> = {
   MBA: [
     {
-      country: "Study in Finland",
-      university: "International Business School",
-      title: "MBA in Strategic Data Driven Management",
+      country: "Study in USA",
+      university: "University of Texas at Dallas",
+      title: "Full-Time MBA (STEM Designated)",
       description:
-        "Accredited by British Accreditation Council (BAC) in MBA in Strategic Data Driven Management...",
+        "AACSB-accredited curriculum featuring dual STEM degree options, specialized concentrations, and up to 36 months OPT authorization...",
     },
     {
       country: "Study in Ireland",
-      university: "Dublin Business School",
-      title: "MBA in Global Business & Leadership",
+      university: "Trinity College Dublin",
+      title: "Trinity Full-Time MBA",
       description:
-        "Develop essential leadership acumen and strategic perspective for competitive international markets...",
+        "Ranked among Europe's top MBA degrees, immersed in Dublin's multinational technology hub with a 2-year post-study work visa...",
     },
     {
-      country: "Study in San Francisco, USA",
-      university: "University of San Francisco",
-      title: "MBA in Innovation & Tech Strategy",
+      country: "Study in USA",
+      university: "Arizona State University",
+      title: "Full-Time MBA (W. P. Carey)",
       description:
-        "Silicon Valley focused programme preparing leaders for high-growth ventures and digital transformation...",
+        "Consistently ranked top-tier for innovation and supply chain management, offering extensive US corporate project partnerships...",
     },
     {
       country: "Study in Germany",
-      university: "Munich Business School",
-      title: "Executive MBA in Digital Transformation",
+      university: "Frankfurt School of Finance & Management",
+      title: "Full-Time MBA",
       description:
-        "Master business management frameworks alongside industry 4.0 paradigms and European corporate strategy...",
+        "Triple-crown accredited German MBA with dedicated career tracks into continental European financial and consulting institutions...",
     },
     {
       country: "Study in UK",
-      university: "University of Leeds",
-      title: "MBA in International Business Strategy",
+      university: "University of Birmingham",
+      title: "The Birmingham MBA (Triple Crown)",
       description:
-        "Triple-accredited UK MBA delivering robust consulting skills, global immersion, and senior executive readiness...",
+        "AMBA, EQUIS, and AACSB accredited 1-year intensive MBA featuring corporate consultancy projects and London financial recruitment...",
     },
     {
       country: "Study in Canada",
-      university: "Rotman School of Management",
-      title: "International MBA in Financial Management",
+      university: "Rotman School of Management (U of T)",
+      title: "Full-Time MBA Programme",
       description:
-        "Pioneering curriculum combining integrative thinking, financial modelling, and global career mobility...",
+        "Canada's leading business school delivering integrative thinking, finance labs, and a 3-year post-graduation work permit (PGWP)...",
     },
   ],
 
   Management: [
     {
-      country: "Study in Finland",
-      university: "International Business School",
-      title: "MSc in International Management",
+      country: "Study in Germany",
+      university: "ESMT Berlin",
+      title: "Master in Management (MIM)",
       description:
-        "Build advanced management skills with a globally focused business programme...",
+        "Top-ranked European programme emphasizing data-driven business analytics, international consultancies, and European corporate ties...",
     },
     {
       country: "Study in Ireland",
-      university: "Trinity College Dublin",
-      title: "MSc in Business Management",
+      university: "University College Dublin (Smurfit)",
+      title: "MSc in International Management",
       description:
-        "Develop strategic business knowledge and international management expertise with European industry links...",
+        "CEMS-aligned European business masters connecting candidates directly with global enterprise headquarters across Dublin...",
     },
     {
-      country: "Study in San Francisco, USA",
-      university: "San Francisco State University",
-      title: "Master of Global Management",
+      country: "Study in USA",
+      university: "Northeastern University",
+      title: "MS in Global Management",
       description:
-        "Prepare for leadership roles with a practical, internationally focused corporate management curriculum...",
+        "Practical curriculum emphasizing global enterprise consulting, operational supply strategy, and experiential co-op placements...",
     },
     {
       country: "Study in Germany",
-      university: "ESMT Berlin",
-      title: "Master in Management & Strategic Operations",
+      university: "Munich Business School",
+      title: "Master in International Business",
       description:
-        "Leading German programme emphasizing corporate consulting, analytical decision-making, and supply agility...",
+        "Specialized European management tracks in digital enterprise, consulting, and Bavarian industry collaborations...",
     },
     {
       country: "Study in UK",
-      university: "University of Manchester",
-      title: "MSc in International Operations Management",
+      university: "University of Leeds",
+      title: "MSc International Business",
       description:
-        "Equip yourself to navigate global value chains, strategic procurement, and cross-border enterprise leadership...",
+        "World-renowned British business school training leaders in multinational corporate operations and global trade strategy...",
     },
     {
       country: "Study in Australia",
       university: "University of Melbourne",
-      title: "Master of Management & Organizational Change",
+      title: "Master of Management",
       description:
-        "Accelerate your career trajectory across the Asia-Pacific region with premier management pedagogy...",
+        "Premier Asia-Pacific business foundation delivering strategic leadership skills alongside Australian post-study work visa rights...",
     },
   ],
 
   "Data Science": [
     {
-      country: "Study in Finland",
-      university: "University of Helsinki",
-      title: "MSc in Data Science & Big Data",
+      country: "Study in USA",
+      university: "Northeastern University",
+      title: "MS in Data Science (STEM)",
       description:
-        "Learn advanced analytics, machine learning, scalable data architectures and data-driven decision making...",
+        "Comprehensive training in machine learning algorithms, scalable distributed data architectures, and 36-month STEM OPT eligibility...",
     },
     {
       country: "Study in Ireland",
       university: "University College Dublin",
-      title: "MSc Data Analytics & Visualization",
+      title: "MSc in Data & Computational Science",
       description:
-        "Develop practical expertise in modern data analytics, statistical modelling, and business intelligence...",
+        "Rigorous quantitative training combining statistical modeling, cloud pipelines, and direct hiring access to Silicon Docks...",
     },
     {
-      country: "Study in San Francisco, USA",
-      university: "San Francisco State University",
+      country: "Study in USA",
+      university: "University of Texas at Arlington",
       title: "MS in Applied Data Science",
       description:
-        "Build industry-ready skills in data pipelines, deep learning foundations, and intelligent automated systems...",
+        "STEM-designated degree focusing on end-to-end predictive modeling, big data frameworks, and practical industry internships...",
     },
     {
       country: "Study in Germany",
       university: "Technical University of Munich",
       title: "MSc in Data Engineering & Analytics",
       description:
-        "World-class German curriculum focused on high-throughput database systems, distributed algorithms, and math...",
+        "Elite German research curriculum focused on high-throughput database systems, distributed algorithms, and mathematical rigor...",
     },
     {
       country: "Study in UK",
       university: "University of Edinburgh",
-      title: "MSc in Data Science & AI Systems",
+      title: "MSc in Data Science",
       description:
-        "Study at Europe's leading informatics powerhouse with deep roots in natural computing and predictive models...",
+        "World-renowned UK informatics center delivering foundational knowledge in machine learning, statistical inference, and big data...",
     },
     {
       country: "Study in Canada",
       university: "University of British Columbia",
       title: "Master of Data Science (MDS)",
       description:
-        "Accelerated professional master's focused on real-world capstones, statistical inference, and software...",
+        "Intensive 10-month professional degree focused on data workflows, cloud computation, and real-world capstone partner projects...",
     },
   ],
 
   "AI & ML": [
     {
-      country: "Study in Finland",
-      university: "Aalto University",
-      title: "MSc in Artificial Intelligence",
+      country: "Study in USA",
+      university: "Arizona State University",
+      title: "MS in Artificial Intelligence",
       description:
-        "Explore modern artificial intelligence technologies, autonomous agents, and intelligent applications...",
+        "STEM-certified advanced curriculum spanning neural networks, autonomous agents, and scalable generative models...",
     },
     {
       country: "Study in Ireland",
       university: "Trinity College Dublin",
-      title: "MSc in Machine Learning & Neural Nets",
+      title: "MSc in Computer Science (Intelligent Systems)",
       description:
-        "Gain practical expertise in machine learning algorithms, deep architectures, and computer vision...",
+        "Specialized master's covering computer vision, deep reinforcement learning, and natural language understanding in Dublin...",
     },
     {
-      country: "Study in San Francisco, USA",
-      university: "Northeastern University",
-      title: "MS in AI & Machine Learning",
+      country: "Study in USA",
+      university: "Stevens Institute of Technology",
+      title: "MS in Applied Artificial Intelligence",
       description:
-        "Prepare for high-demand Bay Area careers in large language models, generative AI, and intelligent software...",
+        "New York metro area STEM programme delivering cutting-edge training in automated reasoning, computer vision, and robotics...",
     },
     {
       country: "Study in Germany",
-      university: "RWTH Aachen",
-      title: "MSc in Applied Artificial Intelligence",
+      university: "RWTH Aachen University",
+      title: "MSc in Data Science & Machine Learning",
       description:
-        "Interdisciplinary technical programme fusing neural networks, robotics perception, and industrial ML...",
+        "Interdisciplinary technical programme fusing mathematical optimization, neural architectures, and industrial AI implementations...",
     },
     {
       country: "Study in UK",
-      university: "Imperial College London",
-      title: "MSc in Artificial Intelligence & Robotics",
+      university: "University of Manchester",
+      title: "MSc in Artificial Intelligence",
       description:
-        "Elite UK master's exploring advanced reinforcement learning, autonomous agents, and mathematical foundations...",
+        "World-leading research institution offering comprehensive training in symbolic reasoning, machine learning, and cognitive computing...",
     },
     {
       country: "Study in Australia",
       university: "Monash University",
       title: "Master of Artificial Intelligence",
       description:
-        "Industry-embedded Australian qualification in ethical AI, computer vision, and cognitive computing...",
+        "Australia's dedicated AI qualification covering machine learning, deep learning architectures, and modern autonomous robotics...",
     },
   ],
 
   Engineering: [
     {
-      country: "Study in Finland",
-      university: "LUT University",
-      title: "MSc in Engineering Management",
+      country: "Study in Germany",
+      university: "Technical University of Munich",
+      title: "MSc in Mechanical & Systems Engineering",
       description:
-        "Combine engineering expertise with advanced leadership, green technology, and operational management skills...",
+        "World-class German engineering education in mechatronics, smart automotive systems, and advanced robotics...",
     },
     {
       country: "Study in Ireland",
       university: "University of Limerick",
       title: "MSc in Software Engineering",
       description:
-        "Develop advanced software engineering skills, microservices architecture, and cloud systems for tech careers...",
+        "Industry-integrated curriculum covering cloud systems, distributed architectures, and microservices for international tech careers...",
     },
     {
-      country: "Study in San Francisco, USA",
+      country: "Study in USA",
       university: "San Jose State University",
       title: "MS in Computer Engineering",
       description:
-        "Build strong hardware-software co-design foundations for careers across modern computing and semiconductor tech...",
+        "Silicon Valley located STEM degree delivering hardware-software co-design foundations with top regional tech placement...",
     },
     {
       country: "Study in Germany",
-      university: "TU Munich",
-      title: "MSc in Systems & Automotive Engineering",
+      university: "RWTH Aachen University",
+      title: "MSc in Automotive Engineering",
       description:
-        "Cutting-edge German engineering curriculum covering mechatronics, smart mobility, and autonomous controls...",
+        "Leading German automotive credential emphasizing electrification, autonomous vehicle dynamics, and sustainable mobility...",
     },
     {
       country: "Study in UK",
       university: "University of Sheffield",
       title: "MSc in Advanced Mechanical Engineering",
       description:
-        "Renowned UK engineering degree focusing on computational mechanics, aerodynamics, and composite materials...",
+        "Russell Group degree focusing on computational fluid mechanics, advanced materials, and sustainable energy systems...",
     },
     {
       country: "Study in Canada",
-      university: "McGill University",
-      title: "MEng in Sustainable Engineering & Infrastructure",
+      university: "University of Windsor",
+      title: "Master of Applied Computing & Engineering",
       description:
-        "Canadian credential emphasizing renewable systems, life-cycle analysis, and smart municipal networks...",
+        "Canadian professional master's emphasizing software engineering, embedded systems, and generous 3-year PGWP work permits...",
     },
   ],
 
   Healthcare: [
     {
-      country: "Study in Finland",
-      university: "Arcada University",
+      country: "Study in Ireland",
+      university: "RCSI University of Medicine and Health Sciences",
       title: "MSc in Healthcare Management",
       description:
-        "Develop the skills required to lead and optimize modern European healthcare organisations and digital health...",
+        "Dedicated health sciences institution training clinical and corporate leaders in health systems governance and patient safety...",
     },
     {
       country: "Study in Ireland",
       university: "University College Cork",
       title: "MSc in Public Health & Health Informatics",
       description:
-        "Gain advanced knowledge in healthcare systems, preventative policy, epidemiological analytics, and data...",
+        "Gain advanced knowledge in epidemiological analytics, healthcare delivery systems, and preventative health policy...",
     },
     {
-      country: "Study in San Francisco, USA",
-      university: "Golden Gate University",
+      country: "Study in USA",
+      university: "Johns Hopkins University",
       title: "Master of Health Administration (MHA)",
       description:
-        "Prepare for executive leadership positions across hospitals, clinical systems, and modern biotech organizations...",
+        "Global leader in healthcare education preparing executive managers for hospitals, clinical systems, and biotech enterprises...",
     },
     {
       country: "Study in Germany",
       university: "Charité - Universitätsmedizin Berlin",
       title: "MSc in International Health & Global Systems",
       description:
-        "Study at Europe's largest university clinic, mastering disease control, health economics, and global health policy...",
+        "Study at Europe's largest university clinic, mastering disease control strategies, health economics, and global health policy...",
     },
     {
       country: "Study in UK",
       university: "King's College London",
       title: "MSc in Healthcare Leadership & Management",
       description:
-        "Renowned London medical school programme developing visionary clinical executives and healthcare consultants...",
+        "Renowned London medical institution preparing visionary clinical managers, healthcare economists, and policy advisors...",
     },
     {
       country: "Study in Australia",
       university: "University of Sydney",
       title: "Master of Health Policy & Administration",
       description:
-        "Premier Asia-Pacific degree focused on clinical governance, health financing, and strategic policy reform...",
+        "Premier Asia-Pacific degree focused on clinical governance, international health financing, and strategic policy reform...",
     },
   ],
 };
 
 function getFlag(country: string) {
-  if (country.includes("Finland")) return "🇫🇮";
   if (country.includes("Ireland")) return "🇮🇪";
-  if (country.includes("San Francisco") || country.includes("USA"))
-    return "🇺🇸";
-  if (country.includes("UK") || country.includes("United Kingdom"))
-    return "🇬🇧";
+  if (country.includes("USA")) return "🇺🇸";
+  if (country.includes("UK") || country.includes("United Kingdom")) return "🇬🇧";
   if (country.includes("Australia")) return "🇦🇺";
   if (country.includes("Canada")) return "🇨🇦";
-  if (
-    country.includes("Germany") ||
-    country.includes("Munich") ||
-    country.includes("Berlin")
-  )
-    return "🇩🇪";
-
-  return "🌎";
+  if (country.includes("Germany") || country.includes("Munich") || country.includes("Berlin")) return "🇩🇪";
+  if (country.includes("Dubai") || country.includes("UAE")) return "🇦🇪";
+  return "🌍";
 }
 
 function ImagePlaceholder() {

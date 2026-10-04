@@ -37,13 +37,13 @@ export async function GET() {
 - Study in Dubai (UAE): ${baseUrl}/study-in/dubai
 
 ## Key Advisory Services
-- University & Course Selection: ${baseUrl}/services/university-selection
-- SOP, LOR & Resume Assistance: ${baseUrl}/services/sop-lor-assistance
-- University Application Processing: ${baseUrl}/services/application-assistance
-- Scholarship & Grant Guidance: ${baseUrl}/services/scholarship-guidance
-- Student Visa Documentation & Mock Interviews: ${baseUrl}/services/visa-guidance
-- Education Loan Assistance: ${baseUrl}/services/education-loan-assistance
-- Pre-Departure Briefing & Forex Support: ${baseUrl}/services/pre-departure-briefing
+- Career Counselling: ${baseUrl}/services/career-counselling
+- University Application Processing: ${baseUrl}/services/university-application
+- Scholarship Assistance: ${baseUrl}/services/scholarship-assistance
+- SOP & LOR Assistance: ${baseUrl}/services/sop-lor-assistance
+- Student Visa Documentation & Mock Interviews: ${baseUrl}/services/visa-assistance
+- Education Loan Guidance: ${baseUrl}/services/education-loan
+- Accommodation & Pre-Departure Support: ${baseUrl}/services/accommodation-pre-departure
 
 ## Free Evaluation Tools & Interactive Calculators
 - Profile Evaluator: ${baseUrl}/tools/profile-checker

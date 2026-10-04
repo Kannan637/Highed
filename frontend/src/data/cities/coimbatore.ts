@@ -3,17 +3,17 @@ import { CityData } from "@/types/city";
 export const coimbatore: CityData = {
   slug: "coimbatore",
   name: "Coimbatore",
-  title: "Best Study Abroad Consultant for Students in Coimbatore",
+  title: "Study Abroad Consultants in Coimbatore | HighEd",
   tagline:
-    "Guiding Coimbatore's top engineering and management minds toward prestigious universities in Germany, USA, UK, Australia, Canada, and Dubai.",
+    "Guiding Coimbatore's top engineering and management minds toward prestigious universities in Germany, USA, UK, Australia, Canada, Ireland, and Dubai.",
   intro:
-    "Known as the industrial backbone and engineering powerhouse of Tamil Nadu, Coimbatore is renowned for premier institutions like PSG Tech, CIT, Kumaraguru, and Amrita. For students in Coimbatore, HighEd provides expert online counselling to help you transition from regional excellence to global leadership with zero consultancy fees and a proven 99% visa success rate.",
+    "Known as the industrial backbone and engineering powerhouse of Tamil Nadu, Coimbatore is renowned for premier institutions like PSG Tech, CIT, Kumaraguru, and Amrita. For students in Coimbatore, HighEd provides expert online counselling to help you transition from regional excellence to global leadership with zero consultancy fees and dedicated visa guidance.",
   heroImage: "/images/cities/coimbatore.webp",
   stats: [
-    { label: "Coimbatore Students Placed", value: "850+" },
-    { label: "Visa Approval Rate", value: "99.1%" },
-    { label: "Scholarships Secured", value: "₹12 Cr+" },
-    { label: "Top University Admits", value: "320+" },
+    { label: "Study Destinations", value: "7" },
+    { label: "1-on-1 Advisory", value: "100% Free" },
+    { label: "Visa Documentation", value: "End-to-End" },
+    { label: "Regional Support", value: "Online & Hybrid" },
   ],
   whyHighEd: [
     {

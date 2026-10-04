@@ -138,15 +138,15 @@ export default function EventsView() {
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xs">
                 <p className="font-heading text-2xl sm:text-3xl font-bold text-[#D6B66A]">100%</p>
-                <p className="mt-1 text-xs text-white/70">Free Entry & Evaluation</p>
+                <p className="mt-1 text-xs text-white/70">Free Entry &amp; Profile Review</p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xs">
-                <p className="font-heading text-2xl sm:text-3xl font-bold text-white">₹5 Cr+</p>
-                <p className="mt-1 text-xs text-white/70">Scholarships Conferred</p>
+                <p className="font-heading text-2xl sm:text-3xl font-bold text-white">1-on-1</p>
+                <p className="mt-1 text-xs text-white/70">University Rep Sessions</p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xs">
-                <p className="font-heading text-2xl sm:text-3xl font-bold text-emerald-400">98.4%</p>
-                <p className="mt-1 text-xs text-white/70">Visa Approval Rate</p>
+                <p className="font-heading text-2xl sm:text-3xl font-bold text-emerald-400">7</p>
+                <p className="mt-1 text-xs text-white/70">Study Destinations</p>
               </div>
             </div>
           </div>

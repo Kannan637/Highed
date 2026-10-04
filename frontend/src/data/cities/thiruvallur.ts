@@ -3,17 +3,17 @@ import { CityData } from "@/types/city";
 export const thiruvallur: CityData = {
   slug: "thiruvallur",
   name: "Thiruvallur",
-  title: "Best Study Abroad Consultant for Students in Thiruvallur",
+  title: "Study Abroad Consultants in Thiruvallur | HighEd",
   tagline:
-    "Empowering students from Thiruvallur, Avadi, and the industrial corridor with free expert overseas guidance for USA, UK, Canada, Australia, and Germany.",
+    "Empowering students from Thiruvallur, Avadi, and the industrial corridor with free expert overseas guidance for USA, UK, Canada, Australia, Germany, Ireland, and Dubai.",
   intro:
     "Thiruvallur district is a burgeoning educational hub in Greater Chennai, home to premier institutions like Vel Tech, Prathyusha, and neighboring engineering clusters. For students in Thiruvallur, HighEd offers accessible, reliable, and completely free online overseas education counseling—guiding you step-by-step from test preparation to university admissions, education loans, and visa approvals.",
   heroImage: "/images/cities/thiruvallur.webp",
   stats: [
-    { label: "Students Placed from District", value: "480+" },
-    { label: "Visa Approval Rate", value: "98.7%" },
-    { label: "Scholarships Secured", value: "₹6.8 Cr+" },
-    { label: "Global Partner Admits", value: "190+" },
+    { label: "Study Destinations", value: "7" },
+    { label: "1-on-1 Advisory", value: "100% Free" },
+    { label: "Visa Documentation", value: "End-to-End" },
+    { label: "Regional Support", value: "Online & Hybrid" },
   ],
   whyHighEd: [
     {

@@ -65,6 +65,8 @@ const countries = [
   { code: "US", name: "United States" },
   { code: "CA", name: "Canada" },
   { code: "AU", name: "Australia" },
+  { code: "DE", name: "Germany" },
+  { code: "IE", name: "Ireland" },
 ];
 
 function CountryFlags() {
@@ -104,7 +106,7 @@ function CountryFlags() {
         ))}
       </div>
 
-      <span className="ml-1.5 whitespace-nowrap">50+ countries</span>
+      <span className="ml-1.5 whitespace-nowrap">7 Destinations</span>
     </div>
   );
 }
@@ -279,7 +281,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     after:hidden
                   "
                 >
-                  Trusted by 1000+ Students
+                  Verified Study Abroad Advisory
                 </EyebrowBadge>
               </div>
 
@@ -420,7 +422,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     className="shrink-0"
                   />
                   <span className="text-body-small font-medium text-white sm:text-body">
-                    4.9 review in Google
+                    Verified Student Advisory
                   </span>
                 </div>
               </div>
@@ -498,7 +500,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     tracking-[-0.06em]
                   "
                 >
-                  500+
+                  7
                 </div>
 
                 <div
@@ -509,7 +511,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     leading-tight
                   "
                 >
-                  Global University
+                  Top Destinations
                 </div>
               </div>
 
@@ -539,7 +541,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     tracking-[-0.06em]
                   "
                 >
-                  95+
+                  100%
                 </div>
 
                 <div
@@ -550,7 +552,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     leading-tight
                   "
                 >
-                  Visa Success Rate
+                  Free Advisory
                 </div>
               </div>
             </div>
@@ -618,7 +620,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     tracking-[-0.06em]
                   "
                 >
-                  500+
+                  7
                 </div>
 
                 <div
@@ -628,7 +630,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     font-medium
                   "
                 >
-                  Global University
+                  Top Destinations
                 </div>
               </div>
 
@@ -658,7 +660,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     tracking-[-0.06em]
                   "
                 >
-                  95+
+                  100%
                 </div>
 
                 <div
@@ -668,7 +670,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                     font-medium
                   "
                 >
-                  Visa Success Rate
+                  Free Advisory
                 </div>
               </div>
             </div>

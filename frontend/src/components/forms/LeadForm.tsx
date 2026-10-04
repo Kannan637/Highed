@@ -519,20 +519,20 @@ export const LeadForm: React.FC<LeadFormProps> = ({
               {/* Floating stat card — top-right (matches Hero.tsx pattern) */}
               <div className="absolute right-4 top-6 z-20 w-[140px] rounded-[20px] bg-[#FFE59A] p-3.5 text-[#253A7B] shadow-[0_15px_35px_rgba(8,18,55,0.18)]">
                 <div className="text-[32px] font-normal leading-none tracking-[-0.06em]">
-                  500+
+                  7
                 </div>
                 <div className="mt-1 text-[12px] font-medium leading-tight">
-                  Global Universities
+                  Top Destinations
                 </div>
               </div>
 
               {/* Floating stat card — bottom-left */}
               <div className="absolute bottom-8 left-4 z-20 rounded-[20px] bg-white px-4 py-3 text-[#253A7B] shadow-[0_15px_35px_rgba(8,18,55,0.18)]">
                 <div className="text-[28px] font-semibold leading-none tracking-[-0.06em]">
-                  95%
+                  100%
                 </div>
                 <div className="mt-1 text-[11px] font-medium leading-tight">
-                  Visa Success Rate
+                  Free Advisory
                 </div>
               </div>
             </div>

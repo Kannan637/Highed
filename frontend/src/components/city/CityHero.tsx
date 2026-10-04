@@ -109,7 +109,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-emerald-400" />
-                850+ Partner Universities
+                7 Top Destinations
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-emerald-400" />
@@ -162,7 +162,7 @@ export const CityHero: React.FC<CityHeroProps> = ({ city }) => {
                   </div>
                   <div>
                     <h4 className="card-title text-white">Visa File & Mock Prep</h4>
-                    <p className="text-caption font-medium text-white/70 mt-0.5">Comprehensive documentation and mock interviews for 99% approval</p>
+                    <p className="text-caption font-medium text-white/70 mt-0.5">Comprehensive documentation and mock interviews for maximum visa confidence</p>
                   </div>
                 </div>
               </div>

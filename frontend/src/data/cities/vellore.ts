@@ -3,17 +3,17 @@ import { CityData } from "@/types/city";
 export const vellore: CityData = {
   slug: "vellore",
   name: "Vellore",
-  title: "Best Study Abroad Consultant for Students in Vellore",
+  title: "Study Abroad Consultants in Vellore | HighEd",
   tagline:
-    "Guiding students from VIT, CMC, and Vellore's top institutions to world-renowned universities in USA, Germany, UK, Canada, and Australia.",
+    "Guiding students from VIT, CMC, and Vellore's top institutions to world-renowned universities in USA, Germany, UK, Canada, Australia, Ireland, and Dubai.",
   intro:
     "Vellore is an internationally recognized academic hub, anchored by Vellore Institute of Technology (VIT) and Christian Medical College (CMC). For students in Vellore, HighEd delivers high-caliber, 100% free overseas education mentoring online, tailored to high-achieving engineering, biotechnology, and computer science students aiming for top-ranked global universities.",
   heroImage: "/images/cities/vellore.webp",
   stats: [
-    { label: "Vellore & VIT Admits", value: "950+" },
-    { label: "Visa Approval Rate", value: "99.4%" },
-    { label: "Scholarships Secured", value: "₹14 Cr+" },
-    { label: "Top 100 Global Admits", value: "180+" },
+    { label: "Study Destinations", value: "7" },
+    { label: "1-on-1 Advisory", value: "100% Free" },
+    { label: "Visa Documentation", value: "End-to-End" },
+    { label: "Regional Support", value: "Online & Hybrid" },
   ],
   whyHighEd: [
     {

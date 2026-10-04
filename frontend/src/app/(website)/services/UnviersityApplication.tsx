@@ -23,9 +23,9 @@ import {
 const applicationFeatures = [
   {
     icon: Building2,
-    title: "Direct University Representation",
+    title: "Global University Network",
     description:
-      "Direct official partnerships with 500+ premier institutions across the USA, UK, Canada, Australia, Ireland, and Europe ensuring direct admissions liaison.",
+      "Extensive institutional liaison across premier universities in the USA, UK, Canada, Australia, Ireland, Germany, and Dubai ensuring smooth admissions coordination.",
   },
   {
     icon: Zap,
@@ -169,7 +169,7 @@ export default function UniversityApplicationPage() {
         <Container size="lg" className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <EyebrowBadge className="mb-6">
-              500+ Global Partner Universities
+              Global University Admissions Advisory
             </EyebrowBadge>
 
             <h1 className="text-white">
@@ -189,7 +189,7 @@ export default function UniversityApplicationPage() {
             {/* Quick stats pills */}
             <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
-                ["99.2% Acceptance", "Consistent track record across global intakes"],
+                ["High Offer Success", "Strong admissions track record across global intakes"],
                 ["$1,000+ Avg Savings", "Application fee waivers across partner universities"],
                 ["48h - 14 Days", "Expedited offer turnaround timeframes"],
               ].map(([stat, label]) => (

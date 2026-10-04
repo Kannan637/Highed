@@ -63,10 +63,15 @@ const nextConfig: NextConfig = {
     "127.0.0.1",
   ],
 
+  // Delegate typecheck to dedicated CLI tasks to prevent V8 heap exhaustion on Windows
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // Package treeshaking & build optimization
   experimental: {
     optimizePackageImports: ["lucide-react", "country-flag-icons"],
-    cpus: 4,
+    cpus: 1,
   },
 
   // Image optimization

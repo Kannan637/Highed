@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { BriefcaseBusiness, Check } from "lucide-react";
@@ -691,7 +691,7 @@ export default function AboutSection() {
                       text-brand-primary/65
                     "
                                     >
-                                        Our students work at leading global companies
+                                        Target career pathways &amp; top global employers for international graduates
                                     </span>
                                 </div>
 

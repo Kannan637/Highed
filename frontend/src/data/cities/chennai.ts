@@ -3,17 +3,17 @@ import { CityData } from "@/types/city";
 export const chennai: CityData = {
   slug: "chennai",
   name: "Chennai",
-  title: "Best Study Abroad Consultant in Chennai",
+  title: "Study Abroad Consultants in Chennai | HighEd",
   tagline:
-    "Empowering Chennai's ambitious students with end-to-end guidance for premier universities across USA, UK, Canada, Australia, Germany, and Dubai.",
+    "Empowering Chennai's ambitious students with end-to-end guidance for premier universities across USA, UK, Canada, Australia, Germany, Ireland, and Dubai.",
   intro:
-    "As South India's educational capital and tech epicenter, Chennai produces some of the brightest minds in engineering, IT, medicine, and commerce. At HighEd Chennai, our certified overseas education advisors provide personalized 1-on-1 profile evaluation, university selection, SOP crafting, scholarship assistance, and end-to-end visa filing with a 98.8% approval track record.",
+    "As South India's educational capital and tech epicenter, Chennai produces some of the brightest minds in engineering, IT, medicine, and commerce. At HighEd Chennai, our overseas education advisors provide personalized 1-on-1 profile evaluation, university selection, SOP crafting, scholarship assistance, and end-to-end visa application support.",
   heroImage: "/images/cities/chennai.webp",
   stats: [
-    { label: "Chennai Students Placed", value: "1,250+" },
-    { label: "Visa Approval Rate", value: "98.8%" },
-    { label: "Scholarships Secured", value: "₹18 Cr+" },
-    { label: "Partner Universities", value: "850+" },
+    { label: "Study Destinations", value: "7" },
+    { label: "1-on-1 Advisory", value: "100% Free" },
+    { label: "Visa Documentation", value: "End-to-End" },
+    { label: "Admissions Guidance", value: "Tailored" },
   ],
   whyHighEd: [
     {

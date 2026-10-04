@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "HighEd Study Abroad Advisory",
     short_name: "HighEd",
-    description: "Official representative for 500+ global universities",
+    description: "Premier overseas education advisory across 7 top global study destinations",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

@@ -39,145 +39,145 @@ const categories = [
 const courses: Record<string, Course[]> = {
     MBA: [
         {
-            country: "Study in Finland",
-            university: "International Business School",
-            title: "MBA in Strategic Data Driven Management",
+            country: "Study in USA",
+            university: "University of Texas at Dallas",
+            title: "Full-Time MBA (STEM Designated)",
             description:
-                "Accredited by British Accreditation Council (BAC) in MBA in Strategic Data Driven Management...",
+                "AACSB accredited programme offering specialized concentrations in Business Analytics, Supply Chain, and Finance with up to 36 months STEM OPT.",
+        },
+        {
+            country: "Study in UK",
+            university: "University of Birmingham",
+            title: "The Birmingham MBA (Triple Crown)",
+            description:
+                "AMBA, EQUIS, and AACSB accredited 1-year intensive MBA featuring corporate consulting projects and strong European corporate recruitment.",
         },
         {
             country: "Study in Ireland",
-            university: "International Business School",
-            title: "MBA IBM at XAMK Finland",
+            university: "Trinity College Dublin",
+            title: "Trinity Full-Time MBA",
             description:
-                "Accredited by British Accreditation Council (BAC) in MBA in Strategic Data Driven Management...",
-        },
-        {
-            country: "Study in San Francisco",
-            university: "International Business School",
-            title: "MBA in Strategic Data Driven Management",
-            description:
-                "Accredited by British Accreditation Council (BAC) in MBA in Strategic Data Driven Management...",
+                "Ireland's top-ranked business degree located in the heart of Dublin's European tech hub with 2-year post-study work visa rights.",
         },
     ],
 
     Management: [
         {
-            country: "Study in Finland",
-            university: "International Business School",
-            title: "MSc in International Management",
+            country: "Study in Germany",
+            university: "Frankfurt School of Finance & Management",
+            title: "Master in Management (MSc)",
             description:
-                "Build advanced management skills with a globally focused business programme...",
+                "Ranked among Europe's top business degrees with direct recruitment pipelines into leading Frankfurt multinational financial firms.",
         },
         {
-            country: "Study in Ireland",
-            university: "International Business School",
-            title: "MSc in Business Management",
+            country: "Study in UK",
+            university: "University of Leeds",
+            title: "MSc International Business",
             description:
-                "Develop strategic business knowledge and international management expertise...",
+                "Consistently ranked among the UK's top programmes for strategic management, global trade policy, and multinational leadership.",
         },
         {
-            country: "Study in San Francisco",
-            university: "International Business School",
-            title: "Master of Global Management",
+            country: "Study in Australia",
+            university: "University of Melbourne",
+            title: "Master of Management",
             description:
-                "Prepare for leadership roles with a practical, internationally focused curriculum...",
+                "Prepares ambitious graduates for leadership careers across Asia-Pacific with a 2-year post-study work visa pathway.",
         },
     ],
 
     "Data Science": [
         {
-            country: "Study in Finland",
-            university: "International Business School",
-            title: "MSc in Data Science",
+            country: "Study in USA",
+            university: "Northeastern University",
+            title: "MS in Data Science (STEM)",
             description:
-                "Learn advanced analytics, machine learning and data-driven decision making...",
+                "Comprehensive curriculum covering machine learning, big data systems, and algorithmic analysis with up to 36 months STEM OPT.",
         },
         {
             country: "Study in Ireland",
-            university: "International Business School",
-            title: "MSc Data Analytics",
+            university: "University College Dublin",
+            title: "MSc in Data & Computational Science",
             description:
-                "Develop practical expertise in modern data analytics and business intelligence...",
+                "Hands-on training in statistical modelling, data visualization, and computational frameworks in Europe's tech capital.",
         },
         {
-            country: "Study in San Francisco",
-            university: "International Business School",
-            title: "MS in Applied Data Science",
+            country: "Study in Australia",
+            university: "University of Sydney",
+            title: "Master of Data Science",
             description:
-                "Build industry-ready skills in data science, analytics and intelligent systems...",
+                "Accredited by the Australian Computer Society, featuring advanced coursework in machine learning and distributed computing systems.",
         },
     ],
 
     "AI & ML": [
         {
-            country: "Study in Finland",
-            university: "International Business School",
-            title: "MSc in Artificial Intelligence",
+            country: "Study in USA",
+            university: "Arizona State University",
+            title: "MS in Artificial Intelligence (STEM)",
             description:
-                "Explore modern artificial intelligence technologies and intelligent applications...",
+                "Cutting-edge specialization in deep learning, autonomous systems, computer vision, and neural network engineering.",
         },
         {
-            country: "Study in Ireland",
-            university: "International Business School",
-            title: "MSc in Machine Learning",
+            country: "Study in UK",
+            university: "University of Manchester",
+            title: "MSc Artificial Intelligence",
             description:
-                "Gain practical expertise in machine learning algorithms and intelligent systems...",
+                "One of Europe's founding centres of AI research, exploring symbolic AI, natural language processing, and autonomous robotics.",
         },
         {
-            country: "Study in San Francisco",
-            university: "International Business School",
-            title: "MS in AI & Machine Learning",
+            country: "Study in Germany",
+            university: "RWTH Aachen University",
+            title: "MSc in Data Science & Machine Learning",
             description:
-                "Prepare for high-demand careers in artificial intelligence and machine learning...",
+                "World-class German technical education combining industrial AI applications with advanced mathematical foundations.",
         },
     ],
 
     Engineering: [
         {
-            country: "Study in Finland",
-            university: "International Business School",
-            title: "MSc in Engineering Management",
+            country: "Study in Germany",
+            university: "Technical University of Munich (TUM)",
+            title: "MSc in Mechanical & Automotive Engineering",
             description:
-                "Combine engineering expertise with advanced leadership and management skills...",
+                "Prestigious German TU9 technical degree with access to state-of-the-art BMW, Siemens, and Audi automotive engineering partnerships.",
         },
         {
-            country: "Study in Ireland",
-            university: "International Business School",
-            title: "MSc in Software Engineering",
+            country: "Study in Canada",
+            university: "University of Windsor",
+            title: "Master of Engineering (MEng)",
             description:
-                "Develop advanced software engineering skills for global technology careers...",
+                "Co-op enabled professional engineering degree with industry placements across Ontario's manufacturing and automotive corridor.",
         },
         {
-            country: "Study in San Francisco",
-            university: "International Business School",
-            title: "MS in Computer Engineering",
+            country: "Study in USA",
+            university: "University of Texas at Arlington",
+            title: "MS in Computer Science & Engineering",
             description:
-                "Build strong technical foundations for careers across modern computing industries...",
+                "Industry-aligned engineering programme with comprehensive laboratory training and high graduate employment in the Dallas-Fort Worth tech corridor.",
         },
     ],
 
     Healthcare: [
         {
-            country: "Study in Finland",
-            university: "International Business School",
-            title: "MSc in Healthcare Management",
+            country: "Study in UK",
+            university: "University of Glasgow",
+            title: "Master of Public Health (MPH)",
             description:
-                "Develop the skills required to manage modern healthcare organisations...",
+                "World-leading epidemiological and health systems curriculum accredited for global healthcare and clinical leadership roles.",
+        },
+        {
+            country: "Study in Australia",
+            university: "Monash University",
+            title: "Master of Health Administration",
+            description:
+                "Designed for clinicians and healthcare professionals seeking executive hospital leadership across Commonwealth health services.",
         },
         {
             country: "Study in Ireland",
-            university: "International Business School",
-            title: "MSc in Public Health",
+            university: "Royal College of Surgeons in Ireland (RCSI)",
+            title: "MSc in Healthcare Management",
             description:
-                "Gain advanced knowledge in healthcare systems, policy and population health...",
-        },
-        {
-            country: "Study in San Francisco",
-            university: "International Business School",
-            title: "Master of Health Administration",
-            description:
-                "Prepare for leadership positions across healthcare and health services...",
+                "Pioneering medical management institution preparing graduates for strategic health services direction and clinical leadership.",
         },
     ],
 };

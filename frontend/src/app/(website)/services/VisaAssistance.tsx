@@ -131,9 +131,9 @@ const countryVisaMatrix = [
 
 const faqs = [
   {
-    question: "What is HighEd's student visa success rate?",
+    question: "How does HighEd ensure student visa success?",
     answer:
-      "We maintain a 98.4% visa approval rate across all major study abroad destinations. This high success rate is achieved through rigorous document cross-verification, genuine financial audits, and exhaustive mock interview preparation.",
+      "We prepare student visa files through rigorous document cross-verification, genuine financial audits, and exhaustive 1-on-1 consular mock interviews to ensure maximum application compliance.",
   },
   {
     question: "When should I start the visa application process?",
@@ -173,7 +173,7 @@ export default function VisaAssistancePage() {
         <Container size="lg" className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <EyebrowBadge className="mb-6">
-              98.4% Visa Success Rate
+              Comprehensive Visa Documentation &amp; Advisory
             </EyebrowBadge>
 
             <h1 className="text-white">
@@ -193,9 +193,9 @@ export default function VisaAssistancePage() {
             {/* Quick stats pills */}
             <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
-                ["98.4% Approval", "Industry-leading visa clearance rate"],
-                ["10,000+ Visas", "Successfully stamped across 20+ countries"],
-                ["1-on-1 Mock Sessions", "Simulated drills with visa specialists"],
+                ["Comprehensive Prep", "Thorough visa dossier & financial vetting"],
+                ["7 Key Destinations", "USA, UK, Canada, Australia, Ireland, Germany & Dubai"],
+                ["1-on-1 Mock Sessions", "Simulated consulate drills with visa specialists"],
               ].map(([stat, label]) => (
                 <div
                   key={stat}

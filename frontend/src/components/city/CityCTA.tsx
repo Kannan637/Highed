@@ -21,7 +21,7 @@ export const CityCTA: React.FC<CityCTAProps> = ({ city }) => {
 
           <div className="relative mx-auto max-w-3xl">
             <EyebrowBadge>
-              Direct Representative of 850+ Accredited Global Universities
+              Transparent Guidance Across Premier Global Universities
             </EyebrowBadge>
 
             <h2 className="mt-6 text-white tracking-tight-5 [letter-spacing:var(--tracking-tight-5)]">

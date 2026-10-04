@@ -23,7 +23,7 @@ export default function BookCounsellingPage() {
           <div className="col-span-4 lg:col-span-6">
             <Badge variant="primary">
               <ShieldCheck size={16} />
-              <span>Official University Representative</span>
+              <span>Global University Admissions Advisory</span>
             </Badge>
 
             <h1 className="mt-4 text-content-primary">

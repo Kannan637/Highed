@@ -133,7 +133,7 @@ export const UPCOMING_EVENTS: EventItem[] = [
     image: "/images/blog/UK Graduate Route 2Year Post Study Work Visa Explained.webp",
     shortDescription:
       "Comprehensive walkthrough on CAS letters, PAL guidelines, maintenance funds, financial affidavits, and consular mock questions.",
-    highlights: ["98.4% Visa Success Strategy", "CAS & PAL Preparation", "Document Checklist PDF"],
+    highlights: ["Visa File Approval Strategy", "CAS & PAL Preparation", "Document Checklist PDF"],
     speakers: [
       { name: "Priya Ramanathan", role: "Head of Visa Compliance", org: "HighEd Legal Advisory" },
     ],
@@ -263,7 +263,7 @@ export const INDUSTRY_EXPERTS: EventExpert[] = [
     organization: "HighEd Global Advisory",
     country: "India & Global",
     image: "/images/stories/story-2.webp",
-    specialty: "98.4% Visa Clearance, Consular Mock Interviews, Financial Audits",
+    specialty: "Visa Compliance & Clearance, Consular Mock Interviews, Financial Audits",
   },
   {
     id: "expert-jenkins",

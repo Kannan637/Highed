@@ -16,18 +16,18 @@ export const CityTrust: React.FC<CityTrustProps> = ({ city }) => {
     },
     {
       icon: Building2,
-      title: "850+ Direct Global University Partners",
-      description: "Direct ties with top universities in USA, UK, Canada, Australia, Germany, and Dubai for priority admits and application fee waivers.",
+      title: "Global University Admissions Network",
+      description: "Admissions pathways with accredited universities in USA, UK, Canada, Australia, Germany, Ireland, and Dubai for priority evaluation and fee waivers.",
     },
     {
       icon: Award,
       title: "High-Caliber Mentorship",
-      description: "Get guided by alumni from elite global institutions who understand transcript conversion and international admission rubrics.",
+      description: "Get guided by advisors who understand transcript conversion, country-specific requirements, and international admission rubrics.",
     },
     {
       icon: Globe2,
-      title: "98.8% Proven Visa Approval Record",
-      description: "Rigorous document verification, financial profile structuring, and comprehensive 1-on-1 mock interviews before your appointment.",
+      title: "Comprehensive Visa Preparation",
+      description: "Rigorous document verification, financial profile structuring, and personalized 1-on-1 mock interviews before your embassy appointment.",
     },
   ];
 

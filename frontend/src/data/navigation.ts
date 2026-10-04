@@ -76,10 +76,10 @@ export const navDropdowns: Record<string, NavDropdownData> = {
       {
         title: "Guides & Information",
         items: [
-          { label: "Study Abroad Guide", href: "/blog", icon: "guide" },
+          { label: "Study Abroad Guide", href: "/resources#guides", icon: "guide" },
           { label: "Country Guides", href: "/study-in", icon: "country" },
           { label: "University Directory", href: "/explore", icon: "university" },
-          { label: "Exam & Test Prep Guides", href: "/blog", icon: "exam" },
+          { label: "Exam & Test Prep Guides", href: "/resources#exams", icon: "exam" },
           { label: "Frequently Asked Questions", href: "/about#faq", icon: "faq" },
         ],
       },
@@ -89,7 +89,7 @@ export const navDropdowns: Record<string, NavDropdownData> = {
           { label: "Study Abroad Cost Calculator", href: "/tools/study-abroad-cost", icon: "cost" },
           { label: "Education Loan EMI Calculator", href: "/tools/education-loan-emi", icon: "calculator" },
           { label: "Profile Eligibility Checker", href: "/tools/profile-checker", icon: "check" },
-          { label: "Scholarship Finder", href: "/scholarships", icon: "scholarship" },
+          { label: "Scholarship Finder", href: "/tools/scholarship-finder", icon: "scholarship" },
           { label: "Test Score Evaluator (IELTS/PTE)", href: "/tools/test-score-evaluator", icon: "ielts" },
         ],
       },

@@ -49,7 +49,7 @@ const services = [
     title: "University Application",
     href: "/services/university-application",
     description:
-      "End-to-end application management including shortlisting, document checklist, deadline tracking, and direct portal submission to 500+ partner universities.",
+      "End-to-end application management including shortlisting, document checklist, deadline tracking, and portal submissions across premier global universities.",
   },
   {
     id: "scholarship-assistance",
@@ -233,7 +233,7 @@ export default function ServicesPage() {
         {/* Bottom CTA */}
         <div className="mt-16">
           <CTASection
-            badge="Official University Representative — 500+ Global Partners"
+            badge="Global University Admissions Advisory — 7 Destinations"
             title="Not Sure Where to Start?"
             subtitle="Book a free 30-minute strategy session with a certified HighEd counsellor. We'll evaluate your profile and recommend the best pathway for your goals."
             ctaLabel="Book Free Counselling"

@@ -183,7 +183,7 @@ export default function SuccessStoriesPage() {
         {/* Bottom CTA */}
         <div className="mt-16">
           <CTASection
-            badge="Join 10,000+ Successful Students"
+            badge="Begin Your Study Abroad Journey"
             title="Your Success Story Starts Here"
             subtitle="Book a free counselling session and let our advisors craft the same winning strategy for your study-abroad journey."
             ctaLabel="Book Free Counselling"

@@ -91,7 +91,7 @@ const faqs = [
   {
     question: "Is HighEd's career counselling really 100% free of charge?",
     answer:
-      "Yes, completely free. As official representatives for 500+ global universities, our advisory and profile evaluation services are 100% funded by institutional partnerships. Students are never charged any consultation or application processing fee.",
+      "Yes, completely free. Our advisory and profile evaluation services are 100% free for students through our global university partnerships network. Students are never charged any consultation or application processing fees.",
   },
   {
     question: "When should I begin my study abroad counselling?",
@@ -131,7 +131,7 @@ export default function CareerCounsellingPage() {
         <Container size="lg" className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <EyebrowBadge className="mb-6">
-              Official University Representative
+              Global University Admissions Advisory
             </EyebrowBadge>
 
             <h1 className="text-white">
@@ -139,7 +139,7 @@ export default function CareerCounsellingPage() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-body-large text-white/85">
-              Build a personalized international education roadmap. Evaluate your academic background, pinpoint high-ROI programs, and unlock admission to 500+ partner universities worldwide.
+              Build a personalized international education roadmap. Evaluate your academic background, pinpoint high-ROI programs, and unlock admission to accredited universities across 7 global destinations.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
@@ -151,9 +151,9 @@ export default function CareerCounsellingPage() {
             {/* Quick stats pills */}
             <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
-                ["10,000+ Students", "Successfully guided abroad"],
-                ["500+ Universities", "Direct official representations"],
-                ["100% Free Service", "Zero charges from start to departure"],
+                ["Personalised Mentoring", "Tailored course & career roadmap"],
+                ["7 Key Destinations", "USA, UK, Canada, Australia, Ireland, Germany & Dubai"],
+                ["100% Free Service", "Transparent guidance from counselling to departure"],
               ].map(([stat, label]) => (
                 <div
                   key={stat}
@@ -304,9 +304,9 @@ export default function CareerCounsellingPage() {
               <div className="mt-8 space-y-3.5">
                 {[
                   "Zero service charges or hidden fees throughout your journey",
-                  "Direct tie-ups with 500+ world-class public and private universities",
+                  "Direct admissions guidance across premier universities in 7 destinations",
                   "Dedicated single point of contact from counselling to pre-departure",
-                  "High visa approval rate (98.4%+) backed by expert documentation teams",
+                  "Comprehensive visa file preparation backed by expert documentation teams",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="size-5 shrink-0 text-feedback-success mt-0.5" />
