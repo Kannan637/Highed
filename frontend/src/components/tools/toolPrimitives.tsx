@@ -6,6 +6,7 @@ import { ArrowLeft, RotateCcw, AlertCircle, Sparkles } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Breadcrumb, { BreadcrumbItem } from "@/components/ui/Breadcrumb";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 /* ---------------- Tool Shell & Hero ---------------- */
@@ -262,17 +263,47 @@ export const ToolReset: React.FC<ToolResetProps> = ({
   className,
 }) => {
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
+      size="sm"
       onClick={onReset}
       className={cn(
-        "btn-motion inline-flex min-h-11 items-center gap-1.5 text-[13px] font-semibold text-content-secondary hover:text-brand-accent rounded-md px-2",
+        "h-9 px-3 text-[13px] font-semibold text-content-secondary hover:bg-neutral-100 hover:text-brand-primary rounded-full cursor-pointer",
         className
       )}
     >
-      <RotateCcw size={14} aria-hidden="true" />
+      <RotateCcw size={14} className="shrink-0" />
       <span>{label}</span>
-    </button>
+    </Button>
+  );
+};
+
+export interface ToolResetButtonProps {
+  onReset: () => void;
+  label?: string;
+  className?: string;
+}
+
+export const ToolResetButton: React.FC<ToolResetButtonProps> = ({
+  onReset,
+  label = "Calculate Another",
+  className,
+}) => {
+  return (
+    <Button
+      type="button"
+      variant="outline"
+      size="default"
+      onClick={onReset}
+      className={cn(
+        "h-13 rounded-full border-black/15 bg-white px-6 text-[14px] font-semibold text-content-primary hover:bg-white hover:text-content-primary hover:border-black/15 shadow-none transition-none cursor-pointer",
+        className
+      )}
+    >
+      <RotateCcw size={15} className="shrink-0 text-content-secondary" />
+      <span>{label}</span>
+    </Button>
   );
 };
 

@@ -349,7 +349,7 @@ export const StudyAbroadCostCalculator = ({
     <div className="space-y-6">
       <div>
         <h1 className="text-[28px] font-bold leading-[1.15] text-brand-primary sm:text-[34px] lg:text-[40px]">
-          Study Abroad Cost Calculator
+          Study Abroad Cost <span className="text-brand-accent"><i>Calculator</i></span>
         </h1>
         <p className="mt-2.5 max-w-lg text-[15px] leading-relaxed text-content-secondary">
           Calculate your itemized tuition fees, accommodation, living expenses, and overall budget.
@@ -525,7 +525,7 @@ export const StudyAbroadCostCalculator = ({
             className={cn(MASTER_CTA_CLASSNAME, "h-13 cursor-pointer")}
           >
             <span className="flex items-center justify-center gap-2">
-              Next: View Cost Breakdown
+              View Cost Breakdown
               <ArrowRight size={18} />
             </span>
           </Button>
@@ -613,8 +613,8 @@ export const StudyAbroadCostCalculator = ({
                   {formatINR(
                     (results.breakdown.find((b) => b.key === "travel")?.total ||
                       0) +
-                      (results.breakdown.find((b) => b.key === "visa")?.total ||
-                        0)
+                    (results.breakdown.find((b) => b.key === "visa")?.total ||
+                      0)
                   )}
                 </span>
               </div>
@@ -626,7 +626,7 @@ export const StudyAbroadCostCalculator = ({
               href="/"
               className={cn(
                 MASTER_CTA_CLASSNAME,
-                "inline-flex h-13 items-center justify-center gap-2 px-8 text-[15px]"
+                "inline-flex h-13 items-center justify-center gap-2 rounded-full px-8 text-[15px] text-white hover:text-white"
               )}
             >
               <span>Back to Home</span>
@@ -637,10 +637,10 @@ export const StudyAbroadCostCalculator = ({
               variant="outline"
               size="default"
               onClick={handleReset}
-              className="h-13 rounded-full border-black/15 px-6 text-[14px] font-semibold text-content-primary hover:bg-neutral-50 cursor-pointer"
+              className="h-13 rounded-full border-black/15 bg-white px-6 text-[14px] font-semibold text-content-primary hover:bg-white hover:text-content-primary hover:border-black/15 shadow-none transition-none cursor-pointer"
             >
-              <RotateCcw size={15} className="mr-1.5 text-content-secondary" />
-              Calculate Another
+              <RotateCcw size={15} className="shrink-0 text-content-secondary" />
+              <span>Calculate Another</span>
             </Button>
           </div>
         </div>
@@ -651,7 +651,7 @@ export const StudyAbroadCostCalculator = ({
       <div className="space-y-6">
         <div>
           <h2 className="text-[26px] font-bold leading-[1.15] text-brand-primary sm:text-[32px] lg:text-[38px]">
-            Give your number to get the cost sheet
+            Give your number to get the <span className="text-brand-accent"><i>cost sheet</i></span>
           </h2>
           <p className="mt-2.5 max-w-lg text-[15px] leading-relaxed text-content-secondary">
             Get your itemized tuition, accommodation, and living expense breakdown directly on WhatsApp.
@@ -694,14 +694,13 @@ export const StudyAbroadCostCalculator = ({
             <Button
               type="button"
               variant="ghost"
-              size="md"
               fullWidth
               onClick={handleBack}
               disabled={isSubmitting}
-              className="h-11 rounded-full text-content-secondary hover:text-brand-primary hover:bg-neutral-100 font-semibold text-[14px]"
+              className="h-12 w-full rounded-full text-[14px] font-semibold text-content-secondary hover:bg-neutral-100 hover:text-brand-primary"
             >
-              <ArrowLeft size={16} className="mr-1.5" />
-              Back to Cost Inputs
+              <ArrowLeft size={16} className="shrink-0" />
+              <span>Back to Cost Inputs</span>
             </Button>
           </div>
 

@@ -26,7 +26,6 @@ export const resourceCategories: ResourceCategory[] = [
   { id: "all", label: "All", target: "resources-top" },
   { id: "guides", label: "Guides", target: "guides" },
   { id: "countries", label: "Countries", target: "countries" },
-  { id: "universities", label: "Universities", target: "universities" },
   { id: "exams", label: "Exams", target: "exams" },
   { id: "calculators", label: "Calculators", target: "tools" },
   { id: "faq", label: "FAQ", target: "faq" },

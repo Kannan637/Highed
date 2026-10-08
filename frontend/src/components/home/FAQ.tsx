@@ -293,14 +293,14 @@ export function FAQSection({
                 </div>
 
                 {/* SOURCE ATTRIBUTION & LAST VERIFIED FOOTER */}
-                <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-content-secondary/80 border-t border-black/5 pt-4">
+                {/* <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-content-secondary/80 border-t border-black/5 pt-4">
                     <span>
                         Regulatory Sources: USCIS &amp; US Dept of State, UKVI, DAAD Germany, Australian Home Affairs, Education in Ireland
                     </span>
                     <span className="whitespace-nowrap font-medium text-brand-primary/75">
                         Last Verified: October 2026
                     </span>
-                </div>
+                </div> */}
                 {/* <div className="mt-12 flex justify-center">
                     <LeadCTAButton source="faq">
                         Ask Expert - Request Callback

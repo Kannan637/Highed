@@ -3,14 +3,13 @@ import { constructMetadata } from "@/seo/metadata";
 import { resourceFaqs } from "@/data/resources";
 import ResourcesHero from "@/components/resources/ResourcesHero";
 import ResourceCategoryNav from "@/components/resources/ResourceCategoryNav";
-import UniversityDirectoryPreview from "@/components/resources/UniversityDirectoryPreview";
 import { CountryGuidesSection, ExamSection, GuidesSection } from "@/components/resources/InfoSections";
 import { ResourceCTA, ResourceFAQ, ToolsSection } from "@/components/resources/ActionSections";
 
 export const metadata = constructMetadata({
   title: "Study Abroad Guides & Tools | HighEd Resources",
   description:
-    "Expert study-abroad guides, country insights, university directory, exam prep and smart tools — cost calculator, EMI calculator, eligibility checker and test score evaluator.",
+    "Expert study-abroad guides, country insights, exam prep and smart tools — cost calculator, EMI calculator, eligibility checker and test score evaluator.",
   path: "/resources",
   keywords: [
     "study abroad guide",
@@ -18,7 +17,6 @@ export const metadata = constructMetadata({
     "education loan emi calculator",
     "profile eligibility checker",
     "ielts pte guide",
-    "university directory",
   ],
 });
 
@@ -40,7 +38,6 @@ export default function ResourcesPage() {
       <ResourceCategoryNav />
       <GuidesSection />
       <CountryGuidesSection />
-      <UniversityDirectoryPreview />
       <ExamSection />
       <ResourceFAQ />
       <ToolsSection />

@@ -530,7 +530,7 @@ export const TestScoreEvaluator = ({
               href="/"
               className={cn(
                 MASTER_CTA_CLASSNAME,
-                "inline-flex h-13 items-center justify-center gap-2 px-8 text-[15px]"
+                "inline-flex h-13 items-center justify-center gap-2 rounded-full px-8 text-[15px] text-white hover:text-white"
               )}
             >
               <span>Back to Home</span>
@@ -541,10 +541,10 @@ export const TestScoreEvaluator = ({
               variant="outline"
               size="default"
               onClick={handleReset}
-              className="h-13 rounded-full border-black/15 px-6 text-[14px] font-semibold text-content-primary hover:bg-neutral-50 cursor-pointer"
+              className="h-13 rounded-full border-black/15 bg-white px-6 text-[14px] font-semibold text-content-primary hover:bg-white hover:text-content-primary hover:border-black/15 shadow-none transition-none cursor-pointer"
             >
-              <RotateCcw size={15} className="mr-1.5 text-content-secondary" />
-              Evaluate Another Score
+              <RotateCcw size={15} className="shrink-0 text-content-secondary" />
+              <span>Evaluate Another Score</span>
             </Button>
           </div>
         </div>
@@ -555,7 +555,7 @@ export const TestScoreEvaluator = ({
       <div className="space-y-6">
         <div>
           <h2 className="text-[26px] font-bold leading-[1.15] text-brand-primary sm:text-[32px] lg:text-[38px]">
-            Give your number to get the score report
+            Give your number to get the <span className="text-brand-accent"><i>score report</i></span>
           </h2>
           <p className="mt-2.5 max-w-lg text-[15px] leading-relaxed text-content-secondary">
             Get your official band score evaluation, university admission benchmarks, and test prep tips on WhatsApp.
@@ -598,14 +598,13 @@ export const TestScoreEvaluator = ({
             <Button
               type="button"
               variant="ghost"
-              size="md"
               fullWidth
               onClick={handleBack}
               disabled={isSubmitting}
-              className="h-11 rounded-full text-content-secondary hover:text-brand-primary hover:bg-neutral-100 font-semibold text-[14px]"
+              className="h-12 w-full rounded-full text-[14px] font-semibold text-content-secondary hover:bg-neutral-100 hover:text-brand-primary"
             >
-              <ArrowLeft size={16} className="mr-1.5" />
-              Back to Score Inputs
+              <ArrowLeft size={16} className="shrink-0" />
+              <span>Back to Score Inputs</span>
             </Button>
           </div>
 

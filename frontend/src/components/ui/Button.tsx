@@ -75,7 +75,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         {...props}
       >
-        <span>{children}</span>
+        <span className="inline-flex items-center justify-center gap-2">
+          {children}
+        </span>
         {iconBadge && (
           <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white text-brand-primary shadow-xs">
             {iconBadge}

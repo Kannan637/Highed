@@ -299,7 +299,7 @@ export const ProfileEligibilityChecker = ({
     <div className="space-y-6">
       <div>
         <h1 className="text-[28px] font-bold leading-[1.15] text-brand-primary sm:text-[34px] lg:text-[40px]">
-          Profile Eligibility Checker
+          Profile Eligibility <span className="text-brand-accent"><i>Checker</i></span>
         </h1>
         <p className="mt-2.5 max-w-lg text-[15px] leading-relaxed text-content-secondary">
           Evaluate your academic profile, English test scores, and budget against university admission criteria.
@@ -504,7 +504,7 @@ export const ProfileEligibilityChecker = ({
             className={cn(MASTER_CTA_CLASSNAME, "h-13 cursor-pointer")}
           >
             <span className="flex items-center justify-center gap-2">
-              Next: View Eligibility Breakdown
+              View Eligibility Breakdown
               <ArrowRight size={18} />
             </span>
           </Button>
@@ -544,8 +544,8 @@ export const ProfileEligibilityChecker = ({
                   results.matchLevel === "Strong Match"
                     ? "bg-emerald-100 text-emerald-800"
                     : results.matchLevel === "Moderate Match"
-                    ? "bg-amber-100 text-amber-800"
-                    : "bg-rose-100 text-rose-800"
+                      ? "bg-amber-100 text-amber-800"
+                      : "bg-rose-100 text-rose-800"
                 )}
               >
                 {results.matchLevel}
@@ -582,7 +582,7 @@ export const ProfileEligibilityChecker = ({
               href="/"
               className={cn(
                 MASTER_CTA_CLASSNAME,
-                "inline-flex h-13 items-center justify-center gap-2 px-8 text-[15px]"
+                "inline-flex h-13 items-center justify-center gap-2 rounded-full px-8 text-[15px] text-white hover:text-white"
               )}
             >
               <span>Back to Home</span>
@@ -593,10 +593,10 @@ export const ProfileEligibilityChecker = ({
               variant="outline"
               size="default"
               onClick={handleReset}
-              className="h-13 rounded-full border-black/15 px-6 text-[14px] font-semibold text-content-primary hover:bg-neutral-50 cursor-pointer"
+              className="h-13 rounded-full border-black/15 bg-white px-6 text-[14px] font-semibold text-content-primary hover:bg-white hover:text-content-primary hover:border-black/15 shadow-none transition-none cursor-pointer"
             >
-              <RotateCcw size={15} className="mr-1.5 text-content-secondary" />
-              Evaluate Another Profile
+              <RotateCcw size={15} className="shrink-0 text-content-secondary" />
+              <span>Evaluate Another Profile</span>
             </Button>
           </div>
         </div>
@@ -607,7 +607,7 @@ export const ProfileEligibilityChecker = ({
       <div className="space-y-6">
         <div>
           <h2 className="text-[26px] font-bold leading-[1.15] text-brand-primary sm:text-[32px] lg:text-[38px]">
-            Give your number to get the eligibility report
+            Give your number to get the <span className="text-brand-accent"><i>eligibility report</i></span>
           </h2>
           <p className="mt-2.5 max-w-lg text-[15px] leading-relaxed text-content-secondary">
             Get your compatibility score, admission benchmarks, and eligible university shortlist directly on WhatsApp.
@@ -650,14 +650,13 @@ export const ProfileEligibilityChecker = ({
             <Button
               type="button"
               variant="ghost"
-              size="md"
               fullWidth
               onClick={handleBack}
               disabled={isSubmitting}
-              className="h-11 rounded-full text-content-secondary hover:text-brand-primary hover:bg-neutral-100 font-semibold text-[14px]"
+              className="h-12 w-full rounded-full text-[14px] font-semibold text-content-secondary hover:bg-neutral-100 hover:text-brand-primary"
             >
-              <ArrowLeft size={16} className="mr-1.5" />
-              Back to Profile Inputs
+              <ArrowLeft size={16} className="shrink-0" />
+              <span>Back to Profile Inputs</span>
             </Button>
           </div>
 

@@ -73,7 +73,6 @@ export const navDropdowns: Record<string, NavDropdownData> = {
         items: [
           { label: "Study Abroad Guide", href: "/resources#guides", icon: "guide" },
           { label: "Country Guides", href: "/study-in", icon: "country" },
-          { label: "University Directory", href: "/study-in", icon: "university" },
           { label: "Exam & Test Prep Guides", href: "/resources#exams", icon: "exam" },
           { label: "Frequently Asked Questions", href: "/about#faq", icon: "faq" },
         ],
