@@ -23,10 +23,10 @@ import Container from "@/components/ui/Container";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import { PhoneInput } from "@/components/forms/PhoneInput";
 import { MASTER_CTA_CLASSNAME } from "@/components/forms/LeadCTAButton";
 import { ConfettiBurst } from "./ConfettiBurst";
+import { ToolBreadcrumbBar } from "./ToolBreadcrumbBar";
 import {
   loanConfig,
   LOAN_TENURES_YEARS,
@@ -295,7 +295,7 @@ export const EducationLoanCalculator = ({
     <div className="space-y-6">
       <div>
         <h1 className="text-[28px] font-bold leading-[1.15] text-brand-primary sm:text-[34px] lg:text-[40px]">
-          Educational Loan Calculator
+          Educational Loan <span className="text-brand-accent"><i>Calculator</i></span>
         </h1>
         <p className="mt-2.5 max-w-lg text-[15px] leading-relaxed text-content-secondary">
           Calculate your estimated education loan and understand your repayment.
@@ -591,14 +591,8 @@ export const EducationLoanCalculator = ({
       <div className="flex min-h-screen flex-col bg-white font-body tracking-tight-5">
         <ConfettiBurst show={showConfetti} />
 
-        {/* ---- TOP: Breadcrumb ---- */}
-        <div className="border-b border-black/5 bg-white">
-          <Container size="lg">
-            <div className="py-4">
-              <Breadcrumb items={BREADCRUMBS} />
-            </div>
-          </Container>
-        </div>
+        {/* ---- TOP: Breadcrumb with 50% Accent Sliced Background ---- */}
+        <ToolBreadcrumbBar items={BREADCRUMBS} />
 
         {/* ---- MAIN CONTENT ---- */}
         <div className="flex flex-1 flex-col justify-between">

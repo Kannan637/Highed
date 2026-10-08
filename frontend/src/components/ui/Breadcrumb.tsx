@@ -12,13 +12,17 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
   className?: string;
   showHomeIcon?: boolean;
+  variant?: "default" | "on-accent";
 }
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   items,
   className,
   showHomeIcon = true,
+  variant = "default",
 }) => {
+  const isOnAccent = variant === "on-accent";
+
   return (
     <nav aria-label="Breadcrumb" className={cn("flex items-center text-sm", className)}>
       <ol className="flex items-center flex-wrap gap-1.5 text-xs md:text-sm font-medium">
@@ -28,27 +32,49 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
           return (
             <li key={index} className="inline-flex items-center gap-1.5">
               {index > 0 && (
-                <ChevronRight className="w-3.5 h-3.5 text-neutral-400 shrink-0 select-none" aria-hidden="true" />
+                <ChevronRight
+                  className={cn(
+                    "w-3.5 h-3.5 shrink-0 select-none",
+                    isOnAccent ? "text-white/60" : "text-neutral-400"
+                  )}
+                  aria-hidden="true"
+                />
               )}
               {isLast ? (
                 <span
                   aria-current="page"
-                  className="text-neutral-900 font-semibold truncate max-w-[200px] md:max-w-none"
+                  className={cn(
+                    "font-semibold truncate max-w-[200px] md:max-w-none",
+                    isOnAccent ? "text-white font-bold" : "text-neutral-900"
+                  )}
                 >
                   {item.label}
                 </span>
               ) : item.href ? (
                 <Link
                   href={item.href}
-                  className="inline-flex items-center gap-1 text-neutral-500 hover:text-brand-primary transition-colors"
+                  className={cn(
+                    "inline-flex items-center gap-1 transition-colors",
+                    isOnAccent
+                      ? "text-white/85 hover:text-white"
+                      : "text-neutral-500 hover:text-brand-primary"
+                  )}
                 >
                   {index === 0 && showHomeIcon && (
-                    <Home className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                    <Home
+                      className={cn(
+                        "w-3.5 h-3.5 shrink-0",
+                        isOnAccent ? "text-white/85" : ""
+                      )}
+                      aria-hidden="true"
+                    />
                   )}
                   <span>{item.label}</span>
                 </Link>
               ) : (
-                <span className="text-neutral-500">{item.label}</span>
+                <span className={isOnAccent ? "text-white/85" : "text-neutral-500"}>
+                  {item.label}
+                </span>
               )}
             </li>
           );

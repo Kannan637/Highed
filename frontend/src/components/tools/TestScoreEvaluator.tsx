@@ -23,10 +23,10 @@ import Container from "@/components/ui/Container";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import { PhoneInput } from "@/components/forms/PhoneInput";
 import { MASTER_CTA_CLASSNAME } from "@/components/forms/LeadCTAButton";
 import { ConfettiBurst } from "./ConfettiBurst";
+import { ToolBreadcrumbBar } from "./ToolBreadcrumbBar";
 import {
   calculateIelts,
   calculatePte,
@@ -647,14 +647,8 @@ export const TestScoreEvaluator = ({
       <div className="flex min-h-screen flex-col bg-white font-body tracking-tight-5">
         <ConfettiBurst show={showConfetti} />
 
-        {/* ---- TOP: Breadcrumb ---- */}
-        <div className="border-b border-black/5 bg-white">
-          <Container size="lg">
-            <div className="py-4">
-              <Breadcrumb items={BREADCRUMBS} />
-            </div>
-          </Container>
-        </div>
+        {/* ---- TOP: Breadcrumb with 50% Accent Sliced Background ---- */}
+        <ToolBreadcrumbBar items={BREADCRUMBS} />
 
         {/* ---- MAIN CONTENT ---- */}
         <div className="flex flex-1 flex-col justify-between">
