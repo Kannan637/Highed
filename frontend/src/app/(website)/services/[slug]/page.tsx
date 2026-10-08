@@ -6,10 +6,10 @@ import { constructMetadata } from "@/seo/metadata";
 import CareerCounsellingPage from "../CareerCounselling";
 import EducationLoanPage from "../EducationLoan";
 import ScholarshipAssistancePage from "../ScholarshipAssistance";
-import SOPAndLORAssistancePage from "../SOP&LOPAssistance";
-import UniversityApplicationPage from "../UnviersityApplication";
+import SOPAndLORAssistancePage from "../SOPAndLORAssistance";
+import UniversityApplicationPage from "../UniversityApplication";
 import VisaAssistancePage from "../VisaAssistance";
-import AccommodationAndPreDeparturePage from "../Acc&pre";
+import AccommodationAndPreDeparturePage from "../AccommodationPreDeparture";
 
 interface ServiceRouteConfig {
   title: string;

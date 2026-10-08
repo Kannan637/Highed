@@ -12,7 +12,7 @@ import CountryRealStory from "@/components/country/CountryRealStories";
 import CountryHero from "@/components/country/CountryHero";
 import CountryFeatureCards from "@/components/country/CountryFeatureCards";
 import CountryWhyStudy from "@/components/country/CountryWhyStudy";
-import Countrtcourese from "@/components/country/CountryCourses&university"
+import CountryCoursesUniversity from "@/components/country/CountryCoursesUniversity";
 import CountryScholarships from "@/components/country/CountryScholarships";
 import CountryIntakes from "@/components/country/CountryIntakes";
 import CountryVisa from "@/components/country/CountryVisa";
@@ -22,7 +22,6 @@ import CountryFAQ from "@/components/country/CountryFAQ";
 import CountryRelatedBlogs from "@/components/country/CountryRelatedBlogs";
 import CountryMarquee from "@/components/country/CountryMarquee";
 import CountryCTA from "@/components/country/CountryCTA";
-
 import Service from "@/components/home/Service";
 
 interface CountryPageProps {
@@ -99,8 +98,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <CountryMarquee />
       <CountryWhyStudy country={country} />
       <Service />
-      <Countrtcourese country={country} />
-      <CountryScholarships country={country} />
+      <CountryCoursesUniversity country={country} />
+      <CountryScholarships />
       <CountryIntakes country={country} />
       <CountryVisa country={country} />
       <CountryRealStory />
