@@ -10,13 +10,13 @@ import { ResourceCTA, ResourceFAQ, ToolsSection } from "@/components/resources/A
 export const metadata = constructMetadata({
   title: "Study Abroad Guides & Tools | HighEd Resources",
   description:
-    "Expert study-abroad guides, country insights, university directory, exam prep and smart tools — cost calculator, EMI calculator, eligibility checker and scholarship finder.",
+    "Expert study-abroad guides, country insights, university directory, exam prep and smart tools — cost calculator, EMI calculator, eligibility checker and test score evaluator.",
   path: "/resources",
   keywords: [
     "study abroad guide",
     "study abroad cost calculator",
     "education loan emi calculator",
-    "scholarship finder",
+    "profile eligibility checker",
     "ielts pte guide",
     "university directory",
   ],

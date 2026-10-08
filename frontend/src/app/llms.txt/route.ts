@@ -45,7 +45,6 @@ export async function GET() {
 - Study Abroad Cost Calculator: ${baseUrl}/tools/study-abroad-cost
 - Education Loan EMI Calculator: ${baseUrl}/tools/education-loan-emi
 - Test Score Evaluator: ${baseUrl}/tools/test-score-evaluator
-- Scholarship Finder: ${baseUrl}/tools/scholarship-finder
 
 ## Editorial & Research Resources
 - Study Abroad Blog & Guides: ${baseUrl}/blog

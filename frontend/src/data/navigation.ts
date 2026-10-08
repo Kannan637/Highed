@@ -84,7 +84,6 @@ export const navDropdowns: Record<string, NavDropdownData> = {
           { label: "Study Abroad Cost Calculator", href: "/tools/study-abroad-cost", icon: "cost" },
           { label: "Education Loan EMI Calculator", href: "/tools/education-loan-emi", icon: "calculator" },
           { label: "Profile Eligibility Checker", href: "/tools/profile-checker", icon: "check" },
-          { label: "Scholarship Finder", href: "/tools/scholarship-finder", icon: "scholarship" },
           { label: "Test Score Evaluator (IELTS/PTE)", href: "/tools/test-score-evaluator", icon: "ielts" },
         ],
       },

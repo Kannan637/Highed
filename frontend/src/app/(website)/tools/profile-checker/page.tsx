@@ -1,6 +1,5 @@
 import React from "react";
 import { constructMetadata } from "@/seo/metadata";
-import { ToolHero } from "@/components/tools/toolPrimitives";
 import ProfileEligibilityChecker from "@/components/tools/ProfileEligibilityChecker";
 
 export const metadata = constructMetadata({
@@ -18,19 +17,12 @@ export const metadata = constructMetadata({
 
 export default function ProfileEligibilityPage() {
   return (
-    <div className="w-full tracking-tight-5">
-      <ToolHero
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Resources", href: "/resources" },
-          { label: "Profile Eligibility Checker" },
-        ]}
-        eyebrow="Admissions Compatibility Tool"
-        title="Profile Eligibility Checker"
-        description="Verify your GPA, backlog clearance, English proficiency, and budget against real destination standards to receive a transparent compatibility score and action plan."
-      />
-
-      <ProfileEligibilityChecker />
+    <div
+      id="profile-checker-page"
+      data-tool-page="true"
+      className="w-full min-h-screen bg-white"
+    >
+      <ProfileEligibilityChecker standalone />
     </div>
   );
 }

@@ -18,7 +18,11 @@ export const metadata = constructMetadata({
 
 export default function EducationLoanCalculatorPage() {
   return (
-    <div id="education-loan-calculator-page" className="w-full min-h-screen bg-white">
+    <div
+      id="education-loan-calculator-page"
+      data-tool-page="true"
+      className="w-full min-h-screen bg-white"
+    >
       <EducationLoanCalculator standalone />
     </div>
   );

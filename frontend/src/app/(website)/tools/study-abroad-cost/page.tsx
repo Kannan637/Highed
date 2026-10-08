@@ -1,6 +1,5 @@
 import React from "react";
 import { constructMetadata } from "@/seo/metadata";
-import { ToolHero } from "@/components/tools/toolPrimitives";
 import StudyAbroadCostCalculator from "@/components/tools/StudyAbroadCostCalculator";
 
 export const metadata = constructMetadata({
@@ -18,19 +17,12 @@ export const metadata = constructMetadata({
 
 export default function StudyAbroadCostPage() {
   return (
-    <div className="w-full tracking-tight-5">
-      <ToolHero
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Resources", href: "/resources" },
-          { label: "Cost Calculator" },
-        ]}
-        eyebrow="Financial Planning Tool"
-        title="Study Abroad Cost Calculator"
-        description="Get an accurate, itemized estimate of total tuition, accommodation, living expenses, travel, and visa costs tailored to your dream study destination."
-      />
-
-      <StudyAbroadCostCalculator />
+    <div
+      id="study-abroad-cost-page"
+      data-tool-page="true"
+      className="w-full min-h-screen bg-white"
+    >
+      <StudyAbroadCostCalculator standalone />
     </div>
   );
 }

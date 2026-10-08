@@ -29,7 +29,6 @@ export const resourceCategories: ResourceCategory[] = [
   { id: "universities", label: "Universities", target: "universities" },
   { id: "exams", label: "Exams", target: "exams" },
   { id: "calculators", label: "Calculators", target: "tools" },
-  { id: "scholarships", label: "Scholarships", target: "scholarship-finder" },
   { id: "faq", label: "FAQ", target: "faq" },
 ];
 
@@ -156,8 +155,7 @@ export const tools: ToolResource[] = [
   { index: "01", category: "Calculator", title: "Study Abroad Cost Calculator", description: "Estimate tuition, accommodation, living expenses and total study-abroad costs.", cta: "Calculate Cost", href: "/tools/study-abroad-cost", icon: Calculator },
   { index: "02", category: "Calculator", title: "Education Loan EMI Calculator", description: "Understand monthly EMI and repayment estimates.", cta: "Calculate EMI", href: "/tools/education-loan-emi", icon: Landmark },
   { index: "03", category: "Checker", title: "Profile Eligibility Checker", description: "Check your profile against study-abroad requirements.", cta: "Check Eligibility", href: "/tools/profile-checker", icon: UserCheck },
-  { id: "scholarship-finder", index: "04", category: "Finder", title: "Scholarship Finder", description: "Discover scholarships based on destination, course and profile.", cta: "Find Scholarships", href: "/scholarships", icon: Award },
-  { index: "05", category: "Evaluator", title: "IELTS / PTE Score Evaluator", description: "Understand your test-score readiness.", cta: "Evaluate Score", href: "/tools/test-score-evaluator", icon: Gauge },
+  { index: "04", category: "Evaluator", title: "IELTS / PTE Score Evaluator", description: "Understand your test-score readiness.", cta: "Evaluate Score", href: "/tools/test-score-evaluator", icon: Gauge },
 ];
 
 export interface ResourceFaq {

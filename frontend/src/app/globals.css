@@ -735,17 +735,17 @@ body::-webkit-scrollbar {
 }
 
 /* ==========================================================================
-   ISOLATED EDUCATION LOAN CALCULATOR VIEW
-   Hides website header, footer, mobile bottom nav, and floating widgets
-   so the calculator occupies the full viewport cleanly.
+   ISOLATED TOOL CALCULATOR & EVALUATOR VIEWS
+   Hides website header (TopBar + Navbar), footer, mobile bottom nav,
+   and floating widgets so all tool pages occupy the full viewport cleanly.
    ========================================================================== */
-body:has(#education-loan-calculator-page) > div > header,
-body:has(#education-loan-calculator-page) > div > footer,
-body:has(#education-loan-calculator-page) nav[aria-label="Mobile Quick Actions"],
-body:has(#education-loan-calculator-page) button[aria-label="Scroll to top"],
-body:has(#education-loan-calculator-page) div:has(> a[aria-label*="WhatsApp"]),
-body:has(#education-loan-calculator-page) a[aria-label*="WhatsApp"],
-body:has(#education-loan-calculator-page) .fixed.bottom-6.right-6 {
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) > div > header,
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) > div > footer,
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) nav[aria-label="Mobile Quick Actions"],
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) button[aria-label="Scroll to top"],
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) div:has(> a[aria-label*="WhatsApp"]),
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) a[aria-label*="WhatsApp"],
+body:has(#education-loan-calculator-page, #profile-checker-page, #study-abroad-cost-page, #test-score-evaluator-page, [data-tool-page="true"]) .fixed.bottom-6.right-6 {
   display: none !important;
 }
 

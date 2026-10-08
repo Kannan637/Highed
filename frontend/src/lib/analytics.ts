@@ -4,6 +4,7 @@
  */
 export type ToolEventName =
   | "calculator_started"
+  | "calculator_step_one_completed"
   | "calculator_completed"
   | "cost_calculated"
   | "emi_calculated"

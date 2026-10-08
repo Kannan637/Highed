@@ -20,7 +20,6 @@ const CANONICAL_TOOLS = [
   "study-abroad-cost",
   "education-loan-emi",
   "profile-checker",
-  "scholarship-finder",
   "test-score-evaluator",
 ];
 

@@ -10,7 +10,6 @@ import CTASection from "@/components/ui/CTASection";
 import { constructMetadata } from "@/seo/metadata";
 
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import ScholarshipFinder from "@/components/tools/ScholarshipFinder";
 
 export const metadata = constructMetadata({
   title: "Study Abroad Scholarships & Funding Finder | HighEd",
@@ -116,21 +115,16 @@ export default function ScholarshipsPage() {
           items={[
             { label: "Home", href: "/" },
             { label: "Resources", href: "/resources" },
-            { label: "Scholarship Finder" },
+            { label: "Scholarships" },
           ]}
           className="mb-8"
         />
 
         <SectionHeading
-          badge="Scholarship Finder"
+          badge="Scholarships"
           title="Fund Your Study Abroad Dream"
-          subtitle="Explore 100+ scholarships across 7 top destinations. Search, filter by award tier, and calculate your live academic profile match percentage."
+          subtitle="Explore 100+ scholarships across 7 top destinations including merit waivers, government grants, and university funding opportunities."
         />
-
-        {/* Live Interactive Scholarship Finder Tool */}
-        <div className="mb-14">
-          <ScholarshipFinder />
-        </div>
 
         <div className="mb-8">
           <h2 className="text-[24px] font-bold text-brand-primary sm:text-[28px]">

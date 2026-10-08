@@ -115,7 +115,6 @@ export async function GET() {
 - Profile Checker: ${baseUrl}/tools/profile-checker
 - Study Abroad Cost Calculator: ${baseUrl}/tools/study-abroad-cost
 - Education Loan EMI Calculator: ${baseUrl}/tools/education-loan-emi
-- Scholarship Finder: ${baseUrl}/tools/scholarship-finder
 - Test Score Evaluator: ${baseUrl}/tools/test-score-evaluator
 
 ---
