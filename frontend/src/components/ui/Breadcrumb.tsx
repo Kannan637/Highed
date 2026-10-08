@@ -24,18 +24,30 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const isOnAccent = variant === "on-accent";
 
   return (
-    <nav aria-label="Breadcrumb" className={cn("flex items-center text-sm", className)}>
-      <ol className="flex items-center flex-wrap gap-1.5 text-xs md:text-sm font-medium">
+    <nav
+      aria-label="Breadcrumb"
+      className={cn("flex items-center text-sm w-full min-w-0", className)}
+    >
+      <ol
+        className={cn(
+          "flex items-center flex-nowrap overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          "gap-1 sm:gap-1.5 text-xs sm:text-[13px] md:text-sm font-medium py-0.5 max-w-full"
+        )}
+      >
         {items.map((item, index) => {
+          const isFirst = index === 0;
           const isLast = index === items.length - 1;
 
           return (
-            <li key={index} className="inline-flex items-center gap-1.5">
+            <li
+              key={index}
+              className="inline-flex items-center gap-1 sm:gap-1.5 shrink-0"
+            >
               {index > 0 && (
                 <ChevronRight
                   className={cn(
-                    "w-3.5 h-3.5 shrink-0 select-none",
-                    isOnAccent ? "text-white/60" : "text-neutral-400"
+                    "size-3 sm:size-3.5 shrink-0 select-none",
+                    isOnAccent ? "text-white/65" : "text-neutral-400"
                   )}
                   aria-hidden="true"
                 />
@@ -43,9 +55,10 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
               {isLast ? (
                 <span
                   aria-current="page"
+                  title={item.label}
                   className={cn(
-                    "font-semibold truncate max-w-[200px] md:max-w-none",
-                    isOnAccent ? "text-white font-bold" : "text-neutral-900"
+                    "font-bold truncate max-w-[150px] xs:max-w-[200px] sm:max-w-[280px] md:max-w-none select-text",
+                    isOnAccent ? "text-white drop-shadow-xs" : "text-neutral-900"
                   )}
                 >
                   {item.label}
@@ -53,26 +66,40 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
               ) : item.href ? (
                 <Link
                   href={item.href}
+                  title={item.label}
                   className={cn(
-                    "inline-flex items-center gap-1 transition-colors",
+                    "inline-flex items-center gap-1 transition-colors shrink-0",
                     isOnAccent
                       ? "text-white/85 hover:text-white"
                       : "text-neutral-500 hover:text-brand-primary"
                   )}
                 >
-                  {index === 0 && showHomeIcon && (
+                  {isFirst && showHomeIcon && (
                     <Home
                       className={cn(
-                        "w-3.5 h-3.5 shrink-0",
-                        isOnAccent ? "text-white/85" : ""
+                        "size-3.5 sm:size-4 shrink-0",
+                        isOnAccent ? "text-white/85" : "text-neutral-500"
                       )}
                       aria-hidden="true"
                     />
                   )}
-                  <span>{item.label}</span>
+                  <span
+                    className={cn(
+                      isFirst && showHomeIcon
+                        ? "hidden xs:inline"
+                        : "truncate max-w-[120px] sm:max-w-none"
+                    )}
+                  >
+                    {item.label}
+                  </span>
                 </Link>
               ) : (
-                <span className={isOnAccent ? "text-white/85" : "text-neutral-500"}>
+                <span
+                  className={cn(
+                    "truncate max-w-[120px] sm:max-w-none shrink-0",
+                    isOnAccent ? "text-white/85" : "text-neutral-500"
+                  )}
+                >
                   {item.label}
                 </span>
               )}

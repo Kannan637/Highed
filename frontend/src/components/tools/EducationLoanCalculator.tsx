@@ -443,7 +443,7 @@ export const EducationLoanCalculator = ({
             className={cn(MASTER_CTA_CLASSNAME, "h-13 cursor-pointer")}
           >
             <span className="flex items-center justify-center gap-2">
-              Next: View Loan Breakdown
+              View Loan Breakdown
               <ArrowRight size={18} />
             </span>
           </Button>
