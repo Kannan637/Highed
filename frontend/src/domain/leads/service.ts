@@ -12,7 +12,7 @@ import { ValidationError, PersistenceError } from "./errors";
 import { CRMService } from "@/services/crm.service";
 
 export class DomainLeadService {
-  constructor(private readonly repository: ILeadRepository = defaultLeadRepository) {}
+  constructor(private readonly repository: ILeadRepository = defaultLeadRepository) { }
 
   /**
    * Process a full counselling application.
@@ -49,10 +49,11 @@ export class DomainLeadService {
     // 3. Create persistent lead entity
     const leadId = `lead_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
     const nowIso = new Date().toISOString();
+    const isEventReg = data.source.startsWith("event_") || !!data.eventId;
 
     const leadEntity: LeadEntity = {
       id: leadId,
-      type: "full_counselling",
+      type: isEventReg ? "event_registration" : "full_counselling",
       createdAt: nowIso,
       status: "persisted",
       data,
@@ -108,7 +109,9 @@ export class DomainLeadService {
 
     return {
       success: true,
-      message: "Your counselling request has been received! An expert advisor will contact you within 24 hours.",
+      message: isEventReg
+        ? "Your event pass has been confirmed! An entry badge and session schedule have been generated."
+        : "Your counselling request has been received! An expert advisor will contact you within 24 hours.",
       leadId,
     };
   }
@@ -199,6 +202,13 @@ export class DomainLeadService {
       message: "Your request has been received! Our counsellor will call you shortly.",
       leadId,
     };
+  }
+
+  /**
+   * Retrieve recent persisted leads for administrative auditing and management.
+   */
+  async getRecentLeads(limit = 50): Promise<LeadEntity[]> {
+    return this.repository.findRecent(limit);
   }
 }
 

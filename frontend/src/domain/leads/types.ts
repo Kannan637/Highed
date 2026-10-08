@@ -23,7 +23,7 @@ export interface LeadAuditRecord {
 
 export interface LeadEntity {
   id: string;
-  type: "full_counselling" | "popup_quick";
+  type: "full_counselling" | "popup_quick" | "event_registration";
   createdAt: string;
   status: "persisted" | "synced_crm" | "crm_failed" | "honeypot_blocked";
   data: LeadSubmissionData | LeadPopupData;

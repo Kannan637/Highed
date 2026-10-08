@@ -112,19 +112,12 @@ export const LeadPopupProvider: React.FC<{
       }, 60_000); // 1 minute of no action
     };
 
-    // Any user action resets the 1-minute timer
+    // Throttled action handler to avoid excessive timer resets on scroll
+    let lastActionTime = 0;
     const handleAction = () => {
-      startTimer();
-    };
-
-    // Throttled mouse movement handler
-    let lastMouseMove = 0;
-
-    const handleMouseMove = () => {
       const now = Date.now();
-
-      if (now - lastMouseMove > 60_000) {
-        lastMouseMove = now;
+      if (now - lastActionTime > 5000) {
+        lastActionTime = now;
         startTimer();
       }
     };
@@ -141,10 +134,6 @@ export const LeadPopupProvider: React.FC<{
       window.addEventListener(event, handleAction, { passive: true });
     });
 
-    window.addEventListener("mousemove", handleMouseMove, {
-      passive: true,
-    });
-
     // Start 1-minute countdown immediately
     // on mount or route transition
     startTimer();
@@ -155,8 +144,6 @@ export const LeadPopupProvider: React.FC<{
       actionEvents.forEach((event) => {
         window.removeEventListener(event, handleAction);
       });
-
-      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isOpen, pathname, openLeadPopup]);
 

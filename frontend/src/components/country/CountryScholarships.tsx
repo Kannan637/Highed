@@ -1,707 +1,536 @@
-
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import {
   ArrowRight,
   Award,
-  CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Compass,
-  ShieldCheck,
+  GraduationCap,
+  Landmark,
+  PiggyBank,
+  Trophy,
+  Wallet,
+  type LucideIcon,
 } from "lucide-react";
-
-import { Country } from "@/types/country";
-import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
-import LeadCTAButton from "@/components/forms/LeadCTAButton";
-
+import Image from "next/image";
+import Link from "next/link";
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 
-import { Button, buttonVariants } from "@/components/ui/Button";
-import { Separator } from "@/components/ui/separator";
+import Container from "@/components/ui/Container";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import EyebrowBadge from "../ui/EyebrowBadge";
 
-import { cn } from "@/lib/utils";
+const CARD_GAP_PX = 16;
 
-interface CountryScholarshipsProps {
-  country: Country;
+interface ScholarshipItem {
+  label: string;
+  description: string;
+  Icon: LucideIcon;
+  card: string;
+  tile: string;
 }
 
-export const CountryScholarships: React.FC<CountryScholarshipsProps> = ({
-  country,
-}) => {
-  const carouselRef = useRef<HTMLDivElement>(null);
+const scholarshipItems: readonly ScholarshipItem[] = [
+  {
+    label: "Merit-Based Scholarships",
+    description:
+      "Awards for strong academic records and test scores.",
+    Icon: Award,
+    card:
+      "bg-[#FEF9EC] border border-[#F6E9C8] text-content-primary",
+    tile: "bg-white text-[#B58A2A]",
+  },
+  {
+    label: "University Scholarships",
+    description:
+      "Funding offered directly by your chosen university.",
+    Icon: GraduationCap,
+    card:
+      "bg-[#EEF1FA] border border-[#D8E1F5] text-content-primary",
+    tile: "bg-white text-brand-primary",
+  },
+  {
+    label: "Education Loan Assistance",
+    description:
+      "Help with documents, applications, and lender choice.",
+    Icon: Landmark,
+    card:
+      "bg-[#F0F7FF] border border-[#D5E6F8] text-content-primary",
+    tile: "bg-white text-[#1E70BF]",
+  },
+  {
+    label: "Financial Planning Support",
+    description:
+      "Plan tuition, living costs, and repayment upfront.",
+    Icon: PiggyBank,
+    card:
+      "bg-[#FDF0F3] border border-[#F8D6DF] text-content-primary",
+    tile: "bg-white text-brand-accent",
+  },
+  {
+    label: "Government Scholarships",
+    description:
+      "Schemes run by central and state governments.",
+    Icon: Wallet,
+    card:
+      "bg-[#EBF5EE] border border-[#D0EADB] text-content-primary",
+    tile: "bg-white text-[#198248]",
+  },
+  {
+    label: "Sports & Talent Scholarship",
+    description:
+      "Support for athletes and gifted performers.",
+    Icon: Trophy,
+    card:
+      "bg-[#F5F2FE] border border-[#E1DAFA] text-content-primary",
+    tile: "bg-white text-[#6351D4]",
+  },
+];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
+interface CountryScholarshipsLoansSectionProps {
+  country?: string;
+  id?: string;
+}
 
-  const scholarships = country?.scholarshipsList || [];
-  const totalCount = scholarships.length;
-
-  /* ============================================================
-     CAROUSEL STATE
-     ============================================================ */
-
-  const updateCarouselState = useCallback(() => {
-    const container = carouselRef.current;
-
-    if (!container) return;
-
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-
-    setCanScrollPrev(scrollLeft > 8);
-    setCanScrollNext(scrollLeft + clientWidth < scrollWidth - 8);
-
-    const firstCard = container.firstElementChild as HTMLElement | null;
-
-    if (!firstCard) return;
-
-    const computedStyle = window.getComputedStyle(container);
-    const gap = parseFloat(computedStyle.columnGap || "0") || 0;
-
-    const cardWidth = firstCard.offsetWidth;
-
-    const index = Math.round(scrollLeft / (cardWidth + gap));
-
-    setActiveIndex(
-      Math.min(Math.max(index, 0), Math.max(totalCount - 1, 0))
-    );
-  }, [totalCount]);
-
-  /* ============================================================
-     SCROLL TO INDEX
-     ============================================================ */
-
-  const scrollToIndex = useCallback((index: number) => {
-    const container = carouselRef.current;
-
-    if (!container) return;
-
-    const firstCard = container.firstElementChild as HTMLElement | null;
-
-    if (!firstCard) return;
-
-    const computedStyle = window.getComputedStyle(container);
-    const gap = parseFloat(computedStyle.columnGap || "0") || 0;
-
-    const cardWidth = firstCard.offsetWidth;
-
-    container.scrollTo({
-      left: index * (cardWidth + gap),
-      behavior: "smooth",
-    });
-  }, []);
-
-  /* ============================================================
-     PREVIOUS / NEXT
-     ============================================================ */
-
-  const scroll = useCallback((direction: "prev" | "next") => {
-    const container = carouselRef.current;
-
-    if (!container) return;
-
-    const firstCard = container.firstElementChild as HTMLElement | null;
-
-    const computedStyle = window.getComputedStyle(container);
-    const gap = parseFloat(computedStyle.columnGap || "0") || 0;
-
-    const cardWidth = firstCard
-      ? firstCard.offsetWidth
-      : container.clientWidth * 0.86;
-
-    const scrollStep = cardWidth + gap;
-
-    container.scrollBy({
-      left: direction === "next" ? scrollStep : -scrollStep,
-      behavior: "smooth",
-    });
-  }, []);
-
-  /* ============================================================
-     KEYBOARD NAVIGATION
-     ============================================================ */
-
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      scroll("prev");
-    }
-
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      scroll("next");
-    }
-  };
-
-  /* ============================================================
-     SCROLL LISTENER
-     ============================================================ */
-
-  useEffect(() => {
-    updateCarouselState();
-
-    const container = carouselRef.current;
-
-    if (!container) return;
-
-    container.addEventListener("scroll", updateCarouselState, {
-      passive: true,
-    });
-
-    window.addEventListener("resize", updateCarouselState);
-
-    return () => {
-      container.removeEventListener("scroll", updateCarouselState);
-      window.removeEventListener("resize", updateCarouselState);
-    };
-  }, [updateCarouselState]);
-
-  if (!scholarships.length) {
-    return null;
-  }
-
+export default function CountryScholarshipsLoansSection({
+  country = "your destination",
+  id = "scholarships",
+}: CountryScholarshipsLoansSectionProps) {
   return (
     <section
-      id="scholarships"
+      id={id}
       className="
         w-full
         overflow-hidden
-        border-t
-        border-border-default
-        bg-surface-neutral
-        py-16
+        bg-background
+        py-14
+        text-content-primary
+        tracking-tight-5
+        [letter-spacing:var(--tracking-tight-5)]
+        [&_*]:[letter-spacing:var(--tracking-tight-5)]
         sm:py-20
-        lg:py-24
+        lg:py-[72px]
+        scroll-mt-6
       "
     >
       <Container size="lg">
-        {/* ========================================================
-            HEADER
-            ======================================================== */}
-
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionHeading
-            badge="Financial Support"
-            title={`Scholarships & Grants in ${country.name} `}
-            subtitle="Offset your tuition with merit-based awards, government stipends, and university waivers."
-            className="text-center"
-          />
-        </div>
-
-        {/* ========================================================
-            NAVIGATION
-            ======================================================== */}
-
-        {totalCount > 1 && (
-          <div className="mt-8 flex items-center justify-center sm:mt-10">
-            <div className="flex items-center gap-4">
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                disabled={!canScrollPrev}
-                onClick={() => scroll("prev")}
-                aria-label="Previous scholarship"
-                className="
-                  size-10
-                  cursor-pointer
-                  rounded-full
-                  border-border-default
-                  bg-surface-default
-                  shadow-none
-                  transition-all
-                  duration-200
-                  hover:border-brand-primary
-                  hover:text-brand-primary
-                  disabled:cursor-not-allowed
-                "
-              >
-                <ChevronLeft
-                  aria-hidden="true"
-                  className="size-4"
-                />
-              </Button>
-
-              <span
-                className="
-                  min-w-16
-                  text-center
-                  text-caption
-                  font-medium
-                  tabular-nums
-                  text-content-secondary
-                "
-              >
-                {String(activeIndex + 1).padStart(2, "0")}
-                {" / "}
-                {String(totalCount).padStart(2, "0")}
-              </span>
-
-              <Button
-                type="button"
-                variant="outline"
-                size="icon"
-                disabled={!canScrollNext}
-                onClick={() => scroll("next")}
-                aria-label="Next scholarship"
-                className="
-                  size-10
-                  cursor-pointer
-                  rounded-full
-                  border-border-default
-                  bg-surface-default
-                  shadow-none
-                  transition-all
-                  duration-200
-                  hover:border-brand-primary
-                  hover:text-brand-primary
-                  disabled:cursor-not-allowed
-                "
-              >
-                <ChevronRight
-                  aria-hidden="true"
-                  className="size-4"
-                />
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================
-            SCHOLARSHIP CAROUSEL
-            ======================================================== */}
-
         <div
-          role="region"
-          aria-label={`Scholarships in ${country.name} `}
-          tabIndex={0}
-          onKeyDown={handleKeyDown}
           className="
-            mt-10
-            outline-none
-            focus-visible:ring-2
-            focus-visible:ring-brand-primary
-            focus-visible:ring-offset-4
-            sm:mt-12
-            lg:mt-14
+            grid
+            items-center
+            gap-10
+            lg:grid-cols-12
+            lg:gap-16
           "
         >
+          {/* CONTENT */}
           <div
-            ref={carouselRef}
             className="
-              flex
-              snap-x
-              snap-mandatory
-              gap-4
-              overflow-x-auto
-              scroll-smooth
-              scrollbar-none
-              px-1
-              py-2
-              touch-pan-x
-              sm:gap-5
+              min-w-0
+              text-center
+              lg:col-span-7
+              lg:text-left
             "
-            style={{
-              WebkitOverflowScrolling: "touch",
-            }}
           >
-            {scholarships.map((scholarship, index) => (
-              <Card
-                key={`${scholarship.name} -${index} `}
-                className={cn(
-                  /* Layout */
-                  "group flex shrink-0 snap-start flex-col",
+            <EyebrowBadge className="mx-auto mb-5 lg:mx-0">
+              Scholarships & Loans
+            </EyebrowBadge>
 
-                  /* Mobile */
-                  "w-[86vw] min-w-[280px] max-w-[360px]",
+            <h2
+              className="
+                mx-auto
+                max-w-[24ch]
+                text-3xl
+                font-semibold
+                leading-[1.08]
+                text-brand-primary
+                sm:text-5xl
+                lg:mx-0
+                lg:text-6xl
+              "
+            >
+              Scholarships and education loan help in{" "}
+              <span className="text-brand-accent">
+                {country}
+              </span>
+            </h2>
 
-                  /* Tablet */
-                  "sm:w-[calc(50%-10px)] sm:max-w-none",
+            <p
+              className="
+                mx-auto
+                mt-5
+                max-w-[48ch]
+                text-base
+                leading-relaxed
+                text-content-secondary
+                sm:text-lg
+                lg:mx-0
+              "
+            >
+              We match you with funding you qualify for and guide
+              you through every application.
+            </p>
 
-                  /* Desktop */
-                  "lg:w-[calc(33.333%-13.333px)]",
-
-                  /* Global design system */
-                  "rounded-[var(--radius-card)]",
-                  "border-border-card",
-                  "bg-surface-default",
-
-                  /* Elevation */
-                  "shadow-card-resting",
-
-                  /* Interaction */
-                  "transition-all",
-                  "duration-[var(--duration-normal)]",
-                  "ease-[var(--easing-default)]",
-
-                  "hover:border-brand-primary/20",
-                  "hover:shadow-card-hover"
-                )}
-              >
-                {/* ==================================================
-                    CARD HEADER
-                    ================================================== */}
-
-                <CardHeader className="space-y-5 p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    {/* Award icon */}
-
-                    <div
-                      className="
+            {/* SCHOLARSHIP CAROUSEL */}
+            <CardCarousel label="Scholarship and loan options">
+              {scholarshipItems.map(
+                ({
+                  label,
+                  description,
+                  Icon,
+                  card,
+                  tile,
+                }) => (
+                  <li
+                    key={label}
+                    className={`
+                      flex
+                      min-h-[270px]
+                      w-[82vw]
+                      max-w-[280px]
+                      shrink-0
+                      snap-center
+                      flex-col
+                      justify-between
+                      rounded-[28px]
+                      p-6
+                      text-left
+                      sm:min-h-[280px]
+                      sm:w-[260px]
+                      sm:snap-start
+                      ${card}
+                    `}
+                  >
+                    {/* ICON */}
+                    <span
+                      aria-hidden="true"
+                      className={`
                         flex
-                        size-11
-                        shrink-0
+                        size-12
                         items-center
                         justify-center
-                        rounded-[var(--radius-icon)]
-                        bg-icon-bg-gold
-                        text-brand-gold
-                      "
+                        rounded-2xl
+                        ${tile}
+                      `}
                     >
-                      <Award
-                        aria-hidden="true"
-                        className="size-5"
-                        strokeWidth={1.8}
+                      <Icon
+                        size={22}
+                        strokeWidth={2}
                       />
-                    </div>
-
-                    {/* Scholarship label */}
-
-                    <span
-                      className="
-                        pt-1
-                        text-caption
-                        font-medium
-                        uppercase
-                        tracking-[0.04em]
-                        text-content-muted
-                      "
-                    >
-                      Scholarship
                     </span>
-                  </div>
 
-                  {/* Amount */}
-
-                  <div>
-                    <p
-                      className="
-                        text-caption
-                        font-medium
-                        text-content-secondary
-                      "
-                    >
-                      Award Amount
-                    </p>
-
-                    <p
-                      className="
-                        mt-1
-                        text-h5
-                        text-brand-primary
-                      "
-                    >
-                      {scholarship.amount}
-                    </p>
-                  </div>
-
-                  {/* Title */}
-
-                  <CardTitle
-                    className="
-                      line-clamp-2
-                      text-h5
-                      text-content-primary
-                    "
-                  >
-                    {scholarship.name}
-                  </CardTitle>
-                </CardHeader>
-
-                {/* ==================================================
-                    CARD CONTENT
-                    ================================================== */}
-
-                <CardContent className="flex-1 px-6 pb-6 sm:px-7 sm:pb-7">
-                  <div
-                    className="
-                      rounded-[16px]
-                      border
-                      border-border-light
-                      bg-surface-neutral
-                    "
-                  >
-                    {/* Eligibility */}
-
-                    <div className="flex items-start gap-3.5 p-4">
-                      <div
+                    {/* CONTENT */}
+                    <div className="flex flex-col gap-2">
+                      <h5
                         className="
-                          mt-0.5
-                          flex
-                          size-8
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-[var(--radius-icon)]
-                          bg-icon-bg-success
-                          text-feedback-success
+                          text-xl
+                          font-semibold
+                          leading-tight
+                          text-content-primary
                         "
                       >
-                        <CheckCircle2
-                          aria-hidden="true"
-                          className="size-4"
-                          strokeWidth={1.8}
-                        />
-                      </div>
+                        {label}
+                      </h5>
 
-                      <div className="min-w-0">
-                        <p
-                          className="
-                            text-caption
-                            font-medium
-                            text-content-secondary
-                          "
-                        >
-                          Eligibility
-                        </p>
-
-                        <p
-                          className="
-                            mt-1
-                            line-clamp-3
-                            text-body-small
-                            text-content-primary
-                          "
-                        >
-                          {scholarship.eligibility}
-                        </p>
-                      </div>
+                      <p
+                        className="
+                          text-sm
+                          leading-relaxed
+                          text-content-secondary
+                        "
+                      >
+                        {description}
+                      </p>
                     </div>
+                  </li>
+                ),
+              )}
+            </CardCarousel>
 
-                    <Separator className="bg-border-light" />
-
-                    {/* Coverage */}
-
-                    <div className="flex items-start gap-3.5 p-4">
-                      <div
-                        className="
-                          mt-0.5
-                          flex
-                          size-8
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-[var(--radius-icon)]
-                          bg-icon-bg-primary
-                          text-brand-primary
-                        "
-                      >
-                        <ShieldCheck
-                          aria-hidden="true"
-                          className="size-4"
-                          strokeWidth={1.8}
-                        />
-                      </div>
-
-                      <div className="min-w-0">
-                        <p
-                          className="
-                            text-caption
-                            font-medium
-                            text-content-secondary
-                          "
-                        >
-                          Coverage
-                        </p>
-
-                        <p
-                          className="
-                            mt-1
-                            line-clamp-3
-                            text-body-small
-                            text-content-primary
-                          "
-                        >
-                          {scholarship.coverage}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-
-                {/* ==================================================
-                    CARD FOOTER
-                    ================================================== */}
-
-                <CardFooter className="border-t border-border-light p-0">
-                  <div className="w-full p-5 sm:p-6">
-                    <LeadCTAButton
-                      source={`country_scholarship_${country.slug} `}
-                      variant="ghost"
-                      size="sm"
-                      className="
-                        group/cta
-                        flex
-                        w-full
-                        cursor-pointer
-                        items-center
-                        justify-between
-                        rounded-[var(--radius-btn)]
-                        px-3
-                        py-2.5
-                        text-btn
-                        text-brand-primary
-                        transition-colors
-                        duration-[var(--duration-fast)]
-                        hover:bg-surface-brand-light
-                        hover:text-brand-primary
-                      "
-                    >
-                      <span>Check Qualification</span>
-
-                      <span
-                        className="
-                          flex
-                          size-8
-                          items-center
-                          justify-center
-                          rounded-full
-                          bg-icon-bg-primary
-                          text-brand-primary
-                          transition-all
-                          duration-[var(--duration-fast)]
-                          group-hover/cta:bg-brand-primary
-                          group-hover/cta:text-content-inverse
-                        "
-                      >
-                        <ArrowRight
-                          aria-hidden="true"
-                          className="
-                            size-4
-                            transition-transform
-                            duration-[var(--duration-fast)]
-                            group-hover/cta:translate-x-0.5
-                          "
-                          strokeWidth={1.8}
-                        />
-                      </span>
-                    </LeadCTAButton>
-                  </div>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* ========================================================
-            MOBILE PAGINATION
-            ======================================================== */}
-
-        {totalCount > 1 && (
-          <div className="mt-6 flex justify-center sm:hidden">
+            {/* CTA */}
             <div
-              className="flex items-center gap-1"
-              role="tablist"
-              aria-label="Scholarship carousel pagination"
+              className="
+                mt-8
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-3
+                sm:flex-row
+                lg:items-center
+                lg:justify-start
+              "
             >
-              {scholarships.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeIndex === index}
-                  aria-label={`Go to scholarship ${index + 1} `}
-                  onClick={() => scrollToIndex(index)}
+              <LeadCTAButton source="scholarship_counselling">
+                Book Free Counselling
+              </LeadCTAButton>
+
+              <Link
+                href="/scholarships"
+                className="
+                  group
+                  inline-flex
+                  h-12
+                  items-center
+                  gap-2
+                  rounded-full
+                  px-6
+                  text-sm
+                  font-semibold
+                  text-brand-accent
+                  transition-colors
+                  duration-200
+                  hover:bg-brand-accent/10
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-brand-accent
+                "
+              >
+                <span>Explore Scholarships</span>
+
+                <ArrowRight
+                  size={18}
+                  strokeWidth={2.2}
+                  aria-hidden="true"
                   className="
-                    flex
-                    min-h-9
-                    min-w-9
-                    cursor-pointer
-                    items-center
-                    justify-center
-                    rounded-full
+                    transition-transform
+                    duration-200
+                    group-hover:translate-x-1
+                    motion-reduce:transition-none
                   "
-                >
-                  <span
-                    className={cn(
-                      "h-1.5 rounded-full transition-all duration-200",
-                      activeIndex === index
-                        ? "w-6 bg-brand-primary"
-                        : "w-1.5 bg-content-muted/30"
-                    )}
-                  />
-                </button>
-              ))}
+                />
+              </Link>
             </div>
           </div>
-        )}
 
-        {/* ========================================================
-            EXPLORE ALL & SCHOLARSHIP FINDER TOOL
-            ======================================================== */}
-
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:mt-12">
-          <Link
-            href={`/study-in/${country.slug}/explore?type=scholarships`}
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "group flex h-12 w-full max-w-[360px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-black/10 bg-white px-6 text-sm font-semibold text-brand-primary shadow-none transition-all hover:border-brand-primary hover:bg-brand-primary/5 sm:w-auto sm:max-w-none"
-            )}
+          {/* IMAGE */}
+          <div
+            className="
+              flex
+              justify-center
+              lg:col-span-5
+              lg:justify-end
+            "
           >
-            <Compass
-              aria-hidden="true"
-              className="size-4 text-brand-primary"
-              strokeWidth={1.8}
-            />
-
-            <span>
-              Explore {country.name} Scholarships
-            </span>
-
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-              strokeWidth={1.8}
-            />
-          </Link>
-
-          <Link
-            href="/tools/scholarship-finder"
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "group flex h-12 w-full max-w-[360px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-brand-accent/20 bg-brand-accent/5 px-6 text-sm font-semibold text-brand-accent shadow-none transition-all hover:border-brand-accent hover:bg-brand-accent/10 sm:w-auto sm:max-w-none"
-            )}
-          >
-            <Award
-              aria-hidden="true"
-              className="size-4 text-brand-accent"
-              strokeWidth={1.8}
-            />
-
-            <span>
-              Match Profile on Scholarship Finder
-            </span>
-
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-              strokeWidth={1.8}
-            />
-          </Link>
+            <div
+              className="
+                relative
+                aspect-[4/5]
+                w-full
+                max-w-[360px]
+                overflow-hidden
+                rounded-[28px]
+                bg-surface-neutral
+                sm:max-w-[400px]
+                lg:max-w-[460px]
+              "
+            >
+              <Image
+                src="/images/Scholarship/scholarship-student.webp"
+                alt="Student receiving study abroad scholarship advisory at HighEd"
+                fill
+                loading="lazy"
+                sizes="
+                  (min-width: 1024px) 460px,
+                  (min-width: 640px) 400px,
+                  90vw
+                "
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </Container>
     </section>
   );
-};
+}
 
-export default CountryScholarships
+/* ============================================================
+   CARD CAROUSEL
+   - Mobile: centered cards
+   - Desktop: left aligned cards
+   - Scroll snap
+   - No card hover animation
+   - No card shadow
+============================================================ */
+
+interface CardCarouselProps {
+  label: string;
+  children: ReactNode;
+}
+
+function CardCarousel({
+  label,
+  children,
+}: CardCarouselProps) {
+  const listRef = useRef<HTMLUListElement>(null);
+
+  const [canScroll, setCanScroll] = useState(false);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const update = useCallback(() => {
+    const el = listRef.current;
+
+    if (!el) {
+      return;
+    }
+
+    const hasOverflow =
+      el.scrollWidth > el.clientWidth + 1;
+
+    setCanScroll(hasOverflow);
+
+    setAtStart(el.scrollLeft <= 1);
+
+    setAtEnd(
+      el.scrollLeft + el.clientWidth >=
+      el.scrollWidth - 1,
+    );
+  }, []);
+
+  useEffect(() => {
+    const el = listRef.current;
+
+    if (!el) {
+      return;
+    }
+
+    update();
+
+    el.addEventListener("scroll", update, {
+      passive: true,
+    });
+
+    const observer = new ResizeObserver(update);
+
+    observer.observe(el);
+
+    return () => {
+      el.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [update]);
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = listRef.current;
+    const first = el?.firstElementChild;
+
+    if (!el || !first) {
+      return;
+    }
+
+    const step =
+      first.getBoundingClientRect().width +
+      CARD_GAP_PX;
+
+    const reduceMotion = window
+      .matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      )
+      .matches;
+
+    el.scrollBy({
+      left: direction * step,
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  };
+
+  const controlClass = `
+    flex
+    size-11
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-border
+    bg-surface-default
+    text-content-primary
+    transition-colors
+    duration-200
+    hover:bg-surface-subtle
+    hover:text-brand-primary
+    disabled:pointer-events-none
+    disabled:opacity-40
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-brand-accent
+  `;
+
+  return (
+    <div
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={label}
+      className="mt-10 w-full"
+    >
+      <ul
+        ref={listRef}
+        tabIndex={0}
+        className="
+          flex
+          snap-x
+          snap-mandatory
+          gap-4
+          overflow-x-auto
+          scroll-smooth
+          pb-2
+          px-[calc((100%-82vw)/2)]
+          sm:px-0
+          focus-visible:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-brand-accent
+          motion-reduce:scroll-auto
+          [scrollbar-width:none]
+          [&::-webkit-scrollbar]:hidden
+        "
+      >
+        {children}
+      </ul>
+
+      {canScroll && (
+        <div
+          className="
+            mt-5
+            flex
+            justify-center
+            gap-2
+            sm:justify-end
+          "
+        >
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            disabled={atStart}
+            aria-label="Previous scholarship option"
+            className={controlClass}
+          >
+            <ChevronLeft
+              size={21}
+              aria-hidden="true"
+            />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            disabled={atEnd}
+            aria-label="Next scholarship option"
+            className={controlClass}
+          >
+            <ChevronRight
+              size={21}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}

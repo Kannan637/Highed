@@ -15,37 +15,37 @@ interface RegistrationTableProps {
 export function RegistrationTable({ registrations, isLoading }: RegistrationTableProps) {
   const columns: Column<EventRegistration>[] = [
     {
-      header: 'Attendee',
+      header: 'Attendee Profile',
       cell: (reg) => (
         <div>
-          <span className="font-medium text-slate-900">{reg.fullName}</span>
-          <div className="flex items-center gap-2 text-xs text-slate-400 mt-0.5">
+          <span className="font-bold text-sm text-slate-900">{reg.fullName}</span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-slate-500 mt-1">
             <span className="flex items-center gap-1">
-              <Mail className="h-3 w-3" /> {reg.email}
+              <Mail className="h-3 w-3 text-slate-400" /> {reg.email}
             </span>
             <span className="flex items-center gap-1">
-              <Phone className="h-3 w-3" /> {reg.phone}
+              <Phone className="h-3 w-3 text-slate-400" /> {reg.phone}
             </span>
           </div>
         </div>
       ),
     },
     {
-      header: 'Preferred Country',
+      header: 'Target Country',
       cell: (reg) => (
-        <span className="text-sm text-slate-700">
+        <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200/80">
           {reg.preferredCountry || 'Undecided'}
         </span>
       ),
     },
     {
-      header: 'City',
+      header: 'Current City',
       cell: (reg) => (
-        <span className="text-sm text-slate-700">{reg.city || '-'}</span>
+        <span className="text-xs font-medium text-slate-600">{reg.city || 'Tamil Nadu'}</span>
       ),
     },
     {
-      header: 'Status',
+      header: 'Attendance Status',
       cell: (reg) => (
         <Badge
           variant={
@@ -55,15 +55,18 @@ export function RegistrationTable({ registrations, isLoading }: RegistrationTabl
               ? 'default'
               : 'secondary'
           }
+          dot
         >
-          {reg.status}
+          <span className="capitalize">{reg.status}</span>
         </Badge>
       ),
     },
     {
-      header: 'Registered On',
+      header: 'Registration Time',
       cell: (reg) => (
-        <span className="text-xs text-slate-500">{formatDate(reg.registeredAt)}</span>
+        <span className="text-xs font-mono text-slate-500">
+          {formatDate(reg.registeredAt)}
+        </span>
       ),
     },
   ];
@@ -73,8 +76,8 @@ export function RegistrationTable({ registrations, isLoading }: RegistrationTabl
       columns={columns}
       data={registrations}
       isLoading={isLoading}
-      emptyTitle="No registrations yet"
-      emptyDescription="Students who register on the public website will show up here."
+      emptyTitle="No attendee registrations yet"
+      emptyDescription="Registrations from website visitors will appear here in real time."
     />
   );
 }

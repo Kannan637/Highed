@@ -9,6 +9,8 @@ import { Button } from '../ui/button';
 import { BlogEditor } from './BlogEditor';
 import { SEOFields } from './SEOFields';
 import { slugify } from '../../lib/utils';
+import { AlertCircle } from 'lucide-react';
+import { blogSchema } from '../../lib/validations/blog';
 
 interface BlogFormProps {
   initialData?: Partial<CreateBlogInput>;
@@ -27,6 +29,7 @@ export function BlogForm({ initialData, onSubmit, isLoading }: BlogFormProps) {
     status: initialData?.status || 'draft',
     seo: initialData?.seo || {},
   });
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleTitleChange = (val: string) => {
     setFormData((prev) => ({
@@ -42,11 +45,25 @@ export function BlogForm({ initialData, onSubmit, isLoading }: BlogFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationError(null);
+
+    const validation = blogSchema.safeParse(formData);
+    if (!validation.success) {
+      setValidationError(validation.error.issues[0]?.message || 'Please check blog details');
+      return;
+    }
+
     await onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {validationError && (
+        <div className="flex items-center gap-2 p-3 text-xs font-medium text-rose-700 bg-rose-50 border border-rose-200 rounded-lg">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          <span>{validationError}</span>
+        </div>
+      )}
       <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
         <h3 className="text-lg font-semibold text-slate-900">Blog Information</h3>
 

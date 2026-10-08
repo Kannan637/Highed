@@ -152,7 +152,7 @@ export const UniversityDirectoryPreview = () => {
                     <div><dt className="text-content-secondary">Intake</dt><dd className="font-semibold text-content-primary">{u.intake}</dd></div>
                   </dl>
                   <div className="mt-auto pt-5">
-                    <ArrowLink href="/explore" stretched>View University</ArrowLink>
+                    <ArrowLink href="/study-in" stretched>View University</ArrowLink>
                   </div>
                 </article>
               </li>
@@ -172,7 +172,7 @@ export const UniversityDirectoryPreview = () => {
         )}
 
         <div className="mt-8 flex justify-center">
-          <ArrowLink href="/explore">Open full University Directory</ArrowLink>
+          <ArrowLink href="/study-in">Open full University Directory</ArrowLink>
         </div>
       </Container>
 

@@ -733,3 +733,19 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
+
+/* ==========================================================================
+   ISOLATED EDUCATION LOAN CALCULATOR VIEW
+   Hides website header, footer, mobile bottom nav, and floating widgets
+   so the calculator occupies the full viewport cleanly.
+   ========================================================================== */
+body:has(#education-loan-calculator-page) > div > header,
+body:has(#education-loan-calculator-page) > div > footer,
+body:has(#education-loan-calculator-page) nav[aria-label="Mobile Quick Actions"],
+body:has(#education-loan-calculator-page) button[aria-label="Scroll to top"],
+body:has(#education-loan-calculator-page) div:has(> a[aria-label*="WhatsApp"]),
+body:has(#education-loan-calculator-page) a[aria-label*="WhatsApp"],
+body:has(#education-loan-calculator-page) .fixed.bottom-6.right-6 {
+  display: none !important;
+}
+

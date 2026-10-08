@@ -7,6 +7,8 @@ import { Textarea } from '../ui/textarea';
 import { Select } from '../ui/select';
 import { Button } from '../ui/button';
 import { slugify } from '../../lib/utils';
+import { AlertCircle } from 'lucide-react';
+import { eventSchema } from '../../lib/validations/event';
 
 interface EventFormProps {
   initialData?: Partial<CreateEventInput>;
@@ -28,6 +30,7 @@ export function EventForm({ initialData, onSubmit, isLoading }: EventFormProps) 
     status: initialData?.status || 'draft',
     capacity: initialData?.capacity || 200,
   });
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleTitleChange = (val: string) => {
     setFormData((prev) => ({
@@ -39,11 +42,25 @@ export function EventForm({ initialData, onSubmit, isLoading }: EventFormProps) 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationError(null);
+
+    const validation = eventSchema.safeParse(formData);
+    if (!validation.success) {
+      setValidationError(validation.error.issues[0]?.message || 'Please check event details');
+      return;
+    }
+
     await onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {validationError && (
+        <div className="flex items-center gap-2 p-3 text-xs font-medium text-rose-700 bg-rose-50 border border-rose-200 rounded-lg">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          <span>{validationError}</span>
+        </div>
+      )}
       <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
         <h3 className="text-lg font-semibold text-slate-900">Event Details</h3>
 

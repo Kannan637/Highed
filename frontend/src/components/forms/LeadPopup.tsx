@@ -72,10 +72,54 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
     };
   }, [isOpen]);
 
+  const resetForm = useCallback(() => {
+    setPhone("");
+    setPhoneError("");
+    setSubmitError("");
+    setIsSuccess(false);
+    setLoading(false);
+  }, []);
+
+  // Close animation
+  const animateClose = useCallback(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      prefersReducedMotion ||
+      !overlayRef.current ||
+      !popupRef.current
+    ) {
+      resetForm();
+      onClose();
+      return;
+    }
+
+    gsap.to(popupRef.current, {
+      opacity: 0,
+      scale: 0.96,
+      y: 10,
+      duration: 0.2,
+      ease: "power2.in",
+    });
+
+    gsap.to(overlayRef.current, {
+      opacity: 0,
+      duration: 0.25,
+      ease: "power2.in",
+      onComplete: () => {
+        resetForm();
+        onClose();
+        previousFocusRef.current?.focus();
+      },
+    });
+  }, [onClose, resetForm]);
+
   // Focus trap for accessibility without forced scroll
   useFocusTrap(popupRef, {
     isActive: isOpen,
-    onEscape: () => animateClose(),
+    onEscape: animateClose,
     autoFocus: false,
   });
 
@@ -120,50 +164,6 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
       }
     );
   }, [isOpen]);
-
-  const resetForm = useCallback(() => {
-    setPhone("");
-    setPhoneError("");
-    setSubmitError("");
-    setIsSuccess(false);
-    setLoading(false);
-  }, []);
-
-  // Close animation
-  const animateClose = useCallback(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (
-      prefersReducedMotion ||
-      !overlayRef.current ||
-      !popupRef.current
-    ) {
-      resetForm();
-      onClose();
-      return;
-    }
-
-    gsap.to(popupRef.current, {
-      opacity: 0,
-      scale: 0.96,
-      y: 10,
-      duration: 0.2,
-      ease: "power2.in",
-    });
-
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.25,
-      ease: "power2.in",
-      onComplete: () => {
-        resetForm();
-        onClose();
-        previousFocusRef.current?.focus();
-      },
-    });
-  }, [onClose, resetForm]);
 
   // Validate & submit
   const handleSubmit = async (e: React.FormEvent) => {
@@ -305,8 +305,15 @@ export const LeadPopup: React.FC<LeadPopupProps> = ({
 
               {/* Form */}
               <form
+                id="lead-popup-modal-form"
                 onSubmit={handleSubmit}
                 className="mt-6 flex flex-col gap-4"
+                {...({
+                  toolname: "submit_counselling_inquiry",
+                  tooldescription: "Submit student details for free study abroad counseling, university admission processing, and visa assistance",
+                  "data-mcp-tool": "submit_counselling_inquiry",
+                  "data-mcp-description": "Submit student details for free study abroad counseling, university admission processing, and visa assistance",
+                } as React.HTMLAttributes<HTMLFormElement>)}
               >
                 {submitError && (
                   <div

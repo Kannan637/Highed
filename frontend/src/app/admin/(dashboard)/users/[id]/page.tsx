@@ -47,7 +47,7 @@ export default function UserDetailPage({ params }: { params: Promise<{ id: strin
     setIsSaving(true);
     try {
       await apiUpdateUser(id, data);
-      alert('User updated successfully!');
+      router.push('/admin/users');
     } finally {
       setIsSaving(false);
     }

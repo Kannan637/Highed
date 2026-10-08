@@ -1,415 +1,747 @@
-
 "use client";
 
 import React from "react";
 import {
-  ArrowRight,
-  BriefcaseBusiness,
-  Clock3,
-  FileText,
+  Check,
+  FileSearch,
+  GraduationCap,
+  Plane,
+  Send,
   ShieldCheck,
 } from "lucide-react";
 
-import { Country } from "@/types/country";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
-import { cn } from "@/lib/utils";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import type { Country } from "@/types/country";
 
-interface CountryVisaProps {
-  country: Country;
+export interface CountryProcessProps {
+  country?: Country;
 }
 
-export const CountryVisa: React.FC<CountryVisaProps> = ({ country }) => {
-  const { visaDetails } = country;
+interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+  details: string[];
+  icon: React.ElementType;
+}
 
-  const highlights = [
-    {
-      label: "Processing Time",
-      value: visaDetails.processingTime,
-      icon: Clock3,
-    },
-    {
-      label: "Part-Time Work",
-      value: visaDetails.workPermitHours.split(";")[0],
-      icon: BriefcaseBusiness,
-    },
-    {
-      label: "Post-Study Visa",
-      value: "Green Visa / Job Seeker",
-      icon: FileText,
-    },
-  ];
+const processSteps: ProcessStep[] = [
+  {
+    step: "01",
+    title: "Free Counselling in Chennai",
+    description:
+      "Understand your goals, preferred destinations, courses, budget, and career plans.",
+    details: [
+      "Course guidance",
+      "Country selection",
+      "Budget planning",
+    ],
+    icon: GraduationCap,
+  },
+  {
+    step: "02",
+    title: "Profile Evaluation & Shortlisting",
+    description:
+      "We evaluate your academic profile and shortlist universities that match your goals.",
+    details: [
+      "Profile assessment",
+      "University shortlist",
+      "Course matching",
+    ],
+    icon: FileSearch,
+  },
+  {
+    step: "03",
+    title: "University Application",
+    description:
+      "Prepare your documents and submit applications to your selected universities.",
+    details: [
+      "Document preparation",
+      "Application submission",
+      "Application tracking",
+    ],
+    icon: Send,
+  },
+  {
+    step: "04",
+    title: "Offer Letter & Admission",
+    description:
+      "Review your offers and complete the required admission and confirmation steps.",
+    details: [
+      "Offer evaluation",
+      "Admission confirmation",
+      "Fee guidance",
+    ],
+    icon: Check,
+  },
+  {
+    step: "05",
+    title: "Visa Processing",
+    description:
+      "Get guidance with visa documentation, application preparation, and submission.",
+    details: [
+      "Document checklist",
+      "Application support",
+      "Interview guidance",
+    ],
+    icon: ShieldCheck,
+  },
+  {
+    step: "06",
+    title: "Travel & Pre-Departure Support",
+    description:
+      "Prepare for your move with travel, accommodation, and pre-departure assistance.",
+    details: [
+      "Travel planning",
+      "Accommodation guidance",
+      "Pre-departure support",
+    ],
+    icon: Plane,
+  },
+];
 
+export const CountryProcess: React.FC<CountryProcessProps> = () => {
   return (
     <section
-      id="visa"
+      id="process"
       className="
         w-full
         overflow-hidden
-        border-t
-        border-border-default
-        bg-surface-neutral
+        bg-background
         py-16
+        text-content-primary
         sm:py-20
         lg:py-24
       "
     >
       <Container size="lg">
-        {/* ========================================================
-            CENTERED HEADER
-            ======================================================== */}
+        {/* ============================================================
+            HEADER
+        ============================================================ */}
 
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionHeading
-            badge="Immigration & Visas"
-            title={`Student Visa Guide for ${country.name}`}
-            subtitle="A streamlined, university-sponsored process with high approval rates and rapid processing."
-            className="text-center"
-          />
+        <div className="max-w-3xl">
+          <span
+            className="
+              inline-flex
+              items-center
+              gap-2
+              text-caption
+              font-semibold
+              uppercase
+              tracking-[0.08em]
+              text-brand-primary
+            "
+          >
+            <span
+              aria-hidden="true"
+              className="
+                size-1.5
+                rounded-full
+                bg-brand-accent
+              "
+            />
+
+            Our Process
+          </span>
+
+          <h2
+            className="
+              mt-5
+              max-w-[760px]
+              text-4xl
+              font-semibold
+              leading-[1.02]
+              tracking-[-0.04em]
+              text-content-primary
+              sm:text-5xl
+              lg:text-6xl
+            "
+          >
+            Study Abroad Process
+            <br />
+            <span className="text-brand-primary">
+              for Chennai Students
+            </span>
+          </h2>
+
+          <p
+            className="
+              mt-6
+              max-w-[620px]
+              text-base
+              leading-7
+              text-content-secondary
+              sm:text-lg
+            "
+          >
+            We follow a structured and transparent process to ensure
+            every student from Chennai has a smooth and successful
+            study abroad journey.
+          </p>
         </div>
 
-        {/* ========================================================
-            VISA HIGHLIGHTS
-            ======================================================== */}
+        {/* ============================================================
+            DESKTOP TIMELINE
+        ============================================================ */}
 
         <div
           className="
-            mx-auto
-            mt-10
-            max-w-5xl
-            overflow-hidden
-            rounded-[var(--radius-card)]
-            border
-            border-border-card
-            bg-surface-default
-            shadow-card-resting
-            sm:mt-12
+            mt-16
+            hidden
+            lg:block
           "
         >
-          <div className="grid grid-cols-1 sm:grid-cols-3">
-            {highlights.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={item.label}
-                  className={cn(
-                    "flex flex-col items-center px-6 py-7 text-center sm:px-7 sm:py-8",
-                    index !== 0 &&
-                    "border-t border-border-light sm:border-l sm:border-t-0"
-                  )}
-                >
-                  <div
-                    className="
-                      flex
-                      size-11
-                      items-center
-                      justify-center
-                      rounded-[var(--radius-icon)]
-                      bg-icon-bg-primary
-                      text-brand-primary
-                    "
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="size-5"
-                      strokeWidth={1.8}
-                    />
-                  </div>
-
-                  <p
-                    className="
-                      mt-4
-                      text-caption
-                      font-medium
-                      uppercase
-                      tracking-[0.04em]
-                      text-content-secondary
-                    "
-                  >
-                    {item.label}
-                  </p>
-
-                  <p
-                    className="
-                      mt-1
-                      text-h5
-                      text-content-primary
-                    "
-                  >
-                    {item.value}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ========================================================
-            VISA PROCESS
-            ======================================================== */}
-
-        <div className="mx-auto mt-20 max-w-4xl text-center sm:mt-24 lg:mt-28">
-          <div className="mx-auto max-w-2xl">
-            <p
-              className="
-                text-caption
-                font-semibold
-                uppercase
-                tracking-[0.08em]
-                text-brand-primary
-              "
-            >
-              Application Process
-            </p>
-
-            <h3
-              className="
-                mt-3
-                text-h3
-                text-content-primary
-              "
-            >
-              5 simple steps to secure your {country.name} student visa
-            </h3>
-
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-xl
-                text-body
-                text-content-secondary
-              "
-            >
-              Follow a clear application journey with support from our
-              specialized immigration counselors.
-            </p>
-          </div>
-
-          {/* ======================================================
-              STEPS
-              ====================================================== */}
+          {/* TIMELINE WRAPPER */}
 
           <div
             className="
-              mt-10
+              relative
+              w-full
               overflow-hidden
-              rounded-[var(--radius-card)]
+              rounded-[28px]
               border
-              border-border-card
+              border-border-light
               bg-surface-default
-              text-left
-              shadow-card-resting
-              sm:mt-12
             "
           >
-            {visaDetails.steps.map((step, index) => (
-              <article
-                key={step.stepNumber}
-                className={cn(
-                  "group grid grid-cols-[52px_1fr] gap-4 px-5 py-6 sm:grid-cols-[68px_1fr] sm:gap-6 sm:px-7 sm:py-7 lg:px-8",
-                  index !== 0 && "border-t border-border-light"
-                )}
-              >
-                {/* Number */}
+            {/* ========================================================
+                TIMELINE GRID
+            ======================================================== */}
 
-                <div className="flex justify-center">
+            <div className="relative px-7 py-8 xl:px-10 xl:py-10">
+              {/* Vertical grid lines */}
+
+              <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  opacity-60
+                "
+              >
+                <div
+                  className="
+                    absolute
+                    inset-y-0
+                    left-7
+                    right-7
+                    xl:left-10
+                    xl:right-10
+                    bg-[repeating-linear-gradient(to_right,transparent_0,transparent_calc(16.666666%-1px),var(--border-light)_calc(16.666666%-1px),var(--border-light)_16.666666%)]
+                  "
+                />
+              </div>
+
+              {/* ======================================================
+                  TIMELINE HEADER
+              ====================================================== */}
+
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  grid-cols-6
+                  gap-0
+                  border-b
+                  border-border-light
+                  pb-5
+                "
+              >
+                {processSteps.map((step, index) => (
+                  <div
+                    key={step.step}
+                    className={`
+                      min-w-0
+                      px-2
+                      ${index === 0
+                        ? "pl-0"
+                        : ""
+                      }
+                    `}
+                  >
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-2
+                      "
+                    >
+                      <span
+                        className="
+                          whitespace-nowrap
+                          text-[11px]
+                          font-semibold
+                          uppercase
+                          tracking-[0.06em]
+                          text-content-primary
+                        "
+                      >
+                        {getShortTitle(step.title)}
+                      </span>
+
+                      <span
+                        className="
+                          shrink-0
+                          rounded-full
+                          bg-surface-subtle
+                          px-2
+                          py-0.5
+                          text-[9px]
+                          font-medium
+                          tabular-nums
+                          text-content-muted
+                        "
+                      >
+                        Week {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* ======================================================
+                  PROCESS BARS
+              ====================================================== */}
+
+              <div
+                className="
+                  relative
+                  z-10
+                  mt-7
+                  space-y-5
+                "
+              >
+                {processSteps.map((step, index) => {
+                  const Icon = step.icon;
+
+                  /*
+                   * Every process gets its own grid row.
+                   * Therefore bars can NEVER overlap vertically.
+                   */
+
+                  const startColumn =
+                    Math.min(index + 1, 4);
+
+                  const span =
+                    index === 0 || index === 5
+                      ? 3
+                      : index === 1 || index === 4
+                        ? 3
+                        : 3;
+
+                  return (
+                    <div
+                      key={step.step}
+                      className="
+                        grid
+                        min-h-[132px]
+                        grid-cols-6
+                        items-center
+                        gap-0
+                      "
+                    >
+                      <div
+                        className="min-w-0"
+                        style={{
+                          gridColumn: `${startColumn} / span ${span}`,
+                        }}
+                      >
+                        <div
+                          className="
+                            relative
+                            min-h-[118px]
+                            overflow-hidden
+                            rounded-[20px]
+                            border
+                            border-brand-primary/10
+                            bg-[#253A7B]
+                            px-4
+                            py-4
+                            sm:px-5
+                          "
+                        >
+                          {/* Accent progress line */}
+
+                          <div
+                            aria-hidden="true"
+                            className="
+                              absolute
+                              left-0
+                              top-0
+                              h-1
+                              w-full
+                              bg-brand-accent
+                            "
+                          />
+
+                          {/* Content */}
+
+                          <div
+                            className="
+                              flex
+                              h-full
+                              items-start
+                              gap-4
+                            "
+                          >
+                            {/* Number */}
+
+                            <div
+                              className="
+                                flex
+                                size-11
+                                shrink-0
+                                items-center
+                                justify-center
+                                rounded-xl
+                                bg-white
+                                text-sm
+                                font-bold
+                                tabular-nums
+                                text-brand-primary
+                              "
+                            >
+                              {step.step}
+                            </div>
+
+                            {/* Icon */}
+
+                            <div
+                              className="
+                                flex
+                                size-10
+                                shrink-0
+                                items-center
+                                justify-center
+                                rounded-xl
+                                bg-white/10
+                                text-white
+                              "
+                            >
+                              <Icon
+                                className="size-5"
+                                strokeWidth={1.8}
+                              />
+                            </div>
+
+                            {/* Text */}
+
+                            <div className="min-w-0 flex-1">
+                              <h3
+                                className="
+                                  text-base
+                                  font-semibold
+                                  leading-tight
+                                  text-white
+                                  xl:text-lg
+                                "
+                              >
+                                {step.title}
+                              </h3>
+
+                              <p
+                                className="
+                                  mt-2
+                                  max-w-[440px]
+                                  text-xs
+                                  leading-5
+                                  text-white/70
+                                  xl:text-sm
+                                "
+                              >
+                                {step.description}
+                              </p>
+
+                              {/* Details */}
+
+                              <div
+                                className="
+                                  mt-3
+                                  flex
+                                  flex-wrap
+                                  gap-x-4
+                                  gap-y-1
+                                "
+                              >
+                                {step.details.map(
+                                  (detail) => (
+                                    <span
+                                      key={detail}
+                                      className="
+                                        text-[10px]
+                                        font-medium
+                                        text-white/50
+                                      "
+                                    >
+                                      {detail}
+                                    </span>
+                                  ),
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ============================================================
+            MOBILE TIMELINE
+        ============================================================ */}
+
+        <div
+          className="
+            relative
+            mt-12
+            lg:hidden
+          "
+        >
+          {/* Vertical spine */}
+
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              bottom-8
+              left-[19px]
+              top-8
+              w-px
+              bg-border-light
+            "
+          />
+
+          <div className="relative space-y-8">
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+
+              return (
+                <article
+                  key={step.step}
+                  className="
+                    relative
+                    pl-12
+                  "
+                >
+                  {/* NODE */}
+
                   <div
                     className="
+                      absolute
+                      left-0
+                      top-1
+                      z-10
                       flex
                       size-10
                       items-center
                       justify-center
                       rounded-full
-                      bg-icon-bg-primary
-                      text-sm
-                      font-semibold
+                      border
+                      border-background
+                      bg-brand-primary
+                      text-[10px]
+                      font-bold
                       tabular-nums
-                      text-brand-primary
-                      transition-colors
-                      duration-[var(--duration-fast)]
-                      group-hover:bg-brand-primary
-                      group-hover:text-content-inverse
+                      text-white
                     "
                   >
-                    {String(step.stepNumber).padStart(2, "0")}
-                  </div>
-                </div>
-
-                {/* Content */}
-
-                <div className="min-w-0 text-left">
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                    <h4
-                      className="
-                        text-h5
-                        text-content-primary
-                        transition-colors
-                        duration-[var(--duration-fast)]
-                        group-hover:text-brand-primary
-                      "
-                    >
-                      {step.title}
-                    </h4>
-
-                    <span
-                      className="
-                        hidden
-                        shrink-0
-                        text-caption
-                        font-medium
-                        uppercase
-                        tracking-[0.04em]
-                        text-content-muted
-                        sm:block
-                      "
-                    >
-                      Step {index + 1}
-                    </span>
+                    {step.step}
                   </div>
 
-                  <p
+                  {/* CONTENT */}
+
+                  <div
                     className="
-                      mt-2
-                      max-w-2xl
-                      text-body-small
-                      leading-6
-                      text-content-secondary
+                      overflow-hidden
+                      rounded-[22px]
+                      border
+                      border-border-light
+                      bg-surface-default
                     "
                   >
-                    {step.description}
-                  </p>
-                </div>
-              </article>
-            ))}
+                    <div
+                      className="
+                        h-1
+                        w-full
+                        bg-brand-accent
+                      "
+                    />
+
+                    <div className="p-5">
+                      {/* ICON */}
+
+                      <div
+                        className="
+                          flex
+                          size-11
+                          items-center
+                          justify-center
+                          rounded-2xl
+                          bg-icon-bg-primary
+                          text-brand-primary
+                        "
+                      >
+                        <Icon
+                          className="size-5"
+                          strokeWidth={1.8}
+                        />
+                      </div>
+
+                      {/* TITLE */}
+
+                      <h3
+                        className="
+                          mt-5
+                          text-lg
+                          font-semibold
+                          leading-tight
+                          text-content-primary
+                        "
+                      >
+                        {step.title}
+                      </h3>
+
+                      {/* DESCRIPTION */}
+
+                      <p
+                        className="
+                          mt-2
+                          text-sm
+                          leading-6
+                          text-content-secondary
+                        "
+                      >
+                        {step.description}
+                      </p>
+
+                      {/* DETAILS */}
+
+                      <div
+                        className="
+                          mt-4
+                          flex
+                          flex-wrap
+                          gap-x-4
+                          gap-y-2
+                          border-t
+                          border-border-light
+                          pt-4
+                        "
+                      >
+                        {step.details.map(
+                          (detail) => (
+                            <span
+                              key={detail}
+                              className="
+                                text-[11px]
+                                font-medium
+                                text-content-muted
+                              "
+                            >
+                              {detail}
+                            </span>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CONNECTOR DOT */}
+
+                  {index <
+                    processSteps.length - 1 && (
+                      <span
+                        aria-hidden="true"
+                        className="
+                        absolute
+                        left-[17px]
+                        top-[51px]
+                        size-1.5
+                        rounded-full
+                        bg-brand-accent
+                      "
+                      />
+                    )}
+                </article>
+              );
+            })}
           </div>
         </div>
 
-        {/* ========================================================
-            HIGHED VISA ASSISTANCE
-            ======================================================== */}
+        {/* ============================================================
+            CTA
+        ============================================================ */}
 
         <div
           className="
-            mx-auto
-            mt-10
-            max-w-4xl
-            overflow-hidden
-            rounded-[var(--radius-card)]
-            border
-            border-brand-primary/15
-            bg-surface-brand-light
-            sm:mt-12
+            mt-14
+            flex
+            flex-col
+            items-center
+            gap-4
+            border-t
+            border-border-light
+            pt-8
+            text-center
+            sm:mt-16
+            sm:flex-row
+            sm:justify-between
+            sm:text-left
           "
         >
-          <div
-            className="
-              flex
-              flex-col
-              items-center
-              gap-5
-              px-6
-              py-7
-              text-center
-              sm:px-8
-              sm:py-8
-            "
-          >
-            <div
+          <div>
+            <p
               className="
-                flex
-                size-11
-                items-center
-                justify-center
-                rounded-[var(--radius-icon)]
-                bg-surface-default
-                text-brand-primary
-                shadow-sm
+                text-body-small
+                font-semibold
+                text-content-primary
               "
             >
-              <ShieldCheck
-                aria-hidden="true"
-                className="size-5"
-                strokeWidth={1.8}
-              />
-            </div>
+              Ready to start your study abroad journey?
+            </p>
 
-            <div className="max-w-2xl">
-              <p
-                className="
-                  text-caption
-                  font-semibold
-                  uppercase
-                  tracking-[0.06em]
-                  text-brand-primary
-                "
-              >
-                HighEd Visa Assistance
-              </p>
-
-              <h4
-                className="
-                  mt-2
-                  text-h5
-                  text-content-primary
-                "
-              >
-                100% Visa Filing Assistance Included
-              </h4>
-
-              <p
-                className="
-                  mt-2
-                  text-body-small
-                  leading-6
-                  text-content-secondary
-                "
-              >
-                Our specialized immigration counselors review your financial
-                documentation, medical scheduling, and university submissions
-                with zero service fees.
-              </p>
-            </div>
-
-            <button
-              type="button"
+            <p
               className="
-                btn-motion
-                group
-                flex
-                h-11
-                cursor-pointer
-                items-center
-                gap-2
-                rounded-[var(--radius-btn)]
-                bg-brand-primary
-                px-5
-                text-btn
-                text-content-inverse
-                shadow-button
-                hover:bg-brand-primary-dark
-                hover:shadow-button-hover
+                mt-1
+                text-caption
+                text-content-muted
               "
             >
-              Get Visa Guidance
-
-              <ArrowRight
-                aria-hidden="true"
-                className="
-                  size-4
-                  transition-transform
-                  duration-[var(--duration-fast)]
-                  group-hover:translate-x-1
-                "
-                strokeWidth={1.8}
-              />
-            </button>
+              Get personalised guidance from the HighEd team.
+            </p>
           </div>
+
+          <LeadCTAButton source="study_abroad_process">
+            Book Free Counselling
+          </LeadCTAButton>
         </div>
       </Container>
     </section>
   );
 };
 
-export default CountryVisa;
+/* ================================================================
+   HELPERS
+================================================================ */
+
+function getShortTitle(title: string): string {
+  const shortTitles: Record<string, string> = {
+    "Free Counselling in Chennai": "Counselling",
+    "Profile Evaluation & Shortlisting": "Profile",
+    "University Application": "Application",
+    "Offer Letter & Admission": "Admission",
+    "Visa Processing": "Visa",
+    "Travel & Pre-Departure Support": "Travel",
+  };
+
+  return shortTitles[title] ?? title;
+}
+
+export default CountryProcess;

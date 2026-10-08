@@ -54,7 +54,7 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
     setIsSaving(true);
     try {
       await apiUpdateBlog(id, data);
-      alert('Blog post updated successfully!');
+      router.push('/admin/blogs');
     } finally {
       setIsSaving(false);
     }

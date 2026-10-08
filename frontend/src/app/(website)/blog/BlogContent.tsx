@@ -8,17 +8,13 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
-  Sparkles,
-  BookOpen,
-  ShieldCheck,
-  Clock,
+  ArrowRight,
   X,
 } from "lucide-react";
 
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import CTASection from "@/components/ui/CTA";
 import { Badge } from "@/components/ui/Badge";
-import { CardAction } from "@/components/ui/Card";
 
 export interface BlogArticle {
   title: string;
@@ -87,15 +83,14 @@ export default function BlogContent({ articles }: BlogContentProps) {
   return (
     <div className="w-full tracking-[-0.04em] [letter-spacing:-0.04em]">
       {/* =========================================================
-          HERO SECTION
+          HERO SECTION: Minimal Font Sizing & Brand Aesthetic
           ========================================================= */}
-      <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#000000] to-brand-primary py-12 text-white sm:py-16 md:py-20">
-
+      <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#000000] to-brand-primary py-10 text-white sm:py-14 md:py-16">
         {/* Centered Hero Content */}
         <div className="relative z-10 mx-auto w-full max-w-[1000px] px-4 sm:px-6">
           <div className="flex flex-col items-center text-center">
             {/* Breadcrumb */}
-            <div className="mb-5">
+            <div className="mb-4">
               <Breadcrumb
                 items={[
                   { label: "Home", href: "/" },
@@ -107,28 +102,29 @@ export default function BlogContent({ articles }: BlogContentProps) {
                   [&_a:hover]:text-white
                   [&_svg]:text-white/40
                   [&_span[aria-current]]:text-white
+                  text-xs
                 "
               />
             </div>
 
-            {/* Eyebrow Badge */}
-            <div className="mb-5">
-              <div className="inline-flex items-center gap-2 rounded-2xl bg-brand-accent px-3.5 py-2 text-xs font-semibold text-white">
-                <span className="size-2 rounded-full bg-white" aria-hidden="true" />
+            {/* Eyebrow Badge under brand guidelines */}
+            <div className="mb-4">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-brand-accent px-3 py-1 text-[11px] font-semibold text-white shadow-xs">
+                <span className="size-1.5 rounded-full bg-white" aria-hidden="true" />
                 <span>Verified Guides &amp; Insights</span>
               </div>
             </div>
 
-            {/* H1 */}
-            <div className="w-full max-w-4xl">
-              <h1 className="text-center text-white">
+            {/* H1 with Minimal, Clean Font Sizing */}
+            <div className="w-full max-w-3xl">
+              <h1 className="text-center text-white text-2xl sm:text-3xl md:text-[34px] font-bold tracking-tight leading-tight m-0">
                 Study Abroad <span className="text-brand-accent">Guides &amp; News</span>
               </h1>
             </div>
 
-            {/* Description */}
-            <div className="mt-4 w-full max-w-2xl">
-              <p className="font-body text-center text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
+            {/* Description: Refined, Minimal Font Size */}
+            <div className="mt-3.5 w-full max-w-xl">
+              <p className="font-body text-center text-xs sm:text-sm leading-relaxed text-white/80 m-0">
                 Stay informed with expert breakdowns of immigration policies,
                 scholarship criteria, post-study work regulations, and global
                 campus life.
@@ -141,7 +137,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
       {/* =========================================================
           BLOG CONTENT SECTION
           ========================================================= */}
-      <section className="w-full bg-surface-neutral px-4 py-12 font-body sm:py-16 md:py-20">
+      <section className="w-full bg-surface-neutral px-4 py-10 font-body sm:py-12 md:py-16">
         <div className="mx-auto grid w-full max-w-[1000px] grid-cols-12 gap-y-6 sm:gap-y-8">
           {/* Search Bar */}
           <div className="relative col-span-12 w-full">
@@ -152,31 +148,31 @@ export default function BlogContent({ articles }: BlogContentProps) {
               placeholder="Search articles by title or keyword..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              className="h-12 w-full rounded-xl border border-input bg-card py-3.5 pl-11 pr-10 text-sm text-foreground outline-none transition-shadow placeholder:text-muted-foreground focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 shadow-xs"
+              className="h-11 w-full rounded-xl border border-input bg-card py-3 pl-11 pr-10 text-xs sm:text-sm text-foreground outline-none transition-shadow placeholder:text-muted-foreground focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 shadow-xs"
             />
 
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => handleSearch("")}
-                className="absolute right-3 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground hover:bg-neutral-100 hover:text-foreground"
+                className="absolute right-3 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground hover:bg-neutral-100 hover:text-foreground"
                 aria-label="Clear search"
               >
-                <X className="size-4" />
+                <X className="size-3.5" />
               </button>
             )}
           </div>
 
-          {/* Category Filter Pills */}
+          {/* Category Filter Pills: Brand Guidelines & Minimal Sizing */}
           <div className="no-scrollbar col-span-12 flex w-full items-center gap-2 overflow-x-auto pb-1 pt-0.5 sm:flex-wrap">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
-                className={`btn-motion min-h-[40px] shrink-0 cursor-pointer rounded-full px-4 py-2 text-xs font-semibold sm:text-sm ${activeCategory === cat
+                className={`btn-motion min-h-[36px] shrink-0 cursor-pointer rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${activeCategory === cat
                   ? "bg-brand-primary text-white shadow-xs"
-                  : "border border-border bg-card text-muted-foreground hover:bg-brand-primary/5 hover:text-brand-primary"
+                  : "border border-black/10 bg-white text-content-secondary hover:border-brand-primary/40 hover:text-brand-primary hover:bg-brand-primary/5"
                   }`}
               >
                 {cat}
@@ -188,13 +184,13 @@ export default function BlogContent({ articles }: BlogContentProps) {
           <div className="col-span-12 flex w-full flex-col gap-4 sm:gap-5">
             {paginatedArticles.length === 0 ? (
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-neutral-100/60 px-4 py-16 text-center">
-                <Search className="size-10 text-muted-foreground/40" />
+                <Search className="size-8 text-muted-foreground/40" />
 
-                <p className="text-base font-semibold text-foreground">
+                <p className="text-sm font-semibold text-foreground">
                   No articles found
                 </p>
 
-                <p className="max-w-xs text-sm text-muted-foreground">
+                <p className="max-w-xs text-xs text-muted-foreground">
                   Try adjusting your search query or selecting a different
                   category filter.
                 </p>
@@ -206,7 +202,7 @@ export default function BlogContent({ articles }: BlogContentProps) {
                     setActiveCategory("All");
                     setCurrentPage(1);
                   }}
-                  className="mt-2 min-h-[44px] cursor-pointer px-4 py-2 text-sm font-semibold text-brand-primary underline underline-offset-4 hover:text-brand-primary/80"
+                  className="mt-1 min-h-[36px] cursor-pointer px-4 py-1.5 text-xs font-semibold text-brand-primary underline underline-offset-4 hover:text-brand-primary/80"
                 >
                   Reset all filters
                 </button>
@@ -220,10 +216,10 @@ export default function BlogContent({ articles }: BlogContentProps) {
                 >
                   <article className="grid w-full grid-cols-12 gap-3 sm:gap-4">
                     {/* Left Text Box */}
-                    <div className="order-2 col-span-12 flex flex-col justify-between gap-4 rounded-2xl border border-border bg-neutral-50/70 p-6 transition-colors duration-200 group-hover:border-primary/40 group-hover:bg-white group-hover:shadow-md sm:order-1 sm:col-span-7 sm:p-7 md:col-span-8 md:p-8">
-                      <div className="flex flex-col gap-2.5">
+                    <div className="order-2 col-span-12 flex flex-col justify-between gap-3.5 rounded-2xl border border-border bg-neutral-50/70 p-5 sm:p-6 transition-colors duration-200 group-hover:border-brand-primary/40 group-hover:bg-white group-hover:shadow-xs sm:order-1 sm:col-span-7 md:col-span-8">
+                      <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
-                          <Badge variant="accent" size="sm">
+                          <Badge variant="accent" size="sm" className="text-[11px] py-0.5">
                             {article.category}
                           </Badge>
 
@@ -236,28 +232,30 @@ export default function BlogContent({ articles }: BlogContentProps) {
                           </span>
                         </div>
 
-                        <h2 className="article-title text-foreground transition-colors group-hover:text-brand-primary">
+                        {/* Minimal Card Title */}
+                        <h3 className="text-base sm:text-[17px] font-bold text-foreground transition-colors group-hover:text-brand-primary leading-snug m-0">
                           {article.title}
-                        </h2>
+                        </h3>
 
-                        <p className="line-clamp-2 text-pretty text-sm leading-relaxed text-muted-foreground sm:line-clamp-3">
+                        {/* Minimal Description */}
+                        <p className="line-clamp-2 text-pretty text-xs sm:text-sm leading-relaxed text-muted-foreground m-0">
                           {article.description}
                         </p>
                       </div>
 
-                      {/* Card Button */}
-                      <div className="mt-2">
-                        <CardAction
-                          variant="pill"
-                          className="min-h-[44px]"
-                        >
-                          Read more
-                        </CardAction>
+                      {/* Brand Pill Card Button with Minimal Proportions */}
+                      <div className="mt-1">
+                        <span className="btn-motion group/action inline-flex h-9 pl-3.5 pr-1 items-center justify-between gap-2.5 rounded-full bg-brand-primary text-white text-xs font-semibold shadow-xs group-hover:bg-brand-primary-hover transition-colors">
+                          <span>Read more</span>
+                          <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white text-brand-primary shadow-2xs transition-transform duration-200 group-hover:translate-x-0.5">
+                            <ArrowRight className="size-3 text-brand-primary" />
+                          </span>
+                        </span>
                       </div>
                     </div>
 
                     {/* Right Image Box */}
-                    <div className="relative order-1 col-span-12 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border sm:order-2 sm:col-span-5 sm:aspect-auto sm:min-h-[240px] md:col-span-4">
+                    <div className="relative order-1 col-span-12 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border sm:order-2 sm:col-span-5 sm:aspect-auto sm:min-h-[220px] md:col-span-4">
                       <Image
                         src={article.image}
                         alt={article.title}
@@ -272,19 +270,19 @@ export default function BlogContent({ articles }: BlogContentProps) {
             )}
           </div>
 
-          {/* Pagination */}
+          {/* Pagination: Refined Minimal Sizing & Brand Pill Styling */}
           {totalPages > 1 && (
-            <div className="col-span-12 flex items-center justify-center gap-2 pt-2">
+            <div className="col-span-12 flex items-center justify-center gap-1.5 pt-2">
               <button
                 type="button"
                 onClick={() =>
                   setCurrentPage((p) => Math.max(1, p - 1))
                 }
                 disabled={currentPage === 1}
-                className="btn-motion flex size-11 cursor-pointer items-center justify-center rounded-xl border border-border bg-card text-foreground shadow-xs hover:bg-brand-primary/5 disabled:cursor-not-allowed disabled:opacity-40 sm:size-12"
+                className="btn-motion flex size-9 sm:size-9.5 cursor-pointer items-center justify-center rounded-full border border-black/10 bg-white text-foreground shadow-xs hover:border-brand-primary hover:text-brand-primary disabled:cursor-not-allowed disabled:opacity-40"
                 aria-label="Previous page"
               >
-                <ChevronLeft className="size-5" />
+                <ChevronLeft className="size-4" />
               </button>
 
               {Array.from(
@@ -295,9 +293,9 @@ export default function BlogContent({ articles }: BlogContentProps) {
                   key={page}
                   type="button"
                   onClick={() => setCurrentPage(page)}
-                  className={`btn-motion flex size-11 cursor-pointer items-center justify-center rounded-xl text-sm font-semibold shadow-xs sm:size-12 ${currentPage === page
+                  className={`btn-motion flex size-9 sm:size-9.5 cursor-pointer items-center justify-center rounded-full text-xs font-semibold shadow-xs transition-colors ${currentPage === page
                     ? "bg-brand-primary text-white"
-                    : "border border-border bg-card text-foreground hover:bg-brand-primary/5"
+                    : "border border-black/10 bg-white text-foreground hover:border-brand-primary hover:text-brand-primary"
                     }`}
                 >
                   {page}
@@ -310,10 +308,10 @@ export default function BlogContent({ articles }: BlogContentProps) {
                   setCurrentPage((p) => Math.min(totalPages, p + 1))
                 }
                 disabled={currentPage === totalPages}
-                className="btn-motion flex size-11 cursor-pointer items-center justify-center rounded-xl border border-border bg-card text-foreground shadow-xs hover:bg-brand-primary/5 disabled:cursor-not-allowed disabled:opacity-40 sm:size-12"
+                className="btn-motion flex size-9 sm:size-9.5 cursor-pointer items-center justify-center rounded-full border border-black/10 bg-white text-foreground shadow-xs hover:border-brand-primary hover:text-brand-primary disabled:cursor-not-allowed disabled:opacity-40"
                 aria-label="Next page"
               >
-                <ChevronRight className="size-5" />
+                <ChevronRight className="size-4" />
               </button>
             </div>
           )}

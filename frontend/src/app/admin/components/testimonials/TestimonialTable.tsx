@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { AdminTestimonial } from '../../types/testimonial';
 import { DataTable, Column } from '../common/DataTable';
 import { TestimonialStatusBadge } from './TestimonialStatusBadge';
-import { Star, Eye } from 'lucide-react';
+import { Star, Edit2 } from 'lucide-react';
 import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 
 interface TestimonialTableProps {
   testimonials: AdminTestimonial[];
@@ -16,56 +17,60 @@ interface TestimonialTableProps {
 export function TestimonialTable({ testimonials, isLoading }: TestimonialTableProps) {
   const columns: Column<AdminTestimonial>[] = [
     {
-      header: 'Student',
+      header: 'Student & Target Course',
       cell: (t) => (
         <div>
-          <span className="font-semibold text-sm text-slate-900">{t.studentName}</span>
-          <p className="text-xs text-slate-500 mt-0.5">{t.course}</p>
+          <Link
+            href={`/admin/testimonials/${t.id}`}
+            className="font-bold text-sm text-slate-900 hover:text-[#25347B] transition-colors"
+          >
+            {t.studentName}
+          </Link>
+          <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">{t.course}</p>
         </div>
       ),
     },
     {
-      header: 'University & Country',
+      header: 'Admitted University',
       cell: (t) => (
         <div>
-          <span className="font-medium text-sm text-slate-800">{t.university}</span>
-          <p className="text-xs text-slate-500 mt-0.5">{t.country}</p>
+          <span className="font-semibold text-xs text-slate-800 block">{t.university}</span>
+          <span className="text-[11px] text-slate-500 font-medium block mt-0.5">{t.country}</span>
         </div>
       ),
     },
     {
-      header: 'Rating',
+      header: 'Student Rating',
       cell: (t) => (
-        <div className="flex items-center text-amber-500">
-          <Star className="h-4.5 w-4.5 fill-amber-400" />
-          <span className="ml-1.5 text-sm font-semibold text-slate-700">
+        <div className="flex items-center text-amber-500 gap-1">
+          <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+          <span className="text-xs font-bold text-slate-800">
             {t.rating}/5
           </span>
         </div>
       ),
     },
     {
-      header: 'Status',
+      header: 'Review Status',
       cell: (t) => <TestimonialStatusBadge status={t.status} />,
     },
     {
-      header: 'Featured',
+      header: 'Placement',
       cell: (t) => (
-        <span
-          className={`inline-block px-2.5 py-1 text-xs rounded-md font-semibold ${
-            t.featured ? 'bg-amber-100 text-amber-800' : 'text-slate-400 bg-slate-100'
-          }`}
+        <Badge
+          variant={t.featured ? 'accent' : 'secondary'}
+          className="text-[11px] font-semibold"
         >
-          {t.featured ? 'Featured' : 'Standard'}
-        </span>
+          {t.featured ? '★ Homepage Featured' : 'Standard'}
+        </Badge>
       ),
     },
     {
       header: 'Actions',
       cell: (t) => (
         <Link href={`/admin/testimonials/${t.id}`}>
-          <Button variant="ghost" size="sm">
-            <Eye className="h-4 w-4 mr-1" /> Edit
+          <Button variant="outline" size="sm" className="h-7.5 px-2.5 text-xs font-semibold text-slate-700 hover:text-[#25347B] hover:border-[#25347B]">
+            <Edit2 className="h-3.5 w-3.5 mr-1" /> Edit
           </Button>
         </Link>
       ),
@@ -77,8 +82,8 @@ export function TestimonialTable({ testimonials, isLoading }: TestimonialTablePr
       columns={columns}
       data={testimonials}
       isLoading={isLoading}
-      emptyTitle="No testimonials found"
-      emptyDescription="Add reviews and success stories from your placed students."
+      emptyTitle="No student reviews yet"
+      emptyDescription="Add verified student testimonials and admission success stories."
     />
   );
 }

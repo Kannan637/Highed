@@ -158,33 +158,6 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* City Locations - SEO Internal Linking */}
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <h3 className="footer-title text-white/90">
-            Study Abroad Consultants by City
-          </h3>
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-body text-caption font-medium text-gray-300">
-            <Link href="/best-study-consultant-in/chennai" className="transition-colors hover:text-white">
-              Best Study Consultant in Chennai
-            </Link>
-            <span className="text-white/30">•</span>
-            <Link href="/best-study-consultant-in/coimbatore" className="transition-colors hover:text-white">
-              Best Study Consultant in Coimbatore
-            </Link>
-            <span className="text-white/30">•</span>
-            <Link href="/best-study-consultant-in/tirupathi" className="transition-colors hover:text-white">
-              Best Study Consultant in Tirupathi
-            </Link>
-            <span className="text-white/30">•</span>
-            <Link href="/best-study-consultant-in/vellore" className="transition-colors hover:text-white">
-              Best Study Consultant in Vellore
-            </Link>
-            <span className="text-white/30">•</span>
-            <Link href="/best-study-consultant-in/thiruvallur" className="transition-colors hover:text-white">
-              Best Study Consultant in Thiruvallur
-            </Link>
-          </div>
-        </div>
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 font-body text-caption font-medium text-gray-300 sm:flex-row gap-4">

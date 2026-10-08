@@ -8,7 +8,6 @@ SEO_PAGES = [
     "/scholarships",
     "/services",
     "/study-in/usa",
-    "/best-study-consultant-in/chennai",
 ]
 
 @pytest.mark.parametrize("route", SEO_PAGES)

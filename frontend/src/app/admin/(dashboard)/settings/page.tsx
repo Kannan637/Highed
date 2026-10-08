@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PageHeader } from '../../components/common/PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../components/ui/card';
-import { Settings, Bell, Webhook, ArrowRight, ShieldCheck, Mail } from 'lucide-react';
+import { Settings, Bell, Webhook, ArrowRight } from 'lucide-react';
 
 const settingSections = [
   {
@@ -21,13 +21,13 @@ const settingSections = [
   },
   {
     title: 'Integrations & API Keys',
-    description: 'WhatsApp Business API and CRM Webhook endpoints.',
+    description: 'WhatsApp Business API and CRM Webhook endpoints for real-time lead sync.',
     href: '/admin/settings/integrations',
     icon: Webhook,
   },
 ];
 
-export default function SettingsIndexPage() {
+export function SettingsIndexPage() {
   return (
     <div className="space-y-6">
       <PageHeader
@@ -35,23 +35,25 @@ export default function SettingsIndexPage() {
         description="Global system parameters, third-party credentials, and notification thresholds."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {settingSections.map((sec, idx) => {
           const Icon = sec.icon;
           return (
-            <Link key={idx} href={sec.href} className="group">
-              <Card className="h-full transition-all group-hover:border-indigo-500 group-hover:shadow-md">
+            <Link key={idx} href={sec.href} className="group block h-full">
+              <Card className="h-full transition-all duration-150 group-hover:border-[#25347B] group-hover:shadow-xs">
                 <CardHeader>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 mb-2">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#25347B]/10 text-[#25347B] mb-2.5 transition-transform group-hover:scale-105">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <CardTitle className="text-base group-hover:text-indigo-600 transition-colors">
+                  <CardTitle className="text-base font-bold text-slate-900 group-hover:text-[#25347B] transition-colors">
                     {sec.title}
                   </CardTitle>
-                  <CardDescription>{sec.description}</CardDescription>
+                  <CardDescription className="text-xs leading-relaxed text-slate-500">
+                    {sec.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <span className="inline-flex items-center text-xs font-semibold text-indigo-600 group-hover:underline">
+                  <span className="inline-flex items-center text-xs font-bold text-[#25347B] group-hover:underline">
                     Configure <ArrowRight className="h-3 w-3 ml-1" />
                   </span>
                 </CardContent>
@@ -63,3 +65,5 @@ export default function SettingsIndexPage() {
     </div>
   );
 }
+
+export default SettingsIndexPage;

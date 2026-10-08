@@ -4,27 +4,31 @@ import { cn } from '../../lib/utils';
 import { Loader2 } from 'lucide-react';
 
 const buttonVariants = cva(
-  'btn-motion inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium select-none cursor-pointer disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium select-none cursor-pointer transition-all duration-150 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25347B]/20',
   {
     variants: {
       variant: {
         default:
-          'bg-slate-900 text-white shadow-2xs hover:bg-slate-800 border border-slate-900',
+          'bg-[#25347B] text-white shadow-xs hover:bg-[#1b265b] border border-[#25347B] active:translate-y-[0.5px]',
+        accent:
+          'bg-[#E93F61] text-white shadow-xs hover:bg-[#c72c4c] border border-[#E93F61] active:translate-y-[0.5px]',
         destructive:
-          'bg-red-600 text-white shadow-2xs hover:bg-red-700 border border-red-600 focus-visible:ring-red-600',
+          'bg-rose-600 text-white shadow-xs hover:bg-rose-700 border border-rose-600 active:translate-y-[0.5px]',
         outline:
-          'border border-slate-200 bg-white text-slate-800 shadow-2xs hover:bg-slate-50 hover:text-slate-900',
+          'border border-slate-200 bg-white text-slate-700 shadow-2xs hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300',
         secondary:
-          'bg-slate-100 text-slate-900 shadow-2xs hover:bg-slate-200/80 border border-slate-100',
-        ghost: 'text-slate-700 hover:bg-slate-100 hover:text-slate-900',
-        link: 'text-slate-900 underline-offset-4 hover:underline',
+          'bg-slate-100 text-slate-800 shadow-2xs hover:bg-slate-200/80 border border-transparent',
+        ghost:
+          'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
+        link:
+          'text-[#25347B] underline-offset-4 hover:underline p-0 h-auto',
       },
       size: {
-        default: 'h-9.5 px-4 py-2 text-sm font-medium',
-        sm: 'h-8.5 rounded-md px-3 text-xs sm:text-sm font-medium',
-        lg: 'h-11 rounded-md px-6 text-base font-medium',
-        icon: 'size-9.5 p-0',
-        'icon-sm': 'size-8.5 p-0',
+        default: 'h-9 px-3.5 py-2 text-sm',
+        sm: 'h-8 rounded-md px-2.5 text-xs font-medium',
+        lg: 'h-10 rounded-lg px-5 text-sm font-semibold',
+        icon: 'size-9 p-0',
+        'icon-sm': 'size-8 p-0',
       },
     },
     defaultVariants: {
@@ -51,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-loading={isLoading}
         {...props}
       >
-        {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+        {isLoading && <Loader2 className="h-4 w-4 animate-spin text-current" />}
         {children}
       </button>
     );

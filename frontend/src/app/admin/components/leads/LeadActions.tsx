@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Lead, LeadStatus } from '../../types/lead';
+import { leadStatusSchema } from '../../lib/validations/lead';
 import { Button } from '../ui/button';
 import { Select } from '../ui/select';
 import { Phone, Mail, MessageSquare, Trash2 } from 'lucide-react';
@@ -16,6 +17,13 @@ interface LeadActionsProps {
 export function LeadActions({ lead, onStatusChange, onDelete }: LeadActionsProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleStatusSelect = (rawStatus: string) => {
+    const parsed = leadStatusSchema.safeParse(rawStatus);
+    if (parsed.success) {
+      onStatusChange(parsed.data);
+    }
+  };
 
   const handleDelete = async () => {
     setIsDeleting(true);
@@ -33,10 +41,11 @@ export function LeadActions({ lead, onStatusChange, onDelete }: LeadActionsProps
       <div className="w-44">
         <Select
           value={lead.status}
-          onChange={(e) => onStatusChange(e.target.value as LeadStatus)}
+          onChange={(e) => handleStatusSelect(e.target.value)}
         >
           <option value="new">New</option>
           <option value="contacted">Contacted</option>
+          <option value="in_progress">In Progress</option>
           <option value="counseling_scheduled">Counseling Scheduled</option>
           <option value="applied">Applied</option>
           <option value="offer_received">Offer Received</option>

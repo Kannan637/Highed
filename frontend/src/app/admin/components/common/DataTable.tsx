@@ -42,12 +42,12 @@ export function DataTable<T extends { id?: string | number }>({
   onPageChange,
   isLoading = false,
   emptyTitle = 'No records found',
-  emptyDescription = 'There are no items to display matching this criteria.',
+  emptyDescription = 'There are no items matching this criteria.',
   onRowClick,
 }: DataTableProps<T>) {
   if (isLoading) {
     return (
-      <div className="rounded-lg border border-slate-200/90 bg-white">
+      <div className="rounded-xl border border-slate-200/80 bg-white shadow-2xs p-6">
         <LoadingState />
       </div>
     );
@@ -55,14 +55,14 @@ export function DataTable<T extends { id?: string | number }>({
 
   if (!data || data.length === 0) {
     return (
-      <div className="rounded-lg border border-slate-200/90 bg-white p-4">
+      <div className="rounded-xl border border-slate-200/80 bg-white shadow-2xs p-6">
         <EmptyState title={emptyTitle} description={emptyDescription} />
       </div>
     );
   }
 
   return (
-    <div className="rounded-lg border border-slate-200/90 bg-white shadow-2xs overflow-hidden">
+    <div className="rounded-xl border border-slate-200/80 bg-white shadow-2xs overflow-hidden transition-all">
       <Table>
         <TableHeader>
           <TableRow>
@@ -78,14 +78,14 @@ export function DataTable<T extends { id?: string | number }>({
             <TableRow
               key={row.id ? String(row.id) : rowIdx}
               onClick={() => onRowClick && onRowClick(row)}
-              className={onRowClick ? 'cursor-pointer hover:bg-slate-50/70' : undefined}
+              className={onRowClick ? 'cursor-pointer hover:bg-slate-50/80' : undefined}
             >
               {columns.map((col, colIdx) => (
                 <TableCell key={colIdx} className={col.className}>
                   {col.cell
                     ? col.cell(row)
                     : col.accessorKey
-                    ? String(row[col.accessorKey] ?? '-')
+                    ? String(row[col.accessorKey] ?? '—')
                     : null}
                 </TableCell>
               ))}

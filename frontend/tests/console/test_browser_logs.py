@@ -10,7 +10,6 @@ KEY_PAGES = [
     "/contact",
     "/book-counselling",
     "/study-in/dubai",
-    "/best-study-consultant-in/chennai",
 ]
 
 @pytest.mark.parametrize("route", KEY_PAGES)

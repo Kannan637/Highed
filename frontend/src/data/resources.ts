@@ -67,7 +67,7 @@ export const guides: GuideResource[] = [
     label: "Directory",
     title: "University Directory",
     description: "Discover universities by country, course, ranking and tuition.",
-    href: "/explore",
+    href: "/study-in",
     cta: "Browse Universities",
     icon: Building2,
   },

@@ -119,6 +119,27 @@ export const leadSubmissionSchema = z
       .optional()
       .default("/")
       .transform((val) => sanitizeText(val) || "/"),
+
+    // Event registration metadata
+    eventId: z
+      .string()
+      .optional()
+      .transform((val) => (val ? sanitizeText(val) : undefined)),
+
+    eventTitle: z
+      .string()
+      .optional()
+      .transform((val) => (val ? sanitizeText(val) : undefined)),
+
+    city: z
+      .string()
+      .optional()
+      .transform((val) => (val ? sanitizeText(val) : undefined)),
+
+    attendeeCount: z
+      .union([z.number(), z.string()])
+      .optional()
+      .transform((val) => (val !== undefined ? Number(val) || 1 : 1)),
   })
   .superRefine((data, ctx) => {
     const phoneError = validatePhoneNumber(data.countryCode, data.phone);

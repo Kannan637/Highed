@@ -7,7 +7,7 @@ import { DataTable, Column } from '../common/DataTable';
 import { formatDate } from '../../lib/utils';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
-import { Eye, Edit2, Users } from 'lucide-react';
+import { Edit2, Users, ArrowUpRight } from 'lucide-react';
 
 interface EventTableProps {
   events: AdminEvent[];
@@ -17,35 +17,41 @@ interface EventTableProps {
 export function EventTable({ events, isLoading }: EventTableProps) {
   const columns: Column<AdminEvent>[] = [
     {
-      header: 'Event Title',
+      header: 'Event Title & Venue',
       cell: (event) => (
         <div>
           <Link
             href={`/admin/events/${event.id}`}
-            className="font-semibold text-sm text-slate-900 hover:text-indigo-600"
+            className="font-bold text-sm text-slate-900 hover:text-[#25347B] transition-colors inline-flex items-center gap-1"
           >
             {event.title}
+            <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
           <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">{event.location}</p>
         </div>
       ),
     },
     {
-      header: 'Date & Time',
+      header: 'Date & Schedule',
       cell: (event) => (
-        <div className="text-sm">
-          <span className="font-medium text-slate-700">
+        <div>
+          <span className="text-xs font-semibold text-slate-700 block">
             {formatDate(event.date)}
           </span>
-          <p className="text-xs text-slate-500 mt-0.5">{event.startTime} - {event.endTime}</p>
+          <span className="text-[11px] text-slate-500 font-mono mt-0.5 block">
+            {event.startTime} - {event.endTime}
+          </span>
         </div>
       ),
     },
     {
       header: 'Mode',
       cell: (event) => (
-        <Badge variant={event.mode === 'online' ? 'secondary' : 'default'}>
-          {event.mode.toUpperCase()}
+        <Badge
+          variant={event.mode === 'online' ? 'secondary' : 'default'}
+          className="text-[10px] uppercase font-bold tracking-wider"
+        >
+          {event.mode}
         </Badge>
       ),
     },
@@ -60,8 +66,9 @@ export function EventTable({ events, isLoading }: EventTableProps) {
               ? 'secondary'
               : 'warning'
           }
+          dot
         >
-          {event.status}
+          <span className="capitalize">{event.status}</span>
         </Badge>
       ),
     },
@@ -70,10 +77,10 @@ export function EventTable({ events, isLoading }: EventTableProps) {
       cell: (event) => (
         <Link
           href={`/admin/events/${event.id}/registrations`}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#25347B] hover:underline"
         >
-          <Users className="h-4 w-4" />
-          {event.registeredCount || 0} attendees
+          <Users className="h-3.5 w-3.5" />
+          {event.registeredCount || 0} Students
         </Link>
       ),
     },
@@ -82,8 +89,9 @@ export function EventTable({ events, isLoading }: EventTableProps) {
       cell: (event) => (
         <div className="flex items-center gap-2">
           <Link href={`/admin/events/${event.id}`}>
-            <Button variant="ghost" size="sm">
-              <Eye className="h-4 w-4 mr-1" /> View
+            <Button variant="outline" size="sm" className="h-7.5 px-2.5 text-xs font-semibold text-slate-700 hover:text-[#25347B] hover:border-[#25347B]">
+              <Edit2 className="h-3.5 w-3.5 mr-1" />
+              Manage
             </Button>
           </Link>
         </div>
@@ -96,8 +104,8 @@ export function EventTable({ events, isLoading }: EventTableProps) {
       columns={columns}
       data={events}
       isLoading={isLoading}
-      emptyTitle="No events created yet"
-      emptyDescription="Create your first study abroad education fair or webinar."
+      emptyTitle="No education fairs scheduled"
+      emptyDescription="Create upcoming webinars or city physical education fairs."
     />
   );
 }

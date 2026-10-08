@@ -80,7 +80,11 @@ export const metadata: Metadata = {
     icon: "/icons/Favicon.png",
     apple: "/icons/Favicon.png",
   },
+  verification: {
+    google: "googled594c6eef5138b0f",
+  },
 };
+
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -132,11 +136,13 @@ const websiteSchema = {
   url: siteConfig.url,
   potentialAction: {
     "@type": "SearchAction",
-    target: `${siteConfig.url}/explore?query={search_term_string}`,
+    target: `${siteConfig.url}/study-in?query={search_term_string}`,
     "query-input": "required name=search_term_string",
   },
 };
 
+
+import { WebMcpProvider } from "@/components/agentic/WebMcpProvider";
 
 export default function RootLayout({
   children,
@@ -149,10 +155,18 @@ export default function RootLayout({
       className={`${dmSans.variable} ${syne.variable} h-full antialiased`}
     >
       <head>
+        {/* Agentic Resource Discovery & LLM Documentation Standards */}
+        <link rel="ai-catalog" href="/.well-known/ard.json" />
+        <link rel="ard" href="/.well-known/ard.json" />
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Content Summary" />
+        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Full LLM Documentation" />
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>
-      <body className="min-h-full flex flex-col font-body font-medium tracking-tight-5">{children}</body>
+      <body className="min-h-full flex flex-col font-body font-medium tracking-tight-5">
+        <WebMcpProvider />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,10 +1,8 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
-import ReactCountryFlag from "react-country-flag";
+import { GB, US, CA, AU, DE, IE } from "country-flag-icons/react/3x2";
 import { ArrowRight } from "lucide-react";
 import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import EyebrowBadge from "@/components/ui/EyebrowBadge";
@@ -15,26 +13,32 @@ const countries = [
     {
         code: "GB",
         name: "United Kingdom",
+        Flag: GB,
     },
     {
         code: "US",
         name: "United States",
+        Flag: US,
     },
     {
         code: "CA",
         name: "Canada",
+        Flag: CA,
     },
     {
         code: "AU",
         name: "Australia",
+        Flag: AU,
     },
     {
         code: "DE",
         name: "Germany",
+        Flag: DE,
     },
     {
         code: "IE",
         name: "Ireland",
+        Flag: IE,
     },
 ];
 
@@ -55,23 +59,31 @@ function CountryFlags() {
             "
         >
             <div className="flex items-center">
-                {countries.map((country, index) => (
-                    <ReactCountryFlag
-                        key={country.code}
-                        countryCode={country.code}
-                        svg
-                        title={country.name}
-                        style={{
-                            width: "16px",
-                            height: "16px",
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                            marginLeft: index === 0 ? "0px" : "-8px",
-                            position: "relative",
-                            zIndex: countries.length - index,
-                        }}
-                    />
-                ))}
+                {countries.map((country, index) => {
+                    const FlagComponent = country.Flag;
+                    return (
+                        <div
+                            key={country.code}
+                            title={country.name}
+                            style={{
+                                width: "16px",
+                                height: "16px",
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                                marginLeft: index === 0 ? "0px" : "-8px",
+                                position: "relative",
+                                zIndex: countries.length - index,
+                                display: "inline-block",
+                                flexShrink: 0,
+                            }}
+                            className="border border-white/60 shadow-xs"
+                        >
+                            <FlagComponent
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+                    );
+                })}
             </div>
 
             <span className="ml-1.5 whitespace-nowrap">
@@ -148,8 +160,7 @@ export default function Hero() {
                         alt=""
                         fill
                         priority
-                        fetchPriority="high"
-                        sizes="1700px"
+                        sizes="(max-width: 1024px) 100vw, 1700px"
                         className="
                             h-full
                             w-full
@@ -336,7 +347,7 @@ export default function Hero() {
                                 </LeadCTAButton>
 
                                 <Link
-                                    href="/explore"
+                                    href="/study-in"
                                     id="cta-explore-universities"
                                     className={cn(
                                         buttonVariants({
@@ -402,12 +413,12 @@ export default function Hero() {
                                 "
                             >
                                 <Image
-                                    src="/images/hero/ChatGPT Image Sep 14, 2026, 12_10_06 PM.webp"
-                                    alt="Student studying abroad"
+                                    src="/images/hero/hero-student.webp"
+                                    alt="Student receiving study abroad counseling at HighEd"
                                     fill
                                     priority
                                     fetchPriority="high"
-                                    sizes="(min-width: 1280px) 530px, (min-width: 1024px) 490px, 100vw"
+                                    sizes="(min-width: 1280px) 530px, 490px"
                                     className="
                                         object-contain
                                         object-bottom
@@ -443,7 +454,7 @@ export default function Hero() {
                                         tracking-[-0.06em]
                                     "
                                 >
-                                    7
+                                    120+
                                 </div>
 
                                 <div
@@ -454,7 +465,7 @@ export default function Hero() {
                                         leading-tight
                                     "
                                 >
-                                    Top Destinations
+                                    Top Unviersities
                                 </div>
                             </div>
 
@@ -522,11 +533,11 @@ export default function Hero() {
                         >
                             {/* STUDENT IMAGE */}
                             <Image
-                                src="/images/hero/ChatGPT Image Sep 14, 2026, 12_10_06 PM.webp"
-                                alt="Student studying abroad"
+                                src="/images/hero/hero-student.webp"
+                                alt="Student receiving study abroad counseling at HighEd"
                                 fill
-                                priority
-                                sizes="100vw"
+                                loading="eager"
+                                sizes="(max-width: 640px) 320px, (max-width: 1024px) 480px, 500px"
                                 className="
                                     object-contain
                                     object-bottom
@@ -562,7 +573,7 @@ export default function Hero() {
                                         tracking-[-0.06em]
                                     "
                                 >
-                                    7
+                                    120+
                                 </div>
 
                                 <div
@@ -572,7 +583,7 @@ export default function Hero() {
                                         font-medium
                                     "
                                 >
-                                    Top Destinations
+                                    Top Unviersities
                                 </div>
                             </div>
 

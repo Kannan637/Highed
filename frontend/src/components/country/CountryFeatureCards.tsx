@@ -26,7 +26,7 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({
         ? `${country.coursesList.length}+ Programs`
         : "50+ Programs",
       icon: Search,
-      href: `/study-in/${country.slug}/explore?type=courses`,
+      href: `/study-in/${country.slug}`,
 
       // Pastel blue
       cardBg: "#EEF2FF",
@@ -40,7 +40,7 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({
         ? `${country.universitiesList.length}+ Universities`
         : "20+ Universities",
       icon: GraduationCap,
-      href: `/study-in/${country.slug}/explore?type=universities`,
+      href: `/study-in/${country.slug}`,
 
       // Pastel lavender
       cardBg: "#F3F0FF",
@@ -54,7 +54,7 @@ export const CountryFeatureCards: React.FC<CountryFeatureCardsProps> = ({
         ? `${country.scholarshipsList.length}+ Scholarships`
         : "15+ Scholarships",
       icon: Award,
-      href: `/study-in/${country.slug}/explore?type=scholarships`,
+      href: `/study-in/${country.slug}`,
 
       // Pastel pink
       cardBg: "#FFF1F4",

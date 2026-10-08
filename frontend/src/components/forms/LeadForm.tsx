@@ -30,6 +30,8 @@ interface LeadFormProps {
   imageAlt?: string;
   /** Whether to show the top gradient header banner. Defaults to true. */
   showHeader?: boolean;
+  /** Position of the image panel. Defaults to 'right'. */
+  imagePosition?: "left" | "right";
 }
 
 /* =========================================================
@@ -55,6 +57,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({
   imageSrc = "/images/form/oo1.webp",
   imageAlt = "Student receiving study abroad counselling",
   showHeader = true,
+  imagePosition = "right",
 }) => {
   const [formData, setFormData] = useState<LeadSubmission>({
     fullName: "",
@@ -243,7 +246,8 @@ export const LeadForm: React.FC<LeadFormProps> = ({
         <div
           className={cn(
             "flex flex-col",
-            showImage ? "lg:col-span-7" : "lg:col-span-12"
+            showImage ? "lg:col-span-7" : "lg:col-span-12",
+            showImage && imagePosition === "left" && "lg:order-2"
           )}
         >
           {/* Header — Brand gradient panel */}
@@ -289,9 +293,17 @@ export const LeadForm: React.FC<LeadFormProps> = ({
               </div>
             ) : (
               <form
+                id="study-abroad-counselling-form"
                 onSubmit={handleSubmit}
                 className="flex flex-1 flex-col space-y-4"
                 noValidate
+                // Declarative WebMCP for AI agent browsing
+                {...({
+                  toolname: "submit_counselling_inquiry",
+                  tooldescription: "Submit student details for free study abroad counseling, university admission processing, and visa assistance",
+                  "data-mcp-tool": "submit_counselling_inquiry",
+                  "data-mcp-description": "Submit student details for free study abroad counseling, university admission processing, and visa assistance",
+                } as React.HTMLAttributes<HTMLFormElement>)}
               >
                 {status.type === "error" && (
                   <div
@@ -503,14 +515,20 @@ export const LeadForm: React.FC<LeadFormProps> = ({
             RIGHT — Image Panel (hidden on mobile)
         ====================================================== */}
         {showImage && (
-          <div className="relative hidden min-h-[620px] lg:col-span-5 lg:block">
+          <div
+            className={cn(
+              "relative min-h-[460px] lg:min-h-[620px] lg:col-span-5",
+              imagePosition === "left" ? "order-first lg:order-1 block" : "hidden lg:block"
+            )}
+          >
             {/* Image */}
             <div className="relative z-10 flex h-full items-end justify-center">
               <div className="relative h-full w-full overflow-hidden rounded-4xl">
                 <Image
                   src={imageSrc!}
-                  alt={imageAlt || "Student counselling"}
+                  alt={imageAlt || "Student receiving study abroad counseling"}
                   fill
+                  loading="lazy"
                   sizes="(min-width: 1024px) 42vw, 0vw"
                   className="object-cover object-center"
                 />

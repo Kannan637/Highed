@@ -5,7 +5,7 @@ import { PageHeader } from '../../../components/common/PageHeader';
 import { Card, CardHeader, CardTitle, CardContent } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
-import { ArrowLeft, Bell } from 'lucide-react';
+import { ArrowLeft, Bell, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function NotificationsSettingsPage() {
@@ -14,14 +14,40 @@ export default function NotificationsSettingsPage() {
   const [emailAlerts, setEmailAlerts] = useState(true);
   const [whatsappAlerts, setWhatsappAlerts] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('highed_notification_settings');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.leadAlertEmail) setLeadAlertEmail(parsed.leadAlertEmail);
+          if (parsed.eventAlertEmail) setEventAlertEmail(parsed.eventAlertEmail);
+          if (typeof parsed.emailAlerts === 'boolean') setEmailAlerts(parsed.emailAlerts);
+          if (typeof parsed.whatsappAlerts === 'boolean') setWhatsappAlerts(parsed.whatsappAlerts);
+        } catch {
+          // ignore corrupted data
+        }
+      }
+    }
+  }, []);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
+    setSaveSuccess(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(
+        'highed_notification_settings',
+        JSON.stringify({ leadAlertEmail, eventAlertEmail, emailAlerts, whatsappAlerts })
+      );
+    }
     setTimeout(() => {
       setIsSaving(false);
-      alert('Notification settings updated!');
-    }, 600);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    }, 400);
   };
 
   return (
@@ -38,6 +64,13 @@ export default function NotificationsSettingsPage() {
         title="Notification Alerts & Routing"
         description="Configure dispatch channels for instant lead submissions and event registrations."
       />
+
+      {saveSuccess && (
+        <div className="flex items-center gap-2.5 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm font-medium">
+          <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+          Notification preferences saved successfully.
+        </div>
+      )}
 
       <form onSubmit={handleSave} className="space-y-6">
         <Card>

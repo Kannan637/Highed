@@ -1,17 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import {
   ChevronRight,
-  PhoneCall,
   Share2,
   Check,
   Zap,
   X,
-  ArrowRight,
 } from "lucide-react";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
 import { cn } from "@/lib/utils";
 
 export interface QuickActionItem {
@@ -30,7 +27,6 @@ export function BlogQuickActions({
   articleTitle,
   className,
 }: BlogQuickActionsProps) {
-  const { openLeadPopup } = useLeadPopup();
   const [activeId, setActiveId] = useState<string>(items[0]?.id || "");
   const [copied, setCopied] = useState<boolean>(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -86,15 +82,6 @@ export function BlogQuickActions({
     }
   };
 
-  const handleOpenLead = () => {
-    openLeadPopup({
-      source: "blog-sidebar-quickaction",
-      contextTitle: articleTitle,
-      contextCTA: "Book Free Counselling",
-    });
-    setIsDrawerOpen(false);
-  };
-
   const handleShare = async () => {
     if (typeof window === "undefined") return;
     try {
@@ -121,18 +108,18 @@ export function BlogQuickActions({
         )}
         aria-label="Article Navigation & Key Takeaways"
       >
-        <div className="lg:sticky lg:top-24 space-y-6">
-          {/* Key Takeaways Heading (using h3 as requested) */}
-          <div className="pb-1">
-            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-foreground m-0">
+        <div className="lg:sticky lg:top-24 space-y-5">
+          {/* Key Takeaways Heading with Minimal Font Sizing */}
+          <div className="pb-0.5">
+            <h3 className="text-sm sm:text-base font-bold tracking-tight text-foreground m-0">
               Key takeaways
             </h3>
-            <p className="mt-1 text-xs text-muted-foreground m-0">
+            <p className="mt-0.5 text-[11px] text-muted-foreground m-0">
               Jump directly to specific policy sections
             </p>
           </div>
 
-          {/* Vertically stacked list of navigation items separated by horizontal dividers */}
+          {/* Vertically stacked list of navigation items */}
           <nav
             aria-label="Table of Contents"
             className="border-t border-b border-border divide-y divide-border"
@@ -146,7 +133,7 @@ export function BlogQuickActions({
                   href={`#${item.id}`}
                   onClick={(e) => scrollToSection(e, item.id)}
                   className={cn(
-                    "group flex items-start justify-between gap-3 py-3.5 px-1 text-xs sm:text-[13.5px] leading-snug transition-colors",
+                    "group flex items-start justify-between gap-2.5 py-2.5 px-1 text-xs leading-snug transition-colors",
                     isActive
                       ? "font-semibold text-brand-primary"
                       : "font-normal text-muted-foreground hover:text-foreground"
@@ -168,24 +155,25 @@ export function BlogQuickActions({
             })}
           </nav>
 
-          {/* Dedicated Quick Action Section for Blog Page Alone */}
-          <div className="pt-2 space-y-2.5">
-            <button
-              type="button"
-              onClick={handleOpenLead}
-              className="btn-motion group flex w-full items-center justify-between gap-2 rounded-xl bg-brand-primary px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-brand-primary-hover cursor-pointer"
+          {/* Dedicated Quick Action Section: Brand Guidelines */}
+          <div className="pt-1 space-y-2">
+            {/* Primary Action: Official Brand Master CTA */}
+            <LeadCTAButton
+              source="blog-sidebar"
+              contextTitle={articleTitle}
+              contextCTA="Book Free Counselling"
+              forcePopup={true}
+              size="sm"
+              fullWidth
             >
-              <span className="flex items-center gap-2">
-                <PhoneCall className="size-3.5 text-white/90" />
-                <span>Book Free Counselling</span>
-              </span>
-              <ArrowRight className="size-3.5 text-white/70 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </button>
+              Book Free Counselling
+            </LeadCTAButton>
 
+            {/* Secondary Action: Brand Outline Pill */}
             <button
               type="button"
               onClick={handleShare}
-              className="btn-motion flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-surface-neutral transition-colors cursor-pointer"
+              className="btn-motion flex w-full items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold text-brand-primary hover:border-brand-primary hover:bg-brand-primary/5 transition-colors cursor-pointer shadow-2xs"
             >
               {copied ? (
                 <>
@@ -212,10 +200,10 @@ export function BlogQuickActions({
         <button
           type="button"
           onClick={() => setIsDrawerOpen(true)}
-          className="btn-motion flex items-center gap-2 rounded-full bg-brand-primary px-4 py-2.5 text-xs font-semibold text-white shadow-lg shadow-brand-primary/30 hover:bg-brand-primary-hover active:scale-95 cursor-pointer"
+          className="btn-motion flex items-center gap-1.5 rounded-full bg-brand-primary px-3.5 py-2 text-xs font-semibold text-white shadow-md shadow-brand-primary/25 hover:bg-brand-primary-hover active:scale-95 cursor-pointer"
           aria-label="Open Quick Actions Navigation"
         >
-          <Zap className="size-4 fill-white" />
+          <Zap className="size-3.5 fill-white" />
           <span>Quick Actions</span>
         </button>
       </div>
@@ -235,10 +223,10 @@ export function BlogQuickActions({
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-border">
               <div>
-                <h4 className="text-base font-bold text-foreground m-0">
+                <h4 className="text-sm font-bold text-foreground m-0">
                   Key takeaways &amp; Sections
                 </h4>
-                <p className="text-xs text-muted-foreground m-0">
+                <p className="text-[11px] text-muted-foreground m-0">
                   Quick navigation for {articleTitle}
                 </p>
               </div>
@@ -246,15 +234,15 @@ export function BlogQuickActions({
               <button
                 type="button"
                 onClick={() => setIsDrawerOpen(false)}
-                className="flex size-8 items-center justify-center rounded-full bg-surface-neutral text-muted-foreground hover:text-foreground"
+                className="flex size-7 items-center justify-center rounded-full bg-surface-neutral text-muted-foreground hover:text-foreground"
                 aria-label="Close"
               >
-                <X className="size-4" />
+                <X className="size-3.5" />
               </button>
             </div>
 
             {/* List */}
-            <div className="mt-4 divide-y divide-border border-y border-border max-h-[300px] overflow-y-auto">
+            <div className="mt-3 divide-y divide-border border-y border-border max-h-[280px] overflow-y-auto">
               {items.map((item) => {
                 const isActive = item.id === activeId;
                 return (
@@ -263,7 +251,7 @@ export function BlogQuickActions({
                     href={`#${item.id}`}
                     onClick={(e) => scrollToSection(e, item.id)}
                     className={cn(
-                      "block py-3 px-1 text-xs font-medium transition-colors",
+                      "block py-2.5 px-1 text-xs font-medium transition-colors",
                       isActive
                         ? "text-brand-primary font-semibold"
                         : "text-muted-foreground hover:text-foreground"
@@ -275,21 +263,25 @@ export function BlogQuickActions({
               })}
             </div>
 
-            {/* Action Buttons */}
-            <div className="mt-5 space-y-2">
-              <button
-                type="button"
-                onClick={handleOpenLead}
-                className="btn-motion flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary py-3 text-xs font-semibold text-white shadow-xs hover:bg-brand-primary-hover cursor-pointer"
+            {/* Action Buttons under Brand Guidelines */}
+            <div className="mt-4 space-y-2">
+              <LeadCTAButton
+                source="blog-mobile-drawer"
+                contextTitle={articleTitle}
+                contextCTA="Book Free Counselling"
+                forcePopup={true}
+                className="w-fit h-[48px]"
+                size="sm"
+                fullWidth
+                onClick={() => setIsDrawerOpen(false)}
               >
-                <PhoneCall className="size-3.5" />
-                <span>Book Free Counselling</span>
-              </button>
+                Book Free Counselling
+              </LeadCTAButton>
 
               <button
                 type="button"
                 onClick={handleShare}
-                className="btn-motion flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-2 text-xs font-medium text-foreground hover:bg-surface-neutral cursor-pointer"
+                className="btn-motion flex w-full items-center justify-center gap-2 rounded-full border border-black/10 bg-white py-2 text-xs font-semibold text-brand-primary hover:bg-neutral-50 cursor-pointer"
               >
                 {copied ? (
                   <span className="text-emerald-600 font-semibold">

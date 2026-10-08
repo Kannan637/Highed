@@ -9,7 +9,6 @@ import React, {
     type Ref,
 } from "react";
 import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
-import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -267,98 +266,74 @@ export default function StudyDestinations({
             ...contents,
         ];
 
-        if (!allTargets.length) return;
-
-        gsap.killTweensOf(allTargets);
-
-        const timeline = gsap.timeline({
-            defaults: {
-                overwrite: "auto",
-                force3D: true,
-            },
-            onComplete: () => {
-                gsap.set(allTargets, {
-                    clearProps: "transform,opacity",
-                });
-            },
+        /*
+         * Native Hardware-Accelerated Animations (Zero JS library CPU overhead)
+         */
+        cards.forEach((card) => {
+            if (typeof card.animate === "function") {
+                card.animate(
+                    [
+                        { transform: `translateX(${direction * 45}px)` },
+                        { transform: "translateX(0)" },
+                    ],
+                    {
+                        duration: 550,
+                        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+                    }
+                );
+            }
         });
 
-        /*
-         * Card movement
-         */
+        images.forEach((img) => {
+            if (typeof img.animate === "function") {
+                img.animate(
+                    [
+                        { transform: "scale(1.07)" },
+                        { transform: "scale(1)" },
+                    ],
+                    {
+                        duration: 800,
+                        easing: "ease-out",
+                    }
+                );
+            }
+        });
 
-        timeline.fromTo(
-            cards,
-            {
-                x: direction * 45,
-            },
-            {
-                x: 0,
-                duration: 0.55,
-                ease: "power3.out",
-            },
-            0
-        );
-
-        /*
-         * Image zoom
-         */
-
-        timeline.fromTo(
-            images,
-            {
-                scale: 1.07,
-            },
-            {
-                scale: 1,
-                duration: 0.8,
-                ease: "power2.out",
-            },
-            0
-        );
-
-        /*
-         * Content animation
-         */
-
-        timeline.fromTo(
-            contents,
-            {
-                opacity: 0,
-                y: 20,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.45,
-                ease: "power3.out",
-            },
-            0.08
-        );
-
-        return () => {
-            timeline.kill();
-        };
+        contents.forEach((content) => {
+            if (typeof content.animate === "function") {
+                content.animate(
+                    [
+                        { opacity: 0, transform: "translateY(20px)" },
+                        { opacity: 1, transform: "translateY(0)" },
+                    ],
+                    {
+                        duration: 450,
+                        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+                        delay: 80,
+                    }
+                );
+            }
+        });
     }, [activeIndex]);
 
     /*
      * ============================================================
-     * BUTTON ANIMATION
+     * BUTTON ANIMATION (Native compositor bounce)
      * ============================================================
      */
 
     const bounceButton = (
         element: HTMLButtonElement
     ) => {
-        gsap.fromTo(
-            element,
+        if (!element || typeof element.animate !== "function") return;
+        element.animate(
+            [
+                { transform: "scale(0.9)" },
+                { transform: "scale(1)" },
+            ],
             {
-                scale: 0.9,
-            },
-            {
-                scale: 1,
-                duration: 0.45,
-                ease: "back.out(2)",
+                duration: 450,
+                easing: "cubic-bezier(0.34, 1.56, 0.64, 1)",
             }
         );
     };

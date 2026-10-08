@@ -9,7 +9,6 @@ PRIMARY_ROUTES = [
     "/contact",
     "/courses",
     "/events",
-    "/explore",
     "/our-story",
     "/our-team",
     "/scholarships",
@@ -21,8 +20,6 @@ PRIMARY_ROUTES = [
 ]
 
 DYNAMIC_ROUTES = [
-    "/best-study-consultant-in/chennai",
-    "/best-study-consultant-in/coimbatore",
     "/study-in/uk",
     "/study-in/usa",
     "/services/career-counselling",

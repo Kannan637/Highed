@@ -191,10 +191,9 @@ export default function WhyChooseCountry({
                       text-xs
                       font-medium
                       sm:text-sm
-                      ${
-                        isActive
-                          ? "bg-[#E93F61] text-white shadow-sm"
-                          : "text-content-secondary hover:bg-[#E93F61]/10 hover:text-[#E93F61]"
+                      ${isActive
+                        ? "bg-[#E93F61] text-white shadow-sm"
+                        : "text-content-secondary hover:bg-[#E93F61]/10 hover:text-[#E93F61]"
                       }
                     `}
                   >

@@ -21,12 +21,7 @@ export const navDropdowns: Record<string, NavDropdownData> = {
       {
         title: "Areas We Serve",
         items: [
-          { label: "Contact Us", href: "/contact", icon: "contact" },
-          { label: "Chennai (Main Office)", href: "/best-study-consultant-in/chennai", icon: "location" },
-          { label: "Coimbatore", href: "/best-study-consultant-in/coimbatore", icon: "location" },
-          { label: "Tirupathi", href: "/best-study-consultant-in/tirupathi", icon: "location" },
-          { label: "Vellore", href: "/best-study-consultant-in/vellore", icon: "location" },
-          { label: "Thiruvallur", href: "/best-study-consultant-in/thiruvallur", icon: "location" },
+          { label: "Contact & Headquarters", href: "/contact", icon: "contact" },
         ],
       },
     ],
@@ -78,7 +73,7 @@ export const navDropdowns: Record<string, NavDropdownData> = {
         items: [
           { label: "Study Abroad Guide", href: "/resources#guides", icon: "guide" },
           { label: "Country Guides", href: "/study-in", icon: "country" },
-          { label: "University Directory", href: "/explore", icon: "university" },
+          { label: "University Directory", href: "/study-in", icon: "university" },
           { label: "Exam & Test Prep Guides", href: "/resources#exams", icon: "exam" },
           { label: "Frequently Asked Questions", href: "/about#faq", icon: "faq" },
         ],

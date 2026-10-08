@@ -7,6 +7,7 @@ import { LeadFilters } from '../../components/leads/LeadFilters';
 import { useLeads } from '../../hooks/useLeads';
 import { Button } from '../../components/ui/button';
 import { Download, RefreshCw } from 'lucide-react';
+import { downloadCSV, formatDate } from '../../lib/utils';
 
 export default function LeadsPage() {
   const {
@@ -22,7 +23,21 @@ export default function LeadsPage() {
   } = useLeads();
 
   const handleExportCSV = () => {
-    alert('Exporting leads data to CSV...');
+    if (!leads || leads.length === 0) return;
+    const exportRows = leads.map((lead) => ({
+      ID: lead.id,
+      'Full Name': lead.fullName,
+      Email: lead.email,
+      Phone: lead.phone,
+      City: lead.city || '',
+      'Country Preferences': lead.countryPreference?.join(', ') || '',
+      'Course Preference': lead.coursePreference || '',
+      'Intake Preference': lead.intakePreference || '',
+      Status: lead.status,
+      Source: lead.source,
+      'Created At': formatDate(lead.createdAt),
+    }));
+    downloadCSV(`highed_leads_export_${new Date().toISOString().slice(0, 10)}.csv`, exportRows);
   };
 
   return (

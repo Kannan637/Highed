@@ -15,7 +15,6 @@ ROUTES = [
     "/courses",
     "/scholarships",
     "/study-in/uk",
-    "/best-study-consultant-in/chennai",
 ]
 
 @pytest.mark.parametrize("vp", VIEWPORTS, ids=[v["name"] for v in VIEWPORTS])

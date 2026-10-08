@@ -5,21 +5,42 @@ import { PageHeader } from '../../../components/common/PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
-import { ArrowLeft, MessageSquare, Webhook } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, MessageSquare, Webhook } from 'lucide-react';
 import Link from 'next/link';
 
 export default function IntegrationsSettingsPage() {
   const [whatsappApiKey, setWhatsappApiKey] = useState('wa_live_••••••••••••');
   const [webhookUrl, setWebhookUrl] = useState('https://api.crm.highed.in/webhooks/leads');
   const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('highed_integration_settings');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.whatsappApiKey) setWhatsappApiKey(parsed.whatsappApiKey);
+          if (parsed.webhookUrl) setWebhookUrl(parsed.webhookUrl);
+        } catch {
+          // ignore corrupted data
+        }
+      }
+    }
+  }, []);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
+    setSaveSuccess(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('highed_integration_settings', JSON.stringify({ whatsappApiKey, webhookUrl }));
+    }
     setTimeout(() => {
       setIsSaving(false);
-      alert('Integration credentials saved!');
-    }, 600);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    }, 400);
   };
 
   return (
@@ -36,6 +57,13 @@ export default function IntegrationsSettingsPage() {
         title="API Keys & Integrations"
         description="Connect WhatsApp Business Cloud API and CRM webhook destinations."
       />
+
+      {saveSuccess && (
+        <div className="flex items-center gap-2.5 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm font-medium">
+          <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+          Integration settings saved successfully.
+        </div>
+      )}
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* WhatsApp Business API */}

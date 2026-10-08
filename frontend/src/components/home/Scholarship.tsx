@@ -332,9 +332,10 @@ export default function ScholarshipsLoansSection({
                             "
                         >
                             <Image
-                                src={SCHOLARSHIP_IMAGE}
-                                alt="Student studying abroad"
+                                src="/images/Scholarship/scholarship-student.webp"
+                                alt="Student receiving study abroad scholarship advisory at HighEd"
                                 fill
+                                loading="lazy"
                                 sizes="
                                     (min-width: 1024px) 460px,
                                     (min-width: 640px) 400px,

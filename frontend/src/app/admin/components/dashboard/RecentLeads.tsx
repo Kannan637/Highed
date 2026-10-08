@@ -53,17 +53,17 @@ export function RecentLeads({ leads }: RecentLeadsProps) {
   const displayLeads = leads && leads.length > 0 ? leads.slice(0, 5) : (mockLeads as Lead[]);
 
   return (
-    <Card>
+    <Card className="overflow-hidden">
       <CardHeader className="flex flex-row items-center justify-between pb-3">
         <div>
-          <CardTitle>Recent Leads</CardTitle>
-          <CardDescription>Latest student enquiries received across channels</CardDescription>
+          <CardTitle>Recent Student Leads</CardTitle>
+          <CardDescription>Latest admissions enquiries across channels</CardDescription>
         </div>
         <Link
           href="/admin/leads"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 hover:text-slate-600 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#25347B] hover:text-[#1b265b] transition-colors"
         >
-          View all <ArrowRight className="h-4 w-4" />
+          View all <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       </CardHeader>
 
@@ -71,31 +71,31 @@ export function RecentLeads({ leads }: RecentLeadsProps) {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Country</TableHead>
+              <TableHead>Student</TableHead>
+              <TableHead>Target Countries</TableHead>
               <TableHead>Status</TableHead>
               <TableHead className="text-right">Date</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {displayLeads.map((lead) => (
-              <TableRow key={lead.id} className="hover:bg-slate-50/70">
+              <TableRow key={lead.id} className="hover:bg-slate-50/80 transition-colors">
                 <TableCell className="font-semibold text-slate-900">
                   <Link
                     href={`/admin/leads/${lead.id}`}
-                    className="hover:underline hover:text-indigo-600"
+                    className="hover:underline hover:text-[#25347B] transition-colors"
                   >
                     {lead.fullName}
                   </Link>
                 </TableCell>
-                <TableCell className="text-slate-600">
+                <TableCell className="text-slate-600 text-xs">
                   {lead.countryPreference?.join(', ') || 'Global'}
                 </TableCell>
                 <TableCell>
-                  <LeadStatusBadge status={lead.status} />
+                  <LeadStatusBadge status={lead.status as any} />
                 </TableCell>
-                <TableCell className="text-right text-slate-500 font-mono text-xs sm:text-sm">
-                  {formatDate(lead.createdAt)}
+                <TableCell className="text-right text-slate-500 font-mono text-xs">
+                  {formatDate(lead.createdAt || new Date().toISOString())}
                 </TableCell>
               </TableRow>
             ))}

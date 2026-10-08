@@ -6,6 +6,8 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Select } from '../ui/select';
 import { Button } from '../ui/button';
+import { AlertCircle } from 'lucide-react';
+import { testimonialSchema } from '../../lib/validations/testimonial';
 
 interface TestimonialFormProps {
   initialData?: Partial<CreateTestimonialInput>;
@@ -26,14 +28,29 @@ export function TestimonialForm({ initialData, onSubmit, isLoading }: Testimonia
     featured: initialData?.featured || false,
     intakeYear: initialData?.intakeYear || '2026',
   });
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationError(null);
+
+    const validation = testimonialSchema.safeParse(formData);
+    if (!validation.success) {
+      setValidationError(validation.error.issues[0]?.message || 'Please check testimonial details');
+      return;
+    }
+
     await onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {validationError && (
+        <div className="flex items-center gap-2 p-3 text-xs font-medium text-rose-700 bg-rose-50 border border-rose-200 rounded-lg">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          <span>{validationError}</span>
+        </div>
+      )}
       <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
         <h3 className="text-lg font-semibold text-slate-900">
           Student Success Story

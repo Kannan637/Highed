@@ -9,6 +9,10 @@ export interface LeadSubmission {
   message?: string;
   source?: string;
   page?: string;
+  eventId?: string;
+  eventTitle?: string;
+  city?: string;
+  attendeeCount?: number;
 }
 
 export interface LeadPopupData {

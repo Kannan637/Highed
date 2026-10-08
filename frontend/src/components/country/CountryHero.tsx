@@ -352,7 +352,7 @@ export const CountryHero: React.FC<CountryHeroProps> = ({ country }) => {
                 </LeadCTAButton>
 
                 <Link
-                  href={`/study-in/${country.slug}/explore?type=universities`}
+                  href={`/study-in/${country.slug}`}
                   id="cta-explore-universities"
                   className={cn(
                     buttonVariants({

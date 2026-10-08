@@ -6,7 +6,8 @@ import { useAuth } from '../../hooks/useAuth';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../components/ui/card';
-import { GraduationCap, Lock, Mail, AlertCircle } from 'lucide-react';
+import { GraduationCap, Lock, Mail, AlertCircle, ShieldCheck } from 'lucide-react';
+import { loginSchema } from '../../lib/validations/login';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -20,6 +21,14 @@ export default function AdminLoginPage() {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+
+    const validation = loginSchema.safeParse({ email, password });
+    if (!validation.success) {
+      setError(validation.error.issues[0]?.message || 'Please enter valid credentials');
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const res = await login({ email, password });
       if (res.success) {
@@ -35,68 +44,84 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4 bg-slate-50/70 font-body">
-      <Card className="w-full max-w-md shadow-md border-slate-200">
-        <CardHeader className="text-center pb-5 pt-7">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 text-white mb-3 shadow-2xs">
+    <div className="flex min-h-screen items-center justify-center p-4 bg-[#F5F5F9] font-body selection:bg-[#25347B]/10 selection:text-[#25347B]">
+      <Card className="w-full max-w-md shadow-xs border-slate-200/90 bg-white">
+        <CardHeader className="text-center pb-4 pt-7 px-6">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#25347B] text-white mb-3.5 shadow-xs">
             <GraduationCap className="h-6 w-6" />
           </div>
-          <CardTitle className="text-xl font-bold tracking-tight">HighEd Admin Portal</CardTitle>
-          <CardDescription className="text-sm text-slate-500 mt-1">
-            Enter your counselor or admin credentials to continue
+          <CardTitle className="text-xl font-bold tracking-tight text-slate-900">
+            HighEd Admin Portal
+          </CardTitle>
+          <CardDescription className="text-xs text-slate-500 mt-1">
+            Overseas admissions management & counselor console
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-5 px-6 pb-7">
+        <CardContent className="space-y-4 px-6 pb-7">
           {error && (
-            <div className="flex items-center gap-2.5 rounded-lg bg-red-50 p-3 text-sm text-red-700 border border-red-200">
-              <AlertCircle className="h-4.5 w-4.5 shrink-0" />
+            <div className="flex items-center gap-2.5 rounded-lg bg-rose-50 p-3 text-xs font-medium text-rose-700 border border-rose-200">
+              <AlertCircle className="h-4 w-4 shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-slate-700 block mb-1.5">
-                Official Email
+              <label className="text-xs font-semibold text-slate-700 block mb-1.5 uppercase tracking-wider">
+                Staff Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@highed.in"
-                  className="pl-10.5"
+                  className="pl-9.5 text-sm"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700 block mb-1.5">
+              <label className="text-xs font-semibold text-slate-700 block mb-1.5 uppercase tracking-wider">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="pl-10.5"
+                  className="pl-9.5 text-sm"
                   required
                 />
               </div>
             </div>
 
-            <Button type="submit" className="w-full mt-3 h-10.5 text-sm font-semibold" isLoading={isLoading}>
-              Sign In
+            <Button
+              type="submit"
+              className="w-full mt-2 h-10 text-sm font-semibold"
+              isLoading={isLoading}
+            >
+              Sign In to Console
             </Button>
           </form>
 
-          <p className="text-center text-xs text-slate-400 pt-3 border-t border-slate-100">
-            HighEd Overseas Education Consultancy • Management Console
+          {/* Quick Demo Credentials Info */}
+          <div className="rounded-lg border border-slate-200/80 bg-slate-50/70 p-3 text-xs text-slate-600 flex items-start gap-2 mt-4">
+            <ShieldCheck className="h-4 w-4 text-[#25347B] shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-slate-800">Quick Access:</span>{' '}
+              <span className="font-mono text-[11px] text-slate-600">admin@highed.in</span> /{' '}
+              <span className="font-mono text-[11px] text-slate-600">admin123</span>
+            </div>
+          </div>
+
+          <p className="text-center text-[11px] text-slate-400 pt-3 border-t border-slate-100">
+            HighEd Overseas Education Advisory • Management Portal
           </p>
         </CardContent>
       </Card>

@@ -1,19 +1,16 @@
-import dynamic from "next/dynamic";
 import Hero from "@/components/home/Hero";
 import StudyAbroadCards from "@/components/home/StudyAbroadCards";
 import LogoMarquee from "@/components/home/LogoMarquee";
+import AboutUs from "@/components/home/AboutUs";
+import CountryService from "@/components/home/CountryService";
+import ServicesSection from "@/components/home/Service";
+import Courses from "@/components/home/Courses";
+import ScholarShip from "@/components/home/Scholarship";
+import RealStory from "@/components/home/RealStory";
+import Testimonials from "@/components/home/testimonial";
+import WhyChooseAs from "@/components/home/WhyChooseAs";
+import FAQSection from "@/components/home/FAQ";
 import Form from "@/components/forms/LeadForm";
-
-// Below-the-fold components dynamically imported to minimize initial bundle size and TBT
-const CountryService = dynamic(() => import("@/components/home/CountryService"));
-const ServicesSection = dynamic(() => import("@/components/home/Service"));
-const AboutUs = dynamic(() => import("@/components/home/AboutUs"));
-const Courses = dynamic(() => import("@/components/home/Courses"));
-const ScholarShip = dynamic(() => import("@/components/home/Scholarship"));
-const RealStory = dynamic(() => import("@/components/home/RealStory"));
-const Testimonials = dynamic(() => import("@/components/home/testimonial"));
-const WhyChooseAs = dynamic(() => import("@/components/home/WhyChooseAs"));
-const FAQSection = dynamic(() => import("@/components/home/FAQ"));
 
 export default function Home() {
   return (

@@ -18,19 +18,9 @@ export const metadata = constructMetadata({
 
 export default function EducationLoanCalculatorPage() {
   return (
-    <div className="w-full tracking-tight-5">
-      <ToolHero
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Resources", href: "/resources" },
-          { label: "Loan EMI Calculator" },
-        ]}
-        eyebrow="Smart Financial Tool"
-        title="Education Loan EMI Calculator"
-        description="Estimate monthly installments (EMI), total interest liability, and view full yearly & monthly amortization schedules with customizable moratorium grace periods."
-      />
-
-      <EducationLoanCalculator />
+    <div id="education-loan-calculator-page" className="w-full min-h-screen bg-white">
+      <EducationLoanCalculator standalone />
     </div>
   );
 }
+

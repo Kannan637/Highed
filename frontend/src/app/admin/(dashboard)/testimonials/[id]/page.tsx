@@ -59,7 +59,7 @@ export default function TestimonialDetailPage({
     setIsSaving(true);
     try {
       await apiUpdateTestimonial(id, data);
-      alert('Testimonial updated successfully!');
+      router.push('/admin/testimonials');
     } finally {
       setIsSaving(false);
     }

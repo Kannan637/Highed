@@ -8,6 +8,7 @@ import { EventRegistration } from '../../../../types/registration';
 import { Button } from '../../../../components/ui/button';
 import { ArrowLeft, Download } from 'lucide-react';
 import Link from 'next/link';
+import { downloadCSV } from '../../../../lib/utils';
 
 export default function EventRegistrationsPage({
   params,
@@ -59,7 +60,18 @@ export default function EventRegistrationsPage({
   }, [id]);
 
   const handleExport = () => {
-    alert('Exporting attendee list to CSV...');
+    if (!registrations || registrations.length === 0) return;
+    const exportRows = registrations.map((r) => ({
+      ID: r.id,
+      'Attendee Name': r.fullName,
+      Email: r.email,
+      Phone: r.phone,
+      City: r.city || '',
+      'Target Country': r.preferredCountry || '',
+      Status: r.status,
+      'Registered At': r.registeredAt || '',
+    }));
+    downloadCSV(`event_${id}_registrations.csv`, exportRows);
   };
 
   return (

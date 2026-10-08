@@ -14,6 +14,8 @@ export function useFocusTrap(
   { isActive, onEscape, autoFocus = true }: UseFocusTrapOptions
 ) {
   const previousFocusRef = useRef<HTMLElement | null>(null);
+  const onEscapeRef = useRef(onEscape);
+  onEscapeRef.current = onEscape;
 
   useEffect(() => {
     if (!isActive) return;
@@ -24,7 +26,7 @@ export function useFocusTrap(
     const container = containerRef.current;
     if (!container) return;
 
-    // Focus the first focusable element or container without scrolling the window
+    // Focus the first focusable element only when trap becomes active
     if (autoFocus) {
       const focusableElements = container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
       if (focusableElements.length > 0) {
@@ -33,9 +35,9 @@ export function useFocusTrap(
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && onEscape) {
+      if (e.key === "Escape" && onEscapeRef.current) {
         e.preventDefault();
-        onEscape();
+        onEscapeRef.current();
         return;
       }
 
@@ -70,12 +72,13 @@ export function useFocusTrap(
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      // Restore focus to previously active element
+      // Restore focus to previously active element ONLY when deactivated
       if (previousFocusRef.current && typeof previousFocusRef.current.focus === "function") {
         previousFocusRef.current.focus();
       }
     };
-  }, [isActive, onEscape, autoFocus, containerRef]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive]);
 }
 
 export default useFocusTrap;

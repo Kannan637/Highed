@@ -1,7 +1,6 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site.config";
-import { getAllCountrySlugs, getCountryBySlug } from "@/data/countries";
-import { getAllCitySlugs } from "@/data/cities";
+import { getAllCountrySlugs } from "@/data/countries";
 import { getAllBlogArticles } from "@/data/blogArticles";
 
 // Stable revision date for baseline site content
@@ -29,16 +28,7 @@ const CANONICAL_TOOLS = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const countrySlugs = getAllCountrySlugs();
-  const citySlugs = getAllCitySlugs();
   const blogArticles = getAllBlogArticles();
-
-  // City Pages
-  const cityUrls: MetadataRoute.Sitemap = citySlugs.map((slug) => ({
-    url: `${baseUrl}/best-study-consultant-in/${slug}`,
-    lastModified: STATIC_PAGE_DATE,
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
 
   // Country Pillar Pages
   const countryUrls: MetadataRoute.Sitemap = countrySlugs.map((slug) => ({
@@ -46,14 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: STATIC_PAGE_DATE,
     changeFrequency: "weekly",
     priority: 0.9,
-  }));
-
-  // Country Directory Explore Pages
-  const countryExploreUrls: MetadataRoute.Sitemap = countrySlugs.map((slug) => ({
-    url: `${baseUrl}/study-in/${slug}/explore`,
-    lastModified: STATIC_PAGE_DATE,
-    changeFrequency: "weekly",
-    priority: 0.8,
   }));
 
   // Service Detail Pages
@@ -101,12 +83,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/services`,
       lastModified: STATIC_PAGE_DATE,
       changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/explore`,
-      lastModified: STATIC_PAGE_DATE,
-      changeFrequency: "daily",
       priority: 0.85,
     },
     {
@@ -186,9 +162,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...coreUrls,
     ...countryUrls,
-    ...countryExploreUrls,
     ...serviceUrls,
-    ...cityUrls,
     ...toolUrls,
     ...blogUrls,
   ];

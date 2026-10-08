@@ -23,8 +23,8 @@ export const TopBar = () => {
     <aside
       aria-label="Announcement banner"
       className={`relative z-40 w-full overflow-hidden transition-all duration-200 ease-out ${isClosing
-          ? "max-h-0 opacity-0 -translate-y-1 pointer-events-none"
-          : "max-h-14 opacity-100 translate-y-0"
+        ? "max-h-0 opacity-0 -translate-y-1 pointer-events-none"
+        : "max-h-14 opacity-100 translate-y-0"
         }`}
     >
       <div className="w-full bg-gradient-to-r from-[#A67C00] via-[#FCF6BA] to-[#B38728] shadow-[inset_0_-4px_10px_rgba(255,255,255,0.7)]">

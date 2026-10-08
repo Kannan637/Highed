@@ -6,7 +6,10 @@ interface LeadStatusBadgeProps {
   status: LeadStatus;
 }
 
-const statusConfig: Record<LeadStatus, { label: string; variant: 'default' | 'secondary' | 'success' | 'warning' | 'destructive' }> = {
+const statusConfig: Record<
+  LeadStatus,
+  { label: string; variant: 'default' | 'secondary' | 'success' | 'warning' | 'destructive' }
+> = {
   new: { label: 'New', variant: 'default' },
   contacted: { label: 'Contacted', variant: 'secondary' },
   in_progress: { label: 'In Progress', variant: 'warning' },
@@ -21,5 +24,9 @@ const statusConfig: Record<LeadStatus, { label: string; variant: 'default' | 'se
 
 export function LeadStatusBadge({ status }: LeadStatusBadgeProps) {
   const config = statusConfig[status] || { label: status, variant: 'secondary' };
-  return <Badge variant={config.variant}>{config.label}</Badge>;
+  return (
+    <Badge variant={config.variant} dot>
+      {config.label}
+    </Badge>
+  );
 }

@@ -72,6 +72,7 @@ export interface Country {
   tagline: string;
   description: string;
   heroImage: string;
+  intakeImage?: string;
   flag: string;
   currency: string;
   capital: string;

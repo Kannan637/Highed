@@ -106,15 +106,16 @@ function MarqueeRow({ direction }: { direction: "left" | "right" }) {
                     <div
                         key={`${item.name}-${index}`}
                         className="
+                            relative
                             flex
-                            h-16
+                            h-12
                             w-[110px]
                             shrink-0
                             items-center
                             justify-center
-                            sm:h-18
+                            sm:h-14
                             sm:w-[130px]
-                            md:h-20
+                            md:h-16
                             md:w-[150px]
                             lg:w-[160px]
                         "
@@ -122,23 +123,9 @@ function MarqueeRow({ direction }: { direction: "left" | "right" }) {
                         <Image
                             src={item.src}
                             alt={`${item.name} logo`}
-                            width={140}
-                            height={60}
-                            loading="lazy"
-                            style={{ width: "auto", height: "auto" }}
-                            className="
-                                h-auto
-                                max-h-[42px]
-                                w-auto
-                                max-w-[100px]
-                                object-contain
-                                sm:max-h-[48px]
-                                sm:max-w-[115px]
-                                md:max-h-[54px]
-                                md:max-w-[130px]
-                                lg:max-h-[60px]
-                                lg:max-w-[140px]
-                            "
+                            fill
+                            sizes="(max-width: 640px) 110px, (max-width: 768px) 130px, 160px"
+                            className="object-contain"
                             draggable={false}
                         />
                     </div>
@@ -198,7 +185,7 @@ export default function LogoMarquee() {
                             font-semibold
                         "
                     >
-                        Top Universities we work with
+                        We are trusted by 10,000+ people and 120+ Universities
                     </h2>
                 </div>
 

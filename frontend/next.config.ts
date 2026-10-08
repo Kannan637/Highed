@@ -28,6 +28,10 @@ const securityHeaders = [
     value: "camera=(), microphone=(), geolocation=()",
   },
   {
+    key: "Link",
+    value: '</.well-known/ard.json>; rel="ai-catalog", </.well-known/ard.json>; rel="ard"',
+  },
+  {
     key: "X-XSS-Protection",
     value: "0",
   },
@@ -46,6 +50,7 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https: blob:",
       "connect-src 'self' https://wa.me https://*.supabase.co ws: wss:",
+      "frame-src 'self' https://maps.google.com https://www.google.com",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -54,6 +59,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Compression & Clean Headers
+  compress: true,
+  poweredByHeader: false,
+
   // Allow mobile devices and local network IPs to connect to HMR WebSocket
   allowedDevOrigins: [
     "192.168.0.111",
@@ -70,13 +79,20 @@ const nextConfig: NextConfig = {
 
   // Package treeshaking & build optimization
   experimental: {
-    optimizePackageImports: ["lucide-react", "country-flag-icons"],
+    optimizePackageImports: [
+      "lucide-react",
+      "country-flag-icons",
+      "@base-ui/react",
+      "embla-carousel-react",
+      "zod",
+    ],
     cpus: 1,
   },
 
-  // Image optimization
+  // Image optimization & Long-term Cache
   images: {
     formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: "https",

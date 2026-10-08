@@ -19,13 +19,8 @@ export async function GET() {
 - Canonical Website: ${baseUrl}
 - Office Hours: Monday - Saturday: 9:30 AM - 6:30 PM IST
 
-## Regional Coverage (Tamil Nadu & South India)
-- Chennai (Central Headquarters & Walk-in Centre): ${baseUrl}/best-study-consultant-in/chennai
-- Coimbatore (Regional Advisory Desk): ${baseUrl}/best-study-consultant-in/coimbatore
-- Vellore (Regional Advisory Desk): ${baseUrl}/best-study-consultant-in/vellore
-- Tirupathi (Regional Advisory Desk): ${baseUrl}/best-study-consultant-in/tirupathi
-- Thiruvallur (Regional Advisory Desk): ${baseUrl}/best-study-consultant-in/thiruvallur
-- Regional Hub Directory: ${baseUrl}/best-study-consultant-in
+## Contact
+- Headquarters (Chennai): ${baseUrl}/contact
 
 ## Core Study Abroad Destinations
 - Study in USA: ${baseUrl}/study-in/usa

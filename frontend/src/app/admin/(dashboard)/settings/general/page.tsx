@@ -5,7 +5,7 @@ import { PageHeader } from '../../../components/common/PageHeader';
 import { Card, CardHeader, CardTitle, CardContent } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function GeneralSettingsPage() {
@@ -18,14 +18,33 @@ export default function GeneralSettingsPage() {
     primaryIntake: 'Fall 2026',
   });
   const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('highed_general_settings');
+      if (saved) {
+        try {
+          setFormData((prev) => ({ ...prev, ...JSON.parse(saved) }));
+        } catch {
+          // ignore corrupted data
+        }
+      }
+    }
+  }, []);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
+    setSaveSuccess(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('highed_general_settings', JSON.stringify(formData));
+    }
     setTimeout(() => {
       setIsSaving(false);
-      alert('General settings saved!');
-    }, 600);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    }, 400);
   };
 
   return (
@@ -42,6 +61,13 @@ export default function GeneralSettingsPage() {
         title="General Consultancy Settings"
         description="Public contact details, primary office address, and default settings."
       />
+
+      {saveSuccess && (
+        <div className="flex items-center gap-2.5 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm font-medium">
+          <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+          General settings updated and saved successfully.
+        </div>
+      )}
 
       <form onSubmit={handleSave} className="space-y-6">
         <Card>

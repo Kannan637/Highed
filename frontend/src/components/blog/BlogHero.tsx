@@ -2,8 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import { CheckCircle2, BookOpen, ArrowRight } from "lucide-react";
-import { useLeadPopup } from "@/hooks/useLeadPopup";
+import { CheckCircle2, Clock, Calendar, ArrowRight } from "lucide-react";
+import LeadCTAButton from "@/components/forms/LeadCTAButton";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import EyebrowBadge from "../ui/EyebrowBadge";
 
 interface BlogHeroProps {
   title: string;
@@ -28,16 +30,6 @@ export function BlogHero({
   author,
   heroImage,
 }: BlogHeroProps) {
-  const { openLeadPopup } = useLeadPopup();
-
-  const handleConsultation = () => {
-    openLeadPopup({
-      source: "blog-hero",
-      contextTitle: title,
-      contextCTA: "Book Free Consultation",
-    });
-  };
-
   const authorInitials = author.name
     .split(" ")
     .map((n) => n[0])
@@ -45,125 +37,108 @@ export function BlogHero({
     .slice(0, 2);
 
   return (
-    <section className="w-full border-b border-border bg-background">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
-        {/* 12-Column Grid Structure */}
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
+    <section className="relative w-full overflow-hidden border-b border-brand-primary/20 bg-gradient-to-br from-brand-primary via-[#1D2F64] to-[#12204C] text-white">
+      {/* Ambient background glows */}
+
+      <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+        {/* 12-Column Grid: 6 / 6 Balanced Split for a Larger Right Image */}
+        <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* =========================================================
-              LEFT COLUMN: 7 columns in 12-Grid Structure
+              LEFT COLUMN: 6 columns in 12-Grid Structure
               ========================================================= */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
-            {/* Small Category / Eyebrow */}
+          <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
+            {/* Minimal Category Eyebrow Badge */}
             <div className="mb-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-neutral/60 px-3 py-1 text-xs font-semibold text-muted-foreground">
-                <span className="size-1.5 rounded-full bg-brand-primary" aria-hidden="true" />
-                {category}
-              </span>
+
+              <EyebrowBadge>{category}</EyebrowBadge>
             </div>
 
-            {/* Main Article Title (Single H1 per page) */}
-            <h1 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-bold leading-[1.22] tracking-tight text-foreground m-0 max-w-[560px]">
+            {/* Main Article Title: Clean, Minimal, Proportional Font Size */}
+            <h1 className="text-xl sm:text-2xl lg:text-[28px] font-bold leading-[1.25] tracking-tight text-white m-0 max-w-xl">
               {title}
             </h1>
 
-
-            {/* Author / Metadata Row */}
-            <div className="mt-5 flex items-center gap-2.5 text-xs sm:text-sm text-muted-foreground flex-wrap">
-              {/* Circular Avatar */}
-              <div
-                className="size-8 rounded-full overflow-hidden bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-xs font-bold text-brand-primary shrink-0"
-                aria-hidden="true"
-              >
+            {/* Author / Metadata Row with shadcn UI Avatar */}
+            <div className="mt-4 flex items-center gap-3 text-xs text-white/80 flex-wrap">
+              {/* shadcn UI Avatar */}
+              <Avatar className="size-8 sm:size-9 border border-white/25 shadow-xs shrink-0">
                 {author.avatar ? (
-                  <Image
-                    src={author.avatar}
-                    alt={author.name}
-                    width={32}
-                    height={32}
-                    className="size-full object-cover"
-                  />
-                ) : (
-                  <span>{authorInitials}</span>
-                )}
-              </div>
+                  <AvatarImage src={author.avatar} alt={author.name} />
+                ) : null}
+                <AvatarFallback className="bg-white/20 text-white text-[11px] font-bold">
+                  {authorInitials}
+                </AvatarFallback>
+              </Avatar>
 
               {/* Author Name */}
-              <span className="font-semibold text-foreground">
+              <span className="font-semibold text-white">
                 {author.name}
               </span>
 
               {/* Separator */}
-              <span className="text-muted-foreground/50 select-none">•</span>
+              <span className="text-white/40 select-none">•</span>
 
               {/* Date Information */}
-              <span className="flex items-center gap-1">
+              <span className="inline-flex items-center gap-1.5 text-white/80">
+                <Calendar className="size-3.5 text-white/70" />
                 <span>{lastUpdated || publishedDate}</span>
               </span>
 
               {/* Separator */}
-              <span className="text-muted-foreground/50 select-none">•</span>
+              <span className="text-white/40 select-none">•</span>
 
               {/* Reading Time */}
-              <span className="flex items-center gap-1 font-medium text-brand-primary">
+              <span className="inline-flex items-center gap-1.5 font-medium text-brand-accent">
+                <Clock className="size-3.5 text-brand-accent" />
                 <span>{readingTime}</span>
               </span>
             </div>
 
-            {/* Horizontal Action Row: Two Pill-Shaped Buttons */}
-            <div className="mt-7 flex items-center gap-3 sm:gap-4 flex-wrap">
-              {/* Primary Pill Button */}
-              <button
-                type="button"
-                onClick={handleConsultation}
-                className="btn-motion inline-flex items-center gap-2 rounded-full bg-brand-primary px-6 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-brand-primary-hover cursor-pointer"
+            {/* Brand Guideline Action Buttons: Master CTA + Frosted Pill */}
+            <div className="mt-6 flex items-center gap-3 sm:gap-3.5 flex-wrap">
+              {/* Primary Lead CTA Button with Brand Master Red Gradient */}
+              <LeadCTAButton
+                source="blog-hero"
+                contextTitle={title}
+                contextCTA="Book Free Counselling"
+                forcePopup={true}
+                size="sm"
+                className="w-fit h-[48px]"
               >
-                <span>Book Free Consultation</span>
-                <ArrowRight className="size-3.5" />
-              </button>
+                Book Free Counselling
+              </LeadCTAButton>
 
-              {/* Secondary Pill Button */}
+              {/* Secondary Pill Button under Brand Guidelines */}
               <a
                 href="#key-takeaways"
-                className="btn-motion inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-xs sm:text-sm font-medium text-foreground hover:bg-surface-neutral transition-colors cursor-pointer"
+                className="group/btn inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-4 py-2.5 text-xs font-semibold text-white hover:border-white/50 hover:bg-white/20 transition-all cursor-pointer"
               >
                 <span>Key Takeaways</span>
+                <ArrowRight className="size-3 text-white/80 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
               </a>
             </div>
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN: 5 columns in 12-Grid Structure
+              RIGHT COLUMN: 6 columns (Enlarged Photo Framing)
               ========================================================= */}
-          <div className="col-span-12 lg:col-span-5 relative flex items-center justify-center p-4 sm:p-6 lg:p-8 rounded-2xl overflow-hidden bg-surface-neutral/30 border border-border/60">
-            {/* Main Illustration Composition Centered */}
-            <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden shadow-sm border border-border bg-white">
+          <div className="col-span-12 lg:col-span-6">
+            <div className="relative w-full aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/11] min-h-[300px] sm:min-h-[360px] lg:min-h-[400px] rounded-2xl overflow-hidden border border-white/20 bg-white/5  group">
               <Image
                 src={heroImage}
                 alt={title}
                 fill
                 priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 42vw, 480px"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 620px"
               />
-            </div>
 
-            {/* Floating Graphic Element 1: Top Right */}
-            <div className="absolute top-6 right-6 rounded-xl border border-border bg-white/95 backdrop-blur-xs px-3 py-1.5 shadow-2xs text-[11px] font-semibold flex items-center gap-1.5 text-foreground">
-              <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
-              <span>Verified 2026 Guide</span>
+              {/* Verified Editorial Badge */}
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/60 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-white shadow-sm">
+                <CheckCircle2 className="size-3.5 text-emerald-400 shrink-0" />
+                <span>Verified 2026 Guide</span>
+              </div>
             </div>
-
-            {/* Floating Graphic Element 2: Bottom Left */}
-            <div className="absolute bottom-6 left-6 rounded-xl border border-border bg-white/95 backdrop-blur-xs px-3 py-1.5 shadow-2xs text-[11px] font-medium flex items-center gap-1.5 text-foreground">
-              <BookOpen className="size-3.5 text-brand-primary shrink-0" />
-              <span>Policy Roadmap</span>
-            </div>
-
-            {/* Subtle Horizontal Baseline near Bottom of Visual Area */}
-            <div
-              className="absolute bottom-2 left-6 right-6 h-px bg-border/60"
-              aria-hidden="true"
-            />
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: disallowedPaths,
       },
-      // Legitimate AI search & citation crawlers (improve.md Phase 29)
+      // Legitimate AI search, citation & agentic crawlers
       {
         userAgent: [
           "GPTBot",
@@ -25,6 +25,11 @@ export default function robots(): MetadataRoute.Robots {
           "PerplexityBot",
           "ClaudeBot",
           "Google-Extended",
+          "ChatGPT-User",
+          "anthropic-ai",
+          "Cohere-ai",
+          "CCBot",
+          "Meta-ExternalAgent",
         ],
         allow: "/",
         disallow: disallowedPaths,

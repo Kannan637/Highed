@@ -16,6 +16,8 @@ interface PhoneInputProps {
   error?: string;
   disabled?: boolean;
   id?: string;
+  hideLabel?: boolean;
+  size?: "sm" | "md";
 }
 
 const countryCodes = [
@@ -35,6 +37,8 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   error,
   disabled = false,
   id = "phone-input",
+  hideLabel = false,
+  size = "md",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(0);
@@ -266,19 +270,22 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
   return (
     <div className="w-full">
       {/* Label */}
-      <label
-        htmlFor={id}
-        className="mb-1.5 block font-body text-xs font-semibold text-content-secondary"
-      >
-        Mobile Number *
-      </label>
+      {!hideLabel && (
+        <label
+          htmlFor={id}
+          className={`mb-1.5 block font-body ${size === "sm" ? "text-[11px] mb-1" : "text-xs"} font-semibold text-content-secondary`}
+        >
+          Mobile Number *
+        </label>
+      )}
 
       {/* Input wrapper */}
       <div
-        className={`relative flex h-12 w-full items-center rounded-xl border bg-white transition-colors ${error
-          ? "border-brand-accent focus-within:border-brand-accent"
-          : "border-gray-200 focus-within:border-brand-primary"
-          }`}
+        className={`relative flex ${size === "sm" ? "h-9 rounded-lg" : "h-12 rounded-xl"} w-full items-center border bg-white transition-colors ${
+          error
+            ? "border-brand-accent focus-within:border-brand-accent"
+            : "border-gray-200 focus-within:border-brand-primary"
+        }`}
       >
         {/* Country selector */}
         <div
@@ -291,7 +298,11 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
             onClick={toggleDropdown}
             onKeyDown={handleTriggerKeyDown}
             disabled={disabled}
-            className="flex h-full min-h-[44px] items-center gap-1.5 rounded-l-xl border-r border-gray-200 px-3 font-body text-sm font-medium text-content-primary transition-colors hover:bg-gray-50 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50"
+            className={`flex h-full ${
+              size === "sm"
+                ? "min-h-[36px] px-2 text-xs rounded-l-lg"
+                : "min-h-[44px] px-3 text-sm rounded-l-xl"
+            } items-center gap-1 border-r border-gray-200 font-body font-medium text-content-primary transition-colors hover:bg-gray-50 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50`}
             aria-label="Select country calling code"
             aria-haspopup="listbox"
             aria-expanded={isOpen}
@@ -300,10 +311,11 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
             <span>{countryCode}</span>
 
             <ChevronDown
-              size={14}
+              size={size === "sm" ? 12 : 14}
               strokeWidth={1.75}
-              className={`shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
-                }`}
+              className={`shrink-0 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
               aria-hidden="true"
             />
           </button>
@@ -314,7 +326,9 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
               id={listboxId}
               role="listbox"
               aria-label="Country calling codes"
-              className="absolute left-0 top-[calc(100%+6px)] z-[100] w-32 overflow-hidden rounded-xl border border-gray-200 bg-white p-1 shadow-lg"
+              className={`absolute left-0 top-[calc(100%+4px)] z-[100] ${
+                size === "sm" ? "w-28 text-xs p-1" : "w-32 text-sm p-1"
+              } overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg`}
             >
               {countryCodes.map((country, index) => {
                 const isSelected =
@@ -338,10 +352,13 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
                     onKeyDown={(event) =>
                       handleOptionKeyDown(event, index)
                     }
-                    className={`flex min-h-[40px] w-full items-center rounded-lg px-3 py-2 text-left font-body text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/30 ${isSelected
-                      ? "bg-icon-bg-primary font-semibold text-brand-primary"
-                      : "text-content-primary hover:bg-gray-50"
-                      }`}
+                    className={`flex ${
+                      size === "sm" ? "min-h-[32px] px-2 py-1.5 text-xs" : "min-h-[40px] px-3 py-2 text-sm"
+                    } w-full items-center rounded-lg text-left font-body transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/30 ${
+                      isSelected
+                        ? "bg-icon-bg-primary font-semibold text-brand-primary"
+                        : "text-content-primary hover:bg-gray-50"
+                    }`}
                   >
                     {country.label}
                   </button>
@@ -365,7 +382,11 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
           aria-label="Mobile phone number"
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="h-12 w-full min-w-0 flex-1 rounded-r-xl border-0 bg-transparent px-4 font-body text-sm text-content-primary outline-none ring-0 placeholder:text-gray-500 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50"
+          className={`${
+            size === "sm"
+              ? "h-9 px-2.5 text-xs rounded-r-lg placeholder:text-xs"
+              : "h-12 px-4 text-sm rounded-r-xl placeholder:text-gray-500"
+          } w-full min-w-0 flex-1 border-0 bg-transparent font-body text-content-primary outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50`}
         />
       </div>
 
@@ -373,7 +394,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
       {error && (
         <p
           id={errorId}
-          className="mt-1.5 font-body text-xs text-brand-accent"
+          className={`${size === "sm" ? "mt-1 text-[11px]" : "mt-1.5 text-xs"} font-body text-brand-accent`}
           role="alert"
         >
           {error}

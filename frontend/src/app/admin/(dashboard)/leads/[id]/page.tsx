@@ -8,6 +8,7 @@ import { LeadTimeline } from '../../../components/leads/LeadTimeline';
 import { LeadActions } from '../../../components/leads/LeadActions';
 import { apiGetLeadById, apiUpdateLead, apiDeleteLead } from '../../../lib/api/leads';
 import { Lead, LeadStatus } from '../../../types/lead';
+import { leadStatusSchema } from '../../../lib/validations/lead';
 import { LoadingState } from '../../../components/common/LoadingState';
 import { Button } from '../../../components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -63,8 +64,10 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
 
   const handleStatusChange = async (status: LeadStatus) => {
     if (!lead) return;
-    await apiUpdateLead(id, { status });
-    setLead({ ...lead, status });
+    const parsed = leadStatusSchema.safeParse(status);
+    if (!parsed.success) return;
+    await apiUpdateLead(id, { status: parsed.data });
+    setLead({ ...lead, status: parsed.data });
   };
 
   const handleDelete = async () => {
